@@ -31,7 +31,7 @@ public class LocationHandler {
         if(sendToServer || (Boolean) ch.getSettings().get(Settings.SET_FMDSERVER_AUTO_UPLOAD)){
             String id =  (String) ch.getSettings().get(Settings.SET_FMDSERVER_ID);
             if(!id.isEmpty()) {
-                FMDServerService.sendNewLocation(ch.getContext(), provider, lat, lon, (String) ch.getSettings().get(Settings.SET_FMDSERVER_URL), (String) ch.getSettings().get(Settings.SET_FMDSERVER_ID));
+                FMDServerService.sendNewLocation(ch.getContext(), ch.getSettings(), provider, lat, lon);
             }
         }
     }

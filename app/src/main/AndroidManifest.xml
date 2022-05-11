@@ -99,6 +99,7 @@
         </receiver>
         <receiver
             android:name=".receiver.SMSReceiver"
+            android:directBootAware="true"
             android:enabled="true"
             android:exported="true">
             <intent-filter>

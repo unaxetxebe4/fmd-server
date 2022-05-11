@@ -44,8 +44,7 @@ public class FMDServerService extends JobService {
 
     private static final int JOB_ID = 108;
 
-    public static void sendNewLocation(Context context, String provider, String lat, String lon, String url, String id) {
-        Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
+    public static void sendNewLocation(Context context, Settings settings, String provider, String lat, String lon) {
         PublicKey publicKey = settings.getKeys().getPublicKey();
         RequestQueue queue = PatchedVolley.newRequestQueue(context);
         BatteryManager bm = (BatteryManager) context.getSystemService(BATTERY_SERVICE);
@@ -53,7 +52,7 @@ public class FMDServerService extends JobService {
 
         final JSONObject requestAccessObject = new JSONObject();
         try {
-            requestAccessObject.put("IDT", id);
+            requestAccessObject.put("IDT", (String)settings.get(Settings.SET_FMDSERVER_ID));
             requestAccessObject.put("Data", (String)settings.get(Settings.SET_FMD_CRYPT_HPW));
         } catch (JSONException e) {
 
@@ -69,6 +68,8 @@ public class FMDServerService extends JobService {
         } catch (JSONException e) {
 
         }
+
+        String url = (String)settings.get(Settings.SET_FMDSERVER_URL);
 
         JsonObjectRequest accessRequest = new JsonObjectRequest(Request.Method.PUT, url + "/requestAccess", requestAccessObject, new AccesssTokenListenerForData(context, locationDataObject, url, "/location"),
                 new Response.ErrorListener() {
