@@ -38,6 +38,13 @@ Herbert Reiter - [moasda](https://gitlab.com/moasda)
 
 Freetime FM  - [awesomea380](https://gitlab.com/awesomea380)
 
+Pan Daemon - [Pandaemon](https://gitlab.com/Pandaemon)
+
+
+# Contributors - Visual Design
+
+Niklas Stephanblome - [Kleysley](https://gitlab.com/Kleysley)
+
 # Donate
 
 <script src="https://liberapay.com/Nulide/widgets/button.js"></script>
