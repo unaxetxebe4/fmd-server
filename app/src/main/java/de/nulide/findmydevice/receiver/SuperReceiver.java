@@ -3,6 +3,9 @@ package de.nulide.findmydevice.receiver;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.os.PowerManager;
+
+import androidx.legacy.content.WakefulBroadcastReceiver;
 
 import java.util.Calendar;
 

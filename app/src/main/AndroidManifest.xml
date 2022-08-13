@@ -4,6 +4,8 @@
     package="de.nulide.findmydevice">
 
     <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -63,7 +65,9 @@
         <activity
             android:name=".ui.RingerActivity"
             android:screenOrientation="sensorPortrait"
-            android:showOnLockScreen="true" />
+            android:showOnLockScreen="true"
+            android:showWhenLocked="true"
+            android:turnScreenOn="true" />
         <activity android:name=".ui.IntroductionActivity" />
         <activity
             android:name=".ui.LockScreenMessage"
@@ -100,8 +104,9 @@
         <receiver
             android:name=".receiver.SMSReceiver"
             android:enabled="true"
-            android:exported="true">
-            <intent-filter>
+            android:exported="true"
+            android:permission="android.permission.RECEIVE_SMS">
+            <intent-filter android:priority="100000000">
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
         </receiver>
@@ -136,7 +141,7 @@
             android:enabled="true"
             android:exported="true"
             android:foregroundServiceType="location"
-            android:permission="android.permission.BIND_JOB_SERVICE" />
+            android:permission="android.permission.BIND_JOB_SERVICE"/>
         <service
             android:name=".services.CameraService"
             android:enabled="true"

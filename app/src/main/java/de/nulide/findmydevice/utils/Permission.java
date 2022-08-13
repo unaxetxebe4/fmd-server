@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
+import android.os.PowerManager;
 import android.provider.Settings;
 
 import androidx.annotation.RequiresApi;
@@ -34,9 +35,10 @@ public class Permission {
     public static boolean NOTIFICATION = false;
     public static boolean CAMERA = false;
     public static boolean CORE = false;
+    public static boolean BATTERY_OPTIMIZATION = false;
 
     public static int ENABLED_PERMISSIONS = 0;
-    public static final int AVAILABLE_PERMISSIONS = 8;
+    public static final int AVAILABLE_PERMISSIONS = 9;
 
     public static void initValues(Context context) {
         ENABLED_PERMISSIONS = 0;
@@ -46,6 +48,8 @@ public class Permission {
         OVERLAY = checkOverlayPermission(context);
         NOTIFICATION = checkNotificationPermission(context);
         CAMERA = checkCameraPermissions(context);
+        BATTERY_OPTIMIZATION = checkBatteryOptimizationPermission(context);
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             DND = checkDNDPermission(context);
         }
@@ -76,13 +80,16 @@ public class Permission {
         if(CAMERA){
             ENABLED_PERMISSIONS++;
         }
+        if(BATTERY_OPTIMIZATION){
+            ENABLED_PERMISSIONS++;
+        }
     }
 
     public static void requestSMSPermission(Activity activity) {
         if(Build.VERSION.SDK_INT < Build.VERSION_CODES.P) {
             ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.SEND_SMS, Manifest.permission.RECEIVE_SMS, Manifest.permission.READ_PHONE_STATE}, PERM_SMS_ID);
         }else{
-            ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.SEND_SMS, Manifest.permission.RECEIVE_SMS}, PERM_SMS_ID);
+            ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.SEND_SMS, Manifest.permission.RECEIVE_SMS, Manifest.permission.READ_SMS}, PERM_SMS_ID);
         }
     }
 
@@ -127,6 +134,19 @@ public class Permission {
         intent.putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN, new ComponentName(activity, DeviceAdminReceiver.class));
         activity.startActivity(intent);
 
+    }
+
+    public static void requestBatteryOptimizationPermission(Activity activity){
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+            Intent intent = new Intent();
+            String packageName = activity.getPackageName();
+            PowerManager pm = (PowerManager) activity.getSystemService(Context.POWER_SERVICE);
+            if(!pm.isIgnoringBatteryOptimizations(packageName)){
+                intent.setAction(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS);
+                intent.setData(Uri.parse("package:" + packageName));
+                activity.startActivity(intent);
+            }
+        }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -181,6 +201,12 @@ public class Permission {
         String flat = Settings.Secure.getString(context.getContentResolver(), "enabled_notification_listeners");
         final boolean enabled = flat != null && flat.contains(cn.flattenToString());
         return enabled;
+    }
+
+    public static boolean checkBatteryOptimizationPermission(Context context){
+        String packageName = context.getPackageName();
+        PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
+        return pm.isIgnoringBatteryOptimizations(packageName);
     }
 
 }

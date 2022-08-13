@@ -3,6 +3,7 @@
     <string name="Granted">Zugelassen: </string>
     <string name="Edit">Bearbeiten</string>
     <string name="contacts">Kontakte</string>
+    <string name="Permission_IGNORE_BATTERY_OPTIMIZATION">Diese Anwendung soll im Hintergrund laufen. Um sicherzustellen, dass sie auch im Standby funktioniert, ist es nötig, Akku-Optimierung für diese App auszustellen.</string>
     <string name="hello_blank_fragment">Hallo leeres Fragment</string>
     <string name="Delete">Löschen</string>
     <string name="WhiteList_Select_Action">Wähle eine Aktion:</string>

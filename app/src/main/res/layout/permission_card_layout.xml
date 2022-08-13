@@ -208,6 +208,31 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:layout_marginStart="50dp"
+                android:text="@string/Info_BatteryOptimization"
+                android:textSize="21sp" />
+
+            <TextView
+                android:id="@+id/textviewBatteryOptimization"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:textAlignment="viewEnd"
+                android:layout_marginEnd="50dp"
+                android:text="@string/Disabled"
+                android:textSize="21sp" />
+
+        </LinearLayout>
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
