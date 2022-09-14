@@ -17,13 +17,13 @@ import de.nulide.findmydevice.data.io.JSONFactory;
 import de.nulide.findmydevice.data.io.json.JSONMap;
 import de.nulide.findmydevice.logic.ComponentHandler;
 import de.nulide.findmydevice.net.DataHandler;
-import de.nulide.findmydevice.net.DataListener;
+import de.nulide.findmydevice.net.RespListener;
 import de.nulide.findmydevice.sender.FooSender;
 import de.nulide.findmydevice.sender.Sender;
 import de.nulide.findmydevice.utils.Logger;
 import de.nulide.findmydevice.utils.Notifications;
 
-public class FMDServerCommandService extends JobService implements DataListener {
+public class FMDServerCommandService extends JobService implements RespListener {
 
     private static final int JOB_ID = 109;
     private Settings settings;
@@ -34,11 +34,11 @@ public class FMDServerCommandService extends JobService implements DataListener 
     public boolean onStartJob(JobParameters params) {
         IO.context = this;
         settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
+        this.params = params;
 
         DataHandler dataHandler = new DataHandler(this);
-        dataHandler.run(DataHandler.COMMAND, this);
-
-        this.params = params;
+        dataHandler.prepare(DataHandler.DEFAULT_METHOD, DataHandler.DEFAULT_METHOD, DataHandler.COMMAND, dataHandler.getDefaultATReq(), dataHandler.getEmptyDataReq(), this);
+        dataHandler.send();
 
 
         return true;
@@ -60,7 +60,7 @@ public class FMDServerCommandService extends JobService implements DataListener 
     }
 
     @Override
-    public void onDataReceived(JSONObject response, String url) {
+    public void onResponseReceived(JSONObject response) {
         try {
             String command = response.getString("Data");
             if (!command.equals("")) {

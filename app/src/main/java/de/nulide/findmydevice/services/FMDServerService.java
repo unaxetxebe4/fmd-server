@@ -12,28 +12,23 @@ import android.os.BatteryManager;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.security.PublicKey;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
-import de.nulide.findmydevice.data.Keys;
 import de.nulide.findmydevice.data.Settings;
 import de.nulide.findmydevice.data.io.IO;
 import de.nulide.findmydevice.data.io.JSONFactory;
 import de.nulide.findmydevice.data.io.json.JSONMap;
 import de.nulide.findmydevice.logic.ComponentHandler;
-import de.nulide.findmydevice.net.ATListener;
 import de.nulide.findmydevice.net.DataHandler;
-import de.nulide.findmydevice.net.DataListener;
 import de.nulide.findmydevice.sender.FooSender;
 import de.nulide.findmydevice.sender.Sender;
 import de.nulide.findmydevice.utils.CypherUtils;
@@ -100,7 +95,7 @@ public class FMDServerService extends JobService {
         }
 
         DataHandler dataHandler = new DataHandler(context);
-        dataHandler.prepare(Request.Method.PUT, DataHandler.DEVICE, jsonObject, null, null);
+        dataHandler.prepare(DataHandler.DEFAULT_METHOD, -1, DataHandler.DEVICE, jsonObject, null, null);
         dataHandler.getAth().setAtListener(response -> {
             try {
                 settings.set(Settings.SET_FMDSERVER_ID, response.get("DeviceId"));
@@ -117,31 +112,9 @@ public class FMDServerService extends JobService {
         RequestQueue queue = PatchedVolley.newRequestQueue(context);
         String url = (String)settings.get(Settings.SET_FMDSERVER_URL);
         final JSONObject requestAccessObject = new JSONObject();
-        try {
-            requestAccessObject.put("IDT", settings.get(Settings.SET_FMDSERVER_ID));
-            requestAccessObject.put("Data", settings.get(Settings.SET_FMD_CRYPT_HPW));
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
 
-        JsonObjectRequest accessRequest = new JsonObjectRequest(Request.Method.PUT, url + "/requestAccess", requestAccessObject, new FMDServerService.AccesssTokenListenerForUnregistratioon(context, url),
-                error -> error.printStackTrace()) {
-
-            @Override
-            public Map<String, String> getHeaders()
-            {
-                Map<String, String> headers = new HashMap<>();
-                headers.put("Content-Type", "application/json");
-                headers.put("Accept", "application/json");
-                return headers;
-            }
-
-            @Override
-            public byte[] getBody() {
-                return requestAccessObject.toString().getBytes(StandardCharsets.UTF_8);
-            }
-        };
-        queue.add(accessRequest);
+        DataHandler dataHandler = new DataHandler(context);
+        dataHandler.run(DataHandler.DEVICE,null);
         settings.set(Settings.SET_FMDSERVER_ID, "");
         settings.set(Settings.SET_FMDSERVER_AUTO_UPLOAD, false);
         settings.setNow(Settings.SET_FMDSERVER_UPLOAD_SERVICE, false);
@@ -177,7 +150,7 @@ public class FMDServerService extends JobService {
             ComponentHandler ch = new ComponentHandler(settings, this, this, params);
             ch.setSender(sender);
             ch.setReschedule(true);
-            Boolean registered = !((String) ch.getSettings().get(Settings.SET_FMDSERVER_ID)).isEmpty();
+            boolean registered = !((String) ch.getSettings().get(Settings.SET_FMDSERVER_ID)).isEmpty();
             if (registered) {
                 Notifications.init(this, true);
                 Permission.initValues(this);
@@ -208,52 +181,5 @@ public class FMDServerService extends JobService {
         Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
         scheduleJob(this, (Integer)settings.get(Settings.SET_FMDSERVER_UPDATE_TIME));
         return false;
-    }
-
-    public static class AccesssTokenListenerForUnregistratioon implements Response.Listener<JSONObject> {
-
-        private final Context context;
-        private final String url;
-
-        public AccesssTokenListenerForUnregistratioon(Context context, String url) {
-            this.context = context;
-            this.url = url;
-        }
-
-        @Override
-        public void onResponse(JSONObject response) {
-            if (response.has("Data")) {
-                final JSONObject deletionRequestJSON = new JSONObject();
-                try {
-                    deletionRequestJSON.put("IDT", response.get("Data"));
-                    deletionRequestJSON.put("Data", "");
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                RequestQueue queue = PatchedVolley.newRequestQueue(context);
-                JsonObjectRequest deletionRequest = new JsonObjectRequest(Request.Method.POST, url + "/device", deletionRequestJSON,
-                        response1 -> {
-
-                        },
-                        error -> error.printStackTrace()) {
-
-                    @Override
-                    public Map<String, String> getHeaders() {
-                        Map<String, String> headers = new HashMap<>();
-                        headers.put("Content-Type", "application/json");
-                        headers.put("Accept", "application/json");
-                        return headers;
-                    }
-
-                    @Override
-                    public byte[] getBody() {
-                        return deletionRequestJSON.toString().getBytes(StandardCharsets.UTF_8);
-                    }
-                };
-                queue.add(deletionRequest);
-            }
-        }
-
-
     }
 }

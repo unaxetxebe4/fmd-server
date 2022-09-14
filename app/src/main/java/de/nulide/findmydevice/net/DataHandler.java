@@ -18,7 +18,6 @@ import de.nulide.findmydevice.data.Settings;
 import de.nulide.findmydevice.data.io.IO;
 import de.nulide.findmydevice.data.io.JSONFactory;
 import de.nulide.findmydevice.data.io.json.JSONMap;
-import de.nulide.findmydevice.services.FMDServerCommandService;
 import de.nulide.findmydevice.utils.PatchedVolley;
 
 public class DataHandler {
@@ -29,13 +28,17 @@ public class DataHandler {
     public static final String PICTURE = "/picture";
     public static final String DEVICE = "/device";
 
+    public static final int DEFAULT_METHOD = Request.Method.PUT;
+    public static final int DEFAULT_RESP_METHOD = Request.Method.POST;
+
+
     private Context context;
     private Settings settings;
     private String url;
     private RequestQueue queue;
 
     private JsonObjectRequest request;
-    private ATHandler ath;
+    private RespHandler ath;
 
     public DataHandler(Context context) {
         this.context = context;
@@ -45,35 +48,47 @@ public class DataHandler {
         queue = PatchedVolley.newRequestQueue(context);
     }
 
-    public void run(String com, DataListener listener){
-        final JSONObject requestDataObject = new JSONObject();
-        try {
-            requestDataObject.put("IDT", "");
-            requestDataObject.put("Data", "");
-            run(com, requestDataObject, listener);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+    public void run(String com, RespListener listener){
+
     }
 
-    public void run(String com, JSONObject object, DataListener listener){
-        final JSONObject requestAccessObject = new JSONObject();
+    public void run(String com, JSONObject object, RespListener listener){
+        prepare(com, object, listener);
+        send();
+    }
+
+    public void prepare(String com, JSONObject object, RespListener listener){
+        prepare(DEFAULT_METHOD, DEFAULT_RESP_METHOD, com, getDefaultATReq(), object, listener);
+    }
+
+    public JSONObject getDefaultATReq(){
+        JSONObject requestAccessObject = new JSONObject();
         try {
             requestAccessObject.put("IDT", settings.get(Settings.SET_FMDSERVER_ID));
             requestAccessObject.put("Data", settings.get(Settings.SET_FMD_CRYPT_HPW));
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        prepare(Request.Method.PUT, com, requestAccessObject, object, listener);
-        send();
+        return requestAccessObject;
     }
 
-    public void prepare(int method, String com, JSONObject req, JSONObject object, DataListener listener){
+    public JSONObject getEmptyDataReq(){
+        JSONObject requestDataObject = new JSONObject();
+        try {
+            requestDataObject.put("IDT", "");
+            requestDataObject.put("Data", "");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return requestDataObject;
+    }
 
-        ath = new ATHandler(context, object, url + com, listener);
+    public void prepare(int method, int respMethod, String com, JSONObject req, JSONObject object, RespListener listener){
+
+        ath = new RespHandler(this, context, object, respMethod, com, listener);
         request = new JsonObjectRequest(method, url + GET_AT,
                 req, ath,
-                error -> error.printStackTrace()) {
+                Throwable::printStackTrace) {
             @Override
             public Map<String, String> getHeaders()
             {
@@ -90,7 +105,7 @@ public class DataHandler {
         };
     }
 
-    public ATHandler getAth(){
+    public RespHandler getAth(){
         return ath;
     }
 
