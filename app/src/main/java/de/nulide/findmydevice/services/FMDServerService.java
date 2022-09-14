@@ -31,6 +31,9 @@ import de.nulide.findmydevice.data.io.IO;
 import de.nulide.findmydevice.data.io.JSONFactory;
 import de.nulide.findmydevice.data.io.json.JSONMap;
 import de.nulide.findmydevice.logic.ComponentHandler;
+import de.nulide.findmydevice.net.ATListener;
+import de.nulide.findmydevice.net.DataHandler;
+import de.nulide.findmydevice.net.DataListener;
 import de.nulide.findmydevice.sender.FooSender;
 import de.nulide.findmydevice.sender.Sender;
 import de.nulide.findmydevice.utils.CypherUtils;
@@ -50,14 +53,6 @@ public class FMDServerService extends JobService {
         BatteryManager bm = (BatteryManager) context.getSystemService(BATTERY_SERVICE);
         String batLevel = Integer.valueOf(bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY)).toString();
 
-        final JSONObject requestAccessObject = new JSONObject();
-        try {
-            requestAccessObject.put("IDT", settings.get(Settings.SET_FMDSERVER_ID));
-            requestAccessObject.put("Data", settings.get(Settings.SET_FMD_CRYPT_HPW));
-        } catch (JSONException e) {
-
-        }
-
         final JSONObject locationDataObject = new JSONObject();
         try {
             locationDataObject.put("provider", CypherUtils.encodeBase64(CypherUtils.encryptWithKey(publicKey, provider)));
@@ -66,31 +61,10 @@ public class FMDServerService extends JobService {
             locationDataObject.put("lon", CypherUtils.encodeBase64(CypherUtils.encryptWithKey(publicKey, lon)));
             locationDataObject.put("lat", CypherUtils.encodeBase64(CypherUtils.encryptWithKey(publicKey, lat)));
         } catch (JSONException e) {
-
+            e.printStackTrace();
         }
-
-        String url = (String)settings.get(Settings.SET_FMDSERVER_URL);
-
-        JsonObjectRequest accessRequest = new JsonObjectRequest(Request.Method.PUT, url + "/requestAccess", requestAccessObject, new AccesssTokenListenerForData(context, locationDataObject, url, "/location"),
-                error -> error.printStackTrace()) {
-
-            @Override
-            public Map<String, String> getHeaders()
-            {
-                Map<String, String> headers = new HashMap<>();
-                headers.put("Content-Type", "application/json");
-                headers.put("Accept", "application/json");
-                return headers;
-            }
-
-            @Override
-            public byte[] getBody() {
-                return requestAccessObject.toString().getBytes(StandardCharsets.UTF_8);
-            }
-        };
-        queue.add(accessRequest);
-
-
+        DataHandler dataHandler = new DataHandler(context);
+        dataHandler.run(DataHandler.LOCATION, locationDataObject, null);
     }
 
     public static void sendPicture(Context context, String picture, String url, String id){
@@ -102,47 +76,19 @@ public class FMDServerService extends JobService {
         String encryptedPassword = CypherUtils.encodeBase64(CypherUtils.encryptWithKey(publicKey, password));
         String msg = encryptedPassword + "___PICTURE-DATA___" + encryptedPicture;
 
-
-        final JSONObject requestAccessObject = new JSONObject();
-        try {
-            requestAccessObject.put("IDT", id);
-            requestAccessObject.put("Data", settings.get(Settings.SET_FMD_CRYPT_HPW));
-        } catch (JSONException e) {
-
-        }
-
         final JSONObject dataObject = new JSONObject();
         try {
             dataObject.put("Data", msg);
         } catch (JSONException e) {
-
+            e.printStackTrace();
         }
-
-        JsonObjectRequest accessRequest = new JsonObjectRequest(Request.Method.PUT, url + "/requestAccess", requestAccessObject, new AccesssTokenListenerForData(context, dataObject, url, "/picture"),
-                error -> error.printStackTrace()) {
-
-            @Override
-            public Map<String, String> getHeaders()
-            {
-                Map<String, String> headers = new HashMap<>();
-                headers.put("Content-Type", "application/json");
-                headers.put("Accept", "application/json");
-                return headers;
-            }
-
-            @Override
-            public byte[] getBody() {
-                return requestAccessObject.toString().getBytes(StandardCharsets.UTF_8);
-            }
-        };
-        queue.add(accessRequest);
-
+        DataHandler dataHandler = new DataHandler(context);
+        dataHandler.run(DataHandler.PICTURE, dataObject, null);
     }
 
     public static void registerOnServer(Context context, String url, String privKey, String pubKey, String hashedPW) {
         IO.context = context;
-        Settings Settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
-        RequestQueue queue = PatchedVolley.newRequestQueue(context);
+        Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
 
         final JSONObject jsonObject = new JSONObject();
         try {
@@ -150,28 +96,19 @@ public class FMDServerService extends JobService {
             jsonObject.put("pubkey", pubKey);
             jsonObject.put("privkey", privKey);
         }catch (JSONException e){
-
+            e.printStackTrace();
         }
 
-        JsonObjectRequest putRequest = new JsonObjectRequest(Request.Method.PUT, url+"/device", jsonObject, new IDResponseListener(Settings),
-                error -> error.printStackTrace()){
-
-            @Override
-            public Map<String, String> getHeaders()
-            {
-                Map<String, String> headers = new HashMap<>();
-                headers.put("Content-Type", "application/json");
-                headers.put("Accept", "application/json");
-                return headers;
+        DataHandler dataHandler = new DataHandler(context);
+        dataHandler.prepare(Request.Method.PUT, DataHandler.DEVICE, jsonObject, null, null);
+        dataHandler.getAth().setAtListener(response -> {
+            try {
+                settings.set(Settings.SET_FMDSERVER_ID, response.get("DeviceId"));
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
-
-            @Override
-            public byte[] getBody() {
-
-                return jsonObject.toString().getBytes(StandardCharsets.UTF_8);
-            }
-        };
-        queue.add(putRequest);
+        });
+        dataHandler.send();
     }
 
     public static void unregisterOnServer(Context context) {
@@ -184,7 +121,7 @@ public class FMDServerService extends JobService {
             requestAccessObject.put("IDT", settings.get(Settings.SET_FMDSERVER_ID));
             requestAccessObject.put("Data", settings.get(Settings.SET_FMD_CRYPT_HPW));
         } catch (JSONException e) {
-
+            e.printStackTrace();
         }
 
         JsonObjectRequest accessRequest = new JsonObjectRequest(Request.Method.PUT, url + "/requestAccess", requestAccessObject, new FMDServerService.AccesssTokenListenerForUnregistratioon(context, url),
@@ -273,72 +210,6 @@ public class FMDServerService extends JobService {
         return false;
     }
 
-    public static class IDResponseListener implements Response.Listener<JSONObject> {
-
-        private Settings settings;
-
-        public IDResponseListener(Settings settings){
-            this.settings = settings;
-        }
-
-        @Override
-        public void onResponse(JSONObject response) {
-            try {
-                settings.set(Settings.SET_FMDSERVER_ID, response.get("DeviceId"));
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-
-    }
-
-    public static class AccesssTokenListenerForData implements Response.Listener<JSONObject> {
-
-        private final Context context;
-        private final JSONObject dataObject;
-        private final String url;
-
-        public AccesssTokenListenerForData(Context context, JSONObject dataObject, String url, String destination) {
-            this.context = context;
-            this.dataObject = dataObject;
-            this.url = url + destination;
-        }
-
-        @Override
-        public void onResponse(JSONObject response) {
-            if (response.has("Data")) {
-                try {
-                    dataObject.put("IDT", response.get("Data"));
-                    RequestQueue queue = PatchedVolley.newRequestQueue(context);
-                    JsonObjectRequest locationPutRequest = new JsonObjectRequest(Request.Method.POST, url, dataObject,
-                            response1 -> {
-
-                            },
-                            error -> error.printStackTrace()) {
-
-                        @Override
-                        public Map<String, String> getHeaders() {
-                            Map<String, String> headers = new HashMap<>();
-                            headers.put("Content-Type", "application/json");
-                            headers.put("Accept", "application/json");
-                            return headers;
-                        }
-
-                        @Override
-                        public byte[] getBody() {
-                            return dataObject.toString().getBytes(StandardCharsets.UTF_8);
-                        }
-                    };
-                    queue.add(locationPutRequest);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-
-
-    }
-
     public static class AccesssTokenListenerForUnregistratioon implements Response.Listener<JSONObject> {
 
         private final Context context;
@@ -357,7 +228,7 @@ public class FMDServerService extends JobService {
                     deletionRequestJSON.put("IDT", response.get("Data"));
                     deletionRequestJSON.put("Data", "");
                 } catch (JSONException e) {
-
+                    e.printStackTrace();
                 }
                 RequestQueue queue = PatchedVolley.newRequestQueue(context);
                 JsonObjectRequest deletionRequest = new JsonObjectRequest(Request.Method.POST, url + "/device", deletionRequestJSON,
