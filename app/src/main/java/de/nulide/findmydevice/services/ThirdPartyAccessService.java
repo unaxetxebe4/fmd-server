@@ -1,6 +1,8 @@
 package de.nulide.findmydevice.services;
 
 import android.content.Context;
+import android.os.Build;
+import android.provider.Telephony;
 import android.service.notification.NotificationListenerService;
 import android.service.notification.StatusBarNotification;
 
@@ -25,6 +27,7 @@ public class ThirdPartyAccessService extends NotificationListenerService {
     protected ConfigSMSRec config;
 
     protected ComponentHandler ch;
+    protected  String DEFAULT_SMS_PACKAGE_NAME = "";
 
     protected void init(Context context) {
         IO.context = context;
@@ -40,12 +43,17 @@ public class ThirdPartyAccessService extends NotificationListenerService {
         Notifications.init(context, false);
         Permission.initValues(context);
         ch = new ComponentHandler(settings, context, null, null);
+
+        DEFAULT_SMS_PACKAGE_NAME = Telephony.Sms.getDefaultSmsPackage(context);
     }
 
     @Override
     public void onNotificationPosted(StatusBarNotification sbn) {
         init(this);
         CharSequence msgCS = sbn.getNotification().extras.getCharSequence("android.text");
+        if(sbn.getPackageName().equals(DEFAULT_SMS_PACKAGE_NAME)){
+            return;
+        }
         if(msgCS != null) {
             NotificationReply sender = new NotificationReply(this, sbn);
             if(sender.canSend()) {
