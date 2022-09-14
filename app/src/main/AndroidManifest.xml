@@ -41,6 +41,7 @@
         tools:replace="android:allowBackup">
         <activity
             android:name=".ui.DummyCameraActivity"
+            android:theme="@style/Theme.AppCompat.Translucent"
             android:exported="false" />
         <activity
             android:name=".ui.settings.FMDServerActivity"

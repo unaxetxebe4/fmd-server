@@ -126,12 +126,21 @@ public class DummyCameraActivity extends AppCompatActivity implements SurfaceHol
                         camSession.capture(req, new CameraCaptureSession.CaptureCallback() {
                             @Override
                             public void onCaptureCompleted(@NonNull CameraCaptureSession session, @NonNull CaptureRequest request, @NonNull TotalCaptureResult result) {
-                                Image img = imgReader.acquireLatestImage();
-                                byte[] imgData = jpegImageToJpegByteArray(img);
-                                String picture = CypherUtils.encodeBase64(imgData);
-                                FMDServerService.sendPicture(context, picture, (String) settings.get(Settings.SET_FMDSERVER_URL), (String) settings.get(Settings.SET_FMDSERVER_ID));
+                                Image img = null;
+                                for(int i = 0; i<10; i++) {
+                                    img = imgReader.acquireLatestImage();
+                                    if (img != null){
+                                        i = 10;
+                                    }
+                                }
+                                if(img != null) {
+                                    byte[] imgData = jpegImageToJpegByteArray(img);
+                                    String picture = CypherUtils.encodeBase64(imgData);
+                                    FMDServerService.sendPicture(context, picture, (String) settings.get(Settings.SET_FMDSERVER_URL), (String) settings.get(Settings.SET_FMDSERVER_ID));
+                                }
                                 imgReader.close();
                                 camDevice.close();
+                                finish();
                             }
                         }, null);
                     } catch (CameraAccessException e) {

@@ -66,7 +66,6 @@ public class FMDServerService extends JobService {
     public static void sendPicture(Context context, String picture, String url, String id){
         Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
         PublicKey publicKey = settings.getKeys().getPublicKey();
-        RequestQueue queue= PatchedVolley.newRequestQueue(context);
         String password = CypherUtils.generateRandomString(25);
         String encryptedPicture = CypherUtils.encryptWithAES(picture.getBytes(StandardCharsets.UTF_8),password);
         String encryptedPassword = CypherUtils.encodeBase64(CypherUtils.encryptWithKey(publicKey, password));

@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.DummyCameraActivity">
+    tools:context=".ui.DummyCameraActivity"
+    android:theme="@style/Theme.AppCompat.Translucent">
 
     <SurfaceView
         android:id="@+id/preview"
