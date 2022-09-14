@@ -60,8 +60,6 @@ public class FMDSMSService extends JobService {
         jobScheduler.schedule(builder.build());
     }
 
-    @SuppressLint("NewApi")
-    @Override
     public boolean onStartJob(JobParameters params) {
         IO.context = this;
         Logger.init(Thread.currentThread(), this);
@@ -102,14 +100,12 @@ public class FMDSMSService extends JobService {
                 Notifications.notify(this, "Pin", "The pin was used by the following number: "+receiver+"\nPlease change the Pin!", Notifications.CHANNEL_PIN);
                 config.set(ConfigSMSRec.CONF_TEMP_WHITELISTED_CONTACT, receiver);
                 config.set(ConfigSMSRec.CONF_TEMP_WHITELISTED_CONTACT_ACTIVE_SINCE, time);
-                TempContactExpiredService.scheduleJob(this, ch.getSender());
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    TempContactExpiredService.scheduleJob(this, ch.getSender());
+                }
             }
         }
-        if(executedCommand == MessageHandler.COM_LOCATE) {
-            return true;
-        }else{
-            return false;
-        }
+        return executedCommand.equals(MessageHandler.COM_LOCATE);
     }
 
     @Override

@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId "de.nulide.findmydevice"
-        minSdkVersion 26
+        minSdkVersion 18
         targetSdkVersion 32
         versionCode 18
         versionName "0.2.7"
@@ -31,7 +31,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
