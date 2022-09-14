@@ -106,7 +106,7 @@ public class Permission {
     }
 
     public static void requestCameraPermission(Activity activity) {
-        ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.CAMERA}, PERM_CONTACT_ID);
+        ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.CAMERA}, PERM_CAMERA_ID);
     }
 
     public static void requestOverlayPermission(Activity activity) {
@@ -206,7 +206,10 @@ public class Permission {
     public static boolean checkBatteryOptimizationPermission(Context context){
         String packageName = context.getPackageName();
         PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
-        return pm.isIgnoringBatteryOptimizations(packageName);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            return pm.isIgnoringBatteryOptimizations(packageName);
+        }
+        return true;
     }
 
 }

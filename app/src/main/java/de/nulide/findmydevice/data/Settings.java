@@ -17,7 +17,7 @@ import de.nulide.findmydevice.utils.CypherUtils;
 
 public class Settings extends HashMap<Integer, Object> {
 
-    public static final int newestIntroductionVersion = 4;
+    public static final int newestIntroductionVersion = 5;
 
     public static final int settingsVersion = 2;
 

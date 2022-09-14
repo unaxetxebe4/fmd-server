@@ -17,7 +17,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
-                android:layout_marginStart="50dp"
+                android:layout_marginStart="30dp"
                 android:text="@string/Info_CORE"
                 android:textSize="21sp" />
 
@@ -42,7 +42,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
-                android:layout_marginStart="50dp"
+                android:layout_marginStart="30dp"
                 android:text="@string/Info_GPS"
                 android:textSize="21sp" />
 
@@ -67,7 +67,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
-                android:layout_marginStart="50dp"
+                android:layout_marginStart="30dp"
                 android:text="@string/Info_DND"
                 android:textSize="21sp" />
 
@@ -92,7 +92,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
-                android:layout_marginStart="50dp"
+                android:layout_marginStart="30dp"
                 android:text="@string/Info_DEVICE_ADMIN"
                 android:textSize="21sp" />
 
@@ -117,7 +117,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
-                android:layout_marginStart="50dp"
+                android:layout_marginStart="30dp"
                 android:text="@string/Info_Overlay"
                 android:textSize="21sp" />
 
@@ -142,7 +142,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
-                android:layout_marginStart="50dp"
+                android:layout_marginStart="30dp"
                 android:text="@string/Info_SecureSettings"
                 android:textSize="21sp" />
 
@@ -167,7 +167,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
-                android:layout_marginStart="50dp"
+                android:layout_marginStart="30dp"
                 android:text="@string/Info_Notification"
                 android:textSize="21sp" />
 
@@ -192,7 +192,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
-                android:layout_marginStart="50dp"
+                android:layout_marginStart="30dp"
                 android:text="@string/Info_Camera"
                 android:textSize="21sp" />
 
@@ -217,7 +217,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
-                android:layout_marginStart="50dp"
+                android:layout_marginStart="30dp"
                 android:text="@string/Info_BatteryOptimization"
                 android:textSize="21sp" />
 

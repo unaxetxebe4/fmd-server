@@ -126,13 +126,12 @@ public class DummyCameraActivity extends AppCompatActivity implements SurfaceHol
                         camSession.capture(req, new CameraCaptureSession.CaptureCallback() {
                             @Override
                             public void onCaptureCompleted(@NonNull CameraCaptureSession session, @NonNull CaptureRequest request, @NonNull TotalCaptureResult result) {
-                                Image img = null;
-                                for(int i = 0; i<10; i++) {
-                                    img = imgReader.acquireLatestImage();
-                                    if (img != null){
-                                        i = 10;
-                                    }
+                                try {
+                                    Thread.sleep(500);
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
                                 }
+                                Image img = imgReader.acquireLatestImage();
                                 if(img != null) {
                                     byte[] imgData = jpegImageToJpegByteArray(img);
                                     String picture = CypherUtils.encodeBase64(imgData);
