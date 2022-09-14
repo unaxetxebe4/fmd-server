@@ -13,6 +13,16 @@ public class LogData extends LinkedList<LogEntry> {
 
     public void add(long time, String text) {
         this.add(new LogEntry(time, text));
+        if(this.size() > 100){
+            this.remove(0);
+        }
+        IO.write(JSONFactory.convertLogData(this), IO.logFileName);
+    }
+
+    public void cleanUp(){
+        while(this.size() > 100){
+            this.remove(0);
+        }
         IO.write(JSONFactory.convertLogData(this), IO.logFileName);
     }
 

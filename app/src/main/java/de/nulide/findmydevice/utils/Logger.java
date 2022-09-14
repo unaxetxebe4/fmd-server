@@ -33,6 +33,8 @@ public class Logger implements Thread.UncaughtExceptionHandler{
         logText = new StringBuilder();
         Logger logger = new Logger();
         t.setUncaughtExceptionHandler(logger);
+        log.cleanUp();
+        writeLog();
     }
 
     public static void setDebuggingMode(boolean debug){
