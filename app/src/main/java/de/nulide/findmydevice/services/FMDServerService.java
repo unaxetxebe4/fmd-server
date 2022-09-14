@@ -48,12 +48,12 @@ public class FMDServerService extends JobService {
         PublicKey publicKey = settings.getKeys().getPublicKey();
         RequestQueue queue = PatchedVolley.newRequestQueue(context);
         BatteryManager bm = (BatteryManager) context.getSystemService(BATTERY_SERVICE);
-        String batLevel = new Integer(bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY)).toString();
+        String batLevel = Integer.valueOf(bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY)).toString();
 
         final JSONObject requestAccessObject = new JSONObject();
         try {
-            requestAccessObject.put("IDT", (String)settings.get(Settings.SET_FMDSERVER_ID));
-            requestAccessObject.put("Data", (String)settings.get(Settings.SET_FMD_CRYPT_HPW));
+            requestAccessObject.put("IDT", settings.get(Settings.SET_FMDSERVER_ID));
+            requestAccessObject.put("Data", settings.get(Settings.SET_FMD_CRYPT_HPW));
         } catch (JSONException e) {
 
         }
@@ -72,17 +72,12 @@ public class FMDServerService extends JobService {
         String url = (String)settings.get(Settings.SET_FMDSERVER_URL);
 
         JsonObjectRequest accessRequest = new JsonObjectRequest(Request.Method.PUT, url + "/requestAccess", requestAccessObject, new AccesssTokenListenerForData(context, locationDataObject, url, "/location"),
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        error.printStackTrace();
-                    }
-                }) {
+                error -> error.printStackTrace()) {
 
             @Override
             public Map<String, String> getHeaders()
             {
-                Map<String, String> headers = new HashMap<String, String>();
+                Map<String, String> headers = new HashMap<>();
                 headers.put("Content-Type", "application/json");
                 headers.put("Accept", "application/json");
                 return headers;
@@ -111,7 +106,7 @@ public class FMDServerService extends JobService {
         final JSONObject requestAccessObject = new JSONObject();
         try {
             requestAccessObject.put("IDT", id);
-            requestAccessObject.put("Data", (String)settings.get(Settings.SET_FMD_CRYPT_HPW));
+            requestAccessObject.put("Data", settings.get(Settings.SET_FMD_CRYPT_HPW));
         } catch (JSONException e) {
 
         }
@@ -124,17 +119,12 @@ public class FMDServerService extends JobService {
         }
 
         JsonObjectRequest accessRequest = new JsonObjectRequest(Request.Method.PUT, url + "/requestAccess", requestAccessObject, new AccesssTokenListenerForData(context, dataObject, url, "/picture"),
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        error.printStackTrace();
-                    }
-                }) {
+                error -> error.printStackTrace()) {
 
             @Override
             public Map<String, String> getHeaders()
             {
-                Map<String, String> headers = new HashMap<String, String>();
+                Map<String, String> headers = new HashMap<>();
                 headers.put("Content-Type", "application/json");
                 headers.put("Accept", "application/json");
                 return headers;
@@ -164,18 +154,12 @@ public class FMDServerService extends JobService {
         }
 
         JsonObjectRequest putRequest = new JsonObjectRequest(Request.Method.PUT, url+"/device", jsonObject, new IDResponseListener(Settings),
-                new Response.ErrorListener()
-                {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        error.printStackTrace();
-                    }
-                }){
+                error -> error.printStackTrace()){
 
             @Override
             public Map<String, String> getHeaders()
             {
-                Map<String, String> headers = new HashMap<String, String>();
+                Map<String, String> headers = new HashMap<>();
                 headers.put("Content-Type", "application/json");
                 headers.put("Accept", "application/json");
                 return headers;
@@ -184,12 +168,7 @@ public class FMDServerService extends JobService {
             @Override
             public byte[] getBody() {
 
-                try {
-                    return jsonObject.toString().getBytes("UTF-8");
-                } catch (UnsupportedEncodingException e) {
-                    e.printStackTrace();
-                }
-                return null;
+                return jsonObject.toString().getBytes(StandardCharsets.UTF_8);
             }
         };
         queue.add(putRequest);
@@ -202,24 +181,19 @@ public class FMDServerService extends JobService {
         String url = (String)settings.get(Settings.SET_FMDSERVER_URL);
         final JSONObject requestAccessObject = new JSONObject();
         try {
-            requestAccessObject.put("IDT", (String)settings.get(Settings.SET_FMDSERVER_ID));
-            requestAccessObject.put("Data", (String)settings.get(Settings.SET_FMD_CRYPT_HPW));
+            requestAccessObject.put("IDT", settings.get(Settings.SET_FMDSERVER_ID));
+            requestAccessObject.put("Data", settings.get(Settings.SET_FMD_CRYPT_HPW));
         } catch (JSONException e) {
 
         }
 
         JsonObjectRequest accessRequest = new JsonObjectRequest(Request.Method.PUT, url + "/requestAccess", requestAccessObject, new FMDServerService.AccesssTokenListenerForUnregistratioon(context, url),
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        error.printStackTrace();
-                    }
-                }) {
+                error -> error.printStackTrace()) {
 
             @Override
             public Map<String, String> getHeaders()
             {
-                Map<String, String> headers = new HashMap<String, String>();
+                Map<String, String> headers = new HashMap<>();
                 headers.put("Content-Type", "application/json");
                 headers.put("Accept", "application/json");
                 return headers;
@@ -239,8 +213,8 @@ public class FMDServerService extends JobService {
     public static void scheduleJob(Context context, int time) {
         ComponentName serviceComponent = new ComponentName(context, FMDServerService.class);
         JobInfo.Builder builder = new JobInfo.Builder(JOB_ID, serviceComponent);
-        builder.setMinimumLatency(time * 1000 * 60);
-        builder.setOverrideDeadline(time * 1000 * 60 * 2);
+        builder.setMinimumLatency(((long) time / 2) * 1000 * 60);
+        builder.setOverrideDeadline((int)(time * 1000 * 60 * 1.5));
         JobScheduler jobScheduler = context.getSystemService(JobScheduler.class);
         jobScheduler.schedule(builder.build());
         Logger.logSession("FMDServerService", "scheduled new job");
@@ -261,7 +235,7 @@ public class FMDServerService extends JobService {
         Logger.init(Thread.currentThread(), this);
         Logger.logSession("FMDServerService", "started");
         Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
-        if ((Boolean) settings.get(settings.SET_FMDSERVER_UPLOAD_SERVICE)) {
+        if ((Boolean) settings.get(Settings.SET_FMDSERVER_UPLOAD_SERVICE)) {
 
             ComponentHandler ch = new ComponentHandler(settings, this, this, params);
             ch.setSender(sender);
@@ -281,7 +255,7 @@ public class FMDServerService extends JobService {
                         locateCommand += " cell";
                         break;
                 }
-                ch.getMessageHandler().handle(((String) ch.getSettings().get(Settings.SET_FMD_COMMAND)) + locateCommand, this);
+                ch.getMessageHandler().handle(ch.getSettings().get(Settings.SET_FMD_COMMAND) + locateCommand, this);
             }
             Logger.logSession("FMDServerService", "finished job, waiting for location");
             Logger.writeLog();
@@ -301,16 +275,16 @@ public class FMDServerService extends JobService {
 
     public static class IDResponseListener implements Response.Listener<JSONObject> {
 
-        private Settings Settings;
+        private Settings settings;
 
-        public IDResponseListener(Settings Settings){
-            this.Settings = Settings;
+        public IDResponseListener(Settings settings){
+            this.settings = settings;
         }
 
         @Override
         public void onResponse(JSONObject response) {
             try {
-                Settings.set(Settings.SET_FMDSERVER_ID, response.get("DeviceId"));
+                settings.set(Settings.SET_FMDSERVER_ID, response.get("DeviceId"));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -337,22 +311,14 @@ public class FMDServerService extends JobService {
                     dataObject.put("IDT", response.get("Data"));
                     RequestQueue queue = PatchedVolley.newRequestQueue(context);
                     JsonObjectRequest locationPutRequest = new JsonObjectRequest(Request.Method.POST, url, dataObject,
-                            new Response.Listener<JSONObject>() {
-                                @Override
-                                public void onResponse(JSONObject response) {
+                            response1 -> {
 
-                                }
                             },
-                            new Response.ErrorListener() {
-                                @Override
-                                public void onErrorResponse(VolleyError error) {
-                                    error.printStackTrace();
-                                }
-                            }) {
+                            error -> error.printStackTrace()) {
 
                         @Override
                         public Map<String, String> getHeaders() {
-                            Map<String, String> headers = new HashMap<String, String>();
+                            Map<String, String> headers = new HashMap<>();
                             headers.put("Content-Type", "application/json");
                             headers.put("Accept", "application/json");
                             return headers;
@@ -395,22 +361,14 @@ public class FMDServerService extends JobService {
                 }
                 RequestQueue queue = PatchedVolley.newRequestQueue(context);
                 JsonObjectRequest deletionRequest = new JsonObjectRequest(Request.Method.POST, url + "/device", deletionRequestJSON,
-                        new Response.Listener<JSONObject>() {
-                            @Override
-                            public void onResponse(JSONObject response) {
+                        response1 -> {
 
-                            }
                         },
-                        new Response.ErrorListener() {
-                            @Override
-                            public void onErrorResponse(VolleyError error) {
-                                error.printStackTrace();
-                            }
-                        }) {
+                        error -> error.printStackTrace()) {
 
                     @Override
                     public Map<String, String> getHeaders() {
-                        Map<String, String> headers = new HashMap<String, String>();
+                        Map<String, String> headers = new HashMap<>();
                         headers.put("Content-Type", "application/json");
                         headers.put("Accept", "application/json");
                         return headers;
