@@ -139,11 +139,6 @@
             android:foregroundServiceType="location"
             android:permission="android.permission.BIND_JOB_SERVICE" />
         <service
-            android:name=".services.CameraService"
-            android:enabled="true"
-            android:exported="true"
-            android:foregroundServiceType="camera" />
-        <service
             android:name=".services.ThirdPartyAccessService"
             android:enabled="true"
             android:exported="true"

@@ -7,16 +7,12 @@ import android.content.Intent;
 import android.net.wifi.ScanResult;
 
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.Map;
 
 import de.nulide.findmydevice.data.Settings;
-import de.nulide.findmydevice.sender.Sender;
-import de.nulide.findmydevice.services.CameraService;
 import de.nulide.findmydevice.ui.DummyCameraActivity;
 import de.nulide.findmydevice.ui.LockScreenMessage;
 import de.nulide.findmydevice.R;
-import de.nulide.findmydevice.ui.RingerActivity;
 import de.nulide.findmydevice.utils.CypherUtils;
 import de.nulide.findmydevice.logic.command.helper.GPS;
 import de.nulide.findmydevice.utils.Logger;
@@ -140,12 +136,10 @@ public class MessageHandler {
                 executedCommand = COM_STATS;
                 replyBuilder.append(context.getString(R.string.MH_Stats));
                 Map<String, String> ips = Network.getAllIP();
-                Iterator<String> it = ips.keySet().iterator();
-                while (it.hasNext()) {
-                    String intf = it.next();
-                    replyBuilder.append(intf).append(": ").append(ips.get(intf)).append("\n");
+                for (String ii : ips.keySet()) {
+                    replyBuilder.append(ii).append(": ").append(ips.get(ii)).append("\n");
                 }
-                replyBuilder.append("\n" + context.getString(R.string.MH_Networks) + "\n");
+                replyBuilder.append("\n").append(context.getString(R.string.MH_Networks)).append("\n");
                 for (ScanResult sr : Network.getWifiNetworks(context)) {
                     replyBuilder.append("SSID: ");
                     replyBuilder.append(sr.SSID).append("\nBSSID: ");
@@ -213,7 +207,7 @@ public class MessageHandler {
                         dummyCameraActivity.putExtra(DummyCameraActivity.CAMERA, 0);
                     }
                     context.startActivity(dummyCameraActivity);
-                    replyBuilder.append(context.getString(R.string.MH_CAM_CAPTURE) + (String) ch.getSettings().get(Settings.SET_FMDSERVER_URL));
+                    replyBuilder.append(context.getString(R.string.MH_CAM_CAPTURE)).append((String) ch.getSettings().get(Settings.SET_FMDSERVER_URL));
                 }
             }else{
                 replyBuilder.append(context.getString(R.string.MH_Title_Help)).append("\n");
@@ -238,7 +232,7 @@ public class MessageHandler {
                 int counter = (Integer) ch.getSettings().get(Settings.SET_FMDSMS_COUNTER);
                 counter++;
                 ch.getSettings().set(Settings.SET_FMDSMS_COUNTER, counter);
-                ch.getSender().sendNow(reply.toString());
+                ch.getSender().sendNow(reply);
                 Notifications.notify(context, "SMS-Receiver", "New Usage " + counter, Notifications.CHANNEL_USAGE);
             }
         }
