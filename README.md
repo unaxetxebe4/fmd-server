@@ -41,7 +41,7 @@ Freetime FM  - [awesomea380](https://gitlab.com/awesomea380)
 Pan Daemon - [Pandaemon](https://gitlab.com/Pandaemon)
 
 
-# Contributors - Visual Design
+# Contributors - Visual Design | Code
 
 Niklas Stephanblome - [Kleysley](https://gitlab.com/Kleysley)
 
