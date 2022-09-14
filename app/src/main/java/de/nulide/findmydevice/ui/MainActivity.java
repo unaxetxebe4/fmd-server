@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView textViewOverlay;
     private TextView textViewNotification;
     private TextView textViewCamera;
+    private TextView textViewBatteryOptimization;
     private TextView textViewServerServiceEnabled;
     private TextView textViewServerRegistered;
     private TextView textViewPush;
@@ -91,6 +92,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         textViewServerRegistered = findViewById(R.id.textViewRegisteredOnServer);
         textViewPush = findViewById(R.id.textViewPushAvailable);
         textViewCamera = findViewById(R.id.textViewCamera);
+        textViewBatteryOptimization = findViewById(R.id.textviewBatteryOptimization);
         expandableCardViewPermissions = findViewById(R.id.expandableCardViewPermissions);
     }
 
@@ -171,6 +173,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else {
             textViewCamera.setText(getString(R.string.Disabled));
             textViewCamera.setTextColor(colorDisabled);
+        }
+        if(Permission.BATTERY_OPTIMIZATION){
+            textViewBatteryOptimization.setText(R.string.Enabled);
+            textViewBatteryOptimization.setTextColor(colorEnabled);
+        } else {
+            textViewBatteryOptimization.setText(R.string.Enabled);
+            textViewBatteryOptimization.setTextColor(colorDisabled);
         }
         expandableCardViewPermissions.setTitle(-1, getString(R.string.Granted) + " " + Permission.ENABLED_PERMISSIONS + "/" + Permission.AVAILABLE_PERMISSIONS);
 

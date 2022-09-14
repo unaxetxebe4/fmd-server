@@ -155,11 +155,20 @@ public class IntroductionActivity extends AppCompatActivity implements View.OnCl
                 }
                 break;
             case 10:
+                textViewInfoText.setText(R.string.Permission_IGNORE_BATTERY_OPTIMIZATION);
+                if(Permission.checkBatteryOptimizationPermission(this)){
+                    buttonGivePermission.setBackgroundColor(colorEnabled);
+                } else {
+                    buttonGivePermission.setBackgroundColor(colorDisabled);
+                }
+                break;
+            case 11:
                 Settings.setIntroductionPassed();
                 Intent myIntent = new Intent(this, MainActivity.class);
                 finish();
                 startActivity(myIntent);
                 break;
+
         }
     }
 
@@ -206,6 +215,8 @@ public class IntroductionActivity extends AppCompatActivity implements View.OnCl
                 case 9:
                     Permission.requestCameraPermission(this);
                     break;
+                case 10:
+                    Permission.requestBatteryOptimizationPermission(this);
             }
         } else if (v == buttonNext) {
             position++;
