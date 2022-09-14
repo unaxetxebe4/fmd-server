@@ -37,7 +37,7 @@ public class FMDServerCommandService extends JobService implements RespListener 
         this.params = params;
 
         DataHandler dataHandler = new DataHandler(this);
-        dataHandler.prepare(DataHandler.DEFAULT_METHOD, DataHandler.DEFAULT_METHOD, DataHandler.COMMAND, dataHandler.getDefaultATReq(), dataHandler.getEmptyDataReq(), this);
+        dataHandler.prepareWithAT(DataHandler.DEFAULT_METHOD, DataHandler.DEFAULT_METHOD, DataHandler.COMMAND, dataHandler.getDefaultATReq(), dataHandler.getEmptyDataReq(), this);
         dataHandler.send();
 
 

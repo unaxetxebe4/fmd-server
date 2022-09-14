@@ -8,22 +8,26 @@ import org.json.JSONObject;
 public class RespHandler implements Response.Listener<JSONObject>{
 
 
-    private RespListener atListener;
+    private RespListener respListener;
 
     public RespHandler(DataHandler dataHandler, Context context, JSONObject dataObject, int method, String com, RespListener dataListener) {
-        this.atListener = new DefaultATListener(dataHandler, context, dataObject, method, com, dataListener);
+        this.respListener = new DefaultATListener(dataHandler, context, dataObject, method, com, dataListener);
+    }
+
+    public RespHandler(RespListener respListener){
+        this.respListener = respListener;
     }
 
     @Override
     public void onResponse(JSONObject response) {
-        atListener.onResponseReceived(response);
+        respListener.onResponseReceived(response);
     }
 
-    public void setAtListener(RespListener listener){
-        this.atListener = listener;
+    public void setRespListener(RespListener listener){
+        this.respListener = listener;
     }
 
-    public RespListener getAtListener() {
-        return atListener;
+    public RespListener getRespListener() {
+        return respListener;
     }
 }

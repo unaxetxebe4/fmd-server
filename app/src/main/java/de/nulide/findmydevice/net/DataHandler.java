@@ -27,6 +27,7 @@ public class DataHandler {
     public static final String  LOCATION = "/location";
     public static final String PICTURE = "/picture";
     public static final String DEVICE = "/device";
+    public static final String PUSH = "/push";
 
     public static final int DEFAULT_METHOD = Request.Method.PUT;
     public static final int DEFAULT_RESP_METHOD = Request.Method.POST;
@@ -38,27 +39,61 @@ public class DataHandler {
     private RequestQueue queue;
 
     private JsonObjectRequest request;
-    private RespHandler ath;
+    private RespHandler respHandler;
 
     public DataHandler(Context context) {
         this.context = context;
         IO.context = context;
-        Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
+        settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
         url = (String)settings.get(Settings.SET_FMDSERVER_URL);
         queue = PatchedVolley.newRequestQueue(context);
     }
 
     public void run(String com, RespListener listener){
-
+        run(com, getEmptyDataReq(), listener);
     }
 
     public void run(String com, JSONObject object, RespListener listener){
-        prepare(com, object, listener);
+        prepareWithAT(com, object, listener);
         send();
     }
 
-    public void prepare(String com, JSONObject object, RespListener listener){
-        prepare(DEFAULT_METHOD, DEFAULT_RESP_METHOD, com, getDefaultATReq(), object, listener);
+    public void prepareWithAT(String com, JSONObject object, RespListener listener){
+        prepareWithAT(DEFAULT_METHOD, DEFAULT_RESP_METHOD, com, getDefaultATReq(), object, listener);
+    }
+
+    public void prepareWithAT(int method, int respMethod, String com, JSONObject req, JSONObject object, RespListener listener){
+        respHandler = new RespHandler(this, context, object, respMethod, com, listener);
+        prepareSingle(method, GET_AT, req, respHandler);
+    }
+
+    public void prepareSingle(int method, String com, JSONObject req, RespHandler respHandler){
+        this.respHandler = respHandler;
+        request = new JsonObjectRequest(method, url + com,
+                req, respHandler,
+                Throwable::printStackTrace) {
+            @Override
+            public Map<String, String> getHeaders()
+            {
+                Map<String, String> headers = new HashMap<>();
+                headers.put("Content-Type", "application/json");
+                headers.put("Accept", "application/json");
+                return headers;
+            }
+
+            @Override
+            public byte[] getBody() {
+                return req.toString().getBytes(StandardCharsets.UTF_8);
+            }
+        };
+    }
+
+    public RespHandler getRespHandler(){
+        return respHandler;
+    }
+
+    public void send(){
+        queue.add(request);
     }
 
     public JSONObject getDefaultATReq(){
@@ -81,36 +116,6 @@ public class DataHandler {
             e.printStackTrace();
         }
         return requestDataObject;
-    }
-
-    public void prepare(int method, int respMethod, String com, JSONObject req, JSONObject object, RespListener listener){
-
-        ath = new RespHandler(this, context, object, respMethod, com, listener);
-        request = new JsonObjectRequest(method, url + GET_AT,
-                req, ath,
-                Throwable::printStackTrace) {
-            @Override
-            public Map<String, String> getHeaders()
-            {
-                Map<String, String> headers = new HashMap<>();
-                headers.put("Content-Type", "application/json");
-                headers.put("Accept", "application/json");
-                return headers;
-            }
-
-            @Override
-            public byte[] getBody() {
-                return req.toString().getBytes(StandardCharsets.UTF_8);
-            }
-        };
-    }
-
-    public RespHandler getAth(){
-        return ath;
-    }
-
-    public void send(){
-        queue.add(request);
     }
 
 }

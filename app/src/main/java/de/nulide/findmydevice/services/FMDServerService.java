@@ -29,6 +29,7 @@ import de.nulide.findmydevice.data.io.JSONFactory;
 import de.nulide.findmydevice.data.io.json.JSONMap;
 import de.nulide.findmydevice.logic.ComponentHandler;
 import de.nulide.findmydevice.net.DataHandler;
+import de.nulide.findmydevice.net.RespHandler;
 import de.nulide.findmydevice.sender.FooSender;
 import de.nulide.findmydevice.sender.Sender;
 import de.nulide.findmydevice.utils.CypherUtils;
@@ -95,14 +96,14 @@ public class FMDServerService extends JobService {
         }
 
         DataHandler dataHandler = new DataHandler(context);
-        dataHandler.prepare(DataHandler.DEFAULT_METHOD, -1, DataHandler.DEVICE, jsonObject, null, null);
-        dataHandler.getAth().setAtListener(response -> {
+        RespHandler respHandler = new RespHandler(response -> {
             try {
                 settings.set(Settings.SET_FMDSERVER_ID, response.get("DeviceId"));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         });
+        dataHandler.prepareSingle(DataHandler.DEFAULT_METHOD, DataHandler.DEVICE, jsonObject, respHandler);
         dataHandler.send();
     }
 

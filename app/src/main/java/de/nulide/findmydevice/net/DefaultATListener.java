@@ -30,7 +30,8 @@ public class DefaultATListener implements RespListener {
         if (response.has("Data")) {
             try {
                 dataObject.put("IDT", response.get("Data"));
-                dataHandler.prepare(method, 0, com, dataObject, null, null);
+                RespHandler respHandler = new RespHandler(dataListener);
+                dataHandler.prepareSingle(method, com, dataObject, respHandler);
                 dataHandler.send();
             } catch (JSONException e) {
                 e.printStackTrace();
