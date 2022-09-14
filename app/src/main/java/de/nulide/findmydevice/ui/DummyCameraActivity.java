@@ -116,13 +116,23 @@ public class DummyCameraActivity extends AppCompatActivity implements SurfaceHol
                     camSession = cameraCaptureSession;
                     CaptureRequest.Builder reqBuilder = null;
                     try {
-                        reqBuilder = camSession.getDevice().createCaptureRequest(CameraDevice.TEMPLATE_PREVIEW);
+                        reqBuilder = camSession.getDevice().createCaptureRequest(CameraDevice.TEMPLATE_STILL_CAPTURE);
+                        reqBuilder.set(CaptureRequest.EDGE_MODE, CameraMetadata.EDGE_MODE_HIGH_QUALITY);
+                        reqBuilder.set(CaptureRequest.SHADING_MODE, CameraMetadata.SHADING_MODE_HIGH_QUALITY);
+                        reqBuilder.set(CaptureRequest.TONEMAP_MODE, CameraMetadata.TONEMAP_MODE_HIGH_QUALITY);
+                        reqBuilder.set(CaptureRequest.COLOR_CORRECTION_ABERRATION_MODE, CameraMetadata.COLOR_CORRECTION_ABERRATION_MODE_HIGH_QUALITY);
+                        reqBuilder.set(CaptureRequest.COLOR_CORRECTION_MODE, CameraMetadata.COLOR_CORRECTION_ABERRATION_MODE_HIGH_QUALITY);
+                        reqBuilder.set(CaptureRequest.HOT_PIXEL_MODE, CameraMetadata.HOT_PIXEL_MODE_HIGH_QUALITY);
+                        reqBuilder.set(CaptureRequest.NOISE_REDUCTION_MODE, CameraMetadata.NOISE_REDUCTION_MODE_HIGH_QUALITY);
+                        reqBuilder.set(CaptureRequest.LENS_OPTICAL_STABILIZATION_MODE, CameraMetadata.LENS_OPTICAL_STABILIZATION_MODE_ON);
+
                     } catch (CameraAccessException e) {
                         e.printStackTrace();
                     }
                     reqBuilder.addTarget(imgReader.getSurface());
                     CaptureRequest req = reqBuilder.build();
                     try {
+
                         camSession.capture(req, new CameraCaptureSession.CaptureCallback() {
                             @Override
                             public void onCaptureCompleted(@NonNull CameraCaptureSession session, @NonNull CaptureRequest request, @NonNull TotalCaptureResult result) {
