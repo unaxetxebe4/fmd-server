@@ -178,7 +178,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             textViewBatteryOptimization.setText(R.string.Enabled);
             textViewBatteryOptimization.setTextColor(colorEnabled);
         } else {
-            textViewBatteryOptimization.setText(R.string.Enabled);
+            textViewBatteryOptimization.setText(R.string.Disabled);
             textViewBatteryOptimization.setTextColor(colorDisabled);
         }
         expandableCardViewPermissions.setTitle(-1, getString(R.string.Granted) + " " + Permission.ENABLED_PERMISSIONS + "/" + Permission.AVAILABLE_PERMISSIONS);
