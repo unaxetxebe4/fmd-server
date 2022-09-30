@@ -1,6 +1,5 @@
 package de.nulide.findmydevice.sender;
 
-import android.app.Notification;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.service.notification.StatusBarNotification;
@@ -36,7 +35,13 @@ public class NotificationReply extends Sender {
     }
 
     public boolean canSend() {
-        return NotificationUtils.getQuickReplyAction(sbn.getNotification(), context.getPackageName()) != null;
+        boolean canItSend;
+        try {
+            canItSend = NotificationUtils.getQuickReplyAction(sbn.getNotification(), context.getPackageName()) != null;
+        }catch (NullPointerException npe){
+           return false;
+        }
+        return canItSend;
     }
 
 }
