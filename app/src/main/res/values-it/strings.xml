@@ -1,8 +1,8 @@
 <resources>
 
     <!-- TODO: Following strings need to be translated into most languages -->
-    <string name="Granted">\"Concesso: \"</string>
-    <string name="Edit">Edita</string>
+    <string name="Granted">Concesse: </string>
+    <string name="Edit">Cambia</string>
     <string name="contacts">contatti</string>
     <string name="Permission_IGNORE_BATTERY_OPTIMIZATION">Questa applicazione dovrebbe funzionare in background. Per assicurarsi che funzioni anche quando il telefono è in standby, è necessario disattivare l\'ottimizzazione della batteria per questa applicazione.</string>
 
@@ -35,7 +35,7 @@
     <string name="Settings_Permission">Autorizzazioni</string>
     <string name="WhiteList_Add_Contact">Aggiungi Contatto</string>
     <string name="Enabled">Attivo</string>
-    <string name="Disabled">Disattivo</string>
+    <string name="Disabled">Non Attivo</string>
     <string name="Toast_Landcode_error">Si prega di aggiungere il prefisso internazionale (Landcode) al numero. (Come \"+39\", \"+44\", …)</string>
     <string name="Delete">Cancella</string>
     <string name="WhiteList_Select_Action">Seleziona una scelta:</string>
@@ -126,7 +126,7 @@
     <string name="MH_NO_SECURE_SETTINGS">Spiacente, l\'applicazione non ha l\'autorizzazione per farlo.</string>
     <string name="MH_Help_expert">" Avanzato - pagina di aiuto per comandi avanzati."</string>
     <string name="Permission_Notification">Se vuoi che FMD gestisca i messaggi da altre applicazioni come Telegram, Whatsapp, ecc., Puoi dare accesso alle notifiche di FMD.</string>
-    <string name="Info_Notification">Notifiche</string>
+    <string name="Info_Notification">Notifiche:</string>
     <string name="Notification_Server">Server</string>
     <string name="NotificationServer_Description">Visualizza le notifiche inviate dal server.</string>
     <string name="Settings_FMDServer_AutoUpload_Description">Quando la posizione viene richiesta tramite SMS o qualsiasi altro metodo futuro, la posizione può anche essere trasmessa al server se questa opzione è abilitata.</string>
@@ -142,7 +142,7 @@
     <string name="MH_Help_Expert_Camera">" Camera (fronte/retro) - scatta una foto e la invia al server FMD.</string>
     <string name="Notification_ForegroundService">Notifica per servizi specifici che verranno eseguiti in background. Come fotocamera, ecc…</string>
     <string name="Permission_Camera">Se si desidera ricevere immagini in remoto dal telefono, è necessaria l\'autorizzazione per la fotocamera.</string>
-    <string name="Info_Camera">Camera</string>
+    <string name="Info_Camera">Camera:</string>
     <string name="Settings_Import">Importa Impostazioni</string>
     <string name="Settings_Export">Esporta Impostazioni</string>
     <string name="MH_CAM_CAPTURE">\"Il dispositivo invierà presto un\'immagine al server FMD. Puoi vederla a breve qui: \"</string>
