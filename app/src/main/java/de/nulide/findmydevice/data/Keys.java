@@ -14,7 +14,7 @@ public class Keys {
     }
 
     public PublicKey getPublicKey() {
-        return publicKey;
+        return this.publicKey;
     }
 
     public void setPublicKey(PublicKey publicKey) {
@@ -22,7 +22,7 @@ public class Keys {
     }
 
     public String getEncryptedPrivateKey() {
-        return encryptedPrivateKey;
+        return this.encryptedPrivateKey;
     }
 
     public String getBase64PublicKey() {
