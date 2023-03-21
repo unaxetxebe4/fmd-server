@@ -56,7 +56,6 @@ public class Settings extends HashMap<Integer, Object> {
     public static final int SET_LAST_KNOWN_LOCATION_TIME = 504;
 
 
-
     private Timer afterChangeTimer;
 
     public Settings() {
@@ -151,20 +150,20 @@ public class Settings extends HashMap<Integer, Object> {
         }
     }
 
-    public void setKeys(Keys keys){
+    public void setKeys(Keys keys) {
         set(SET_FMD_CRYPT_PRIVKEY, keys.getEncryptedPrivateKey());
         set(SET_FMD_CRYPT_PUBKEY, CypherUtils.encodeBase64(keys.getPublicKey().getEncoded()));
     }
 
     public void updateSettings() {
-        if (((Integer) get(SET_SET_VERSION)) < settingsVersion && ((Integer) get(SET_INTRODUCTION_VERSION)) > 0){
-            if (!((String)get(SET_FMDSERVER_ID)).isEmpty()) {
+        if (((Integer) get(SET_SET_VERSION)) < settingsVersion && ((Integer) get(SET_INTRODUCTION_VERSION)) > 0) {
+            if (!((String) get(SET_FMDSERVER_ID)).isEmpty()) {
                 Keys keys = OldKeyIO.readKeys();
                 String HashedPW = OldKeyIO.readHashedPW();
                 setKeys(keys);
                 set(SET_FMD_CRYPT_HPW, HashedPW);
                 set(SET_SET_VERSION, settingsVersion);
-            }else{
+            } else {
                 set(SET_SET_VERSION, settingsVersion);
             }
         }

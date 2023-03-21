@@ -156,4 +156,5 @@
     <string name="MH_CAM_CAPTURE">"The device will soon send a picture to fmdserver. You can view it here soon: "</string>
     <string name="Settings_FMDServer_LOW_BAT_Upload_Description">Send the location of this device when the battery level goes low. (This requires Notification Access)</string>
     <string name="Main_WhiteListCounterText">WhiteList:</string>
+    <string name="MH_FMDSERVER_NOT_REGISTERED">This device isn\'t registered on a server.</string>
 </resources>

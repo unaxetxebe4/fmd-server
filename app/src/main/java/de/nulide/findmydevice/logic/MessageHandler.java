@@ -10,6 +10,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 import de.nulide.findmydevice.data.Settings;
+import de.nulide.findmydevice.services.FMDServerService;
 import de.nulide.findmydevice.ui.DummyCameraActivity;
 import de.nulide.findmydevice.ui.LockScreenMessage;
 import de.nulide.findmydevice.R;
@@ -199,15 +200,21 @@ public class MessageHandler {
                 }
             }else if(msg.startsWith(COM_EXPERT_CAMERA)) {
                 if(Permission.CAMERA) {
-                    Intent dummyCameraActivity = new Intent(context, DummyCameraActivity.class);
-                    dummyCameraActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    if (msg.contains("front")) {
-                        dummyCameraActivity.putExtra(DummyCameraActivity.CAMERA, 1);
-                    } else {
-                        dummyCameraActivity.putExtra(DummyCameraActivity.CAMERA, 0);
+                    if(!((String) ch.getSettings().get(Settings.SET_FMDSERVER_ID)).isEmpty()) {
+
+                        Intent dummyCameraActivity = new Intent(context, DummyCameraActivity.class);
+                        dummyCameraActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        if (msg.contains("front")) {
+                            dummyCameraActivity.putExtra(DummyCameraActivity.CAMERA, 1);
+                        } else {
+                            dummyCameraActivity.putExtra(DummyCameraActivity.CAMERA, 0);
+                        }
+                        context.startActivity(dummyCameraActivity);
+                        replyBuilder.append(context.getString(R.string.MH_CAM_CAPTURE)).append((String) ch.getSettings().get(Settings.SET_FMDSERVER_URL));
+                    }else{
+                        replyBuilder.append(context.getString(R.string.MH_FMDSERVER_NOT_REGISTERED));
+
                     }
-                    context.startActivity(dummyCameraActivity);
-                    replyBuilder.append(context.getString(R.string.MH_CAM_CAPTURE)).append((String) ch.getSettings().get(Settings.SET_FMDSERVER_URL));
                 }
             }else{
                 replyBuilder.append(context.getString(R.string.MH_Title_Help)).append("\n");
