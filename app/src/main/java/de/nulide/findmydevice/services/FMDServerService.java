@@ -27,6 +27,7 @@ import de.nulide.findmydevice.data.Settings;
 import de.nulide.findmydevice.data.io.IO;
 import de.nulide.findmydevice.data.io.JSONFactory;
 import de.nulide.findmydevice.data.io.json.JSONMap;
+import de.nulide.findmydevice.data.Keys;
 import de.nulide.findmydevice.logic.ComponentHandler;
 import de.nulide.findmydevice.net.DataHandler;
 import de.nulide.findmydevice.net.RespHandler;
@@ -37,6 +38,7 @@ import de.nulide.findmydevice.utils.Logger;
 import de.nulide.findmydevice.utils.Notifications;
 import de.nulide.findmydevice.utils.PatchedVolley;
 import de.nulide.findmydevice.utils.Permission;
+
 
 @SuppressLint("NewApi")
 public class FMDServerService extends JobService {
@@ -65,7 +67,15 @@ public class FMDServerService extends JobService {
 
     public static void sendPicture(Context context, String picture, String url, String id){
         Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
-        PublicKey publicKey = settings.getKeys().getPublicKey();
+
+        Keys keys = settings.getKeys();
+        if(keys.equals(null)) {
+            // TODO: Handle no Keys are returned
+            // reinitiate Keys in settings
+            return;
+        }
+        PublicKey publicKey = keys.getPublicKey();
+
         String password = CypherUtils.generateRandomString(25);
         String encryptedPicture = CypherUtils.encryptWithAES(picture.getBytes(StandardCharsets.UTF_8),password);
         String encryptedPassword = CypherUtils.encodeBase64(CypherUtils.encryptWithKey(publicKey, password));
