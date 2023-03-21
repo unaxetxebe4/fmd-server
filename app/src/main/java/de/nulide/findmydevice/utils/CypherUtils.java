@@ -50,18 +50,16 @@ public class CypherUtils {
     private static final int IV_SIZE = 128;
     private static final int IV_LENGTH = IV_SIZE / 4;
     private static int keySize = 256;
-    private static int iterationCount = 1867;
-    private static int saltLength = keySize /4;
+    private static int iterationCount = 4096;
+    private static int saltLength = keySize / 4;
 
     public static String hashPassword(String password) {
         return BCrypt.hashpw(password, org.mindrot.jbcrypt.BCrypt.gensalt(12));
     }
 
     public static boolean checkPasswordHash(String hash, String password) {
-        if(!hash.isEmpty()) {
-            if(!password.isEmpty()) {
-                return BCrypt.checkpw(password, hash);
-            }
+        if(!hash.isEmpty() && !password.isEmpty()) {
+            return BCrypt.checkpw(password, hash);
         }
         return false;
     }
@@ -69,7 +67,7 @@ public class CypherUtils {
     public static String hashWithPKBDF2(String password){
         try {
             String salt = toHex(generateRandom(keySize / 8));
-            PBEKeySpec spec = new PBEKeySpec(password.toCharArray(), fromHex("cafe"), iterationCount*2, keySize);
+            PBEKeySpec spec = new PBEKeySpec(password.toCharArray(), salt, iterationCount*2, keySize);
             SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
             return toHex(factory.generateSecret(spec).getEncoded());
         } catch (NoSuchAlgorithmException e) {
