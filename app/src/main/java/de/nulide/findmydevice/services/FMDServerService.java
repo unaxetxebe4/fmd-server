@@ -91,14 +91,13 @@ public class FMDServerService extends JobService {
         dataHandler.run(DataHandler.PICTURE, dataObject, null);
     }
 
-    public static void registerOnServer(Context context, String url, String privKey, String pubKey, String hashedPW) {
+    public static void registerOnServer(Context context, String url, String privKey, String pubKey, String salt, String hashedPW) {
         IO.context = context;
         Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
-        String splitHash[] = hashedPW.split("///SPLIT///");
         final JSONObject jsonObject = new JSONObject();
         try {
-            jsonObject.put("salt", splitHash[0]);
-            jsonObject.put("hashedPassword", splitHash[1]);
+            jsonObject.put("salt", salt);
+            jsonObject.put("hashedPassword", hashedPW);
             jsonObject.put("pubkey", pubKey);
             jsonObject.put("privkey", privKey);
         }catch (JSONException e){
