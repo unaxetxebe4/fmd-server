@@ -50,7 +50,7 @@ public class CypherUtils {
     private static final int IV_SIZE = 128;
     private static final int IV_LENGTH = IV_SIZE / 4;
     private static int keySize = 256;
-    private static int iterationCount = 4096;
+    private static int iterationCount = 1867;
     private static int saltLength = keySize / 4;
 
     public static String hashPassword(String password) {
