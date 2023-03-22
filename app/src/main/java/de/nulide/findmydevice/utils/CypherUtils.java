@@ -69,7 +69,7 @@ public class CypherUtils {
             String salt = toHex(generateRandom(keySize / 8));
             PBEKeySpec spec = new PBEKeySpec(password.toCharArray(), fromHex(salt), iterationCount*2, keySize);
             SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
-            return toHex(factory.generateSecret(spec).getEncoded());
+            return salt+toHex(factory.generateSecret(spec).getEncoded());
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         } catch (InvalidKeySpecException e) {
