@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.IntentSender;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.ParcelFileDescriptor;
@@ -75,6 +76,8 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
+
         Intent settingIntent = null;
         switch(position){
             case 0:
