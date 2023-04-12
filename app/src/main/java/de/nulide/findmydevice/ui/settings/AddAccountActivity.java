@@ -52,10 +52,6 @@ public class AddAccountActivity extends AppCompatActivity implements View.OnClic
 
         rbCustomServer = findViewById(R.id.radioButtonCustomServer);
 
-        if(!((String)settings.get(Settings.SET_FMDSERVER_URL)).equals(Settings.DEFAULT_SET_FMDSERVER_URL)){
-            rbCustomServer.setChecked(true);
-        }
-
         rbDefaultServer.setOnCheckedChangeListener(this);
         rbCustomServer.setOnCheckedChangeListener(this);
 
@@ -68,6 +64,10 @@ public class AddAccountActivity extends AppCompatActivity implements View.OnClic
         etFMDUrl = findViewById(R.id.editTextFMDServerUrl);
         etFMDUrl.addTextChangedListener(this);
         etFMDUrl.setText((String)settings.get(Settings.SET_FMDSERVER_URL));
+
+        if(!((String)settings.get(Settings.SET_FMDSERVER_URL)).equals(Settings.DEFAULT_SET_FMDSERVER_URL)){
+            rbCustomServer.setChecked(true);
+        }
 
     }
 
