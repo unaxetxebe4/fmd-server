@@ -119,7 +119,7 @@ public class AddAccountActivity extends AppCompatActivity implements View.OnClic
                     String id = idInput.getText().toString();
                     String password = passwordInput.getText().toString();
                     if (!id.isEmpty() && !password.isEmpty()) {
-                        FMDServerService.loginOnServer(context, (String) settings.get(Settings.SET_FMDSERVER_URL), id, password);
+                        FMDServerService.loginOnServer(context, id, password);
                         finish();
                         new Handler().postDelayed(new Runnable() {
                             @Override

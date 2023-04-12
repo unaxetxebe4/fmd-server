@@ -142,7 +142,12 @@ public class FMDServerService extends JobService {
         jobScheduler.cancelAll();
     }
 
-    public static void loginOnServer(Context context, String s, String id, String password) {
+    //First get salt from Server
+    //Second gen hashedpw and send it to server for AccessToken
+    //Third Get PrivateKey
+    //Fourth Get PublicKey
+    //Fifth Save everything
+    public static void loginOnServer(Context context, String id, String password) {
         DataHandler dataHandler = new DataHandler(context);
         JSONObject req = dataHandler.getEmptyDataReq();
         try {
@@ -151,20 +156,57 @@ public class FMDServerService extends JobService {
             e.printStackTrace();
         }
         RespHandler respHandler = new RespHandler(response -> {
-            if (response.has("Data")){
+            if (response.has("Data")) {
                 try {
                     String hashedPW = CypherUtils.hashWithPKBDF2WithGivenSalt(password, (String) response.get("Data"));
+                    req.put("Data", hashedPW);
+                    RespHandler respHandlerForAT = new RespHandler(ATResponse -> {
+                        if (ATResponse.has("Data")) {
+                            try {
+                                req.put("IDT", ATResponse.get("Data"));
 
+
+                                RespHandler respHandlerForKey = new RespHandler(privResponse -> {
+                                    if(privResponse.has("Data")){
+
+                                        RespHandler respHandlerForPublicKey = new RespHandler(pubResponse -> {
+                                            if(pubResponse.has("Data")){
+                                                Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
+                                                settings.set(Settings.SET_FMD_CRYPT_HPW, hashedPW);
+                                                settings.set(Settings.SET_FMDSERVER_ID, id);
+                                                try {
+                                                    settings.set(Settings.SET_FMD_CRYPT_PUBKEY, pubResponse.get("Data"));
+                                                    settings.set(Settings.SET_FMD_CRYPT_PRIVKEY, privResponse.get("Data"));
+                                                } catch (JSONException e) {
+                                                    e.printStackTrace();
+                                                }
+
+                                            }
+                                        });
+                                        dataHandler.prepareSingle(DataHandler.DEFAULT_METHOD, DataHandler.PUBKEY, req, respHandlerForPublicKey);
+                                        dataHandler.send();
+
+                                    }
+
+                                });
+                                dataHandler.prepareSingle(DataHandler.DEFAULT_METHOD, DataHandler.PRIVKEY, req, respHandlerForKey);
+                                dataHandler.send();
+
+
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+
+                    dataHandler.prepareSingle(DataHandler.DEFAULT_METHOD, DataHandler.GET_AT, req, respHandlerForAT);
+                    dataHandler.send();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
 
             }
-
-
-
-
-
         });
         dataHandler.prepareSingle(DataHandler.DEFAULT_METHOD, DataHandler.SALT, req, respHandler);
         dataHandler.send();

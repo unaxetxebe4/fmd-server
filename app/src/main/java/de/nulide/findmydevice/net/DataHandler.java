@@ -23,13 +23,16 @@ import de.nulide.findmydevice.utils.PatchedVolley;
 
 public class DataHandler {
 
-    private static final String GET_AT = "/requestAccess";
+    public static final String GET_AT = "/requestAccess";
     public static final String COMMAND = "/command";
-    public static final String  LOCATION = "/location";
+    public static final String LOCATION = "/location";
     public static final String PICTURE = "/picture";
     public static final String DEVICE = "/device";
     public static final String PUSH = "/push";
     public static final String SALT = "/salt";
+    public static final String PRIVKEY = "/key";
+    public static final String PUBKEY = "/pubKey";
+
 
     public static final int DEFAULT_METHOD = Request.Method.PUT;
     public static final int DEFAULT_RESP_METHOD = Request.Method.POST;
