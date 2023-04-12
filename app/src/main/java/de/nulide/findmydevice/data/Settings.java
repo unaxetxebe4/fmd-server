@@ -118,6 +118,9 @@ public class Settings extends HashMap<Integer, Object> {
         return "";
     }
 
+    public boolean isEmpty(int key){
+        return ((String)get(key)).equals("");
+    }
 
     public boolean isIntroductionPassed() {
         return newestIntroductionVersion == (Integer) get(SET_INTRODUCTION_VERSION);

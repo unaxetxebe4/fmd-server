@@ -157,4 +157,6 @@
     <string name="Settings_FMDServer_LOW_BAT_Upload_Description">Send the location of this device when the battery level goes low. (This requires Notification Access)</string>
     <string name="Main_WhiteListCounterText">WhiteList:</string>
     <string name="MH_FMDSERVER_NOT_REGISTERED">This device isn\'t registered on a server.</string>
+    <string name="Settings_FMDServer_Login">Login</string>
+    <string name="Settings_FMDServer_Register">Register</string>
 </resources>

@@ -45,10 +45,14 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
 
     private final int IMPORT_REQ_CODE = 40;
 
+    private Settings settings;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+
+        settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
 
         settingsEntries = new ArrayList<>();
         settingsEntries.add(getString(R.string.Settings_FMDConfig));
@@ -65,6 +69,8 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
         listSettings = findViewById(R.id.listSettings);
         listSettings.setAdapter(new SettingsViewAdapter(this, settingsEntries));
         listSettings.setOnItemClickListener(this);
+
+
     }
 
     @Override
@@ -75,7 +81,11 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
                 settingIntent = new Intent(this, FMDConfigActivity.class);
                 break;
             case 1:
-                settingIntent = new Intent(this, FMDServerActivity.class);
+                if(settings.isEmpty(Settings.SET_FMDSERVER_ID)){
+                    settingIntent = new Intent(this, AddAccount.class);
+                }else {
+                    settingIntent = new Intent(this, FMDServerActivity.class);
+                }
                 break;
             case 2:
                 settingIntent = new Intent(this, WhiteListActivity.class);

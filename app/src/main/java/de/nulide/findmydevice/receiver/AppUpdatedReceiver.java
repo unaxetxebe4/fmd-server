@@ -31,7 +31,6 @@ public class AppUpdatedReceiver extends SuperReceiver {
 
             if((Boolean)ch.getSettings().get(Settings.SET_FMDSERVER_UPLOAD_SERVICE)){
                 FMDServerService.scheduleJob(context, 0);
-
             }
         }
     }
