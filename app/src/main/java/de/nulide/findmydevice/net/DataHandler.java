@@ -71,24 +71,9 @@ public class DataHandler {
 
     public void prepareSingle(int method, String com, JSONObject req, RespHandler respHandler){
         this.respHandler = respHandler;
-        request = new JsonObjectRequest(method, url + com,
-                req, respHandler,
-                Throwable::printStackTrace) {
-            @Override
-            public Map<String, String> getHeaders()
-            {
-                Map<String, String> headers = new HashMap<>();
-                headers.put("Content-Type", "application/json");
-                headers.put("Accept", "application/json");
-                return headers;
-            }
 
-            @SuppressLint("NewApi")
-            @Override
-            public byte[] getBody() {
-                return req.toString().getBytes(StandardCharsets.UTF_8);
-            }
-        };
+        request = new JsonObjectRequest(method, url + com,
+                req, respHandler, new DefaultErrorListener());
     }
 
     public RespHandler getRespHandler(){

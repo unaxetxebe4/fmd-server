@@ -150,13 +150,23 @@ public class FMDServerService extends JobService {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        dataHandler.prepareSingle(DataHandler.DEFAULT_METHOD, DataHandler.SALT, req, new RespHandler(new RespListener() {
-            @Override
-            public void onResponseReceived(JSONObject response) {
-                Logger.setDebuggingMode(true);
-                Logger.log("meep", response.toString());
+        RespHandler respHandler = new RespHandler(response -> {
+            if (response.has("Data")){
+                try {
+                    String hashedPW = CypherUtils.hashWithPKBDF2WithGivenSalt(password, (String) response.get("Data"));
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
             }
-        }));
+
+
+
+
+
+        });
+        dataHandler.prepareSingle(DataHandler.DEFAULT_METHOD, DataHandler.SALT, req, respHandler);
         dataHandler.send();
     }
 
