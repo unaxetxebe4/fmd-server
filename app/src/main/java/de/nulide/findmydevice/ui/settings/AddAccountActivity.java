@@ -10,6 +10,7 @@ import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.method.PasswordTransformationMethod;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
@@ -74,17 +75,18 @@ public class AddAccountActivity extends AppCompatActivity implements View.OnClic
 
     @Override
     public void onClick(View view) {
-        if (view == btnRegister) {
-            WebView webView = new WebView(context);
-            webView.loadUrl(etFMDUrl.getText().toString()+"/ds.html");
+        WebView webView = new WebView(context);
+        webView.loadUrl(etFMDUrl.getText().toString()+"/ds.html");
 
-            final AlertDialog.Builder pinAlert = new AlertDialog.Builder(this);
-            pinAlert.setTitle(getString(R.string.FMDConfig_Alert_Password));
-            pinAlert.setMessage(getString(R.string.Settings_Enter_Password));
+        final AlertDialog.Builder alert = new AlertDialog.Builder(this);
+
+        if (view == btnRegister) {
+            alert.setTitle(getString(R.string.FMDConfig_Alert_Password));
+            alert.setMessage(getString(R.string.Settings_Enter_Password));
             final EditText input = new EditText(this);
             input.setTransformationMethod(new PasswordTransformationMethod());
-            pinAlert.setView(input);
-            pinAlert.setPositiveButton(getString(R.string.Ok), new DialogInterface.OnClickListener() {
+            alert.setView(input);
+            alert.setPositiveButton(getString(R.string.Ok), new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int whichButton) {
                     String text = input.getText().toString();
                     if (!text.isEmpty()) {
@@ -105,20 +107,47 @@ public class AddAccountActivity extends AppCompatActivity implements View.OnClic
                     }
                 }
             });
+        }else{
+            alert.setTitle("Login");
+            LayoutInflater inflater = getLayoutInflater();
+            View loginLayout = inflater.inflate(R.layout.login_layout, null);
+            alert.setView(loginLayout);
+            EditText idInput = loginLayout.findViewById(R.id.editTextFMDID);
+            EditText passwordInput = loginLayout.findViewById(R.id.editTextFMDPassword);
+            alert.setPositiveButton(getString(R.string.Ok), new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int whichButton) {
+                    String id = idInput.getText().toString();
+                    String password = passwordInput.getText().toString();
+                    if (!id.isEmpty() && !password.isEmpty()) {
+                        FMDServerService.loginOnServer(context, (String) settings.get(Settings.SET_FMDSERVER_URL), id, password);
+                        finish();
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                finish();
+                            }
+                        }, 1500);
+                    }
+                }
+            });
 
-            AlertDialog.Builder privacyPolicy = new AlertDialog.Builder(context);
-            privacyPolicy.setTitle(getString(R.string.Settings_FMDServer_Alert_PrivacyPolicy_Title))
-                    .setView(webView)
-                    .setPositiveButton(getString(R.string.accept), new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            pinAlert.show();
 
-                        }
-                    })
-                    .setNegativeButton(getString(R.string.cancel), null)
-                    .show();
+
+
         }
+
+        AlertDialog.Builder privacyPolicy = new AlertDialog.Builder(context);
+        privacyPolicy.setTitle(getString(R.string.Settings_FMDServer_Alert_PrivacyPolicy_Title))
+                .setView(webView)
+                .setPositiveButton(getString(R.string.accept), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        alert.show();
+
+                    }
+                })
+                .setNegativeButton(getString(R.string.cancel), null)
+                .show();
 
     }
 

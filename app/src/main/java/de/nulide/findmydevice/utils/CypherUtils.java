@@ -78,6 +78,19 @@ public class CypherUtils {
         return "";
     }
 
+    public static String hashWithPKBDF2WithGivenSalt(String password, String salt){
+        try {
+            PBEKeySpec spec = new PBEKeySpec(password.toCharArray(), fromHex(salt), iterationCount*2, keySize);
+            SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
+            return salt+"///SPLIT///"+toHex(factory.generateSecret(spec).getEncoded());
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (InvalidKeySpecException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
     public static Keys genKeys(String password){
         KeyPair keypair = genKeyPair();
         Keys keys = new Keys(keypair.getPublic(), encryptKey(keypair.getPrivate(), password));

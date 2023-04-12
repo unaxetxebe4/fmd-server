@@ -9,10 +9,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.os.BatteryManager;
 
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.toolbox.JsonObjectRequest;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -20,17 +17,16 @@ import org.json.JSONObject;
 import java.nio.charset.StandardCharsets;
 import java.security.PublicKey;
 import java.util.Calendar;
-import java.util.HashMap;
-import java.util.Map;
 
+import de.nulide.findmydevice.data.Keys;
 import de.nulide.findmydevice.data.Settings;
 import de.nulide.findmydevice.data.io.IO;
 import de.nulide.findmydevice.data.io.JSONFactory;
 import de.nulide.findmydevice.data.io.json.JSONMap;
-import de.nulide.findmydevice.data.Keys;
 import de.nulide.findmydevice.logic.ComponentHandler;
 import de.nulide.findmydevice.net.DataHandler;
 import de.nulide.findmydevice.net.RespHandler;
+import de.nulide.findmydevice.net.RespListener;
 import de.nulide.findmydevice.sender.FooSender;
 import de.nulide.findmydevice.sender.Sender;
 import de.nulide.findmydevice.utils.CypherUtils;
@@ -144,6 +140,24 @@ public class FMDServerService extends JobService {
     public static void cancelAll(Context context) {
         JobScheduler jobScheduler = context.getSystemService(JobScheduler.class);
         jobScheduler.cancelAll();
+    }
+
+    public static void loginOnServer(Context context, String s, String id, String password) {
+        DataHandler dataHandler = new DataHandler(context);
+        JSONObject req = dataHandler.getEmptyDataReq();
+        try {
+            req.put("IDT", id);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        dataHandler.prepareSingle(DataHandler.DEFAULT_METHOD, DataHandler.SALT, req, new RespHandler(new RespListener() {
+            @Override
+            public void onResponseReceived(JSONObject response) {
+                Logger.setDebuggingMode(true);
+                Logger.log("meep", response.toString());
+            }
+        }));
+        dataHandler.send();
     }
 
 

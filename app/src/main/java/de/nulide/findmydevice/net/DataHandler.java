@@ -1,6 +1,7 @@
 package de.nulide.findmydevice.net;
 
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 
 import com.android.volley.Request;
@@ -28,6 +29,7 @@ public class DataHandler {
     public static final String PICTURE = "/picture";
     public static final String DEVICE = "/device";
     public static final String PUSH = "/push";
+    public static final String SALT = "/salt";
 
     public static final int DEFAULT_METHOD = Request.Method.PUT;
     public static final int DEFAULT_RESP_METHOD = Request.Method.POST;
@@ -81,6 +83,7 @@ public class DataHandler {
                 return headers;
             }
 
+            @SuppressLint("NewApi")
             @Override
             public byte[] getBody() {
                 return req.toString().getBytes(StandardCharsets.UTF_8);
