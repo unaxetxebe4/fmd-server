@@ -164,59 +164,14 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
 
     @Override
     public void onClick(View v) {
-        /*if (v == registerButton) {
-            WebView webView = new WebView(context);
-            webView.loadUrl(editTextFMDServerURL.getText().toString()+"/ds.html");
-
-            final AlertDialog.Builder pinAlert = new AlertDialog.Builder(this);
-            pinAlert.setTitle(getString(R.string.FMDConfig_Alert_Password));
-            pinAlert.setMessage(getString(R.string.Settings_Enter_Password));
-            final EditText input = new EditText(this);
-            input.setTransformationMethod(new PasswordTransformationMethod());
-            pinAlert.setView(input);
-            pinAlert.setPositiveButton(getString(R.string.Ok), new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int whichButton) {
-                    String text = input.getText().toString();
-                    if (!text.isEmpty()) {
-                        Keys keys = CypherUtils.genKeys(text);
-                        settings.setKeys(keys);
-                        String hashedPW = CypherUtils.hashWithPKBDF2(text);
-                        String splitHash[] = hashedPW.split("///SPLIT///");
-                        settings.set(Settings.SET_FMD_CRYPT_HPW, splitHash[1]);
-                        settings.setNow(Settings.SET_FMDSERVER_PASSWORD_SET, true);
-                        FMDServerService.registerOnServer(context, (String) settings.get(Settings.SET_FMDSERVER_URL), keys.getEncryptedPrivateKey(), keys.getBase64PublicKey(), splitHash[0], splitHash[1]);
-                        finish();
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                finish();
-                                startActivity(getIntent());
-                            }
-                        }, 1500);
-                    }
-                }
-            });
-
-            AlertDialog.Builder privacyPolicy = new AlertDialog.Builder(context);
-            privacyPolicy.setTitle(getString(R.string.Settings_FMDServer_Alert_PrivacyPolicy_Title))
-                    .setView(webView)
-                    .setPositiveButton(getString(R.string.accept), new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            pinAlert.show();
-
-                        }
-                    })
-                    .setNegativeButton(getString(R.string.cancel), null)
-                    .show();
-        }else if(v == deleteButton){
+        if(v == deleteButton){
             AlertDialog.Builder privacyPolicy = new AlertDialog.Builder(context);
             privacyPolicy.setTitle(getString(R.string.Settings_FMDServer_Alert_DeleteData))
                     .setMessage(R.string.Settings_FMDServer_Alert_DeleteData_Desc)
                     .setPositiveButton(getString(R.string.Ok), new DialogClickListenerForUnregistration(this))
                     .setNegativeButton(getString(R.string.cancel), null)
                     .show();
-        }*/
+        }
     }
 
     private class DialogClickListenerForUnregistration implements DialogInterface.OnClickListener{

@@ -41,7 +41,8 @@
         android:usesCleartextTraffic="true"
         tools:replace="android:allowBackup">
         <activity
-            android:name=".AddAccount"
+            android:name=".ui.settings.AddAccountActivity"
+            android:label="Add Account"
             android:exported="false" />
         <activity
             android:name=".ui.DummyCameraActivity"

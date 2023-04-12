@@ -82,7 +82,7 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
                 break;
             case 1:
                 if(settings.isEmpty(Settings.SET_FMDSERVER_ID)){
-                    settingIntent = new Intent(this, AddAccount.class);
+                    settingIntent = new Intent(this, AddAccountActivity.class);
                 }else {
                     settingIntent = new Intent(this, FMDServerActivity.class);
                 }

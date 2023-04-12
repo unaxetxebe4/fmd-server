@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.settings.AddAccount">
+    tools:context=".ui.settings.AddAccountActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -28,27 +28,27 @@
             android:text="Connect to" />
 
 
-        <CheckBox
-            android:id="@+id/checkBoxDefaultServer"
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+        <RadioButton
+            android:id="@+id/radioButtonDefaultServer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="1mm"
+            android:checked="true"
             android:text="Default Server" />
 
-        <TextView
+
+        <RadioButton
+            android:id="@+id/radioButtonCustomServer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_margin="1mm"
-            android:text="https://fmd.nulide.de:1008" />
+            android:text="CustomServer" />
 
+        </RadioGroup>
 
-        <CheckBox
-            android:id="@+id/checkBoxCustomServer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="1mm"
-            android:text="Custom Server" />
 
         <EditText
             android:id="@+id/editTextFMDServerUrl"
@@ -56,6 +56,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:layout_margin="1mm"
+            android:enabled="false"
             android:text="0.0.0.0" />
 
         <Button
@@ -73,6 +74,8 @@
             android:ems="10"
             android:layout_margin="1mm"
             android:text="@string/Settings_FMDServer_Login" />
+
+
 
 
     </LinearLayout>
