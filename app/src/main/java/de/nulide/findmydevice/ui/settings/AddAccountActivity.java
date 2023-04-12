@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.data.Keys;
@@ -77,22 +78,25 @@ public class AddAccountActivity extends AppCompatActivity implements View.OnClic
     public void onClick(View view) {
         WebView webView = new WebView(context);
         webView.loadUrl(etFMDUrl.getText().toString()+"/ds.html");
+        LayoutInflater inflater = getLayoutInflater();
 
         final AlertDialog.Builder alert = new AlertDialog.Builder(this);
 
         if (view == btnRegister) {
-            alert.setTitle(getString(R.string.FMDConfig_Alert_Password));
-            alert.setMessage(getString(R.string.Settings_Enter_Password));
-            final EditText input = new EditText(this);
-            input.setTransformationMethod(new PasswordTransformationMethod());
-            alert.setView(input);
+            alert.setTitle("Register");
+            View registerLayout = inflater.inflate(R.layout.register_layout, null);
+            alert.setView(registerLayout);
+            EditText passwordInput = registerLayout.findViewById(R.id.editTextFMDPassword);
+            EditText passwordInputCheck = registerLayout.findViewById(R.id.editTextFMDPasswordCheck);
+            alert.setView(registerLayout);
             alert.setPositiveButton(getString(R.string.Ok), new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int whichButton) {
-                    String text = input.getText().toString();
-                    if (!text.isEmpty()) {
-                        Keys keys = CypherUtils.genKeys(text);
+                    String password = passwordInput.getText().toString();
+                    String passwordCheck = passwordInputCheck.getText().toString();
+                    if (!password.isEmpty() && password.equals(passwordCheck)) {
+                        Keys keys = CypherUtils.genKeys(password);
                         settings.setKeys(keys);
-                        String hashedPW = CypherUtils.hashWithPKBDF2(text);
+                        String hashedPW = CypherUtils.hashWithPKBDF2(password);
                         String splitHash[] = hashedPW.split("///SPLIT///");
                         settings.set(Settings.SET_FMD_CRYPT_HPW, splitHash[1]);
                         settings.setNow(Settings.SET_FMDSERVER_PASSWORD_SET, true);
@@ -109,16 +113,17 @@ public class AddAccountActivity extends AppCompatActivity implements View.OnClic
             });
         }else{
             alert.setTitle("Login");
-            LayoutInflater inflater = getLayoutInflater();
             View loginLayout = inflater.inflate(R.layout.login_layout, null);
             alert.setView(loginLayout);
             EditText idInput = loginLayout.findViewById(R.id.editTextFMDID);
             EditText passwordInput = loginLayout.findViewById(R.id.editTextFMDPassword);
+            EditText passwordInputCheck = loginLayout.findViewById(R.id.editTextFMDPasswordCheck);
             alert.setPositiveButton(getString(R.string.Ok), new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int whichButton) {
                     String id = idInput.getText().toString();
                     String password = passwordInput.getText().toString();
-                    if (!id.isEmpty() && !password.isEmpty()) {
+                    String passwordCheck = passwordInputCheck.getText().toString();
+                    if (!id.isEmpty() && !password.isEmpty() && passwordCheck.equals(password)) {
                         FMDServerService.loginOnServer(context, id, password);
                         finish();
                         new Handler().postDelayed(new Runnable() {
@@ -127,6 +132,8 @@ public class AddAccountActivity extends AppCompatActivity implements View.OnClic
                                 finish();
                             }
                         }, 1500);
+                    }else{
+                        Toast.makeText(context, "Failed to login.", Toast.LENGTH_LONG).show();
                     }
                 }
             });

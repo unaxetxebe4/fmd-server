@@ -16,27 +16,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="1mm"
-            android:text="FMD ID:" />
-
-        <EditText
-            android:id="@+id/editTextFMDID"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:layout_margin="1mm"
-            android:text="" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="1mm"
             android:text="Password" />
 
         <EditText
             android:id="@+id/editTextFMDPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"            android:ems="10"
+            android:inputType="textPassword"
+            android:ems="10"
             android:layout_margin="1mm"
             android:text="" />
 
@@ -50,7 +37,8 @@
             android:id="@+id/editTextFMDPasswordCheck"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"            android:ems="10"
+            android:inputType="textPassword"
+            android:ems="10"
             android:layout_margin="1mm"
             android:text="" />
 
