@@ -22,6 +22,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import org.unifiedpush.android.connector.UnifiedPush;
 
+import java.util.Set;
+
 import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.data.Keys;
 import de.nulide.findmydevice.data.Settings;
@@ -39,6 +41,8 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
     private CheckBox checkBoxFMDServerAutoUpload;
     private EditText editTextFMDServerUpdateTime;
     private TextView textViewFMDServerID;
+    private Button changePasswordButton;
+    private Button logoutButton;
     private Button deleteButton;
     private CheckBox checkBoxFMDServerGPS;
     private CheckBox checkBoxFMDServerCell;
@@ -73,6 +77,12 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
         editTextFMDServerUpdateTime.addTextChangedListener(this);
 
         textViewFMDServerID = findViewById(R.id.textViewID);
+
+        changePasswordButton = findViewById(R.id.buttonChangePassword);
+        changePasswordButton.setOnClickListener(this);
+
+        logoutButton = findViewById(R.id.buttonLogout);
+        logoutButton.setOnClickListener(this);
 
         deleteButton = findViewById(R.id.buttonDeleteData);
         deleteButton.setOnClickListener(this);
@@ -171,6 +181,12 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
                     .setPositiveButton(getString(R.string.Ok), new DialogClickListenerForUnregistration(this))
                     .setNegativeButton(getString(R.string.cancel), null)
                     .show();
+        }else if(v == logoutButton){
+            settings.set(Settings.SET_FMDSERVER_ID, "");
+            settings.set(Settings.SET_FMD_CRYPT_HPW, "");
+            settings.set(Settings.SET_FMD_CRYPT_PRIVKEY, "");
+            settings.set(Settings.SET_FMD_CRYPT_PUBKEY, "");
+            finish();
         }
     }
 
