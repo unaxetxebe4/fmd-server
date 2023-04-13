@@ -4,33 +4,28 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.text.method.PasswordTransformationMethod;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-
-import org.unifiedpush.android.connector.UnifiedPush;
-
-import java.util.Set;
+import java.security.PrivateKey;
 
 import de.nulide.findmydevice.R;
-import de.nulide.findmydevice.data.Keys;
 import de.nulide.findmydevice.data.Settings;
 import de.nulide.findmydevice.data.io.IO;
 import de.nulide.findmydevice.data.io.JSONFactory;
 import de.nulide.findmydevice.data.io.json.JSONMap;
-import de.nulide.findmydevice.receiver.PushReceiver;
 import de.nulide.findmydevice.services.FMDServerService;
 import de.nulide.findmydevice.utils.CypherUtils;
 
@@ -181,12 +176,47 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
                     .setPositiveButton(getString(R.string.Ok), new DialogClickListenerForUnregistration(this))
                     .setNegativeButton(getString(R.string.cancel), null)
                     .show();
-        }else if(v == logoutButton){
+        }else if (v == logoutButton) {
             settings.set(Settings.SET_FMDSERVER_ID, "");
             settings.set(Settings.SET_FMD_CRYPT_HPW, "");
             settings.set(Settings.SET_FMD_CRYPT_PRIVKEY, "");
             settings.set(Settings.SET_FMD_CRYPT_PUBKEY, "");
             finish();
+        } else if (v == changePasswordButton) {
+            LayoutInflater inflater = getLayoutInflater();
+            final AlertDialog.Builder alert = new AlertDialog.Builder(this);
+            alert.setTitle("Change Password");
+            View registerLayout = inflater.inflate(R.layout.password_change_layout, null);
+            alert.setView(registerLayout);
+            EditText oldPasswordInput = registerLayout.findViewById(R.id.editTextFMDOldPassword);
+            EditText passwordInput = registerLayout.findViewById(R.id.editTextFMDPassword);
+            EditText passwordInputCheck = registerLayout.findViewById(R.id.editTextFMDPasswordCheck);
+            alert.setView(registerLayout);
+            alert.setPositiveButton(getString(R.string.Ok), new DialogInterface.OnClickListener() {
+                @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+                public void onClick(DialogInterface dialog, int whichButton) {
+                    String oldPassword = oldPasswordInput.getText().toString();
+                    String password = passwordInput.getText().toString();
+                    String passwordCheck = passwordInputCheck.getText().toString();
+                    if (!password.isEmpty() && password.equals(passwordCheck) && !oldPassword.isEmpty()) {
+                        PrivateKey privKey = CypherUtils.decryptKey((String) settings.get(Settings.SET_FMD_CRYPT_PRIVKEY), oldPassword);
+                        if(privKey == null){
+                            Toast.makeText(context, "Wrong Password.", Toast.LENGTH_LONG).show();
+                            return;
+                        }
+                        String newPrivKey = CypherUtils.encryptKey(privKey, password);
+                        String hashedPW = CypherUtils.hashWithPKBDF2(password);
+                        String[] splitHash = hashedPW.split("///SPLIT///");
+
+                        FMDServerService.changePassword(context, newPrivKey, splitHash[0], splitHash[1]);
+
+
+                    }else{
+                        Toast.makeText(context, "Failed", Toast.LENGTH_LONG).show();
+                    }
+                }
+            });
+            alert.show();
         }
     }
 

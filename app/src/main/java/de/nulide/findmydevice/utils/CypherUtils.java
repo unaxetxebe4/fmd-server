@@ -170,13 +170,19 @@ public class CypherUtils {
     public static PrivateKey decryptKey(String encryptedPrivKey, String password){
         try {
             String encodedKey = new String(decryptWithAES(encryptedPrivKey, password));
+            encodedKey = encodedKey.replace("-----END RSA PRIVATE KEY-----\n", "");
+            encodedKey = encodedKey.replace("-----BEGIN RSA PRIVATE KEY-----\n", "");
+            encodedKey = encodedKey.replace("\n", "");
             byte[] key = decodeBase64(encodedKey);
+            System.out.println(key);
             EncodedKeySpec privKeySpec = new PKCS8EncodedKeySpec(key);
             KeyFactory keyFactory = KeyFactory.getInstance("RSA");
             return keyFactory.generatePrivate(privKeySpec);
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         } catch (InvalidKeySpecException e) {
+            e.printStackTrace();
+        } catch (NullPointerException e){
             e.printStackTrace();
         }
         return null;

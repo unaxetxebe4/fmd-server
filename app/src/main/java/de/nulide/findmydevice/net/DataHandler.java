@@ -32,6 +32,7 @@ public class DataHandler {
     public static final String SALT = "/salt";
     public static final String PRIVKEY = "/key";
     public static final String PUBKEY = "/pubKey";
+    public static final String PASSWORD = "/password";
 
 
     public static final int DEFAULT_METHOD = Request.Method.PUT;

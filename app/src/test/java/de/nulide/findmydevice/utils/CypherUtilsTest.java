@@ -8,6 +8,10 @@ import java.security.PrivateKey;
 
 import static org.junit.Assert.assertEquals;
 
+import de.nulide.findmydevice.data.Keys;
+import de.nulide.findmydevice.data.Settings;
+import de.nulide.findmydevice.services.FMDServerService;
+
 public class CypherUtilsTest {
 
     @Test
@@ -17,6 +21,16 @@ public class CypherUtilsTest {
         byte[] encryptedMsg = CypherUtils.encryptWithKey(keys.getPublic(), msg);
         String decryptedMsg = CypherUtils.decryptWithKey(keys.getPrivate(), encryptedMsg);
         assertEquals(decryptedMsg, msg);
+        Assert.assertEquals(msg, decryptedMsg);
+    }
+
+    @Test
+    public void testKeyEncryptionChain(){
+        Keys keys = CypherUtils.genKeys("password");
+        String msg = "SecretMsg";
+        byte[] encryptedMsg = CypherUtils.encryptWithKey(keys.getPublicKey(), msg);
+        PrivateKey privateKey = CypherUtils.decryptKey(keys.getEncryptedPrivateKey(), "password");
+        String decryptedMsg = CypherUtils.decryptWithKey(privateKey, encryptedMsg);
         Assert.assertEquals(msg, decryptedMsg);
     }
 
@@ -51,8 +65,9 @@ public class CypherUtilsTest {
     public void testHashWithPKBDF2(){
         String password = "honey";
         String hashedOne = CypherUtils.hashWithPKBDF2(password);
-        String hashedTwo = CypherUtils.hashWithPKBDF2(password);
-        Assert.assertEquals(hashedOne, hashedTwo);
+        String[] splitHash = hashedOne.split("///SPLIT///");
+        String hashedTwo = CypherUtils.hashWithPKBDF2WithGivenSalt(password, splitHash[0]);
+        Assert.assertEquals(splitHash[1], hashedTwo);
     }
 
 }

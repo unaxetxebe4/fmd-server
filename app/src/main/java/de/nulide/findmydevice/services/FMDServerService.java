@@ -212,6 +212,30 @@ public class FMDServerService extends JobService {
         dataHandler.send();
     }
 
+    public static void changePassword(Context context, String newPrivKey, String salt, String hashedPW) {
+        IO.context = context;
+        Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
+        final JSONObject jsonObject = new JSONObject();
+        try {
+
+            jsonObject.put("salt", salt);
+            jsonObject.put("hashedPassword", hashedPW);
+            jsonObject.put("privkey", newPrivKey);
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+
+        DataHandler dataHandler = new DataHandler(context);
+
+        dataHandler.run(DataHandler.PASSWORD, jsonObject, response -> {
+            if(response.has("data")){
+                settings.set(Settings.SET_FMD_CRYPT_PRIVKEY, newPrivKey);
+                settings.set(Settings.SET_FMD_CRYPT_HPW, hashedPW);
+            }
+        });
+        
+    }
+
 
     @Override
     public boolean onStartJob(JobParameters params) {
