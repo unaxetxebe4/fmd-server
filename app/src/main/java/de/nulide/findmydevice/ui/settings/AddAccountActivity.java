@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
@@ -18,6 +19,8 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
+
+import java.util.Set;
 
 import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.data.Keys;
@@ -101,13 +104,9 @@ public class AddAccountActivity extends AppCompatActivity implements View.OnClic
                         settings.set(Settings.SET_FMD_CRYPT_HPW, splitHash[1]);
                         settings.setNow(Settings.SET_FMDSERVER_PASSWORD_SET, true);
                         FMDServerService.registerOnServer(context, (String) settings.get(Settings.SET_FMDSERVER_URL), keys.getEncryptedPrivateKey(), keys.getBase64PublicKey(), splitHash[0], splitHash[1]);
-                        finish();
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                finish();
-                            }
-                        }, 1500);
+                        restartActivityAfterDelay();
+                    }else{
+                        Toast.makeText(context, "Passwords do not match.", Toast.LENGTH_LONG).show();
                     }
                 }
             });
@@ -125,13 +124,7 @@ public class AddAccountActivity extends AppCompatActivity implements View.OnClic
                     String passwordCheck = passwordInputCheck.getText().toString();
                     if (!id.isEmpty() && !password.isEmpty() && passwordCheck.equals(password)) {
                         FMDServerService.loginOnServer(context, id, password);
-                        finish();
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                finish();
-                            }
-                        }, 1500);
+                        restartActivityAfterDelay();
                     }else{
                         Toast.makeText(context, "Failed to login.", Toast.LENGTH_LONG).show();
                     }
@@ -192,5 +185,24 @@ public class AddAccountActivity extends AppCompatActivity implements View.OnClic
                 etFMDUrl.setEnabled(true);
             }
         }
+    }
+
+    private void restartActivityAfterDelay(){
+        finish();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                finish();
+                Intent settingIntent = null;
+                settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
+                if(((String)settings.get(Settings.SET_FMDSERVER_ID)).isEmpty()){
+                    settingIntent = new Intent(context, AddAccountActivity.class);
+                    Toast.makeText(context, "Failed", Toast.LENGTH_LONG).show();
+                }else{
+                    settingIntent = new Intent(context, FMDServerActivity.class);
+                }
+                startActivity(settingIntent);
+            }
+        }, 1500);
     }
 }
