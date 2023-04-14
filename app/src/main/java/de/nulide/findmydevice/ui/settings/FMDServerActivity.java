@@ -65,7 +65,7 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
         }
 
         checkBoxFMDServerAutoUpload = findViewById(R.id.checkBoxFMDServerAutoUpload);
-        checkBoxFMDServerAutoUpload.setChecked((Boolean) settings.get(Settings.SET_FMDSERVER_AUTO_UPLOAD));
+        checkBoxFMDServerAutoUpload.setChecked((Boolean) settings.get(Settings.SET_FMDSERVER_UPLOAD_SERVICE));
         checkBoxFMDServerAutoUpload.setOnCheckedChangeListener(this);
 
         editTextFMDServerUpdateTime = findViewById(R.id.editTextFMDServerUpdateTime);
@@ -132,7 +132,7 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
         if(buttonView == checkBoxFMDServerAutoUpload){
-            settings.set(Settings.SET_FMDSERVER_AUTO_UPLOAD, isChecked);
+            settings.set(Settings.SET_FMDSERVER_UPLOAD_SERVICE, isChecked);
         }else if(buttonView == checkBoxFMDServerCell || buttonView == checkBoxFMDServerGPS){
             if(checkBoxFMDServerGPS.isChecked() && checkBoxFMDServerCell.isChecked()){
                 settings.set(Settings.SET_FMDSERVER_LOCATION_TYPE, 2);

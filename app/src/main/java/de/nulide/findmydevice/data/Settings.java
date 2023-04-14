@@ -8,6 +8,7 @@ import java.security.spec.EncodedKeySpec;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.X509EncodedKeySpec;
 import java.util.HashMap;
+import java.util.Set;
 import java.util.Timer;
 
 import de.nulide.findmydevice.data.io.OldKeyIO;
@@ -37,7 +38,7 @@ public class Settings extends HashMap<Integer, Object> {
     public static final int SET_FMDSERVER_ID = 104;
     public static final int SET_FMDSERVER_PASSWORD_SET = 105;
     public static final int SET_FMDSERVER_LOCATION_TYPE = 106; // 0=GPS, 1=CELL, 2=ALL
-    public static final int SET_FMDSERVER_AUTO_UPLOAD = 107;
+    //public static final int SET_FMDSERVER_AUTO_UPLOAD = 107;
     public static final int SET_FMD_CRYPT_PUBKEY = 108;
     public static final int SET_FMD_CRYPT_PRIVKEY = 109;
     public static final int SET_FMD_CRYPT_HPW = 110;
@@ -85,11 +86,10 @@ public class Settings extends HashMap<Integer, Object> {
                 case SET_FIRST_TIME_WHITELIST:
                 case SET_FIRST_TIME_CONTACT_ADDED:
                 case SET_FIRST_TIME_FMD_SERVER:
-                case SET_FMDSERVER_UPLOAD_SERVICE:
                 case SET_FMDSERVER_PASSWORD_SET:
                 case SET_FMD_LOW_BAT_SEND:
                     return false;
-                case SET_FMDSERVER_AUTO_UPLOAD:
+                case SET_FMDSERVER_UPLOAD_SERVICE:
                     return true;
                 case SET_FMD_COMMAND:
                     return "fmd";
@@ -187,5 +187,9 @@ public class Settings extends HashMap<Integer, Object> {
         }
         afterChangeTimer = new Timer();
         afterChangeTimer.schedule(saverTask, 300);
+    }
+
+    public boolean checkServerUpload(){
+        return !((String)get(Settings.SET_FMDSERVER_ID)).isEmpty() && (Boolean)get(Settings.SET_FMDSERVER_UPLOAD_SERVICE);
     }
 }

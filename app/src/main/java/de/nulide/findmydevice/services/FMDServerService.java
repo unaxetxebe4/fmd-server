@@ -122,7 +122,6 @@ public class FMDServerService extends JobService {
         DataHandler dataHandler = new DataHandler(context);
         dataHandler.run(DataHandler.DEVICE,null);
         settings.set(Settings.SET_FMDSERVER_ID, "");
-        settings.set(Settings.SET_FMDSERVER_AUTO_UPLOAD, false);
         settings.setNow(Settings.SET_FMDSERVER_UPLOAD_SERVICE, false);
     }
 
