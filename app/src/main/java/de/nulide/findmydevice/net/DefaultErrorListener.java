@@ -11,7 +11,6 @@ public class DefaultErrorListener implements Response.ErrorListener {
 
     @Override
     public void onErrorResponse(VolleyError volleyError) {
-        Logger.setDebuggingMode(true);
-        Logger.log("VolleyError", volleyError.toString());
+
     }
 }
