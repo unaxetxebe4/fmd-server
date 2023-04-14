@@ -122,7 +122,6 @@ public class FMDServerService extends JobService {
         DataHandler dataHandler = new DataHandler(context);
         dataHandler.run(DataHandler.DEVICE,null);
         settings.set(Settings.SET_FMDSERVER_ID, "");
-        settings.setNow(Settings.SET_FMDSERVER_UPLOAD_SERVICE, false);
     }
 
     public static void scheduleJob(Context context, int time) {
@@ -244,7 +243,7 @@ public class FMDServerService extends JobService {
         Logger.init(Thread.currentThread(), this);
         Logger.logSession("FMDServerService", "started");
         Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
-        if ((Boolean) settings.get(Settings.SET_FMDSERVER_UPLOAD_SERVICE)) {
+        if (settings.checkAccountExists()) {
 
             ComponentHandler ch = new ComponentHandler(settings, this, this, params);
             ch.setSender(sender);

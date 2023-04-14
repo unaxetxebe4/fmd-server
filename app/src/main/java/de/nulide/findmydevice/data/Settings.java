@@ -32,7 +32,7 @@ public class Settings extends HashMap<Integer, Object> {
     public static final int SET_RINGER_TONE = 7;
     public static final int SET_SET_VERSION = 8;
 
-    public static final int SET_FMDSERVER_UPLOAD_SERVICE = 101;
+    //public static final int SET_FMDSERVER_UPLOAD_SERVICE = 101;
     public static final int SET_FMDSERVER_URL = 102;
     public static final int SET_FMDSERVER_UPDATE_TIME = 103;
     public static final int SET_FMDSERVER_ID = 104;
@@ -89,8 +89,6 @@ public class Settings extends HashMap<Integer, Object> {
                 case SET_FMDSERVER_PASSWORD_SET:
                 case SET_FMD_LOW_BAT_SEND:
                     return false;
-                case SET_FMDSERVER_UPLOAD_SERVICE:
-                    return true;
                 case SET_FMD_COMMAND:
                     return "fmd";
                 case SET_FMDSERVER_UPDATE_TIME:
@@ -189,7 +187,7 @@ public class Settings extends HashMap<Integer, Object> {
         afterChangeTimer.schedule(saverTask, 300);
     }
 
-    public boolean checkServerUpload(){
-        return !((String)get(Settings.SET_FMDSERVER_ID)).isEmpty() && (Boolean)get(Settings.SET_FMDSERVER_UPLOAD_SERVICE);
+    public boolean checkAccountExists(){
+        return !((String)get(Settings.SET_FMDSERVER_ID)).isEmpty();
     }
 }

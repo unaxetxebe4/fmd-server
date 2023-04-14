@@ -28,6 +28,7 @@ import de.nulide.findmydevice.data.Settings;
 import de.nulide.findmydevice.data.io.IO;
 import de.nulide.findmydevice.data.io.JSONFactory;
 import de.nulide.findmydevice.data.io.json.JSONMap;
+import de.nulide.findmydevice.receiver.PushReceiver;
 import de.nulide.findmydevice.services.FMDServerService;
 import de.nulide.findmydevice.utils.CypherUtils;
 
@@ -200,6 +201,8 @@ public class AddAccountActivity extends AppCompatActivity implements View.OnClic
                     Toast.makeText(context, "Failed", Toast.LENGTH_LONG).show();
                 }else{
                     settingIntent = new Intent(context, FMDServerActivity.class);
+                    FMDServerService.scheduleJob(context, 0);
+                    PushReceiver.Register(context);
                 }
                 startActivity(settingIntent);
             }

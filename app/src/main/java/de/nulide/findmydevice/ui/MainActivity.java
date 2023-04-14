@@ -186,7 +186,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         expandableCardViewPermissions.setTitle(-1, getString(R.string.Granted) + " " + Permission.ENABLED_PERMISSIONS + "/" + Permission.AVAILABLE_PERMISSIONS);
 
-        if((Boolean) Settings.get(Settings.SET_FMDSERVER_UPLOAD_SERVICE)){
+        if(Settings.checkAccountExists()){
             textViewServerServiceEnabled.setText(getString(R.string.Enabled));
             textViewServerServiceEnabled.setTextColor(colorEnabled);
         }else{
@@ -194,7 +194,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             textViewServerServiceEnabled.setTextColor(colorDisabled);
         }
 
-        if(!((String) Settings.get(Settings.SET_FMDSERVER_ID)).isEmpty()){
+        if(Settings.checkAccountExists()){
             textViewServerRegistered.setText(getString(R.string.Enabled));
             textViewServerRegistered.setTextColor(colorEnabled);
         }else{

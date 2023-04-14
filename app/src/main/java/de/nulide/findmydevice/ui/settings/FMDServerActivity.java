@@ -33,8 +33,6 @@ import de.nulide.findmydevice.utils.CypherUtils;
 public class FMDServerActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener, TextWatcher, View.OnClickListener {
 
     private Settings settings;
-
-    private CheckBox checkBoxFMDServerAutoUpload;
     private EditText editTextFMDServerUpdateTime;
     private TextView textViewFMDServerID;
     private Button changePasswordButton;
@@ -63,10 +61,6 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
             colorEnabled = getResources().getColor(R.color.colorEnabled);
             colorDisabled = getResources().getColor(R.color.colorDisabled);
         }
-
-        checkBoxFMDServerAutoUpload = findViewById(R.id.checkBoxFMDServerAutoUpload);
-        checkBoxFMDServerAutoUpload.setChecked((Boolean) settings.get(Settings.SET_FMDSERVER_UPLOAD_SERVICE));
-        checkBoxFMDServerAutoUpload.setOnCheckedChangeListener(this);
 
         editTextFMDServerUpdateTime = findViewById(R.id.editTextFMDServerUpdateTime);
         editTextFMDServerUpdateTime.setText(((Integer) settings.get(Settings.SET_FMDSERVER_UPDATE_TIME)).toString());
@@ -131,9 +125,7 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        if(buttonView == checkBoxFMDServerAutoUpload){
-            settings.set(Settings.SET_FMDSERVER_UPLOAD_SERVICE, isChecked);
-        }else if(buttonView == checkBoxFMDServerCell || buttonView == checkBoxFMDServerGPS){
+       if(buttonView == checkBoxFMDServerCell || buttonView == checkBoxFMDServerGPS){
             if(checkBoxFMDServerGPS.isChecked() && checkBoxFMDServerCell.isChecked()){
                 settings.set(Settings.SET_FMDSERVER_LOCATION_TYPE, 2);
             }else if(checkBoxFMDServerGPS.isChecked()){
@@ -183,6 +175,7 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
             settings.set(Settings.SET_FMD_CRYPT_HPW, "");
             settings.set(Settings.SET_FMD_CRYPT_PRIVKEY, "");
             settings.set(Settings.SET_FMD_CRYPT_PUBKEY, "");
+            FMDServerService.cancelAll(this);
             finish();
         } else if (v == changePasswordButton) {
             LayoutInflater inflater = getLayoutInflater();
@@ -233,6 +226,7 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
         @Override
         public void onClick(DialogInterface dialog, int which) {
             FMDServerService.unregisterOnServer(context);
+            FMDServerService.cancelAll(context);
             finish();
             startActivity(getIntent());
         }
