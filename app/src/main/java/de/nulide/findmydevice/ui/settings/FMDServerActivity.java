@@ -26,6 +26,7 @@ import de.nulide.findmydevice.data.Settings;
 import de.nulide.findmydevice.data.io.IO;
 import de.nulide.findmydevice.data.io.JSONFactory;
 import de.nulide.findmydevice.data.io.json.JSONMap;
+import de.nulide.findmydevice.receiver.PushReceiver;
 import de.nulide.findmydevice.services.FMDServerService;
 import de.nulide.findmydevice.utils.CypherUtils;
 
@@ -125,6 +126,7 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
         }
         checkBoxLowBat.setOnCheckedChangeListener(this);
 
+        PushReceiver.Register(context);
     }
 
     @Override
