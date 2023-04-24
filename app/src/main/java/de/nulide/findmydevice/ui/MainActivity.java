@@ -24,6 +24,7 @@ import de.nulide.findmydevice.data.io.JSONFactory;
 import de.nulide.findmydevice.data.io.json.JSONMap;
 import de.nulide.findmydevice.data.io.json.JSONWhiteList;
 import de.nulide.findmydevice.receiver.PushReceiver;
+import de.nulide.findmydevice.services.FMDServerService;
 import de.nulide.findmydevice.ui.settings.SettingsActivity;
 import de.nulide.findmydevice.ui.settings.WhiteListActivity;
 import de.nulide.findmydevice.utils.Logger;
@@ -57,9 +58,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        FMDServerService.checkForOldSalt(this);
         PushReceiver.Register(this);
-
         IO.context = this;
         Logger.init(Thread.currentThread(), this);
         Notifications.init(this, false);

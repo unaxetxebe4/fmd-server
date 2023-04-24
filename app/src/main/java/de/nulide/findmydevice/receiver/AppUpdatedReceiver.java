@@ -11,6 +11,7 @@ import org.unifiedpush.android.connector.UnifiedPush;
 
 import de.nulide.findmydevice.data.ConfigSMSRec;
 import de.nulide.findmydevice.data.Settings;
+import de.nulide.findmydevice.data.io.IO;
 import de.nulide.findmydevice.services.FMDServerCommandService;
 import de.nulide.findmydevice.services.FMDServerService;
 import de.nulide.findmydevice.utils.Logger;
@@ -31,6 +32,7 @@ public class AppUpdatedReceiver extends SuperReceiver {
 
             if(ch.getSettings().checkAccountExists()){
                 FMDServerService.scheduleJob(context, 0);
+                FMDServerService.checkForOldSalt(context);
             }
         }
     }

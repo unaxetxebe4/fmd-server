@@ -18,6 +18,7 @@ import java.nio.charset.StandardCharsets;
 import java.security.PublicKey;
 import java.util.Calendar;
 
+import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.data.Keys;
 import de.nulide.findmydevice.data.Settings;
 import de.nulide.findmydevice.data.io.IO;
@@ -175,6 +176,7 @@ public class FMDServerService extends JobService {
                                                 try {
                                                     settings.set(Settings.SET_FMD_CRYPT_PUBKEY, pubResponse.get("Data"));
                                                     settings.set(Settings.SET_FMD_CRYPT_PRIVKEY, privResponse.get("Data"));
+                                                    settings.set(Settings.SET_FMD_CRYPT_NEW_SALT, true);
                                                 } catch (JSONException e) {
                                                     e.printStackTrace();
                                                 }
@@ -229,6 +231,7 @@ public class FMDServerService extends JobService {
             if(response.has("data")){
                 settings.set(Settings.SET_FMD_CRYPT_PRIVKEY, newPrivKey);
                 settings.set(Settings.SET_FMD_CRYPT_HPW, hashedPW);
+                settings.set(Settings.SET_FMD_CRYPT_NEW_SALT, true);
             }
         });
         
@@ -279,5 +282,12 @@ public class FMDServerService extends JobService {
         Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
         scheduleJob(this, (Integer)settings.get(Settings.SET_FMDSERVER_UPDATE_TIME));
         return false;
+    }
+
+    public static void checkForOldSalt(Context context){
+        Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
+        if(!(Boolean)settings.get(Settings.SET_FMD_CRYPT_NEW_SALT) && settings.checkAccountExists()){
+            Notifications.notify(context, context.getString(R.string.NOTIFY_SALT_CHANGE_TITLE), context.getString(R.string.NOTIFY_SALT_CHANGE_CONTENT), Notifications.CHANNEL_SECURITY);
+        }
     }
 }

@@ -19,6 +19,9 @@ public class Notifications {
     public static final int CHANNEL_LIFE = 43;
     public static final int CHANNEL_PIN = 44;
     public static final int CHANNEL_SERVER = 45;
+
+    public static final int CHANNEL_SECURITY = 46;
+
     public static final int CHANNEL_FOREGROUND_SERVICE = 99;
 
     private static boolean silent;
@@ -49,9 +52,11 @@ public class Notifications {
             NotificationChannel channel2 = new NotificationChannel(new Integer(CHANNEL_LIFE).toString(), context.getString(R.string.Notification_Lifecycle), NotificationManager.IMPORTANCE_DEFAULT);
             channel2.setDescription(context.getString(R.string.Notification_Lifecycle_Description));
             NotificationChannel channel3 = new NotificationChannel(new Integer(CHANNEL_PIN).toString(), context.getString(R.string.Pin_Usage), NotificationManager.IMPORTANCE_DEFAULT);
-            channel2.setDescription(context.getString(R.string.Notification_Pin_Usage_Description));
+            channel3.setDescription(context.getString(R.string.Notification_Pin_Usage_Description));
             NotificationChannel channel4 = new NotificationChannel(new Integer(CHANNEL_SERVER).toString(), context.getString(R.string.Notification_Server), NotificationManager.IMPORTANCE_DEFAULT);
-            channel2.setDescription(context.getString(R.string.NotificationServer_Description));
+            channel4.setDescription(context.getString(R.string.NotificationServer_Description));
+            NotificationChannel channel5 = new NotificationChannel(new Integer(CHANNEL_SECURITY).toString(), context.getString(R.string.Notification_Security), NotificationManager.IMPORTANCE_DEFAULT);
+            channel5.setDescription(context.getString(R.string.Notification_Security_Description));
             NotificationChannel channel99 = new NotificationChannel(new Integer(CHANNEL_FOREGROUND_SERVICE).toString(), "ForegroundTask",  NotificationManager.IMPORTANCE_HIGH);
             channel99.setDescription(context.getString(R.string.Notification_ForegroundService));
 

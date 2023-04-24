@@ -159,4 +159,8 @@
     <string name="MH_FMDSERVER_NOT_REGISTERED">This device isn\'t registered on a server.</string>
     <string name="Settings_FMDServer_Login">Login</string>
     <string name="Settings_FMDServer_Register">Register</string>
+    <string name="Notification_Security">Security</string>
+    <string name="Notification_Security_Description">Notifications about security updates</string>
+    <string name="NOTIFY_SALT_CHANGE_TITLE">Password Security</string>
+    <string name="NOTIFY_SALT_CHANGE_CONTENT"><![CDATA[This update includes an improved hashing algorythm.\nPlease change your password in: FMD->Settings->ServerSettings->Change Password]]></string>
 </resources>
