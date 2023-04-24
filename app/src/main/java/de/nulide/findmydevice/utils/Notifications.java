@@ -3,6 +3,7 @@ package de.nulide.findmydevice.utils;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -11,7 +12,10 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
 import de.nulide.findmydevice.R;
+import de.nulide.findmydevice.services.FMDServerService;
 import de.nulide.findmydevice.ui.MainActivity;
+import de.nulide.findmydevice.ui.settings.FMDConfigActivity;
+import de.nulide.findmydevice.ui.settings.FMDServerActivity;
 
 public class Notifications {
 
@@ -33,7 +37,16 @@ public class Notifications {
                     .setSmallIcon(R.drawable.ic_notification)
                     .setContentTitle(title)
                     .setContentText(text)
-                    .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+                    .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                    .setStyle(new NotificationCompat.BigTextStyle()
+                        .bigText(text));
+            if(channelID == CHANNEL_SECURITY){
+                Intent intent = new Intent(context, FMDServerActivity.class);
+                PendingIntent pendingIntent =
+                        PendingIntent.getActivity(
+                                context,0,intent,PendingIntent.FLAG_IMMUTABLE);
+                builder.setContentIntent(pendingIntent);
+            }
             NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
             notificationManager.notify(channelID, builder.build());
         }
@@ -65,6 +78,7 @@ public class Notifications {
             notificationManager.createNotificationChannel(channel2);
             notificationManager.createNotificationChannel(channel3);
             notificationManager.createNotificationChannel(channel4);
+            notificationManager.createNotificationChannel(channel5);
             notificationManager.createNotificationChannel(channel99);
         }
     }
