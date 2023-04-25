@@ -228,7 +228,6 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
             FMDServerService.unregisterOnServer(context);
             FMDServerService.cancelAll(context);
             finish();
-            startActivity(getIntent());
         }
     }
 

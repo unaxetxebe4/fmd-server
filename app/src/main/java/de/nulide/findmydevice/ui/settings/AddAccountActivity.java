@@ -28,11 +28,12 @@ import de.nulide.findmydevice.data.Settings;
 import de.nulide.findmydevice.data.io.IO;
 import de.nulide.findmydevice.data.io.JSONFactory;
 import de.nulide.findmydevice.data.io.json.JSONMap;
+import de.nulide.findmydevice.net.interfaces.PostListener;
 import de.nulide.findmydevice.receiver.PushReceiver;
 import de.nulide.findmydevice.services.FMDServerService;
 import de.nulide.findmydevice.utils.CypherUtils;
 
-public class AddAccountActivity extends AppCompatActivity implements View.OnClickListener, TextWatcher, CompoundButton.OnCheckedChangeListener {
+public class AddAccountActivity extends AppCompatActivity implements View.OnClickListener, TextWatcher, CompoundButton.OnCheckedChangeListener, PostListener {
 
     private RadioButton rbDefaultServer;
     private RadioButton rbCustomServer;
@@ -85,6 +86,7 @@ public class AddAccountActivity extends AppCompatActivity implements View.OnClic
         LayoutInflater inflater = getLayoutInflater();
 
         final AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        PostListener postListener = this;
 
         if (view == btnRegister) {
             alert.setTitle("Register");
@@ -105,8 +107,7 @@ public class AddAccountActivity extends AppCompatActivity implements View.OnClic
                         settings.set(Settings.SET_FMD_CRYPT_HPW, splitHash[1]);
                         settings.setNow(Settings.SET_FMDSERVER_PASSWORD_SET, true);
                         settings.set(Settings.SET_FMD_CRYPT_NEW_SALT, true);
-                        FMDServerService.registerOnServer(context, (String) settings.get(Settings.SET_FMDSERVER_URL), keys.getEncryptedPrivateKey(), keys.getBase64PublicKey(), splitHash[0], splitHash[1]);
-                        restartActivityAfterDelay();
+                        FMDServerService.registerOnServer(context, (String) settings.get(Settings.SET_FMDSERVER_URL), keys.getEncryptedPrivateKey(), keys.getBase64PublicKey(), splitHash[0], splitHash[1], postListener);
                     }else{
                         Toast.makeText(context, "Passwords do not match.", Toast.LENGTH_LONG).show();
                     }
@@ -125,8 +126,7 @@ public class AddAccountActivity extends AppCompatActivity implements View.OnClic
                     String password = passwordInput.getText().toString();
                     String passwordCheck = passwordInputCheck.getText().toString();
                     if (!id.isEmpty() && !password.isEmpty() && passwordCheck.equals(password)) {
-                        FMDServerService.loginOnServer(context, id, password);
-                        restartActivityAfterDelay();
+                        FMDServerService.loginOnServer(context, id, password, postListener);
                     }else{
                         Toast.makeText(context, "Failed to login.", Toast.LENGTH_LONG).show();
                     }
@@ -189,7 +189,7 @@ public class AddAccountActivity extends AppCompatActivity implements View.OnClic
         }
     }
 
-    private void restartActivityAfterDelay(){
+    private void checkForAuth(){
         finish();
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -207,6 +207,17 @@ public class AddAccountActivity extends AppCompatActivity implements View.OnClic
                 }
                 startActivity(settingIntent);
             }
-        }, 1500);
+        }, 500);
+    }
+
+    @Override
+    public void onRestFinished(boolean success) {
+        runOnUiThread(()->{
+            if (success) {
+                checkForAuth();
+            } else {
+                Toast.makeText(context, "Failed to login.", Toast.LENGTH_LONG).show();
+            }
+        });
     }
 }

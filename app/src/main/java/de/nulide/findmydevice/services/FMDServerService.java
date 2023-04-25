@@ -25,9 +25,9 @@ import de.nulide.findmydevice.data.io.IO;
 import de.nulide.findmydevice.data.io.JSONFactory;
 import de.nulide.findmydevice.data.io.json.JSONMap;
 import de.nulide.findmydevice.logic.ComponentHandler;
-import de.nulide.findmydevice.net.DataHandler;
-import de.nulide.findmydevice.net.RespHandler;
-import de.nulide.findmydevice.net.RespListener;
+import de.nulide.findmydevice.net.ATHandler;
+import de.nulide.findmydevice.net.RestHandler;
+import de.nulide.findmydevice.net.interfaces.PostListener;
 import de.nulide.findmydevice.sender.FooSender;
 import de.nulide.findmydevice.sender.Sender;
 import de.nulide.findmydevice.utils.CypherUtils;
@@ -58,15 +58,15 @@ public class FMDServerService extends JobService {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        DataHandler dataHandler = new DataHandler(context);
-        dataHandler.run(DataHandler.LOCATION, locationDataObject, null);
+        RestHandler restHandler = new RestHandler(context, RestHandler.DEFAULT_RESP_METHOD, RestHandler.LOCATION, locationDataObject);
+        restHandler.runWithAT();
     }
 
-    public static void sendPicture(Context context, String picture, String url, String id){
+    public static void sendPicture(Context context, String picture, String url, String id) {
         Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
 
         Keys keys = settings.getKeys();
-        if(keys.equals(null)) {
+        if (keys.equals(null)) {
             // TODO: Handle no Keys are returned
             // reinitiate Keys in settings
             return;
@@ -74,7 +74,7 @@ public class FMDServerService extends JobService {
         PublicKey publicKey = keys.getPublicKey();
 
         String password = CypherUtils.generateRandomString(25);
-        String encryptedPicture = CypherUtils.encryptWithAES(picture.getBytes(StandardCharsets.UTF_8),password);
+        String encryptedPicture = CypherUtils.encryptWithAES(picture.getBytes(StandardCharsets.UTF_8), password);
         String encryptedPassword = CypherUtils.encodeBase64(CypherUtils.encryptWithKey(publicKey, password));
         String msg = encryptedPassword + "___PICTURE-DATA___" + encryptedPicture;
 
@@ -84,11 +84,11 @@ public class FMDServerService extends JobService {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        DataHandler dataHandler = new DataHandler(context);
-        dataHandler.run(DataHandler.PICTURE, dataObject, null);
+        RestHandler restHandler = new RestHandler(context, RestHandler.DEFAULT_RESP_METHOD, RestHandler.PICTURE, dataObject);
+        restHandler.runWithAT();
     }
 
-    public static void registerOnServer(Context context, String url, String privKey, String pubKey, String salt, String hashedPW) {
+    public static void registerOnServer(Context context, String url, String privKey, String pubKey, String salt, String hashedPW, PostListener postListener) {
         IO.context = context;
         Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
         final JSONObject jsonObject = new JSONObject();
@@ -97,31 +97,28 @@ public class FMDServerService extends JobService {
             jsonObject.put("hashedPassword", hashedPW);
             jsonObject.put("pubkey", pubKey);
             jsonObject.put("privkey", privKey);
-        }catch (JSONException e){
+        } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        DataHandler dataHandler = new DataHandler(context);
-        RespHandler respHandler = new RespHandler(response -> {
+        RestHandler restHandler = new RestHandler(context, RestHandler.DEFAULT_METHOD, RestHandler.DEVICE, jsonObject);
+        restHandler.setResponseListener(response -> {
             try {
                 settings.set(Settings.SET_FMDSERVER_ID, response.get("DeviceId"));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         });
-        dataHandler.prepareSingle(DataHandler.DEFAULT_METHOD, DataHandler.DEVICE, jsonObject, respHandler);
-        dataHandler.send();
+        restHandler.setPostListener(postListener);
+        restHandler.run();
     }
 
     public static void unregisterOnServer(Context context) {
         IO.context = context;
         Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
-        RequestQueue queue = PatchedVolley.newRequestQueue(context);
-        String url = (String)settings.get(Settings.SET_FMDSERVER_URL);
-        final JSONObject requestAccessObject = new JSONObject();
 
-        DataHandler dataHandler = new DataHandler(context);
-        dataHandler.run(DataHandler.DEVICE,null);
+        RestHandler restHandler = new RestHandler(context, RestHandler.DEFAULT_RESP_METHOD, RestHandler.DEVICE, ATHandler.getEmptyDataReq());
+        restHandler.runWithAT();
         settings.set(Settings.SET_FMDSERVER_ID, "");
     }
 
@@ -129,7 +126,7 @@ public class FMDServerService extends JobService {
         ComponentName serviceComponent = new ComponentName(context, FMDServerService.class);
         JobInfo.Builder builder = new JobInfo.Builder(JOB_ID, serviceComponent);
         builder.setMinimumLatency(((long) time / 2) * 1000 * 60);
-        builder.setOverrideDeadline((int)(time * 1000 * 60 * 1.5));
+        builder.setOverrideDeadline((int) (time * 1000 * 60 * 1.5));
         JobScheduler jobScheduler = context.getSystemService(JobScheduler.class);
         jobScheduler.schedule(builder.build());
         Logger.logSession("FMDServerService", "scheduled new job");
@@ -146,70 +143,68 @@ public class FMDServerService extends JobService {
     //Third Get PrivateKey
     //Fourth Get PublicKey
     //Fifth Save everything
-    public static void loginOnServer(Context context, String id, String password) {
-        DataHandler dataHandler = new DataHandler(context);
-        JSONObject req = dataHandler.getEmptyDataReq();
+    public static void loginOnServer(Context context, String id, String password, PostListener postListener) {
+        Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
+        JSONObject req = ATHandler.getEmptyDataReq();
         try {
             req.put("IDT", id);
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        RespHandler respHandler = new RespHandler(response -> {
-            if (response.has("Data")) {
-                try {
-                    String hashedPW = CypherUtils.hashWithPKBDF2WithGivenSalt(password, (String) response.get("Data"));
-                    req.put("Data", hashedPW);
-                    RespHandler respHandlerForAT = new RespHandler(ATResponse -> {
-                        if (ATResponse.has("Data")) {
+        RestHandler saltHandler = new RestHandler(context, RestHandler.DEFAULT_METHOD, RestHandler.SALT, req);
+        saltHandler.setResponseListener(response -> {
+                if (response.has("Data")) {
+                    try {
+
+                        String hashedPW = CypherUtils.hashWithPKBDF2WithGivenSalt(password, (String) response.get("Data"));
+                        req.put("Data", hashedPW);
+                    RestHandler atHandler = new RestHandler(context, RestHandler.DEFAULT_METHOD, RestHandler.GET_AT, req);
+                    atHandler.setResponseListener(atResponse ->{
+                        if(atResponse.has("Data")){
                             try {
-                                req.put("IDT", ATResponse.get("Data"));
-
-
-                                RespHandler respHandlerForKey = new RespHandler(privResponse -> {
-                                    if(privResponse.has("Data")){
-
-                                        RespHandler respHandlerForPublicKey = new RespHandler(pubResponse -> {
-                                            if(pubResponse.has("Data")){
-                                                Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
-                                                settings.set(Settings.SET_FMD_CRYPT_HPW, hashedPW);
-                                                settings.set(Settings.SET_FMDSERVER_ID, id);
+                                req.put("IDT", (String)atResponse.get("Data"));
+                                RestHandler privKeyHandler = new RestHandler(context, RestHandler.DEFAULT_METHOD, RestHandler.PRIVKEY, req);
+                                privKeyHandler.setResponseListener(privResponse -> {
+                                    if (privResponse.has("Data")) {
+                                        RestHandler pubKeyHandler = new RestHandler(context, RestHandler.DEFAULT_METHOD, RestHandler.PUBKEY, req);
+                                        pubKeyHandler.setResponseListener(pubResponse -> {
+                                            if (pubResponse.has("Data")) {
                                                 try {
+                                                    settings.set(Settings.SET_FMD_CRYPT_HPW, hashedPW);
+                                                    settings.set(Settings.SET_FMDSERVER_ID, id);
                                                     settings.set(Settings.SET_FMD_CRYPT_PUBKEY, pubResponse.get("Data"));
                                                     settings.set(Settings.SET_FMD_CRYPT_PRIVKEY, privResponse.get("Data"));
                                                     settings.set(Settings.SET_FMD_CRYPT_NEW_SALT, true);
-                                                } catch (JSONException e) {
+                                                }catch (JSONException e){
                                                     e.printStackTrace();
                                                 }
 
                                             }
                                         });
-                                        dataHandler.prepareSingle(DataHandler.DEFAULT_METHOD, DataHandler.PUBKEY, req, respHandlerForPublicKey);
-                                        dataHandler.send();
+                                        pubKeyHandler.setPostListener(postListener);
+                                        pubKeyHandler.run();
 
                                     }
-
                                 });
-                                dataHandler.prepareSingle(DataHandler.DEFAULT_METHOD, DataHandler.PRIVKEY, req, respHandlerForKey);
-                                dataHandler.send();
-
-
+                                privKeyHandler.run();
 
                             } catch (JSONException e) {
-                                e.printStackTrace();
+                                throw new RuntimeException(e);
                             }
+
                         }
                     });
+                    atHandler.run();
+                    }catch (JSONException e){
+                        e.printStackTrace();
+                    }
 
-                    dataHandler.prepareSingle(DataHandler.DEFAULT_METHOD, DataHandler.GET_AT, req, respHandlerForAT);
-                    dataHandler.send();
-                } catch (JSONException e) {
-                    e.printStackTrace();
                 }
 
-            }
         });
-        dataHandler.prepareSingle(DataHandler.DEFAULT_METHOD, DataHandler.SALT, req, respHandler);
-        dataHandler.send();
+        saltHandler.run();
+
+
     }
 
     public static void changePassword(Context context, String newPrivKey, String salt, String hashedPW) {
@@ -221,20 +216,22 @@ public class FMDServerService extends JobService {
             jsonObject.put("salt", salt);
             jsonObject.put("hashedPassword", hashedPW);
             jsonObject.put("privkey", newPrivKey);
-        }catch (JSONException e){
+        } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        DataHandler dataHandler = new DataHandler(context);
-
-        dataHandler.run(DataHandler.PASSWORD, jsonObject, response -> {
-            if(response.has("data")){
+        RestHandler restHandler = new RestHandler(context, RestHandler.DEFAULT_METHOD, RestHandler.PASSWORD, jsonObject);
+        restHandler.setResponseListener(response -> {
+            if (response.has("data")) {
                 settings.set(Settings.SET_FMD_CRYPT_PRIVKEY, newPrivKey);
                 settings.set(Settings.SET_FMD_CRYPT_HPW, hashedPW);
                 settings.set(Settings.SET_FMD_CRYPT_NEW_SALT, true);
+            } else {
+                Notifications.notify(context, context.getString(R.string.NOTIFY_PASSWORD_CHANGE_FAIL_TITLE), context.getString(R.string.NOTIFY_PASSWORD_CHANGE_FAIL_CONTENT), Notifications.CHANNEL_FAILED);
             }
         });
-        
+        restHandler.runWithAT();
+
     }
 
 
@@ -280,13 +277,13 @@ public class FMDServerService extends JobService {
     public boolean onStopJob(JobParameters params) {
         Logger.log("FMDServerService", "job stopped by system");
         Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
-        scheduleJob(this, (Integer)settings.get(Settings.SET_FMDSERVER_UPDATE_TIME));
+        scheduleJob(this, (Integer) settings.get(Settings.SET_FMDSERVER_UPDATE_TIME));
         return false;
     }
 
-    public static void checkForOldSalt(Context context){
+    public static void checkForOldSalt(Context context) {
         Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
-        if(!(Boolean)settings.get(Settings.SET_FMD_CRYPT_NEW_SALT) && settings.checkAccountExists()){
+        if (!(Boolean) settings.get(Settings.SET_FMD_CRYPT_NEW_SALT) && settings.checkAccountExists()) {
             Notifications.notify(context, context.getString(R.string.NOTIFY_SALT_CHANGE_TITLE), context.getString(R.string.NOTIFY_SALT_CHANGE_CONTENT), Notifications.CHANNEL_SECURITY);
         }
     }

@@ -74,7 +74,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent introductionIntent = new Intent(this, IntroductionActivity.class);
             startActivity(introductionIntent);
         }
-        FMDServerService.checkForOldSalt(this);
+        if(Settings.checkAccountExists()) {
+            FMDServerService.checkForOldSalt(this);
+            FMDServerService.scheduleJob(this, 0);
+        }
         reloadViews();
         updateViews();
     }
