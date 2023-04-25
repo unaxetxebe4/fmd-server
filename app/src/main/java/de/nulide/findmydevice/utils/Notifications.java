@@ -47,6 +47,7 @@ public class Notifications {
                 PendingIntent pendingIntent =
                         PendingIntent.getActivity(
                                 context,0,intent,PendingIntent.FLAG_IMMUTABLE);
+                builder.setAutoCancel(true);
                 builder.setContentIntent(pendingIntent);
             }
             NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);

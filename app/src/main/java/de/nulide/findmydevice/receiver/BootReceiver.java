@@ -28,6 +28,7 @@ public class BootReceiver extends SuperReceiver{
             if(ch.getSettings().checkAccountExists()){
                 FMDServerService.scheduleJob(context, 0);
                 PushReceiver.Register(context);
+                FMDServerService.checkForOldSalt(context);
             }
         }
     }
