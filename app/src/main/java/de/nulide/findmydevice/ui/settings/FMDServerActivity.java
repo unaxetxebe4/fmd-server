@@ -21,16 +21,19 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.security.PrivateKey;
 
+import javax.crypto.BadPaddingException;
+
 import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.data.Settings;
 import de.nulide.findmydevice.data.io.IO;
 import de.nulide.findmydevice.data.io.JSONFactory;
 import de.nulide.findmydevice.data.io.json.JSONMap;
+import de.nulide.findmydevice.net.interfaces.PostListener;
 import de.nulide.findmydevice.receiver.PushReceiver;
 import de.nulide.findmydevice.services.FMDServerService;
 import de.nulide.findmydevice.utils.CypherUtils;
 
-public class FMDServerActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener, TextWatcher, View.OnClickListener {
+public class FMDServerActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener, TextWatcher, View.OnClickListener, PostListener {
 
     private Settings settings;
     private EditText editTextFMDServerUpdateTime;
@@ -41,10 +44,6 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
     private CheckBox checkBoxFMDServerGPS;
     private CheckBox checkBoxFMDServerCell;
     private CheckBox checkBoxLowBat;
-
-    private int colorEnabled;
-    private int colorDisabled;
-
     private Context context;
 
     @Override
@@ -54,13 +53,6 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
 
         settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
         this.context = this;
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-            colorEnabled = getColor(R.color.colorEnabled);
-            colorDisabled = getColor(R.color.colorDisabled);
-        } else {
-            colorEnabled = getResources().getColor(R.color.colorEnabled);
-            colorDisabled = getResources().getColor(R.color.colorDisabled);
-        }
 
         editTextFMDServerUpdateTime = findViewById(R.id.editTextFMDServerUpdateTime);
         editTextFMDServerUpdateTime.setText(((Integer) settings.get(Settings.SET_FMDSERVER_UPDATE_TIME)).toString());
@@ -187,6 +179,7 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
             EditText passwordInput = registerLayout.findViewById(R.id.editTextFMDPassword);
             EditText passwordInputCheck = registerLayout.findViewById(R.id.editTextFMDPasswordCheck);
             alert.setView(registerLayout);
+            PostListener postListener = this;
             alert.setPositiveButton(getString(R.string.Ok), new DialogInterface.OnClickListener() {
                 @RequiresApi(api = Build.VERSION_CODES.KITKAT)
                 public void onClick(DialogInterface dialog, int whichButton) {
@@ -194,18 +187,20 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
                     String password = passwordInput.getText().toString();
                     String passwordCheck = passwordInputCheck.getText().toString();
                     if (!password.isEmpty() && password.equals(passwordCheck) && !oldPassword.isEmpty()) {
-                        PrivateKey privKey = CypherUtils.decryptKey((String) settings.get(Settings.SET_FMD_CRYPT_PRIVKEY), oldPassword);
-                        if(privKey == null){
+                        try {
+                            PrivateKey privKey = CypherUtils.decryptKey((String) settings.get(Settings.SET_FMD_CRYPT_PRIVKEY), oldPassword);
+                            if (privKey == null) {
+                                Toast.makeText(context, "Wrong Password.", Toast.LENGTH_LONG).show();
+                                return;
+                            }
+                            String newPrivKey = CypherUtils.encryptKey(privKey, password);
+                            String hashedPW = CypherUtils.hashWithPKBDF2(password);
+                            String[] splitHash = hashedPW.split("///SPLIT///");
+
+                            FMDServerService.changePassword(context, newPrivKey, splitHash[0], splitHash[1], postListener);
+                        }catch (Exception bdp){
                             Toast.makeText(context, "Wrong Password.", Toast.LENGTH_LONG).show();
-                            return;
                         }
-                        String newPrivKey = CypherUtils.encryptKey(privKey, password);
-                        String hashedPW = CypherUtils.hashWithPKBDF2(password);
-                        String[] splitHash = hashedPW.split("///SPLIT///");
-
-                        FMDServerService.changePassword(context, newPrivKey, splitHash[0], splitHash[1]);
-
-
                     }else{
                         Toast.makeText(context, "Failed", Toast.LENGTH_LONG).show();
                     }
@@ -215,6 +210,16 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
         }
     }
 
+    @Override
+    public void onRestFinished(boolean success) {
+        if(success){
+            Toast.makeText(context, "Success", Toast.LENGTH_LONG).show();
+            settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
+        }else{
+            Toast.makeText(context, "Failed", Toast.LENGTH_LONG).show();
+            settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
+        }
+    }
     private class DialogClickListenerForUnregistration implements DialogInterface.OnClickListener{
 
         private Context context;

@@ -104,7 +104,7 @@ public class FMDServerService extends JobService {
         RestHandler restHandler = new RestHandler(context, RestHandler.DEFAULT_METHOD, RestHandler.DEVICE, jsonObject);
         restHandler.setResponseListener(response -> {
             try {
-                settings.set(Settings.SET_FMDSERVER_ID, response.get("DeviceId"));
+                settings.setNow(Settings.SET_FMDSERVER_ID, response.get("DeviceId"));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -119,7 +119,7 @@ public class FMDServerService extends JobService {
 
         RestHandler restHandler = new RestHandler(context, RestHandler.DEFAULT_RESP_METHOD, RestHandler.DEVICE, ATHandler.getEmptyDataReq());
         restHandler.runWithAT();
-        settings.set(Settings.SET_FMDSERVER_ID, "");
+        settings.setNow(Settings.SET_FMDSERVER_ID, "");
     }
 
     public static void scheduleJob(Context context, int time) {
@@ -174,7 +174,7 @@ public class FMDServerService extends JobService {
                                                     settings.set(Settings.SET_FMDSERVER_ID, id);
                                                     settings.set(Settings.SET_FMD_CRYPT_PUBKEY, pubResponse.get("Data"));
                                                     settings.set(Settings.SET_FMD_CRYPT_PRIVKEY, privResponse.get("Data"));
-                                                    settings.set(Settings.SET_FMD_CRYPT_NEW_SALT, true);
+                                                    settings.setNow(Settings.SET_FMD_CRYPT_NEW_SALT, true);
                                                 }catch (JSONException e){
                                                     e.printStackTrace();
                                                 }
@@ -207,7 +207,7 @@ public class FMDServerService extends JobService {
 
     }
 
-    public static void changePassword(Context context, String newPrivKey, String salt, String hashedPW) {
+    public static void changePassword(Context context, String newPrivKey, String salt, String hashedPW, PostListener postListener) {
         IO.context = context;
         Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
         final JSONObject jsonObject = new JSONObject();
@@ -221,13 +221,12 @@ public class FMDServerService extends JobService {
         }
 
         RestHandler restHandler = new RestHandler(context, RestHandler.DEFAULT_METHOD, RestHandler.PASSWORD, jsonObject);
+        restHandler.setPostListener(postListener);
         restHandler.setResponseListener(response -> {
-            if (response.has("data")) {
+            if (response.has("Data")) {
                 settings.set(Settings.SET_FMD_CRYPT_PRIVKEY, newPrivKey);
                 settings.set(Settings.SET_FMD_CRYPT_HPW, hashedPW);
-                settings.set(Settings.SET_FMD_CRYPT_NEW_SALT, true);
-            } else {
-                Notifications.notify(context, context.getString(R.string.NOTIFY_PASSWORD_CHANGE_FAIL_TITLE), context.getString(R.string.NOTIFY_PASSWORD_CHANGE_FAIL_CONTENT), Notifications.CHANNEL_FAILED);
+                settings.setNow(Settings.SET_FMD_CRYPT_NEW_SALT, true);
             }
         });
         restHandler.runWithAT();

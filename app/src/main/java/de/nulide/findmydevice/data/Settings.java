@@ -188,7 +188,7 @@ public class Settings extends HashMap<Integer, Object> {
             }
         }
         afterChangeTimer = new Timer();
-        afterChangeTimer.schedule(saverTask, 300);
+        afterChangeTimer.schedule(saverTask, 200);
     }
 
     public boolean checkAccountExists(){
