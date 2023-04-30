@@ -40,11 +40,16 @@ Freetime FM  - [awesomea380](https://gitlab.com/awesomea380)
 
 Pan Daemon - [Pandaemon](https://gitlab.com/Pandaemon)
 
+ThomasDC84 - [ThomasDC84](https://gitlab.com/ThomasDC84)
+
 
 # Contributors - Visual Design | Code
 
 Niklas Stephanblome - [Kleysley](https://gitlab.com/Kleysley)
 
+jcz1 - [jackc_cz](https://gitlab.com/jackc_cz)
+
+Play_it - [Playit3110](https://gitlab.com/Playit3110)
 # Donate
 
 <script src="https://liberapay.com/Nulide/widgets/button.js"></script>
