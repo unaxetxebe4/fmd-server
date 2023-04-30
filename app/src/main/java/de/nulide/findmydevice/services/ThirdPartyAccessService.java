@@ -7,6 +7,7 @@ import android.service.notification.NotificationListenerService;
 import android.service.notification.StatusBarNotification;
 
 import java.util.Calendar;
+import java.util.Date;
 
 import de.nulide.findmydevice.data.ConfigSMSRec;
 import de.nulide.findmydevice.data.Settings;
@@ -16,7 +17,9 @@ import de.nulide.findmydevice.data.io.JSONFactory;
 import de.nulide.findmydevice.data.io.json.JSONMap;
 import de.nulide.findmydevice.data.io.json.JSONWhiteList;
 import de.nulide.findmydevice.logic.ComponentHandler;
+import de.nulide.findmydevice.sender.FooSender;
 import de.nulide.findmydevice.sender.NotificationReply;
+import de.nulide.findmydevice.sender.Sender;
 import de.nulide.findmydevice.utils.Logger;
 import de.nulide.findmydevice.utils.Notifications;
 import de.nulide.findmydevice.utils.Permission;
@@ -28,7 +31,6 @@ public class ThirdPartyAccessService extends NotificationListenerService {
 
     protected ComponentHandler ch;
     protected  String DEFAULT_SMS_PACKAGE_NAME = "";
-
     protected void init(Context context) {
         IO.context = context;
         Logger.init(Thread.currentThread(), context);
@@ -72,9 +74,16 @@ public class ThirdPartyAccessService extends NotificationListenerService {
             if((Boolean)ch.getSettings().get(Settings.SET_FMD_LOW_BAT_SEND)) {
                 if (sbn.getPackageName().equals("com.android.systemui")) {
                     if (sbn.getTag().equals("low_battery")) {
-                        ch.setSender(sender);
-                        String fmdcommand = (String) ch.getSettings().get(Settings.SET_FMD_COMMAND);
-                        ch.getMessageHandler().handle(fmdcommand + " locate", this);
+                        Long lastTime = (Long) config.get(ConfigSMSRec.CONF_TEMP_BAT_CHECK);
+                        Long nowTime = new Date().getTime();
+                        config.set(ConfigSMSRec.CONF_TEMP_BAT_CHECK, nowTime);
+                        if (lastTime == null || lastTime+60000 < nowTime) {
+                            Sender dummySender = new FooSender();
+                            Logger.log("BatteryWarning", "Low Battery detected: sending message.");
+                            ch.setSender(dummySender);
+                            String fmdcommand = (String) ch.getSettings().get(Settings.SET_FMD_COMMAND);
+                            ch.getMessageHandler().handle(fmdcommand + " locate", this);
+                        }
                     }
                 }
             }
