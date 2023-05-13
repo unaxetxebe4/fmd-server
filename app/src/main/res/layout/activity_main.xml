@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -16,20 +16,20 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:src="@mipmap/ic_launcher_foreground"/>
+                android:src="@mipmap/ic_launcher_foreground" />
 
-            //PERMISSIONS
+            <!-- PERMISSIONS -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
-                android:textSize="23sp"
-                android:textStyle="bold"
-                android:textAlignment="textStart"
                 android:paddingStart="10dp"
                 android:paddingTop="20dp"
+                android:text="@string/Settings_Permission"
+                android:textAlignment="textStart"
                 android:textColor="@color/colorAccent"
-                android:text="@string/Settings_Permission" />
+                android:textSize="23sp"
+                android:textStyle="bold" />
 
             <host.stjin.expandablecardview.ExpandableCardView
                 android:id="@+id/expandableCardViewPermissions"
@@ -37,32 +37,30 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginBottom="20dp"
-                app:title="@string/Granted"
-
-                app:inner_view="@layout/permission_card_layout"
-                app:expandOnClick="true"
                 app:animationDuration="300"
-                app:startExpanded="false"/>
+
+                app:expandOnClick="true"
+                app:inner_view="@layout/permission_card_layout"
+                app:startExpanded="false"
+                app:title="@string/Granted" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="?android:attr/listDivider" />
 
-            //SMS
+            <!-- SMS -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
-                android:textSize="23sp"
-                android:textStyle="bold"
-                android:textAlignment="textStart"
                 android:paddingStart="10dp"
                 android:paddingTop="20dp"
+                android:text="SMS"
+                android:textAlignment="textStart"
                 android:textColor="@color/colorAccent"
-                android:text="SMS" />
-
-
+                android:textSize="23sp"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -74,8 +72,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="2dp"
-                    android:paddingStart="20dp"
                     android:layout_weight="0.5"
+                    android:paddingStart="20dp"
                     android:text="@string/Info_FMD_Command"
                     android:textSize="21sp" />
 
@@ -84,11 +82,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="2dp"
-                    android:paddingEnd="20dp"
-                    android:textAlignment="viewEnd"
                     android:layout_weight="0.5"
-                    android:textColor="@color/colorEnabled"
+                    android:paddingEnd="20dp"
                     android:text=""
+                    android:textAlignment="viewEnd"
+                    android:textColor="@color/colorEnabled"
                     android:textSize="21sp" />
 
             </LinearLayout>
@@ -100,50 +98,49 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="2dp"
-                    android:paddingStart="20dp"
-                    android:layout_weight="0.8">
+                    android:layout_weight="0.8"
+                    android:orientation="horizontal"
+                    android:paddingStart="20dp">
 
                     <TextView
-                        android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:text="@string/Settings_WhiteList"
                         android:textSize="21sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="21sp"
                         android:layout_marginStart="5dp"
+                        android:text="("
 
-                        android:text="("/>
+                        android:textSize="21sp" />
 
                     <TextView
                         android:id="@+id/textViewWhiteListCount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="21sp"
-                        android:text="0"/>
+                        android:text="0"
+                        android:textSize="21sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="21sp"
                         android:layout_marginStart="5dp"
-                        android:text="@string/contacts"/>
+                        android:text="@string/contacts"
+                        android:textSize="21sp" />
 
                     <TextView
-                        android:layout_marginLeft="2sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="21sp"
-                        android:text="):"/>
+                        android:layout_marginLeft="2sp"
+                        android:text="):"
+                        android:textSize="21sp" />
 
                 </LinearLayout>
-
 
                 <Button
                     android:id="@+id/buttonOpenWhiteList"
@@ -151,28 +148,27 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
-                    android:text="@string/Edit"/>
+                    android:text="@string/Edit" />
 
             </LinearLayout>
-
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="?android:attr/listDivider" />
 
-            //Server
+            <!-- Server-->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
-                android:textSize="23sp"
-                android:textStyle="bold"
-                android:textAlignment="textStart"
                 android:paddingStart="10dp"
                 android:paddingTop="20dp"
+                android:text="Server"
+                android:textAlignment="textStart"
                 android:textColor="@color/colorAccent"
-                android:text="Server" />
+                android:textSize="23sp"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -184,8 +180,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="2dp"
-                    android:paddingStart="20dp"
                     android:layout_weight="0.5"
+                    android:paddingStart="20dp"
                     android:text="@string/Info_Server_Enabled"
                     android:textSize="21sp" />
 
@@ -196,8 +192,8 @@
                     android:layout_margin="2dp"
                     android:layout_weight="0.5"
                     android:paddingEnd="20dp"
-                    android:textAlignment="viewEnd"
                     android:text="@string/Disabled"
+                    android:textAlignment="viewEnd"
                     android:textSize="21sp" />
 
             </LinearLayout>
@@ -212,8 +208,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="2dp"
-                    android:paddingStart="20dp"
                     android:layout_weight="0.5"
+                    android:paddingStart="20dp"
                     android:text="@string/Info_Server_Registered"
                     android:textSize="21sp" />
 
@@ -223,9 +219,9 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="2dp"
                     android:layout_weight="0.5"
-                    android:textAlignment="viewEnd"
                     android:paddingEnd="20dp"
                     android:text="@string/not_registered"
+                    android:textAlignment="viewEnd"
                     android:textSize="21sp" />
 
             </LinearLayout>
@@ -240,8 +236,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="2dp"
-                    android:paddingStart="20dp"
                     android:layout_weight="0.5"
+                    android:paddingStart="20dp"
                     android:text="@string/Info_Server_Push"
                     android:textSize="21sp" />
 
@@ -251,15 +247,12 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="2dp"
                     android:layout_weight="0.5"
-                    android:textAlignment="viewEnd"
                     android:paddingEnd="20dp"
                     android:text="@string/NOT_AVAILABLE"
+                    android:textAlignment="viewEnd"
                     android:textSize="21sp" />
 
             </LinearLayout>
-
-
-
 
         </LinearLayout>
     </ScrollView>
