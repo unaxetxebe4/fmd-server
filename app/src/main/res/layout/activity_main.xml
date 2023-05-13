@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -91,50 +92,15 @@
                 android:layout_margin="2dp"
                 android:orientation="horizontal">
 
-                <LinearLayout
+                <TextView
+                    android:id="@+id/textViewWhiteListCount"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="2dp"
                     android:layout_weight="0.8"
-                    android:orientation="horizontal"
-                    android:paddingStart="20dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/Settings_WhiteList"
-                        android:textSize="21sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:text="("
-
-                        android:textSize="21sp" />
-
-                    <TextView
-                        android:id="@+id/textViewWhiteListCount"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="0"
-                        android:textSize="21sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:text="@string/contacts"
-                        android:textSize="21sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="2sp"
-                        android:text="):"
-                        android:textSize="21sp" />
-
-                </LinearLayout>
+                    android:paddingStart="20dp"
+                    android:textSize="21sp"
+                    tools:text="Allowed Contacts: 3" />
 
                 <Button
                     android:id="@+id/buttonOpenWhiteList"
