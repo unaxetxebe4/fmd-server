@@ -59,7 +59,6 @@
     <string name="Settings_FMD_via_Pin_Description">Kommunikoi FMD:n kanssa PIN-koodia käyttäen. Sinut lisätään väliaikaiselle valkoiselle listalle.</string>
     <string name="Settings_Enter_Pin">Syötä PIN-koodi</string>
     <string name="MH_Pin_Accepted">PIN-koodi hyväksytty!</string>
-    <string name="Alert_First_time_whitelist">Täällä voit lisätä yhteystietoja valkoiselle listalle. Listalla olevista yhteystiedoista voidaan seurata laitettasi lähettämällä SMS, joka sisältää komennon \"fmd\".</string>
     <string name="Alert_First_Time_contact_added">Onneksi olkoon, olet lisännyt ensimmäisen yhteystiedon! Voit nyt kommunikoida FMD:n kanssa lähettämällä yhteystiedon puhelinnumerosta SMS-viestin, joka sisältää komennon \"fmd\". Sovellus vastaa SMS-viestiin.</string>
     <string name="R_Stop_ring">PYSÄYTÄ SOITTO</string>
     <string name="Settings_Log">Loki</string>

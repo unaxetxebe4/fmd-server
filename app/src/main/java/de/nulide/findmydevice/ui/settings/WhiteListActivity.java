@@ -78,19 +78,6 @@ public class WhiteListActivity extends AppCompatActivity implements View.OnClick
 
         buttonAddContact = findViewById(R.id.buttonAddContact);
         buttonAddContact.setOnClickListener(this);
-
-        if(!(Boolean) Settings.get(Settings.SET_FIRST_TIME_WHITELIST)) {
-            new AlertDialog.Builder(this)
-                    .setTitle(getString(R.string.Settings_WhiteList))
-                    .setMessage(this.getString(R.string.Alert_First_time_whitelist))
-                    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            Settings.set(Settings.SET_FIRST_TIME_WHITELIST, true);
-                        }
-                    })
-                    .setIcon(android.R.drawable.ic_dialog_info)
-                    .show();
-        }
     }
 
     @Override

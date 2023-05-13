@@ -58,7 +58,6 @@
     <string name="Settings_FMD_via_Pin_Description">Consente di comunicare con FMD tramite un pin. Verrete aggiunti a una lista bianca temporanea.</string>
     <string name="Settings_Enter_Pin">Inserisci Pin</string>
     <string name="MH_Pin_Accepted">Pin corretto\!</string>
-    <string name="Alert_First_time_whitelist">Qui è possibile aggiungere i propri contatti alla lista bianca. I contatti inseriti nella lista bianca potranno inviare comandi al telefono tramite SMS.</string>
     <string name="Alert_First_Time_contact_added">Congratulazioni. Avete aggiunto il vostro primo contatto. Ora è possibile comunicare con FMD inviando un messaggio SMS contenente "fmd" dal numero di telefono inserito nell\'elenco. Se tutto funziona, l\'applicazione risponderà.</string>
     <string name="R_Stop_ring">STOP SQUILLI</string>
     <string name="Settings_Log">Registro</string>
