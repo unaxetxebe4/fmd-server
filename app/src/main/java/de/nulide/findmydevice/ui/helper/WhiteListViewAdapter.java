@@ -13,7 +13,7 @@ import de.nulide.findmydevice.data.WhiteList;
 
 public class WhiteListViewAdapter extends BaseAdapter {
 
-    private WhiteList whitelist;
+    private final WhiteList whitelist;
     private final LayoutInflater inflater;
 
     public WhiteListViewAdapter(Context context, WhiteList whitelist) {

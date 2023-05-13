@@ -167,4 +167,6 @@
     <string name="Notification_Fail_Description">Notification when something fails, like the connection to fmd server.</string>
     <string name="NOTIFY_PASSWORD_CHANGE_FAIL_TITLE">Password change failed</string>
     <string name="NOTIFY_PASSWORD_CHANGE_FAIL_CONTENT">Something went wrong, the password is not updated.</string>
+    <string name="Whitelist_help">The contacts in this list are allowed to send FMD commands via SMS. Commands from everyone else will be ignored.</string>
+    <string name="Whitelist_empty">No allowed contacts. Click the button to add some!</string>
 </resources>

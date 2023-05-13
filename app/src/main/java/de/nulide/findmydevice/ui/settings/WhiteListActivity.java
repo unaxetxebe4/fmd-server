@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.database.DataSetObserver;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -16,6 +17,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -41,6 +43,7 @@ public class WhiteListActivity extends AppCompatActivity implements View.OnClick
 
     private ListView listWhiteList;
     private WhiteListViewAdapter whiteListAdapter;
+    private TextView textWhitelistEmpty;
     private Button buttonAddContact;
 
     @Override
@@ -56,6 +59,22 @@ public class WhiteListActivity extends AppCompatActivity implements View.OnClick
         listWhiteList.setAdapter(whiteListAdapter);
         listWhiteList.setOnItemClickListener(this);
         registerForContextMenu(listWhiteList);
+
+        whiteListAdapter.registerDataSetObserver(new DataSetObserver() {
+            @Override
+            public void onChanged() {
+                if (whiteList.isEmpty()) {
+                    textWhitelistEmpty.setVisibility(View.VISIBLE);
+                } else {
+                    textWhitelistEmpty.setVisibility(View.GONE);
+                }
+            }
+        });
+
+        textWhitelistEmpty = findViewById(R.id.whitelistEmpty);
+        if (whiteList.isEmpty()) {
+            textWhitelistEmpty.setVisibility(View.VISIBLE);
+        }
 
         buttonAddContact = findViewById(R.id.buttonAddContact);
         buttonAddContact.setOnClickListener(this);
@@ -183,14 +202,12 @@ public class WhiteListActivity extends AppCompatActivity implements View.OnClick
                 whiteListAdapter.notifyDataSetChanged();
                 if (!(Boolean) Settings.get(Settings.SET_FIRST_TIME_CONTACT_ADDED)) {
                     new AlertDialog.Builder(this)
-                            .setTitle("WhiteList")
                             .setMessage(this.getString(R.string.Alert_First_Time_contact_added))
                             .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
                                     Settings.set(Settings.SET_FIRST_TIME_CONTACT_ADDED, true);
                                 }
                             })
-                            .setIcon(android.R.drawable.ic_dialog_info)
                             .show();
                 }
             } else {
