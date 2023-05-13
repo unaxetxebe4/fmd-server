@@ -60,7 +60,7 @@
     <string name="Settings_FMD_via_Pin_Description">Erlauben Sie die Kommunikation mit FMD über eine Pin. Sie werden in eine temporäre Whitelist aufgenommen.</string>
     <string name="About_Version">FMD-Version:</string>
     <string name="Settings_FMDConfig">FMD-Einstellungen</string>
-    <string name="Settings_WhiteList">WhiteList</string>
+    <string name="Settings_WhiteList">Erlaubte Kontakte</string>
     <string name="Settings_OpenCellId">OpenCellId</string>
     <string name="Settings_Permissions">Berechtigungen</string>
     <string name="Settings_Logs">Log</string>

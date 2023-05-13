@@ -77,7 +77,7 @@
     <string name="About_Version">FMD version:</string>
     <string name="Main_OpenWhiteList" translatable="false">+</string>
     <string name="Settings_FMDConfig">FMD-Config</string>
-    <string name="Settings_WhiteList">WhiteList</string>
+    <string name="Settings_WhiteList">Allowed Contacts</string>
     <string name="Settings_OpenCellId">OpenCellId</string>
     <string name="Settings_Permissions">Permissions</string>
     <string name="Settings_Logs">Logs</string>
