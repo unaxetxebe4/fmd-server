@@ -167,4 +167,5 @@
     <string name="Notification_Fail_Description">Notification when something fails, like the connection to fmd server.</string>
     <string name="NOTIFY_PASSWORD_CHANGE_FAIL_TITLE">Password change failed</string>
     <string name="NOTIFY_PASSWORD_CHANGE_FAIL_CONTENT">Something went wrong, the password is not updated.</string>
+    <string name="paste">Paste</string>
 </resources>
