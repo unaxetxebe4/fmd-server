@@ -77,7 +77,6 @@
     <string name="Error">Ошибка</string>
     <string name="Main_WhiteListCounterText">Белый список:</string>
     <string name="OpenCellId_OpenCellId">OpenCellId</string>
-    <string name="OpenCellId_API_Key_Description">API-КЛЮЧ:</string>
     <string name="Notification_Usage">Использование</string>
     <string name="Pin_Usage">Использование Pin</string>
     <string name="Notification_Lifecycle">Жизненный цикл</string>
