@@ -50,6 +50,20 @@
                     android:text="@string/paste" />
             </LinearLayout>
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                android:text="@string/OpenCellId_help" />
+
+            <Button
+                android:id="@+id/buttonOpenOpenCellIdWebsite"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                android:text="@string/OpenCellId_open_website" />
+
         </LinearLayout>
     </ScrollView>
 

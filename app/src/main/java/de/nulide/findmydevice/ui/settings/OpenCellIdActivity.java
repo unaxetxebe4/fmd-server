@@ -3,6 +3,8 @@ package de.nulide.findmydevice.ui.settings;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -24,7 +26,6 @@ public class OpenCellIdActivity extends AppCompatActivity implements TextWatcher
     private Settings Settings;
 
     private EditText editTextOpenCellIdKey;
-    private Button buttonPaste;
 
 
     @Override
@@ -38,8 +39,11 @@ public class OpenCellIdActivity extends AppCompatActivity implements TextWatcher
         editTextOpenCellIdKey.setText((String) Settings.get(Settings.SET_OPENCELLID_API_KEY));
         editTextOpenCellIdKey.addTextChangedListener(this);
 
-        buttonPaste = findViewById(R.id.buttonPaste);
+        Button buttonPaste = findViewById(R.id.buttonPaste);
         buttonPaste.setOnClickListener(this::onPasteClicked);
+
+        Button buttonOpenOpenCellIdWebsite = findViewById(R.id.buttonOpenOpenCellIdWebsite);
+        buttonOpenOpenCellIdWebsite.setOnClickListener(this::onOpenWebsiteClicked);
     }
 
     @Override
@@ -66,5 +70,10 @@ public class OpenCellIdActivity extends AppCompatActivity implements TextWatcher
         if (pasteData != null) {
             editTextOpenCellIdKey.setText(pasteData);
         }
+    }
+
+    private void onOpenWebsiteClicked(View view) {
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://opencellid.org/"));
+        startActivity(intent);
     }
 }
