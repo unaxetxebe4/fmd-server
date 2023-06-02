@@ -179,7 +179,6 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
             alert.setView(registerLayout);
             PostListener postListener = this;
             alert.setPositiveButton(getString(R.string.Ok), new DialogInterface.OnClickListener() {
-                @RequiresApi(api = Build.VERSION_CODES.KITKAT)
                 public void onClick(DialogInterface dialog, int whichButton) {
                     String oldPassword = oldPasswordInput.getText().toString();
                     String password = passwordInput.getText().toString();

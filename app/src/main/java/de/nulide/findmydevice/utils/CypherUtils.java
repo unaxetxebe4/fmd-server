@@ -160,7 +160,6 @@ public class CypherUtils {
         return null;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public static String decryptWithKey(PrivateKey priv, byte[] encryptedMsg){
         final Cipher rsa;
         try {

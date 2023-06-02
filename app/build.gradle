@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId "de.nulide.findmydevice"
-        minSdkVersion 18
+        minSdkVersion 19
         targetSdkVersion 33
         versionCode 20
         versionName "0.2.9"
