@@ -21,8 +21,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.security.PrivateKey;
 
-import javax.crypto.BadPaddingException;
-
 import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.data.Settings;
 import de.nulide.findmydevice.data.io.IO;
@@ -188,12 +186,12 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
                     String passwordCheck = passwordInputCheck.getText().toString();
                     if (!password.isEmpty() && password.equals(passwordCheck) && !oldPassword.isEmpty()) {
                         try {
-                            PrivateKey privKey = CypherUtils.decryptKey((String) settings.get(Settings.SET_FMD_CRYPT_PRIVKEY), oldPassword);
+                            PrivateKey privKey = CypherUtils.decryptKeyWithPassword((String) settings.get(Settings.SET_FMD_CRYPT_PRIVKEY), oldPassword);
                             if (privKey == null) {
                                 Toast.makeText(context, "Wrong Password.", Toast.LENGTH_LONG).show();
                                 return;
                             }
-                            String newPrivKey = CypherUtils.encryptKey(privKey, password);
+                            String newPrivKey = CypherUtils.encryptKeyWithPassword(privKey, password);
                             String hashedPW = CypherUtils.hashWithPKBDF2(password);
                             String[] splitHash = hashedPW.split("///SPLIT///");
 

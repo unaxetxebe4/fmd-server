@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.text.method.PasswordTransformationMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.webkit.WebView;
@@ -20,10 +19,8 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
-import java.util.Set;
-
 import de.nulide.findmydevice.R;
-import de.nulide.findmydevice.data.Keys;
+import de.nulide.findmydevice.data.FmdKeyPair;
 import de.nulide.findmydevice.data.Settings;
 import de.nulide.findmydevice.data.io.IO;
 import de.nulide.findmydevice.data.io.JSONFactory;
@@ -100,7 +97,7 @@ public class AddAccountActivity extends AppCompatActivity implements View.OnClic
                     String password = passwordInput.getText().toString();
                     String passwordCheck = passwordInputCheck.getText().toString();
                     if (!password.isEmpty() && password.equals(passwordCheck)) {
-                        Keys keys = CypherUtils.genKeys(password);
+                        FmdKeyPair keys = FmdKeyPair.generateNewFmdKeyPair(password);
                         settings.setKeys(keys);
                         String hashedPW = CypherUtils.hashWithPKBDF2(password);
                         String splitHash[] = hashedPW.split("///SPLIT///");

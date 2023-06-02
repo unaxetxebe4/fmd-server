@@ -8,7 +8,6 @@ import java.security.spec.EncodedKeySpec;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.X509EncodedKeySpec;
 import java.util.HashMap;
-import java.util.Set;
 import java.util.Timer;
 
 import de.nulide.findmydevice.data.io.OldKeyIO;
@@ -137,7 +136,7 @@ public class Settings extends HashMap<Integer, Object> {
         write(true);
     }
 
-    public Keys getKeys() {
+    public FmdKeyPair getKeys() {
         if (get(SET_FMD_CRYPT_PUBKEY).equals("")) {
             return null;
         } else {
@@ -153,13 +152,13 @@ public class Settings extends HashMap<Integer, Object> {
                 e.printStackTrace();
             }
 
-            return new Keys(publicKey, (String) get(SET_FMD_CRYPT_PRIVKEY));
+            return new FmdKeyPair(publicKey, (String) get(SET_FMD_CRYPT_PRIVKEY));
 
 
         }
     }
 
-    public void setKeys(Keys keys) {
+    public void setKeys(FmdKeyPair keys) {
         set(SET_FMD_CRYPT_PRIVKEY, keys.getEncryptedPrivateKey());
         set(SET_FMD_CRYPT_PUBKEY, CypherUtils.encodeBase64(keys.getPublicKey().getEncoded()));
     }
@@ -167,7 +166,7 @@ public class Settings extends HashMap<Integer, Object> {
     public void updateSettings() {
         if (((Integer) get(SET_SET_VERSION)) < settingsVersion && ((Integer) get(SET_INTRODUCTION_VERSION)) > 0) {
             if (!((String) get(SET_FMDSERVER_ID)).isEmpty()) {
-                Keys keys = OldKeyIO.readKeys();
+                FmdKeyPair keys = OldKeyIO.readKeys();
                 String HashedPW = OldKeyIO.readHashedPW();
                 setKeys(keys);
                 set(SET_FMD_CRYPT_HPW, HashedPW);

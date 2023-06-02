@@ -19,7 +19,7 @@ import java.security.PublicKey;
 import java.util.Calendar;
 
 import de.nulide.findmydevice.R;
-import de.nulide.findmydevice.data.Keys;
+import de.nulide.findmydevice.data.FmdKeyPair;
 import de.nulide.findmydevice.data.Settings;
 import de.nulide.findmydevice.data.io.IO;
 import de.nulide.findmydevice.data.io.JSONFactory;
@@ -65,7 +65,7 @@ public class FMDServerService extends JobService {
     public static void sendPicture(Context context, String picture, String url, String id) {
         Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
 
-        Keys keys = settings.getKeys();
+        FmdKeyPair keys = settings.getKeys();
         if (keys.equals(null)) {
             // TODO: Handle no Keys are returned
             // reinitiate Keys in settings
@@ -73,7 +73,7 @@ public class FMDServerService extends JobService {
         }
         PublicKey publicKey = keys.getPublicKey();
 
-        String password = CypherUtils.generateRandomString(25);
+        String password = CypherUtils.toHex(CypherUtils.generateSecureRandom(25)); // FIXME: better AES API
         String encryptedPicture = CypherUtils.encryptWithAES(picture.getBytes(StandardCharsets.UTF_8), password);
         String encryptedPassword = CypherUtils.encodeBase64(CypherUtils.encryptWithKey(publicKey, password));
         String msg = encryptedPassword + "___PICTURE-DATA___" + encryptedPicture;
