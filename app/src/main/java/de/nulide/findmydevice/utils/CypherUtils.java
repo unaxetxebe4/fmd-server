@@ -4,9 +4,11 @@ import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 
+import org.bouncycastle.crypto.generators.Argon2BytesGenerator;
+import org.bouncycastle.crypto.params.Argon2Parameters;
+import org.bouncycastle.util.Arrays;
 import org.bouncycastle.util.io.pem.PemObject;
 import org.bouncycastle.util.io.pem.PemWriter;
-import org.mindrot.jbcrypt.BCrypt;
 
 import java.io.IOException;
 import java.io.StringWriter;
@@ -44,16 +46,59 @@ public class CypherUtils {
     private static final int iterationCount = 1867;
     private static final int saltLength = keySize / 4;
 
+    // Argon2: see the PROTOCOL.md
+    private static final int ARGON2_T = 1;
+    private static final int ARGON2_P = 4;
+    private static final int ARGON2_M = 131072;
+    private static final int ARGON2_HASH_LENGTH = 32; // byte = 256 bit
+    private static final int ARGON2_SALT_LENGTH = 16; // byte = 128 bit
+
+
     public static String hashPassword(String password) {
-        return BCrypt.hashpw(password, org.mindrot.jbcrypt.BCrypt.gensalt(12));
+        // Inspired by https://github.com/spring-projects/spring-security/blob/6.1.0/crypto/src/main/java/org/springframework/security/crypto/argon2/Argon2PasswordEncoder.java
+        // and https://www.baeldung.com/java-argon2-hashing#2-implement-argon2-hashing-with-bouncy-castle
+        byte[] salt = generateSecureRandom(ARGON2_SALT_LENGTH);
+        byte[] out = new byte[ARGON2_HASH_LENGTH];
+        byte[] passwordBytes = password.getBytes(StandardCharsets.UTF_8);
+
+        Argon2Parameters params = new Argon2Parameters.Builder(Argon2Parameters.ARGON2_id)
+                .withVersion(Argon2Parameters.ARGON2_VERSION_13)
+                .withIterations(ARGON2_T)
+                .withParallelism(ARGON2_P)
+                .withMemoryAsKB(ARGON2_M)
+                .withSalt(salt)
+                .build();
+
+        Argon2BytesGenerator generator = new Argon2BytesGenerator();
+        generator.init(params);
+        generator.generateBytes(passwordBytes, out);
+
+        return Argon2EncodingUtils.encode(out, params);
     }
 
-    public static boolean checkPassword(String hash, String password) {
-        if(!hash.isEmpty() && !password.isEmpty()) {
-            return BCrypt.checkpw(password, hash);
+    public static boolean checkPassword(String expectedHash, String password) {
+        if (expectedHash.isEmpty() || password.isEmpty()) {
+            return false;
         }
-        return false;
+
+        Argon2EncodingUtils.Argon2Hash decodedExpected;
+        try {
+            decodedExpected = Argon2EncodingUtils.decode(expectedHash);
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+            return false;
+        }
+
+        byte[] passwordBytes = password.getBytes(StandardCharsets.UTF_8);
+        byte[] actualBytes = new byte[decodedExpected.getHash().length];
+
+        Argon2BytesGenerator generator = new Argon2BytesGenerator();
+        generator.init(decodedExpected.getParameters());
+        generator.generateBytes(passwordBytes, actualBytes);
+
+        return Arrays.constantTimeAreEqual(decodedExpected.getHash(), actualBytes);
     }
+
 
     public static String hashWithPKBDF2(String password){
         try {
