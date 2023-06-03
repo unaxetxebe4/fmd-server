@@ -1,6 +1,6 @@
 package de.nulide.findmydevice.utils;
 
-import android.util.Pair;
+import androidx.annotation.VisibleForTesting;
 
 import org.bouncycastle.crypto.generators.Argon2BytesGenerator;
 import org.bouncycastle.crypto.params.Argon2Parameters;
@@ -37,7 +37,8 @@ import javax.xml.bind.DatatypeConverter;
 public class CypherUtils {
 
     private static final int AES_GCM_IV_SIZE_BYTES = 12; // byte = 96 bit
-    private static final int AES_GCM_KEY_SIZE_BYTES = 32; // byte = 256 bit
+    @VisibleForTesting
+    protected static final int AES_GCM_KEY_SIZE_BYTES = 32; // byte = 256 bit
     private static final int AES_GCM_TAG_SIZE_BITS = 128; // bit = 16 byte
 
     // Argon2: see the PROTOCOL.md
@@ -58,8 +59,8 @@ public class CypherUtils {
     public static String hashPasswordForFmdPin(String password) {
         password = CONTEXT_STRING_FMD_PIN + password;
         byte[] salt = generateSecureRandom(ARGON2_SALT_LENGTH);
-        Pair<byte[], Argon2Parameters> pair = hashPasswordArgon2(password, salt);
-        return Argon2EncodingUtils.encode(pair.first, pair.second);
+        Argon2Result result = hashPasswordArgon2(password, salt);
+        return Argon2EncodingUtils.encode(result.hash, result.params);
     }
 
     public static String hashPasswordForLogin(String password) {
@@ -73,12 +74,12 @@ public class CypherUtils {
 
     public static String hashPasswordForLogin(String password, byte[] saltBytes) {
         password = CONTEXT_STRING_LOGIN + password;
-        Pair<byte[], Argon2Parameters> pair = hashPasswordArgon2(password, saltBytes);
-        return Argon2EncodingUtils.encode(pair.first, pair.second);
+        Argon2Result result = hashPasswordArgon2(password, saltBytes);
+        return Argon2EncodingUtils.encode(result.hash, result.params);
     }
 
 
-    private static Pair<byte[], Argon2Parameters> hashPasswordArgon2(String password, byte[] salt) {
+    private static Argon2Result hashPasswordArgon2(String password, byte[] salt) {
         // Inspired by https://github.com/spring-projects/spring-security/blob/6.1.0/crypto/src/main/java/org/springframework/security/crypto/argon2/Argon2PasswordEncoder.java
         // and https://www.baeldung.com/java-argon2-hashing#2-implement-argon2-hashing-with-bouncy-castle
         if (!password.startsWith(CONTEXT_PREFIX)) {
@@ -101,7 +102,7 @@ public class CypherUtils {
         generator.init(params);
         generator.generateBytes(passwordBytes, out);
 
-        return new Pair<byte[], Argon2Parameters>(out, params);
+        return new Argon2Result(out, params);
     }
 
     public static boolean checkPasswordForFmdPin(String expectedHash, String password) {
@@ -190,7 +191,6 @@ public class CypherUtils {
         return null;
     }
 
-
     // ------ Section: asymmetric key (key backup) ------
 
     public static String encryptPrivateKeyWithPassword(PrivateKey priv, String password) {
@@ -198,8 +198,8 @@ public class CypherUtils {
         String contextualisedPw = CONTEXT_STRING_ASYM_KEY_WRAP + password;
         byte[] argonSalt = generateSecureRandom(ARGON2_SALT_LENGTH);
 
-        Pair<byte[], Argon2Parameters> pair = hashPasswordArgon2(contextualisedPw, argonSalt);
-        byte[] aesKey = pair.first;
+        Argon2Result result = hashPasswordArgon2(contextualisedPw, argonSalt);
+        byte[] aesKey = result.hash;
 
         // PEM-encode the key and symmetrically encrypt
         String pem = pemEncodeRsaKey(priv);
@@ -216,8 +216,8 @@ public class CypherUtils {
         byte[] ciphertextBytes = Arrays.copyOfRange(concatBytes, ARGON2_SALT_LENGTH, concatBytes.length);
 
         String contextualisedPw = CONTEXT_STRING_ASYM_KEY_WRAP + password;
-        Pair<byte[], Argon2Parameters> pair = hashPasswordArgon2(contextualisedPw, argonSalt);
-        byte[] aesKey = pair.first;
+        Argon2Result result = hashPasswordArgon2(contextualisedPw, argonSalt);
+        byte[] aesKey = result.hash;
 
         byte[] aesPlaintextBytes = decryptWithAes(ciphertextBytes, aesKey);
         String pem = new String(aesPlaintextBytes, StandardCharsets.UTF_8);
@@ -258,8 +258,8 @@ public class CypherUtils {
 
     public static byte[] encryptWithAes(byte[] msgBytes, byte[] aesKey) {
         if (aesKey.length != AES_GCM_KEY_SIZE_BYTES) {
-            Logger.log("CypherUtils.encryptWithAes", "Got too small aesKey.length:" + aesKey.length);
-            return null;
+            // This is a bug
+            throw new RuntimeException("Bad AES key size:" + aesKey.length);
         }
         try {
             byte[] ivBytes = generateSecureRandom(AES_GCM_IV_SIZE_BYTES);
@@ -335,6 +335,17 @@ public class CypherUtils {
             }
         }
         return out.toByteArray();
+    }
+
+    private static class Argon2Result {
+        public final byte[] hash;
+        public final Argon2Parameters params;
+
+
+        public Argon2Result(byte[] hash, Argon2Parameters params) {
+            this.hash = hash;
+            this.params = params;
+        }
     }
 
 }

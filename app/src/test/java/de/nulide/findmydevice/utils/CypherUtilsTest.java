@@ -53,7 +53,7 @@ public class CypherUtilsTest {
     @Test
     public void testAESEncryption() {
         String msg = "Another msg";
-        byte[] password = "secure".getBytes();
+        byte[] password = CypherUtils.generateSecureRandom(CypherUtils.AES_GCM_KEY_SIZE_BYTES);
         byte[] encryptedMsg = CypherUtils.encryptWithAes(msg.getBytes(), password);
         byte[] decryptedMsg = CypherUtils.decryptWithAes(encryptedMsg, password);
         Assert.assertEquals(msg, new String(decryptedMsg));
