@@ -14,7 +14,6 @@ import com.android.volley.RequestQueue;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.nio.charset.StandardCharsets;
 import java.security.PublicKey;
 import java.util.Calendar;
 
@@ -45,20 +44,31 @@ public class FMDServerService extends JobService {
     public static void sendNewLocation(Context context, Settings settings, String provider, String lat, String lon) {
         PublicKey publicKey = settings.getKeys().getPublicKey();
         RequestQueue queue = PatchedVolley.newRequestQueue(context);
+
         BatteryManager bm = (BatteryManager) context.getSystemService(BATTERY_SERVICE);
         String batLevel = Integer.valueOf(bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY)).toString();
 
         final JSONObject locationDataObject = new JSONObject();
         try {
-            locationDataObject.put("provider", CypherUtils.encodeBase64(CypherUtils.encryptWithKey(publicKey, provider)));
+            locationDataObject.put("provider", provider);
             locationDataObject.put("date", Calendar.getInstance().getTimeInMillis());
-            locationDataObject.put("bat", CypherUtils.encodeBase64(CypherUtils.encryptWithKey(publicKey, batLevel)));
-            locationDataObject.put("lon", CypherUtils.encodeBase64(CypherUtils.encryptWithKey(publicKey, lon)));
-            locationDataObject.put("lat", CypherUtils.encodeBase64(CypherUtils.encryptWithKey(publicKey, lat)));
+            locationDataObject.put("bat", batLevel);
+            locationDataObject.put("lon", lon);
+            locationDataObject.put("lat", lat);
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        RestHandler restHandler = new RestHandler(context, RestHandler.DEFAULT_RESP_METHOD, RestHandler.LOCATION, locationDataObject);
+        String jsonSerialised = locationDataObject.toString();
+        byte[] encryptedLocationBytes = CypherUtils.encryptWithKey(publicKey, jsonSerialised);
+        String encryptedLocation = CypherUtils.encodeBase64(encryptedLocationBytes);
+
+        final JSONObject encryptedLocationDataObject = new JSONObject();
+        try {
+            encryptedLocationDataObject.put("encryptedLocation", encryptedLocation);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        RestHandler restHandler = new RestHandler(context, RestHandler.DEFAULT_RESP_METHOD, RestHandler.LOCATION, encryptedLocationDataObject);
         restHandler.runWithAT();
     }
 
