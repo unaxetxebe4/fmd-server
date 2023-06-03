@@ -71,12 +71,9 @@ public class FMDServerService extends JobService {
             // reinitiate Keys in settings
             return;
         }
-        PublicKey publicKey = keys.getPublicKey();
 
-        String password = CypherUtils.toHex(CypherUtils.generateSecureRandom(25)); // FIXME: better AES API
-        String encryptedPicture = CypherUtils.encryptWithAES(picture.getBytes(StandardCharsets.UTF_8), password);
-        String encryptedPassword = CypherUtils.encodeBase64(CypherUtils.encryptWithKey(publicKey, password));
-        String msg = encryptedPassword + "___PICTURE-DATA___" + encryptedPicture;
+        byte[] msgBytes = CypherUtils.encryptWithKey(keys.getPublicKey(), picture);
+        String msg = CypherUtils.encodeBase64(msgBytes);
 
         final JSONObject dataObject = new JSONObject();
         try {

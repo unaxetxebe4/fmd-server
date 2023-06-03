@@ -152,40 +152,41 @@ public class CypherUtils {
     }
 
     public static byte[] encryptWithKey(PublicKey pub, String msg) {
-        final Cipher rsa;
+        byte[] sessionKey = generateSecureRandom(AES_GCM_KEY_SIZE_BYTES);
+
         try {
-            rsa = Cipher.getInstance("RSA/ECB/PKCS1Padding");
-            rsa.init(Cipher.ENCRYPT_MODE, pub);
-            return rsa.doFinal(msg.getBytes());
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (NoSuchPaddingException e) {
-            e.printStackTrace();
-        } catch (InvalidKeyException e) {
-            e.printStackTrace();
-        } catch (BadPaddingException e) {
-            e.printStackTrace();
-        } catch (IllegalBlockSizeException e) {
+            // Symmetrically encrypt message
+            byte[] msgBytes = msg.getBytes(StandardCharsets.UTF_8);
+            byte[] ivAndAesCiphertext = encryptWithAes(msgBytes, sessionKey);
+
+            // Wrap key
+            Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
+            cipher.init(Cipher.ENCRYPT_MODE, pub);
+            byte[] sessionKeyPacket = cipher.doFinal(sessionKey);
+
+            return concatByteArrays(sessionKeyPacket, ivAndAesCiphertext);
+        } catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException |
+                 BadPaddingException | IllegalBlockSizeException e) {
             e.printStackTrace();
         }
         return null;
     }
 
     public static String decryptWithKey(PrivateKey priv, byte[] encryptedMsg) {
-        final Cipher rsa;
+        byte[] sessionKeyPacket = Arrays.copyOfRange(encryptedMsg, 0, 1024 / 8);
+        byte[] ivAndAesCiphertext = Arrays.copyOfRange(encryptedMsg, 1024 / 8, encryptedMsg.length);
+
         try {
-            rsa = Cipher.getInstance("RSA/ECB/PKCS1Padding");
-            rsa.init(Cipher.DECRYPT_MODE, priv);
-            return new String(rsa.doFinal(encryptedMsg), StandardCharsets.UTF_8);
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (NoSuchPaddingException e) {
-            e.printStackTrace();
-        } catch (BadPaddingException e) {
-            e.printStackTrace();
-        } catch (IllegalBlockSizeException e) {
-            e.printStackTrace();
-        } catch (InvalidKeyException e) {
+            // Unwrap key
+            Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
+            cipher.init(Cipher.DECRYPT_MODE, priv);
+            byte[] sessionKey = cipher.doFinal(sessionKeyPacket);
+
+            // Symmetrically decrypt message
+            byte[] msg = decryptWithAes(ivAndAesCiphertext, sessionKey);
+            return new String(msg, StandardCharsets.UTF_8);
+        } catch (NoSuchAlgorithmException | NoSuchPaddingException | BadPaddingException |
+                 IllegalBlockSizeException | InvalidKeyException e) {
             e.printStackTrace();
         }
         return null;
