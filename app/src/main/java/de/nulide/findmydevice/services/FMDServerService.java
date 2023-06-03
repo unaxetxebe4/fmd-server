@@ -88,12 +88,11 @@ public class FMDServerService extends JobService {
         restHandler.runWithAT();
     }
 
-    public static void registerOnServer(Context context, String url, String privKey, String pubKey, String salt, String hashedPW, PostListener postListener) {
+    public static void registerOnServer(Context context, String url, String privKey, String pubKey, String hashedPW, PostListener postListener) {
         IO.context = context;
         Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
         final JSONObject jsonObject = new JSONObject();
         try {
-            jsonObject.put("salt", salt);
             jsonObject.put("hashedPassword", hashedPW);
             jsonObject.put("pubkey", pubKey);
             jsonObject.put("privkey", privKey);
@@ -153,14 +152,14 @@ public class FMDServerService extends JobService {
         }
         RestHandler saltHandler = new RestHandler(context, RestHandler.DEFAULT_METHOD, RestHandler.SALT, req);
         saltHandler.setResponseListener(response -> {
-                if (response.has("Data")) {
+            if (response.has("Data")) {
                     try {
-
-                        String hashedPW = CypherUtils.hashWithPKBDF2WithGivenSalt(password, (String) response.get("Data"));
+                        String salt = (String) response.get("Data");
+                        String hashedPW = CypherUtils.hashPasswordForLogin(password, salt);
                         req.put("Data", hashedPW);
-                    RestHandler atHandler = new RestHandler(context, RestHandler.DEFAULT_METHOD, RestHandler.GET_AT, req);
-                    atHandler.setResponseListener(atResponse ->{
-                        if(atResponse.has("Data")){
+                        RestHandler atHandler = new RestHandler(context, RestHandler.DEFAULT_METHOD, RestHandler.GET_AT, req);
+                        atHandler.setResponseListener(atResponse -> {
+                            if (atResponse.has("Data")) {
                             try {
                                 req.put("IDT", (String)atResponse.get("Data"));
                                 RestHandler privKeyHandler = new RestHandler(context, RestHandler.DEFAULT_METHOD, RestHandler.PRIVKEY, req);
@@ -203,17 +202,13 @@ public class FMDServerService extends JobService {
 
         });
         saltHandler.run();
-
-
     }
 
-    public static void changePassword(Context context, String newPrivKey, String salt, String hashedPW, PostListener postListener) {
+    public static void changePassword(Context context, String newPrivKey, String hashedPW, PostListener postListener) {
         IO.context = context;
         Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
         final JSONObject jsonObject = new JSONObject();
         try {
-
-            jsonObject.put("salt", salt);
             jsonObject.put("hashedPassword", hashedPW);
             jsonObject.put("privkey", newPrivKey);
         } catch (JSONException e) {
@@ -230,7 +225,6 @@ public class FMDServerService extends JobService {
             }
         });
         restHandler.runWithAT();
-
     }
 
 

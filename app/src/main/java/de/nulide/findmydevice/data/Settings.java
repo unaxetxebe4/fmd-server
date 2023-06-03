@@ -153,8 +153,6 @@ public class Settings extends HashMap<Integer, Object> {
             }
 
             return new FmdKeyPair(publicKey, (String) get(SET_FMD_CRYPT_PRIVKEY));
-
-
         }
     }
 

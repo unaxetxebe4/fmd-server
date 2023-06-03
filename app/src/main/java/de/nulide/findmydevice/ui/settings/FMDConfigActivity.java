@@ -132,7 +132,7 @@ public class FMDConfigActivity extends AppCompatActivity implements CompoundButt
                 public void onClick(DialogInterface dialog, int whichButton) {
                     String text = input.getText().toString();
                     if (!text.isEmpty()) {
-                        settings.set(Settings.SET_PIN, CypherUtils.hashPassword(text));
+                        settings.set(Settings.SET_PIN, CypherUtils.hashPasswordForFmdPin(text));
                         buttonEnterPin.setBackgroundColor(colorEnabled);
                     }
                 }

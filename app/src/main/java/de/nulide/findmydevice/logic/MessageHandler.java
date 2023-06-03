@@ -153,7 +153,7 @@ public class MessageHandler {
                     DevicePolicyManager devicePolicyManager = (DevicePolicyManager) context.getSystemService(Context.DEVICE_POLICY_SERVICE);
                     if (msg.length() > COM_DELETE.length()+1) {
                         String pin = originalMsg.substring(COM_DELETE.length()+1, msg.length());
-                        if (CypherUtils.checkPassword((String) ch.getSettings().get(Settings.SET_PIN), pin)) {
+                        if (CypherUtils.checkPasswordForFmdPin((String) ch.getSettings().get(Settings.SET_PIN), pin)) {
                             devicePolicyManager.wipeData(0);
                             replyBuilder.append(context.getString(R.string.MH_Delete));
                         } else {
@@ -251,7 +251,7 @@ public class MessageHandler {
     public boolean checkForPin(String msg) {
         if (msg.length() > ((String) ch.getSettings().get(Settings.SET_FMD_COMMAND)).length() + 1) {
             String pin = msg.substring(((String) ch.getSettings().get(Settings.SET_FMD_COMMAND)).length() + 1);
-            return CypherUtils.checkPassword((String) ch.getSettings().get(Settings.SET_PIN), pin);
+            return CypherUtils.checkPasswordForFmdPin((String) ch.getSettings().get(Settings.SET_PIN), pin);
         }
         return false;
     }
@@ -262,7 +262,7 @@ public class MessageHandler {
         boolean isPinValid = false;
         String newMsg = parts[0];
         for (int i = 1; i < parts.length; i++) {
-            if (CypherUtils.checkPassword(pinHash, parts[i])) {
+            if (CypherUtils.checkPasswordForFmdPin(pinHash, parts[i])) {
                 isPinValid = true;
             } else {
                 newMsg += " " + parts[i];

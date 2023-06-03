@@ -2,7 +2,6 @@ package de.nulide.findmydevice.ui.settings;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -15,7 +14,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -185,16 +183,15 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
                     String passwordCheck = passwordInputCheck.getText().toString();
                     if (!password.isEmpty() && password.equals(passwordCheck) && !oldPassword.isEmpty()) {
                         try {
-                            PrivateKey privKey = CypherUtils.decryptKeyWithPassword((String) settings.get(Settings.SET_FMD_CRYPT_PRIVKEY), oldPassword);
+                            PrivateKey privKey = CypherUtils.decryptPrivateKeyWithPassword((String) settings.get(Settings.SET_FMD_CRYPT_PRIVKEY), oldPassword);
                             if (privKey == null) {
                                 Toast.makeText(context, "Wrong Password.", Toast.LENGTH_LONG).show();
                                 return;
                             }
-                            String newPrivKey = CypherUtils.encryptKeyWithPassword(privKey, password);
-                            String hashedPW = CypherUtils.hashWithPKBDF2(password);
-                            String[] splitHash = hashedPW.split("///SPLIT///");
+                            String newPrivKey = CypherUtils.encryptPrivateKeyWithPassword(privKey, password);
+                            String hashedPW = CypherUtils.hashPasswordForLogin(password);
 
-                            FMDServerService.changePassword(context, newPrivKey, splitHash[0], splitHash[1], postListener);
+                            FMDServerService.changePassword(context, newPrivKey, hashedPW, postListener);
                         }catch (Exception bdp){
                             Toast.makeText(context, "Wrong Password.", Toast.LENGTH_LONG).show();
                         }

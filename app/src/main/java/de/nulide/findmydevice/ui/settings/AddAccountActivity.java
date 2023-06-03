@@ -99,12 +99,11 @@ public class AddAccountActivity extends AppCompatActivity implements View.OnClic
                     if (!password.isEmpty() && password.equals(passwordCheck)) {
                         FmdKeyPair keys = FmdKeyPair.generateNewFmdKeyPair(password);
                         settings.setKeys(keys);
-                        String hashedPW = CypherUtils.hashWithPKBDF2(password);
-                        String splitHash[] = hashedPW.split("///SPLIT///");
-                        settings.set(Settings.SET_FMD_CRYPT_HPW, splitHash[1]);
+                        String hashedPW = CypherUtils.hashPasswordForLogin(password);
+                        settings.set(Settings.SET_FMD_CRYPT_HPW, hashedPW);
                         settings.setNow(Settings.SET_FMDSERVER_PASSWORD_SET, true);
                         settings.set(Settings.SET_FMD_CRYPT_NEW_SALT, true);
-                        FMDServerService.registerOnServer(context, (String) settings.get(Settings.SET_FMDSERVER_URL), keys.getEncryptedPrivateKey(), keys.getBase64PublicKey(), splitHash[0], splitHash[1], postListener);
+                        FMDServerService.registerOnServer(context, (String) settings.get(Settings.SET_FMDSERVER_URL), keys.getEncryptedPrivateKey(), keys.getBase64PublicKey(), hashedPW, postListener);
                     }else{
                         Toast.makeText(context, "Passwords do not match.", Toast.LENGTH_LONG).show();
                     }
