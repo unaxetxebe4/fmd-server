@@ -41,6 +41,8 @@ public class CypherUtils {
     protected static final int AES_GCM_KEY_SIZE_BYTES = 32; // byte = 256 bit
     private static final int AES_GCM_TAG_SIZE_BITS = 128; // bit = 16 byte
 
+    private static final int RSA_KEY_SIZE_BITS = 3072;
+
     // Argon2: see the PROTOCOL.md
     private static final int ARGON2_T = 1;
     private static final int ARGON2_P = 4;
@@ -141,10 +143,8 @@ public class CypherUtils {
     public static KeyPair genRsaKeyPair() {
         try {
             KeyPairGenerator keyGen = KeyPairGenerator.getInstance("RSA");
-            SecureRandom random = SecureRandom.getInstance("SHA1PRNG");
-            keyGen.initialize(1024, random);
-            KeyPair pair = keyGen.generateKeyPair();
-            return pair;
+            keyGen.initialize(RSA_KEY_SIZE_BITS, new SecureRandom());
+            return keyGen.generateKeyPair();
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
@@ -173,8 +173,8 @@ public class CypherUtils {
     }
 
     public static String decryptWithKey(PrivateKey priv, byte[] encryptedMsg) {
-        byte[] sessionKeyPacket = Arrays.copyOfRange(encryptedMsg, 0, 1024 / 8);
-        byte[] ivAndAesCiphertext = Arrays.copyOfRange(encryptedMsg, 1024 / 8, encryptedMsg.length);
+        byte[] sessionKeyPacket = Arrays.copyOfRange(encryptedMsg, 0, RSA_KEY_SIZE_BITS / 8);
+        byte[] ivAndAesCiphertext = Arrays.copyOfRange(encryptedMsg, RSA_KEY_SIZE_BITS / 8, encryptedMsg.length);
 
         try {
             // Unwrap key
