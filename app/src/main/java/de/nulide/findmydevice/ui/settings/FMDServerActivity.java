@@ -83,7 +83,7 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
             deleteButton.setEnabled(true);
         }
 
-        if(!(Boolean) settings.get(Settings.SET_FIRST_TIME_FMD_SERVER)) {
+        if (!(Boolean) settings.get(Settings.SET_FIRST_TIME_FMD_SERVER)) {
             new AlertDialog.Builder(this)
                     .setTitle(getString(R.string.Settings_FMDServer))
                     .setMessage(this.getString(R.string.Alert_First_time_fmdserver))
@@ -98,7 +98,7 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
 
         checkBoxFMDServerGPS = findViewById(R.id.checkBoxFMDServerGPS);
         checkBoxFMDServerCell = findViewById(R.id.checkBoxFMDServerCell);
-        switch((Integer)settings.get(Settings.SET_FMDSERVER_LOCATION_TYPE)){
+        switch ((Integer) settings.get(Settings.SET_FMDSERVER_LOCATION_TYPE)) {
             case 0:
                 checkBoxFMDServerGPS.setChecked(true);
                 break;
@@ -122,7 +122,7 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
         super.onResume();
         PushReceiver.registerWithUnifiedPush(this);
 
-        if (PushReceiver.isRegisteredWithUnifiedPush(this)){
+        if (PushReceiver.isRegisteredWithUnifiedPush(this)) {
             textViewPushHelp.setText(R.string.Settings_FMDServer_Push_Description_Available);
         } else {
             textViewPushHelp.setText(R.string.Settings_FMDServer_Push_Description_Missing);
@@ -131,17 +131,17 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-       if(buttonView == checkBoxFMDServerCell || buttonView == checkBoxFMDServerGPS){
-            if(checkBoxFMDServerGPS.isChecked() && checkBoxFMDServerCell.isChecked()){
+        if (buttonView == checkBoxFMDServerCell || buttonView == checkBoxFMDServerGPS) {
+            if (checkBoxFMDServerGPS.isChecked() && checkBoxFMDServerCell.isChecked()) {
                 settings.set(Settings.SET_FMDSERVER_LOCATION_TYPE, 2);
-            }else if(checkBoxFMDServerGPS.isChecked()){
+            } else if (checkBoxFMDServerGPS.isChecked()) {
                 settings.set(Settings.SET_FMDSERVER_LOCATION_TYPE, 0);
-            }else if(checkBoxFMDServerCell.isChecked()){
+            } else if (checkBoxFMDServerCell.isChecked()) {
                 settings.set(Settings.SET_FMDSERVER_LOCATION_TYPE, 1);
-            }else{
+            } else {
                 settings.set(Settings.SET_FMDSERVER_LOCATION_TYPE, 0);
             }
-        }else if(buttonView == checkBoxLowBat){
+        } else if (buttonView == checkBoxLowBat) {
             settings.set(Settings.SET_FMD_LOW_BAT_SEND, isChecked);
         }
     }
@@ -169,14 +169,14 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
 
     @Override
     public void onClick(View v) {
-        if(v == deleteButton){
+        if (v == deleteButton) {
             AlertDialog.Builder privacyPolicy = new AlertDialog.Builder(context);
             privacyPolicy.setTitle(getString(R.string.Settings_FMDServer_Alert_DeleteData))
                     .setMessage(R.string.Settings_FMDServer_Alert_DeleteData_Desc)
                     .setPositiveButton(getString(R.string.Ok), new DialogClickListenerForUnregistration(this))
                     .setNegativeButton(getString(R.string.cancel), null)
                     .show();
-        }else if (v == logoutButton) {
+        } else if (v == logoutButton) {
             settings.set(Settings.SET_FMDSERVER_ID, "");
             settings.set(Settings.SET_FMD_CRYPT_HPW, "");
             settings.set(Settings.SET_FMD_CRYPT_PRIVKEY, "");
@@ -212,10 +212,10 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
                             String[] splitHash = hashedPW.split("///SPLIT///");
 
                             FMDServerService.changePassword(context, newPrivKey, splitHash[0], splitHash[1], postListener);
-                        }catch (Exception bdp){
+                        } catch (Exception bdp) {
                             Toast.makeText(context, "Wrong Password.", Toast.LENGTH_LONG).show();
                         }
-                    }else{
+                    } else {
                         Toast.makeText(context, "Failed", Toast.LENGTH_LONG).show();
                     }
                 }
@@ -224,22 +224,23 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
         }
     }
 
-    private void onOpenUnifiedPushClicked(View view){
+    private void onOpenUnifiedPushClicked(View view) {
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://unifiedpush.org/"));
         startActivity(intent);
     }
 
     @Override
     public void onRestFinished(boolean success) {
-        if(success){
+        if (success) {
             Toast.makeText(context, "Success", Toast.LENGTH_LONG).show();
             settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
-        }else{
+        } else {
             Toast.makeText(context, "Failed", Toast.LENGTH_LONG).show();
             settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
         }
     }
-    private class DialogClickListenerForUnregistration implements DialogInterface.OnClickListener{
+
+    private class DialogClickListenerForUnregistration implements DialogInterface.OnClickListener {
 
         private final Context context;
 
