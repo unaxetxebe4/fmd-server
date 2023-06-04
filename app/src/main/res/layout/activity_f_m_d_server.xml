@@ -63,6 +63,37 @@
                 android:ems="10"
                 android:text="@string/Settings_FMDServer_Delete_Button" />
 
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?android:attr/listDivider" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="1mm"
+                android:text="Push"
+                android:textColor="@color/colorAccent"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textPushHelp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="1mm"
+                android:text="@string/Settings_FMDServer_Push_Description_Missing" />
+
+            <Button
+                android:id="@+id/buttonOpenUnifiedPush"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="1mm"
+                android:ems="10"
+                android:text="@string/Settings_FMDServer_Push_Open_UP" />
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"

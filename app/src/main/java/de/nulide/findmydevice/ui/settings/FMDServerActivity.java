@@ -2,6 +2,8 @@ package de.nulide.findmydevice.ui.settings;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
@@ -38,9 +40,11 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
     private Settings settings;
     private EditText editTextFMDServerUpdateTime;
     private TextView textViewFMDServerID;
+    private TextView textViewPushHelp;
     private Button changePasswordButton;
     private Button logoutButton;
     private Button deleteButton;
+    private Button openUnifiedPushButton;
     private CheckBox checkBoxFMDServerGPS;
     private CheckBox checkBoxFMDServerCell;
     private CheckBox checkBoxLowBat;
@@ -59,6 +63,7 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
         editTextFMDServerUpdateTime.addTextChangedListener(this);
 
         textViewFMDServerID = findViewById(R.id.textViewID);
+        textViewPushHelp = findViewById(R.id.textPushHelp);
 
         changePasswordButton = findViewById(R.id.buttonChangePassword);
         changePasswordButton.setOnClickListener(this);
@@ -68,6 +73,9 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
 
         deleteButton = findViewById(R.id.buttonDeleteData);
         deleteButton.setOnClickListener(this);
+
+        openUnifiedPushButton = findViewById(R.id.buttonOpenUnifiedPush);
+        openUnifiedPushButton.setOnClickListener(this::onOpenUnifiedPushClicked);
 
         if (!((String) settings.get(Settings.SET_FMDSERVER_ID)).isEmpty()) {
             textViewFMDServerID.setText((String) settings.get(Settings.SET_FMDSERVER_ID));
@@ -105,14 +113,20 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
         checkBoxFMDServerCell.setOnCheckedChangeListener(this);
 
         checkBoxLowBat = findViewById(R.id.checkBoxFMDServerLowBatUpload);
-        if((Boolean)settings.get(Settings.SET_FMD_LOW_BAT_SEND)){
-            checkBoxLowBat.setChecked(true);
-        }else{
-            checkBoxLowBat.setChecked(false);
-        }
+        checkBoxLowBat.setChecked((Boolean) settings.get(Settings.SET_FMD_LOW_BAT_SEND));
         checkBoxLowBat.setOnCheckedChangeListener(this);
+    }
 
-        PushReceiver.Register(context);
+    @Override
+    protected void onResume() {
+        super.onResume();
+        PushReceiver.registerWithUnifiedPush(this);
+
+        if (PushReceiver.isRegisteredWithUnifiedPush(this)){
+            textViewPushHelp.setText(R.string.Settings_FMDServer_Push_Description_Available);
+        } else {
+            textViewPushHelp.setText(R.string.Settings_FMDServer_Push_Description_Missing);
+        }
     }
 
     @Override
@@ -210,6 +224,11 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
         }
     }
 
+    private void onOpenUnifiedPushClicked(View view){
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://unifiedpush.org/"));
+        startActivity(intent);
+    }
+
     @Override
     public void onRestFinished(boolean success) {
         if(success){
@@ -222,7 +241,7 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
     }
     private class DialogClickListenerForUnregistration implements DialogInterface.OnClickListener{
 
-        private Context context;
+        private final Context context;
 
         public DialogClickListenerForUnregistration(Context context) {
             this.context = context;

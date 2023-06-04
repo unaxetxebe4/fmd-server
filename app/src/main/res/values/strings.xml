@@ -167,4 +167,7 @@
     <string name="Notification_Fail_Description">Notification when something fails, like the connection to fmd server.</string>
     <string name="NOTIFY_PASSWORD_CHANGE_FAIL_TITLE">Password change failed</string>
     <string name="NOTIFY_PASSWORD_CHANGE_FAIL_CONTENT">Something went wrong, the password is not updated.</string>
+    <string name="Settings_FMDServer_Push_Description_Missing">FMD Server requires a UnifiedPush distributor app to be installed. Install one, and then return here. It will automatically be detected.</string>
+    <string name="Settings_FMDServer_Push_Description_Available">Successfully registered for push notifications.</string>
+    <string name="Settings_FMDServer_Push_Open_UP">Open UnifiedPush Website</string>
 </resources>
