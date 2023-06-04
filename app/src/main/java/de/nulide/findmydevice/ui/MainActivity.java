@@ -11,11 +11,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-
-import org.unifiedpush.android.connector.UnifiedPush;
-
-import java.util.ArrayList;
-
 import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.data.Settings;
 import de.nulide.findmydevice.data.WhiteList;
@@ -58,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        PushReceiver.Register(this);
+        PushReceiver.registerWithUnifiedPush(this);
         IO.context = this;
         Logger.init(Thread.currentThread(), this);
         Notifications.init(this, false);
@@ -205,10 +200,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             textViewServerRegistered.setTextColor(colorDisabled);
         }
 
-        if(UnifiedPush.getDistributors(this, new ArrayList<String>()).size() > 0){
+        if (PushReceiver.isRegisteredWithUnifiedPush(this)) {
             textViewPush.setText(R.string.Available);
             textViewPush.setTextColor(colorEnabled);
-        }else{
+        } else {
             textViewPush.setTextColor(colorDisabled);
             textViewPush.setText(R.string.NOT_AVAILABLE);
         }

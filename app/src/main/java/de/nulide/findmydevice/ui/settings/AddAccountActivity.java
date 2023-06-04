@@ -203,7 +203,7 @@ public class AddAccountActivity extends AppCompatActivity implements View.OnClic
                 }else{
                     settingIntent = new Intent(context, FMDServerActivity.class);
                     FMDServerService.scheduleJob(context, 0);
-                    PushReceiver.Register(context);
+                    PushReceiver.registerWithUnifiedPush(context);
                 }
                 startActivity(settingIntent);
             }
