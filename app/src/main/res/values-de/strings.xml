@@ -126,7 +126,7 @@
     <string name="Settings_FMDServer_Alert_DeleteData">Daten löschen</string>
     <string name="Settings_FMDServer_Alert_DeleteData_Desc">Dadurch werden alle Daten auf dem Server gelöscht. Sind Sie sicher?</string>
     <string name="Settings_FMD_Send_Loc_on_Boot">Senden Sie Ihren Standort, wenn das Gerät hochfährt.</string>
-    <string name="Settings_FMDServer_Push_Description_Missing">FMD Server benötigt eine UnifiedPush-Distributor-App. Installiere eine, und komm dann hierher zurück. UnifiedPush wird automatisch erkannt.</string>
+    <string name="Settings_FMDServer_Push_Description_Missing">Das Senden von Befehlen von FMD Server zu Ihrem Handy benötigt eine UnifiedPush-Distributor-App. Installiere eine, und komm dann hierher zurück. UnifiedPush wird automatisch erkannt.</string>
     <string name="Settings_FMDServer_Push_Description_Available">Erfolgreich für Pushnachrichten registriert.</string>
     <string name="Settings_FMDServer_Push_Open_UP">UnifiedPush Webseite Öffnen</string>
 </resources>
