@@ -96,7 +96,10 @@
     <string name="Settings_FMDServer_ID">FMDServer ID</string>
     <string name="NOT_AVAILABLE">Nicht verfügbar</string>
     <string name="Available">Verfügbar</string>
-    <string name="Settings_FMD_Server_ID_Desc">ID, die Sie für die Suche nach dem Gerät benötigen.\n\nWird angezeigt, sobald die ServerSettings ausgefüllt und das Passwort festgelegt ist.</string>
+    <string name="Settings_FMD_Server_General">Allgemein</string>
+    <string name="Settings_FMD_Server_ID_Desc">Sie benötigen Ihre User ID um Ihr Gerät mit FMD Server zu finden. Notieren Sie sie sich und bewahren Sie sie sicher auf.</string>
+    <string name="Settings_FMD_Server_Server_URL">Server URL:</string>
+    <string name="Settings_FMD_Server_User_ID">User ID:</string>
     <string name="Settings_FMDServer_Register_Button">Am Server anmelden</string>
     <string name="Info_FMD_Command">FMD-Kommando:</string>
     <string name="Info_Permission_Stats">Aktiviert Berechtigungen:</string>
@@ -129,4 +132,5 @@
     <string name="Settings_FMDServer_Push_Description_Missing">Das Senden von Befehlen von FMD Server zu Ihrem Handy benötigt eine UnifiedPush-Distributor-App. Installiere eine, und komm dann hierher zurück. UnifiedPush wird automatisch erkannt.</string>
     <string name="Settings_FMDServer_Push_Description_Available">Erfolgreich für Pushnachrichten registriert.</string>
     <string name="Settings_FMDServer_Push_Open_UP">UnifiedPush Webseite Öffnen</string>
+    <string name="copied">Kopiert</string>
 </resources>

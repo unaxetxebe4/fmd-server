@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,20 +33,30 @@ import de.nulide.findmydevice.net.interfaces.PostListener;
 import de.nulide.findmydevice.receiver.PushReceiver;
 import de.nulide.findmydevice.services.FMDServerService;
 import de.nulide.findmydevice.utils.CypherUtils;
+import de.nulide.findmydevice.utils.Utils;
 
 public class FMDServerActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener, TextWatcher, PostListener {
 
     private Settings settings;
-    private EditText editTextFMDServerUpdateTime;
-    private TextView textViewFMDServerID;
-    private TextView textViewPushHelp;
+
+    private TextView textViewServerUrl;
+    private TextView textViewUserId;
+    private ImageView buttonCopyServerUrl;
+    private ImageView buttonCopyUserId;
     private Button changePasswordButton;
     private Button logoutButton;
     private Button deleteButton;
+
+    private TextView textViewPushHelp;
     private Button openUnifiedPushButton;
+
+    private EditText editTextFMDServerUpdateTime;
+
     private CheckBox checkBoxFMDServerGPS;
     private CheckBox checkBoxFMDServerCell;
+
     private CheckBox checkBoxLowBat;
+
     private Context context;
 
     @Override
@@ -56,12 +67,15 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
         settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
         this.context = this;
 
-        editTextFMDServerUpdateTime = findViewById(R.id.editTextFMDServerUpdateTime);
-        editTextFMDServerUpdateTime.setText(((Integer) settings.get(Settings.SET_FMDSERVER_UPDATE_TIME)).toString());
-        editTextFMDServerUpdateTime.addTextChangedListener(this);
+        textViewServerUrl = findViewById(R.id.textViewServerUrl);
+        textViewUserId = findViewById(R.id.textViewUserId);
+        textViewServerUrl.setText((String) settings.get(Settings.SET_FMDSERVER_URL));
+        textViewUserId.setText((String) settings.get(Settings.SET_FMDSERVER_ID));
 
-        textViewFMDServerID = findViewById(R.id.textViewID);
-        textViewPushHelp = findViewById(R.id.textPushHelp);
+        buttonCopyServerUrl = findViewById(R.id.buttonCopyServerUrl);
+        buttonCopyUserId = findViewById(R.id.buttonCopyUserId);
+        buttonCopyServerUrl.setOnClickListener(this::onCopyServerUrlClicked);
+        buttonCopyUserId.setOnClickListener(this::onCopyUserIdClicked);
 
         changePasswordButton = findViewById(R.id.buttonChangePassword);
         changePasswordButton.setOnClickListener(this::onChangePasswordClicked);
@@ -72,14 +86,15 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
         deleteButton = findViewById(R.id.buttonDeleteData);
         deleteButton.setOnClickListener(this::onDeleteClicked);
 
+        textViewPushHelp = findViewById(R.id.textPushHelp);
+
         openUnifiedPushButton = findViewById(R.id.buttonOpenUnifiedPush);
         openUnifiedPushButton.setOnClickListener(this::onOpenUnifiedPushClicked);
 
-        if (!((String) settings.get(Settings.SET_FMDSERVER_ID)).isEmpty()) {
-            textViewFMDServerID.setText((String) settings.get(Settings.SET_FMDSERVER_ID));
-            deleteButton.setVisibility(View.VISIBLE);
-            deleteButton.setEnabled(true);
-        }
+        editTextFMDServerUpdateTime = findViewById(R.id.editTextFMDServerUpdateTime);
+        editTextFMDServerUpdateTime.setText(((Integer) settings.get(Settings.SET_FMDSERVER_UPDATE_TIME)).toString());
+        editTextFMDServerUpdateTime.addTextChangedListener(this);
+
 
         if (!(Boolean) settings.get(Settings.SET_FIRST_TIME_FMD_SERVER)) {
             new AlertDialog.Builder(this)
@@ -163,6 +178,18 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
                 settings.set(Settings.SET_FMDSERVER_UPDATE_TIME, Integer.parseInt(editTextFMDServerUpdateTime.getText().toString()));
             }
         }
+    }
+
+    private void onCopyServerUrlClicked(View view) {
+        String label = getString(R.string.Settings_FMD_Server_Server_URL).replace(":", "");
+        String text = (String) settings.get(Settings.SET_FMDSERVER_URL);
+        Utils.copyToClipboard(this, label, text);
+    }
+
+    private void onCopyUserIdClicked(View view) {
+        String label = getString(R.string.Settings_FMD_Server_User_ID).replace(":", "");
+        String text = (String) settings.get(Settings.SET_FMDSERVER_ID);
+        Utils.copyToClipboard(this, label, text);
     }
 
     private void onDeleteClicked(View view) {

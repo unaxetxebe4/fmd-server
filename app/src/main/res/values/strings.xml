@@ -112,7 +112,10 @@
     <string name="Settings_FMDServer_ID">FMDServer ID</string>
     <string name="NOT_AVAILABLE">Not Available</string>
     <string name="Available">Available</string>
-    <string name="Settings_FMD_Server_ID_Desc">The ID you need to search for the Device.\n\nWill be shown once ServerSettings are filled and password is set.</string>
+    <string name="Settings_FMD_Server_General">General</string>
+    <string name="Settings_FMD_Server_ID_Desc">You need the user ID to find your device with FMD Server. Write it down and keep it safe.</string>
+    <string name="Settings_FMD_Server_Server_URL">Server URL:</string>
+    <string name="Settings_FMD_Server_User_ID">User ID:</string>
     <string name="Settings_FMDServer_Register_Button">Register on Server</string>
     <string name="Info_FMD_Command">FMD-Command:</string>
     <string name="Info_Permission_Stats">Enabled Permissions:</string>
@@ -170,4 +173,5 @@
     <string name="Settings_FMDServer_Push_Description_Missing">Sending commands from FMD Server to your phone requires a UnifiedPush distributor app. Install one, and then return here. It will automatically be detected.</string>
     <string name="Settings_FMDServer_Push_Description_Available">Successfully registered for push notifications.</string>
     <string name="Settings_FMDServer_Push_Open_UP">Open UnifiedPush Website</string>
+    <string name="copied">Copied</string>
 </resources>

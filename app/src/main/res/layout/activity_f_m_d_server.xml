@@ -18,26 +18,74 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="1mm"
-                android:text="@string/Settings_FMDServer_ID"
+                android:text="@string/Settings_FMD_Server_General"
                 android:textColor="@color/colorAccent"
                 android:textSize="17sp"
                 android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="1mm"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="1mm"
+                    android:text="@string/Settings_FMD_Server_Server_URL" />
+
+                <TextView
+                    android:id="@+id/textViewServerUrl"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    tools:text="https://fmd.example.com" />
+
+                <ImageView
+                    android:id="@+id/buttonCopyServerUrl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackground"
+                    android:padding="1mm"
+                    android:src="@drawable/ic_content_copy" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="1mm"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="1mm"
+                    android:text="@string/Settings_FMD_Server_User_ID" />
+
+                <TextView
+                    android:id="@+id/textViewUserId"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    tools:text="abcdefgh" />
+
+                <ImageView
+                    android:id="@+id/buttonCopyUserId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackground"
+                    android:padding="1mm"
+                    android:src="@drawable/ic_content_copy" />
+            </LinearLayout>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="1mm"
                 android:text="@string/Settings_FMD_Server_ID_Desc" />
-
-            <TextView
-                android:id="@+id/textViewID"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="3mm"
-                android:ems="10"
-                android:gravity="center_horizontal"
-                android:text="@string/NOT_AVAILABLE"
-                android:textAlignment="center" />
 
             <Button
                 android:id="@+id/buttonChangePassword"

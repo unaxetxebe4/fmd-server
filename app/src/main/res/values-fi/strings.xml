@@ -104,7 +104,6 @@
     <string name="Settings_FMDServer">FMD-palvelin</string>
     <string name="Settings_FMDServer_ID">FMD-palvelimen ID</string>
     <string name="NOT_AVAILABLE">ei saatavilla</string>
-    <string name="Settings_FMD_Server_ID_Desc">ID-tunnus, jota käytetään laitteen etsimiseen.\n\nNäytetään, kun palvelinasetukset ja salasana ovat asetettu.</string>
     <string name="Settings_FMDServer_Register_Button">Rekisteröidy palvelimelle</string>
     <string name="Info_FMD_Command">FMD-Komento:</string>
     <string name="Info_Permission_Stats">Annetut käyttöoikeudet:</string>
