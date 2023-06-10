@@ -159,10 +159,10 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
                     .setNegativeButton(getString(R.string.cancel), null)
                     .show();
         }else if (v == logoutButton) {
-            settings.set(Settings.SET_FMDSERVER_ID, "");
-            settings.set(Settings.SET_FMD_CRYPT_HPW, "");
-            settings.set(Settings.SET_FMD_CRYPT_PRIVKEY, "");
-            settings.set(Settings.SET_FMD_CRYPT_PUBKEY, "");
+            settings.setNow(Settings.SET_FMDSERVER_ID, "");
+            settings.setNow(Settings.SET_FMD_CRYPT_HPW, "");
+            settings.setNow(Settings.SET_FMD_CRYPT_PRIVKEY, "");
+            settings.setNow(Settings.SET_FMD_CRYPT_PUBKEY, "");
             FMDServerService.cancelAll(this);
             finish();
         } else if (v == changePasswordButton) {
