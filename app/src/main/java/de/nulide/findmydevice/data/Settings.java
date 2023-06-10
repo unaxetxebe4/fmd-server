@@ -146,9 +146,7 @@ public class Settings extends HashMap<Integer, Object> {
             try {
                 KeyFactory keyFactory = KeyFactory.getInstance("RSA");
                 publicKey = keyFactory.generatePublic(pubKeySpec);
-            } catch (NoSuchAlgorithmException e) {
-                e.printStackTrace();
-            } catch (InvalidKeySpecException e) {
+            } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
                 e.printStackTrace();
             }
 

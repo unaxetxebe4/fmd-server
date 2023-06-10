@@ -42,7 +42,7 @@ final class Argon2EncodingUtils {
     // private static final Base64.Encoder b64encoder = Base64.getEncoder().withoutPadding();
 
     // private static final Base64.Decoder b64decoder = Base64.getDecoder();
-    private static final int BASE64_FLAGS = Base64.NO_PADDING | Base64.NO_WRAP;
+    public static final int BASE64_FLAGS = Base64.NO_PADDING | Base64.NO_WRAP;
     // END PATCH
 
     private Argon2EncodingUtils() {

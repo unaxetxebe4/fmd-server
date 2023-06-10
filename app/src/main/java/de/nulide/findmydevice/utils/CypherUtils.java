@@ -1,5 +1,7 @@
 package de.nulide.findmydevice.utils;
 
+import android.util.Base64;
+
 import androidx.annotation.VisibleForTesting;
 
 import org.bouncycastle.crypto.generators.Argon2BytesGenerator;
@@ -74,7 +76,10 @@ public class CypherUtils {
     }
 
     public static String hashPasswordForLogin(String password, String saltBase64) {
-        return hashPasswordForLogin(password, decodeBase64(saltBase64));
+        // Must use the same decoding flags as the encoder.
+        // If we used `DatatypeConverter.parseBase64Binary(toDecode)` we would loose a byte.
+        byte[] salt = Base64.decode(saltBase64, Argon2EncodingUtils.BASE64_FLAGS);
+        return hashPasswordForLogin(password, salt);
     }
 
     public static String hashPasswordForLogin(String password, byte[] saltBytes) {
