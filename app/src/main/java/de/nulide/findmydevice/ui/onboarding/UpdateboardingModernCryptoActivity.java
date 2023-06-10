@@ -1,6 +1,7 @@
 package de.nulide.findmydevice.ui.onboarding;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import de.nulide.findmydevice.data.io.JSONFactory;
 import de.nulide.findmydevice.data.io.json.JSONMap;
 import de.nulide.findmydevice.services.FMDServerService;
 import de.nulide.findmydevice.ui.MainActivity;
+import de.nulide.findmydevice.utils.Notifications;
 
 public class UpdateboardingModernCryptoActivity extends AppCompatActivity {
 
@@ -92,5 +94,20 @@ public class UpdateboardingModernCryptoActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    public static void notifyAboutCryptoRefreshIfRequired(Context context) {
+        Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
+        boolean alreadyCompleted = (Boolean) settings.get(Settings.SET_UPDATEBOARDING_MODERN_CRYPTO_COMPLETED);
+        if (alreadyCompleted) return;
+
+        boolean isRegisteredWithServer = settings.checkAccountExists();
+        boolean isPinSet = !settings.get(Settings.SET_PIN).equals("");
+
+        if (isRegisteredWithServer || isPinSet) {
+            String title = context.getString(R.string.notify_crypto_update_title);
+            String text = context.getString(R.string.notify_crypto_update_text);
+            Notifications.notify(context, title, text, Notifications.CHANNEL_SECURITY);
+        }
     }
 }

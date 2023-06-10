@@ -86,7 +86,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return;
         }
         if (settings.checkAccountExists()) {
-            FMDServerService.checkForOldSalt(this);
             FMDServerService.scheduleJob(this, 0);
         }
         findAllViewsById();

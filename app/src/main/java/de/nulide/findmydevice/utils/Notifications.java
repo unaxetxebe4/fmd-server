@@ -12,10 +12,7 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
 import de.nulide.findmydevice.R;
-import de.nulide.findmydevice.services.FMDServerService;
 import de.nulide.findmydevice.ui.MainActivity;
-import de.nulide.findmydevice.ui.settings.FMDConfigActivity;
-import de.nulide.findmydevice.ui.settings.FMDServerActivity;
 
 public class Notifications {
 
@@ -40,13 +37,10 @@ public class Notifications {
                     .setContentTitle(title)
                     .setContentText(text)
                     .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                    .setStyle(new NotificationCompat.BigTextStyle()
-                        .bigText(text));
-            if(channelID == CHANNEL_SECURITY){
-                Intent intent = new Intent(context, FMDServerActivity.class);
-                PendingIntent pendingIntent =
-                        PendingIntent.getActivity(
-                                context,0,intent,PendingIntent.FLAG_IMMUTABLE);
+                    .setStyle(new NotificationCompat.BigTextStyle().bigText(text));
+            if (channelID == CHANNEL_SECURITY) {
+                Intent intent = new Intent(context, MainActivity.class);
+                PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE);
                 builder.setAutoCancel(true);
                 builder.setContentIntent(pendingIntent);
             }

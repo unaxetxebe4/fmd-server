@@ -91,7 +91,6 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
                             String hashedPW = CypherUtils.hashPasswordForLogin(password);
                             settings.set(Settings.SET_FMD_CRYPT_HPW, hashedPW);
                             settings.setNow(Settings.SET_FMDSERVER_PASSWORD_SET, true);
-                            settings.set(Settings.SET_FMD_CRYPT_NEW_SALT, true);
                             FMDServerService.registerOnServer(context, (String) settings.get(Settings.SET_FMDSERVER_URL), keys.getEncryptedPrivateKey(), keys.getBase64PublicKey(), hashedPW, postListener);
                         }).start();
                     } else {
