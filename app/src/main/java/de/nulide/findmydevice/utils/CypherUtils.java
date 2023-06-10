@@ -83,6 +83,15 @@ public class CypherUtils {
         return Argon2EncodingUtils.encode(result.hash, result.params);
     }
 
+    public static Argon2Result hashPasswordForKeyWrap(String password) {
+        byte[] salt = generateSecureRandom(ARGON2_SALT_LENGTH);
+        return hashPasswordForKeyWrap(password, salt);
+    }
+
+    public static Argon2Result hashPasswordForKeyWrap(String password, byte[] saltBytes) {
+        password = CONTEXT_STRING_ASYM_KEY_WRAP + password;
+        return hashPasswordArgon2(password, saltBytes);
+    }
 
     private static Argon2Result hashPasswordArgon2(String password, byte[] salt) {
         // Inspired by https://github.com/spring-projects/spring-security/blob/6.1.0/crypto/src/main/java/org/springframework/security/crypto/argon2/Argon2PasswordEncoder.java
@@ -201,14 +210,10 @@ public class CypherUtils {
         return null;
     }
 
-    // ------ Section: asymmetric key (key backup) ------
+    // ------ Section: asymmetric key (key wrap) ------
 
     public static String encryptPrivateKeyWithPassword(PrivateKey priv, String password) {
-        // Derive key with Argon2 as KDF and a context
-        String contextualisedPw = CONTEXT_STRING_ASYM_KEY_WRAP + password;
-        byte[] argonSalt = generateSecureRandom(ARGON2_SALT_LENGTH);
-
-        Argon2Result result = hashPasswordArgon2(contextualisedPw, argonSalt);
+        Argon2Result result = hashPasswordForKeyWrap(password);
         byte[] aesKey = result.hash;
 
         // PEM-encode the key and symmetrically encrypt
@@ -216,17 +221,16 @@ public class CypherUtils {
         byte[] aesPlaintextBytes = pem.getBytes(StandardCharsets.UTF_8);
         byte[] aesCiphertextBytes = encryptWithAes(aesPlaintextBytes, aesKey);
 
-        byte[] concat = concatByteArrays(argonSalt, aesCiphertextBytes);
+        byte[] concat = concatByteArrays(result.params.getSalt(), aesCiphertextBytes);
         return encodeBase64(concat);
     }
 
     public static PrivateKey decryptPrivateKeyWithPassword(String encryptedPrivKey, String password) {
         byte[] concatBytes = decodeBase64(encryptedPrivKey);
-        byte[] argonSalt = Arrays.copyOfRange(concatBytes, 0, ARGON2_SALT_LENGTH);
+        byte[] saltBytes = Arrays.copyOfRange(concatBytes, 0, ARGON2_SALT_LENGTH);
         byte[] ciphertextBytes = Arrays.copyOfRange(concatBytes, ARGON2_SALT_LENGTH, concatBytes.length);
 
-        String contextualisedPw = CONTEXT_STRING_ASYM_KEY_WRAP + password;
-        Argon2Result result = hashPasswordArgon2(contextualisedPw, argonSalt);
+        Argon2Result result = hashPasswordForKeyWrap(password, saltBytes);
         byte[] aesKey = result.hash;
 
         byte[] aesPlaintextBytes = decryptWithAes(ciphertextBytes, aesKey);
