@@ -170,22 +170,9 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
                 }
             }
         } else if (requestCode == EXPORT_REQ_CODE && resultCode == Activity.RESULT_OK) {
-            Uri uri = null;
             if (data != null) {
-                uri = data.getData();
-                try {
-                    ParcelFileDescriptor sco = this.getContentResolver().openFileDescriptor(uri, "w");
-                    PrintWriter out = new PrintWriter(new FileOutputStream(sco.getFileDescriptor()));
-                    Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
-                    ObjectMapper mapper = new ObjectMapper();
-                    String json = mapper.writeValueAsString(settings);
-                    out.write(json);
-                    out.close();
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                } catch (JsonProcessingException e) {
-                    e.printStackTrace();
-                }
+                Uri uri = data.getData();
+                Settings.writeToUri(this, uri);
             }
         }
     }

@@ -1,6 +1,16 @@
 package de.nulide.findmydevice.data;
 
 
+import android.content.Context;
+import android.net.Uri;
+import android.os.ParcelFileDescriptor;
+import android.widget.Toast;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.security.KeyFactory;
 import java.security.NoSuchAlgorithmException;
 import java.security.PublicKey;
@@ -10,7 +20,11 @@ import java.security.spec.X509EncodedKeySpec;
 import java.util.HashMap;
 import java.util.Timer;
 
+import de.nulide.findmydevice.R;
+import de.nulide.findmydevice.data.io.IO;
+import de.nulide.findmydevice.data.io.JSONFactory;
 import de.nulide.findmydevice.data.io.OldKeyIO;
+import de.nulide.findmydevice.data.io.json.JSONMap;
 import de.nulide.findmydevice.logic.command.helper.Ringer;
 import de.nulide.findmydevice.tasks.SaveTimerTask;
 import de.nulide.findmydevice.utils.CypherUtils;
@@ -188,5 +202,21 @@ public class Settings extends HashMap<Integer, Object> {
 
     public boolean checkAccountExists(){
         return !((String)get(Settings.SET_FMDSERVER_ID)).isEmpty();
+    }
+
+    public static void writeToUri(Context context, Uri uri) {
+        try {
+            ParcelFileDescriptor sco = context.getContentResolver().openFileDescriptor(uri, "w");
+            PrintWriter out = new PrintWriter(new FileOutputStream(sco.getFileDescriptor()));
+            Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
+            ObjectMapper mapper = new ObjectMapper();
+            String json = mapper.writeValueAsString(settings);
+            out.write(json);
+            out.close();
+            sco.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Toast.makeText(context, R.string.settings_exported, Toast.LENGTH_LONG).show();
     }
 }
