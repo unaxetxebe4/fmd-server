@@ -23,6 +23,7 @@ import java.security.PublicKey;
 import java.security.SecureRandom;
 import java.security.spec.EncodedKeySpec;
 import java.security.spec.InvalidKeySpecException;
+import java.security.spec.MGF1ParameterSpec;
 import java.security.spec.PKCS8EncodedKeySpec;
 
 import javax.crypto.BadPaddingException;
@@ -30,6 +31,8 @@ import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.GCMParameterSpec;
+import javax.crypto.spec.OAEPParameterSpec;
+import javax.crypto.spec.PSource.PSpecified;
 import javax.crypto.spec.SecretKeySpec;
 import javax.xml.bind.DatatypeConverter;
 
@@ -151,6 +154,10 @@ public class CypherUtils {
         return null;
     }
 
+    // Note that we use SHA-256 for MGF1 (not SHA-1). This is because the WebCrypto API only works with SHA-256.
+    // See https://www.w3.org/2014/01/W3C_Web_Crypto_API_status_january_2014.pdf?page=8
+    private static final OAEPParameterSpec OAEP_PARAMS = new OAEPParameterSpec("SHA-256", "MGF1", new MGF1ParameterSpec("SHA-256"), PSpecified.DEFAULT);
+
     public static byte[] encryptWithKey(PublicKey pub, String msg) {
         byte[] sessionKey = generateSecureRandom(AES_GCM_KEY_SIZE_BYTES);
 
@@ -160,13 +167,14 @@ public class CypherUtils {
             byte[] ivAndAesCiphertext = encryptWithAes(msgBytes, sessionKey);
 
             // Wrap key
-            Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
-            cipher.init(Cipher.ENCRYPT_MODE, pub);
+            Cipher cipher = Cipher.getInstance("RSA/ECB/OAEPPadding");
+            cipher.init(Cipher.ENCRYPT_MODE, pub, OAEP_PARAMS); // XXX: should use WRAP_MODE
             byte[] sessionKeyPacket = cipher.doFinal(sessionKey);
 
             return concatByteArrays(sessionKeyPacket, ivAndAesCiphertext);
         } catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException |
-                 BadPaddingException | IllegalBlockSizeException e) {
+                 BadPaddingException | IllegalBlockSizeException |
+                 InvalidAlgorithmParameterException e) {
             e.printStackTrace();
         }
         return null;
@@ -178,15 +186,16 @@ public class CypherUtils {
 
         try {
             // Unwrap key
-            Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
-            cipher.init(Cipher.DECRYPT_MODE, priv);
+            Cipher cipher = Cipher.getInstance("RSA/ECB/OAEPPadding");
+            cipher.init(Cipher.DECRYPT_MODE, priv, OAEP_PARAMS); // XXX: should use UNWRAP_MODE
             byte[] sessionKey = cipher.doFinal(sessionKeyPacket);
 
             // Symmetrically decrypt message
             byte[] msg = decryptWithAes(ivAndAesCiphertext, sessionKey);
             return new String(msg, StandardCharsets.UTF_8);
         } catch (NoSuchAlgorithmException | NoSuchPaddingException | BadPaddingException |
-                 IllegalBlockSizeException | InvalidKeyException e) {
+                 IllegalBlockSizeException | InvalidKeyException |
+                 InvalidAlgorithmParameterException e) {
             e.printStackTrace();
         }
         return null;
