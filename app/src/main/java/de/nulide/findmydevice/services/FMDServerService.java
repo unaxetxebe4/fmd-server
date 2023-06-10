@@ -65,7 +65,7 @@ public class FMDServerService extends JobService {
 
         final JSONObject encryptedLocationDataObject = new JSONObject();
         try {
-            encryptedLocationDataObject.put("encryptedLocation", encryptedLocation);
+            encryptedLocationDataObject.put("Data", encryptedLocation);
         } catch (JSONException e) {
             e.printStackTrace();
         }
