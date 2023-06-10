@@ -11,8 +11,6 @@ import android.content.Context;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import javax.activation.DataHandler;
-
 import de.nulide.findmydevice.data.Settings;
 import de.nulide.findmydevice.data.io.IO;
 import de.nulide.findmydevice.data.io.JSONFactory;

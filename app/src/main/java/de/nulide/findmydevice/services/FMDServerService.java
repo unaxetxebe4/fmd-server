@@ -41,7 +41,7 @@ public class FMDServerService extends JobService {
 
     private static final int JOB_ID = 108;
 
-    public static void sendNewLocation(Context context, Settings settings, String provider, String lat, String lon) {
+    public static void sendNewLocation(Context context, Settings settings, String provider, String lat, String lon, String time) {
         PublicKey publicKey = settings.getKeys().getPublicKey();
         RequestQueue queue = PatchedVolley.newRequestQueue(context);
 
@@ -55,6 +55,7 @@ public class FMDServerService extends JobService {
             locationDataObject.put("bat", batLevel);
             locationDataObject.put("lon", lon);
             locationDataObject.put("lat", lat);
+            locationDataObject.put("time", time);
         } catch (JSONException e) {
             e.printStackTrace();
         }
