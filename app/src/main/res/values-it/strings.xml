@@ -126,7 +126,7 @@
     <string name="MH_NO_SECURE_SETTINGS">Spiacente, l\'applicazione non ha l\'autorizzazione per farlo.</string>
     <string name="MH_Help_expert">" Avanzato - pagina di aiuto per comandi avanzati."</string>
     <string name="Permission_Notification">Se vuoi che FMD gestisca i messaggi da altre applicazioni come Telegram, Whatsapp, ecc., Puoi dare accesso alle notifiche di FMD.</string>
-    <string name="Info_Notification">Notifiche:</string>
+    <string name="Info_Notification_Access">Notifiche:</string>
     <string name="Notification_Server">Server</string>
     <string name="NotificationServer_Description">Visualizza le notifiche inviate dal server.</string>
     <string name="Settings_FMDServer_AutoUpload_Description">Quando la posizione viene richiesta tramite SMS o qualsiasi altro metodo futuro, la posizione può anche essere trasmessa al server se questa opzione è abilitata.</string>

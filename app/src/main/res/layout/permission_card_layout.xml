@@ -168,7 +168,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
                 android:layout_marginStart="30dp"
-                android:text="@string/Info_Notification"
+                android:text="@string/Info_Notification_Access"
                 android:textSize="21sp" />
 
             <TextView

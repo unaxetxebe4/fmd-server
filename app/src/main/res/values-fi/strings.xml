@@ -126,7 +126,7 @@
     <string name="MH_NO_SECURE_SETTINGS">Pahoittelut, sovelluksella ei ole käyttöoikeutta tähän.</string>
     <string name="MH_Help_expert">" expert - ohjesivu asiantuntijakomennoille"</string>
     <string name="Permission_Notification">Sovellus tarjoaa mahdollisuuden vastaanottaa komentoja SMS-viestien lisäksi myös muista viestisovelluksista (kuten Telegram, WhatsApp...). Viestien lukuun vaaditaan pääsy ilmoitusksien käyttöoikeus.</string>
-    <string name="Info_Notification">Ilmoitukset</string>
+    <string name="Info_Notification_Access">Ilmoitukset</string>
     <string name="Notification_Server">Palvelin</string>
     <string name="NotificationServer_Description">Näytä palvelimelta lähetetyt ilmoitukset.</string>
 </resources>
