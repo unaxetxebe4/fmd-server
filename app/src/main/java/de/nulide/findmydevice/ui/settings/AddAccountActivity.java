@@ -83,13 +83,15 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
                     String password = passwordInput.getText().toString();
                     String passwordCheck = passwordInputCheck.getText().toString();
                     if (!password.isEmpty() && password.equals(passwordCheck)) {
-                        FmdKeyPair keys = FmdKeyPair.generateNewFmdKeyPair(password);
-                        settings.setKeys(keys);
-                        String hashedPW = CypherUtils.hashPasswordForLogin(password);
-                        settings.set(Settings.SET_FMD_CRYPT_HPW, hashedPW);
-                        settings.setNow(Settings.SET_FMDSERVER_PASSWORD_SET, true);
-                        settings.set(Settings.SET_FMD_CRYPT_NEW_SALT, true);
-                        FMDServerService.registerOnServer(context, (String) settings.get(Settings.SET_FMDSERVER_URL), keys.getEncryptedPrivateKey(), keys.getBase64PublicKey(), hashedPW, postListener);
+                        new Thread(() -> {
+                            FmdKeyPair keys = FmdKeyPair.generateNewFmdKeyPair(password);
+                            settings.setKeys(keys);
+                            String hashedPW = CypherUtils.hashPasswordForLogin(password);
+                            settings.set(Settings.SET_FMD_CRYPT_HPW, hashedPW);
+                            settings.setNow(Settings.SET_FMDSERVER_PASSWORD_SET, true);
+                            settings.set(Settings.SET_FMD_CRYPT_NEW_SALT, true);
+                            FMDServerService.registerOnServer(context, (String) settings.get(Settings.SET_FMDSERVER_URL), keys.getEncryptedPrivateKey(), keys.getBase64PublicKey(), hashedPW, postListener);
+                        }).start();
                     } else {
                         Toast.makeText(context, "Passwords do not match.", Toast.LENGTH_LONG).show();
                     }
@@ -115,7 +117,9 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
                     String password = passwordInput.getText().toString();
                     String passwordCheck = passwordInputCheck.getText().toString();
                     if (!id.isEmpty() && !password.isEmpty() && passwordCheck.equals(password)) {
-                        FMDServerService.loginOnServer(context, id, password, postListener);
+                        new Thread(() -> {
+                            FMDServerService.loginOnServer(context, id, password, postListener);
+                        }).start();
                     } else {
                         Toast.makeText(context, "Failed to login.", Toast.LENGTH_LONG).show();
                     }
