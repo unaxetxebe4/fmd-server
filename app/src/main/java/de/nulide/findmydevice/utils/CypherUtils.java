@@ -237,7 +237,7 @@ public class CypherUtils {
     public static String pemEncodeRsaKey(PrivateKey priv) {
         StringWriter sw = new StringWriter();
         PemWriter writer = new PemWriter(sw);
-        PemObject po = new PemObject("RSA PRIVATE KEY", priv.getEncoded());
+        PemObject po = new PemObject("PRIVATE KEY", priv.getEncoded());
         try {
             writer.writeObject(po);
             writer.flush();
@@ -250,8 +250,8 @@ public class CypherUtils {
 
     public static PrivateKey pemDecodeRsaKey(String pem) {
         try {
-            pem = pem.replace("-----END RSA PRIVATE KEY-----\n", "");
-            pem = pem.replace("-----BEGIN RSA PRIVATE KEY-----\n", "");
+            pem = pem.replace("-----END PRIVATE KEY-----\n", "");
+            pem = pem.replace("-----BEGIN PRIVATE KEY-----\n", "");
             pem = pem.replace("\n", "");
             byte[] key = decodeBase64(pem);
 
