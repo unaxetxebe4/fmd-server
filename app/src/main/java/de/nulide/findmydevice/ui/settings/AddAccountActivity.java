@@ -69,7 +69,7 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
 
     private void onRegisterClicked(View view) {
         Context context = view.getContext();
-        View registerLayout = getLayoutInflater().inflate(R.layout.register_layout, null);
+        View registerLayout = getLayoutInflater().inflate(R.layout.dialog_register, null);
 
         EditText passwordInput = registerLayout.findViewById(R.id.editTextFMDPassword);
         EditText passwordInputCheck = registerLayout.findViewById(R.id.editTextFMDPasswordCheck);
@@ -103,7 +103,7 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
 
     private void onLoginClicked(View view) {
         Context context = view.getContext();
-        View loginLayout = getLayoutInflater().inflate(R.layout.login_layout, null);
+        View loginLayout = getLayoutInflater().inflate(R.layout.dialog_login, null);
 
         EditText idInput = loginLayout.findViewById(R.id.editTextFMDID);
         EditText passwordInput = loginLayout.findViewById(R.id.editTextFMDPassword);

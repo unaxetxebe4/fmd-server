@@ -169,7 +169,7 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
             LayoutInflater inflater = getLayoutInflater();
             final AlertDialog.Builder alert = new AlertDialog.Builder(this);
             alert.setTitle("Change Password");
-            View registerLayout = inflater.inflate(R.layout.password_change_layout, null);
+            View registerLayout = inflater.inflate(R.layout.dialog_password_change, null);
             alert.setView(registerLayout);
             EditText oldPasswordInput = registerLayout.findViewById(R.id.editTextFMDOldPassword);
             EditText passwordInput = registerLayout.findViewById(R.id.editTextFMDPassword);
