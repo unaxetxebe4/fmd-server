@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
@@ -38,6 +37,8 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
 
     private Settings settings;
 
+    private AlertDialog loadingDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,8 +69,7 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
 
     private void onRegisterClicked(View view) {
         Context context = view.getContext();
-        LayoutInflater inflater = getLayoutInflater();
-        View registerLayout = inflater.inflate(R.layout.register_layout, null);
+        View registerLayout = getLayoutInflater().inflate(R.layout.register_layout, null);
 
         EditText passwordInput = registerLayout.findViewById(R.id.editTextFMDPassword);
         EditText passwordInputCheck = registerLayout.findViewById(R.id.editTextFMDPasswordCheck);
@@ -80,6 +80,8 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
                 .setView(registerLayout)
                 .setView(registerLayout)
                 .setPositiveButton(getString(R.string.Ok), (dialog, whichButton) -> {
+                    showLoadingIndicator(context);
+
                     String password = passwordInput.getText().toString();
                     String passwordCheck = passwordInputCheck.getText().toString();
                     if (!password.isEmpty() && password.equals(passwordCheck)) {
@@ -101,8 +103,7 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
 
     private void onLoginClicked(View view) {
         Context context = view.getContext();
-        LayoutInflater inflater = getLayoutInflater();
-        View loginLayout = inflater.inflate(R.layout.login_layout, null);
+        View loginLayout = getLayoutInflater().inflate(R.layout.login_layout, null);
 
         EditText idInput = loginLayout.findViewById(R.id.editTextFMDID);
         EditText passwordInput = loginLayout.findViewById(R.id.editTextFMDPassword);
@@ -113,6 +114,8 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
                 .setTitle("Login")
                 .setView(loginLayout)
                 .setPositiveButton(getString(R.string.Ok), (dialog, whichButton) -> {
+                    showLoadingIndicator(context);
+
                     String id = idInput.getText().toString();
                     String password = passwordInput.getText().toString();
                     String passwordCheck = passwordInputCheck.getText().toString();
@@ -137,6 +140,12 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
                 .setPositiveButton(getString(R.string.accept), (dialog, which) -> dialogToShowAfterAccepting.show())
                 .setNegativeButton(getString(R.string.cancel), null)
                 .show();
+    }
+
+    private void showLoadingIndicator(Context context) {
+        View loadingLayout = getLayoutInflater().inflate(R.layout.dialog_loading, null);
+        loadingDialog = new AlertDialog.Builder(context).setView(loadingLayout).setCancelable(false).create();
+        loadingDialog.show();
     }
 
     @Override
@@ -176,6 +185,7 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
     public void onRestFinished(boolean success) {
         runOnUiThread(() -> {
             Context context = getApplicationContext();
+            loadingDialog.cancel();
             if (!success) {
                 Toast.makeText(context, "Request failed", Toast.LENGTH_LONG).show();
                 return;
