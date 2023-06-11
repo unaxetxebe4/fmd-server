@@ -50,6 +50,13 @@
             android:enabled="false"
             android:text="0.0.0.0" />
 
+        <TextView
+            android:id="@+id/textViewServerVersion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="1mm"
+            tools:text="Server version:" />
+
         <Button
             android:id="@+id/buttonRegister"
             android:layout_width="match_parent"

@@ -9,7 +9,10 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.os.BatteryManager;
 
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.StringRequest;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -17,7 +20,6 @@ import org.json.JSONObject;
 import java.security.PublicKey;
 import java.util.Calendar;
 
-import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.data.FmdKeyPair;
 import de.nulide.findmydevice.data.Settings;
 import de.nulide.findmydevice.data.io.IO;
@@ -39,7 +41,15 @@ import de.nulide.findmydevice.utils.Permission;
 @SuppressLint("NewApi")
 public class FMDServerService extends JobService {
 
+    public static final String MIN_REQUIRED_SERVER_VERSION = "0.4.0";
+
     private static final int JOB_ID = 108;
+
+    public static void getServerVersion(Context context, String serverBaseUrl, Response.Listener<String> onResponse, Response.ErrorListener onError) {
+        RequestQueue queue = PatchedVolley.newRequestQueue(context);
+        StringRequest request = new StringRequest(Request.Method.GET, serverBaseUrl + RestHandler.VERSION, onResponse, onError);
+        queue.add(request);
+    }
 
     public static void sendNewLocation(Context context, Settings settings, String provider, String lat, String lon, String time) {
         PublicKey publicKey = settings.getKeys().getPublicKey();

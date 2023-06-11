@@ -3,6 +3,7 @@ package de.nulide.findmydevice.ui.settings;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -11,10 +12,15 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import org.apache.maven.artifact.versioning.ComparableVersion;
+
+import java.util.Calendar;
 
 import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.data.FmdKeyPair;
@@ -32,6 +38,7 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
     private RadioButton rbDefaultServer;
     private RadioButton rbCustomServer;
     private EditText editTextCustomServerUrl;
+    private TextView textViewServerVersion;
     private Button btnLogin;
     private Button btnRegister;
 
@@ -39,12 +46,15 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
 
     private AlertDialog loadingDialog;
 
+    long lastTextChangedMillis;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_account);
 
         settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
+        String serverUrl = (String) settings.get(Settings.SET_FMDSERVER_URL);
 
         rbDefaultServer = findViewById(R.id.radioButtonDefaultServer);
         rbCustomServer = findViewById(R.id.radioButtonCustomServer);
@@ -60,11 +70,14 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
 
         editTextCustomServerUrl = findViewById(R.id.editTextFMDServerUrl);
         editTextCustomServerUrl.addTextChangedListener(this);
-        editTextCustomServerUrl.setText((String) settings.get(Settings.SET_FMDSERVER_URL));
+        editTextCustomServerUrl.setText(serverUrl);
 
-        if (!((String) settings.get(Settings.SET_FMDSERVER_URL)).equals(Settings.DEFAULT_SET_FMDSERVER_URL)) {
+        textViewServerVersion = findViewById(R.id.textViewServerVersion);
+
+        if (!serverUrl.equals(Settings.DEFAULT_SET_FMDSERVER_URL)) {
             rbCustomServer.setChecked(true);
         }
+        getAndShowServerVersion(this, serverUrl);
     }
 
     private void onRegisterClicked(View view) {
@@ -158,14 +171,16 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
     @Override
     public void afterTextChanged(Editable editable) {
         if (editable == editTextCustomServerUrl.getText()) {
-            settings.set(Settings.SET_FMDSERVER_URL, editable.toString());
-            if (editable.toString().isEmpty()) {
+            String url = editable.toString();
+            settings.set(Settings.SET_FMDSERVER_URL, url);
+            if (url.isEmpty()) {
                 btnRegister.setEnabled(false);
                 btnLogin.setEnabled(false);
             } else {
                 btnRegister.setEnabled(true);
                 btnLogin.setEnabled(true);
             }
+            getAndShowServerVersionWithDelay(this, url);
         }
     }
 
@@ -174,8 +189,10 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
             if (compoundButton == rbDefaultServer) {
                 editTextCustomServerUrl.setEnabled(false);
                 editTextCustomServerUrl.setText(Settings.DEFAULT_SET_FMDSERVER_URL);
+                getAndShowServerVersion(this, Settings.DEFAULT_SET_FMDSERVER_URL);
             } else {
                 editTextCustomServerUrl.setEnabled(true);
+                getAndShowServerVersion(this, editTextCustomServerUrl.getText().toString());
             }
         }
     }
@@ -203,5 +220,52 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
             startActivity(fmdServerActivityIntent);
             finish();
         });
+    }
+
+    private void getAndShowServerVersionWithDelay(Context context, String serverBaseUrl) {
+        long DELAY_MILLIS = 1500;
+        this.lastTextChangedMillis = Calendar.getInstance().getTimeInMillis();
+        // Only send the request to the URL if there has been no change within the last DELAY ms.
+        // This prevents spamming the server with every keystroke.
+        new Handler().postDelayed(() -> {
+            long now = Calendar.getInstance().getTimeInMillis();
+            if (now - this.lastTextChangedMillis > DELAY_MILLIS) {
+                getAndShowServerVersion(context, serverBaseUrl);
+            }
+            // If there has been a recent change, just exit. That newer change will also have launched a postDelayed.
+        }, DELAY_MILLIS);
+    }
+
+    private void getAndShowServerVersion(Context context, String serverBaseUrl) {
+        if (serverBaseUrl.isEmpty()) {
+            textViewServerVersion.setText("");
+            return;
+        }
+        new Thread(() -> FMDServerService.getServerVersion(context, serverBaseUrl,
+                (response) -> runOnUiThread(() -> {
+                    String currentString = response;
+                    if (currentString.startsWith("v")) {
+                        currentString = currentString.substring(1);
+                    }
+                    ComparableVersion minRequired = new ComparableVersion(FMDServerService.MIN_REQUIRED_SERVER_VERSION);
+                    ComparableVersion current = new ComparableVersion(currentString);
+
+                    if (current.compareTo(minRequired) < 0) {
+                        String warningText = context.getString(R.string.server_version_error_low_version);
+                        warningText = warningText.replace("{MIN}", FMDServerService.MIN_REQUIRED_SERVER_VERSION);
+                        warningText = warningText.replace("{CURRENT}", currentString);
+                        textViewServerVersion.setText(warningText);
+                    } else {
+                        String prefix = context.getString(R.string.server_version);
+                        String text = prefix + ": " + currentString;
+                        textViewServerVersion.setText(text);
+                    }
+                }),
+                (error) -> runOnUiThread(() -> {
+                    String prefix = context.getString(R.string.server_version_error);
+                    String text = prefix + ": " + error.getMessage();
+                    textViewServerVersion.setText(text);
+                })
+        )).start();
     }
 }

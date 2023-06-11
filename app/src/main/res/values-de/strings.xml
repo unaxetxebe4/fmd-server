@@ -127,4 +127,7 @@
     <string name="Settings_FMDServer_Alert_DeleteData_Desc">Dadurch werden alle Daten auf dem Server gelöscht. Sind Sie sicher?</string>
     <string name="Settings_FMD_Send_Loc_on_Boot">Senden Sie Ihren Standort, wenn das Gerät hochfährt.</string>
     <string name="loading">Laden…</string>
+    <string name="server_version">Server-Version</string>
+    <string name="server_version_error">Laden der Server-Version fehlgeschlagen</string>
+    <string name="server_version_error_low_version">Es wird mindestens die Server-Version {MIN} benötigt, aber der ausgewählte Server hat Version {CURRENT}. Fortsetzen auf eigene Gefahr.</string>
 </resources>

@@ -30,6 +30,7 @@ public class RestHandler implements ResponseListener, ErrorListener, PostListene
     public static final String PRIVKEY = "/key";
     public static final String PUBKEY = "/pubKey";
     public static final String PASSWORD = "/password";
+    public static final String VERSION = "/version";
 
 
     public static final int DEFAULT_METHOD = Request.Method.PUT;
