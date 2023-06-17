@@ -28,7 +28,9 @@ import de.nulide.findmydevice.data.io.json.JSONMap;
 import de.nulide.findmydevice.logic.ComponentHandler;
 import de.nulide.findmydevice.net.ATHandler;
 import de.nulide.findmydevice.net.RestHandler;
+import de.nulide.findmydevice.net.interfaces.ErrorListener;
 import de.nulide.findmydevice.net.interfaces.PostListener;
+import de.nulide.findmydevice.net.interfaces.ResponseListener;
 import de.nulide.findmydevice.sender.FooSender;
 import de.nulide.findmydevice.sender.Sender;
 import de.nulide.findmydevice.utils.CypherUtils;
@@ -130,13 +132,26 @@ public class FMDServerService extends JobService {
         restHandler.run();
     }
 
-    public static void unregisterOnServer(Context context) {
+    public static void unregisterOnServer(Context context, ResponseListener responseListener, ErrorListener errorListener) {
         IO.context = context;
         Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
 
         RestHandler restHandler = new RestHandler(context, RestHandler.DEFAULT_RESP_METHOD, RestHandler.DEVICE, ATHandler.getEmptyDataReq());
+        restHandler.setErrorListener(error -> {
+            // FIXME: The server returns an empty body which cannot be parsed to JSON. We should use a StringRequest here.
+            if (error.getCause() instanceof org.json.JSONException) {
+                // request was actually successful, just deserialising failed
+                settings.setNow(Settings.SET_FMDSERVER_ID, ""); // only clear if request is successful
+                responseListener.onResponse(new JSONObject());
+            } else {
+                errorListener.onErrorResponse(error);
+            }
+        });
+        restHandler.setResponseListener(response -> {
+            settings.setNow(Settings.SET_FMDSERVER_ID, ""); // only clear if request is successful
+            responseListener.onResponse(response);
+        });
         restHandler.runWithAT();
-        settings.setNow(Settings.SET_FMDSERVER_ID, "");
     }
 
     public static void scheduleJob(Context context, int time) {

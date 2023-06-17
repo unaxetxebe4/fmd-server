@@ -18,6 +18,7 @@ import de.nulide.findmydevice.data.io.json.JSONMap;
 import de.nulide.findmydevice.services.FMDServerService;
 import de.nulide.findmydevice.ui.MainActivity;
 import de.nulide.findmydevice.utils.Notifications;
+import de.nulide.findmydevice.utils.UnregisterUtil;
 
 public class UpdateboardingModernCryptoActivity extends AppCompatActivity {
 
@@ -70,9 +71,8 @@ public class UpdateboardingModernCryptoActivity extends AppCompatActivity {
         startActivityForResult(intent, EXPORT_REQ_CODE);
     }
 
-
     private void onExitClicked(View view) {
-        // Don't set the COMPLETED flag
+        // Don't set the UPDATEBOARDING_COMPLETED flag
         finish();
     }
 
@@ -83,9 +83,12 @@ public class UpdateboardingModernCryptoActivity extends AppCompatActivity {
         if (isRegisteredWithServer) {
             // SET_FMD_CRYPT_HPW still contains the old-style hash.
             // Thus we can authenticate one last time using that hash, and this call should succeed.
-            FMDServerService.unregisterOnServer(this);
+            FMDServerService.unregisterOnServer(this, response -> {
+                completeAndContinueToMain();
+            }, error -> {
+                UnregisterUtil.showUnregisterFailedDialog(this, error, this::completeAndContinueToMain);
+            });
         }
-        completeAndContinueToMain();
     }
 
     private void completeAndContinueToMain() {

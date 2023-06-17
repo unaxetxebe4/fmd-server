@@ -130,4 +130,9 @@
     <string name="server_version">Server-Version</string>
     <string name="server_version_error">Laden der Server-Version fehlgeschlagen</string>
     <string name="server_version_error_low_version">Es wird mindestens die Server-Version {MIN} benötigt, aber der ausgewählte Server hat Version {CURRENT}. Fortsetzen auf eigene Gefahr.</string>
+
+    <string name="server_unregister_failed_title">Deregistrierung fehlgeschlagen</string>
+    <string name="server_unregister_failed_body">Die Deregistrierung ist mit folgendem Fehler fehlgeschlagen: {ERROR}\n\nSie können trotzdem fortsetzen, aber es könnte sein, dass Ihr Account nicht vom Server gelöscht wurde. Falls Sie fortsetzen wird Ihr Account lokal von diesem Gerät gelöscht.</string>
+    <string name="server_unregister_continue_anyway">Trotzdem fortsetzen</string>
+    <string name="server_unregister_dont_continue">Nicht fortsetzen</string>
 </resources>

@@ -28,6 +28,7 @@ import de.nulide.findmydevice.net.interfaces.PostListener;
 import de.nulide.findmydevice.receiver.PushReceiver;
 import de.nulide.findmydevice.services.FMDServerService;
 import de.nulide.findmydevice.utils.CypherUtils;
+import de.nulide.findmydevice.utils.UnregisterUtil;
 
 public class FMDServerActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener, TextWatcher, View.OnClickListener, PostListener {
 
@@ -224,9 +225,15 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
 
         @Override
         public void onClick(DialogInterface dialog, int which) {
-            FMDServerService.unregisterOnServer(context);
-            FMDServerService.cancelAll(context);
-            finish();
+            FMDServerService.unregisterOnServer(context, response -> {
+                FMDServerService.cancelAll(context);
+                finish();
+            }, error -> {
+                UnregisterUtil.showUnregisterFailedDialog(context, error, () -> {
+                    FMDServerService.cancelAll(context);
+                    finish();
+                });
+            });
         }
     }
 
