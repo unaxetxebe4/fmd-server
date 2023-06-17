@@ -134,13 +134,14 @@ public class FMDServerService extends JobService {
 
     public static void unregisterOnServer(Context context, ResponseListener responseListener, ErrorListener errorListener) {
         IO.context = context;
-        Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
 
         RestHandler restHandler = new RestHandler(context, RestHandler.DEFAULT_RESP_METHOD, RestHandler.DEVICE, ATHandler.getEmptyDataReq());
         restHandler.setErrorListener(error -> {
             // FIXME: The server returns an empty body which cannot be parsed to JSON. We should use a StringRequest here.
             if (error.getCause() instanceof org.json.JSONException) {
                 // request was actually successful, just deserialising failed
+                // settings needs to be instantiated here, else we get race conditions on the file
+                Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
                 settings.setNow(Settings.SET_FMDSERVER_ID, ""); // only clear if request is successful
                 responseListener.onResponse(new JSONObject());
             } else {
@@ -148,6 +149,8 @@ public class FMDServerService extends JobService {
             }
         });
         restHandler.setResponseListener(response -> {
+            // settings needs to be instantiated here, else we get race conditions on the file
+            Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
             settings.setNow(Settings.SET_FMDSERVER_ID, ""); // only clear if request is successful
             responseListener.onResponse(response);
         });

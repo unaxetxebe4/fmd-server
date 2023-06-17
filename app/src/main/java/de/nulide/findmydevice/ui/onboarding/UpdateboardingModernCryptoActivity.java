@@ -24,7 +24,6 @@ public class UpdateboardingModernCryptoActivity extends AppCompatActivity {
 
     private final int EXPORT_REQ_CODE = 30;
 
-    Settings settings;
     boolean isRegisteredWithServer;
     boolean isPinSet;
 
@@ -33,7 +32,7 @@ public class UpdateboardingModernCryptoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_updateboarding_modern_crypto);
 
-        settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
+        Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
         isRegisteredWithServer = settings.checkAccountExists();
         isPinSet = !settings.get(Settings.SET_PIN).equals("");
 
@@ -78,6 +77,7 @@ public class UpdateboardingModernCryptoActivity extends AppCompatActivity {
 
     private void onConfirmClicked(View view) {
         if (isPinSet) {
+            Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
             settings.setNow(Settings.SET_PIN, "");
         }
         if (isRegisteredWithServer) {
@@ -92,6 +92,8 @@ public class UpdateboardingModernCryptoActivity extends AppCompatActivity {
     }
 
     private void completeAndContinueToMain() {
+        // settings needs to be instantiated here, else we get race conditions on the file
+        Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
         settings.setNow(Settings.SET_UPDATEBOARDING_MODERN_CRYPTO_COMPLETED, true);
 
         Intent intent = new Intent(this, MainActivity.class);
