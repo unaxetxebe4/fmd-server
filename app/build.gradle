@@ -66,4 +66,15 @@ dependencies {
     // XXX: only used by javax.xml.bind.DatatypeConverter
     implementation 'jakarta.xml.bind:jakarta.xml.bind-api:2.3.2'
     implementation 'xerces:xercesImpl:2.12.1'
+
+    // Some of our dependencies use Kotlin
+    // https://stackoverflow.com/questions/75263047/duplicate-class-in-kotlin-android
+    constraints {
+        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.0") {
+            because("kotlin-stdlib-jdk7 is now a part of kotlin-stdlib")
+        }
+        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.0") {
+            because("kotlin-stdlib-jdk8 is now a part of kotlin-stdlib")
+        }
+    }
 }
