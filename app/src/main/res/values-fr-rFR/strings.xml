@@ -2,7 +2,6 @@
 <resources>
     <string name="Introduction_Introduction">FMD est une application qui peut vous aider à trouver votre téléphone quand il a été perdu […]</string>
     <string name="Introduction_UpdatePermission">De nouvelles permissions sont nécessaires […]</string>
-    <string name="About_Version">Version de FMD :</string>
     <string name="MH_No_GPS">Désolé, la localisation est éteinte.</string>
     <string name="Crashed_Send_log">Envoyer les logs</string>
     <string name="R_Stop_ring">ARRETER DE SONNER</string>
@@ -10,7 +9,6 @@
     <string name="MH_Pin_Accepted">Code PIN accepté</string>
     <string name="Settings_Enter_Pin">Entrez le code PIN</string>
     <string name="Settings_FMD_via_Pin_Description">Autoriser à communiquer avec FMD avec un code PIN. Vous serez ajouté à une liste blanche temporaire.</string>
-    <string name="About_Help">Aide</string>
     <string name="MH_Help_delete">" delete - réinitialiser votre téléphone"</string>
     <string name="MH_Help_Stats">" stats - envoyer les informations du périphérique"</string>
     <string name="MH_Help_Lock">" lock - verrouiller le téléphone"</string>
@@ -39,9 +37,6 @@
     <string name="Settings_Lockscreenmessage_Description">Message du verrouillage de l\'écran […]</string>
     <string name="Settings_Pin_Description">Code PIN : […]</string>
     <string name="Enable">Activé</string>
-    <string name="About_Used_APIs">Utiliser l\'API : </string>
-    <string name="About_Text">Merci d\'avoir téléchargé cette application! […]</string>
-    <string name="About">A propos de</string>
     <string name="Locked_Lock_Screen">FindMyDevice[…]</string>
     <string name="Introduction_Next">Suivant</string>
     <string name="Introduction_Give_Permission">Donner les permissions</string>

@@ -24,9 +24,6 @@
     <string name="Introduction_Give_Permission">Concedi Autorizzazione</string>
     <string name="Introduction_Next">Avanti</string>
     <string name="Locked_Lock_Screen">Trova Dispositivo\nQuesto telefono è bloccato\!\nMessaggio del proprietario :</string>
-    <string name="About">Info</string>
-    <string name="About_Text">Grazie per aver scaricato questa app\!\nC\'è ancora molto da fare, ma spero che questa app ti aiuti se ti trovi nella stessa situazione che ho avuto io. Perdere il telefono è spiacevole, ma perdere il telefono perché non ci sono app rispettose della privacy per aiutarti a trovarlo è ancora peggio.\nContributi e donazioni sono i benvenuti\! Basta andare su F-Droid e cercare la mia app.\n\n - Nulide</string>
-    <string name="About_Used_APIs">API Usate:\n</string>
     <string name="Enable">Attiva</string>
     <string name="Settings_Pin_Description">Utilizzato come conferma prima di cancellare i dati del dispositivo o per l\'utilizzo temporaneo del servizio.</string>
     <string name="Settings_Lockscreenmessage_Description">Messaggio schermata di blocco:\nQuando si blocca il dispositivo, questo messaggio viene visualizzato nella schermata di blocco.</string>
@@ -54,7 +51,6 @@
     <string name="MH_Help_Lock">\" lock - blocca il telefono\"</string>
     <string name="MH_Help_Stats">\" stats - invia informazioni del dispositivo\"</string>
     <string name="MH_Help_delete">\" delete - ripristina il telefono\"</string>
-    <string name="About_Help">Aiuto</string>
     <string name="Settings_FMD_via_Pin_Description">Consente di comunicare con FMD tramite un pin. Verrete aggiunti a una lista bianca temporanea.</string>
     <string name="Settings_Enter_Pin">Inserisci Pin</string>
     <string name="MH_Pin_Accepted">Pin corretto\!</string>
@@ -88,7 +84,6 @@
     <string name="Settings_Show_log">Mostra registro</string>
     <string name="Crashed_Send_log">Invia registro</string>
     <string name="MH_No_GPS">Spiacente, la posizione è disattivata.</string>
-    <string name="About_Version">Versione FMD:</string>
     <string name="Settings_FMDConfig">Configurazione FMD</string>
     <string name="Settings_WhiteList">Lista Bianca</string>
     <string name="Settings_OpenCellId">OpenCelliD</string>

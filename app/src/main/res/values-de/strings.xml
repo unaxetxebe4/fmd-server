@@ -182,9 +182,5 @@
     <string name="MH_NO_SECURE_SETTINGS">Leider ist die Anwendung dazu nicht berechtigt.</string>
     <string name="MH_Help_expert">" expert - Hilfeseite für Expertenbefehle"</string>
     <string name="Permission_Notification">Wenn Sie möchten, dass die App Nachrichten von anderen Apps (Telegram, Whatsap, …) verarbeitet, können Sie der App Zugriff auf die Benachrichtigungen geben, damit die Nachrichten ausgewertet werden können.</string>
-    <string name="About_Text">Danke fürs Herunterladen der App.\nEs gibt noch eine Menge zu tun, aber ich hoffe, dass diese App Ihnen behilflich sein wird, falls Sie in eine ähnliche Situation kommen. Es ist schlimm, sein Telefon zu verlieren, aber noch schlimmer ist es, es zu verlieren, weil es keine datenschutzfreundlichen Apps gibt, die einem helfen, es zu finden.\nBeiträge und Spenden sind willkommen! Gehen Sie einfach auf F-Droid und suchen Sie nach meiner App.\n\n  - Nulide</string>
-    <string name="About_Help">Hilfe</string>
-    <string name="About_Version">FMD-Version:</string>
-    <string name="About_Used_APIs">"Benutzte APIs:\n"</string>
-    
+
 </resources>
