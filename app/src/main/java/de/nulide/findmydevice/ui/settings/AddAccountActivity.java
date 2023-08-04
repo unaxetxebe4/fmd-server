@@ -116,7 +116,6 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
 
         EditText idInput = loginLayout.findViewById(R.id.editTextFMDID);
         EditText passwordInput = loginLayout.findViewById(R.id.editTextFMDPassword);
-        EditText passwordInputCheck = loginLayout.findViewById(R.id.editTextFMDPasswordCheck);
 
         PostListener postListener = this;
         final AlertDialog.Builder loginDialog = new AlertDialog.Builder(context)
@@ -127,13 +126,13 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
 
                     String id = idInput.getText().toString();
                     String password = passwordInput.getText().toString();
-                    String passwordCheck = passwordInputCheck.getText().toString();
-                    if (!id.isEmpty() && !password.isEmpty() && passwordCheck.equals(password)) {
+
+                    if (!id.isEmpty() && !password.isEmpty()) {
                         new Thread(() -> {
                             FMDServerService.loginOnServer(context, id, password, postListener);
                         }).start();
                     } else {
-                        Toast.makeText(context, "Failed to login.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, "FMD ID and password must not be empty.", Toast.LENGTH_LONG).show();
                     }
                 });
         showPrivacyPolicyThenDialog(context, loginDialog);
