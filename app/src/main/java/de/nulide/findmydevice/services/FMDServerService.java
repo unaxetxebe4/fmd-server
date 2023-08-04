@@ -109,7 +109,7 @@ public class FMDServerService extends JobService {
         restHandler.runWithAT();
     }
 
-    public static void registerOnServer(Context context, String url, String privKey, String pubKey, String hashedPW, PostListener postListener) {
+    public static void registerOnServer(Context context, String privKey, String pubKey, String hashedPW, String registrationToken, PostListener postListener) {
         IO.context = context;
         Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
         final JSONObject jsonObject = new JSONObject();
@@ -117,6 +117,7 @@ public class FMDServerService extends JobService {
             jsonObject.put("hashedPassword", hashedPW);
             jsonObject.put("pubkey", pubKey);
             jsonObject.put("privkey", privKey);
+            jsonObject.put("registrationToken", registrationToken);
         } catch (JSONException e) {
             e.printStackTrace();
         }

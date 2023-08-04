@@ -7,7 +7,6 @@ import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -78,6 +77,7 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
 
         EditText passwordInput = registerLayout.findViewById(R.id.editTextFMDPassword);
         EditText passwordInputCheck = registerLayout.findViewById(R.id.editTextFMDPasswordCheck);
+        EditText registrationTokenInput = registerLayout.findViewById(R.id.editTextRegistrationToken);
 
         PostListener postListener = this;
         final AlertDialog.Builder registerDialog = new AlertDialog.Builder(context)
@@ -89,14 +89,19 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
 
                     String password = passwordInput.getText().toString();
                     String passwordCheck = passwordInputCheck.getText().toString();
+                    String registrationToken = registrationTokenInput.getText().toString();
+
                     if (!password.isEmpty() && password.equals(passwordCheck)) {
                         new Thread(() -> {
+                            // Start the thread here. Key generation and password hashing is expensive-ish,
+                            // so we don't want to do it on the UI thread (it would block then loading indicator).
                             FmdKeyPair keys = FmdKeyPair.generateNewFmdKeyPair(password);
                             settings.setKeys(keys);
                             String hashedPW = CypherUtils.hashPasswordForLogin(password);
                             settings.set(Settings.SET_FMD_CRYPT_HPW, hashedPW);
                             settings.setNow(Settings.SET_FMDSERVER_PASSWORD_SET, true);
-                            FMDServerService.registerOnServer(context, (String) settings.get(Settings.SET_FMDSERVER_URL), keys.getEncryptedPrivateKey(), keys.getBase64PublicKey(), hashedPW, postListener);
+
+                            FMDServerService.registerOnServer(context, keys.getEncryptedPrivateKey(), keys.getBase64PublicKey(), hashedPW, registrationToken, postListener);
                         }).start();
                     } else {
                         Toast.makeText(context, "Passwords do not match.", Toast.LENGTH_LONG).show();
