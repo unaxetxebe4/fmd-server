@@ -74,8 +74,7 @@ public class Settings extends HashMap<Integer, Object> {
     public static final int SET_LAST_KNOWN_LOCATION_TIME = 504;
 
 
-
-    public static final String DEFAULT_SET_FMDSERVER_URL= "https://fmd.nulide.de:1008";
+    public static final String DEFAULT_FMD_SERVER_URL= "https://fmd.nulide.de:1008";
 
 
     private Timer afterChangeTimer;
@@ -133,7 +132,7 @@ public class Settings extends HashMap<Integer, Object> {
                 case SET_LAST_KNOWN_LOCATION_TIME:
                     return -1;
                 case SET_FMDSERVER_URL:
-                    return DEFAULT_SET_FMDSERVER_URL;
+                    return DEFAULT_FMD_SERVER_URL;
             }
         }
         return "";
