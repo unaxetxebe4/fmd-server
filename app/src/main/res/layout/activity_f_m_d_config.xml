@@ -1,176 +1,178 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.settings.FMDConfigActivity">
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_normal"
+        android:orientation="vertical">
 
-        <LinearLayout
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_normal"
-            android:orientation="vertical">
+            android:layout_marginBottom="@dimen/margin_small"
+            android:text="FMD via Pin"
+            android:textColor="@color/colorAccent"
+            android:textSize="17sp"
+            android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:textSize="17sp"
-                android:layout_marginTop="10dp"
-                android:layout_margin="1mm"
-                android:textColor="@color/colorAccent"
-                android:text="FMD via Pin" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:text="@string/Settings_FMD_via_Pin_Description" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="1mm"
-                android:text="@string/Settings_FMD_via_Pin_Description" />
+        <CheckBox
+            android:id="@+id/checkBoxFMDviaPin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:text="@string/Enable" />
 
-            <CheckBox
-                android:id="@+id/checkBoxFMDviaPin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="1mm"
-                android:text="@string/Enable" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="@dimen/margin_normal"
+            android:background="?android:attr/listDivider" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="?android:attr/listDivider" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:text="@string/pin"
+            android:textColor="@color/colorAccent"
+            android:textSize="17sp"
+            android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:textSize="17sp"
-                android:layout_margin="1mm"
-                android:textColor="@color/colorAccent"
-                android:text="Pin" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:text="@string/Settings_Pin_Description" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="1mm"
-                android:text="@string/Settings_Pin_Description" />
+        <Button
+            android:id="@+id/buttonEnterPin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:text="@string/Settings_Enter_Pin" />
 
-            <Button
-                android:id="@+id/buttonEnterPin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5mm"
-                android:text="@string/Settings_Enter_Pin"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/margin_small"
+            android:layout_marginBottom="@dimen/margin_normal"
+            android:background="?android:attr/listDivider" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="?android:attr/listDivider" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:text="fmd command"
+            android:textColor="@color/colorAccent"
+            android:textSize="17sp"
+            android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:layout_margin="1mm"
-                android:textSize="17sp"
-                android:textColor="@color/colorAccent"
-                android:text="fmd command" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:text="@string/Settings_FMDCommand_Description" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="1mm"
-                android:text="@string/Settings_FMDCommand_Description" />
+        <EditText
+            android:id="@+id/editTextFmdCommand"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:ems="10"
+            android:text="fmd" />
 
-            <EditText
-                android:id="@+id/editTextFmdCommand"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:layout_margin="1mm"
-                android:text="fmd" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/margin_small"
+            android:layout_marginBottom="@dimen/margin_normal"
+            android:background="?android:attr/listDivider" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="?android:attr/listDivider" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:text="fmd ring"
+            android:textColor="@color/colorAccent"
+            android:textSize="17sp"
+            android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:layout_margin="1mm"
-                android:textSize="17sp"
-                android:textColor="@color/colorAccent"
-                android:text="fmd ring" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:text="@string/Settings_Ringer_Tone_Description" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="1mm"
-                android:text="@string/Settings_Ringer_Tone_Description" />
+        <Button
+            android:id="@+id/buttonSelectRingTone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:text="@string/Settings_Select_Ringtone" />
 
-            <Button
-                android:id="@+id/buttonSelectRingTone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5mm"
-                android:text="@string/Settings_Select_Ringtone"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/margin_small"
+            android:layout_marginBottom="@dimen/margin_normal"
+            android:background="?android:attr/listDivider" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="?android:attr/listDivider" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:text="fmd lock"
+            android:textColor="@color/colorAccent"
+            android:textSize="17sp"
+            android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:layout_margin="1mm"
-                android:textSize="17sp"
-                android:textColor="@color/colorAccent"
-                android:text="fmd lock" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:text="@string/Settings_Lockscreenmessage_Description" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="1mm"
-                android:text="@string/Settings_Lockscreenmessage_Description" />
+        <EditText
+            android:id="@+id/editTextTextLockScreenMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:ems="10"
+            android:text="" />
 
-            <EditText
-                android:id="@+id/editTextTextLockScreenMessage"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:layout_margin="1mm"
-                android:text="" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/margin_small"
+            android:layout_marginBottom="@dimen/margin_normal"
+            android:background="?android:attr/listDivider" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="?android:attr/listDivider" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:text="fmd delete"
+            android:textColor="@color/colorAccent"
+            android:textSize="17sp"
+            android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:layout_margin="1mm"
-                android:textSize="17sp"
-                android:textColor="@color/colorAccent"
-                android:text="fmd delete" />
+        <CheckBox
+            android:id="@+id/checkBoxWipeData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_normal"
+            android:text="@string/Enable" />
 
-            <CheckBox
-                android:id="@+id/checkBoxWipeData"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="1mm"
-                android:text="@string/Enable" />
+    </LinearLayout>
+</ScrollView>
 
-        </LinearLayout>
-    </ScrollView>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
