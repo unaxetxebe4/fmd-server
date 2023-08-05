@@ -105,6 +105,7 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
                         }).start();
                     } else {
                         Toast.makeText(context, "Passwords do not match.", Toast.LENGTH_LONG).show();
+                        loadingDialog.cancel();
                     }
                 });
         showPrivacyPolicyThenDialog(context, registerDialog);
@@ -133,6 +134,7 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
                         }).start();
                     } else {
                         Toast.makeText(context, "FMD ID and password must not be empty.", Toast.LENGTH_LONG).show();
+                        loadingDialog.cancel();
                     }
                 });
         showPrivacyPolicyThenDialog(context, loginDialog);
