@@ -220,10 +220,10 @@ public class FMDServerService extends JobService {
                                         pubKeyHandler.setResponseListener(pubResponse -> {
                                             if (pubResponse.has("Data")) {
                                                 try {
-                                                    settings.set(Settings.SET_FMD_CRYPT_HPW, hashedPW);
-                                                    settings.set(Settings.SET_FMDSERVER_ID, id);
-                                                    settings.set(Settings.SET_FMD_CRYPT_PUBKEY, pubResponse.get("Data"));
-                                                    settings.set(Settings.SET_FMD_CRYPT_PRIVKEY, privResponse.get("Data"));
+                                                    settings.setNow(Settings.SET_FMD_CRYPT_HPW, hashedPW);
+                                                    settings.setNow(Settings.SET_FMDSERVER_ID, id);
+                                                    settings.setNow(Settings.SET_FMD_CRYPT_PUBKEY, pubResponse.get("Data"));
+                                                    settings.setNow(Settings.SET_FMD_CRYPT_PRIVKEY, privResponse.get("Data"));
                                                 }catch (JSONException e){
                                                     e.printStackTrace();
                                                 }
