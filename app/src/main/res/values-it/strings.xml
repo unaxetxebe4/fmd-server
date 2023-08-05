@@ -120,8 +120,7 @@
     <string name="WhiteList_Select_Number">Seleziona uno dei numeri di telefono.</string>
     <string name="Settings_FMDServer_Description">Abilitando, l\'applicazione invierà costantemente la tua posizione al server specificato.</string>
     <string name="Settings_FMDServer_URL_Description">URL per l\'accesso al server.</string>
-    <string name="Settings_FMDServer_Updattime_Description">Il tempo in minuti in cui FMD deve inviare nuovi dati sulla posizione al server.</string>
-    <string name="Settings_FMDServer">Server FMD</string>
+    <string name="Settings_FMDServer_Update_Interval_Description">Il tempo in minuti in cui FMD deve inviare nuovi dati sulla posizione al server.</string>
     <string name="Settings_FMDServer_ID">ID Server FMD</string>
     <string name="NOT_AVAILABLE">Non Disponibile</string>
     <string name="Available">Disponibile</string>
@@ -139,7 +138,7 @@
     <string name="Settings_FMDServer_Alert_PrivacyPolicy_Title">Info Privacy</string>
     <string name="accept">accetta</string>
     <string name="cancel">cancella</string>
-    <string name="Settings_FMDServer_LocationData_Description">Seleziona quali dati sulla posizione inviare al server. (Almeno una deve essere selezionata)</string>
+    <string name="Settings_FMDServer_Location_Type_Description">Seleziona quali dati sulla posizione inviare al server. (Almeno una deve essere selezionata)</string>
     <string name="GPS">GPS</string>
     <string name="Cell">Cella</string>
     <string name="MH_Help_Expert_GPS">\" GPS (on/off) - accende o spegne il GPS.\"</string>

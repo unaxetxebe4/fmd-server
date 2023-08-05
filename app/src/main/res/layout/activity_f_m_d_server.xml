@@ -88,7 +88,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/margin_small"
             android:ems="10"
-            android:text="Change Password" />
+            android:text="@string/Settings_FMDServer_Change_Password_Button" />
 
         <Button
             android:id="@+id/buttonLogout"
@@ -96,7 +96,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/margin_small"
             android:ems="10"
-            android:text="Logout" />
+            android:text="@string/Settings_FMDServer_Logout_Button" />
 
         <Button
             android:id="@+id/buttonDeleteData"
@@ -148,7 +148,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/margin_small"
-            android:text="FMDServer Update Time"
+            android:text="@string/Settings_FMDServer_Update_Interval_Title"
             android:textColor="@color/colorAccent"
             android:textSize="17sp"
             android:textStyle="bold" />
@@ -157,7 +157,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/margin_small"
-            android:text="@string/Settings_FMDServer_Updattime_Description" />
+            android:text="@string/Settings_FMDServer_Update_Interval_Description" />
 
         <EditText
             android:id="@+id/editTextFMDServerUpdateTime"
@@ -178,7 +178,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/margin_small"
-            android:text="Location Data"
+            android:text="@string/Settings_FMDServer_Location_Type_Title"
             android:textColor="@color/colorAccent"
             android:textSize="17sp"
             android:textStyle="bold" />
@@ -187,7 +187,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/margin_small"
-            android:text="@string/Settings_FMDServer_LocationData_Description" />
+            android:text="@string/Settings_FMDServer_Location_Type_Description" />
 
         <CheckBox
             android:id="@+id/checkBoxFMDServerGPS"
@@ -212,7 +212,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/margin_small"
-            android:text="LOW BAT Upload"
+            android:text="@string/Settings_FMDServer_LOW_BAT_Upload_Title"
             android:textColor="@color/colorAccent"
             android:textSize="17sp"
             android:textStyle="bold" />
