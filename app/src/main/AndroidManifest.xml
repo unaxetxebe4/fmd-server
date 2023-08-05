@@ -29,7 +29,7 @@
         tools:ignore="ProtectedPermissions" />
 
     <uses-feature
-        android:name="android.hardware.camera"
+        android:name="android.hardware.camera.any"
         android:required="false" />
     <uses-feature
         android:name="android.hardware.telephony"
@@ -51,7 +51,7 @@
             android:exported="false"
             android:label="@string/Settings_FMDServer_AddAccount" />
         <activity
-            android:name=".ui.DummyCameraActivity"
+            android:name=".ui.DummyCameraxActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Translucent" />
         <activity
