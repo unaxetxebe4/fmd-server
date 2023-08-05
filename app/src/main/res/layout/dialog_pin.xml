@@ -19,8 +19,8 @@
             android:id="@+id/editTextPin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:text="" />
+            android:layout_marginBottom="@dimen/margin_normal"
+            android:inputType="textPassword" />
 
         <TextView
             android:layout_width="match_parent"
@@ -32,8 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/margin_normal"
-            android:inputType="textPassword"
-            android:text="" />
+            android:inputType="textPassword" />
 
     </LinearLayout>
 </ScrollView>
