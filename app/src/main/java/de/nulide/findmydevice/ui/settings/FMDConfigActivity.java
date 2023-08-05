@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.RingtoneManager;
@@ -26,7 +27,7 @@ import de.nulide.findmydevice.data.io.JSONFactory;
 import de.nulide.findmydevice.data.io.json.JSONMap;
 import de.nulide.findmydevice.utils.CypherUtils;
 
-public class FMDConfigActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener, TextWatcher, View.OnClickListener {
+public class FMDConfigActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener, TextWatcher {
 
     private Settings settings;
 
@@ -40,7 +41,7 @@ public class FMDConfigActivity extends AppCompatActivity implements CompoundButt
     int colorEnabled;
     int colorDisabled;
 
-    private int REQUEST_CODE_RINGTONE = 5;
+    private final int REQUEST_CODE_RINGTONE = 5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,21 +65,21 @@ public class FMDConfigActivity extends AppCompatActivity implements CompoundButt
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
             colorEnabled = getColor(R.color.colorEnabled);
             colorDisabled = getColor(R.color.colorDisabled);
-        }else {
+        } else {
             colorEnabled = getResources().getColor(R.color.colorEnabled);
             colorDisabled = getResources().getColor(R.color.colorDisabled);
         }
 
         buttonEnterPin = findViewById(R.id.buttonEnterPin);
-        if(settings.get(Settings.SET_PIN).equals("")){
+        if (settings.get(Settings.SET_PIN).equals("")) {
             buttonEnterPin.setBackgroundColor(colorDisabled);
-        }else{
+        } else {
             buttonEnterPin.setBackgroundColor(colorEnabled);
         }
-        buttonEnterPin.setOnClickListener(this);
+        buttonEnterPin.setOnClickListener(this::onEnterPinClicked);
 
         buttonSelectRingtone = findViewById(R.id.buttonSelectRingTone);
-        buttonSelectRingtone.setOnClickListener(this);
+        buttonSelectRingtone.setOnClickListener(this::onSelectRingtoneClicked);
 
         editTextFmdCommand = findViewById(R.id.editTextFmdCommand);
         editTextFmdCommand.setText((String) settings.get(Settings.SET_FMD_COMMAND));
@@ -119,32 +120,38 @@ public class FMDConfigActivity extends AppCompatActivity implements CompoundButt
         }
     }
 
-    @Override
-    public void onClick(View v) {
-        if (v == buttonEnterPin) {
-            AlertDialog.Builder alert = new AlertDialog.Builder(this);
-            alert.setTitle(getString(R.string.FMDConfig_Alert_Pin));
-            alert.setMessage(getString(R.string.Settings_Enter_Pin));
-            final EditText input = new EditText(this);
-            input.setTransformationMethod(new PasswordTransformationMethod());
-            alert.setView(input);
-            alert.setPositiveButton(getString(R.string.Ok), new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int whichButton) {
-                    String text = input.getText().toString();
-                    if (!text.isEmpty()) {
-                        settings.set(Settings.SET_PIN, CypherUtils.hashPasswordForFmdPin(text));
-                        buttonEnterPin.setBackgroundColor(colorEnabled);
+    private void onEnterPinClicked(View v) {
+        Context context = v.getContext();
+        View pinLayout = getLayoutInflater().inflate(R.layout.dialog_pin, null);
+
+        EditText editTextPin = pinLayout.findViewById(R.id.editTextPin);
+        EditText editTextPinRepeat = pinLayout.findViewById(R.id.editTextPinRepeat);
+
+        new AlertDialog.Builder(context)
+                .setTitle(getString(R.string.FMDConfig_Alert_Pin))
+                .setView(pinLayout)
+                .setPositiveButton(getString(R.string.Ok), new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        String pin = editTextPin.getText().toString();
+                        String repeat = editTextPinRepeat.getText().toString();
+
+                        if (pin.equals(repeat)) {
+                            settings.set(Settings.SET_PIN, CypherUtils.hashPasswordForFmdPin(pin));
+                            buttonEnterPin.setBackgroundColor(colorEnabled);
+                        } else {
+                            Toast.makeText(context, "PINs do not match", Toast.LENGTH_LONG).show();
+                        }
                     }
-                }
-            });
-            alert.show();
-        }else if(v == buttonSelectRingtone){
-            Intent intent = new Intent(RingtoneManager.ACTION_RINGTONE_PICKER);
-            intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE, RingtoneManager.TYPE_ALARM);
-            intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TITLE, getString(R.string.Settings_Select_Ringtone));
-            intent.putExtra(RingtoneManager.EXTRA_RINGTONE_EXISTING_URI, Uri.parse((String) settings.get(Settings.SET_RINGER_TONE)));
-            this.startActivityForResult(intent, REQUEST_CODE_RINGTONE);
-        }
+                })
+                .show();
+    }
+
+    private void onSelectRingtoneClicked(View v) {
+        Intent intent = new Intent(RingtoneManager.ACTION_RINGTONE_PICKER);
+        intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE, RingtoneManager.TYPE_ALARM);
+        intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TITLE, getString(R.string.Settings_Select_Ringtone));
+        intent.putExtra(RingtoneManager.EXTRA_RINGTONE_EXISTING_URI, Uri.parse((String) settings.get(Settings.SET_RINGER_TONE)));
+        this.startActivityForResult(intent, REQUEST_CODE_RINGTONE);
     }
 
     @Override

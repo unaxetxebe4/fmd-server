@@ -83,7 +83,6 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
         final AlertDialog.Builder registerDialog = new AlertDialog.Builder(context)
                 .setTitle("Register")
                 .setView(registerLayout)
-                .setView(registerLayout)
                 .setPositiveButton(getString(R.string.Ok), (dialog, whichButton) -> {
                     showLoadingIndicator(context);
 
