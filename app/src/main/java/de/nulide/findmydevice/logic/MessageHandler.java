@@ -81,11 +81,10 @@ public class MessageHandler {
                     }
                 }
                 if(GPS.isGPSOn(context)){
-                    replyBuilder.append(context.getString(R.string.MH_GPS_WILL_FOLLOW));
-                    GPS gps = new GPS(ch);
-
                     //if options cell is set do not send gps data
-                    if(!msg.contains("cell")){
+                    if (!msg.contains("cell")) {
+                        replyBuilder.append(context.getString(R.string.MH_GPS_WILL_FOLLOW));
+                        GPS gps = new GPS(ch);
                         gps.sendGPSLocation();
                     }
 
