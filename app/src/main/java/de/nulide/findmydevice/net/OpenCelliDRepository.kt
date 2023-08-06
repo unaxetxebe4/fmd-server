@@ -51,10 +51,11 @@ class OpenCelliDRepository private constructor(private val openCelliDSpec: OpenC
                     val lon = response.getString("lon")
                     onSuccess(OpenCelliDSuccess(lat, lon, url))
                 } else {
-                    Log.w(TAG, "Missing lat or lon in response")
-                    onError(
-                        OpenCelliDError("Missing lat or lon in response", url)
-                    )
+                    val message = if (response.has("error")) {
+                        response.getString("error")
+                    } else "Missing lat or lon in response"
+                    Log.w(TAG, message)
+                    onError(OpenCelliDError(message, url))
                 }
             },
             { error ->
