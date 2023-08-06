@@ -2,10 +2,12 @@ package de.nulide.findmydevice.ui
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.util.Log
 import android.view.Surface
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
@@ -42,6 +44,11 @@ class DummyCameraxActivity : AppCompatActivity() {
         }
         viewBinding = ActivityDummyCameraxBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
+
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.O) {
+            // On SDK >= 27 we have the flags in the AndroidManifest
+            window.addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED or WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON)
+        }
 
         cameraExecutor = Executors.newSingleThreadExecutor()
     }

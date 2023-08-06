@@ -53,7 +53,10 @@
         <activity
             android:name=".ui.DummyCameraxActivity"
             android:exported="false"
-            android:theme="@style/Theme.AppCompat.Translucent" />
+            android:showOnLockScreen="true"
+            android:showWhenLocked="true"
+            android:theme="@style/Theme.AppCompat.Translucent"
+            android:turnScreenOn="true" />
         <activity
             android:name=".ui.settings.FMDServerActivity"
             android:label="@string/Settings_FMDServer" />
