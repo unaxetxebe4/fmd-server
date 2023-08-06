@@ -2,13 +2,19 @@ package de.nulide.findmydevice.ui.settings
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.os.Build
 import android.os.Bundle
+import android.telephony.CellInfoCdma
+import android.telephony.CellInfoGsm
+import android.telephony.CellInfoLte
+import android.telephony.CellInfoNr
 import android.telephony.TelephonyManager
-import android.telephony.gsm.GsmCellLocation
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import de.nulide.findmydevice.R
 import de.nulide.findmydevice.data.Settings
 import de.nulide.findmydevice.data.io.IO
 import de.nulide.findmydevice.data.io.JSONFactory
@@ -16,6 +22,7 @@ import de.nulide.findmydevice.data.io.json.JSONMap
 import de.nulide.findmydevice.databinding.ActivityOpenCellIdBinding
 import de.nulide.findmydevice.net.OpenCelliDRepository
 import de.nulide.findmydevice.net.OpenCelliDSpec
+import de.nulide.findmydevice.utils.CellParameters
 import de.nulide.findmydevice.utils.Utils.Companion.getOpenStreetMapLink
 import de.nulide.findmydevice.utils.Utils.Companion.openUrl
 import de.nulide.findmydevice.utils.Utils.Companion.pasteFromClipboard
@@ -77,25 +84,33 @@ class OpenCellIdActivity : AppCompatActivity(), TextWatcher {
 
     private fun onTestConnectionClicked(view: View) {
         val context = view.context
-        val tm = context.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
-        val operator = tm.networkOperator
-        // TODO: Migrate to CellInfo (GsmCellLocation is deprecated)
-        @SuppressLint("MissingPermission") val location = tm.cellLocation as GsmCellLocation
+
+        val paras = CellParameters.queryCellParametersFromTelephonyManager(context)
+        if (paras == null) {
+            Log.i(TAG, "No cell location found")
+            viewBinding.textViewTestOpenCellIdResponse.text =
+                context.getString(R.string.OpenCellId_test_no_connection)
+            return
+        }
 
         val repo = OpenCelliDRepository.getInstance(OpenCelliDSpec(context))
         val apiAccessToken = settings.get(Settings.SET_OPENCELLID_API_KEY) as String
 
         repo.getCellLocation(
-            operator, location, apiAccessToken,
+            paras, apiAccessToken,
             onSuccess = {
                 val osm = getOpenStreetMapLink(it.lat, it.lon)
                 viewBinding.textViewTestOpenCellIdResponse.text =
-                    "OpenCelliD: ${it.url}\n\nOpenStreetMap: $osm"
+                    "Paras: $paras\n\nOpenCelliD: ${it.url}\n\nOpenStreetMap: $osm"
             },
             onError = {
                 viewBinding.textViewTestOpenCellIdResponse.text =
-                    "OpenCelliD: ${it.url}\n\nError: ${it.error}"
+                    "Paras: $paras\n\nOpenCelliD: ${it.url}\n\nError: ${it.error}"
             },
         )
+    }
+
+    companion object {
+        private val TAG = OpenCellIdActivity::class.simpleName
     }
 }

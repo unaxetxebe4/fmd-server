@@ -108,7 +108,6 @@
     <string name="Notification_Pin_Usage_Description">Notifica sull\'utilizzo del pin.</string>
     <string name="JSON_RL_Error">Errore durante l\'acquisizione della posizione da OpenCelliD. Si prega di provare il seguente link. I parametri necessari sono \"lon\" e \"lat\".
 </string>
-    <string name="GPS_GSM_Data">Dati Cella GSM:</string>
     <string name="LockScreen_Usage_detectd">MessaggioBloccoSchermo: Rilevato utilizzo.</string>
     <string name="LockScreen_Backbutton_pressed">MessaggioBloccoSchermo: Premuto pulsante Indietro.</string>
     <string name="Toast_Empty_FMDCommand">Comando vuoto non consentito\n Ripristinato valore predefinito. [fmd]</string>

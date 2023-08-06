@@ -82,7 +82,6 @@
     <string name="Notification_Lifecycle_Description">Уведомление о Жизненном цикле сервиса.</string>
     <string name="Notification_Pin_Usage_Description">Уведомление об использовании Pin.</string>
     <string name="JSON_RL_Error">Ошибка получения геолокации от OpenCelliD. Пожалуйста, попробуйте данную ссылку. Параметр, который вам нужен, - это долгота и широта.</string>
-    <string name="GPS_GSM_Data">GSM-Cell-Data:</string>
     <string name="LockScreen_Usage_detectd">СообщениеНаЗаблокированномЭкране: Обнаружено использование телефона.</string>
     <string name="LockScreen_Backbutton_pressed">СообщениеНаЗаблокированномЭкране: Нажата кнопка \"Назад\".</string>
     <string name="Toast_Empty_FMDCommand">Пустая команда недопустима\n Возврат к значению по-умолчанию.[fmd]</string>

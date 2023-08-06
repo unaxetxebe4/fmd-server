@@ -1,15 +1,16 @@
 package de.nulide.findmydevice.net
 
 import android.content.Context
-import android.telephony.gsm.GsmCellLocation
 import android.util.Log
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.JsonObjectRequest
+import de.nulide.findmydevice.utils.CellParameters
 import de.nulide.findmydevice.utils.PatchedVolley
 import de.nulide.findmydevice.utils.SingletonHolder
 
 
+// See the API docs: https://wiki.opencellid.org/wiki/API
 class OpenCelliDRepository private constructor(private val openCelliDSpec: OpenCelliDSpec) {
 
     companion object :
@@ -20,26 +21,13 @@ class OpenCelliDRepository private constructor(private val openCelliDSpec: OpenC
     private val requestQueue: RequestQueue = PatchedVolley.newRequestQueue(openCelliDSpec.context)
 
     fun getCellLocation(
-        operator: String,
-        location: GsmCellLocation,
+        paras: CellParameters,
         apiAccessToken: String,
         onSuccess: (OpenCelliDSuccess) -> Unit,
         onError: (OpenCelliDError) -> Unit,
     ) {
-        if (apiAccessToken.isEmpty() || operator.length <= 3) {
-            val error = "API Access Token empty or Operator too short. operator=$operator"
-            Log.w(TAG, error)
-            onError(OpenCelliDError(error, "no URL"))
-            return
-        }
-
-        val mcc: Int = operator.substring(0, 3).toInt()
-        val mnc: Int = operator.substring(3).toInt()
-        val lac = location.lac
-        val cid = location.cid
-
         val url =
-            "https://opencellid.org/cell/get?key=$apiAccessToken&mcc=$mcc&mnc=$mnc&lac=$lac&cellid=$cid&format=json"
+            "https://opencellid.org/cell/get?key=$apiAccessToken&mcc=${paras.mcc}&mnc=${paras.mnc}&lac=${paras.lac}&cellid=${paras.cid}&radio=${paras.radio.uppercase()}&format=json"
 
         val request = JsonObjectRequest(
             Request.Method.GET,
