@@ -31,6 +31,7 @@ import de.nulide.findmydevice.net.interfaces.PostListener;
 import de.nulide.findmydevice.receiver.PushReceiver;
 import de.nulide.findmydevice.services.FMDServerService;
 import de.nulide.findmydevice.utils.CypherUtils;
+import de.nulide.findmydevice.utils.Utils;
 
 public class AddAccountActivity extends AppCompatActivity implements TextWatcher, PostListener {
 
@@ -52,6 +53,15 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
 
         settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
         String lastKnownServerUrl = (String) settings.get(Settings.SET_FMDSERVER_URL);
+
+        Button btnOpenWebsite = findViewById(R.id.buttonOpenFmdServerWebsite);
+        btnOpenWebsite.setOnClickListener(v ->
+                Utils.openUrl(this, "https://gitlab.com/Nulide/findmydeviceserver"));
+
+        // Actively opt-in to using Nulide's server
+        Button btnUseDefaultServer = findViewById(R.id.buttonUseDefaultServer);
+        btnUseDefaultServer.setOnClickListener(v ->
+                editTextServerUrl.setText(Settings.DEFAULT_FMD_SERVER_URL));
 
         editTextServerUrl = findViewById(R.id.editTextServerUrl);
         editTextServerUrl.addTextChangedListener(this);

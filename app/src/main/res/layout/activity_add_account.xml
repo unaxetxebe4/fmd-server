@@ -14,8 +14,24 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/margin_small"
-            android:text="Here you can connect to FMD-Server, so that you can remotely locate this device." />
+            android:layout_marginBottom="@dimen/margin_small"
+            android:text="@string/Settings_FMDServer_Info" />
+
+        <Button
+            android:id="@+id/buttonOpenFmdServerWebsite"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:text="@string/Settings_FMDServer_open_website" />
+
+        <Button
+            android:id="@+id/buttonUseDefaultServer"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:text="@string/Settings_FMDServer_use_default_server" />
 
         <TextView
             android:layout_width="match_parent"
@@ -50,6 +66,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/Settings_FMDServer_Login" />
+
     </LinearLayout>
 
 </ScrollView>
