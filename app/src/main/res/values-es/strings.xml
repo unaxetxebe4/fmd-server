@@ -71,7 +71,6 @@
     <string name="Notification_Lifecycle_Description">Notificación acerca del Ciclo de vida del Servicio</string>
     <string name="Notification_Pin_Usage_Description">Notificación acerca del uso del pin.</string>
     <string name="JSON_RL_Error">Error al obtener la ubicación desde OpenCelliD. Por favor, intenta ir al siguiente enlace. Los parámetros que quiere son \"lon\" y \"lat\".</string>
-    <string name="JSON_RL_OpenCellIdLocation">Ubicación-OpenCelliD</string>
     <string name="GPS_GSM_Data">Datos Celulares GSM:</string>
     <string name="LockScreen_Usage_detectd">LockScreenMessage: Uso detectado.</string>
     <string name="LockScreen_Backbutton_pressed">Mensaje de la Pantalla de Bloqueo: Botón de Retroceso pulsado.</string>

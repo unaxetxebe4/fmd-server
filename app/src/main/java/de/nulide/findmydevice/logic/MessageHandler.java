@@ -10,6 +10,7 @@ import java.util.Map;
 
 import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.data.Settings;
+import de.nulide.findmydevice.logic.command.helper.Cell;
 import de.nulide.findmydevice.logic.command.helper.GPS;
 import de.nulide.findmydevice.logic.command.helper.Network;
 import de.nulide.findmydevice.logic.command.helper.Ringer;
@@ -90,7 +91,7 @@ public class MessageHandler {
 
                     //if option gps is set do not send gsm cell data
                     if(!msg.contains("gps")) {
-                        gps.sendGSMCellLocation();
+                        Cell.Companion.sendGSMCellLocation(ch);
                     }
                 }
 
