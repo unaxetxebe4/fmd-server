@@ -32,6 +32,7 @@
     <string name="Permission_GPS">Wenn Sie die GPS-Koordinaten des Telefons orten möchten, benötigt die Anwendung diese Erlaubnis. \nBitte erlauben Sie der Anwendung auch, Sie im Hintergrund zu orten.\nWenn Sie diese Erlaubnis nicht erteilen, wird diese Funktion nicht aktiviert.</string>
     <string name="Permission_DND">Die App kann das Handy klingeln lassen. Wenn allerdings der Bitte-nicht-Stören-Modus aktiviert wurde, kann es sein dass das Klingeln blockiert wird.\nWenn Sie diese Erlaubnis nicht erteilen, wird diese Funktion nicht aktiviert.</string>
     <string name="Permission_DEVICE_ADMIN">Wenn Sie Ihr Telefon sperren oder löschen möchten, wenn es verloren geht, ist diese Erlaubnis erforderlich.\nWenn Sie diese Erlaubnis nicht erteilen, wird diese Funktion nicht aktiviert.</string>
+    <string name="Permission_POST_NOTIFICATIONS">FMD sendet Ihnen gelegentlich Benachrichtigungen, z.B. um Sie zu warnen wenn jemand Ihr Gerät lokalisiert.</string>
     <string name="About_Help">Hilfe</string>
     <string name="MH_Help_delete">" delete - Löscht alle Daten"</string>
     <string name="MH_Help_Stats">" stats - sendet Netzwerk-Informtionen"</string>
@@ -68,7 +69,8 @@
     <string name="Error">Fehler</string>
     <string name="Main_WhiteListCounterText">WhiteList:</string>
     <string name="OpenCellId_OpenCellId">OpenCellId</string>
-    <string name="OpenCellId_API_Key_Description">API-Key:</string>
+    <string name="OpenCellId_help">FMD kann den Dienst OpenCellId benutzen um den ungefähren Standort zu bestimmen basierend auf der Mobilfunkzelle mit der das Gerät verbunden ist. Eine Internetverbindung ist benötigt für jede Standortanfrage. Außerdem müssen Sie ein OpenCellId-Konto anlegen um ein eigenes API Access Token zu bekommen.</string>
+    <string name="OpenCellId_open_website">OpenCellId Webseite öffnen</string>
     <string name="Notification_Usage">Nutzung</string>
     <string name="Pin_Usage">Pin-Nutzung</string>
     <string name="Notification_Lifecycle">Serverstatus</string>
@@ -117,7 +119,7 @@
     <string name="MH_NO_SECURE_SETTINGS">Leider ist die Anwendung dazu nicht berechtigt.</string>
     <string name="MH_Help_expert">" expert - Hilfeseite für Expertenbefehle"</string>
     <string name="Permission_Notification">Wenn Sie möchten, dass die App Nachrichten von anderen Apps (Telegram, Whatsap, …) verarbeitet, können Sie der App Zugriff auf die Benachrichtigungen geben, damit die Nachrichten ausgewertet werden können.</string>
-    <string name="Info_Notification">Benachrichtigung</string>
+    <string name="Info_Notification_Access">Benachrichtigungszugriff</string>
     <string name="Notification_Server">Server</string>
     <string name="NotificationServer_Description">Anzeige der vom Server gesendeten Benachrichtigungen.</string>
     <string name="Settings_FMDServer_AutoUpload_Description">Wenn der Standort per SMS oder einer anderen zukünftigen Methode angefordert wird, kann der Standort auch an den Server übermittelt werden, wenn diese Option aktiviert ist.</string>
@@ -127,4 +129,6 @@
     <string name="Settings_FMD_Send_Loc_on_Boot">Senden Sie Ihren Standort, wenn das Gerät hochfährt.</string>
     <string name="Whitelist_help">Die Kontakte in dieser Liste dürfen Ihnen FMD Befehle via SMS schicken. Befehle von allen anderen werden ignoriert.</string>
     <string name="Whitelist_empty">Keine erlaubten Kontakte. Klicken Sie den Button um Kontakte hinzuzufügen!</string>
+</resources>
+    <string name="paste">Einfügen</string>
 </resources>

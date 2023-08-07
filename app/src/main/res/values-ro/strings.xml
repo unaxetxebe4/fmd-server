@@ -75,7 +75,6 @@
     <string name="Error">Error</string>
     <string name="Main_WhiteListCounterText">WhiteList:</string>
     <string name="OpenCellId_OpenCellId">OpenCellId</string>
-    <string name="OpenCellId_API_Key_Description">API-KEY:</string>
     <string name="Notification_Usage">Usage</string>
     <string name="Pin_Usage">PinUsage</string>
     <string name="Notification_Lifecycle">Lifecycle</string>

@@ -27,7 +27,7 @@
     <string name="About">Info</string>
     <string name="About_Text">Grazie per aver scaricato questa app\!\nC\'è ancora molto da fare, ma spero che questa app ti aiuti se ti trovi nella stessa situazione che ho avuto io. Perdere il telefono è spiacevole, ma perdere il telefono perché non ci sono app rispettose della privacy per aiutarti a trovarlo è ancora peggio.\nContributi e donazioni sono i benvenuti\! Basta andare su F-Droid e cercare la mia app.\n\n - Nulide</string>
     <string name="About_Used_APIs">API Usate:\n</string>
-    <string name="Enable">Attivo</string>
+    <string name="Enable">Attiva</string>
     <string name="Settings_Pin_Description">Utilizzato come conferma prima di cancellare i dati del dispositivo o per l\'utilizzo temporaneo del servizio.</string>
     <string name="Settings_Lockscreenmessage_Description">Messaggio schermata di blocco:\nQuando si blocca il dispositivo, questo messaggio viene visualizzato nella schermata di blocco.</string>
     <string name="Settings_FMDCommand_Description">Comando utilizzato per comunicare con l\'applicazione FindMyDevice.</string>
@@ -74,7 +74,6 @@
     <string name="Settings_Settings">Impostazioni</string>
     <string name="Error">Errore</string>
     <string name="OpenCellId_OpenCellId">OpenCellId</string>
-    <string name="OpenCellId_API_Key_Description">CHIAVE API:</string>
     <string name="Notification_Usage">Utilizzo</string>
     <string name="Pin_Usage">Utilizzo Pin</string>
     <string name="Notification_Lifecycle">Durata</string>
@@ -125,7 +124,7 @@
     <string name="MH_NO_SECURE_SETTINGS">Spiacente, l\'applicazione non ha l\'autorizzazione per farlo.</string>
     <string name="MH_Help_expert">" Avanzato - pagina di aiuto per comandi avanzati."</string>
     <string name="Permission_Notification">Se vuoi che FMD gestisca i messaggi da altre applicazioni come Telegram, Whatsapp, ecc., Puoi dare accesso alle notifiche di FMD.</string>
-    <string name="Info_Notification">Notifiche:</string>
+    <string name="Info_Notification_Access">Notifiche:</string>
     <string name="Notification_Server">Server</string>
     <string name="NotificationServer_Description">Visualizza le notifiche inviate dal server.</string>
     <string name="Settings_FMDServer_AutoUpload_Description">Quando la posizione viene richiesta tramite SMS o qualsiasi altro metodo futuro, la posizione può anche essere trasmessa al server se questa opzione è abilitata.</string>
@@ -147,4 +146,15 @@
     <string name="MH_CAM_CAPTURE">\"Il dispositivo invierà presto un\'immagine al server FMD. Puoi vederla a breve qui: \"</string>
     <string name="Settings_FMDServer_LOW_BAT_Upload_Description">Invia la posizione di questo dispositivo quando il livello della batteria si scarica. (Questo richiede l\'accesso alle notifiche)</string>
     <string name="Main_WhiteListCounterText">Lista Bianca:</string>
+    <string name="MH_FMDSERVER_NOT_REGISTERED">Questo dispositivo non è registrato su un server.</string>
+    <string name="Settings_FMDServer_Login">Accedi</string>
+    <string name="Settings_FMDServer_Register">Registra</string>
+    <string name="Notification_Security">Sicurezza</string>
+    <string name="Notification_Security_Description">Notifiche riguardo aggiornamenti di sicurezza</string>
+    <string name="NOTIFY_SALT_CHANGE_TITLE">Sicurezza password</string>
+    <string name="NOTIFY_SALT_CHANGE_CONTENT"><![CDATA[Questo aggiornamento include un algoritmo di hashing migliorato.\nCambia la tua password in: FMD->Impostazioni->Impostazioni server->Cambia password]]></string>
+    <string name="Notification_FAIL">Fallimento</string>
+    <string name="Notification_Fail_Description">Notifica quando qualcosa fallisce, come la connessione al server fmd.</string>
+    <string name="NOTIFY_PASSWORD_CHANGE_FAIL_TITLE">Cambio password fallito</string>
+    <string name="NOTIFY_PASSWORD_CHANGE_FAIL_CONTENT">Qualcosa è andato storto, password non aggiornata.</string>
 </resources>

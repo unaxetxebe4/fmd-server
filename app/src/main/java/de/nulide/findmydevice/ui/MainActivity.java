@@ -73,6 +73,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(crash);
         }
         Settings.updateSettings();
+        // Show the IntroductionActivity again if one of the important permissions is missing
         if (!Settings.isIntroductionPassed() || !Permission.CORE) {
             Intent introductionIntent = new Intent(this, IntroductionActivity.class);
             startActivity(introductionIntent);
@@ -173,7 +174,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             textViewOverlay.setText(getString(R.string.Disabled));
             textViewOverlay.setTextColor(colorDisabled);
         }
-        if(Permission.NOTIFICATION){
+        if (Permission.NOTIFICATION_ACCESS) {
             textViewNotification.setText(getString(R.string.Enabled));
             textViewNotification.setTextColor(colorEnabled);
         } else {

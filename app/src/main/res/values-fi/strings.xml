@@ -76,7 +76,6 @@
     <string name="Error">Virhe</string>
     <string name="Main_WhiteListCounterText">Valkoinen lista:</string>
     <string name="OpenCellId_OpenCellId">OpenCelliD</string>
-    <string name="OpenCellId_API_Key_Description">API-KEY:</string>
     <string name="Notification_Usage">Käyttö</string>
     <string name="Pin_Usage">PIN-koodin käyttö</string>
     <string name="Notification_Lifecycle">Palvelimen tila</string>
@@ -124,7 +123,7 @@
     <string name="MH_NO_SECURE_SETTINGS">Pahoittelut, sovelluksella ei ole käyttöoikeutta tähän.</string>
     <string name="MH_Help_expert">" expert - ohjesivu asiantuntijakomennoille"</string>
     <string name="Permission_Notification">Sovellus tarjoaa mahdollisuuden vastaanottaa komentoja SMS-viestien lisäksi myös muista viestisovelluksista (kuten Telegram, WhatsApp...). Viestien lukuun vaaditaan pääsy ilmoitusksien käyttöoikeus.</string>
-    <string name="Info_Notification">Ilmoitukset</string>
+    <string name="Info_Notification_Access">Ilmoitukset</string>
     <string name="Notification_Server">Palvelin</string>
     <string name="NotificationServer_Description">Näytä palvelimelta lähetetyt ilmoitukset.</string>
 </resources>

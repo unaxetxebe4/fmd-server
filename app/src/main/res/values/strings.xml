@@ -21,6 +21,7 @@
     <string name="Permission_DEVICE_ADMIN">If you want to lock or wipe your phone if it gets lost, this permission is needed.\nIf you don\'t give this permission, this functionality will not be activated.</string>
     <string name="Permission_WRITE_SECURE_SETTINGS">This application is capable of turning on location if you normally leave location off.\nIf it is off, \"fmd locate\" will not work.\nIn order to achieve this, the application needs a special permission that you have to grant using a computer.\nIf you don\'t give this permission, it\'s no problem.\nYou can still use this application.</string>
     <string name="Permission_OVERLAY">When you remotely lock your device, this application can show a message on the lockscreen for whoever finds your phone.\nIf you don\'t give this permission, this functionality will not be activated.</string>
+    <string name="Permission_POST_NOTIFICATIONS">FMD will occasionally send you notifications, for example to warn you that someone is locating your device.</string>
     <string name="Introduction_Give_Permission">Give Permission</string>
     <string name="Introduction_Next">Next</string>
     <string name="Locked_Lock_Screen">FindMyDevice\nThis phone is locked!\nMessage from the owner:</string>
@@ -84,7 +85,9 @@
     <string name="Settings_Settings">Settings</string>
     <string name="Error">Error</string>
     <string name="OpenCellId_OpenCellId">OpenCellId</string>
-    <string name="OpenCellId_API_Key_Description">API-KEY:</string>
+    <string name="OpenCellId_API_Key_Description" translatable="false">API Access Token:</string>
+    <string name="OpenCellId_help">FMD can use the OpenCellId service to get an approximate location based on the cell tower that the phone is connected to. An internet connection is required for every location query. You also need to create an account at OpenCellId and get your own API Access Token.</string>
+    <string name="OpenCellId_open_website">Open OpenCellId website</string>
     <string name="Notification_Usage">Usage</string>
     <string name="Pin_Usage">PinUsage</string>
     <string name="Notification_Lifecycle">Lifecycle</string>
@@ -133,7 +136,7 @@
     <string name="MH_NO_SECURE_SETTINGS">Sorry the application is not allowed to do so.</string>
     <string name="MH_Help_expert">" expert - help page for expert commands."</string>
     <string name="Permission_Notification">If you want FMD to handle messages from other applications such as Telegram, Whatsapp, etc., you can give FMD access to notifications.</string>
-    <string name="Info_Notification">Notification</string>
+    <string name="Info_Notification_Access">Notification Access</string>
     <string name="Notification_Server">Server</string>
     <string name="NotificationServer_Description">Display notifications sent from the server.</string>
     <string name="Settings_FMDServer_AutoUpload_Description">When the location is requested by SMS or any other future method, the location can also be transmitted to the server if this option is enabled.</string>
@@ -168,4 +171,5 @@
     <string name="NOTIFY_PASSWORD_CHANGE_FAIL_CONTENT">Something went wrong, the password is not updated.</string>
     <string name="Whitelist_help">The contacts in this list are allowed to send FMD commands via SMS. Commands from everyone else will be ignored.</string>
     <string name="Whitelist_empty">No allowed contacts. Click the button to add some!</string>
+    <string name="paste">Paste</string>
 </resources>
