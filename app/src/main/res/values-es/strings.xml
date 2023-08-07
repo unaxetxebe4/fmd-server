@@ -114,7 +114,7 @@
     <string name="MH_NO_SECURE_SETTINGS">Lo sentimos, la aplicación no tiene permiso para hacerlo.</string>
     <string name="MH_Help_expert">" expert - página de ayuda para los comandos expertos."</string>
     <string name="Permission_Notification">Si quieres que FMD responda a los mensajes de otras aplicaciones, como Telegram, Whatsapp, etc., puede darle a FMD acceso a las notificaciones.</string>
-    <string name="Info_Notification">Notificación</string>
+    <string name="Info_Notification_Access">Notificación</string>
     <string name="Notification_Server">Servidor</string>
     <string name="NotificationServer_Description">Mostrar notificaciones enviadas desde el servidor</string>
     <string name="Settings_FMDServer_AutoUpload_Description">Cuando se solicita la localización por SMS o cualquier otro método futuro, la localización también puede ser transmitida al servidor si esta opción está activada.</string>
