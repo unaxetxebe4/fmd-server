@@ -11,12 +11,11 @@ import de.nulide.findmydevice.net.interfaces.ResponseListener;
 public class DefaultListener implements ResponseListener, ErrorListener, PostListener {
     @Override
     public void onErrorResponse(VolleyError error) {
-
+        error.printStackTrace();
     }
 
     @Override
     public void onResponse(JSONObject response) {
-
     }
 
     @Override
