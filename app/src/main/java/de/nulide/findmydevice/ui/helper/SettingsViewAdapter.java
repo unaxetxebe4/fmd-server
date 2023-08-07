@@ -5,23 +5,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.LinkedList;
 import java.util.List;
 
 import de.nulide.findmydevice.R;
-import de.nulide.findmydevice.data.WhiteList;
 
 public class SettingsViewAdapter extends BaseAdapter {
 
     private final LayoutInflater inflater;
-    private final List<String> settingsEntries;
+    private final List<SettingsEntry> settingsEntries;
 
-    public SettingsViewAdapter(Context context, List<String> settingsEntries) {
+    public SettingsViewAdapter(Context context, List<SettingsEntry> settingsEntries) {
         inflater = (LayoutInflater.from(context));
         this.settingsEntries = settingsEntries;
-
     }
 
     @Override
@@ -42,8 +40,11 @@ public class SettingsViewAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View view, ViewGroup parent) {
         view = inflater.inflate(R.layout.settings_item, null);
+        SettingsEntry entry = settingsEntries.get(position);
         TextView name = view.findViewById(R.id.textViewSettingsTitle);
-        name.setText(settingsEntries.get(position));
+        name.setText(entry.string);
+        ImageView icon = view.findViewById(R.id.imageViewSettingsIcon);
+        icon.setImageDrawable(entry.icon);
         return view;
     }
 }

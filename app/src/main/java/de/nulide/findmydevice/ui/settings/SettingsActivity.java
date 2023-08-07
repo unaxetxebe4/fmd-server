@@ -24,7 +24,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.List;
 
 import de.nulide.findmydevice.R;
@@ -34,13 +33,14 @@ import de.nulide.findmydevice.data.io.JSONFactory;
 import de.nulide.findmydevice.data.io.json.JSONMap;
 import de.nulide.findmydevice.ui.IntroductionActivity;
 import de.nulide.findmydevice.ui.LogActivity;
+import de.nulide.findmydevice.ui.helper.SettingsEntry;
 import de.nulide.findmydevice.ui.helper.SettingsViewAdapter;
 
 public class SettingsActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     private ListView listSettings;
 
-    private List<String> settingsEntries;
+    private List<SettingsEntry> settingsEntries;
 
     private final int EXPORT_REQ_CODE = 30;
 
@@ -55,23 +55,11 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
 
         settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
 
-        settingsEntries = new ArrayList<>();
-        settingsEntries.add(getString(R.string.Settings_FMDConfig));
-        settingsEntries.add(getString(R.string.Settings_FMDServer));
-        settingsEntries.add(getString(R.string.Settings_WhiteList));
-        settingsEntries.add(getString(R.string.Settings_OpenCellId));
-        settingsEntries.add(getString(R.string.Settings_Permissions));
-        settingsEntries.add(getString(R.string.Settings_Export));
-        settingsEntries.add(getString(R.string.Settings_Import));
-        settingsEntries.add(getString(R.string.Settings_Logs));
-        settingsEntries.add(getString(R.string.Settings_About));
-
+        settingsEntries = SettingsEntry.getSettingsEntries(this);
 
         listSettings = findViewById(R.id.listSettings);
         listSettings.setAdapter(new SettingsViewAdapter(this, settingsEntries));
         listSettings.setOnItemClickListener(this);
-
-
     }
 
     @Override
