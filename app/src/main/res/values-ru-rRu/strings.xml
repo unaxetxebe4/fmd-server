@@ -18,7 +18,6 @@
     <string name="About">О приложении</string>
     <string name="About_Text">Спасибо за установку приложения!\nПредстоит еще много работы, но я надеюсь, что это приложение поможет вам в ситуации, в которой оказался я. Терять телефон - плохо, но терять свой телефон из-за того, что нет конфиденциальных приложений, которые могут помочь найти телефон - еще хуже.\nВклад в развитие приложения и пожертвования приветствуются! Просто зайдите в F-Droid и найдите FindMyDevice.\n\n - Nulide</string>
     <string name="About_Used_APIs">Использованные API:\n</string>
-    <string name="About_UsedApis_Content" translatable="false">com.fasterxml.jackson.core:jackson-databind:2.10.0\ncom.android.volley:volley:1.1.1\norg.mindrot:jbcrypt:0.4\nOpenCellID\nOpenStreetMap</string>
     <string name="Info_Service" translatable="false">FMD</string>
     <string name="Info_CORE" translatable="false">CORE:</string>
     <string name="Info_GPS" translatable="false">GPS:</string>
@@ -58,7 +57,6 @@
     <string name="Settings_FMD_via_Pin_Description">Разрешить связываться с FMD при помощи pin. Вы будете временно добавлены в Белый Список.</string>
     <string name="Settings_Enter_Pin">Введите Pin</string>
     <string name="MH_Pin_Accepted">Pin принят!</string>
-    <string name="Alert_First_time_whitelist">Здесь вы можете добавить ваши контакты в Белый Список. Контакты этого Белого Списка смогут отслеживать ваше устройство, если отправят SMS-сообщение с текстом \"fmd\".</string>
     <string name="Alert_First_Time_contact_added">Поздравляем. Вы добавили ваш первый контакт. Теперь вы можете связываться с fmd при помощи SMS-сообщения с текстом \"fmd\" от разрешенных номеров. Если все работает как надо, то приложение должно ответить вам SMS-сообщением.</string>
     <string name="R_Stop_ring">ОСТАНОВИТЬ ЗВОНОК</string>
     <string name="Settings_Log">Лог</string>
