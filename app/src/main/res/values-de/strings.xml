@@ -134,7 +134,6 @@
     <string name="Settings_FMDServer_Push_Description_Available">Erfolgreich für Pushnachrichten registriert.</string>
     <string name="Settings_FMDServer_Push_Open_UP">UnifiedPush Webseite Öffnen</string>
     <string name="copied">Kopiert</string>
-</resources>
     <string name="Whitelist_help">Die Kontakte in dieser Liste dürfen Ihnen FMD Befehle via SMS schicken. Befehle von allen anderen werden ignoriert.</string>
     <string name="Whitelist_empty">Keine erlaubten Kontakte. Klicken Sie den Button um Kontakte hinzuzufügen!</string>
     <string name="paste">Einfügen</string>
