@@ -101,8 +101,6 @@
     <string name="Settings_FMDServer_ID">ID Server FMD</string>
     <string name="NOT_AVAILABLE">Non Disponibile</string>
     <string name="Available">Disponibile</string>
-    <string name="Settings_FMD_Server_ID_Desc">L\'ID necessario per cercare il dispositivo.\n\nVerrà visualizzato una volta inserite le impostazioni del server e impostata la password.
-</string>
     <string name="Settings_FMDServer_Register_Button">Registrati sul Server</string>
     <string name="Info_FMD_Command">Comando FMD:</string>
     <string name="Info_Permission_Stats">Autorizzazioni Concesse:</string>
