@@ -6,9 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
 
-
-import org.unifiedpush.android.connector.UnifiedPush;
-
 import de.nulide.findmydevice.data.ConfigSMSRec;
 import de.nulide.findmydevice.data.Settings;
 import de.nulide.findmydevice.data.io.IO;

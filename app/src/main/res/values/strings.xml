@@ -169,6 +169,9 @@
     <string name="Notification_Fail_Description">Notification when something fails, like the connection to fmd server.</string>
     <string name="NOTIFY_PASSWORD_CHANGE_FAIL_TITLE">Password change failed</string>
     <string name="NOTIFY_PASSWORD_CHANGE_FAIL_CONTENT">Something went wrong, the password is not updated.</string>
+    <string name="Settings_FMDServer_Push_Description_Missing">Sending commands from FMD Server to your phone requires a UnifiedPush distributor app. Install one, and then return here. It will automatically be detected.</string>
+    <string name="Settings_FMDServer_Push_Description_Available">Successfully registered for push notifications.</string>
+    <string name="Settings_FMDServer_Push_Open_UP">Open UnifiedPush Website</string>
     <string name="Whitelist_help">The contacts in this list are allowed to send FMD commands via SMS. Commands from everyone else will be ignored.</string>
     <string name="Whitelist_empty">No allowed contacts. Click the button to add some!</string>
     <string name="paste">Paste</string>

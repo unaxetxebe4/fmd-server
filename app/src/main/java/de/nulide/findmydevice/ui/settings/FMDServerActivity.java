@@ -2,6 +2,8 @@ package de.nulide.findmydevice.ui.settings;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
@@ -21,8 +23,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.security.PrivateKey;
 
-import javax.crypto.BadPaddingException;
-
 import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.data.Settings;
 import de.nulide.findmydevice.data.io.IO;
@@ -33,14 +33,16 @@ import de.nulide.findmydevice.receiver.PushReceiver;
 import de.nulide.findmydevice.services.FMDServerService;
 import de.nulide.findmydevice.utils.CypherUtils;
 
-public class FMDServerActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener, TextWatcher, View.OnClickListener, PostListener {
+public class FMDServerActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener, TextWatcher, PostListener {
 
     private Settings settings;
     private EditText editTextFMDServerUpdateTime;
     private TextView textViewFMDServerID;
+    private TextView textViewPushHelp;
     private Button changePasswordButton;
     private Button logoutButton;
     private Button deleteButton;
+    private Button openUnifiedPushButton;
     private CheckBox checkBoxFMDServerGPS;
     private CheckBox checkBoxFMDServerCell;
     private CheckBox checkBoxLowBat;
@@ -59,15 +61,19 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
         editTextFMDServerUpdateTime.addTextChangedListener(this);
 
         textViewFMDServerID = findViewById(R.id.textViewID);
+        textViewPushHelp = findViewById(R.id.textPushHelp);
 
         changePasswordButton = findViewById(R.id.buttonChangePassword);
-        changePasswordButton.setOnClickListener(this);
+        changePasswordButton.setOnClickListener(this::onChangePasswordClicked);
 
         logoutButton = findViewById(R.id.buttonLogout);
-        logoutButton.setOnClickListener(this);
+        logoutButton.setOnClickListener(this::onLogoutClicked);
 
         deleteButton = findViewById(R.id.buttonDeleteData);
-        deleteButton.setOnClickListener(this);
+        deleteButton.setOnClickListener(this::onDeleteClicked);
+
+        openUnifiedPushButton = findViewById(R.id.buttonOpenUnifiedPush);
+        openUnifiedPushButton.setOnClickListener(this::onOpenUnifiedPushClicked);
 
         if (!((String) settings.get(Settings.SET_FMDSERVER_ID)).isEmpty()) {
             textViewFMDServerID.setText((String) settings.get(Settings.SET_FMDSERVER_ID));
@@ -75,7 +81,7 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
             deleteButton.setEnabled(true);
         }
 
-        if(!(Boolean) settings.get(Settings.SET_FIRST_TIME_FMD_SERVER)) {
+        if (!(Boolean) settings.get(Settings.SET_FIRST_TIME_FMD_SERVER)) {
             new AlertDialog.Builder(this)
                     .setTitle(getString(R.string.Settings_FMDServer))
                     .setMessage(this.getString(R.string.Alert_First_time_fmdserver))
@@ -90,7 +96,7 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
 
         checkBoxFMDServerGPS = findViewById(R.id.checkBoxFMDServerGPS);
         checkBoxFMDServerCell = findViewById(R.id.checkBoxFMDServerCell);
-        switch((Integer)settings.get(Settings.SET_FMDSERVER_LOCATION_TYPE)){
+        switch ((Integer) settings.get(Settings.SET_FMDSERVER_LOCATION_TYPE)) {
             case 0:
                 checkBoxFMDServerGPS.setChecked(true);
                 break;
@@ -105,29 +111,35 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
         checkBoxFMDServerCell.setOnCheckedChangeListener(this);
 
         checkBoxLowBat = findViewById(R.id.checkBoxFMDServerLowBatUpload);
-        if((Boolean)settings.get(Settings.SET_FMD_LOW_BAT_SEND)){
-            checkBoxLowBat.setChecked(true);
-        }else{
-            checkBoxLowBat.setChecked(false);
-        }
+        checkBoxLowBat.setChecked((Boolean) settings.get(Settings.SET_FMD_LOW_BAT_SEND));
         checkBoxLowBat.setOnCheckedChangeListener(this);
+    }
 
-        PushReceiver.Register(context);
+    @Override
+    protected void onResume() {
+        super.onResume();
+        PushReceiver.registerWithUnifiedPush(this);
+
+        if (PushReceiver.isRegisteredWithUnifiedPush(this)) {
+            textViewPushHelp.setText(R.string.Settings_FMDServer_Push_Description_Available);
+        } else {
+            textViewPushHelp.setText(R.string.Settings_FMDServer_Push_Description_Missing);
+        }
     }
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-       if(buttonView == checkBoxFMDServerCell || buttonView == checkBoxFMDServerGPS){
-            if(checkBoxFMDServerGPS.isChecked() && checkBoxFMDServerCell.isChecked()){
+        if (buttonView == checkBoxFMDServerCell || buttonView == checkBoxFMDServerGPS) {
+            if (checkBoxFMDServerGPS.isChecked() && checkBoxFMDServerCell.isChecked()) {
                 settings.set(Settings.SET_FMDSERVER_LOCATION_TYPE, 2);
-            }else if(checkBoxFMDServerGPS.isChecked()){
+            } else if (checkBoxFMDServerGPS.isChecked()) {
                 settings.set(Settings.SET_FMDSERVER_LOCATION_TYPE, 0);
-            }else if(checkBoxFMDServerCell.isChecked()){
+            } else if (checkBoxFMDServerCell.isChecked()) {
                 settings.set(Settings.SET_FMDSERVER_LOCATION_TYPE, 1);
-            }else{
+            } else {
                 settings.set(Settings.SET_FMDSERVER_LOCATION_TYPE, 0);
             }
-        }else if(buttonView == checkBoxLowBat){
+        } else if (buttonView == checkBoxLowBat) {
             settings.set(Settings.SET_FMD_LOW_BAT_SEND, isChecked);
         }
     }
@@ -153,76 +165,83 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
         }
     }
 
-    @Override
-    public void onClick(View v) {
-        if(v == deleteButton){
-            AlertDialog.Builder privacyPolicy = new AlertDialog.Builder(context);
-            privacyPolicy.setTitle(getString(R.string.Settings_FMDServer_Alert_DeleteData))
-                    .setMessage(R.string.Settings_FMDServer_Alert_DeleteData_Desc)
-                    .setPositiveButton(getString(R.string.Ok), new DialogClickListenerForUnregistration(this))
-                    .setNegativeButton(getString(R.string.cancel), null)
-                    .show();
-        }else if (v == logoutButton) {
-            settings.set(Settings.SET_FMDSERVER_ID, "");
-            settings.set(Settings.SET_FMD_CRYPT_HPW, "");
-            settings.set(Settings.SET_FMD_CRYPT_PRIVKEY, "");
-            settings.set(Settings.SET_FMD_CRYPT_PUBKEY, "");
-            FMDServerService.cancelAll(this);
-            finish();
-        } else if (v == changePasswordButton) {
-            LayoutInflater inflater = getLayoutInflater();
-            final AlertDialog.Builder alert = new AlertDialog.Builder(this);
-            alert.setTitle("Change Password");
-            View registerLayout = inflater.inflate(R.layout.password_change_layout, null);
-            alert.setView(registerLayout);
-            EditText oldPasswordInput = registerLayout.findViewById(R.id.editTextFMDOldPassword);
-            EditText passwordInput = registerLayout.findViewById(R.id.editTextFMDPassword);
-            EditText passwordInputCheck = registerLayout.findViewById(R.id.editTextFMDPasswordCheck);
-            alert.setView(registerLayout);
-            PostListener postListener = this;
-            alert.setPositiveButton(getString(R.string.Ok), new DialogInterface.OnClickListener() {
-                @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-                public void onClick(DialogInterface dialog, int whichButton) {
-                    String oldPassword = oldPasswordInput.getText().toString();
-                    String password = passwordInput.getText().toString();
-                    String passwordCheck = passwordInputCheck.getText().toString();
-                    if (!password.isEmpty() && password.equals(passwordCheck) && !oldPassword.isEmpty()) {
-                        try {
-                            PrivateKey privKey = CypherUtils.decryptKey((String) settings.get(Settings.SET_FMD_CRYPT_PRIVKEY), oldPassword);
-                            if (privKey == null) {
-                                Toast.makeText(context, "Wrong Password.", Toast.LENGTH_LONG).show();
-                                return;
-                            }
-                            String newPrivKey = CypherUtils.encryptKey(privKey, password);
-                            String hashedPW = CypherUtils.hashWithPKBDF2(password);
-                            String[] splitHash = hashedPW.split("///SPLIT///");
+    private void onDeleteClicked(View view) {
+        AlertDialog.Builder privacyPolicy = new AlertDialog.Builder(context);
+        privacyPolicy.setTitle(getString(R.string.Settings_FMDServer_Alert_DeleteData))
+                .setMessage(R.string.Settings_FMDServer_Alert_DeleteData_Desc)
+                .setPositiveButton(getString(R.string.Ok), new DialogClickListenerForUnregistration(this))
+                .setNegativeButton(getString(R.string.cancel), null)
+                .show();
+    }
 
-                            FMDServerService.changePassword(context, newPrivKey, splitHash[0], splitHash[1], postListener);
-                        }catch (Exception bdp){
+    private void onLogoutClicked(View view) {
+        settings.set(Settings.SET_FMDSERVER_ID, "");
+        settings.set(Settings.SET_FMD_CRYPT_HPW, "");
+        settings.set(Settings.SET_FMD_CRYPT_PRIVKEY, "");
+        settings.set(Settings.SET_FMD_CRYPT_PUBKEY, "");
+        FMDServerService.cancelAll(this);
+        finish();
+    }
+
+    private void onChangePasswordClicked(View view) {
+        LayoutInflater inflater = getLayoutInflater();
+        final AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert.setTitle("Change Password");
+        View registerLayout = inflater.inflate(R.layout.password_change_layout, null);
+        alert.setView(registerLayout);
+        EditText oldPasswordInput = registerLayout.findViewById(R.id.editTextFMDOldPassword);
+        EditText passwordInput = registerLayout.findViewById(R.id.editTextFMDPassword);
+        EditText passwordInputCheck = registerLayout.findViewById(R.id.editTextFMDPasswordCheck);
+        alert.setView(registerLayout);
+        PostListener postListener = this;
+
+        alert.setPositiveButton(getString(R.string.Ok), new DialogInterface.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+            public void onClick(DialogInterface dialog, int whichButton) {
+                String oldPassword = oldPasswordInput.getText().toString();
+                String password = passwordInput.getText().toString();
+                String passwordCheck = passwordInputCheck.getText().toString();
+                if (!password.isEmpty() && password.equals(passwordCheck) && !oldPassword.isEmpty()) {
+                    try {
+                        PrivateKey privKey = CypherUtils.decryptKey((String) settings.get(Settings.SET_FMD_CRYPT_PRIVKEY), oldPassword);
+                        if (privKey == null) {
                             Toast.makeText(context, "Wrong Password.", Toast.LENGTH_LONG).show();
+                            return;
                         }
-                    }else{
-                        Toast.makeText(context, "Failed", Toast.LENGTH_LONG).show();
+                        String newPrivKey = CypherUtils.encryptKey(privKey, password);
+                        String hashedPW = CypherUtils.hashWithPKBDF2(password);
+                        String[] splitHash = hashedPW.split("///SPLIT///");
+
+                        FMDServerService.changePassword(context, newPrivKey, splitHash[0], splitHash[1], postListener);
+                    } catch (Exception bdp) {
+                        Toast.makeText(context, "Wrong Password.", Toast.LENGTH_LONG).show();
                     }
+                } else {
+                    Toast.makeText(context, "Failed", Toast.LENGTH_LONG).show();
                 }
-            });
-            alert.show();
-        }
+            }
+        });
+        alert.show();
+    }
+
+    private void onOpenUnifiedPushClicked(View view) {
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://unifiedpush.org/"));
+        startActivity(intent);
     }
 
     @Override
     public void onRestFinished(boolean success) {
-        if(success){
+        if (success) {
             Toast.makeText(context, "Success", Toast.LENGTH_LONG).show();
-            settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
-        }else{
+        } else {
             Toast.makeText(context, "Failed", Toast.LENGTH_LONG).show();
-            settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
         }
+        settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
     }
-    private class DialogClickListenerForUnregistration implements DialogInterface.OnClickListener{
 
-        private Context context;
+    private class DialogClickListenerForUnregistration implements DialogInterface.OnClickListener {
+
+        private final Context context;
 
         public DialogClickListenerForUnregistration(Context context) {
             this.context = context;
