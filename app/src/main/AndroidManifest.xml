@@ -51,7 +51,9 @@
         <activity
             android:name=".ui.settings.FMDServerActivity"
             android:label="@string/Settings_FMDServer" />
-        <activity android:name=".ui.settings.OpenCellIdActivity" />
+        <activity
+            android:name=".ui.settings.OpenCellIdActivity"
+            android:label="@string/Settings_OpenCellId" />
         <activity
             android:name=".ui.settings.FMDConfigActivity"
             android:label="@string/Settings_FMDConfig" />

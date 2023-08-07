@@ -75,7 +75,6 @@
     <string name="Settings_Settings">Impostazioni</string>
     <string name="Error">Errore</string>
     <string name="OpenCellId_OpenCellId">OpenCellId</string>
-    <string name="OpenCellId_API_Key_Description">CHIAVE API:</string>
     <string name="Notification_Usage">Utilizzo</string>
     <string name="Pin_Usage">Utilizzo Pin</string>
     <string name="Notification_Lifecycle">Durata</string>

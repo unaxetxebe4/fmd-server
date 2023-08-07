@@ -78,7 +78,6 @@
     <string name="Error">Virhe</string>
     <string name="Main_WhiteListCounterText">Valkoinen lista:</string>
     <string name="OpenCellId_OpenCellId">OpenCelliD</string>
-    <string name="OpenCellId_API_Key_Description">API-KEY:</string>
     <string name="Notification_Usage">Käyttö</string>
     <string name="Pin_Usage">PIN-koodin käyttö</string>
     <string name="Notification_Lifecycle">Palvelimen tila</string>

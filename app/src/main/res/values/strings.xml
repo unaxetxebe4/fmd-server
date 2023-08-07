@@ -86,7 +86,9 @@
     <string name="Settings_Settings">Settings</string>
     <string name="Error">Error</string>
     <string name="OpenCellId_OpenCellId">OpenCellId</string>
-    <string name="OpenCellId_API_Key_Description">API-KEY:</string>
+    <string name="OpenCellId_API_Key_Description" translatable="false">API Access Token:</string>
+    <string name="OpenCellId_help">FMD can use the OpenCellId service to get an approximate location based on the cell tower that the phone is connected to. An internet connection is required for every location query. You also need to create an account at OpenCellId and get your own API Access Token.</string>
+    <string name="OpenCellId_open_website">Open OpenCellId website</string>
     <string name="Notification_Usage">Usage</string>
     <string name="Pin_Usage">PinUsage</string>
     <string name="Notification_Lifecycle">Lifecycle</string>
@@ -168,4 +170,5 @@
     <string name="Notification_Fail_Description">Notification when something fails, like the connection to fmd server.</string>
     <string name="NOTIFY_PASSWORD_CHANGE_FAIL_TITLE">Password change failed</string>
     <string name="NOTIFY_PASSWORD_CHANGE_FAIL_CONTENT">Something went wrong, the password is not updated.</string>
+    <string name="paste">Paste</string>
 </resources>

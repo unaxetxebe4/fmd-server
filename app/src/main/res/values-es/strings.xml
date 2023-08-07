@@ -65,7 +65,6 @@
     <string name="Error">Error</string>
     <string name="Main_WhiteListCounterText">Lista Blanca</string>
     <string name="OpenCellId_OpenCellId">OpenCellId</string>
-    <string name="OpenCellId_API_Key_Description">Clave-API</string>
     <string name="Notification_Usage">Uso</string>
     <string name="Pin_Usage">Uso de Pin</string>
     <string name="Notification_Lifecycle">Ciclo de vida</string>

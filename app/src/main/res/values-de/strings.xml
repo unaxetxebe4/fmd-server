@@ -70,7 +70,8 @@
     <string name="Error">Fehler</string>
     <string name="Main_WhiteListCounterText">WhiteList:</string>
     <string name="OpenCellId_OpenCellId">OpenCellId</string>
-    <string name="OpenCellId_API_Key_Description">API-Key:</string>
+    <string name="OpenCellId_help">FMD kann den Dienst OpenCellId benutzen um den ungefähren Standort zu bestimmen basierend auf der Mobilfunkzelle mit der das Gerät verbunden ist. Eine Internetverbindung ist benötigt für jede Standortanfrage. Außerdem müssen Sie ein OpenCellId-Konto anlegen um ein eigenes API Access Token zu bekommen.</string>
+    <string name="OpenCellId_open_website">OpenCellId Webseite öffnen</string>
     <string name="Notification_Usage">Nutzung</string>
     <string name="Pin_Usage">Pin-Nutzung</string>
     <string name="Notification_Lifecycle">Serverstatus</string>
@@ -127,4 +128,5 @@
     <string name="Settings_FMDServer_Alert_DeleteData">Daten löschen</string>
     <string name="Settings_FMDServer_Alert_DeleteData_Desc">Dadurch werden alle Daten auf dem Server gelöscht. Sind Sie sicher?</string>
     <string name="Settings_FMD_Send_Loc_on_Boot">Senden Sie Ihren Standort, wenn das Gerät hochfährt.</string>
+    <string name="paste">Einfügen</string>
 </resources>
