@@ -18,7 +18,6 @@
     <string name="About">About</string>
     <string name="About_Text">Thanks for downloading this app!\nThere is still a lot to do, but I hope this app will help you if you find yourself in the same situation I had. Losing your phone is bad, but losing your phone because there are no privacy-friendly apps to help you find it is even worse.\nContributions and donations are welcome! Just go to F-Droid and search for my app.\n\n - Nulide</string>
     <string name="About_Used_APIs">Used APIs:\n</string>
-    <string name="About_UsedApis_Content" translatable="false">com.fasterxml.jackson.core:jackson-databind:2.10.0\ncom.android.volley:volley:1.1.1\norg.mindrot:jbcrypt:0.4\nOpenCellID\nOpenStreetMap</string>
     <string name="Info_Service" translatable="false">FMD</string>
     <string name="Info_CORE" translatable="false">CORE:</string>
     <string name="Info_GPS" translatable="false">GPS:</string>
@@ -58,7 +57,6 @@
     <string name="Settings_FMD_via_Pin_Description">Allow to communicate with FMD via a pin. You will be added to a temporary Whitelist.</string>
     <string name="Settings_Enter_Pin">Enter Pin</string>
     <string name="MH_Pin_Accepted">Pin accepted!</string>
-    <string name="Alert_First_time_whitelist">Here you can add your contacts to the whitelist. The contacts of this whitelist will be able to track your device when they write a sms wich contains \"fmd\".</string>
     <string name="Alert_First_Time_contact_added">Congratulations. You have added your first contact. You can now comunicate with fmd by sending a sms that contains \"fmd\" from the whitelisted phonenumber. When everything works, the application will respond.</string>
     <string name="R_Stop_ring">STOP RINGING</string>
     <string name="Settings_Log">Log</string>
@@ -77,7 +75,6 @@
     <string name="Error">Error</string>
     <string name="Main_WhiteListCounterText">WhiteList:</string>
     <string name="OpenCellId_OpenCellId">OpenCellId</string>
-    <string name="OpenCellId_API_Key_Description">API-KEY:</string>
     <string name="Notification_Usage">Usage</string>
     <string name="Pin_Usage">PinUsage</string>
     <string name="Notification_Lifecycle">Lifecycle</string>

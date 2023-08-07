@@ -47,7 +47,6 @@
     <string name="Settings_FMD_via_Pin_Description">Le permite comunicarse con FMD mediante un pin. Será añadido/a a una Lista Blanca temporal.</string>
     <string name="Settings_Enter_Pin">Ingresar Pin</string>
     <string name="MH_Pin_Accepted">¡Pin aceptado!</string>
-    <string name="Alert_First_time_whitelist">Aquí puede añadir sus contactos a la lista blanca. Los contactos autorizados serán capaces de enviar comandos a su teléfono usando SMS:</string>
     <string name="Alert_First_Time_contact_added">Felicidades. Ha añadido su primer contacto. Ahora puede comunicarse con FMD enviando un mensaje SMS que contenga \"fmd\" desde el número de teléfono autorizado. Cuando todo funcione, la aplicación responderá.</string>
     <string name="R_Stop_ring">DEJAR DE TIMBRAR</string>
     <string name="Settings_Log">Registro</string>
@@ -65,7 +64,6 @@
     <string name="Error">Error</string>
     <string name="Main_WhiteListCounterText">Lista Blanca</string>
     <string name="OpenCellId_OpenCellId">OpenCellId</string>
-    <string name="OpenCellId_API_Key_Description">Clave-API</string>
     <string name="Notification_Usage">Uso</string>
     <string name="Pin_Usage">Uso de Pin</string>
     <string name="Notification_Lifecycle">Ciclo de vida</string>
@@ -113,7 +111,7 @@
     <string name="MH_NO_SECURE_SETTINGS">Lo sentimos, la aplicación no tiene permiso para hacerlo.</string>
     <string name="MH_Help_expert">" expert - página de ayuda para los comandos expertos."</string>
     <string name="Permission_Notification">Si quieres que FMD responda a los mensajes de otras aplicaciones, como Telegram, Whatsapp, etc., puede darle a FMD acceso a las notificaciones.</string>
-    <string name="Info_Notification">Notificación</string>
+    <string name="Info_Notification_Access">Notificación</string>
     <string name="Notification_Server">Servidor</string>
     <string name="NotificationServer_Description">Mostrar notificaciones enviadas desde el servidor</string>
     <string name="Settings_FMDServer_AutoUpload_Description">Cuando se solicita la localización por SMS o cualquier otro método futuro, la localización también puede ser transmitida al servidor si esta opción está activada.</string>

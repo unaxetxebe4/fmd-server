@@ -2,6 +2,9 @@ package de.nulide.findmydevice.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -65,6 +68,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(crash);
         }
         Settings.updateSettings();
+        // Show the IntroductionActivity again if one of the important permissions is missing
         if (!Settings.isIntroductionPassed() || !Permission.CORE) {
             Intent introductionIntent = new Intent(this, IntroductionActivity.class);
             startActivity(introductionIntent);
@@ -99,8 +103,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void updateViews() {
         textViewFMDCommandName.setText((String) Settings.get(Settings.SET_FMD_COMMAND));
-        textViewWhiteListCount.setText(Integer.valueOf(whiteList.size()).toString());
-
 
         int colorEnabled;
         int colorDisabled;
@@ -108,16 +110,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
             colorEnabled = getColor(R.color.colorEnabled);
             colorDisabled = getColor(R.color.colorDisabled);
-        }else {
+        } else {
             colorEnabled = getResources().getColor(R.color.colorEnabled);
             colorDisabled = getResources().getColor(R.color.colorDisabled);
         }
 
-        if(whiteList.size() > 0){
-            textViewWhiteListCount.setTextColor(colorEnabled);
-        }else{
-            textViewWhiteListCount.setTextColor(colorDisabled);
+        ForegroundColorSpan whitelistCountColor;
+        if (whiteList.size() > 0) {
+            whitelistCountColor = new ForegroundColorSpan(colorEnabled);
+        } else {
+            whitelistCountColor = new ForegroundColorSpan(colorDisabled);
         }
+        String whitelistPrefix = getString(R.string.Settings_WhiteList) + ": ";
+        String whitelistAll = whitelistPrefix + whiteList.size();
+        Spannable spannable = new SpannableString(whitelistAll);
+        spannable.setSpan(whitelistCountColor, whitelistPrefix.length(), whitelistAll.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        textViewWhiteListCount.setText(spannable, TextView.BufferType.SPANNABLE);
 
         if (Permission.CORE) {
             textViewCORE.setText(getString(R.string.Enabled));
@@ -161,7 +169,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             textViewOverlay.setText(getString(R.string.Disabled));
             textViewOverlay.setTextColor(colorDisabled);
         }
-        if(Permission.NOTIFICATION){
+        if (Permission.NOTIFICATION_ACCESS) {
             textViewNotification.setText(getString(R.string.Enabled));
             textViewNotification.setTextColor(colorEnabled);
         } else {

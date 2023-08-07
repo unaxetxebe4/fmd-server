@@ -1,30 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ui.settings.WhiteListActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_normal"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_normal"
+            android:src="@drawable/ic_info" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/Whitelist_help" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5">
 
         <ListView
             android:id="@+id/listWhiteList"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_margin="1mm"
-            android:layout_weight="0.5" />
+            android:layout_height="match_parent"
+            tools:listitem="@layout/whitelist_item" />
 
-        <Button
-            android:id="@+id/buttonAddContact"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/whitelistEmpty"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="3mm"
-            android:layout_gravity="bottom"
-            android:text="@string/WhiteList_Add_Contact" />
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/margin_normal"
+            android:text="@string/Whitelist_empty"
+            android:visibility="gone"
+            tools:visibility="visible" />
+    </FrameLayout>
 
-    </LinearLayout>
+    <Button
+        android:id="@+id/buttonAddContact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_normal"
+        android:text="@string/WhiteList_Add_Contact" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

@@ -7,7 +7,6 @@
     <string name="Crashed_Send_log">Envoyer les logs</string>
     <string name="R_Stop_ring">ARRETER DE SONNER</string>
     <string name="Alert_First_Time_contact_added">Félicitations. Vous avez ajouté votre premier contact. Vous pouvez maintenant communiquer avec FMD en envoyant un sms qui contient \"fmd\" à partir des numéros de téléphone de la liste blanche. Quand tout marchera, l\'application répondra</string>
-    <string name="Alert_First_time_whitelist">Ici vous pouvez ajouter vos contacts à la liste blanche. Les contacts de cette liste blanche seront capable de tracer votre équipement quand il écriront un SMS qui contiendra \"fmd\"</string>
     <string name="MH_Pin_Accepted">Code PIN accepté</string>
     <string name="Settings_Enter_Pin">Entrez le code PIN</string>
     <string name="Settings_FMD_via_Pin_Description">Autoriser à communiquer avec FMD avec un code PIN. Vous serez ajouté à une liste blanche temporaire.</string>
