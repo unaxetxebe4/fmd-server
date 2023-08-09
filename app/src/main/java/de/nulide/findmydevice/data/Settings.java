@@ -149,7 +149,6 @@ public class Settings extends HashMap<Integer, Object> {
 
     public void setIntroductionPassed() {
         set(SET_INTRODUCTION_VERSION, newestIntroductionVersion);
-        set(SET_UPDATEBOARDING_MODERN_CRYPTO_COMPLETED, true);
         write(true);
     }
 
