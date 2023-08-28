@@ -3,6 +3,7 @@ package de.nulide.findmydevice.receiver;
 import android.content.Context;
 import android.content.Intent;
 
+
 import de.nulide.findmydevice.data.ConfigSMSRec;
 import de.nulide.findmydevice.data.Settings;
 import de.nulide.findmydevice.services.FMDServerService;
@@ -26,7 +27,7 @@ public class BootReceiver extends SuperReceiver {
 
             if (ch.getSettings().checkAccountExists()) {
                 FMDServerService.scheduleJob(context, 0);
-                PushReceiver.Register(context);
+                PushReceiver.registerWithUnifiedPush(context);
             }
         }
     }

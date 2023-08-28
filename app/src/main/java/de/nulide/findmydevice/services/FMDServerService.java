@@ -132,6 +132,19 @@ public class FMDServerService extends JobService {
         restHandler.run();
     }
 
+
+    public static void registerPushWithFmdServer(Context context, String endpoint) {
+        JSONObject dataPackage = new JSONObject();
+        try {
+            dataPackage.put("IDT", "");
+            dataPackage.put("Data", endpoint);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        RestHandler dataHandler = new RestHandler(context, RestHandler.DEFAULT_METHOD, RestHandler.PUSH, dataPackage);
+        dataHandler.runWithAT();
+    }
+
     public static void unregisterOnServer(Context context, ResponseListener responseListener, ErrorListener errorListener) {
         IO.context = context;
 
@@ -143,16 +156,15 @@ public class FMDServerService extends JobService {
                 // settings needs to be instantiated here, else we get race conditions on the file
                 Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
                 settings.setNow(Settings.SET_FMDSERVER_ID, ""); // only clear if request is successful
-                responseListener.onResponse(new JSONObject());
+                //responseListener.onResponse(new JSONObject());
             } else {
-                errorListener.onErrorResponse(error);
+                //errorListener.onErrorResponse(error);
             }
         });
         restHandler.setResponseListener(response -> {
             // settings needs to be instantiated here, else we get race conditions on the file
             Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
             settings.setNow(Settings.SET_FMDSERVER_ID, ""); // only clear if request is successful
-            responseListener.onResponse(response);
         });
         restHandler.runWithAT();
     }

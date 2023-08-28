@@ -2,6 +2,9 @@ package de.nulide.findmydevice.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -58,7 +61,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        PushReceiver.Register(this);
+        PushReceiver.registerWithUnifiedPush(this);
+
         IO.context = this;
         Logger.init(Thread.currentThread(), this);
         Notifications.init(this, false);
@@ -78,6 +82,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(intent);
             finish();
             return;
+
         }
         if (!(Boolean) settings.get(Settings.SET_UPDATEBOARDING_MODERN_CRYPTO_COMPLETED)) {
             Intent intent = new Intent(this, UpdateboardingModernCryptoActivity.class);
@@ -131,16 +136,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
             colorEnabled = getColor(R.color.colorEnabled);
             colorDisabled = getColor(R.color.colorDisabled);
-        }else {
+        } else {
             colorEnabled = getResources().getColor(R.color.colorEnabled);
             colorDisabled = getResources().getColor(R.color.colorDisabled);
         }
 
-        if(whiteList.size() > 0){
-            textViewWhiteListCount.setTextColor(colorEnabled);
-        }else{
-            textViewWhiteListCount.setTextColor(colorDisabled);
+        ForegroundColorSpan whitelistCountColor;
+        if (whiteList.size() > 0) {
+            whitelistCountColor = new ForegroundColorSpan(colorEnabled);
+        } else {
+            whitelistCountColor = new ForegroundColorSpan(colorDisabled);
         }
+        String whitelistPrefix = getString(R.string.Settings_WhiteList) + ": ";
+        String whitelistAll = whitelistPrefix + whiteList.size();
+        Spannable spannable = new SpannableString(whitelistAll);
+        spannable.setSpan(whitelistCountColor, whitelistPrefix.length(), whitelistAll.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        textViewWhiteListCount.setText(spannable, TextView.BufferType.SPANNABLE);
 
         if (Permission.CORE) {
             textViewCORE.setText(getString(R.string.Enabled));
@@ -184,7 +195,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             textViewOverlay.setText(getString(R.string.Disabled));
             textViewOverlay.setTextColor(colorDisabled);
         }
-        if(Permission.NOTIFICATION){
+        if (Permission.NOTIFICATION_ACCESS) {
             textViewNotification.setText(getString(R.string.Enabled));
             textViewNotification.setTextColor(colorEnabled);
         } else {
@@ -223,10 +234,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             textViewServerRegistered.setTextColor(colorDisabled);
         }
 
-        if(UnifiedPush.getDistributors(this, new ArrayList<String>()).size() > 0){
+        if (PushReceiver.isRegisteredWithUnifiedPush(this)) {
             textViewPush.setText(R.string.Available);
             textViewPush.setTextColor(colorEnabled);
-        }else{
+        } else {
             textViewPush.setTextColor(colorDisabled);
             textViewPush.setText(R.string.NOT_AVAILABLE);
         }

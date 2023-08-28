@@ -2,6 +2,8 @@ package de.nulide.findmydevice.receiver;
 
 import android.content.Context;
 import android.content.Intent;
+import android.widget.Toast;
+
 
 import de.nulide.findmydevice.data.ConfigSMSRec;
 import de.nulide.findmydevice.services.FMDServerService;

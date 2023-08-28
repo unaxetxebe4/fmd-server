@@ -140,7 +140,7 @@ public class IntroductionActivity extends AppCompatActivity implements View.OnCl
                 break;
             case 8:
                 textViewInfoText.setText(getString(R.string.Permission_Notification));
-                if (Permission.checkNotificationPermission(this)) {
+                if (Permission.checkNotificationAccessPermission(this)) {
                     buttonGivePermission.setBackgroundColor(colorEnabled);
                 } else {
                     buttonGivePermission.setBackgroundColor(colorDisabled);
@@ -163,6 +163,21 @@ public class IntroductionActivity extends AppCompatActivity implements View.OnCl
                 }
                 break;
             case 11:
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    textViewInfoText.setText(R.string.Permission_POST_NOTIFICATIONS);
+                    if (Permission.checkPostNotificationsPermissions(this)) {
+                        buttonNext.setEnabled(true);
+                        buttonGivePermission.setBackgroundColor(colorEnabled);
+                    } else {
+                        buttonNext.setEnabled(false);
+                        buttonGivePermission.setBackgroundColor(colorDisabled);
+                    }
+                } else {
+                    position++;
+                    updateViews();
+                }
+                break;
+            case 12:
                 Settings.setIntroductionPassed();
                 Intent myIntent = new Intent(this, MainActivity.class);
                 finish();
@@ -217,6 +232,12 @@ public class IntroductionActivity extends AppCompatActivity implements View.OnCl
                     break;
                 case 10:
                     Permission.requestBatteryOptimizationPermission(this);
+                    break;
+                case 11:
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                        Permission.requestPostNotificationsPermission(this);
+                    }
+                    break;
             }
         } else if (v == buttonNext) {
             position++;

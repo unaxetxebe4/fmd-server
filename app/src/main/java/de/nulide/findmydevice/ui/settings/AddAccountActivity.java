@@ -197,6 +197,27 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
         }
     }
 
+    private void checkForAuth(Context context){
+        finish();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                finish();
+                Intent settingIntent = null;
+                settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
+                if(((String)settings.get(Settings.SET_FMDSERVER_ID)).isEmpty()){
+                    settingIntent = new Intent(context, AddAccountActivity.class);
+                    Toast.makeText(context, "Failed", Toast.LENGTH_LONG).show();
+                }else{
+                    settingIntent = new Intent(context, FMDServerActivity.class);
+                    FMDServerService.scheduleJob(context, 0);
+                    PushReceiver.registerWithUnifiedPush(context);
+                }
+                startActivity(settingIntent);
+            }
+        }, 500);
+    }
+
     @Override
     public void onRestFinished(boolean success) {
         runOnUiThread(() -> {
@@ -214,7 +235,7 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
             }
 
             FMDServerService.scheduleJob(context, 0);
-            PushReceiver.Register(context);
+            PushReceiver.registerWithUnifiedPush(context);
 
             Intent fmdServerActivityIntent = new Intent(context, FMDServerActivity.class);
             startActivity(fmdServerActivityIntent);

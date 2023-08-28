@@ -8,7 +8,6 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-
     <style name="Theme.AppCompat.Translucent" parent="Theme.AppCompat.NoActionBar">
         <item name="android:background">#00000000</item> <!-- Or any transparency or color you need -->
         <item name="android:windowNoTitle">true</item>
@@ -18,5 +17,11 @@
         <item name="android:windowAnimationStyle">@android:style/Animation</item>
     </style>
 
+    <style name="FMD.Text.SectionTitle" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textSize">23sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAlignment">textStart</item>
+    </style>
 
 </resources>
