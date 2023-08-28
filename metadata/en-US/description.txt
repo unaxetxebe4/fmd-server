@@ -1,27 +1,33 @@
-Hello,
-
-So an explanation, I lost my new phone.
-And because I don't use Google Services I couldn't locate it and so I was f*****.
-In the hope that this doesn't happen again, I developed this application, that can locate the phone via SMS.
-After it is installed, you can enter some entries in the list of phone numbers allowed to locate this device.
-Just send a SMS with "fmd" to receive the syntax how to locate the phone.
+I lost my new phone.
+And because I don't use Google Services I couldn't locate it and my phone was gone for good.
+In the hope that this doesn't happen again, I developed this application, so that I can locate the phone via SMS.
 
 Features:
 
-- Locate the phone via SMS
-- Lock the phone
-- Let the phone ring
-- Delete the phone
+- Locate the device (using GPS or cellular location)
+- Lock the device
+- Let the device ring
+- Take pictures with the device's camera to see its surroundings
+- Factory-reset the device
 
-Planned Features:
+Usage:
 
-- Recognize networks that are near the phone
-- Locate the phone without GPS or network
+You can control FMD (and thus your phone) either via SMS or via FMD Server.
+You send a command to the phone (e.g. "fmd ring") and the phone executes it.
 
-I still can't afford a new phone, so if you want to help I am very happy to receive donations.
+For SMS you can either define a list of trusted contacts (phone numbers) that are allowed to send commands.
+Or you can set a PIN to allow anonymous usage.
+Then non-trusted phone numbers can also send commands by including the PIN in the message.
+This is useful because now if you loose your phone, you can ask a random person for help to wipe your phone remotely.
+If you simply text "fmd" to your phone FMD will reply with a text listing the available commands.
 
-CAVEATS:
-This application is still in beta.
-If this app doesn't work, it's not my fault, it's the fault of the holy Satan and the missing lines that weren't on the right spot.
-I try my best to develop the app, but I still have to work regularly.
-So sorry, if it didn't worked out.
+With FMD Server you get a web interface to send commands, to view the location of your device on a map,
+and to view pictures taken by the device.
+You can self-host FMD Server.
+See here for more details: https://gitlab.com/nulide/findmydeviceserver
+
+Disclaimer:
+
+This app is provided on a best effort basis.
+We hope it is useful, we use it ourselves, but this is a hobby project
+and we can't guarantee that it will work when you need it the most.

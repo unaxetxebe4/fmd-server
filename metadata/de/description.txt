@@ -1,31 +1,33 @@
-FindMyDevice
-
-Ein Smartphone-Ortungsapp.
-
-Vorwort:
-
-Aufgrund eines fatalen Missgeschicks hab ich mein neues Handy verloren und da ich auf jeglich Google-Dienste verzichten wollte, musste ich darunter leiden es nicht orten zu können.
-Dies wollte ich für die Zukunft verhindern und allen Leuten eine Alternative hierfür bereitstellen.
-
-FindMyDevice erlaubt es dein Handy über SMS zu orten. Nachdem die App installiert ist kann man in der Whitelist Telefonnummern hinzufügen welche dich orten dürfen.
-Die Syntax ist ziemlich simpel schicke einfach eine SMS mit fmd an dein Handy.
+Ich habe mein neues Handy verloren.
+Und weil ich keine Google Services verwende konnte ich es nicht orten und es war futsch.
+In der Hoffnung dass das nicht nochmal passiert habe ich diese App geschrieben, sodass ich es über SMS orten kann.
 
 Features:
 
-- Handy via SMS orten
-- Handy sperren
-- Handy klingeln lassen
-- Handy löschen lassen
+- Gerät orten (mit GPS oder Mobilfunkzelle)
+- Gerät sperren
+- Gerät klingeln lassen
+- Bilder mit der Kamera machen um die Umgebung des Geräts zu sehen
+- Gerät auf Werkseinstellungen zurücksetzen
 
-Geplante Features:
+Benutzung:
 
-- Netzwerke der Umgebung anzeigen lassen
-- Standort ohne GPS und Netzwerk herausfinden
+Sie können FMD (und damit Ihr Gerät) entweder per SMS oder über FMD Server steuern.
+Sende einen Befehl (z.B. "fmd ring") und das Gerät wird ihn ausführen.
 
-Da ich leider weiterhin kein neues Handy kaufen konnte, wäre ich über ein Spende sehr erfreut.
+Für SMS können Sie entweder eine Liste von vertrauenswürdigen Kontakten (Telefonnummern) definieren, die Befehle senden dürfen.
+Oder Sie können eine PIN festlegen um anonyme Nutzung zu ermöglichen.
+Dann können auch nicht vertrauenswürdige Telefonnummern Befehle senden, indem sie die PIN in die SMS schreiben.
+Das ist nützlich, denn wenn Sie Ihr Telefon verlieren können Sie nun eine beliebige Person um Hilfe bitten um Ihr Telefon aus der Ferne zu zurückzusetzen.
+Wenn Sie einfach "fmd" an Ihr Telefon schicken, antwortet FMD mit einer SMS die die verfügbaren Befehle auflistet.
 
-Achtung:
-Diese App ist noch in der Beta.
-Falls die Ortung nicht funktioniert und das Handy verloren ist, bringt es euch leider nichts mit dem Finger auf mich zu zeigen. Dann ist das Handy weg.
-Ich strenge mich an die App weiterzuentwickeln, allerdings ist das nur ein Projekt welches ich fortführe wenn ich Zeit habe, da ich weiterhin auch noch so arbeiten muss.
-Danke fürs Verständnis.
+FMD Server ist ein Webinterface um Befehle zu senden, den Standort des Geräts auf einer Karte anzuzeigen,
+und Bilder die vom Gerät aufgenommen wurden anzuschauen.
+Sie können FMD Server selber hosten.
+Mehr Informationen hier: https://gitlab.com/nulide/findmydeviceserver
+
+Hinweis:
+
+Diese App wird nach bestem Wissen und Gewissen entwickelt.
+Wir hoffen dass sie nützlich ist, wir benutzen sie selbst, aber es ist ein Hobbyprojekt
+und wir können nicht garantieren dass sie im Ernstfall funktioniert.
