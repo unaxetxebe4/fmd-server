@@ -13,8 +13,8 @@ android {
         applicationId "de.nulide.findmydevice"
         minSdkVersion 19
         targetSdkVersion 33
-        versionCode 21
-        versionName "0.3.0"
+        versionCode 22
+        versionName "0.3.1"
         multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
