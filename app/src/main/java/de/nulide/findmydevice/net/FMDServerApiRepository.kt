@@ -1,6 +1,7 @@
 package de.nulide.findmydevice.net
 
 import android.content.Context
+import android.util.Log
 import com.android.volley.Request.Method
 import com.android.volley.RequestQueue
 import com.android.volley.Response
@@ -315,6 +316,37 @@ class FMDServerApiRepository private constructor(spec: FMDServerApiRepoSpec) {
                         onError.onErrorResponse(error)
                     }
                 },
+            )
+            queue.add(request)
+        })
+    }
+
+    fun registerPushEndpoint(
+        endpoint: String,
+        onError: Response.ErrorListener,
+    ) {
+        Log.i(TAG, "Registering push endpoint $endpoint")
+        getAccessToken(onError = onError, onResponse = { accessToken ->
+            val jsonObject = JSONObject()
+            try {
+                jsonObject.put("IDT", accessToken)
+                jsonObject.put("Data", endpoint)
+            } catch (e: JSONException) {
+                e.printStackTrace()
+            }
+
+            val request = JsonObjectRequest(
+                Method.PUT, baseUrl + URL_PUSH, jsonObject,
+                { _ -> },
+                { error ->
+                    // FIXME: The server returns an empty body which cannot be parsed to JSON.
+                    // The best solution would be for the access token to be passed as a header rather then a body
+                    if (error.cause is JSONException) {
+                        // request was actually successful, just deserialising failed
+                    } else {
+                        onError.onErrorResponse(error)
+                    }
+                }
             )
             queue.add(request)
         })

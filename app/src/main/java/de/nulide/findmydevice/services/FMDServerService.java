@@ -101,18 +101,6 @@ public class FMDServerService extends JobService {
         restHandler.runWithAT();
     }
 
-    public static void registerPushWithFmdServer(Context context, String endpoint) {
-        JSONObject dataPackage = new JSONObject();
-        try {
-            dataPackage.put("IDT", "");
-            dataPackage.put("Data", endpoint);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        RestHandler dataHandler = new RestHandler(context, RestHandler.DEFAULT_METHOD, RestHandler.PUSH, dataPackage);
-        dataHandler.runWithAT();
-    }
-
     public static void scheduleJob(Context context, int time) {
         Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
         ComponentHandler ch = new ComponentHandler(settings, context, null, null);
