@@ -27,7 +27,7 @@
                 android:layout_margin="1dp"
                 android:paddingStart="10dp"
                 android:paddingTop="20dp"
-                android:text="@string/Settings_Permission" />
+                android:text="@string/Settings_Permissions" />
 
             <host.stjin.expandablecardview.ExpandableCardView
                 android:id="@+id/expandableCardViewPermissions"
