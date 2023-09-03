@@ -1,5 +1,7 @@
 package de.nulide.findmydevice.ui.settings;
 
+import static de.nulide.findmydevice.net.FMDServerApiRepository.MIN_REQUIRED_SERVER_VERSION;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -27,6 +29,8 @@ import de.nulide.findmydevice.data.Settings;
 import de.nulide.findmydevice.data.io.IO;
 import de.nulide.findmydevice.data.io.JSONFactory;
 import de.nulide.findmydevice.data.io.json.JSONMap;
+import de.nulide.findmydevice.net.FMDServerApiRepoSpec;
+import de.nulide.findmydevice.net.FMDServerApiRepository;
 import de.nulide.findmydevice.net.interfaces.PostListener;
 import de.nulide.findmydevice.receiver.PushReceiver;
 import de.nulide.findmydevice.services.FMDServerService;
@@ -239,18 +243,20 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
             textViewServerVersion.setText("");
             return;
         }
-        new Thread(() -> FMDServerService.getServerVersion(context, serverBaseUrl,
+
+        FMDServerApiRepository repo = FMDServerApiRepository.Companion.getInstance(new FMDServerApiRepoSpec(context, serverBaseUrl));
+        new Thread(() -> repo.getServerVersion(
                 (response) -> runOnUiThread(() -> {
                     String currentString = response;
                     if (currentString.startsWith("v")) {
                         currentString = currentString.substring(1);
                     }
-                    ComparableVersion minRequired = new ComparableVersion(FMDServerService.MIN_REQUIRED_SERVER_VERSION);
+                    ComparableVersion minRequired = new ComparableVersion(MIN_REQUIRED_SERVER_VERSION);
                     ComparableVersion current = new ComparableVersion(currentString);
 
                     if (current.compareTo(minRequired) < 0) {
                         String warningText = context.getString(R.string.server_version_error_low_version);
-                        warningText = warningText.replace("{MIN}", FMDServerService.MIN_REQUIRED_SERVER_VERSION);
+                        warningText = warningText.replace("{MIN}", MIN_REQUIRED_SERVER_VERSION);
                         warningText = warningText.replace("{CURRENT}", currentString);
                         textViewServerVersion.setText(warningText);
                     } else {
