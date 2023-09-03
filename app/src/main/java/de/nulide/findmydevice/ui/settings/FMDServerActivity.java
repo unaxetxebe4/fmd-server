@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -18,7 +17,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -29,14 +27,13 @@ import de.nulide.findmydevice.data.Settings;
 import de.nulide.findmydevice.data.io.IO;
 import de.nulide.findmydevice.data.io.JSONFactory;
 import de.nulide.findmydevice.data.io.json.JSONMap;
-import de.nulide.findmydevice.net.interfaces.PostListener;
 import de.nulide.findmydevice.receiver.PushReceiver;
 import de.nulide.findmydevice.services.FMDServerService;
 import de.nulide.findmydevice.utils.CypherUtils;
 import de.nulide.findmydevice.utils.UnregisterUtil;
 import de.nulide.findmydevice.utils.Utils;
 
-public class FMDServerActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener, TextWatcher, PostListener {
+public class FMDServerActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener, TextWatcher {
 
     private Settings settings;
 
@@ -59,6 +56,8 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
     private CheckBox checkBoxLowBat;
 
     private Context context;
+
+    private AlertDialog loadingDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -197,7 +196,7 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
         AlertDialog.Builder privacyPolicy = new AlertDialog.Builder(context);
         privacyPolicy.setTitle(getString(R.string.Settings_FMDServer_Alert_DeleteData))
                 .setMessage(R.string.Settings_FMDServer_Alert_DeleteData_Desc)
-                .setPositiveButton(getString(R.string.Ok), new DialogClickListenerForUnregistration(this))
+                .setPositiveButton(getString(R.string.Ok), (dialog, whichButton) -> runDelete())
                 .setNegativeButton(getString(R.string.cancel), null)
                 .show();
     }
@@ -221,28 +220,15 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
         EditText passwordInput = registerLayout.findViewById(R.id.editTextFMDPassword);
         EditText passwordInputCheck = registerLayout.findViewById(R.id.editTextFMDPasswordCheck);
         alert.setView(registerLayout);
-        PostListener postListener = this;
 
         alert.setPositiveButton(getString(R.string.Ok), new DialogInterface.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             public void onClick(DialogInterface dialog, int whichButton) {
                 String oldPassword = oldPasswordInput.getText().toString();
                 String password = passwordInput.getText().toString();
                 String passwordCheck = passwordInputCheck.getText().toString();
-                if (!password.isEmpty() && password.equals(passwordCheck) && !oldPassword.isEmpty()) {
-                    try {
-                        PrivateKey privKey = CypherUtils.decryptPrivateKeyWithPassword((String) settings.get(Settings.SET_FMD_CRYPT_PRIVKEY), oldPassword);
-                        if (privKey == null) {
-                            Toast.makeText(context, "Wrong Password.", Toast.LENGTH_LONG).show();
-                            return;
-                        }
-                        String newPrivKey = CypherUtils.encryptPrivateKeyWithPassword(privKey, password);
-                        String hashedPW = CypherUtils.hashPasswordForLogin(password);
 
-                        FMDServerService.changePassword(context, newPrivKey, hashedPW, postListener);
-                    } catch (Exception bdp) {
-                        Toast.makeText(context, "Wrong Password.", Toast.LENGTH_LONG).show();
-                    }
+                if (!password.isEmpty() && password.equals(passwordCheck) && !oldPassword.isEmpty()) {
+                    runChangePassword(oldPassword, password);
                 } else {
                     Toast.makeText(context, "Failed", Toast.LENGTH_LONG).show();
                 }
@@ -251,41 +237,74 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
         alert.show();
     }
 
+    private void showLoadingIndicator(Context context) {
+        View loadingLayout = getLayoutInflater().inflate(R.layout.dialog_loading, null);
+        loadingDialog = new AlertDialog.Builder(context).setView(loadingLayout).setCancelable(false).create();
+        loadingDialog.show();
+    }
+
     private void onOpenUnifiedPushClicked(View view) {
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://unifiedpush.org/"));
         startActivity(intent);
     }
 
-    @Override
-    public void onRestFinished(boolean success) {
-        if (success) {
-            Toast.makeText(context, "Success", Toast.LENGTH_LONG).show();
-        } else {
-            Toast.makeText(context, "Failed", Toast.LENGTH_LONG).show();
-        }
-        settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
+    private void runChangePassword(String oldPassword, String password) {
+        showLoadingIndicator(context);
+        // do expensive async crypto and hashing in a background thread (not on the UI thread)
+        new Thread(() -> {
+            try {
+                PrivateKey privKey = CypherUtils.decryptPrivateKeyWithPassword((String) settings.get(Settings.SET_FMD_CRYPT_PRIVKEY), oldPassword);
+                if (privKey == null) {
+                    Toast.makeText(context, "Wrong Password.", Toast.LENGTH_LONG).show();
+                    loadingDialog.cancel();
+                    return;
+                }
+                String newPrivKey = CypherUtils.encryptPrivateKeyWithPassword(privKey, password);
+                String hashedPW = CypherUtils.hashPasswordForLogin(password);
+
+                FMDServerService.changePassword(context, newPrivKey, hashedPW,
+                        (response -> runOnUiThread(() -> {
+                            loadingDialog.cancel();
+                            if (response.has("Data")) {
+                                Toast.makeText(context, "Success", Toast.LENGTH_LONG).show();
+                            } else {
+                                Toast.makeText(context, "Failed - wrong password?", Toast.LENGTH_LONG).show();
+                            }
+                            settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
+                        })), (error) -> runOnUiThread(() -> {
+                            Toast.makeText(context, "Request failed", Toast.LENGTH_LONG).show();
+                            loadingDialog.cancel();
+                        }));
+            } catch (Exception bdp) {
+                runOnUiThread(() -> {
+                    Toast.makeText(context, "Wrong Password.", Toast.LENGTH_LONG).show();
+                    loadingDialog.cancel();
+                });
+            }
+        }).start();
     }
 
-    private class DialogClickListenerForUnregistration implements DialogInterface.OnClickListener {
-
-        private final Context context;
-
-        public DialogClickListenerForUnregistration(Context context) {
-            this.context = context;
-        }
-
-        @Override
-        public void onClick(DialogInterface dialog, int which) {
-            FMDServerService.unregisterOnServer(context, response -> {
-                FMDServerService.cancelAll(context);
-                finish();
-            }, error -> {
-                UnregisterUtil.showUnregisterFailedDialog(context, error, () -> {
-                    FMDServerService.cancelAll(context);
-                    finish();
-                });
-            });
-        }
+    private void runDelete() {
+        showLoadingIndicator(context);
+        new Thread(() -> {
+            FMDServerService.unregisterOnServer(context,
+                    response -> {
+                        runOnUiThread(() -> {
+                            loadingDialog.cancel();
+                            Toast.makeText(context, "Unregister successful", Toast.LENGTH_LONG).show();
+                            FMDServerService.cancelAll(context);
+                            finish();
+                        });
+                    }, error -> {
+                        runOnUiThread(() -> {
+                            loadingDialog.cancel();
+                            UnregisterUtil.showUnregisterFailedDialog(context, error, () -> {
+                                FMDServerService.cancelAll(context);
+                                finish();
+                            });
+                        });
+                    });
+        }).start();
     }
 
 }
