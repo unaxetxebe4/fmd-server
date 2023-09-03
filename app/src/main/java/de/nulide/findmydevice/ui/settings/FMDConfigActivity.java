@@ -1,8 +1,5 @@
 package de.nulide.findmydevice.ui.settings;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -12,13 +9,15 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.data.Settings;
@@ -136,8 +135,13 @@ public class FMDConfigActivity extends AppCompatActivity implements CompoundButt
                         String repeat = editTextPinRepeat.getText().toString();
 
                         if (pin.equals(repeat)) {
-                            settings.set(Settings.SET_PIN, CypherUtils.hashPasswordForFmdPin(pin));
-                            buttonEnterPin.setBackgroundColor(colorEnabled);
+                            if (pin.isEmpty()) {
+                                settings.set(Settings.SET_PIN, "");
+                                buttonEnterPin.setBackgroundColor(colorDisabled);
+                            } else {
+                                settings.set(Settings.SET_PIN, CypherUtils.hashPasswordForFmdPin(pin));
+                                buttonEnterPin.setBackgroundColor(colorEnabled);
+                            }
                         } else {
                             Toast.makeText(context, "PINs do not match", Toast.LENGTH_LONG).show();
                         }
