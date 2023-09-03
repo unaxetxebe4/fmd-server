@@ -91,13 +91,13 @@
     <string name="About_Version">Versione FMD:</string>
     <string name="Settings_FMDConfig">Configurazione FMD</string>
     <string name="Settings_WhiteList">Lista Bianca</string>
-    <string name="Settings_OpenCellId">OpenCellId</string>
+    <string name="Settings_OpenCellId">OpenCelliD</string>
     <string name="Settings_Permissions">Autorizzazioni</string>
     <string name="Settings_Logs">Registri</string>
     <string name="Settings_About">Info</string>
     <string name="Settings_Settings">Impostazioni</string>
     <string name="Error">Errore</string>
-    <string name="OpenCellId_OpenCellId">OpenCellId</string>
+    <string name="OpenCellId_OpenCellId">OpenCelliD</string>
     <string name="Permission_POST_NOTIFICATIONS">FMD invierà occasionalmente notifiche all\'utente, ad esempio per avvisarlo che qualcuno sta localizzando il suo dispositivo.</string>
     <string name="OpenCellId_API_Key_Description">Chiave API:</string>
     <string name="Notification_Usage">Utilizzo</string>
@@ -106,9 +106,9 @@
     <string name="Notification_Usage_Description">Notifica sull\'utilizzo del servizio.</string>
     <string name="Notification_Lifecycle_Description">Notifica relativa alla durata del servizio.</string>
     <string name="Notification_Pin_Usage_Description">Notifica sull\'utilizzo del pin.</string>
-    <string name="JSON_RL_Error">Errore durante l\'acquisizione della posizione da OpenCellID. Si prega di provare il seguente link. I parametri necessari sono \"lon\" e \"lat\".
+    <string name="JSON_RL_Error">Errore durante l\'acquisizione della posizione da OpenCelliD. Si prega di provare il seguente link. I parametri necessari sono \"lon\" e \"lat\".
 </string>
-    <string name="JSON_RL_OpenCellIdLocation">\"Posizione OpenCellId\"</string>
+    <string name="JSON_RL_OpenCellIdLocation">\"Posizione OpenCelliD\"</string>
     <string name="GPS_GSM_Data">Dati Cella GSM:</string>
     <string name="LockScreen_Usage_detectd">MessaggioBloccoSchermo: Rilevato utilizzo.</string>
     <string name="LockScreen_Backbutton_pressed">MessaggioBloccoSchermo: Premuto pulsante Indietro.</string>

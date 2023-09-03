@@ -55,7 +55,7 @@
     <string name="Notification_Usage_Description">Notification de l\'utilisation du service.</string>
     <string name="Notification_Lifecycle_Description">Notification sur le cycle de vie du service.</string>
     <string name="Notification_Pin_Usage_Description">Notification de l\'usage du code pin.</string>
-    <string name="JSON_RL_Error">Erreur lors de l\'obtention de l\'emplacement depuis OpenCellID. Veuillez essayer le lien suivant. Les paramètres que vous voulez sont lon et lat.</string>
+    <string name="JSON_RL_Error">Erreur lors de l\'obtention de l\'emplacement depuis OpenCelliD. Veuillez essayer le lien suivant. Les paramètres que vous voulez sont lon et lat.</string>
     <string name="LockScreen_Usage_detectd">LockScreenMessage: Usage detecté</string>
     <string name="LockScreen_Backbutton_pressed">LockScreenMessage: Bouton retour pressé.</string>
     <string name="Settings_Ringer_Tone_Description">Sélectionnez une sonnerie qui sera jouée lors de l\'envoi de la commande fmd ring</string>
