@@ -114,13 +114,20 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
         switch ((Integer) settings.get(Settings.SET_FMDSERVER_LOCATION_TYPE)) {
             case 0:
                 checkBoxFMDServerGPS.setChecked(true);
+                checkBoxFMDServerCell.setChecked(false);
                 break;
             case 1:
+                checkBoxFMDServerGPS.setChecked(false);
                 checkBoxFMDServerCell.setChecked(true);
                 break;
             case 2:
                 checkBoxFMDServerGPS.setChecked(true);
                 checkBoxFMDServerCell.setChecked(true);
+                break;
+            case 3:
+                checkBoxFMDServerGPS.setChecked(false);
+                checkBoxFMDServerCell.setChecked(false);
+                break;
         }
         checkBoxFMDServerGPS.setOnCheckedChangeListener(this);
         checkBoxFMDServerCell.setOnCheckedChangeListener(this);
@@ -152,7 +159,7 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
             } else if (checkBoxFMDServerCell.isChecked()) {
                 settings.set(Settings.SET_FMDSERVER_LOCATION_TYPE, 1);
             } else {
-                settings.set(Settings.SET_FMDSERVER_LOCATION_TYPE, 0);
+                settings.set(Settings.SET_FMDSERVER_LOCATION_TYPE, 3);
             }
         } else if (buttonView == checkBoxLowBat) {
             settings.set(Settings.SET_FMD_LOW_BAT_SEND, isChecked);
