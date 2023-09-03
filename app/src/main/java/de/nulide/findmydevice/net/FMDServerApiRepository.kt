@@ -50,12 +50,12 @@ class FMDServerApiRepository private constructor(spec: FMDServerApiRepoSpec) {
     private val context = spec.context
     private val baseUrl: String
     private val queue: RequestQueue = PatchedVolley.newRequestQueue(spec.context)
-    private val settings: Settings
+    //private val settings: Settings
 
     init {
-        // TODO: proper SettingsRepository that hides the IO magic
+        // TODO: proper SettingsRepository that hides the IO magic. Then we can enable the settings field
         IO.context = context
-        settings = JSONFactory.convertJSONSettings(
+        val settings = JSONFactory.convertJSONSettings(
             IO.read(JSONMap::class.java, IO.settingsFileName)
         )
 
@@ -99,6 +99,9 @@ class FMDServerApiRepository private constructor(spec: FMDServerApiRepoSpec) {
             Method.PUT, baseUrl + URL_DEVICE, jsonObject,
             { response: JSONObject ->
                 try {
+                    val settings = JSONFactory.convertJSONSettings(
+                        IO.read(JSONMap::class.java, IO.settingsFileName)
+                    )
                     settings.setNow(Settings.SET_FMDSERVER_ID, response["DeviceId"])
                 } catch (e: JSONException) {
                     e.printStackTrace()
@@ -145,13 +148,17 @@ class FMDServerApiRepository private constructor(spec: FMDServerApiRepoSpec) {
     fun getAccessToken(
         onResponse: Response.Listener<String>,
         onError: Response.ErrorListener,
-    ) =
+    ) {
+        val settings = JSONFactory.convertJSONSettings(
+            IO.read(JSONMap::class.java, IO.settingsFileName)
+        )
         getAccessToken(
             settings.get(Settings.SET_FMDSERVER_ID) as String,
             settings.get(Settings.SET_FMD_CRYPT_HPW) as String,
             onResponse,
             onError,
         )
+    }
 
     fun getAccessToken(
         userId: String,
@@ -255,6 +262,10 @@ class FMDServerApiRepository private constructor(spec: FMDServerApiRepoSpec) {
         onResponse: Response.Listener<Unit>,
         onError: Response.ErrorListener,
     ) {
+        val settings = JSONFactory.convertJSONSettings(
+            IO.read(JSONMap::class.java, IO.settingsFileName)
+        )
+
         getSalt(userId, onError = onError, onResponse = { salt ->
             val hashedPW = CypherUtils.hashPasswordForLogin(password, salt)
             getAccessToken(userId, hashedPW, onError = onError, onResponse = { accessToken ->
