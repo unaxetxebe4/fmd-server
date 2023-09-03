@@ -101,36 +101,6 @@ public class FMDServerService extends JobService {
         restHandler.runWithAT();
     }
 
-    public static void registerOnServer(Context context, String privKey, String pubKey, String hashedPW, String registrationToken, PostListener postListener) {
-        IO.context = context;
-        Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
-        final JSONObject jsonObject = new JSONObject();
-        try {
-            jsonObject.put("hashedPassword", hashedPW);
-            jsonObject.put("pubkey", pubKey);
-            jsonObject.put("privkey", privKey);
-            jsonObject.put("registrationToken", registrationToken);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        RestHandler restHandler = new RestHandler(context, RestHandler.DEFAULT_METHOD, RestHandler.DEVICE, jsonObject);
-        restHandler.setResponseListener(response -> {
-            try {
-                settings.setNow(Settings.SET_FMDSERVER_ID, response.get("DeviceId"));
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        });
-        restHandler.setErrorListener(error -> {
-                error.printStackTrace();
-                postListener.onRestFinished(false);
-        });
-        restHandler.setPostListener(postListener);
-        restHandler.run();
-    }
-
-
     public static void registerPushWithFmdServer(Context context, String endpoint) {
         JSONObject dataPackage = new JSONObject();
         try {
@@ -188,76 +158,6 @@ public class FMDServerService extends JobService {
     public static void cancelAll(Context context) {
         JobScheduler jobScheduler = context.getSystemService(JobScheduler.class);
         jobScheduler.cancelAll();
-    }
-
-    //First get salt from Server
-    //Second gen hashedpw and send it to server for AccessToken
-    //Third Get PrivateKey
-    //Fourth Get PublicKey
-    //Fifth Save everything
-    public static void loginOnServer(Context context, String id, String password, PostListener postListener) {
-        Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
-        JSONObject req = ATHandler.getEmptyDataReq();
-        try {
-            req.put("IDT", id);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        RestHandler saltHandler = new RestHandler(context, RestHandler.DEFAULT_METHOD, RestHandler.SALT, req);
-        saltHandler.setResponseListener(response -> {
-            if (response.has("Data")) {
-                try {
-                    String salt = (String) response.get("Data");
-                    String hashedPW = CypherUtils.hashPasswordForLogin(password, salt);
-                    req.put("Data", hashedPW);
-                    RestHandler atHandler = new RestHandler(context, RestHandler.DEFAULT_METHOD, RestHandler.GET_AT, req);
-                    atHandler.setResponseListener(atResponse -> {
-                        if (atResponse.has("Data")) {
-                            try {
-                                req.put("IDT", (String) atResponse.get("Data"));
-                                RestHandler privKeyHandler = new RestHandler(context, RestHandler.DEFAULT_METHOD, RestHandler.PRIVKEY, req);
-                                privKeyHandler.setResponseListener(privResponse -> {
-                                    if (privResponse.has("Data")) {
-                                        RestHandler pubKeyHandler = new RestHandler(context, RestHandler.DEFAULT_METHOD, RestHandler.PUBKEY, req);
-                                        pubKeyHandler.setResponseListener(pubResponse -> {
-                                            if (pubResponse.has("Data")) {
-                                                try {
-                                                    settings.setNow(Settings.SET_FMD_CRYPT_HPW, hashedPW);
-                                                    settings.setNow(Settings.SET_FMDSERVER_ID, id);
-                                                    settings.setNow(Settings.SET_FMD_CRYPT_PUBKEY, pubResponse.get("Data"));
-                                                    settings.setNow(Settings.SET_FMD_CRYPT_PRIVKEY, privResponse.get("Data"));
-                                                } catch (JSONException e) {
-                                                    e.printStackTrace();
-                                                }
-
-                                            }
-                                        });
-                                        pubKeyHandler.setPostListener(postListener);
-                                        pubKeyHandler.run();
-
-                                    }
-                                });
-                                privKeyHandler.run();
-
-                            } catch (JSONException e) {
-                                throw new RuntimeException(e);
-                            }
-
-                        }
-                    });
-                    atHandler.setErrorListener(error -> {
-                        error.printStackTrace();
-                        postListener.onRestFinished(false);
-                    });
-                    atHandler.run();
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-            }
-
-        });
-        saltHandler.run();
     }
 
     public static void changePassword(Context context, String newPrivKey, String hashedPW, ResponseListener responseListener, ErrorListener errorListener) {
