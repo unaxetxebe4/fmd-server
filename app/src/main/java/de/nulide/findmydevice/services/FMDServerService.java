@@ -123,30 +123,6 @@ public class FMDServerService extends JobService {
         jobScheduler.cancelAll();
     }
 
-    public static void changePassword(Context context, String newPrivKey, String hashedPW, ResponseListener responseListener, ErrorListener errorListener) {
-        IO.context = context;
-        Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
-        final JSONObject jsonObject = new JSONObject();
-        try {
-            jsonObject.put("hashedPassword", hashedPW);
-            jsonObject.put("privkey", newPrivKey);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        RestHandler restHandler = new RestHandler(context, RestHandler.DEFAULT_RESP_METHOD, RestHandler.PASSWORD, jsonObject);
-        restHandler.setErrorListener(errorListener);
-        restHandler.setResponseListener(response -> {
-            if (response.has("Data")) {
-                settings.setNow(Settings.SET_FMD_CRYPT_PRIVKEY, newPrivKey);
-                settings.setNow(Settings.SET_FMD_CRYPT_HPW, hashedPW);
-            }
-            responseListener.onResponse(response);
-        });
-        restHandler.runWithAT();
-    }
-
-
     @Override
     public boolean onStartJob(JobParameters params) {
 

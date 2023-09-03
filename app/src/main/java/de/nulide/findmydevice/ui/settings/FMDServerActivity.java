@@ -273,19 +273,18 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
                 String newPrivKey = CypherUtils.encryptPrivateKeyWithPassword(privKey, password);
                 String hashedPW = CypherUtils.hashPasswordForLogin(password);
 
-                FMDServerService.changePassword(context, newPrivKey, hashedPW,
-                        (response -> runOnUiThread(() -> {
-                            loadingDialog.cancel();
-                            if (response.has("Data")) {
+                runOnUiThread(() -> {
+                    fmdServerRepo.changePassword(hashedPW, newPrivKey,
+                            (response -> {
+                                loadingDialog.cancel();
                                 Toast.makeText(context, "Success", Toast.LENGTH_LONG).show();
-                            } else {
-                                Toast.makeText(context, "Failed - wrong password?", Toast.LENGTH_LONG).show();
-                            }
-                            settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
-                        })), (error) -> runOnUiThread(() -> {
-                            Toast.makeText(context, "Request failed", Toast.LENGTH_LONG).show();
-                            loadingDialog.cancel();
-                        }));
+                                settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
+                            }),
+                            (error) -> {
+                                Toast.makeText(context, "Request failed", Toast.LENGTH_LONG).show();
+                                loadingDialog.cancel();
+                            });
+                });
             } catch (Exception bdp) {
                 runOnUiThread(() -> {
                     Toast.makeText(context, "Wrong Password.", Toast.LENGTH_LONG).show();

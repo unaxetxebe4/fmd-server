@@ -352,4 +352,41 @@ class FMDServerApiRepository private constructor(spec: FMDServerApiRepoSpec) {
         })
     }
 
+    fun changePassword(
+        newHashedPW: String,
+        newPrivKey: String,
+        onResponse: Response.Listener<Unit>,
+        onError: Response.ErrorListener,
+    ) {
+        getAccessToken(onError = onError, onResponse = { accessToken ->
+            val jsonObject = JSONObject()
+            try {
+                jsonObject.put("IDT", accessToken)
+                jsonObject.put("hashedPassword", newHashedPW)
+                jsonObject.put("privkey", newPrivKey)
+            } catch (e: JSONException) {
+                e.printStackTrace()
+            }
+
+            val request = JsonObjectRequest(
+                Method.POST, baseUrl + URL_PASSWORD, jsonObject,
+                { response ->
+                    val settings = JSONFactory.convertJSONSettings(
+                        IO.read(JSONMap::class.java, IO.settingsFileName)
+                    )
+
+                    if (response.has("Data")) {
+                        settings.setNow(Settings.SET_FMD_CRYPT_PRIVKEY, newPrivKey)
+                        settings.setNow(Settings.SET_FMD_CRYPT_HPW, newHashedPW)
+                        onResponse.onResponse(Unit)
+                    } else {
+                        onError.onErrorResponse(VolleyError("change password response has no Data field"))
+                    }
+                },
+                onError,
+            )
+            queue.add(request)
+        })
+    }
+
 }
