@@ -420,4 +420,40 @@ class FMDServerApiRepository private constructor(spec: FMDServerApiRepoSpec) {
         })
     }
 
+    /**
+     * This MUST be wrapped in a Thread() because it does async crypto.
+     *
+     * TODO: handled this internally in the repo.
+     */
+    fun sendPicture(
+        picture: String,
+    ) {
+        val settings = JSONFactory.convertJSONSettings(
+            IO.read(JSONMap::class.java, IO.settingsFileName)
+        )
+        // TODO: Handle no Keys are returned
+        val keys = settings.getKeys() ?: return
+        val msgBytes = CypherUtils.encryptWithKey(keys.publicKey, picture)
+        val msg = CypherUtils.encodeBase64(msgBytes)
+
+        val onError = { error: VolleyError -> error.printStackTrace() }
+
+        getAccessToken(onError = onError, onResponse = { accessToken ->
+            val jsonObject = JSONObject()
+            try {
+                jsonObject.put("IDT", accessToken)
+                jsonObject.put("Data", msg)
+            } catch (e: JSONException) {
+                e.printStackTrace()
+            }
+
+            val request = JsonObjectRequest(
+                Method.POST, baseUrl + URL_PICTURE, jsonObject,
+                { _ -> },
+                onError,
+            )
+            queue.add(request)
+        })
+    }
+
 }

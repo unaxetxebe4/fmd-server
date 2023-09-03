@@ -78,29 +78,6 @@ public class FMDServerService extends JobService {
         restHandler.runWithAT();
     }
 
-    public static void sendPicture(Context context, String picture, String url, String id) {
-        Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
-
-        FmdKeyPair keys = settings.getKeys();
-        if (keys.equals(null)) {
-            // TODO: Handle no Keys are returned
-            // reinitiate Keys in settings
-            return;
-        }
-
-        byte[] msgBytes = CypherUtils.encryptWithKey(keys.getPublicKey(), picture);
-        String msg = CypherUtils.encodeBase64(msgBytes);
-
-        final JSONObject dataObject = new JSONObject();
-        try {
-            dataObject.put("Data", msg);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        RestHandler restHandler = new RestHandler(context, RestHandler.DEFAULT_RESP_METHOD, RestHandler.PICTURE, dataObject);
-        restHandler.runWithAT();
-    }
-
     public static void scheduleJob(Context context, int time) {
         Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
         ComponentHandler ch = new ComponentHandler(settings, context, null, null);
