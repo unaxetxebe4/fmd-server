@@ -389,4 +389,35 @@ class FMDServerApiRepository private constructor(spec: FMDServerApiRepoSpec) {
         })
     }
 
+    fun getCommand(
+        onResponse: Response.Listener<String>,
+        onError: Response.ErrorListener,
+    ) {
+        getAccessToken(onError = onError, onResponse = { accessToken ->
+            val jsonObject = JSONObject()
+            try {
+                jsonObject.put("IDT", accessToken)
+                jsonObject.put("Data", "")
+            } catch (e: JSONException) {
+                e.printStackTrace()
+            }
+
+            val request = JsonObjectRequest(
+                // XXX: This should be GET (or POST-as-GET) instead of PUT
+                Method.PUT, baseUrl + URL_COMMAND, jsonObject,
+                { response ->
+                    try {
+                        val command = response["Data"] as String
+                        onResponse.onResponse(command)
+                    } catch (e: JSONException) {
+                        e.printStackTrace()
+                        onError.onErrorResponse(VolleyError("get command response has no Data field"))
+                    }
+                },
+                onError,
+            )
+            queue.add(request)
+        })
+    }
+
 }
