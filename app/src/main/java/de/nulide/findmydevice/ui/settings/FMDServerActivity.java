@@ -30,7 +30,7 @@ import de.nulide.findmydevice.data.io.json.JSONMap;
 import de.nulide.findmydevice.net.FMDServerApiRepoSpec;
 import de.nulide.findmydevice.net.FMDServerApiRepository;
 import de.nulide.findmydevice.receiver.PushReceiver;
-import de.nulide.findmydevice.services.FMDServerService;
+import de.nulide.findmydevice.services.FMDServerLocationUploadService;
 import de.nulide.findmydevice.utils.CypherUtils;
 import de.nulide.findmydevice.utils.UnregisterUtil;
 import de.nulide.findmydevice.utils.Utils;
@@ -217,7 +217,7 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
         settings.set(Settings.SET_FMD_CRYPT_HPW, "");
         settings.set(Settings.SET_FMD_CRYPT_PRIVKEY, "");
         settings.set(Settings.SET_FMD_CRYPT_PUBKEY, "");
-        FMDServerService.cancelAll(this);
+        FMDServerLocationUploadService.cancelAll(this);
         finish();
     }
 
@@ -300,12 +300,12 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
                 response -> {
                     loadingDialog.cancel();
                     Toast.makeText(context, "Unregister successful", Toast.LENGTH_LONG).show();
-                    FMDServerService.cancelAll(context);
+                    FMDServerLocationUploadService.cancelAll(context);
                     finish();
                 }, error -> {
                     loadingDialog.cancel();
                     UnregisterUtil.showUnregisterFailedDialog(context, error, () -> {
-                        FMDServerService.cancelAll(context);
+                        FMDServerLocationUploadService.cancelAll(context);
                         finish();
                     });
                 }

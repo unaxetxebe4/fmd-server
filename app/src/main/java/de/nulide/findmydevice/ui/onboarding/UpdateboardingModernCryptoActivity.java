@@ -17,7 +17,6 @@ import de.nulide.findmydevice.data.io.JSONFactory;
 import de.nulide.findmydevice.data.io.json.JSONMap;
 import de.nulide.findmydevice.net.FMDServerApiRepoSpec;
 import de.nulide.findmydevice.net.FMDServerApiRepository;
-import de.nulide.findmydevice.services.FMDServerService;
 import de.nulide.findmydevice.ui.MainActivity;
 import de.nulide.findmydevice.utils.Notifications;
 import de.nulide.findmydevice.utils.UnregisterUtil;

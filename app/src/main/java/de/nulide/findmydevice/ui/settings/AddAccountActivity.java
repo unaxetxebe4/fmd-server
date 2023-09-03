@@ -34,7 +34,7 @@ import de.nulide.findmydevice.data.io.json.JSONMap;
 import de.nulide.findmydevice.net.FMDServerApiRepoSpec;
 import de.nulide.findmydevice.net.FMDServerApiRepository;
 import de.nulide.findmydevice.receiver.PushReceiver;
-import de.nulide.findmydevice.services.FMDServerService;
+import de.nulide.findmydevice.services.FMDServerLocationUploadService;
 import de.nulide.findmydevice.utils.CypherUtils;
 import de.nulide.findmydevice.utils.Utils;
 import kotlin.Unit;
@@ -215,7 +215,7 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
                 return;
             }
 
-            FMDServerService.scheduleJob(context, 0);
+            FMDServerLocationUploadService.scheduleJob(context, 0);
             PushReceiver.registerWithUnifiedPush(context);
 
             Intent fmdServerActivityIntent = new Intent(context, FMDServerActivity.class);

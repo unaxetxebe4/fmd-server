@@ -22,9 +22,8 @@ import de.nulide.findmydevice.data.io.IO
 import de.nulide.findmydevice.data.io.JSONFactory
 import de.nulide.findmydevice.data.io.json.JSONMap
 import de.nulide.findmydevice.databinding.ActivityDummyCameraxBinding
-import de.nulide.findmydevice.net.FMDServerApiRepoSpec;
-import de.nulide.findmydevice.net.FMDServerApiRepository;
-import de.nulide.findmydevice.services.FMDServerService
+import de.nulide.findmydevice.net.FMDServerApiRepoSpec
+import de.nulide.findmydevice.net.FMDServerApiRepository
 import de.nulide.findmydevice.utils.CypherUtils
 import de.nulide.findmydevice.utils.imageToByteArray
 import kotlinx.coroutines.launch

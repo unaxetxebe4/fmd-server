@@ -1,35 +1,17 @@
 package de.nulide.findmydevice.receiver;
 
 import android.annotation.SuppressLint;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.telephony.PhoneNumberUtils;
 import android.telephony.SmsMessage;
 
 import java.util.Calendar;
 
-import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.data.ConfigSMSRec;
-import de.nulide.findmydevice.data.Settings;
-import de.nulide.findmydevice.data.WhiteList;
-import de.nulide.findmydevice.data.io.IO;
-import de.nulide.findmydevice.data.io.JSONFactory;
-import de.nulide.findmydevice.data.io.json.JSONMap;
-import de.nulide.findmydevice.data.io.json.JSONWhiteList;
-import de.nulide.findmydevice.logic.ComponentHandler;
-import de.nulide.findmydevice.logic.LocationHandler;
-import de.nulide.findmydevice.sender.Sender;
 import de.nulide.findmydevice.services.FMDSMSService;
-import de.nulide.findmydevice.services.FMDServerService;
-import de.nulide.findmydevice.services.TempContactExpiredService;
 import de.nulide.findmydevice.utils.Logger;
-import de.nulide.findmydevice.logic.MessageHandler;
-import de.nulide.findmydevice.utils.Notifications;
-import de.nulide.findmydevice.utils.Permission;
-import de.nulide.findmydevice.sender.SMS;
 
 public class SMSReceiver extends SuperReceiver {
 

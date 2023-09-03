@@ -146,7 +146,7 @@
         </receiver>
 
         <service
-            android:name=".services.FMDServerService"
+            android:name=".services.FMDServerLocationUploadService"
             android:exported="true"
             android:permission="android.permission.BIND_JOB_SERVICE" />
         <service

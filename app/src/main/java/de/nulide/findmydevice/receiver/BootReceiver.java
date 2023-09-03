@@ -6,7 +6,7 @@ import android.content.Intent;
 
 import de.nulide.findmydevice.data.ConfigSMSRec;
 import de.nulide.findmydevice.data.Settings;
-import de.nulide.findmydevice.services.FMDServerService;
+import de.nulide.findmydevice.services.FMDServerLocationUploadService;
 import de.nulide.findmydevice.ui.onboarding.UpdateboardingModernCryptoActivity;
 import de.nulide.findmydevice.utils.Logger;
 
@@ -26,7 +26,7 @@ public class BootReceiver extends SuperReceiver {
             UpdateboardingModernCryptoActivity.notifyAboutCryptoRefreshIfRequired(context);
 
             if (ch.getSettings().checkAccountExists()) {
-                FMDServerService.scheduleJob(context, 0);
+                FMDServerLocationUploadService.scheduleJob(context, 0);
                 PushReceiver.registerWithUnifiedPush(context);
             }
         }

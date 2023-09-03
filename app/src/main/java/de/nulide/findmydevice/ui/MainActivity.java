@@ -14,10 +14,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import org.unifiedpush.android.connector.UnifiedPush;
-
-import java.util.ArrayList;
-
 import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.data.Settings;
 import de.nulide.findmydevice.data.WhiteList;
@@ -26,7 +22,7 @@ import de.nulide.findmydevice.data.io.JSONFactory;
 import de.nulide.findmydevice.data.io.json.JSONMap;
 import de.nulide.findmydevice.data.io.json.JSONWhiteList;
 import de.nulide.findmydevice.receiver.PushReceiver;
-import de.nulide.findmydevice.services.FMDServerService;
+import de.nulide.findmydevice.services.FMDServerLocationUploadService;
 import de.nulide.findmydevice.ui.onboarding.UpdateboardingModernCryptoActivity;
 import de.nulide.findmydevice.ui.settings.SettingsActivity;
 import de.nulide.findmydevice.ui.settings.WhiteListActivity;
@@ -91,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return;
         }
         if (settings.checkAccountExists()) {
-            FMDServerService.scheduleJob(this, 0);
+            FMDServerLocationUploadService.scheduleJob(this, 0);
         }
         findAllViewsById();
     }

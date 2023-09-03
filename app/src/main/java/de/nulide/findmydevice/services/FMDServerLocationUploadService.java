@@ -21,9 +21,11 @@ import de.nulide.findmydevice.utils.Logger;
 import de.nulide.findmydevice.utils.Notifications;
 import de.nulide.findmydevice.utils.Permission;
 
-
+/**
+ * Uploads the location at regular intervals in the background
+ */
 @RequiresApi(Build.VERSION_CODES.M)
-public class FMDServerService extends JobService {
+public class FMDServerLocationUploadService extends JobService {
 
     private static final int JOB_ID = 108;
 
@@ -35,7 +37,7 @@ public class FMDServerService extends JobService {
             return;
         }
 
-        ComponentName serviceComponent = new ComponentName(context, FMDServerService.class);
+        ComponentName serviceComponent = new ComponentName(context, FMDServerLocationUploadService.class);
         JobInfo.Builder builder = new JobInfo.Builder(JOB_ID, serviceComponent);
         builder.setMinimumLatency(((long) time / 2) * 1000 * 60);
         builder.setOverrideDeadline((int) (time * 1000 * 60 * 1.5));
