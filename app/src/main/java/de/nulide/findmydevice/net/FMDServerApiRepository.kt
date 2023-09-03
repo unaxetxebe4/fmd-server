@@ -22,6 +22,9 @@ data class FMDServerApiRepoSpec(
     val context: Context,
 )
 
+/**
+ * All network requests run on a background thread. This is handled by Volley.
+ */
 class FMDServerApiRepository private constructor(spec: FMDServerApiRepoSpec) {
 
     companion object :
@@ -137,6 +140,8 @@ class FMDServerApiRepository private constructor(spec: FMDServerApiRepoSpec) {
         queue.add(request)
     }
 
+    // TODO: cache access tokens for 5 mins (or whatever their validity period) to avoid unnecessary renewals
+
     fun getAccessToken(
         onResponse: Response.Listener<String>,
         onError: Response.ErrorListener,
@@ -239,6 +244,11 @@ class FMDServerApiRepository private constructor(spec: FMDServerApiRepoSpec) {
         queue.add(request)
     }
 
+    /**
+     * This MUST be wrapped in a Thread() because it does password hashing.
+     *
+     * TODO: handled this internally in the repo.
+     */
     fun login(
         userId: String,
         password: String,
@@ -258,6 +268,44 @@ class FMDServerApiRepository private constructor(spec: FMDServerApiRepoSpec) {
                     })
                 })
             })
+        })
+    }
+
+    fun unregister(
+        onResponse: Response.Listener<Unit>,
+        onError: Response.ErrorListener,
+    ) {
+        getAccessToken(onError = onError, onResponse = { accessToken ->
+            val jsonObject = JSONObject()
+            try {
+                jsonObject.put("IDT", accessToken)
+                jsonObject.put("Data", "")
+            } catch (e: JSONException) {
+                e.printStackTrace()
+            }
+
+            val request = JsonObjectRequest(
+                // XXX: This should be a dedicated /deleteDevice endpoint
+                Method.POST, baseUrl + URL_DEVICE, jsonObject,
+                { _ -> onResponse.onResponse(Unit) },
+                { error ->
+                    // FIXME: The server returns an empty body which cannot be parsed to JSON.
+                    // The best solution would be for the access token to be passed as a header rather then a body
+                    if (error.cause is JSONException) {
+                        // request was actually successful, just deserialising failed
+                        // settings needs to be instantiated here, else we get race conditions on the file
+                        val settings = JSONFactory.convertJSONSettings(
+                            IO.read(JSONMap::class.java, IO.settingsFileName)
+                        )
+                        // only clear if request is successful
+                        settings.setNow(Settings.SET_FMDSERVER_ID, "")
+                        onResponse.onResponse(Unit)
+                    } else {
+                        onError.onErrorResponse(error)
+                    }
+                },
+            )
+            queue.add(request)
         })
     }
 

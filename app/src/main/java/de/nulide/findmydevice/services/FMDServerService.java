@@ -113,31 +113,6 @@ public class FMDServerService extends JobService {
         dataHandler.runWithAT();
     }
 
-    public static void unregisterOnServer(Context context, ResponseListener responseListener, ErrorListener errorListener) {
-        IO.context = context;
-
-        RestHandler restHandler = new RestHandler(context, RestHandler.DEFAULT_RESP_METHOD, RestHandler.DEVICE, ATHandler.getEmptyDataReq());
-        restHandler.setErrorListener(error -> {
-            // FIXME: The server returns an empty body which cannot be parsed to JSON. We should use a StringRequest here.
-            // FIXME: also the server does not explicitly return a 200, so e.g. nginx closes the connection with 499
-            if (error.getCause() instanceof org.json.JSONException || error.networkResponse.statusCode == 499) {
-                // request was actually successful, just deserialising failed
-                // settings needs to be instantiated here, else we get race conditions on the file
-                Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
-                settings.setNow(Settings.SET_FMDSERVER_ID, ""); // only clear if request is successful
-                responseListener.onResponse(new JSONObject());
-            } else {
-                errorListener.onErrorResponse(error);
-            }
-        });
-        restHandler.setResponseListener(response -> {
-            // settings needs to be instantiated here, else we get race conditions on the file
-            Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
-            settings.setNow(Settings.SET_FMDSERVER_ID, ""); // only clear if request is successful
-        });
-        restHandler.runWithAT();
-    }
-
     public static void scheduleJob(Context context, int time) {
         Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
         ComponentHandler ch = new ComponentHandler(settings, context, null, null);
