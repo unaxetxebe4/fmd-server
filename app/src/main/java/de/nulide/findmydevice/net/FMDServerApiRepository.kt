@@ -1,7 +1,9 @@
 package de.nulide.findmydevice.net
 
 import android.content.Context
+import android.os.Build
 import android.util.Log
+import androidx.annotation.RequiresApi
 import com.android.volley.Request.Method
 import com.android.volley.RequestQueue
 import com.android.volley.Response
@@ -17,6 +19,7 @@ import de.nulide.findmydevice.utils.PatchedVolley
 import de.nulide.findmydevice.utils.SingletonHolder
 import org.json.JSONException
 import org.json.JSONObject
+import java.util.Date
 
 
 data class FMDServerApiRepoSpec(
@@ -449,6 +452,57 @@ class FMDServerApiRepository private constructor(spec: FMDServerApiRepoSpec) {
 
             val request = JsonObjectRequest(
                 Method.POST, baseUrl + URL_PICTURE, jsonObject,
+                { _ -> },
+                onError,
+            )
+            queue.add(request)
+        })
+    }
+
+    /**
+     * This MUST be wrapped in a Thread() because it does async crypto.
+     *
+     * TODO: handled this internally in the repo.
+     */
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+    fun sendLocation(
+        provider: String, lat: String, lon: String, batLevel: String, timeInMillis: Long
+    ) {
+        // Prepare payload
+        val settings = JSONFactory.convertJSONSettings(
+            IO.read(JSONMap::class.java, IO.settingsFileName)
+        )
+        val publicKey = settings.getKeys().publicKey
+
+        val locationDataObject = JSONObject()
+        try {
+            locationDataObject.put("provider", provider)
+            locationDataObject.put("date", timeInMillis)
+            locationDataObject.put("bat", batLevel)
+            locationDataObject.put("lon", lon)
+            locationDataObject.put("lat", lat)
+            locationDataObject.put("time", Date(timeInMillis).toString())
+        } catch (e: JSONException) {
+            e.printStackTrace()
+        }
+        val jsonSerialised = locationDataObject.toString()
+        val encryptedLocationBytes = CypherUtils.encryptWithKey(publicKey, jsonSerialised)
+        val encryptedLocation = CypherUtils.encodeBase64(encryptedLocationBytes)
+
+        // Send payload
+        val onError = { error: VolleyError -> error.printStackTrace() }
+
+        getAccessToken(onError = onError, onResponse = { accessToken ->
+            val jsonObject = JSONObject()
+            try {
+                jsonObject.put("IDT", accessToken)
+                jsonObject.put("Data", encryptedLocation)
+            } catch (e: JSONException) {
+                e.printStackTrace()
+            }
+
+            val request = JsonObjectRequest(
+                Method.POST, baseUrl + URL_LOCATION, jsonObject,
                 { _ -> },
                 onError,
             )

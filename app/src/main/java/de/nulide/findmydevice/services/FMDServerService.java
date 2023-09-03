@@ -1,82 +1,31 @@
 package de.nulide.findmydevice.services;
 
-import android.annotation.SuppressLint;
 import android.app.job.JobInfo;
 import android.app.job.JobParameters;
 import android.app.job.JobScheduler;
 import android.app.job.JobService;
 import android.content.ComponentName;
 import android.content.Context;
-import android.os.BatteryManager;
+import android.os.Build;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.toolbox.StringRequest;
+import androidx.annotation.RequiresApi;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.security.PublicKey;
-import java.util.Calendar;
-import java.util.TimeZone;
-
-import de.nulide.findmydevice.data.FmdKeyPair;
 import de.nulide.findmydevice.data.Settings;
 import de.nulide.findmydevice.data.io.IO;
 import de.nulide.findmydevice.data.io.JSONFactory;
 import de.nulide.findmydevice.data.io.json.JSONMap;
 import de.nulide.findmydevice.logic.ComponentHandler;
-import de.nulide.findmydevice.net.ATHandler;
-import de.nulide.findmydevice.net.RestHandler;
-import de.nulide.findmydevice.net.interfaces.ErrorListener;
-import de.nulide.findmydevice.net.interfaces.PostListener;
-import de.nulide.findmydevice.net.interfaces.ResponseListener;
 import de.nulide.findmydevice.sender.FooSender;
 import de.nulide.findmydevice.sender.Sender;
-import de.nulide.findmydevice.utils.CypherUtils;
 import de.nulide.findmydevice.utils.Logger;
 import de.nulide.findmydevice.utils.Notifications;
-import de.nulide.findmydevice.utils.PatchedVolley;
 import de.nulide.findmydevice.utils.Permission;
 
 
-@SuppressLint("NewApi")
+@RequiresApi(Build.VERSION_CODES.M)
 public class FMDServerService extends JobService {
 
     private static final int JOB_ID = 108;
-
-    public static void sendNewLocation(Context context, Settings settings, String provider, String lat, String lon, String time) {
-        PublicKey publicKey = settings.getKeys().getPublicKey();
-        RequestQueue queue = PatchedVolley.newRequestQueue(context);
-
-        BatteryManager bm = (BatteryManager) context.getSystemService(BATTERY_SERVICE);
-        String batLevel = Integer.valueOf(bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY)).toString();
-
-        final JSONObject locationDataObject = new JSONObject();
-        try {
-            locationDataObject.put("provider", provider);
-            locationDataObject.put("date", Calendar.getInstance(TimeZone.getTimeZone("UTC")).getTimeInMillis());
-            locationDataObject.put("bat", batLevel);
-            locationDataObject.put("lon", lon);
-            locationDataObject.put("lat", lat);
-            locationDataObject.put("time", time);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        String jsonSerialised = locationDataObject.toString();
-        byte[] encryptedLocationBytes = CypherUtils.encryptWithKey(publicKey, jsonSerialised);
-        String encryptedLocation = CypherUtils.encodeBase64(encryptedLocationBytes);
-
-        final JSONObject encryptedLocationDataObject = new JSONObject();
-        try {
-            encryptedLocationDataObject.put("Data", encryptedLocation);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        RestHandler restHandler = new RestHandler(context, RestHandler.DEFAULT_RESP_METHOD, RestHandler.LOCATION, encryptedLocationDataObject);
-        restHandler.runWithAT();
-    }
 
     public static void scheduleJob(Context context, int time) {
         Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));

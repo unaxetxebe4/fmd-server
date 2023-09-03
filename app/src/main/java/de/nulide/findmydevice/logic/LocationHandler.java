@@ -3,13 +3,20 @@ package de.nulide.findmydevice.logic;
 
 import static de.nulide.findmydevice.utils.Utils.getOpenStreetMapLink;
 
+import android.content.Context;
+import android.os.BatteryManager;
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
 
 import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.data.Settings;
-import de.nulide.findmydevice.services.FMDServerService;
+import de.nulide.findmydevice.net.FMDServerApiRepoSpec;
+import de.nulide.findmydevice.net.FMDServerApiRepository;
 
 public class LocationHandler {
 
@@ -17,30 +24,32 @@ public class LocationHandler {
 
     private boolean sendToServer;
 
-    public LocationHandler(ComponentHandler ch){
+    public LocationHandler(ComponentHandler ch) {
         this.ch = ch;
     }
 
-    public void newLocation(String provider, String lat, String lon){
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+    public void newLocation(String provider, String lat, String lon) {
         StringBuilder sb = new StringBuilder(provider);
         sb.append(": Lat: ").append(lat).append(" Lon: ").append(lon).append("\n\n").append(getOpenStreetMapLink(lat, lon));
         ch.getSender().sendNow(sb.toString());
+
         long timeMillis = Calendar.getInstance(TimeZone.getTimeZone("UTC")).getTimeInMillis();
-        String time =  (new Date(timeMillis)).toString();
 
-        ch.getSettings().set(Settings.SET_LAST_KNOWN_LOCATION_LAT, lat);
-        ch.getSettings().set(Settings.SET_LAST_KNOWN_LOCATION_LON, lon);
-        ch.getSettings().set(Settings.SET_LAST_KNOWN_LOCATION_TIME, timeMillis);
+        ch.getSettings().setNow(Settings.SET_LAST_KNOWN_LOCATION_LAT, lat);
+        ch.getSettings().setNow(Settings.SET_LAST_KNOWN_LOCATION_LON, lon);
+        ch.getSettings().setNow(Settings.SET_LAST_KNOWN_LOCATION_TIME, timeMillis);
 
-        if(sendToServer || ch.getSettings().checkAccountExists()){
-            String id =  (String) ch.getSettings().get(Settings.SET_FMDSERVER_ID);
-            if(!id.isEmpty()) {
-                FMDServerService.sendNewLocation(ch.getContext(), ch.getSettings(), provider, lat, lon, time);
-            }
+        BatteryManager bm = (BatteryManager) ch.getContext().getSystemService(Context.BATTERY_SERVICE);
+        String batLevel = Integer.valueOf(bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY)).toString();
+
+        if (sendToServer || ch.getSettings().checkAccountExists()) {
+            FMDServerApiRepository repo = FMDServerApiRepository.Companion.getInstance(new FMDServerApiRepoSpec(ch.getContext()));
+            repo.sendLocation(provider, lat, lon, batLevel, timeMillis);
         }
     }
 
-    public void sendLastKnownLocation(){
+    public void sendLastKnownLocation() {
         String lat = (String) ch.getSettings().get(Settings.SET_LAST_KNOWN_LOCATION_LAT);
         String lon = (String) ch.getSettings().get(Settings.SET_LAST_KNOWN_LOCATION_LON);
         long time = (long) ch.getSettings().get(Settings.SET_LAST_KNOWN_LOCATION_TIME);
