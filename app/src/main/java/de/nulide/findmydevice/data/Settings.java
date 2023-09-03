@@ -125,14 +125,13 @@ public class Settings extends HashMap<Integer, Object> {
                 case SET_FMD_CRYPT_HPW:
                 case SET_FMD_CRYPT_PRIVKEY:
                 case SET_FMD_CRYPT_PUBKEY:
+                case SET_FMDSERVER_URL:
                     return "";
                 case SET_GPS_STATE:
                     return 1;
                 case SET_APP_CRASHED_LOG_ENTRY:
                 case SET_LAST_KNOWN_LOCATION_TIME:
                     return -1;
-                case SET_FMDSERVER_URL:
-                    return DEFAULT_FMD_SERVER_URL;
             }
         }
         return "";
