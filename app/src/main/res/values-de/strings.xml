@@ -89,6 +89,7 @@
 
     <!-- Settings: OpenCelliD -->
     <string name="OpenCellId_help">FMD kann den Dienst OpenCelliD benutzen um den ungefähren Standort zu bestimmen basierend auf der Mobilfunkzelle mit der das Gerät verbunden ist. Eine Internetverbindung ist benötigt für jede Standortanfrage. Außerdem müssen Sie ein OpenCelliD-Konto anlegen um ein eigenes API Access Token zu bekommen.</string>
+    <string name="OpenCellId_privacy">Privatsphäre: bedenke dass OpenCelliD mit jeder API-Anfrage Ihre aktuelle Mobilfunkzelle und somit auch Ihren Standort erfährt.</string>
     <string name="OpenCellId_open_website">OpenCelliD Webseite öffnen</string>
     <string name="OpenCellId_test_opencellid">OpenCelliD-Verbindung Testen</string>
     <string name="OpenCellId_test_no_connection">Keine Mobilfunkverbindung</string>

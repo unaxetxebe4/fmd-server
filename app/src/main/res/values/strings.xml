@@ -100,6 +100,7 @@
     <string name="OpenCellId_OpenCellId" translatable="false">OpenCelliD</string>
     <string name="OpenCellId_API_Key_Description" translatable="false">API Access Token:</string>
     <string name="OpenCellId_help">FMD can use the OpenCelliD service to get an approximate location based on the cell tower that the phone is connected to. An internet connection is required for every location query. You also need to create an account at OpenCelliD and get your own API Access Token.</string>
+    <string name="OpenCellId_privacy">Privacy: keep in mind that OpenCelliD learns your current cell tower and thus your location with every API query.</string>
     <string name="OpenCellId_open_website">Open OpenCelliD website</string>
     <string name="OpenCellId_test_opencellid">Test OpenCelliD Connection</string>
     <string name="OpenCellId_test_no_connection">No cell connection</string>

@@ -56,6 +56,12 @@
                 android:layout_marginTop="@dimen/margin_small"
                 android:text="@string/OpenCellId_help" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                android:text="@string/OpenCellId_privacy" />
+
             <Button
                 android:id="@+id/buttonOpenOpenCellIdWebsite"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
