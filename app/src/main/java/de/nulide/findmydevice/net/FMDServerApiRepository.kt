@@ -63,6 +63,10 @@ class FMDServerApiRepository private constructor(spec: FMDServerApiRepoSpec) {
             IO.read(JSONMap::class.java, IO.settingsFileName)
         )
 
+        val tempBaseUrl = settings[Settings.SET_FMDSERVER_URL] as String
+        if (tempBaseUrl.endsWith("/")) {
+            settings.setNow(Settings.SET_FMDSERVER_URL, tempBaseUrl.substring(0, tempBaseUrl.length))
+        }
         baseUrl = settings[Settings.SET_FMDSERVER_URL] as String
     }
 
