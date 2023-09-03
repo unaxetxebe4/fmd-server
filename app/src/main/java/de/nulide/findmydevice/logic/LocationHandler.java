@@ -3,6 +3,7 @@ package de.nulide.findmydevice.logic;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 
 import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.data.Settings;
@@ -23,7 +24,7 @@ public class LocationHandler {
         StringBuilder sb = new StringBuilder(provider);
         sb.append(": Lat: ").append(lat).append(" Lon: ").append(lon).append("\n\n").append(createMapLink(lat, lon));
         ch.getSender().sendNow(sb.toString());
-        long timeMillis = Calendar.getInstance().getTimeInMillis();
+        long timeMillis = Calendar.getInstance(TimeZone.getTimeZone("UTC")).getTimeInMillis();
         String time =  (new Date(timeMillis)).toString();
 
         ch.getSettings().set(Settings.SET_LAST_KNOWN_LOCATION_LAT, lat);

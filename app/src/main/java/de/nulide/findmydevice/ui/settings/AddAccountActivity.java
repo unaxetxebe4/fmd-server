@@ -21,6 +21,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import org.apache.maven.artifact.versioning.ComparableVersion;
 
 import java.util.Calendar;
+import java.util.TimeZone;
 
 import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.data.FmdKeyPair;
@@ -245,11 +246,11 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
 
     private void getAndShowServerVersionWithDelay(Context context, String serverBaseUrl) {
         long DELAY_MILLIS = 1500;
-        this.lastTextChangedMillis = Calendar.getInstance().getTimeInMillis();
+        this.lastTextChangedMillis = Calendar.getInstance(TimeZone.getTimeZone("UTC")).getTimeInMillis();
         // Only send the request to the URL if there has been no change within the last DELAY ms.
         // This prevents spamming the server with every keystroke.
         new Handler().postDelayed(() -> {
-            long now = Calendar.getInstance().getTimeInMillis();
+            long now = Calendar.getInstance(TimeZone.getTimeZone("UTC")).getTimeInMillis();
             if (now - this.lastTextChangedMillis > DELAY_MILLIS) {
                 getAndShowServerVersion(context, serverBaseUrl);
             }
