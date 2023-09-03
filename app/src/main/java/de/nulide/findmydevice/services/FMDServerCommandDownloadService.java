@@ -23,10 +23,13 @@ import de.nulide.findmydevice.sender.Sender;
 import de.nulide.findmydevice.utils.Logger;
 import de.nulide.findmydevice.utils.Notifications;
 
-@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-public class FMDServerCommandService extends JobService {
+/**
+ * Downloads the latest command and executes it
+ */
+@RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+public class FMDServerCommandDownloadService extends JobService {
 
-    private String TAG = FMDServerCommandService.class.getSimpleName();
+    private String TAG = FMDServerCommandDownloadService.class.getSimpleName();
 
     private static final int JOB_ID = 109;
     private Settings settings;
@@ -53,7 +56,7 @@ public class FMDServerCommandService extends JobService {
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     public static void scheduleJobNow(Context context) {
-        ComponentName serviceComponent = new ComponentName(context, FMDServerCommandService.class);
+        ComponentName serviceComponent = new ComponentName(context, FMDServerCommandDownloadService.class);
         JobInfo.Builder builder = new JobInfo.Builder(JOB_ID, serviceComponent);
         builder.setMinimumLatency(0);
         builder.setOverrideDeadline(1000);

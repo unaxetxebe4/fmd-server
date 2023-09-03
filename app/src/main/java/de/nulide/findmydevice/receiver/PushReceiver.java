@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 import de.nulide.findmydevice.net.FMDServerApiRepoSpec;
 import de.nulide.findmydevice.net.FMDServerApiRepository;
-import de.nulide.findmydevice.services.FMDServerCommandService;
+import de.nulide.findmydevice.services.FMDServerCommandDownloadService;
 
 
 public class PushReceiver extends MessagingReceiver {
@@ -29,7 +29,7 @@ public class PushReceiver extends MessagingReceiver {
     @Override
     public void onMessage(@NonNull Context context, @NonNull byte[] message, @NonNull String instance) {
         Log.i(TAG, "Received push message");
-        FMDServerCommandService.scheduleJobNow(context);
+        FMDServerCommandDownloadService.scheduleJobNow(context);
     }
 
     @Override
