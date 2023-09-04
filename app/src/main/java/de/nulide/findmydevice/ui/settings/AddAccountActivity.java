@@ -28,6 +28,8 @@ import java.util.TimeZone;
 import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.data.FmdKeyPair;
 import de.nulide.findmydevice.data.Settings;
+import de.nulide.findmydevice.data.SettingsRepoSpec;
+import de.nulide.findmydevice.data.SettingsRepository;
 import de.nulide.findmydevice.data.io.IO;
 import de.nulide.findmydevice.data.io.JSONFactory;
 import de.nulide.findmydevice.data.io.json.JSONMap;
@@ -58,7 +60,7 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_account);
 
-        settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
+        settings = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(this)).getSettings();
         String lastKnownServerUrl = (String) settings.get(Settings.SET_FMDSERVER_URL);
 
         fmdServerRepo = FMDServerApiRepository.Companion.getInstance(new FMDServerApiRepoSpec(this));
@@ -209,7 +211,6 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
             Context context = getApplicationContext();
             loadingDialog.cancel();
 
-            settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
             if (((String) settings.get(Settings.SET_FMDSERVER_ID)).isEmpty()) {
                 Toast.makeText(context, "Failed: no user id", Toast.LENGTH_LONG).show();
                 return;

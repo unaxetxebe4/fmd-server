@@ -21,6 +21,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.data.Settings;
+import de.nulide.findmydevice.data.SettingsRepoSpec;
+import de.nulide.findmydevice.data.SettingsRepository;
 import de.nulide.findmydevice.data.io.IO;
 import de.nulide.findmydevice.data.io.JSONFactory;
 import de.nulide.findmydevice.data.io.json.JSONMap;
@@ -47,7 +49,7 @@ public class FMDConfigActivity extends AppCompatActivity implements CompoundButt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_f_m_d_config);
 
-        settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
+        settings = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(this)).getSettings();
 
         checkBoxDeviceWipe = findViewById(R.id.checkBoxWipeData);
         checkBoxDeviceWipe.setChecked((Boolean) settings.get(Settings.SET_WIPE_ENABLED));

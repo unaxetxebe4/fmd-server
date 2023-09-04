@@ -8,9 +8,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.data.Settings;
-import de.nulide.findmydevice.data.io.IO;
-import de.nulide.findmydevice.data.io.JSONFactory;
-import de.nulide.findmydevice.data.io.json.JSONMap;
+import de.nulide.findmydevice.data.SettingsRepoSpec;
+import de.nulide.findmydevice.data.SettingsRepository;
 import de.nulide.findmydevice.sender.FooSender;
 import de.nulide.findmydevice.sender.SMS;
 import de.nulide.findmydevice.sender.Sender;
@@ -24,12 +23,16 @@ public class LockScreenMessage extends AppCompatActivity {
 
     private TextView tvLockScreenMessage;
 
+    private Settings settings;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lock_screen_message);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD|
                 WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
+
+        settings = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(this)).getSettings();
 
         Bundle bundle = getIntent().getExtras();
         switch(bundle.getString(SENDER_TYPE)){
@@ -39,14 +42,11 @@ public class LockScreenMessage extends AppCompatActivity {
             default:
                 sender = new FooSender();
         }
-        Settings Settings;
-        IO.context = this;
-        Settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
         tvLockScreenMessage = findViewById(R.id.textViewLockScreenMessage);
         if (bundle.containsKey(CUSTOM_TEXT)) {
             tvLockScreenMessage.setText(bundle.getString(CUSTOM_TEXT));
         } else {
-            tvLockScreenMessage.setText((String) Settings.get(Settings.SET_LOCKSCREEN_MESSAGE));
+            tvLockScreenMessage.setText((String) settings.get(Settings.SET_LOCKSCREEN_MESSAGE));
         }
     }
 

@@ -1,14 +1,6 @@
 package de.nulide.findmydevice.ui.settings
 
-import android.annotation.SuppressLint
-import android.content.Context
-import android.os.Build
 import android.os.Bundle
-import android.telephony.CellInfoCdma
-import android.telephony.CellInfoGsm
-import android.telephony.CellInfoLte
-import android.telephony.CellInfoNr
-import android.telephony.TelephonyManager
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
@@ -16,9 +8,8 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import de.nulide.findmydevice.R
 import de.nulide.findmydevice.data.Settings
-import de.nulide.findmydevice.data.io.IO
-import de.nulide.findmydevice.data.io.JSONFactory
-import de.nulide.findmydevice.data.io.json.JSONMap
+import de.nulide.findmydevice.data.SettingsRepoSpec
+import de.nulide.findmydevice.data.SettingsRepository
 import de.nulide.findmydevice.databinding.ActivityOpenCellIdBinding
 import de.nulide.findmydevice.net.OpenCelliDRepository
 import de.nulide.findmydevice.net.OpenCelliDSpec
@@ -39,8 +30,7 @@ class OpenCellIdActivity : AppCompatActivity(), TextWatcher {
         viewBinding = ActivityOpenCellIdBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
-        settings =
-            JSONFactory.convertJSONSettings(IO.read(JSONMap::class.java, IO.settingsFileName))
+        settings = SettingsRepository.getInstance(SettingsRepoSpec(this)).settings
         val apiToken = settings.get(Settings.SET_OPENCELLID_API_KEY) as String
 
         viewBinding.editTextOpenCellIDAPIKey.setText(apiToken)

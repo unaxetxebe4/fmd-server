@@ -1,20 +1,19 @@
 package de.nulide.findmydevice.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.media.Ringtone;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.Timer;
 
 import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.data.Settings;
-import de.nulide.findmydevice.data.io.IO;
-import de.nulide.findmydevice.data.io.JSONFactory;
-import de.nulide.findmydevice.data.io.json.JSONMap;
+import de.nulide.findmydevice.data.SettingsRepoSpec;
+import de.nulide.findmydevice.data.SettingsRepository;
 import de.nulide.findmydevice.logic.command.helper.Ringer;
 import de.nulide.findmydevice.tasks.RingerTimerTask;
 
@@ -24,8 +23,6 @@ public class RingerActivity extends AppCompatActivity implements View.OnClickLis
 
     private RingerTimerTask ringerTask;
     private Button buttonStopRinging;
-
-    private Settings Settings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,10 +35,8 @@ public class RingerActivity extends AppCompatActivity implements View.OnClickLis
 
         Bundle bundle = getIntent().getExtras();
 
-        IO.context = this;
-        Settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
-
-        Ringtone ringtone = Ringer.getRingtone(this, (String) Settings.get(Settings.SET_RINGER_TONE));
+        Settings settings = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(this)).getSettings();
+        Ringtone ringtone = Ringer.getRingtone(this, (String) settings.get(Settings.SET_RINGER_TONE));
 
         Timer t = new Timer();
         ringerTask = new RingerTimerTask(t, ringtone, this);
@@ -50,13 +45,11 @@ public class RingerActivity extends AppCompatActivity implements View.OnClickLis
 
         buttonStopRinging = findViewById(R.id.buttonStopRinging);
         buttonStopRinging.setOnClickListener(this);
-
-
     }
 
     @Override
     public void onClick(View v) {
-        if(v == buttonStopRinging){
+        if (v == buttonStopRinging) {
             ringerTask.stop();
             finish();
         }

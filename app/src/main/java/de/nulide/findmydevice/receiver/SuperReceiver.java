@@ -8,6 +8,8 @@ import java.util.Calendar;
 
 import de.nulide.findmydevice.data.ConfigSMSRec;
 import de.nulide.findmydevice.data.Settings;
+import de.nulide.findmydevice.data.SettingsRepoSpec;
+import de.nulide.findmydevice.data.SettingsRepository;
 import de.nulide.findmydevice.data.WhiteList;
 import de.nulide.findmydevice.data.io.IO;
 import de.nulide.findmydevice.data.io.JSONFactory;
@@ -30,7 +32,7 @@ abstract class SuperReceiver extends BroadcastReceiver {
         IO.context = context;
         Logger.init(Thread.currentThread(), context);
         whiteList = JSONFactory.convertJSONWhiteList(IO.read(JSONWhiteList.class, IO.whiteListFileName));
-        settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
+        settings = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(context)).getSettings();
         config = JSONFactory.convertJSONConfig(IO.read(JSONMap.class, IO.SMSReceiverTempData));
         if (config.get(ConfigSMSRec.CONF_LAST_USAGE) == null) {
             Calendar cal = Calendar.getInstance();
@@ -39,7 +41,7 @@ abstract class SuperReceiver extends BroadcastReceiver {
         }
         Notifications.init(context, false);
         Permission.initValues(context);
-        ch = new ComponentHandler(settings, context, null, null);
+        ch = new ComponentHandler(context, null, null);
     }
 
 }

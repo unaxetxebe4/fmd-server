@@ -10,6 +10,8 @@ import java.util.Map;
 
 import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.data.Settings;
+import de.nulide.findmydevice.data.SettingsRepoSpec;
+import de.nulide.findmydevice.data.SettingsRepository;
 import de.nulide.findmydevice.logic.command.helper.Cell;
 import de.nulide.findmydevice.logic.command.helper.GPS;
 import de.nulide.findmydevice.logic.command.helper.Network;
@@ -35,12 +37,13 @@ public class MessageHandler {
     public static final String COM_EXPERT_SOUND = "sound";
     public static final String COM_EXPERT_CAMERA = "camera";
 
-
-    private ComponentHandler ch;
+    private final Settings settings;
+    private final ComponentHandler ch;
 
     private boolean silent = false;
 
     public MessageHandler(ComponentHandler ch) {
+        settings = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(ch.getContext())).getSettings();
         this.ch = ch;
     }
 
@@ -49,8 +52,8 @@ public class MessageHandler {
         String originalMsg = msg;
         msg = msg.toLowerCase();
         StringBuilder replyBuilder = new StringBuilder();
-        if(msg.startsWith((String) ch.getSettings().get(Settings.SET_FMD_COMMAND))) {
-            int cutLength = ((String) ch.getSettings().get(Settings.SET_FMD_COMMAND)).length();
+        if(msg.startsWith((String) settings.get(Settings.SET_FMD_COMMAND))) {
+            int cutLength = ((String) settings.get(Settings.SET_FMD_COMMAND)).length();
             if(msg.length() > cutLength){
                 cutLength+=1;
             }
@@ -62,7 +65,7 @@ public class MessageHandler {
             if (msg.startsWith(COM_LOCATE) && Permission.GPS) {
                 executedCommand = COM_LOCATE;
                 if(msg.contains("last")){
-                    if(!((String)ch.getSettings().get(Settings.SET_LAST_KNOWN_LOCATION_LAT)).isEmpty()) {
+                    if(!((String) settings.get(Settings.SET_LAST_KNOWN_LOCATION_LAT)).isEmpty()) {
                         ch.getLocationHandler().sendLastKnownLocation();
                     }else{
                         ch.getSender().sendNow(ch.getContext().getString(R.string.MH_LAST_KNOWN_LOCATION_NOT_AVAILABLE));
@@ -70,14 +73,14 @@ public class MessageHandler {
                 }
                 if (!GPS.isGPSOn(context)) {
                     if (Permission.WRITE_SECURE_SETTINGS) {
-                        ch.getSettings().set(Settings.SET_GPS_STATE, 2);
+                        settings.set(Settings.SET_GPS_STATE, 2);
                         SecureSettings.turnGPS(context, true);
                     }else{
                         replyBuilder.append(context.getString(R.string.MH_No_GPS));
                     }
                 }else{
-                    if((Integer)ch.getSettings().get(Settings.SET_GPS_STATE) != 2) {
-                        ch.getSettings().set(Settings.SET_GPS_STATE, 1);
+                    if ((Integer) settings.get(Settings.SET_GPS_STATE) != 2) {
+                        settings.set(Settings.SET_GPS_STATE, 1);
                     }
                 }
                 if(GPS.isGPSOn(context)){
@@ -151,18 +154,18 @@ public class MessageHandler {
 
             } else if (msg.startsWith(COM_DELETE) && Permission.DEVICE_ADMIN) {
                 executedCommand = COM_DELETE;
-                if ((Boolean) ch.getSettings().get(Settings.SET_WIPE_ENABLED)) {
+                if ((Boolean) settings.get(Settings.SET_WIPE_ENABLED)) {
                     DevicePolicyManager devicePolicyManager = (DevicePolicyManager) context.getSystemService(Context.DEVICE_POLICY_SERVICE);
                     if (msg.length() > COM_DELETE.length()+1) {
                         String pin = originalMsg.substring(COM_DELETE.length()+1, msg.length());
-                        if (CypherUtils.checkPasswordForFmdPin((String) ch.getSettings().get(Settings.SET_PIN), pin)) {
+                        if (CypherUtils.checkPasswordForFmdPin((String) settings.get(Settings.SET_PIN), pin)) {
                             devicePolicyManager.wipeData(0);
                             replyBuilder.append(context.getString(R.string.MH_Delete));
                         } else {
                             replyBuilder.append(context.getString(R.string.MH_False_Pin));
                         }
                     } else {
-                        replyBuilder.append(context.getString(R.string.MH_Syntax)).append((String) ch.getSettings().get(Settings.SET_FMD_COMMAND)).append(" delete [pin]");
+                        replyBuilder.append(context.getString(R.string.MH_Syntax)).append((String) settings.get(Settings.SET_FMD_COMMAND)).append(" delete [pin]");
                     }
                 }
 
@@ -170,9 +173,9 @@ public class MessageHandler {
 
             } else if (msg.startsWith(COM_EXPERT)) {
                 executedCommand = COM_DELETE;
-                replyBuilder.append((String) ch.getSettings().get(Settings.SET_FMD_COMMAND)).append(context.getString(R.string.MH_Help_Expert_GPS)).append("\n");
-                replyBuilder.append((String) ch.getSettings().get(Settings.SET_FMD_COMMAND)).append(context.getString(R.string.MH_Help_Expert_Sound)).append("\n");
-                replyBuilder.append((String) ch.getSettings().get(Settings.SET_FMD_COMMAND)).append(context.getString(R.string.MH_Help_Expert_Camera)).append("\n");
+                replyBuilder.append((String) settings.get(Settings.SET_FMD_COMMAND)).append(context.getString(R.string.MH_Help_Expert_GPS)).append("\n");
+                replyBuilder.append((String) settings.get(Settings.SET_FMD_COMMAND)).append(context.getString(R.string.MH_Help_Expert_Sound)).append("\n");
+                replyBuilder.append((String) settings.get(Settings.SET_FMD_COMMAND)).append(context.getString(R.string.MH_Help_Expert_Camera)).append("\n");
 
                 //GPS
             } else if(msg.startsWith(COM_EXPERT_GPS)) {
@@ -180,10 +183,10 @@ public class MessageHandler {
                 if(Permission.WRITE_SECURE_SETTINGS){
                     if(msg.contains("on")){
                         SecureSettings.turnGPS(context, true);
-                        ch.getSettings().set(Settings.SET_GPS_STATE, 1);
+                        settings.set(Settings.SET_GPS_STATE, 1);
                     }else if(msg.contains("off")){
                         SecureSettings.turnGPS(context, false);
-                        ch.getSettings().set(Settings.SET_GPS_STATE, 0);
+                        settings.set(Settings.SET_GPS_STATE, 0);
                     }
                 }else{
                     replyBuilder.append(context.getString(R.string.MH_NO_SECURE_SETTINGS));
@@ -200,7 +203,7 @@ public class MessageHandler {
                 }
             }else if(msg.startsWith(COM_EXPERT_CAMERA)) {
                 if(Permission.CAMERA) {
-                    if(!((String) ch.getSettings().get(Settings.SET_FMDSERVER_ID)).isEmpty()) {
+                    if(!((String) settings.get(Settings.SET_FMDSERVER_ID)).isEmpty()) {
 
                         Intent dummyCameraActivity = new Intent(context, DummyCameraxActivity.class);
                         dummyCameraActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -210,7 +213,7 @@ public class MessageHandler {
                             dummyCameraActivity.putExtra(DummyCameraxActivity.EXTRA_CAMERA, DummyCameraxActivity.CAMERA_BACK);
                         }
                         context.startActivity(dummyCameraActivity);
-                        replyBuilder.append(context.getString(R.string.MH_CAM_CAPTURE)).append((String) ch.getSettings().get(Settings.SET_FMDSERVER_URL));
+                        replyBuilder.append(context.getString(R.string.MH_CAM_CAPTURE)).append((String) settings.get(Settings.SET_FMDSERVER_URL));
                     }else{
                         replyBuilder.append(context.getString(R.string.MH_FMDSERVER_NOT_REGISTERED));
 
@@ -219,26 +222,26 @@ public class MessageHandler {
             }else{
                 replyBuilder.append(context.getString(R.string.MH_Title_Help)).append("\n");
                 if (Permission.GPS) {
-                    replyBuilder.append((String) ch.getSettings().get(Settings.SET_FMD_COMMAND)).append(context.getString(R.string.MH_Help_where)).append("\n");
+                    replyBuilder.append((String) settings.get(Settings.SET_FMD_COMMAND)).append(context.getString(R.string.MH_Help_where)).append("\n");
                 }
-                replyBuilder.append((String) ch.getSettings().get(Settings.SET_FMD_COMMAND)).append(context.getString(R.string.MH_Help_ring)).append("\n");
+                replyBuilder.append((String) settings.get(Settings.SET_FMD_COMMAND)).append(context.getString(R.string.MH_Help_ring)).append("\n");
                 if (Permission.DEVICE_ADMIN) {
-                    replyBuilder.append((String) ch.getSettings().get(Settings.SET_FMD_COMMAND)).append(context.getString(R.string.MH_Help_Lock)).append("\n");
+                    replyBuilder.append((String) settings.get(Settings.SET_FMD_COMMAND)).append(context.getString(R.string.MH_Help_Lock)).append("\n");
                 }
-                replyBuilder.append((String) ch.getSettings().get(Settings.SET_FMD_COMMAND)).append(context.getString(R.string.MH_Help_Stats));
-                if ((Boolean) ch.getSettings().get(Settings.SET_WIPE_ENABLED)) {
-                    replyBuilder.append("\n").append((String) ch.getSettings().get(Settings.SET_FMD_COMMAND)).append(context.getString(R.string.MH_Help_delete));
+                replyBuilder.append((String) settings.get(Settings.SET_FMD_COMMAND)).append(context.getString(R.string.MH_Help_Stats));
+                if ((Boolean) settings.get(Settings.SET_WIPE_ENABLED)) {
+                    replyBuilder.append("\n").append((String) settings.get(Settings.SET_FMD_COMMAND)).append(context.getString(R.string.MH_Help_delete));
                 }
-                replyBuilder.append("\n").append((String) ch.getSettings().get(Settings.SET_FMD_COMMAND)).append(context.getString(R.string.MH_Help_expert));
+                replyBuilder.append("\n").append((String) settings.get(Settings.SET_FMD_COMMAND)).append(context.getString(R.string.MH_Help_expert));
 
             }
 
             String reply = replyBuilder.toString();
             if (!reply.isEmpty() && !silent) {
                 Logger.logSession("Command used", msg);
-                int counter = (Integer) ch.getSettings().get(Settings.SET_FMDSMS_COUNTER);
+                int counter = (Integer) settings.get(Settings.SET_FMDSMS_COUNTER);
                 counter++;
-                ch.getSettings().set(Settings.SET_FMDSMS_COUNTER, counter);
+                settings.set(Settings.SET_FMDSMS_COUNTER, counter);
                 ch.getSender().sendNow(reply);
                 Notifications.notify(context, "SMS-Receiver", "New Usage " + counter, Notifications.CHANNEL_USAGE);
             }
@@ -251,16 +254,16 @@ public class MessageHandler {
     }
 
     public boolean checkForPin(String msg) {
-        if (msg.length() > ((String) ch.getSettings().get(Settings.SET_FMD_COMMAND)).length() + 1) {
-            String pin = msg.substring(((String) ch.getSettings().get(Settings.SET_FMD_COMMAND)).length() + 1);
-            return CypherUtils.checkPasswordForFmdPin((String) ch.getSettings().get(Settings.SET_PIN), pin);
+        if (msg.length() > ((String) settings.get(Settings.SET_FMD_COMMAND)).length() + 1) {
+            String pin = msg.substring(((String) settings.get(Settings.SET_FMD_COMMAND)).length() + 1);
+            return CypherUtils.checkPasswordForFmdPin((String) settings.get(Settings.SET_PIN), pin);
         }
         return false;
     }
 
     public String checkAndRemovePin(String msg) {
         String[] parts = msg.split(" ");
-        String pinHash = (String) ch.getSettings().get(Settings.SET_PIN);
+        String pinHash = (String) settings.get(Settings.SET_PIN);
         boolean isPinValid = false;
         String newMsg = parts[0];
         for (int i = 1; i < parts.length; i++) {

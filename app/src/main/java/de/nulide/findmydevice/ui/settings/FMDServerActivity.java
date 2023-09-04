@@ -24,9 +24,8 @@ import java.security.PrivateKey;
 
 import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.data.Settings;
-import de.nulide.findmydevice.data.io.IO;
-import de.nulide.findmydevice.data.io.JSONFactory;
-import de.nulide.findmydevice.data.io.json.JSONMap;
+import de.nulide.findmydevice.data.SettingsRepoSpec;
+import de.nulide.findmydevice.data.SettingsRepository;
 import de.nulide.findmydevice.net.FMDServerApiRepoSpec;
 import de.nulide.findmydevice.net.FMDServerApiRepository;
 import de.nulide.findmydevice.receiver.PushReceiver;
@@ -67,7 +66,7 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_f_m_d_server);
 
-        settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
+        settings = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(this)).getSettings();
         fmdServerRepo = FMDServerApiRepository.Companion.getInstance(new FMDServerApiRepoSpec(this));
         this.context = this;
 
@@ -278,7 +277,6 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
                             (response -> {
                                 loadingDialog.cancel();
                                 Toast.makeText(context, "Success", Toast.LENGTH_LONG).show();
-                                settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
                             }),
                             (error) -> {
                                 Toast.makeText(context, "Request failed", Toast.LENGTH_LONG).show();

@@ -5,13 +5,11 @@ import android.app.job.JobService;
 import android.content.Context;
 import android.os.Handler;
 
-import de.nulide.findmydevice.data.Settings;
 import de.nulide.findmydevice.sender.Sender;
 import de.nulide.findmydevice.services.GPSTimeOutService;
 
 public class ComponentHandler {
 
-    private Settings settings;
     private Sender sender;
     private Context context;
     private JobService service;
@@ -21,18 +19,13 @@ public class ComponentHandler {
     private LocationHandler locationHandler;
     private MessageHandler messageHandler;
 
-    public ComponentHandler(de.nulide.findmydevice.data.Settings settings, Context context, JobService service, JobParameters serviceParams) {
-        this.settings = settings;
+    public ComponentHandler(Context context, JobService service, JobParameters serviceParams) {
         this.context = context;
         messageHandler = new MessageHandler(this);
         locationHandler = new LocationHandler(this);
         this.service = service;
         this.serviceParams = serviceParams;
         this.reschedule = false;
-    }
-
-    public Settings getSettings() {
-        return settings;
     }
 
     public void setReschedule(boolean reschedule){
