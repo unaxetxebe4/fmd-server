@@ -1,9 +1,7 @@
 package de.nulide.findmydevice.net
 
 import android.content.Context
-import android.os.Build
 import android.util.Log
-import androidx.annotation.RequiresApi
 import com.android.volley.Request.Method
 import com.android.volley.RequestQueue
 import com.android.volley.Response
@@ -322,7 +320,8 @@ class FMDServerApiRepository private constructor(spec: FMDServerApiRepoSpec) {
                 { error ->
                     // FIXME: The server returns an empty body which cannot be parsed to JSON.
                     // The best solution would be for the access token to be passed as a header rather then a body
-                    if (error.cause is JSONException) {
+                    // FIXME: also the server does not explicitly return a 200, so e.g. nginx closes the connection with 499
+                    if (error.cause is JSONException || error.networkResponse.statusCode == 499) {
                         // request was actually successful, just deserialising failed
                         // settings needs to be instantiated here, else we get race conditions on the file
                         val settings = JSONFactory.convertJSONSettings(
