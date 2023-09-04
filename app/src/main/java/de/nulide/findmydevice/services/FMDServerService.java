@@ -19,6 +19,7 @@ import org.json.JSONObject;
 
 import java.security.PublicKey;
 import java.util.Calendar;
+import java.util.TimeZone;
 
 import de.nulide.findmydevice.data.FmdKeyPair;
 import de.nulide.findmydevice.data.Settings;
@@ -63,7 +64,7 @@ public class FMDServerService extends JobService {
         final JSONObject locationDataObject = new JSONObject();
         try {
             locationDataObject.put("provider", provider);
-            locationDataObject.put("date", Calendar.getInstance().getTimeInMillis());
+            locationDataObject.put("date", Calendar.getInstance(TimeZone.getTimeZone("UTC")).getTimeInMillis());
             locationDataObject.put("bat", batLevel);
             locationDataObject.put("lon", lon);
             locationDataObject.put("lat", lat);
