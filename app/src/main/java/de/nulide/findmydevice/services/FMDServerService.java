@@ -152,14 +152,15 @@ public class FMDServerService extends JobService {
         RestHandler restHandler = new RestHandler(context, RestHandler.DEFAULT_RESP_METHOD, RestHandler.DEVICE, ATHandler.getEmptyDataReq());
         restHandler.setErrorListener(error -> {
             // FIXME: The server returns an empty body which cannot be parsed to JSON. We should use a StringRequest here.
-            if (error.getCause() instanceof org.json.JSONException) {
+            // FIXME: also the server does not explicitly return a 200, so e.g. nginx closes the connection with 499
+            if (error.getCause() instanceof org.json.JSONException || error.networkResponse.statusCode == 499) {
                 // request was actually successful, just deserialising failed
                 // settings needs to be instantiated here, else we get race conditions on the file
                 Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
                 settings.setNow(Settings.SET_FMDSERVER_ID, ""); // only clear if request is successful
-                //responseListener.onResponse(new JSONObject());
+                responseListener.onResponse(new JSONObject());
             } else {
-                //errorListener.onErrorResponse(error);
+                errorListener.onErrorResponse(error);
             }
         });
         restHandler.setResponseListener(response -> {
