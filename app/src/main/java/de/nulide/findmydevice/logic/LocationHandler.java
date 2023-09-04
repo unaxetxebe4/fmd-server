@@ -40,9 +40,9 @@ public class LocationHandler {
 
         long timeMillis = Calendar.getInstance(TimeZone.getTimeZone("UTC")).getTimeInMillis();
 
-        settings.setNow(Settings.SET_LAST_KNOWN_LOCATION_LAT, lat);
-        settings.setNow(Settings.SET_LAST_KNOWN_LOCATION_LON, lon);
-        settings.setNow(Settings.SET_LAST_KNOWN_LOCATION_TIME, timeMillis);
+        settings.set(Settings.SET_LAST_KNOWN_LOCATION_LAT, lat);
+        settings.set(Settings.SET_LAST_KNOWN_LOCATION_LON, lon);
+        settings.set(Settings.SET_LAST_KNOWN_LOCATION_TIME, timeMillis);
 
         BatteryManager bm = (BatteryManager) ch.getContext().getSystemService(Context.BATTERY_SERVICE);
         String batLevel = Integer.valueOf(bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY)).toString();

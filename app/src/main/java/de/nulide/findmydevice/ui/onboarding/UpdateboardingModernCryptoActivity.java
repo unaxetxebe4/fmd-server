@@ -82,7 +82,7 @@ public class UpdateboardingModernCryptoActivity extends AppCompatActivity {
 
     private void onConfirmClicked(View view) {
         if (isPinSet) {
-            settings.setNow(Settings.SET_PIN, "");
+            settings.set(Settings.SET_PIN, "");
         }
         if (isRegisteredWithServer) {
             // SET_FMD_CRYPT_HPW still contains the old-style hash.
@@ -97,7 +97,7 @@ public class UpdateboardingModernCryptoActivity extends AppCompatActivity {
     }
 
     private void completeAndContinueToMain() {
-        settings.setNow(Settings.SET_UPDATEBOARDING_MODERN_CRYPTO_COMPLETED, true);
+        settings.set(Settings.SET_UPDATEBOARDING_MODERN_CRYPTO_COMPLETED, true);
 
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);

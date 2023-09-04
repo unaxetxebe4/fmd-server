@@ -83,14 +83,6 @@ public class Settings extends HashMap<Integer, Object> {
         IO.write(JSONFactory.convertSettings(this), IO.settingsFileName);
     }
 
-    /**
-     * @deprecated Use set()
-     */
-    @Deprecated
-    public <T> void setNow(int key, T value) {
-        set(key, value);
-    }
-
     public Object get(int key) {
         if (super.containsKey(key)) {
             return super.get(key);

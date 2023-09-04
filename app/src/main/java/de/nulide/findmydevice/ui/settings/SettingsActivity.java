@@ -123,7 +123,7 @@ public class SettingsActivity extends AppCompatActivity {
                         mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
                         if (!text.isEmpty()) {
                             Settings settings = mapper.readValue(text, Settings.class);
-                            settings.setNow(Settings.SET_INTRODUCTION_VERSION, settings.get(Settings.SET_INTRODUCTION_VERSION));
+                            settings.set(Settings.SET_INTRODUCTION_VERSION, settings.get(Settings.SET_INTRODUCTION_VERSION));
                             finish();
                         }
                     } catch (IOException e) {

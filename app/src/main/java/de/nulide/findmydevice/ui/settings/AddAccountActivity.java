@@ -117,8 +117,8 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
                             FmdKeyPair keys = FmdKeyPair.generateNewFmdKeyPair(password);
                             settings.setKeys(keys);
                             String hashedPW = CypherUtils.hashPasswordForLogin(password);
-                            settings.setNow(Settings.SET_FMD_CRYPT_HPW, hashedPW);
-                            settings.setNow(Settings.SET_FMDSERVER_PASSWORD_SET, true);
+                            settings.set(Settings.SET_FMD_CRYPT_HPW, hashedPW);
+                            settings.set(Settings.SET_FMDSERVER_PASSWORD_SET, true);
 
                             fmdServerRepo.registerAccount(keys.getEncryptedPrivateKey(), keys.getBase64PublicKey(), hashedPW, registrationToken,
                                     this::onRegisterOrLoginSuccess, this::onRegisterOrLoginError
@@ -194,7 +194,7 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
             if (url.endsWith("/")) {
                 url = url.substring(0, url.length() - 1);
             }
-            settings.setNow(Settings.SET_FMDSERVER_URL, url);
+            settings.set(Settings.SET_FMDSERVER_URL, url);
             if (url.isEmpty()) {
                 btnRegister.setEnabled(false);
                 btnLogin.setEnabled(false);
