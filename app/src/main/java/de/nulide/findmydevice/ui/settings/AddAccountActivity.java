@@ -192,7 +192,7 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
             if (url.endsWith("/")) {
                 url = url.substring(0, url.length() - 1);
             }
-            settings.set(Settings.SET_FMDSERVER_URL, url);
+            settings.setNow(Settings.SET_FMDSERVER_URL, url);
             if (url.isEmpty()) {
                 btnRegister.setEnabled(false);
                 btnLogin.setEnabled(false);

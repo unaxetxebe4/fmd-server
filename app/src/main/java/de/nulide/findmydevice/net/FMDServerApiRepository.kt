@@ -52,20 +52,30 @@ class FMDServerApiRepository private constructor(spec: FMDServerApiRepoSpec) {
     }
 
     private val context = spec.context
-    private val baseUrl: String
+    private var baseUrl = ""
     private val queue: RequestQueue = PatchedVolley.newRequestQueue(spec.context)
     //private val settings: Settings
 
     init {
+        loadBaseUrl()
+    }
+
+    /**
+     * Reload the base URL from settings and cache it in a local field.
+     * This should be called every time where the settings could have changed.
+     */
+    private fun loadBaseUrl() {
         // TODO: proper SettingsRepository that hides the IO magic. Then we can enable the settings field
         IO.context = context
         val settings = JSONFactory.convertJSONSettings(
             IO.read(JSONMap::class.java, IO.settingsFileName)
         )
-
         val tempBaseUrl = settings[Settings.SET_FMDSERVER_URL] as String
         if (tempBaseUrl.endsWith("/")) {
-            settings.setNow(Settings.SET_FMDSERVER_URL, tempBaseUrl.substring(0, tempBaseUrl.length))
+            settings.setNow(
+                Settings.SET_FMDSERVER_URL,
+                tempBaseUrl.substring(0, tempBaseUrl.length)
+            )
         }
         baseUrl = settings[Settings.SET_FMDSERVER_URL] as String
     }
@@ -92,6 +102,7 @@ class FMDServerApiRepository private constructor(spec: FMDServerApiRepoSpec) {
         onResponse: Response.Listener<Unit>,
         onError: Response.ErrorListener,
     ) {
+        loadBaseUrl()
         val jsonObject = JSONObject()
         try {
             jsonObject.put("hashedPassword", hashedPW)
@@ -270,6 +281,7 @@ class FMDServerApiRepository private constructor(spec: FMDServerApiRepoSpec) {
         onResponse: Response.Listener<Unit>,
         onError: Response.ErrorListener,
     ) {
+        loadBaseUrl()
         val settings = JSONFactory.convertJSONSettings(
             IO.read(JSONMap::class.java, IO.settingsFileName)
         )
@@ -468,7 +480,6 @@ class FMDServerApiRepository private constructor(spec: FMDServerApiRepoSpec) {
      *
      * TODO: handled this internally in the repo.
      */
-    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     fun sendLocation(
         provider: String, lat: String, lon: String, batLevel: String, timeInMillis: Long
     ) {
