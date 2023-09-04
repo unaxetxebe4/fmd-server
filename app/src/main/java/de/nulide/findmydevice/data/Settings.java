@@ -18,7 +18,6 @@ import java.security.spec.EncodedKeySpec;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.X509EncodedKeySpec;
 import java.util.HashMap;
-import java.util.Timer;
 
 import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.data.io.IO;
@@ -26,8 +25,8 @@ import de.nulide.findmydevice.data.io.JSONFactory;
 import de.nulide.findmydevice.data.io.OldKeyIO;
 import de.nulide.findmydevice.data.io.json.JSONMap;
 import de.nulide.findmydevice.logic.command.helper.Ringer;
-import de.nulide.findmydevice.tasks.SaveTimerTask;
 import de.nulide.findmydevice.utils.CypherUtils;
+
 
 public class Settings extends HashMap<Integer, Object> {
 
@@ -74,22 +73,22 @@ public class Settings extends HashMap<Integer, Object> {
     public static final int SET_LAST_KNOWN_LOCATION_TIME = 504;
 
 
-    public static final String DEFAULT_FMD_SERVER_URL= "https://fmd.nulide.de:1008";
-
-
-    private Timer afterChangeTimer;
+    public static final String DEFAULT_FMD_SERVER_URL = "https://fmd.nulide.de:1008";
 
     public Settings() {
     }
 
     public <T> void set(int key, T value) {
         super.put(key, value);
-        write(false);
+        IO.write(JSONFactory.convertSettings(this), IO.settingsFileName);
     }
 
+    /**
+     * @deprecated Use set()
+     */
+    @Deprecated
     public <T> void setNow(int key, T value) {
-        super.put(key, value);
-        write(true);
+        set(key, value);
     }
 
     public Object get(int key) {
@@ -104,7 +103,7 @@ public class Settings extends HashMap<Integer, Object> {
                 case SET_FIRST_TIME_FMD_SERVER:
                 case SET_FMDSERVER_PASSWORD_SET:
                 case SET_FMD_LOW_BAT_SEND:
-                //case SET_FMD_CRYPT_NEW_SALT:
+                    //case SET_FMD_CRYPT_NEW_SALT:
                 case SET_UPDATEBOARDING_MODERN_CRYPTO_COMPLETED:
                     return false;
                 case SET_FMD_COMMAND:
@@ -137,8 +136,8 @@ public class Settings extends HashMap<Integer, Object> {
         return "";
     }
 
-    public boolean isEmpty(int key){
-        return ((String)get(key)).equals("");
+    public boolean isEmpty(int key) {
+        return ((String) get(key)).equals("");
     }
 
     public boolean isIntroductionPassed() {
@@ -147,7 +146,6 @@ public class Settings extends HashMap<Integer, Object> {
 
     public void setIntroductionPassed() {
         set(SET_INTRODUCTION_VERSION, newestIntroductionVersion);
-        write(true);
     }
 
     public FmdKeyPair getKeys() {
@@ -187,21 +185,8 @@ public class Settings extends HashMap<Integer, Object> {
         }
     }
 
-    private void write(boolean write_now) {
-        SaveTimerTask saverTask = new SaveTimerTask(this);
-        if (write_now) {
-            saverTask.write();
-        } else {
-            if (afterChangeTimer != null) {
-                afterChangeTimer.cancel();
-            }
-        }
-        afterChangeTimer = new Timer();
-        afterChangeTimer.schedule(saverTask, 200);
-    }
-
-    public boolean checkAccountExists(){
-        return !((String)get(Settings.SET_FMDSERVER_ID)).isEmpty();
+    public boolean checkAccountExists() {
+        return !((String) get(Settings.SET_FMDSERVER_ID)).isEmpty();
     }
 
     public static void writeToUri(Context context, Uri uri) {

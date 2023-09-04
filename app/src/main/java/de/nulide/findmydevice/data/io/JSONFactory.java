@@ -15,16 +15,16 @@ import de.nulide.findmydevice.data.io.json.JSONWhiteList;
 public class JSONFactory {
 
     public static Settings convertJSONSettings(JSONMap jsonSettings) {
-        Settings Settings = new Settings();
+        Settings settings = new Settings();
         if(jsonSettings != null) {
-            Settings.putAll(jsonSettings);
+            settings.putAll(jsonSettings);
         }
-        return Settings;
+        return settings;
     }
 
-    public static JSONMap convertSettings(Settings Settings) {
+    public static JSONMap convertSettings(Settings settings) {
         JSONMap jsonSettings = new JSONMap();
-        jsonSettings.putAll(Settings);
+        jsonSettings.putAll(settings);
         return jsonSettings;
     }
 
