@@ -13,6 +13,7 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
@@ -29,9 +30,9 @@
         tools:ignore="ProtectedPermissions" />
 
     <application
-        android:allowBackup="false"
-        android:fullBackupContent="false"
+        android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -40,13 +41,19 @@
         android:usesCleartextTraffic="true"
         tools:replace="android:allowBackup">
         <activity
-            android:name=".ui.DummyCameraActivity"
-            android:theme="@style/Theme.AppCompat.Translucent"
+            android:name=".ui.settings.AddAccountActivity"
+            android:label="Add Account"
             android:exported="false" />
+        <activity
+            android:name=".ui.DummyCameraActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Translucent" />
         <activity
             android:name=".ui.settings.FMDServerActivity"
             android:label="@string/Settings_FMDServer" />
-        <activity android:name=".ui.settings.OpenCellIdActivity" />
+        <activity
+            android:name=".ui.settings.OpenCellIdActivity"
+            android:label="@string/Settings_OpenCellId" />
         <activity
             android:name=".ui.settings.FMDConfigActivity"
             android:label="@string/Settings_FMDConfig" />
@@ -72,11 +79,13 @@
             android:showWhenLocked="true"
             android:turnScreenOn="true" />
         <activity android:name=".ui.IntroductionActivity" />
+        <activity android:name=".ui.onboarding.UpdateboardingModernCryptoActivity" />
         <activity
             android:name=".ui.LockScreenMessage"
             android:screenOrientation="sensorPortrait"
             android:showOnLockScreen="true" />
-        <activity android:name=".ui.MainActivity"
+        <activity
+            android:name=".ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -87,8 +96,8 @@
 
         <receiver
             android:name=".receiver.DeviceAdminReceiver"
-            android:permission="android.permission.BIND_DEVICE_ADMIN"
-            android:exported="true">
+            android:exported="true"
+            android:permission="android.permission.BIND_DEVICE_ADMIN">
             <meta-data
                 android:name="android.app.device_admin"
                 android:resource="@xml/device_admin_policy" />
@@ -116,7 +125,8 @@
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
         </receiver>
-        <receiver android:name=".receiver.AppUpdatedReceiver"
+        <receiver
+            android:name=".receiver.AppUpdatedReceiver"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
@@ -148,7 +158,7 @@
             android:enabled="true"
             android:exported="true"
             android:foregroundServiceType="location"
-            android:permission="android.permission.BIND_JOB_SERVICE"/>
+            android:permission="android.permission.BIND_JOB_SERVICE" />
         <service
             android:name=".services.ThirdPartyAccessService"
             android:enabled="true"

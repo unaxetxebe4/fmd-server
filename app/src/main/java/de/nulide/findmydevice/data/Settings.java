@@ -1,6 +1,16 @@
 package de.nulide.findmydevice.data;
 
 
+import android.content.Context;
+import android.net.Uri;
+import android.os.ParcelFileDescriptor;
+import android.widget.Toast;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.security.KeyFactory;
 import java.security.NoSuchAlgorithmException;
 import java.security.PublicKey;
@@ -10,7 +20,11 @@ import java.security.spec.X509EncodedKeySpec;
 import java.util.HashMap;
 import java.util.Timer;
 
+import de.nulide.findmydevice.R;
+import de.nulide.findmydevice.data.io.IO;
+import de.nulide.findmydevice.data.io.JSONFactory;
 import de.nulide.findmydevice.data.io.OldKeyIO;
+import de.nulide.findmydevice.data.io.json.JSONMap;
 import de.nulide.findmydevice.logic.command.helper.Ringer;
 import de.nulide.findmydevice.tasks.SaveTimerTask;
 import de.nulide.findmydevice.utils.CypherUtils;
@@ -31,17 +45,21 @@ public class Settings extends HashMap<Integer, Object> {
     public static final int SET_RINGER_TONE = 7;
     public static final int SET_SET_VERSION = 8;
 
-    public static final int SET_FMDSERVER_UPLOAD_SERVICE = 101;
+    //public static final int SET_FMDSERVER_UPLOAD_SERVICE = 101;
     public static final int SET_FMDSERVER_URL = 102;
     public static final int SET_FMDSERVER_UPDATE_TIME = 103;
     public static final int SET_FMDSERVER_ID = 104;
     public static final int SET_FMDSERVER_PASSWORD_SET = 105;
     public static final int SET_FMDSERVER_LOCATION_TYPE = 106; // 0=GPS, 1=CELL, 2=ALL
-    public static final int SET_FMDSERVER_AUTO_UPLOAD = 107;
+    //public static final int SET_FMDSERVER_AUTO_UPLOAD = 107;
     public static final int SET_FMD_CRYPT_PUBKEY = 108;
     public static final int SET_FMD_CRYPT_PRIVKEY = 109;
     public static final int SET_FMD_CRYPT_HPW = 110;
     public static final int SET_FMD_LOW_BAT_SEND = 111;
+
+    //public static final int SET_FMD_CRYPT_NEW_SALT = 112;
+    public static final int SET_UPDATEBOARDING_MODERN_CRYPTO_COMPLETED = 113;
+
 
     public static final int SET_FIRST_TIME_WHITELIST = 301;
     public static final int SET_FIRST_TIME_CONTACT_ADDED = 302;
@@ -55,6 +73,9 @@ public class Settings extends HashMap<Integer, Object> {
     public static final int SET_LAST_KNOWN_LOCATION_LON = 503;
     public static final int SET_LAST_KNOWN_LOCATION_TIME = 504;
 
+
+
+    public static final String DEFAULT_SET_FMDSERVER_URL= "https://fmd.nulide.de:1008";
 
 
     private Timer afterChangeTimer;
@@ -82,12 +103,11 @@ public class Settings extends HashMap<Integer, Object> {
                 case SET_FIRST_TIME_WHITELIST:
                 case SET_FIRST_TIME_CONTACT_ADDED:
                 case SET_FIRST_TIME_FMD_SERVER:
-                case SET_FMDSERVER_UPLOAD_SERVICE:
                 case SET_FMDSERVER_PASSWORD_SET:
                 case SET_FMD_LOW_BAT_SEND:
+                //case SET_FMD_CRYPT_NEW_SALT:
+                case SET_UPDATEBOARDING_MODERN_CRYPTO_COMPLETED:
                     return false;
-                case SET_FMDSERVER_AUTO_UPLOAD:
-                    return true;
                 case SET_FMD_COMMAND:
                     return "fmd";
                 case SET_FMDSERVER_UPDATE_TIME:
@@ -113,12 +133,15 @@ public class Settings extends HashMap<Integer, Object> {
                 case SET_LAST_KNOWN_LOCATION_TIME:
                     return -1;
                 case SET_FMDSERVER_URL:
-                    return "https://fmd.nulide.de:1008";
+                    return DEFAULT_SET_FMDSERVER_URL;
             }
         }
         return "";
     }
 
+    public boolean isEmpty(int key){
+        return ((String)get(key)).equals("");
+    }
 
     public boolean isIntroductionPassed() {
         return newestIntroductionVersion == (Integer) get(SET_INTRODUCTION_VERSION);
@@ -129,7 +152,7 @@ public class Settings extends HashMap<Integer, Object> {
         write(true);
     }
 
-    public Keys getKeys() {
+    public FmdKeyPair getKeys() {
         if (get(SET_FMD_CRYPT_PUBKEY).equals("")) {
             return null;
         } else {
@@ -139,32 +162,28 @@ public class Settings extends HashMap<Integer, Object> {
             try {
                 KeyFactory keyFactory = KeyFactory.getInstance("RSA");
                 publicKey = keyFactory.generatePublic(pubKeySpec);
-            } catch (NoSuchAlgorithmException e) {
-                e.printStackTrace();
-            } catch (InvalidKeySpecException e) {
+            } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
                 e.printStackTrace();
             }
 
-            return new Keys(publicKey, (String) get(SET_FMD_CRYPT_PRIVKEY));
-
-
+            return new FmdKeyPair(publicKey, (String) get(SET_FMD_CRYPT_PRIVKEY));
         }
     }
 
-    public void setKeys(Keys keys){
+    public void setKeys(FmdKeyPair keys) {
         set(SET_FMD_CRYPT_PRIVKEY, keys.getEncryptedPrivateKey());
         set(SET_FMD_CRYPT_PUBKEY, CypherUtils.encodeBase64(keys.getPublicKey().getEncoded()));
     }
 
     public void updateSettings() {
-        if (((Integer) get(SET_SET_VERSION)) < settingsVersion && ((Integer) get(SET_INTRODUCTION_VERSION)) > 0){
-            if (!((String)get(SET_FMDSERVER_ID)).isEmpty()) {
-                Keys keys = OldKeyIO.readKeys();
+        if (((Integer) get(SET_SET_VERSION)) < settingsVersion && ((Integer) get(SET_INTRODUCTION_VERSION)) > 0) {
+            if (!((String) get(SET_FMDSERVER_ID)).isEmpty()) {
+                FmdKeyPair keys = OldKeyIO.readKeys();
                 String HashedPW = OldKeyIO.readHashedPW();
                 setKeys(keys);
                 set(SET_FMD_CRYPT_HPW, HashedPW);
                 set(SET_SET_VERSION, settingsVersion);
-            }else{
+            } else {
                 set(SET_SET_VERSION, settingsVersion);
             }
         }
@@ -180,6 +199,26 @@ public class Settings extends HashMap<Integer, Object> {
             }
         }
         afterChangeTimer = new Timer();
-        afterChangeTimer.schedule(saverTask, 300);
+        afterChangeTimer.schedule(saverTask, 200);
+    }
+
+    public boolean checkAccountExists(){
+        return !((String)get(Settings.SET_FMDSERVER_ID)).isEmpty();
+    }
+
+    public static void writeToUri(Context context, Uri uri) {
+        try {
+            ParcelFileDescriptor sco = context.getContentResolver().openFileDescriptor(uri, "w");
+            PrintWriter out = new PrintWriter(new FileOutputStream(sco.getFileDescriptor()));
+            Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
+            ObjectMapper mapper = new ObjectMapper();
+            String json = mapper.writeValueAsString(settings);
+            out.write(json);
+            out.close();
+            sco.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Toast.makeText(context, R.string.settings_exported, Toast.LENGTH_LONG).show();
     }
 }

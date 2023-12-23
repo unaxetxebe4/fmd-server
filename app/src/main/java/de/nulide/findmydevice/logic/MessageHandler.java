@@ -6,20 +6,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.wifi.ScanResult;
 
-import java.util.Iterator;
 import java.util.Map;
 
+import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.data.Settings;
+import de.nulide.findmydevice.logic.command.helper.GPS;
+import de.nulide.findmydevice.logic.command.helper.Network;
+import de.nulide.findmydevice.logic.command.helper.Ringer;
 import de.nulide.findmydevice.ui.DummyCameraActivity;
 import de.nulide.findmydevice.ui.LockScreenMessage;
-import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.utils.CypherUtils;
-import de.nulide.findmydevice.logic.command.helper.GPS;
 import de.nulide.findmydevice.utils.Logger;
-import de.nulide.findmydevice.logic.command.helper.Network;
 import de.nulide.findmydevice.utils.Notifications;
 import de.nulide.findmydevice.utils.Permission;
-import de.nulide.findmydevice.logic.command.helper.Ringer;
 import de.nulide.findmydevice.utils.SecureSettings;
 
 public class MessageHandler {
@@ -154,7 +153,7 @@ public class MessageHandler {
                     DevicePolicyManager devicePolicyManager = (DevicePolicyManager) context.getSystemService(Context.DEVICE_POLICY_SERVICE);
                     if (msg.length() > COM_DELETE.length()+1) {
                         String pin = originalMsg.substring(COM_DELETE.length()+1, msg.length());
-                        if (CypherUtils.checkPasswordHash((String) ch.getSettings().get(Settings.SET_PIN), pin)) {
+                        if (CypherUtils.checkPasswordForFmdPin((String) ch.getSettings().get(Settings.SET_PIN), pin)) {
                             devicePolicyManager.wipeData(0);
                             replyBuilder.append(context.getString(R.string.MH_Delete));
                         } else {
@@ -199,15 +198,21 @@ public class MessageHandler {
                 }
             }else if(msg.startsWith(COM_EXPERT_CAMERA)) {
                 if(Permission.CAMERA) {
-                    Intent dummyCameraActivity = new Intent(context, DummyCameraActivity.class);
-                    dummyCameraActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    if (msg.contains("front")) {
-                        dummyCameraActivity.putExtra(DummyCameraActivity.CAMERA, 1);
-                    } else {
-                        dummyCameraActivity.putExtra(DummyCameraActivity.CAMERA, 0);
+                    if(!((String) ch.getSettings().get(Settings.SET_FMDSERVER_ID)).isEmpty()) {
+
+                        Intent dummyCameraActivity = new Intent(context, DummyCameraActivity.class);
+                        dummyCameraActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        if (msg.contains("front")) {
+                            dummyCameraActivity.putExtra(DummyCameraActivity.CAMERA, 1);
+                        } else {
+                            dummyCameraActivity.putExtra(DummyCameraActivity.CAMERA, 0);
+                        }
+                        context.startActivity(dummyCameraActivity);
+                        replyBuilder.append(context.getString(R.string.MH_CAM_CAPTURE)).append((String) ch.getSettings().get(Settings.SET_FMDSERVER_URL));
+                    }else{
+                        replyBuilder.append(context.getString(R.string.MH_FMDSERVER_NOT_REGISTERED));
+
                     }
-                    context.startActivity(dummyCameraActivity);
-                    replyBuilder.append(context.getString(R.string.MH_CAM_CAPTURE)).append((String) ch.getSettings().get(Settings.SET_FMDSERVER_URL));
                 }
             }else{
                 replyBuilder.append(context.getString(R.string.MH_Title_Help)).append("\n");
@@ -244,23 +249,23 @@ public class MessageHandler {
     }
 
     public boolean checkForPin(String msg) {
-        if (msg.length() > ((String) ch.getSettings().get(Settings.SET_FMD_COMMAND)).length()+1) {
+        if (msg.length() > ((String) ch.getSettings().get(Settings.SET_FMD_COMMAND)).length() + 1) {
             String pin = msg.substring(((String) ch.getSettings().get(Settings.SET_FMD_COMMAND)).length() + 1);
-            return CypherUtils.checkPasswordHash((String) ch.getSettings().get(Settings.SET_PIN), pin);
+            return CypherUtils.checkPasswordForFmdPin((String) ch.getSettings().get(Settings.SET_PIN), pin);
         }
         return false;
     }
 
-    public String checkAndRemovePin(String msg){
-        String[] splited = msg.split(" ");
-        String pin = (String) ch.getSettings().get(Settings.SET_PIN);
+    public String checkAndRemovePin(String msg) {
+        String[] parts = msg.split(" ");
+        String pinHash = (String) ch.getSettings().get(Settings.SET_PIN);
         boolean isPinValid = false;
-        String newMsg = splited[0];
-        for( int i=1; i< splited.length; i++){
-            if(CypherUtils.checkPasswordHash(pin, splited[i])){
+        String newMsg = parts[0];
+        for (int i = 1; i < parts.length; i++) {
+            if (CypherUtils.checkPasswordForFmdPin(pinHash, parts[i])) {
                 isPinValid = true;
-            }else{
-                newMsg += " " + splited[i];
+            } else {
+                newMsg += " " + parts[i];
             }
         }
         if(isPinValid){

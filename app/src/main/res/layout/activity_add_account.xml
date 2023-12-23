@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.settings.AddAccountActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="1mm"
+            android:text="Here you can connect to FMD-Server, so that you can remotely locate this device." />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="1mm"
+            android:text="Connect to" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RadioButton
+                android:id="@+id/radioButtonDefaultServer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Default Server" />
+
+            <RadioButton
+                android:id="@+id/radioButtonCustomServer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="CustomServer" />
+        </RadioGroup>
+
+
+        <EditText
+            android:id="@+id/editTextFMDServerUrl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="1mm"
+            android:ems="10"
+            android:enabled="false"
+            android:text="0.0.0.0" />
+
+        <TextView
+            android:id="@+id/textViewServerVersion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="1mm"
+            tools:text="Server version:" />
+
+        <Button
+            android:id="@+id/buttonRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="1mm"
+            android:ems="10"
+            android:text="@string/Settings_FMDServer_Register" />
+
+        <Button
+            android:id="@+id/buttonLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="1mm"
+            android:ems="10"
+            android:text="@string/Settings_FMDServer_Login" />
+    </LinearLayout>
+
+
+</ScrollView>

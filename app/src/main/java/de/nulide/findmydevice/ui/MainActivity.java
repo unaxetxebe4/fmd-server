@@ -2,6 +2,9 @@ package de.nulide.findmydevice.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -10,7 +13,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 
 import org.unifiedpush.android.connector.UnifiedPush;
 
@@ -23,6 +25,9 @@ import de.nulide.findmydevice.data.io.IO;
 import de.nulide.findmydevice.data.io.JSONFactory;
 import de.nulide.findmydevice.data.io.json.JSONMap;
 import de.nulide.findmydevice.data.io.json.JSONWhiteList;
+import de.nulide.findmydevice.receiver.PushReceiver;
+import de.nulide.findmydevice.services.FMDServerService;
+import de.nulide.findmydevice.ui.onboarding.UpdateboardingModernCryptoActivity;
 import de.nulide.findmydevice.ui.settings.SettingsActivity;
 import de.nulide.findmydevice.ui.settings.WhiteListActivity;
 import de.nulide.findmydevice.utils.Logger;
@@ -49,34 +54,57 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button buttonOpenWhitelist;
     private ExpandableCardView expandableCardViewPermissions;
 
-    private WhiteList whiteList;
-    private Settings Settings;
+    private Settings settings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        PushReceiver.registerWithUnifiedPush(this);
+
         IO.context = this;
         Logger.init(Thread.currentThread(), this);
         Notifications.init(this, false);
-        whiteList = JSONFactory.convertJSONWhiteList(IO.read(JSONWhiteList.class, IO.whiteListFileName));
-        Settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
         Permission.initValues(this);
-        if(((Integer) Settings.get(Settings.SET_APP_CRASHED_LOG_ENTRY)) != -1){
-            Intent crash = new Intent(this, CrashedActivity.class);
-            startActivity(crash);
+
+        settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
+
+        if (((Integer) settings.get(Settings.SET_APP_CRASHED_LOG_ENTRY)) != -1) {
+            Intent intent = new Intent(this, CrashedActivity.class);
+            startActivity(intent);
+            finish();
+            return;
         }
-        Settings.updateSettings();
-        if (!Settings.isIntroductionPassed() || !Permission.CORE) {
-            Intent introductionIntent = new Intent(this, IntroductionActivity.class);
-            startActivity(introductionIntent);
+        settings.updateSettings();
+        if (!settings.isIntroductionPassed() || !Permission.CORE) {
+            Intent intent = new Intent(this, IntroductionActivity.class);
+            startActivity(intent);
+            finish();
+            return;
+
         }
-        reloadViews();
+        if (!(Boolean) settings.get(Settings.SET_UPDATEBOARDING_MODERN_CRYPTO_COMPLETED)) {
+            Intent intent = new Intent(this, UpdateboardingModernCryptoActivity.class);
+            startActivity(intent);
+            finish();
+            return;
+        }
+        if (settings.checkAccountExists()) {
+            FMDServerService.scheduleJob(this, 0);
+        }
+        findAllViewsById();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Permission.initValues(this);
+        settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
         updateViews();
     }
 
-    public void reloadViews() {
+    public void findAllViewsById() {
         textViewFMDCommandName = findViewById(R.id.textViewFMDCommandName);
         textViewWhiteListCount = findViewById(R.id.textViewWhiteListCount);
         textViewCORE = findViewById(R.id.textViewCORE);
@@ -97,7 +125,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void updateViews() {
-        textViewFMDCommandName.setText((String) Settings.get(Settings.SET_FMD_COMMAND));
+        WhiteList whiteList = JSONFactory.convertJSONWhiteList(IO.read(JSONWhiteList.class, IO.whiteListFileName));
+        textViewFMDCommandName.setText((String) settings.get(Settings.SET_FMD_COMMAND));
         textViewWhiteListCount.setText(Integer.valueOf(whiteList.size()).toString());
 
 
@@ -107,16 +136,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
             colorEnabled = getColor(R.color.colorEnabled);
             colorDisabled = getColor(R.color.colorDisabled);
-        }else {
+        } else {
             colorEnabled = getResources().getColor(R.color.colorEnabled);
             colorDisabled = getResources().getColor(R.color.colorDisabled);
         }
 
-        if(whiteList.size() > 0){
-            textViewWhiteListCount.setTextColor(colorEnabled);
-        }else{
-            textViewWhiteListCount.setTextColor(colorDisabled);
+        ForegroundColorSpan whitelistCountColor;
+        if (whiteList.size() > 0) {
+            whitelistCountColor = new ForegroundColorSpan(colorEnabled);
+        } else {
+            whitelistCountColor = new ForegroundColorSpan(colorDisabled);
         }
+        String whitelistPrefix = getString(R.string.Settings_WhiteList) + ": ";
+        String whitelistAll = whitelistPrefix + whiteList.size();
+        Spannable spannable = new SpannableString(whitelistAll);
+        spannable.setSpan(whitelistCountColor, whitelistPrefix.length(), whitelistAll.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        textViewWhiteListCount.setText(spannable, TextView.BufferType.SPANNABLE);
 
         if (Permission.CORE) {
             textViewCORE.setText(getString(R.string.Enabled));
@@ -160,7 +195,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             textViewOverlay.setText(getString(R.string.Disabled));
             textViewOverlay.setTextColor(colorDisabled);
         }
-        if(Permission.NOTIFICATION){
+        if (Permission.NOTIFICATION_ACCESS) {
             textViewNotification.setText(getString(R.string.Enabled));
             textViewNotification.setTextColor(colorEnabled);
         } else {
@@ -183,7 +218,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         expandableCardViewPermissions.setTitle(-1, getString(R.string.Granted) + " " + Permission.ENABLED_PERMISSIONS + "/" + Permission.AVAILABLE_PERMISSIONS);
 
-        if((Boolean) Settings.get(Settings.SET_FMDSERVER_UPLOAD_SERVICE)){
+        if (settings.checkAccountExists()) {
             textViewServerServiceEnabled.setText(getString(R.string.Enabled));
             textViewServerServiceEnabled.setTextColor(colorEnabled);
         }else{
@@ -191,7 +226,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             textViewServerServiceEnabled.setTextColor(colorDisabled);
         }
 
-        if(!((String) Settings.get(Settings.SET_FMDSERVER_ID)).isEmpty()){
+        if (settings.checkAccountExists()) {
             textViewServerRegistered.setText(getString(R.string.Enabled));
             textViewServerRegistered.setTextColor(colorEnabled);
         }else{
@@ -199,10 +234,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             textViewServerRegistered.setTextColor(colorDisabled);
         }
 
-        if(UnifiedPush.getDistributors(this, new ArrayList<String>()).size() > 0){
+        if (PushReceiver.isRegisteredWithUnifiedPush(this)) {
             textViewPush.setText(R.string.Available);
             textViewPush.setTextColor(colorEnabled);
-        }else{
+        } else {
             textViewPush.setTextColor(colorDisabled);
             textViewPush.setText(R.string.NOT_AVAILABLE);
         }
@@ -222,19 +257,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(settingsIntent);
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Permission.initValues(this);
-        whiteList = JSONFactory.convertJSONWhiteList(IO.read(JSONWhiteList.class, IO.whiteListFileName));
-        Settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
-        if (!Settings.isIntroductionPassed() || !Permission.CORE) {
-            Intent introductionIntent = new Intent(this, IntroductionActivity.class);
-            startActivity(introductionIntent);
-        }
-        updateViews();
     }
 
     @Override

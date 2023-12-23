@@ -1,150 +1,252 @@
 package de.nulide.findmydevice.utils;
 
-import android.os.Build;
 import android.util.Base64;
 
-import androidx.annotation.RequiresApi;
+import androidx.annotation.VisibleForTesting;
 
-import org.bouncycastle.openssl.PEMWriter;
+import org.bouncycastle.crypto.generators.Argon2BytesGenerator;
+import org.bouncycastle.crypto.params.Argon2Parameters;
+import org.bouncycastle.util.Arrays;
 import org.bouncycastle.util.io.pem.PemObject;
-import org.mindrot.jbcrypt.BCrypt;
+import org.bouncycastle.util.io.pem.PemWriter;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.nio.charset.StandardCharsets;
-import java.security.AlgorithmParameters;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.KeyFactory;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.NoSuchAlgorithmException;
-import java.security.NoSuchProviderException;
 import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.security.SecureRandom;
 import java.security.spec.EncodedKeySpec;
 import java.security.spec.InvalidKeySpecException;
-import java.security.spec.InvalidParameterSpecException;
-import java.security.spec.KeySpec;
+import java.security.spec.MGF1ParameterSpec;
 import java.security.spec.PKCS8EncodedKeySpec;
-import java.security.spec.RSAPrivateCrtKeySpec;
-import java.security.spec.RSAPrivateKeySpec;
-import java.security.spec.X509EncodedKeySpec;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
-import javax.crypto.SecretKey;
-import javax.crypto.SecretKeyFactory;
-import javax.crypto.spec.IvParameterSpec;
-import javax.crypto.spec.PBEKeySpec;
+import javax.crypto.spec.GCMParameterSpec;
+import javax.crypto.spec.OAEPParameterSpec;
+import javax.crypto.spec.PSource.PSpecified;
 import javax.crypto.spec.SecretKeySpec;
 import javax.xml.bind.DatatypeConverter;
 
-import de.nulide.findmydevice.data.Keys;
 
 public class CypherUtils {
 
-    private static final int IV_SIZE = 128;
-    private static final int IV_LENGTH = IV_SIZE / 4;
-    private static int keySize = 256;
-    private static int iterationCount = 1867;
-    private static int saltLength = keySize /4;
+    private static final int AES_GCM_IV_SIZE_BYTES = 12; // byte = 96 bit
+    @VisibleForTesting
+    protected static final int AES_GCM_KEY_SIZE_BYTES = 32; // byte = 256 bit
+    private static final int AES_GCM_TAG_SIZE_BITS = 128; // bit = 16 byte
 
-    public static String hashPassword(String password) {
-        return BCrypt.hashpw(password, org.mindrot.jbcrypt.BCrypt.gensalt(12));
+    private static final int RSA_KEY_SIZE_BITS = 3072;
+
+    // Argon2: see the PROTOCOL.md
+    private static final int ARGON2_T = 1;
+    private static final int ARGON2_P = 4;
+    private static final int ARGON2_M = 131072;
+    private static final int ARGON2_HASH_LENGTH = 32; // byte = 256 bit
+    private static final int ARGON2_SALT_LENGTH = 16; // byte = 128 bit
+
+    // Contextualise all usages of Argon2 to provide some hacky key separation
+    private static final String CONTEXT_STRING_ASYM_KEY_WRAP = "context:asymmetricKeyWrap";
+    private static final String CONTEXT_STRING_FMD_PIN = "context:fmdPin";
+    private static final String CONTEXT_STRING_LOGIN = "context:loginAuthentication";
+    private static final String CONTEXT_PREFIX = "context:";
+
+    // ------ Section: Password and hashing ------
+
+    public static String hashPasswordForFmdPin(String password) {
+        password = CONTEXT_STRING_FMD_PIN + password;
+        byte[] salt = generateSecureRandom(ARGON2_SALT_LENGTH);
+        Argon2Result result = hashPasswordArgon2(password, salt);
+        return Argon2EncodingUtils.encode(result.hash, result.params);
     }
 
-    public static boolean checkPasswordHash(String hash, String password) {
-        if(!hash.isEmpty()) {
-            if(!password.isEmpty()) {
-                return BCrypt.checkpw(password, hash);
-            }
+    public static String hashPasswordForLogin(String password) {
+        byte[] salt = generateSecureRandom(ARGON2_SALT_LENGTH);
+        return hashPasswordForLogin(password, salt);
+    }
+
+    public static String hashPasswordForLogin(String password, String saltBase64) {
+        // Must use the same decoding flags as the encoder.
+        // If we used `DatatypeConverter.parseBase64Binary(toDecode)` we would loose a byte.
+        byte[] salt = Base64.decode(saltBase64, Argon2EncodingUtils.BASE64_FLAGS);
+        return hashPasswordForLogin(password, salt);
+    }
+
+    public static String hashPasswordForLogin(String password, byte[] saltBytes) {
+        password = CONTEXT_STRING_LOGIN + password;
+        Argon2Result result = hashPasswordArgon2(password, saltBytes);
+        return Argon2EncodingUtils.encode(result.hash, result.params);
+    }
+
+    public static Argon2Result hashPasswordForKeyWrap(String password) {
+        byte[] salt = generateSecureRandom(ARGON2_SALT_LENGTH);
+        return hashPasswordForKeyWrap(password, salt);
+    }
+
+    public static Argon2Result hashPasswordForKeyWrap(String password, byte[] saltBytes) {
+        password = CONTEXT_STRING_ASYM_KEY_WRAP + password;
+        return hashPasswordArgon2(password, saltBytes);
+    }
+
+    private static Argon2Result hashPasswordArgon2(String password, byte[] salt) {
+        // Inspired by https://github.com/spring-projects/spring-security/blob/6.1.0/crypto/src/main/java/org/springframework/security/crypto/argon2/Argon2PasswordEncoder.java
+        // and https://www.baeldung.com/java-argon2-hashing#2-implement-argon2-hashing-with-bouncy-castle
+        if (!password.startsWith(CONTEXT_PREFIX)) {
+            // This is a bug that should not happen
+            // Be defensive to ensure all Argon2 usages are context-separated.
+            throw new RuntimeException("Missing context string");
         }
-        return false;
+        byte[] passwordBytes = password.getBytes(StandardCharsets.UTF_8);
+        byte[] out = new byte[ARGON2_HASH_LENGTH];
+
+        Argon2Parameters params = new Argon2Parameters.Builder(Argon2Parameters.ARGON2_id)
+                .withVersion(Argon2Parameters.ARGON2_VERSION_13)
+                .withIterations(ARGON2_T)
+                .withParallelism(ARGON2_P)
+                .withMemoryAsKB(ARGON2_M)
+                .withSalt(salt)
+                .build();
+
+        Argon2BytesGenerator generator = new Argon2BytesGenerator();
+        generator.init(params);
+        generator.generateBytes(passwordBytes, out);
+
+        return new Argon2Result(out, params);
     }
 
-    public static String hashWithPKBDF2(String password){
+    public static boolean checkPasswordForFmdPin(String expectedHash, String password) {
+        return checkPassword(expectedHash, CONTEXT_STRING_FMD_PIN + password);
+    }
+
+    public static boolean checkPasswordForLogin(String expectedHash, String password) {
+        return checkPassword(expectedHash, CONTEXT_STRING_LOGIN + password);
+    }
+
+    private static boolean checkPassword(String expectedHash, String password) {
+        if (expectedHash.isEmpty() || password.isEmpty()) {
+            return false;
+        }
+
+        Argon2EncodingUtils.Argon2Hash decodedExpected;
         try {
-            String salt = toHex(generateRandom(keySize / 8));
-            PBEKeySpec spec = new PBEKeySpec(password.toCharArray(), fromHex("cafe"), iterationCount*2, keySize);
-            SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
-            return toHex(factory.generateSecret(spec).getEncoded());
-        } catch (NoSuchAlgorithmException e) {
+            decodedExpected = Argon2EncodingUtils.decode(expectedHash);
+        } catch (IllegalArgumentException e) {
             e.printStackTrace();
-        } catch (InvalidKeySpecException e) {
-            e.printStackTrace();
+            return false;
         }
-        return "";
+
+        byte[] passwordBytes = password.getBytes(StandardCharsets.UTF_8);
+        byte[] actualBytes = new byte[decodedExpected.getHash().length];
+
+        Argon2BytesGenerator generator = new Argon2BytesGenerator();
+        generator.init(decodedExpected.getParameters());
+        generator.generateBytes(passwordBytes, actualBytes);
+
+        return Arrays.constantTimeAreEqual(decodedExpected.getHash(), actualBytes);
     }
 
-    public static Keys genKeys(String password){
-        KeyPair keypair = genKeyPair();
-        Keys keys = new Keys(keypair.getPublic(), encryptKey(keypair.getPrivate(), password));
-        return keys;
-    }
+    // ------ Section: asymmetric key ------
 
-    protected static KeyPair genKeyPair(){
+    public static KeyPair genRsaKeyPair() {
         try {
             KeyPairGenerator keyGen = KeyPairGenerator.getInstance("RSA");
-            SecureRandom random = SecureRandom.getInstance("SHA1PRNG");
-            keyGen.initialize(1024, random);
-            KeyPair pair = keyGen.generateKeyPair();
-            return pair;
+            keyGen.initialize(RSA_KEY_SIZE_BITS, new SecureRandom());
+            return keyGen.generateKeyPair();
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    public static byte[] encryptWithKey(PublicKey pub, String msg){
-        final Cipher rsa;
+    // Note that we use SHA-256 for MGF1 (not SHA-1). This is because the WebCrypto API only works with SHA-256.
+    // See https://www.w3.org/2014/01/W3C_Web_Crypto_API_status_january_2014.pdf?page=8
+    private static final OAEPParameterSpec OAEP_PARAMS = new OAEPParameterSpec("SHA-256", "MGF1", new MGF1ParameterSpec("SHA-256"), PSpecified.DEFAULT);
+
+    public static byte[] encryptWithKey(PublicKey pub, String msg) {
+        byte[] sessionKey = generateSecureRandom(AES_GCM_KEY_SIZE_BYTES);
+
         try {
-            rsa = Cipher.getInstance("RSA/ECB/PKCS1Padding");
-            rsa.init(Cipher.ENCRYPT_MODE, pub);
-            return rsa.doFinal(msg.getBytes());
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (NoSuchPaddingException e) {
-            e.printStackTrace();
-        } catch (InvalidKeyException e) {
-            e.printStackTrace();
-        } catch (BadPaddingException e) {
-            e.printStackTrace();
-        } catch (IllegalBlockSizeException e) {
+            // Symmetrically encrypt message
+            byte[] msgBytes = msg.getBytes(StandardCharsets.UTF_8);
+            byte[] ivAndAesCiphertext = encryptWithAes(msgBytes, sessionKey);
+
+            // Wrap key
+            Cipher cipher = Cipher.getInstance("RSA/ECB/OAEPPadding");
+            cipher.init(Cipher.ENCRYPT_MODE, pub, OAEP_PARAMS); // XXX: should use WRAP_MODE
+            byte[] sessionKeyPacket = cipher.doFinal(sessionKey);
+
+            return concatByteArrays(sessionKeyPacket, ivAndAesCiphertext);
+        } catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException |
+                 BadPaddingException | IllegalBlockSizeException |
+                 InvalidAlgorithmParameterException e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public static String decryptWithKey(PrivateKey priv, byte[] encryptedMsg){
-        final Cipher rsa;
+    public static String decryptWithKey(PrivateKey priv, byte[] encryptedMsg) {
+        byte[] sessionKeyPacket = Arrays.copyOfRange(encryptedMsg, 0, RSA_KEY_SIZE_BITS / 8);
+        byte[] ivAndAesCiphertext = Arrays.copyOfRange(encryptedMsg, RSA_KEY_SIZE_BITS / 8, encryptedMsg.length);
+
         try {
-            rsa = Cipher.getInstance("RSA/ECB/PKCS1Padding");
-            rsa.init(Cipher.DECRYPT_MODE, priv);
-            return new String(rsa.doFinal(encryptedMsg), StandardCharsets.UTF_8);
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (NoSuchPaddingException e) {
-            e.printStackTrace();
-        } catch (BadPaddingException e) {
-            e.printStackTrace();
-        } catch (IllegalBlockSizeException e) {
-            e.printStackTrace();
-        } catch (InvalidKeyException e) {
+            // Unwrap key
+            Cipher cipher = Cipher.getInstance("RSA/ECB/OAEPPadding");
+            cipher.init(Cipher.DECRYPT_MODE, priv, OAEP_PARAMS); // XXX: should use UNWRAP_MODE
+            byte[] sessionKey = cipher.doFinal(sessionKeyPacket);
+
+            // Symmetrically decrypt message
+            byte[] msg = decryptWithAes(ivAndAesCiphertext, sessionKey);
+            return new String(msg, StandardCharsets.UTF_8);
+        } catch (NoSuchAlgorithmException | NoSuchPaddingException | BadPaddingException |
+                 IllegalBlockSizeException | InvalidKeyException |
+                 InvalidAlgorithmParameterException e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public static String encryptKey(PrivateKey priv, String password){
+    // ------ Section: asymmetric key (key wrap) ------
+
+    public static String encryptPrivateKeyWithPassword(PrivateKey priv, String password) {
+        Argon2Result result = hashPasswordForKeyWrap(password);
+        byte[] aesKey = result.hash;
+
+        // PEM-encode the key and symmetrically encrypt
+        String pem = pemEncodeRsaKey(priv);
+        byte[] aesPlaintextBytes = pem.getBytes(StandardCharsets.UTF_8);
+        byte[] aesCiphertextBytes = encryptWithAes(aesPlaintextBytes, aesKey);
+
+        byte[] concat = concatByteArrays(result.params.getSalt(), aesCiphertextBytes);
+        return encodeBase64(concat);
+    }
+
+    public static PrivateKey decryptPrivateKeyWithPassword(String encryptedPrivKey, String password) {
+        byte[] concatBytes = decodeBase64(encryptedPrivKey);
+        byte[] saltBytes = Arrays.copyOfRange(concatBytes, 0, ARGON2_SALT_LENGTH);
+        byte[] ciphertextBytes = Arrays.copyOfRange(concatBytes, ARGON2_SALT_LENGTH, concatBytes.length);
+
+        Argon2Result result = hashPasswordForKeyWrap(password, saltBytes);
+        byte[] aesKey = result.hash;
+
+        byte[] aesPlaintextBytes = decryptWithAes(ciphertextBytes, aesKey);
+        String pem = new String(aesPlaintextBytes, StandardCharsets.UTF_8);
+        return pemDecodeRsaKey(pem);
+    }
+
+    public static String pemEncodeRsaKey(PrivateKey priv) {
         StringWriter sw = new StringWriter();
-        PEMWriter writer = new PEMWriter(sw);
-        PemObject po = new PemObject("RSA PRIVATE KEY", priv.getEncoded());
+        PemWriter writer = new PemWriter(sw);
+        PemObject po = new PemObject("PRIVATE KEY", priv.getEncoded());
         try {
             writer.writeObject(po);
             writer.flush();
@@ -152,125 +254,117 @@ public class CypherUtils {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        String pem = sw.getBuffer().toString();
-        return encryptWithAES(pem.getBytes(), password);
+        return sw.getBuffer().toString();
     }
 
-    public static PrivateKey decryptKey(String encryptedPrivKey, String password){
+    public static PrivateKey pemDecodeRsaKey(String pem) {
         try {
-            String encodedKey = new String(decryptWithAES(encryptedPrivKey, password));
-            byte[] key = decodeBase64(encodedKey);
+            pem = pem.replace("-----END PRIVATE KEY-----\n", "");
+            pem = pem.replace("-----BEGIN PRIVATE KEY-----\n", "");
+            pem = pem.replace("\n", "");
+            byte[] key = decodeBase64(pem);
+
             EncodedKeySpec privKeySpec = new PKCS8EncodedKeySpec(key);
             KeyFactory keyFactory = KeyFactory.getInstance("RSA");
             return keyFactory.generatePrivate(privKeySpec);
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (InvalidKeySpecException e) {
+        } catch (NoSuchAlgorithmException | InvalidKeySpecException | NullPointerException e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    public static String encryptWithAES(byte[] msg, String password){
+    // ------ Section: symmetric key ------
+
+    public static byte[] encryptWithAes(byte[] msgBytes, byte[] aesKey) {
+        if (aesKey.length != AES_GCM_KEY_SIZE_BYTES) {
+            // This is a bug
+            throw new RuntimeException("Bad AES key size:" + aesKey.length);
+        }
         try {
-            String salt = toHex(generateRandom(keySize / 8));
-            String iv = toHex(generateRandom(IV_SIZE / 8));
-            SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
-            KeySpec spec = new PBEKeySpec(password.toCharArray(), fromHex(salt), iterationCount, keySize);
-            SecretKey secretKey = new SecretKeySpec(factory.generateSecret(spec).getEncoded(), "AES");
-            Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
-            cipher.init(Cipher.ENCRYPT_MODE, secretKey, new IvParameterSpec(fromHex(iv)));
-            byte[] encrypted = cipher.doFinal(msg);
-            String encryptedBase64 = encodeBase64(encrypted);
-            return salt + iv + encryptedBase64;
-        } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
-            e.printStackTrace();
-        } catch (NoSuchPaddingException e) {
-            e.printStackTrace();
-        } catch (InvalidKeyException e) {
-            e.printStackTrace();
-        } catch (IllegalBlockSizeException e) {
-            e.printStackTrace();
-        } catch (BadPaddingException e) {
-            e.printStackTrace();
-        } catch (InvalidAlgorithmParameterException e) {
+            byte[] ivBytes = generateSecureRandom(AES_GCM_IV_SIZE_BYTES);
+            GCMParameterSpec gcmSpec = new GCMParameterSpec(AES_GCM_TAG_SIZE_BITS, ivBytes);
+            SecretKeySpec secretKeySpec = new SecretKeySpec(aesKey, "AES");
+
+            Cipher cipher = Cipher.getInstance("AES/GCM/NoPadding");
+            cipher.init(Cipher.ENCRYPT_MODE, secretKeySpec, gcmSpec);
+            byte[] ctBytes = cipher.doFinal(msgBytes);
+
+            return concatByteArrays(ivBytes, ctBytes);
+
+        } catch (NoSuchAlgorithmException | NoSuchPaddingException |
+                 InvalidKeyException | IllegalBlockSizeException | BadPaddingException |
+                 InvalidAlgorithmParameterException e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    protected static byte[] decryptWithAES(String encryptedMsg, String password){
+    protected static byte[] decryptWithAes(byte[] msgBytes, byte[] aesKey) {
         try {
-            String salt = encryptedMsg.substring(0, saltLength);
-            String iv = encryptedMsg.substring(saltLength, saltLength + IV_LENGTH);
-            String ct = encryptedMsg.substring(saltLength + IV_LENGTH);
+            byte[] ivBytes = Arrays.copyOfRange(msgBytes, 0, AES_GCM_IV_SIZE_BYTES);
+            byte[] ctBytes = Arrays.copyOfRange(msgBytes, AES_GCM_IV_SIZE_BYTES, msgBytes.length);
 
-            SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
-            KeySpec spec = new PBEKeySpec(password.toCharArray(), fromHex(salt), iterationCount, keySize);
-            SecretKey secretKey = new SecretKeySpec(factory.generateSecret(spec).getEncoded(), "AES");
-            byte[] encrypted = decodeBase64(ct);
-            Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
-            cipher.init(Cipher.DECRYPT_MODE, secretKey, new IvParameterSpec(fromHex(iv)));
-            byte[] decrypted = cipher.doFinal(encrypted);
-            return decrypted;
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (InvalidKeyException e) {
-            e.printStackTrace();
-        } catch (NoSuchPaddingException e) {
-            e.printStackTrace();
-        } catch (InvalidKeySpecException e) {
-            e.printStackTrace();
-        } catch (BadPaddingException e) {
-            e.printStackTrace();
-        } catch (IllegalBlockSizeException e) {
-            e.printStackTrace();
-        } catch (InvalidAlgorithmParameterException e) {
+            GCMParameterSpec gcmSpec = new GCMParameterSpec(AES_GCM_TAG_SIZE_BITS, ivBytes);
+            SecretKeySpec secretKeySpec = new SecretKeySpec(aesKey, "AES");
+
+            Cipher cipher = Cipher.getInstance("AES/GCM/NoPadding");
+            cipher.init(Cipher.DECRYPT_MODE, secretKeySpec, gcmSpec);
+            return cipher.doFinal(ctBytes);
+
+        } catch (NoSuchAlgorithmException | InvalidKeyException | NoSuchPaddingException |
+                 BadPaddingException | IllegalBlockSizeException |
+                 InvalidAlgorithmParameterException e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    public static String encodeBase64(byte[] encoded){
-        return DatatypeConverter.printBase64Binary(encoded);
+    // ------ Section: utils ------
+
+    public static String encodeBase64(byte[] toEncode) {
+        return DatatypeConverter.printBase64Binary(toEncode);
     }
 
-    public static byte[] decodeBase64(String encoded){
-        return DatatypeConverter.parseBase64Binary(encoded);
+    public static byte[] decodeBase64(String toDecode) {
+        return DatatypeConverter.parseBase64Binary(toDecode);
     }
 
-    private static byte[] fromHex(String str) {
+    public static byte[] fromHex(String str) {
         return DatatypeConverter.parseHexBinary(str);
     }
 
-    private static String toHex(byte[] ba) {
+    public static String toHex(byte[] ba) {
         return DatatypeConverter.printHexBinary(ba);
     }
 
-    private static byte[] generateRandom(int length) {
+    public static byte[] generateSecureRandom(int lengthInBytes) {
         SecureRandom random = new SecureRandom();
-        byte[] randomBytes = new byte[length];
+        byte[] randomBytes = new byte[lengthInBytes];
         random.nextBytes(randomBytes);
         return randomBytes;
     }
 
-    public static String generateRandomString(int length)
-    {
-        String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                + "0123456789"
-                + "abcdefghijklmnopqrstuvxyz";
-
-        StringBuilder sb = new StringBuilder(length);
-        SecureRandom random = new SecureRandom();
-
-        for (int i = 0; i < length; i++) {
-
-            int index = random.nextInt(length);
-
-            sb.append(AlphaNumericString.charAt(index));
+    public static byte[] concatByteArrays(byte[]... arrays) {
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        for (byte[] array : arrays) {
+            try {
+                out.write(array);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
+        return out.toByteArray();
+    }
 
-        return sb.toString();
+    private static class Argon2Result {
+        public final byte[] hash;
+        public final Argon2Parameters params;
+
+
+        public Argon2Result(byte[] hash, Argon2Parameters params) {
+            this.hash = hash;
+            this.params = params;
+        }
     }
 
 }

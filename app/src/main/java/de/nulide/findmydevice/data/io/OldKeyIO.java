@@ -17,7 +17,7 @@ import java.security.spec.EncodedKeySpec;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.X509EncodedKeySpec;
 
-import de.nulide.findmydevice.data.Keys;
+import de.nulide.findmydevice.data.FmdKeyPair;
 
 public class OldKeyIO {
 
@@ -26,7 +26,7 @@ public class OldKeyIO {
 
     public final static String hashedPWFile = "hashedPW";
 
-    public static void writeKeys(Keys keys) {
+    public static void writeKeys(FmdKeyPair keys) {
         File pubFile = new File(context.getFilesDir(), pubKeyFile);
         File privFile = new File(context.getFilesDir(), encPrivKeyFile);
         try {
@@ -56,7 +56,7 @@ public class OldKeyIO {
 
     }
 
-    public static Keys readKeys(){
+    public static FmdKeyPair readKeys(){
         File pubFile = new File(context.getFilesDir(), pubKeyFile);
         File privFile = new File(context.getFilesDir(), encPrivKeyFile);
 
@@ -72,7 +72,7 @@ public class OldKeyIO {
         }
         byte[] encPrivateKey = readByteArray(privFile);
 
-        return new Keys(publicKey, new String(encPrivateKey));
+        return new FmdKeyPair(publicKey, new String(encPrivateKey));
     }
 
 

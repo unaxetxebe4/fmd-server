@@ -1,1 +1,1 @@
-FindMyDevice
+Find My Device (FMD)

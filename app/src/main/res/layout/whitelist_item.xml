@@ -1,38 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingHorizontal="@dimen/margin_normal"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/textViewWLItem1"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp"
-        tools:ignore="MissingConstraints">
+        android:layout_weight="0.5"
+        android:textAlignment="textStart"
+        android:textSize="21sp"
+        tools:text="John Doe" />
 
-        <TextView
-            android:id="@+id/textViewWLItem1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:textSize="21dp"
-            android:textAlignment="textStart"
-            android:layout_weight="0.5"
-            android:text="" />
-
-        <TextView
-            android:id="@+id/textViewWLItem2"
-            android:layout_width="0dp"
-            android:layout_margin="2dp"
-            android:textSize="21dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:textAlignment="textEnd"
-            android:text="" />
-    </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/textViewWLItem2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.5"
+        android:textAlignment="textEnd"
+        android:textSize="21sp"
+        tools:text="+1 234 567 890" />
+</LinearLayout>

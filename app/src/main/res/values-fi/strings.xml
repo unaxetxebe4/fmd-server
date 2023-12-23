@@ -19,7 +19,6 @@
     <string name="About">Tietoa</string>
     <string name="About_Text">Kiitos sovelluksen lataamisesta!\nVaikka sovelluksessa on vielä paljon kehitettävää, toivon että se auttaa sinua, jos joudut samaan tilanteeseen kuin minä. Puhelimen hävittäminen on tylsää, mutta puhelimen hävittäminen sen vuoksi ettei ole yksityisyyttä kunnioittavia sovelluksia sen löytämiseen on vielä pahempaa.\nKontribuutiot ja lahjoitukset ovat tervetulleita! Mene vain F-Droidiin ja etsi sovellukseni.\n\n - Nulide</string>
     <string name="About_Used_APIs">Käytetyt API:t:\n</string>
-    <string name="About_UsedApis_Content" translatable="false">com.fasterxml.jackson.core:jackson-databind:2.10.0\ncom.android.volley:volley:1.1.1\norg.mindrot:jbcrypt:0.4\nOpenCellID\nOpenStreetMap</string>
     <string name="Info_Service" translatable="false">FMD</string>
     <string name="Info_CORE" translatable="false">CORE:</string>
     <string name="Info_GPS" translatable="false">GPS:</string>
@@ -59,7 +58,6 @@
     <string name="Settings_FMD_via_Pin_Description">Kommunikoi FMD:n kanssa PIN-koodia käyttäen. Sinut lisätään väliaikaiselle valkoiselle listalle.</string>
     <string name="Settings_Enter_Pin">Syötä PIN-koodi</string>
     <string name="MH_Pin_Accepted">PIN-koodi hyväksytty!</string>
-    <string name="Alert_First_time_whitelist">Täällä voit lisätä yhteystietoja valkoiselle listalle. Listalla olevista yhteystiedoista voidaan seurata laitettasi lähettämällä SMS, joka sisältää komennon \"fmd\".</string>
     <string name="Alert_First_Time_contact_added">Onneksi olkoon, olet lisännyt ensimmäisen yhteystiedon! Voit nyt kommunikoida FMD:n kanssa lähettämällä yhteystiedon puhelinnumerosta SMS-viestin, joka sisältää komennon \"fmd\". Sovellus vastaa SMS-viestiin.</string>
     <string name="R_Stop_ring">PYSÄYTÄ SOITTO</string>
     <string name="Settings_Log">Loki</string>
@@ -78,7 +76,6 @@
     <string name="Error">Virhe</string>
     <string name="Main_WhiteListCounterText">Valkoinen lista:</string>
     <string name="OpenCellId_OpenCellId">OpenCelliD</string>
-    <string name="OpenCellId_API_Key_Description">API-KEY:</string>
     <string name="Notification_Usage">Käyttö</string>
     <string name="Pin_Usage">PIN-koodin käyttö</string>
     <string name="Notification_Lifecycle">Palvelimen tila</string>
@@ -104,7 +101,6 @@
     <string name="Settings_FMDServer">FMD-palvelin</string>
     <string name="Settings_FMDServer_ID">FMD-palvelimen ID</string>
     <string name="NOT_AVAILABLE">ei saatavilla</string>
-    <string name="Settings_FMD_Server_ID_Desc">ID-tunnus, jota käytetään laitteen etsimiseen.\n\nNäytetään, kun palvelinasetukset ja salasana ovat asetettu.</string>
     <string name="Settings_FMDServer_Register_Button">Rekisteröidy palvelimelle</string>
     <string name="Info_FMD_Command">FMD-Komento:</string>
     <string name="Info_Permission_Stats">Annetut käyttöoikeudet:</string>
@@ -126,7 +122,7 @@
     <string name="MH_NO_SECURE_SETTINGS">Pahoittelut, sovelluksella ei ole käyttöoikeutta tähän.</string>
     <string name="MH_Help_expert">" expert - ohjesivu asiantuntijakomennoille"</string>
     <string name="Permission_Notification">Sovellus tarjoaa mahdollisuuden vastaanottaa komentoja SMS-viestien lisäksi myös muista viestisovelluksista (kuten Telegram, WhatsApp...). Viestien lukuun vaaditaan pääsy ilmoitusksien käyttöoikeus.</string>
-    <string name="Info_Notification">Ilmoitukset</string>
+    <string name="Info_Notification_Access">Ilmoitukset</string>
     <string name="Notification_Server">Palvelin</string>
     <string name="NotificationServer_Description">Näytä palvelimelta lähetetyt ilmoitukset.</string>
 </resources>

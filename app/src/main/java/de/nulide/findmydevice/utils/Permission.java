@@ -26,13 +26,15 @@ public class Permission {
     private static final int PERM_GPS_ID = 61342;
     private static final int PERM_CONTACT_ID = 61343;
     private static final int PERM_CAMERA_ID = 61344;
+    private static final int PERM_POST_NOTIFICATIONS = 61345;
 
     public static boolean GPS = false;
     public static boolean DEVICE_ADMIN = false;
     public static boolean DND = false;
     public static boolean OVERLAY = false;
     public static boolean WRITE_SECURE_SETTINGS = false;
-    public static boolean NOTIFICATION = false;
+    public static boolean NOTIFICATION_ACCESS = false;
+    public static boolean POST_NOTIFICATIONS = false;
     public static boolean CAMERA = false;
     public static boolean CORE = false;
     public static boolean BATTERY_OPTIMIZATION = false;
@@ -46,15 +48,17 @@ public class Permission {
         DEVICE_ADMIN = checkDeviceAdminPermission(context);
         WRITE_SECURE_SETTINGS = checkWriteSecurePermission(context);
         OVERLAY = checkOverlayPermission(context);
-        NOTIFICATION = checkNotificationPermission(context);
+        NOTIFICATION_ACCESS = checkNotificationAccessPermission(context);
         CAMERA = checkCameraPermissions(context);
         BATTERY_OPTIMIZATION = checkBatteryOptimizationPermission(context);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             DND = checkDNDPermission(context);
         }
-        if (checkContactsPermission(context) && checkSMSPermission(context)) {
-            CORE = true;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            CORE = checkContactsPermission(context) && checkSMSPermission(context) && checkPostNotificationsPermissions(context);
+        } else {
+            CORE = checkContactsPermission(context) && checkSMSPermission(context);
         }
         if(GPS){
             ENABLED_PERMISSIONS++;
@@ -74,7 +78,7 @@ public class Permission {
         if(CORE){
             ENABLED_PERMISSIONS++;
         }
-        if(NOTIFICATION){
+        if(NOTIFICATION_ACCESS){
             ENABLED_PERMISSIONS++;
         }
         if(CAMERA){
@@ -109,6 +113,11 @@ public class Permission {
         ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.CAMERA}, PERM_CAMERA_ID);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.TIRAMISU)
+    public static void requestPostNotificationsPermission(Activity activity) {
+        ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.POST_NOTIFICATIONS}, PERM_POST_NOTIFICATIONS);
+    }
+
     public static void requestOverlayPermission(Activity activity) {
         if (!checkOverlayPermission(activity)) {
             Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + activity.getPackageName()));
@@ -133,7 +142,6 @@ public class Permission {
         Intent intent = new Intent(DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN);
         intent.putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN, new ComponentName(activity, DeviceAdminReceiver.class));
         activity.startActivity(intent);
-
     }
 
     public static void requestBatteryOptimizationPermission(Activity activity){
@@ -180,7 +188,10 @@ public class Permission {
     }
 
     public static boolean checkGPSBackgroundPermission(Context context) {
-        return ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_BACKGROUND_LOCATION) == PackageManager.PERMISSION_GRANTED;
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            return ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_BACKGROUND_LOCATION) == PackageManager.PERMISSION_GRANTED;
+        }
+        return true;
     }
 
     public static boolean checkContactsPermission(Context context) {
@@ -196,11 +207,16 @@ public class Permission {
         return devicePolicyManager.isAdminActive(new ComponentName(context, DeviceAdminReceiver.class));
     }
 
-    public static boolean checkNotificationPermission(Context context) {
+    public static boolean checkNotificationAccessPermission(Context context) {
         ComponentName cn = new ComponentName(context, ThirdPartyAccessService.class);
         String flat = Settings.Secure.getString(context.getContentResolver(), "enabled_notification_listeners");
         final boolean enabled = flat != null && flat.contains(cn.flattenToString());
         return enabled;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.TIRAMISU)
+    public static boolean checkPostNotificationsPermissions(Context context) {
+        return ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED;
     }
 
     public static boolean checkBatteryOptimizationPermission(Context context){
