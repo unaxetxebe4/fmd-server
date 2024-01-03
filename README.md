@@ -1,20 +1,19 @@
-# FindMyDevice
+# FindMyDevice (FMD)
 
-Find your Device via SMS.
+Find your device via SMS, instant messengers, or a web interface (FMD Server).
 
-This applications allows you to track, wipe and issue other commands to your device when it's lost. It aims to be a secure open source alternative to Google's FindMyDevice.
+FMD allows you to track, wipe and issue other commands to your device when it's lost.
+It aims to be a secure open source alternative to Google's FindMyDevice.
 
 [<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
      alt="Get it on F-Droid"
      height="80">](https://f-droid.org/packages/de.nulide.findmydevice/)
 
-# Wiki
+## Wiki
 
 The wiki can be found [here](https://gitlab.com/Nulide/findmydevice/-/wikis/home).
 
-
-
-# Why?
+## Why?
 
 I have lost my  brand new phone last week.
 I have to say, if I would have used Googles Services like (FindMyDevice) I could have a better chance to find it.
@@ -22,7 +21,7 @@ But why the heck did nobody created an open source application to find a lost de
 
 If you like and want to support this project, spread the info about this application or donate.
 
-# Contributors - Translation
+## Contributors - Translation
 
 |       |  |
 | ----------- | ----------- |
@@ -34,7 +33,7 @@ If you like and want to support this project, spread the info about this applica
 | Pan Daemon - [Pandaemon](https://gitlab.com/Pandaemon) |ThomasDC84 - [ThomasDC84](https://gitlab.com/ThomasDC84)  |
 | Unbranched - [Unbranched](https://gitlab.com/unbranched) ||
 
-# Contributors - Visual Design | Code
+## Contributors - Visual Design | Code
 
 |       |  |
 | ----------- | ----------- |
@@ -42,14 +41,14 @@ If you like and want to support this project, spread the info about this applica
 |  Play_it - [Playit3110](https://gitlab.com/Playit3110)| ColoursofOSINT - [ColoursofOSINT](https://gitlab.com/ColoursofOSINT)  | 
 | Thore Göbel - [thgoebel](https://gitlab.com/thgoebel) |
 
+## Donate
 
-# Donate
 <script src="https://liberapay.com/Nulide/widgets/button.js"></script>
 <noscript><a href="https://liberapay.com/Nulide/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a></noscript>   
 
 <a href='https://ko-fi.com/H2H35JLOY' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://cdn.ko-fi.com/cdn/kofi4.png?v=2' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a> 
 
-# Why is it taking that long to fix x?
+## Why is it taking that long to fix x?
 
 I am working full-time.
 This project is my free-time and I have spent a lot of time in this and still will.
@@ -59,3 +58,8 @@ If it takes too long to fix something you can of course try to fix it by yoursel
 Thanks,
 
 Nulide
+
+## License
+
+FMD Android is published under [GPLv3-or-later](LICENSE).
+

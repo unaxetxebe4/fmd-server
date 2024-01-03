@@ -96,7 +96,7 @@ public class GPS implements LocationListener {
     }
 
     public GsmCellLocation sendGSMCellLocation() {
-        StringBuilder msg = new StringBuilder(ch.getContext().getString(R.string.GPS_GSM_Data));
+        StringBuilder msg = new StringBuilder("GSM Data:");
         msg.append("\n");
         TelephonyManager tm = (TelephonyManager) ch.getContext().getSystemService(Context.TELEPHONY_SERVICE);
         String operator = tm.getNetworkOperator();
@@ -144,7 +144,7 @@ public class GPS implements LocationListener {
                 try {
                     String lat = response.getString("lat");
                     String lon = response.getString("lon");
-                    ch.getLocationHandler().newLocation(ch.getContext().getString(R.string.JSON_RL_OpenCellIdLocation), lat, lon);
+                    ch.getLocationHandler().newLocation(ch.getContext().getString(R.string.OpenCellId_OpenCellId), lat, lon);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
