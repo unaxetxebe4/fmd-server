@@ -160,7 +160,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="1mm"
-                android:text="@string/Settings_FMDServer_Updattime_Description" />
+                android:text="@string/Settings_FMDServer_Update_Interval_Description" />
 
             <EditText
                 android:id="@+id/editTextFMDServerUpdateTime"
@@ -190,7 +190,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="1mm"
-                android:text="@string/Settings_FMDServer_LocationData_Description" />
+                android:text="@string/Settings_FMDServer_Location_Type_Description" />
 
             <CheckBox
                 android:id="@+id/checkBoxFMDServerGPS"

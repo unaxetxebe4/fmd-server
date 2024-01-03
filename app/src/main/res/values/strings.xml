@@ -1,16 +1,150 @@
 <resources>
     <string name="app_name" translatable="false">FindMyDevice</string>
 
-    <!-- TODO: Following strings need to be translated into most languages -->
-    <string name="Granted">Granted: </string>
+    <!-- Generic -->
+    <string name="loading">Loading…</string>
+    <string name="help">Help</string>
+    <string name="copied">Copied</string>
+    <string name="paste">@android:string/paste</string>
+    <string name="accept">accept</string>
+    <string name="cancel">@android:string/cancel</string>
     <string name="Edit">Edit</string>
-    <string name="contacts">contacts</string>
+    <string name="GPS">GPS</string>
+    <string name="Cell">Cell</string>
+
+    <!-- MainActivity -->
+    <string name="Granted">Granted: </string>
+    <string name="Info_CORE" translatable="false">CORE</string>
+    <string name="Info_GPS" translatable="false">GPS</string>
+    <string name="Info_DND" translatable="false">DND</string>
+    <string name="Info_DEVICE_ADMIN" translatable="false">DeviceAdmin</string>
+    <string name="Info_Overlay" translatable="false">Overlay</string>
+    <string name="Info_SecureSettings" translatable="false">SecureSettings</string>
+    <string name="Info_Notification_Access">Notification Access</string>
+    <string name="Info_Camera" translatable="false">Camera</string>
+    <string name="Info_FMD_Command">FMD-Command:</string>
+    <string name="Info_Server_Enabled">Service:</string>
+    <string name="Info_Server_Registered">Registered:</string>
+    <string name="Info_Server_Push">Push:</string>
+
+    <!-- Settings (main screen, with the list) -->
+    <string name="Settings_Settings">Settings</string>
+    <string name="Settings_FMDConfig">FMD-Config</string>
+    <string name="Settings_FMDServer" translatable="false">FMD Server</string>
+    <string name="Settings_WhiteList">Allowed Contacts</string>
+    <string name="Settings_OpenCellId">OpenCelliD</string>
+    <string name="Settings_Permissions">Permissions</string>
+    <string name="Settings_Import">Import Settings</string>
+    <string name="Settings_Export">Export Settings</string>
+    <string name="Settings_Logs">Logs</string>
+    <string name="Settings_About">About</string>
+
+    <!-- Settings: General -->
+    <string name="Settings_FMD_via_Pin_Description">Allows you to communicate with FMD via a pin. You will be added to a temporary allowlist.</string>
+    <string name="Settings_Pin_Description">Used as confirmation before wiping the device or for temporary usage of the service.</string>
+    <string name="Settings_Enter_Pin">Enter Pin</string>
+    <string name="pin">PIN</string>
+    <string name="pin_repeat">Repeat PIN</string>
+    <string name="Settings_FMDCommand_Description">The command used to communicate with the FindMyDevice application.</string>
+    <string name="Settings_Ringer_Tone_Description">Select a ringtone that will be played when "fmd ring" is sent.</string>
+    <string name="Settings_Select_Ringtone">Select Ringtone</string>
+    <string name="Settings_Lockscreenmessage_Description">Lock Screen Message:\nWhen locking the device, this message will appear on the lock screen.</string>
+
+    <!-- Settings: FMD Server -->
+    <string name="Settings_FMD_Server_General">General</string>
+    <string name="Settings_FMD_Server_Server_URL">Server URL:</string>
+    <string name="Settings_FMD_Server_User_ID">User ID:</string>
+    <string name="Settings_FMD_Server_ID_Desc">You need the user ID to find your device with FMD Server. Write it down and keep it safe.</string>
+    <string name="Settings_FMDServer_Change_Password_Button">Change Password</string>
+    <string name="Settings_FMDServer_Logout_Button">Log out</string>
+    <string name="Settings_FMDServer_Delete_Button">Delete Data</string>
+    <string name="Settings_FMDServer_Alert_DeleteData">Delete Data</string>
+    <string name="Settings_FMDServer_Alert_DeleteData_Desc">This will delete all data from the Server! Are you sure?</string>
+    <string name="Settings_FMDServer_Push_Description_Missing">Sending commands from FMD Server to your phone requires a UnifiedPush distributor app. Install one, and then return here. It will automatically be detected.</string>
+    <string name="Settings_FMDServer_Push_Description_Available">Successfully registered for push notifications.</string>
+    <string name="Settings_FMDServer_Push_Open_UP">Open UnifiedPush Website</string>
+    <string name="Settings_FMDServer_Update_Interval_Title">Update Interval</string>
+    <string name="Settings_FMDServer_Update_Interval_Description">FMD uploads the device\'s location every X minutes.</string>
+    <string name="Settings_FMDServer_Location_Type_Title">Location Source</string>
+    <string name="Settings_FMDServer_Location_Type_Description">The source from which the location data is uploaded. Select at least one.</string>
+    <string name="Settings_FMDServer_LOW_BAT_Upload_Title">Upload on Low Battery</string>
+    <string name="Settings_FMDServer_LOW_BAT_Upload_Description">Upload the location of this device when the battery level goes low. This requires Notification Access.</string>
+    <string name="password_old">Old Password</string>
+    <string name="password_new">New Password</string>
+    <string name="password_new_repeat">Repeat New Password</string>
+
+    <!-- FMD Server Registration/Login -->
+    <string name="server_version">Server version</string>
+    <string name="server_version_error">Error getting server version</string>
+    <string name="server_version_error_low_version">At least server version {MIN} is required, but the selected server has version {CURRENT}. Continue at your own risk.</string>
+    <string name="Settings_FMDServer_AddAccount">FMD Server: Login/Register</string>
+    <string name="Settings_FMDServer_Info">With FMD Server you can send commands over the internet, from the server to the app. You can also view the device location on a map or view pictures taken by the device. For self-hosting instructions, see the website.</string>
+    <string name="Settings_FMDServer_open_website">Open FMD Server Website</string>
+    <string name="Settings_FMDServer_Login">Login</string>
+    <string name="Settings_FMDServer_Register">Register</string>
+    <string name="Settings_FMDServer_Alert_PrivacyPolicy_Title">Privacy Policy</string>
+    <string name="password">Password</string>
+    <string name="password_repeat">Repeat Password</string>
+    <string name="registration_token">Registration Token</string>
+    <string name="registration_token_hint">Private instances may require a secret token. Leave this empty if the instance is public.</string>
+
+    <!-- Settings: Allowed Contacts -->
+    <string name="Whitelist_help">The contacts in this list are allowed to send FMD commands via SMS. Commands from everyone else will be ignored.</string>
+    <string name="Whitelist_empty">No allowed contacts. Click the button to add some!</string>
+    <string name="WhiteList_Add_Contact">Add Contact</string>
+    <string name="WhiteList_Select_Action">Select an action:</string>
+    <string name="WhiteList_Select_Number">Select one of the phone numbers.</string>
+    <string name="Alert_First_Time_contact_added">Congratulations. You have added your first contact. You can now communicate with FMD by sending a SMS message that contains \"fmd\" from the allowed phone number. When everything works, the application will respond.</string>
+
+    <!-- Settings: OpenCelliD -->
+    <string name="OpenCellId_OpenCellId" translatable="false">OpenCelliD</string>
+    <string name="OpenCellId_API_Key_Description" translatable="false">API Access Token:</string>
+    <string name="OpenCellId_help">FMD can use the OpenCelliD service to get an approximate location based on the cell tower that the phone is connected to. An internet connection is required for every location query. You also need to create an account at OpenCelliD and get your own API Access Token.</string>
+    <string name="OpenCellId_open_website">Open OpenCelliD website</string>
+    <string name="OpenCellId_test_opencellid">Test OpenCelliD Connection</string>
+    <string name="OpenCellId_test_no_connection">No cell connection</string>
+
+    <!-- Settings: Import/Export -->
+    <string name="settings_exported">Settings exported</string>
+
+    <!-- Settings: Logs -->
+
+    <!-- Settings: About -->
+    <string name="about">About</string>
+    <string name="about_source_code">Source Code</string>
+    <string name="about_wiki">Wiki</string>
+    <string name="app_description">FMD (Find My Device) allows you to remotely locate your device. You can communicate with FMD over SMS, instant messengers, or using FMD Server. Locate your device, make it ring, lock it, or wipe it - all from remote.</string>
+
+    <!-- Crypto Update Boarding -->
+    <string name="notify_crypto_update_title">Action required</string>
+    <string name="notify_crypto_update_text">You need to update some settings to continue using FMD. Click to open.</string>
+    <string name="server_unregister_failed_title">Unregistering failed</string>
+    <string name="server_unregister_failed_body">Unregistering failed with the following error: {ERROR}\n\nYou can continue anyway, but your account might not have been deleted from the server. If you continue, your account will be deleted locally from this device.</string>
+    <string name="server_unregister_continue_anyway">Continue anyway</string>
+    <string name="server_unregister_dont_continue">Don\'t continue</string>
+
+    <!-- Permissions -->
+
+    <!-- Notification Channels -->
+    <string name="Notification_Usage">Usage</string>
+    <string name="Notification_Usage_Description">Notification about the service usage.</string>
+    <string name="Notification_Lifecycle">Lifecycle</string>
+    <string name="Notification_Lifecycle_Description">Notification about the Lifecycle of the Service.</string>
+    <string name="Pin_Usage">PinUsage</string>
+    <string name="Notification_Pin_Usage_Description">Notification about the pin usage.</string>
+    <string name="Notification_Server">Server</string>
+    <string name="NotificationServer_Description">Display notifications sent from the server.</string>
+    <string name="Notification_Security">Security</string>
+    <string name="Notification_Security_Description">Notifications about security updates</string>
+    <string name="Notification_FAIL">Fail</string>
+    <string name="Notification_Fail_Description">Notification when something fails, like the connection to fmd server.</string>
+    <string name="Notification_ForegroundService">Notification for specific services that will run in the background. Like camera, ...</string>
+
+    <!-- Varia -->
+
+    <!-- Not yet sorted -->
     <string name="Permission_IGNORE_BATTERY_OPTIMIZATION">This application is supposed to work in the background. To ensure it works even when your phone is in standby, you need to turn off battery optimization for this app.</string>
     <string name="Info_BatteryOptimization" translatable="false">OptimizeBattery</string>
-
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="Introduction_Introduction">FindMyDevice (FMD) is an application that can help you find your phone when it gets lost.\nIt uses SMS (texting) to communicate and send commands from a second device so you can track your phone.\nJust send a SMS message that contains the "fmd" command.\nPlease note that this application is still in beta.\n\n - Nulide</string>
     <string name="Introduction_UpdatePermission">Some new permissions are needed.\nPlease check the following permissions in order to continue using this application, or change back to an older version.</string>
@@ -25,30 +159,10 @@
     <string name="Introduction_Give_Permission">Give Permission</string>
     <string name="Introduction_Next">Next</string>
     <string name="Locked_Lock_Screen">FindMyDevice\nThis phone is locked!\nMessage from the owner:</string>
-    <string name="About">About</string>
-    <string name="About_Text">Thank you for downloading this app!\nThere is still a lot to do, but I hope this app will help you if you find yourself in the same situation I had. Losing your phone is bad, but losing your phone because there are no privacy-friendly apps to help you find it is even worse.\nContributions and donations are welcome! Just go to F-Droid and search for my app.\n\n - Nulide</string>
-    <string name="About_Used_APIs">Used APIs:\n</string>
-    <string name="About_UsedApis_Content" translatable="false">androidx.appcompat:appcompat:1.2.0\nandroidx.constraintlayout:constraintlayout:2.0.1\nandroidx.legacy:legacy-support-v4:1.0.0\nandroidx.preference:preference:1.1.1\njunit:junit:4.12\nandroidx.test.ext:junit:1.1.2\nandroidx.test.espresso:espresso-core:3.3.0\ncom.google.android.material:material:1.2.1\ncom.fasterxml.jackson.core:jackson-databind:2.10.0\ncom.android.volley:volley:1.1.1\norg.mindrot:jbcrypt:0.4\nandroidx.fragment:fragment:1.2.5\njakarta.xml.bind, name: jakarta.xml.bind-api, version: 2.3.2\nxerces, name: xercesImpl, version: 2.12.1\norg.bouncycastle, name: bcprov-jdk16, version: 1.46\ncom.android.support:multidex:1.0.3\ncom.github.Stjinchan:ExpandableCardView:1.3.0-beta02\ncom.github.iamrobj:NotificationHelperLibrary:2.0.5\ncom.github.UnifiedPush:android-connector:2.0.0\nOpenCellID\nOpenStreetMap\nGoogle Font Material Icons</string>
-    <string name="Info_Service" translatable="false">FMD</string>
-    <string name="Info_CORE" translatable="false">CORE:</string>
-    <string name="Info_GPS" translatable="false">GPS:</string>
-    <string name="Info_DND" translatable="false">DND:</string>
-    <string name="Info_DEVICE_ADMIN" translatable="false">DeviceAdmin:</string>
-    <string name="Info_Overlay" translatable="false">Overlay:</string>
-    <string name="Info_SecureSettings" translatable="false">SecureSettings:</string>
     <string name="Enable">Enable</string>
-    <string name="Settings_Pin_Description">Used as confirmation before wiping the device or for temporary usage of the service.</string>
-    <string name="Settings_Lockscreenmessage_Description">Lock Screen Message:\nWhen locking the device, this message will appear on the lock screen.</string>
-    <string name="Settings_FMDCommand_Description">The command used to communicate with the FindMyDevice application.</string>
-    <string name="Settings_PermissionDescription">The permissions needed for certain features</string>
-    <string name="Settings_Permission">Permissions</string>
-    <string name="WhiteList_Add_Contact">Add Contact</string>
     <string name="Enabled">Enabled</string>
     <string name="Disabled">Disabled</string>
-    <string name="Main_Title" translatable="false">Info</string>
-    <string name="Toast_Landcode_error">Please add the country code (Landcode) to the number. (Like "+49", "+44", ...)</string>
     <string name="Delete">Delete</string>
-    <string name="WhiteList_Select_Action">Select an action:</string>
     <string name="Toast_Duplicate_contact">This contact already exists.</string>
     <string name="MH_GPS_WILL_FOLLOW">GPS coordinates will be sent soon.</string>
     <string name="MH_rings">rings</string>
@@ -64,129 +178,39 @@
     <string name="MH_Help_Lock">" lock - locks the phone"</string>
     <string name="MH_Help_Stats">" stats - sends device information"</string>
     <string name="MH_Help_delete">" delete - resets the phone"</string>
-    <string name="About_Help">Help</string>
-    <string name="Settings_FMD_via_Pin_Description">Allows you to communicate with FMD via a pin. You will be added to a temporary Whitelist.</string>
-    <string name="Settings_Enter_Pin">Enter Pin</string>
     <string name="MH_Pin_Accepted">Pin accepted!</string>
-    <string name="Alert_First_Time_contact_added">Congratulations. You have added your first contact. You can now communicate with FMD by sending a SMS message that contains \"fmd\" from the whitelisted phone number. When everything works, the application will respond.</string>
     <string name="R_Stop_ring">STOP RINGING</string>
-    <string name="Settings_Log">Log</string>
-    <string name="Settings_Show_log">Show Log</string>
     <string name="Crashed_Send_log">Send Log</string>
     <string name="MH_No_GPS">Sorry, location is turned off.</string>
-    <string name="About_Version">FMD version:</string>
-    <string name="Main_OpenWhiteList" translatable="false">+</string>
-    <string name="Settings_FMDConfig">FMD-Config</string>
-    <string name="Settings_WhiteList">Allowed Contacts</string>
-    <string name="Settings_OpenCellId">OpenCellId</string>
-    <string name="Settings_Permissions">Permissions</string>
-    <string name="Settings_Logs">Logs</string>
-    <string name="Settings_About">About</string>
-    <string name="Settings_Settings">Settings</string>
     <string name="Error">Error</string>
-    <string name="OpenCellId_OpenCellId">OpenCellId</string>
-    <string name="OpenCellId_API_Key_Description" translatable="false">API Access Token:</string>
-    <string name="OpenCellId_help">FMD can use the OpenCellId service to get an approximate location based on the cell tower that the phone is connected to. An internet connection is required for every location query. You also need to create an account at OpenCellId and get your own API Access Token.</string>
-    <string name="OpenCellId_open_website">Open OpenCellId website</string>
-    <string name="Notification_Usage">Usage</string>
-    <string name="Pin_Usage">PinUsage</string>
-    <string name="Notification_Lifecycle">Lifecycle</string>
-    <string name="Notification_Usage_Description">Notification about the service usage.</string>
-    <string name="Notification_Lifecycle_Description">Notification about the Lifecycle of the Service.</string>
-    <string name="Notification_Pin_Usage_Description">Notification about the pin usage.</string>
-    <string name="JSON_RL_Error">Error gaining location from OpenCellID. Please try the following the link. The parameters you want are \"lon\" and \"lat\".</string>
-    <string name="JSON_RL_OpenCellIdLocation">"OpenCellId-Location"</string>
-    <string name="GPS_GSM_Data">GSM-Cell-Data:</string>
+    <string name="JSON_RL_Error">Error gaining location from OpenCelliD. Please try the following the link. The parameters you want are \"lon\" and \"lat\".</string>
     <string name="LockScreen_Usage_detectd">LockScreenMessage: Usage detected.</string>
     <string name="LockScreen_Backbutton_pressed">LockScreenMessage: Back-Button pressed.</string>
     <string name="Toast_Empty_FMDCommand">Empty Command not allowed\n Returning to default.[fmd]</string>
     <string name="FMDConfig_Alert_Pin">PIN</string>
     <string name="Ok">Ok</string>
     <string name="Log_Alert_LogData">LogData</string>
-    <string name="Sender_End_Of_Msg">---End of Message---</string>
-    <string name="Settings_Ringer_Tone_Description">Select a ringtone that will be played when "fmd ring" is sent.</string>
-    <string name="Settings_Select_Ringtone">Select Ringtone</string>
-    <string name="WhiteList_Select_Number">Select one of the phone numbers.</string>
-    <string name="Settings_FMDServer_Description">By enabling, the application will constantly send your location to the specified server.</string>
-    <string name="Settings_FMDServer_URL_Description">The URL for accessing the server.</string>
-    <string name="Settings_FMDServer_Updattime_Description">The time in minutes in which FMD should send new location data to the server.</string>
-    <string name="Settings_FMDServer">FMD-Server</string>
-    <string name="Settings_FMDServer_ID">FMDServer ID</string>
     <string name="NOT_AVAILABLE">Not Available</string>
     <string name="Available">Available</string>
-    <string name="Settings_FMD_Server_General">General</string>
-    <string name="Settings_FMD_Server_ID_Desc">You need the user ID to find your device with FMD Server. Write it down and keep it safe.</string>
-    <string name="Settings_FMD_Server_Server_URL">Server URL:</string>
-    <string name="Settings_FMD_Server_User_ID">User ID:</string>
-    <string name="Settings_FMDServer_Register_Button">Register on Server</string>
-    <string name="Info_FMD_Command">FMD-Command:</string>
-    <string name="Info_Permission_Stats">Enabled Permissions:</string>
-    <string name="Info_Server_Enabled">Service:</string>
-    <string name="Info_Server_Registered">Registered:</string>
-    <string name="value_true">true</string>
     <string name="registered">registered</string>
     <string name="not_registered">not registered</string>
     <string name="MH_LAST_KNOWN_LOCATION">Last known location</string>
     <string name="MH_LAST_KNOWN_LOCATION_NOT_AVAILABLE">Last location is not available.</string>
     <string name="Alert_First_time_fmdserver">Here you can configure the application to communicate with FMDserver. If you want to configure a different server than default, you can do so by changing the URL. If you press "register" you can register the application to the server. Afterwards you can enable the server functionality. If you do so, your phone will send you location data to the specified server. You can check your phone\'s location by entering the ID and the password on the page.</string>
-    <string name="Settings_FMDServer_Alert_PrivacyPolicy_Title">Privacy Policy</string>
-    <string name="accept">accept</string>
-    <string name="cancel">cancel</string>
-    <string name="Settings_FMDServer_LocationData_Description">Please select what location data to send to the server. (One needs to be selected)</string>
-    <string name="GPS">GPS</string>
-    <string name="Cell">Cell</string>
     <string name="MH_Help_Expert_GPS">" GPS (on/off) - turns the GPS on or off."</string>
     <string name="MH_NO_SECURE_SETTINGS">Sorry the application is not allowed to do so.</string>
     <string name="MH_Help_expert">" expert - help page for expert commands."</string>
     <string name="Permission_Notification">If you want FMD to handle messages from other applications such as Telegram, Whatsapp, etc., you can give FMD access to notifications.</string>
-    <string name="Info_Notification_Access">Notification Access</string>
-    <string name="Notification_Server">Server</string>
-    <string name="NotificationServer_Description">Display notifications sent from the server.</string>
-    <string name="Settings_FMDServer_AutoUpload_Description">When the location is requested by SMS or any other future method, the location can also be transmitted to the server if this option is enabled.</string>
-    <string name="Info_Server_Push">Push</string>
-    <string name="Settings_FMDServer_Delete_Button">Delete Data</string>
-    <string name="Settings_FMDServer_Alert_DeleteData">Delete Data</string>
-    <string name="Settings_FMDServer_Alert_DeleteData_Desc">This will delete all data from the Server! Are you sure?</string>
-    <string name="Settings_FMD_Send_Loc_on_Boot">Send your phone\'s location when the device boots up.</string>
-    <string name="FMDConfig_Alert_Password">Password</string>
-    <string name="Settings_Enter_Password">Please enter a password.</string>
     <string name="MH_Help_Expert_Sound">" Sound (on/off) - turns the sound on or off."</string>
     <string name="not_possible">This action was not possible.</string>
     <string name="MH_Help_Expert_Camera">" Camera (front/back) - takes a picture and sends it to FMDserver."</string>
-    <string name="Notification_ForegroundService">Notification for specific services that will run in the background. Like camera, ...</string>
     <string name="Permission_Camera">If you want to remotely receive pictures from your phone, the camera permission is needed.</string>
-    <string name="Info_Camera">Camera</string>
-    <string name="Settings_Import">Import Settings</string>
-    <string name="Settings_Export">Export Settings</string>
     <string name="MH_CAM_CAPTURE">"The device will soon send a picture to fmdserver. You can view it here soon: "</string>
-    <string name="Settings_FMDServer_LOW_BAT_Upload_Description">Send the location of this device when the battery level goes low. (This requires Notification Access)</string>
-    <string name="Main_WhiteListCounterText">WhiteList:</string>
     <string name="MH_FMDSERVER_NOT_REGISTERED">This device isn\'t registered on a server.</string>
-    <string name="Settings_FMDServer_Login">Login</string>
-    <string name="Settings_FMDServer_Register">Register</string>
-    <string name="Notification_Security">Security</string>
-    <string name="Notification_Security_Description">Notifications about security updates</string>
-    <string name="Notification_FAIL">Fail</string>
-    <string name="Notification_Fail_Description">Notification when something fails, like the connection to fmd server.</string>
-    <string name="NOTIFY_PASSWORD_CHANGE_FAIL_TITLE">Password change failed</string>
-    <string name="NOTIFY_PASSWORD_CHANGE_FAIL_CONTENT">Something went wrong, the password is not updated.</string>
-    <string name="loading">Loading…</string>
-    <string name="settings_exported">Settings exported</string>
-    <string name="notify_crypto_update_title">Action required</string>
-    <string name="notify_crypto_update_text">You need to update some settings to continue using FMD. Click to open.</string>
-    <string name="server_version">Server version</string>
-    <string name="server_version_error">Error getting server version</string>
-    <string name="server_version_error_low_version">At least server version {MIN} is required, but the selected server has version {CURRENT}. Continue at your own risk.</string>
+    <string name="About_Text">Thank you for downloading this app!\nThere is still a lot to do, but I hope this app will help you if you find yourself in the same situation I had. Losing your phone is bad, but losing your phone because there are no privacy-friendly apps to help you find it is even worse.\nContributions and donations are welcome! Just go to F-Droid and search for my app.\n\n - Nulide</string>
+    <string name="About_Help">Help</string>
+    <string name="About_Version">FMD version:</string>
+    <string name="About_Used_APIs">Used APIs:\n</string>
+    <string name="About_UsedApis_Content" translatable="false">androidx.appcompat:appcompat:1.2.0\nandroidx.constraintlayout:constraintlayout:2.0.1\nandroidx.legacy:legacy-support-v4:1.0.0\nandroidx.preference:preference:1.1.1\njunit:junit:4.12\nandroidx.test.ext:junit:1.1.2\nandroidx.test.espresso:espresso-core:3.3.0\ncom.google.android.material:material:1.2.1\ncom.fasterxml.jackson.core:jackson-databind:2.10.0\ncom.android.volley:volley:1.1.1\norg.mindrot:jbcrypt:0.4\nandroidx.fragment:fragment:1.2.5\njakarta.xml.bind, name: jakarta.xml.bind-api, version: 2.3.2\nxerces, name: xercesImpl, version: 2.12.1\norg.bouncycastle, name: bcprov-jdk16, version: 1.46\ncom.android.support:multidex:1.0.3\ncom.github.Stjinchan:ExpandableCardView:1.3.0-beta02\ncom.github.iamrobj:NotificationHelperLibrary:2.0.5\ncom.github.UnifiedPush:android-connector:2.0.0\nOpenCellID\nOpenStreetMap\nGoogle Font Material Icons</string>
 
-    <string name="server_unregister_failed_title">Unregistering failed</string>
-    <string name="server_unregister_failed_body">Unregistering failed with the following error: {ERROR}\n\nYou can continue anyway, but your account might not have been deleted from the server. If you continue, your account will be deleted locally from this device.</string>
-    <string name="server_unregister_continue_anyway">Continue anyway</string>
-    <string name="server_unregister_dont_continue">Don\'t continue</string>
-    <string name="Settings_FMDServer_Push_Description_Missing">Sending commands from FMD Server to your phone requires a UnifiedPush distributor app. Install one, and then return here. It will automatically be detected.</string>
-    <string name="Settings_FMDServer_Push_Description_Available">Successfully registered for push notifications.</string>
-    <string name="Settings_FMDServer_Push_Open_UP">Open UnifiedPush Website</string>
-    <string name="copied">Copied</string>
-    <string name="Whitelist_help">The contacts in this list are allowed to send FMD commands via SMS. Commands from everyone else will be ignored.</string>
-    <string name="Whitelist_empty">No allowed contacts. Click the button to add some!</string>
-    <string name="paste">Paste</string>
 </resources>
