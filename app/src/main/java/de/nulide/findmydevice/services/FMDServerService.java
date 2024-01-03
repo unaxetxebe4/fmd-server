@@ -264,7 +264,7 @@ public class FMDServerService extends JobService {
             e.printStackTrace();
         }
 
-        RestHandler restHandler = new RestHandler(context, RestHandler.DEFAULT_METHOD, RestHandler.PASSWORD, jsonObject);
+        RestHandler restHandler = new RestHandler(context, RestHandler.DEFAULT_RESP_METHOD, RestHandler.PASSWORD, jsonObject);
         restHandler.setPostListener(postListener);
         restHandler.setResponseListener(response -> {
             if (response.has("Data")) {
