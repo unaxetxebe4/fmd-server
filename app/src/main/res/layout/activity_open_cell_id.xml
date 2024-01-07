@@ -56,6 +56,12 @@
                 android:layout_marginTop="@dimen/margin_small"
                 android:text="@string/OpenCellId_help" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                android:text="@string/OpenCellId_privacy" />
+
             <Button
                 android:id="@+id/buttonOpenOpenCellIdWebsite"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
@@ -63,6 +69,23 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_small"
                 android:text="@string/OpenCellId_open_website" />
+
+            <Button
+                android:id="@+id/buttonTestOpenCellId"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                android:layout_marginBottom="@dimen/margin_small"
+                android:text="@string/OpenCellId_test_opencellid" />
+
+            <TextView
+                android:id="@+id/textViewTestOpenCellIdResponse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autoLink="web"
+                android:textIsSelectable="true"
+                tools:text="Response" />
 
         </LinearLayout>
     </ScrollView>

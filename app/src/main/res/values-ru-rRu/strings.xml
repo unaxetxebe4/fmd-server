@@ -67,23 +67,21 @@
     <string name="Main_OpenWhiteList" translatable="false">+</string>
     <string name="Settings_FMDConfig">Конфигурация FMD</string>
     <string name="Settings_WhiteList">Белый Список</string>
-    <string name="Settings_OpenCellId">OpenCellId</string>
+    <string name="Settings_OpenCellId">OpenCelliD</string>
     <string name="Settings_Permissions">Разрешения</string>
     <string name="Settings_Logs">Логи</string>
     <string name="Settings_About">О приложении</string>
     <string name="Settings_Settings">Настройки</string>
     <string name="Error">Ошибка</string>
     <string name="Main_WhiteListCounterText">Белый список:</string>
-    <string name="OpenCellId_OpenCellId">OpenCellId</string>
+    <string name="OpenCellId_OpenCellId">OpenCelliD</string>
     <string name="Notification_Usage">Использование</string>
     <string name="Pin_Usage">Использование Pin</string>
     <string name="Notification_Lifecycle">Жизненный цикл</string>
     <string name="Notification_Usage_Description">Уведомление об использовании сервиса.</string>
     <string name="Notification_Lifecycle_Description">Уведомление о Жизненном цикле сервиса.</string>
     <string name="Notification_Pin_Usage_Description">Уведомление об использовании Pin.</string>
-    <string name="JSON_RL_Error">Ошибка получения геолокации от OpenCellID. Пожалуйста, попробуйте данную ссылку. Параметр, который вам нужен, - это долгота и широта.</string>
-    <string name="JSON_RL_OpenCellIdLocation">"OpenCellId-Геолокация: "</string>
-    <string name="GPS_GSM_Data">GSM-Cell-Data:</string>
+    <string name="JSON_RL_Error">Ошибка получения геолокации от OpenCelliD. Пожалуйста, попробуйте данную ссылку. Параметр, который вам нужен, - это долгота и широта.</string>
     <string name="LockScreen_Usage_detectd">СообщениеНаЗаблокированномЭкране: Обнаружено использование телефона.</string>
     <string name="LockScreen_Backbutton_pressed">СообщениеНаЗаблокированномЭкране: Нажата кнопка \"Назад\".</string>
     <string name="Toast_Empty_FMDCommand">Пустая команда недопустима\n Возврат к значению по-умолчанию.[fmd]</string>
