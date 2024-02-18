@@ -48,8 +48,8 @@
         tools:replace="android:allowBackup">
         <activity
             android:name=".ui.settings.AddAccountActivity"
-            android:label="Add Account"
-            android:exported="false" />
+            android:exported="false"
+            android:label="@string/Settings_FMDServer_AddAccount" />
         <activity
             android:name=".ui.DummyCameraActivity"
             android:exported="false"

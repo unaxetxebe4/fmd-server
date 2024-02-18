@@ -83,8 +83,8 @@
     <string name="WhiteList_Select_Number">Seleccione uno de los números de teléfono.</string>
     <string name="Settings_FMDServer_Description">Al activarlo, la aplicación enviará constantemente su ubicación al servidor especificado.</string>
     <string name="Settings_FMDServer_URL_Description">La URL para acceder al servidor.</string>
-    <string name="Settings_FMDServer_Updattime_Description">El tiempo en minutos en el que FMD debe enviar nuevos datos de ubicación al servidor.</string>
     <string name="Settings_FMDServer">FMD-Servidor</string>
+    <string name="Settings_FMDServer_Update_Interval_Description">El tiempo en minutos en el que FMD debe enviar nuevos datos de ubicación al servidor.</string>
     <string name="Settings_FMDServer_ID">ID del FMDServer</string>
     <string name="NOT_AVAILABLE">No Disponible</string>
     <string name="Available">Disponible</string>
@@ -102,7 +102,7 @@
     <string name="Settings_FMDServer_Alert_PrivacyPolicy_Title">Política de Privacidad</string>
     <string name="accept">aceptar</string>
     <string name="cancel">cancelar</string>
-    <string name="Settings_FMDServer_LocationData_Description">Por favor, seleccione los datos de localización que desea enviar al servidor. (Es necesario seleccionar uno)</string>
+    <string name="Settings_FMDServer_Location_Type_Description">Por favor, seleccione los datos de localización que desea enviar al servidor. (Es necesario seleccionar uno)</string>
     <string name="GPS">GPS</string>
     <string name="Cell">Celular</string>
     <string name="MH_Help_Expert_GPS">" GPS (on/off) - activa o desactiva el GPS"</string>

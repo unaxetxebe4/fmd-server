@@ -9,9 +9,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,12 +31,11 @@ import de.nulide.findmydevice.net.interfaces.PostListener;
 import de.nulide.findmydevice.receiver.PushReceiver;
 import de.nulide.findmydevice.services.FMDServerService;
 import de.nulide.findmydevice.utils.CypherUtils;
+import de.nulide.findmydevice.utils.Utils;
 
 public class AddAccountActivity extends AppCompatActivity implements TextWatcher, PostListener {
 
-    private RadioButton rbDefaultServer;
-    private RadioButton rbCustomServer;
-    private EditText editTextCustomServerUrl;
+    private EditText editTextServerUrl;
     private TextView textViewServerVersion;
     private Button btnLogin;
     private Button btnRegister;
@@ -47,7 +44,7 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
 
     private AlertDialog loadingDialog;
 
-    long lastTextChangedMillis;
+    private long lastTextChangedMillis;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,13 +52,21 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
         setContentView(R.layout.activity_add_account);
 
         settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
-        String serverUrl = (String) settings.get(Settings.SET_FMDSERVER_URL);
+        String lastKnownServerUrl = (String) settings.get(Settings.SET_FMDSERVER_URL);
 
-        rbDefaultServer = findViewById(R.id.radioButtonDefaultServer);
-        rbCustomServer = findViewById(R.id.radioButtonCustomServer);
+        Button btnOpenWebsite = findViewById(R.id.buttonOpenFmdServerWebsite);
+        btnOpenWebsite.setOnClickListener(v ->
+                Utils.openUrl(this, "https://gitlab.com/Nulide/findmydeviceserver"));
 
-        rbDefaultServer.setOnCheckedChangeListener(this::onCheckedChanged);
-        rbCustomServer.setOnCheckedChangeListener(this::onCheckedChanged);
+        // Actively opt-in to using Nulide's server
+        Button btnUseDefaultServer = findViewById(R.id.buttonUseDefaultServer);
+        btnUseDefaultServer.setOnClickListener(v ->
+                editTextServerUrl.setText(Settings.DEFAULT_FMD_SERVER_URL));
+
+        editTextServerUrl = findViewById(R.id.editTextServerUrl);
+        editTextServerUrl.addTextChangedListener(this);
+
+        textViewServerVersion = findViewById(R.id.textViewServerVersion);
 
         btnLogin = findViewById(R.id.buttonLogin);
         btnLogin.setOnClickListener(this::onLoginClicked);
@@ -69,16 +74,11 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
         btnRegister = findViewById(R.id.buttonRegister);
         btnRegister.setOnClickListener(this::onRegisterClicked);
 
-        editTextCustomServerUrl = findViewById(R.id.editTextFMDServerUrl);
-        editTextCustomServerUrl.addTextChangedListener(this);
-        editTextCustomServerUrl.setText(serverUrl);
+        // This must be after btnRegister and btnLogin are assigned,
+        // because it causes a call to afterTextChanged, which then accesses btnRegister.
+        editTextServerUrl.setText(lastKnownServerUrl);
 
-        textViewServerVersion = findViewById(R.id.textViewServerVersion);
-
-        if (!serverUrl.equals(Settings.DEFAULT_SET_FMDSERVER_URL)) {
-            rbCustomServer.setChecked(true);
-        }
-        getAndShowServerVersion(this, serverUrl);
+        getAndShowServerVersion(this, lastKnownServerUrl);
     }
 
     private void onRegisterClicked(View view) {
@@ -87,28 +87,34 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
 
         EditText passwordInput = registerLayout.findViewById(R.id.editTextFMDPassword);
         EditText passwordInputCheck = registerLayout.findViewById(R.id.editTextFMDPasswordCheck);
+        EditText registrationTokenInput = registerLayout.findViewById(R.id.editTextRegistrationToken);
 
         PostListener postListener = this;
         final AlertDialog.Builder registerDialog = new AlertDialog.Builder(context)
                 .setTitle("Register")
-                .setView(registerLayout)
                 .setView(registerLayout)
                 .setPositiveButton(getString(R.string.Ok), (dialog, whichButton) -> {
                     showLoadingIndicator(context);
 
                     String password = passwordInput.getText().toString();
                     String passwordCheck = passwordInputCheck.getText().toString();
+                    String registrationToken = registrationTokenInput.getText().toString();
+
                     if (!password.isEmpty() && password.equals(passwordCheck)) {
                         new Thread(() -> {
+                            // Start the thread here. Key generation and password hashing is expensive-ish,
+                            // so we don't want to do it on the UI thread (it would block then loading indicator).
                             FmdKeyPair keys = FmdKeyPair.generateNewFmdKeyPair(password);
                             settings.setKeys(keys);
                             String hashedPW = CypherUtils.hashPasswordForLogin(password);
                             settings.set(Settings.SET_FMD_CRYPT_HPW, hashedPW);
                             settings.setNow(Settings.SET_FMDSERVER_PASSWORD_SET, true);
-                            FMDServerService.registerOnServer(context, (String) settings.get(Settings.SET_FMDSERVER_URL), keys.getEncryptedPrivateKey(), keys.getBase64PublicKey(), hashedPW, postListener);
+
+                            FMDServerService.registerOnServer(context, keys.getEncryptedPrivateKey(), keys.getBase64PublicKey(), hashedPW, registrationToken, postListener);
                         }).start();
                     } else {
                         Toast.makeText(context, "Passwords do not match.", Toast.LENGTH_LONG).show();
+                        loadingDialog.cancel();
                     }
                 });
         showPrivacyPolicyThenDialog(context, registerDialog);
@@ -120,7 +126,6 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
 
         EditText idInput = loginLayout.findViewById(R.id.editTextFMDID);
         EditText passwordInput = loginLayout.findViewById(R.id.editTextFMDPassword);
-        EditText passwordInputCheck = loginLayout.findViewById(R.id.editTextFMDPasswordCheck);
 
         PostListener postListener = this;
         final AlertDialog.Builder loginDialog = new AlertDialog.Builder(context)
@@ -131,13 +136,14 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
 
                     String id = idInput.getText().toString();
                     String password = passwordInput.getText().toString();
-                    String passwordCheck = passwordInputCheck.getText().toString();
-                    if (!id.isEmpty() && !password.isEmpty() && passwordCheck.equals(password)) {
+
+                    if (!id.isEmpty() && !password.isEmpty()) {
                         new Thread(() -> {
                             FMDServerService.loginOnServer(context, id, password, postListener);
                         }).start();
                     } else {
-                        Toast.makeText(context, "Failed to login.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, "FMD ID and password must not be empty.", Toast.LENGTH_LONG).show();
+                        loadingDialog.cancel();
                     }
                 });
         showPrivacyPolicyThenDialog(context, loginDialog);
@@ -145,7 +151,8 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
 
     private void showPrivacyPolicyThenDialog(Context context, AlertDialog.Builder dialogToShowAfterAccepting) {
         WebView webView = new WebView(context);
-        webView.loadUrl(editTextCustomServerUrl.getText().toString() + "/ds.html");
+        webView.clearCache(true); // make sure to load the latest policy
+        webView.loadUrl(editTextServerUrl.getText().toString() + "/ds.html");
 
         new AlertDialog.Builder(context)
                 .setTitle(getString(R.string.Settings_FMDServer_Alert_PrivacyPolicy_Title))
@@ -171,7 +178,7 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
 
     @Override
     public void afterTextChanged(Editable editable) {
-        if (editable == editTextCustomServerUrl.getText()) {
+        if (editable == editTextServerUrl.getText()) {
             String url = editable.toString();
             settings.set(Settings.SET_FMDSERVER_URL, url);
             if (url.isEmpty()) {
@@ -183,40 +190,6 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
             }
             getAndShowServerVersionWithDelay(this, url);
         }
-    }
-
-    private void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
-        if (checked) {
-            if (compoundButton == rbDefaultServer) {
-                editTextCustomServerUrl.setEnabled(false);
-                editTextCustomServerUrl.setText(Settings.DEFAULT_SET_FMDSERVER_URL);
-                getAndShowServerVersion(this, Settings.DEFAULT_SET_FMDSERVER_URL);
-            } else {
-                editTextCustomServerUrl.setEnabled(true);
-                getAndShowServerVersion(this, editTextCustomServerUrl.getText().toString());
-            }
-        }
-    }
-
-    private void checkForAuth(Context context){
-        finish();
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                finish();
-                Intent settingIntent = null;
-                settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
-                if(((String)settings.get(Settings.SET_FMDSERVER_ID)).isEmpty()){
-                    settingIntent = new Intent(context, AddAccountActivity.class);
-                    Toast.makeText(context, "Failed", Toast.LENGTH_LONG).show();
-                }else{
-                    settingIntent = new Intent(context, FMDServerActivity.class);
-                    FMDServerService.scheduleJob(context, 0);
-                    PushReceiver.registerWithUnifiedPush(context);
-                }
-                startActivity(settingIntent);
-            }
-        }, 500);
     }
 
     @Override

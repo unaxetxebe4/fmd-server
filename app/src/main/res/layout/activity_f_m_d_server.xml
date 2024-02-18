@@ -1,239 +1,234 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.settings.FMDServerActivity">
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_normal"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:text="@string/Settings_FMD_Server_General"
+            android:textColor="@color/colorAccent"
+            android:textSize="17sp"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="1mm"
-                android:text="@string/Settings_FMD_Server_General"
-                android:textColor="@color/colorAccent"
-                android:textSize="17sp"
-                android:textStyle="bold" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="1mm"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="1mm"
-                    android:text="@string/Settings_FMD_Server_Server_URL" />
-
-                <TextView
-                    android:id="@+id/textViewServerUrl"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    tools:text="https://fmd.example.com" />
-
-                <ImageView
-                    android:id="@+id/buttonCopyServerUrl"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="?attr/selectableItemBackground"
-                    android:padding="1mm"
-                    android:src="@drawable/ic_content_copy" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="1mm"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="1mm"
-                    android:text="@string/Settings_FMD_Server_User_ID" />
-
-                <TextView
-                    android:id="@+id/textViewUserId"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    tools:text="abcdefgh" />
-
-                <ImageView
-                    android:id="@+id/buttonCopyUserId"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="?attr/selectableItemBackground"
-                    android:padding="1mm"
-                    android:src="@drawable/ic_content_copy" />
-            </LinearLayout>
+                android:layout_marginEnd="8dp"
+                android:text="@string/Settings_FMD_Server_Server_URL" />
 
             <TextView
-                android:layout_width="match_parent"
+                android:id="@+id/textViewServerUrl"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="1mm"
-                android:text="@string/Settings_FMD_Server_ID_Desc" />
+                android:layout_weight="1"
+                tools:text="https://fmd.example.com" />
 
-            <Button
-                android:id="@+id/buttonChangePassword"
-                android:layout_width="match_parent"
+            <ImageView
+                android:id="@+id/buttonCopyServerUrl"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="1mm"
-                android:ems="10"
-                android:text="Change Password" />
-
-            <Button
-                android:id="@+id/buttonLogout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="1mm"
-                android:ems="10"
-                android:text="Logout" />
-
-            <Button
-                android:id="@+id/buttonDeleteData"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="1mm"
-                android:ems="10"
-                android:text="@string/Settings_FMDServer_Delete_Button" />
-
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="?android:attr/listDivider" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="1mm"
-                android:text="Push"
-                android:textColor="@color/colorAccent"
-                android:textSize="17sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/textPushHelp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="1mm"
-                android:text="@string/Settings_FMDServer_Push_Description_Missing" />
-
-            <Button
-                android:id="@+id/buttonOpenUnifiedPush"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="1mm"
-                android:ems="10"
-                android:text="@string/Settings_FMDServer_Push_Open_UP" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="?android:attr/listDivider" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="1mm"
-                android:text="FMDServer Update Time"
-                android:textColor="@color/colorAccent"
-                android:textSize="17sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="1mm"
-                android:text="@string/Settings_FMDServer_Update_Interval_Description" />
-
-            <EditText
-                android:id="@+id/editTextFMDServerUpdateTime"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="1mm"
-                android:inputType="number"
-                android:maxLength="8"
-                android:text="0" />
-
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="?android:attr/listDivider" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="1mm"
-                android:text="Location Data"
-                android:textColor="@color/colorAccent"
-                android:textSize="17sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="1mm"
-                android:text="@string/Settings_FMDServer_Location_Type_Description" />
-
-            <CheckBox
-                android:id="@+id/checkBoxFMDServerGPS"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="1mm"
-                android:text="@string/GPS" />
-
-            <CheckBox
-                android:id="@+id/checkBoxFMDServerCell"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="1mm"
-                android:text="@string/Cell" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="?android:attr/listDivider" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="1mm"
-                android:text="LOW BAT Upload"
-                android:textColor="@color/colorAccent"
-                android:textSize="17sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="1mm"
-                android:text="@string/Settings_FMDServer_LOW_BAT_Upload_Description" />
-
-            <CheckBox
-                android:id="@+id/checkBoxFMDServerLowBatUpload"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="1mm"
-                android:text="@string/Enable" />
-
+                android:background="?attr/selectableItemBackground"
+                android:padding="8dp"
+                android:src="@drawable/ic_content_copy" />
         </LinearLayout>
-    </ScrollView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="@string/Settings_FMD_Server_User_ID" />
+
+            <TextView
+                android:id="@+id/textViewUserId"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                tools:text="abcdefgh" />
+
+            <ImageView
+                android:id="@+id/buttonCopyUserId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:padding="8dp"
+                android:src="@drawable/ic_content_copy" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_normal"
+            android:text="@string/Settings_FMD_Server_ID_Desc" />
+
+        <Button
+            android:id="@+id/buttonChangePassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:ems="10"
+            android:text="@string/Settings_FMDServer_Change_Password_Button" />
+
+        <Button
+            android:id="@+id/buttonLogout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:ems="10"
+            android:text="@string/Settings_FMDServer_Logout_Button" />
+
+        <Button
+            android:id="@+id/buttonDeleteData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_normal"
+            android:ems="10"
+            android:text="@string/Settings_FMDServer_Delete_Button" />
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="@dimen/margin_normal"
+            android:background="?android:attr/listDivider" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:text="Push"
+            android:textColor="@color/colorAccent"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textPushHelp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:text="@string/Settings_FMDServer_Push_Description_Missing" />
+
+        <Button
+            android:id="@+id/buttonOpenUnifiedPush"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_normal"
+            android:ems="10"
+            android:text="@string/Settings_FMDServer_Push_Open_UP" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="@dimen/margin_normal"
+            android:background="?android:attr/listDivider" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:text="@string/Settings_FMDServer_Update_Interval_Title"
+            android:textColor="@color/colorAccent"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:text="@string/Settings_FMDServer_Update_Interval_Description" />
+
+        <EditText
+            android:id="@+id/editTextFMDServerUpdateTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:inputType="number"
+            android:maxLength="8"
+            android:text="0" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="@dimen/margin_normal"
+            android:background="?android:attr/listDivider" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:text="@string/Settings_FMDServer_Location_Type_Title"
+            android:textColor="@color/colorAccent"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:text="@string/Settings_FMDServer_Location_Type_Description" />
+
+        <CheckBox
+            android:id="@+id/checkBoxFMDServerGPS"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/GPS" />
+
+        <CheckBox
+            android:id="@+id/checkBoxFMDServerCell"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:text="@string/Cell" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="@dimen/margin_normal"
+            android:background="?android:attr/listDivider" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:text="@string/Settings_FMDServer_LOW_BAT_Upload_Title"
+            android:textColor="@color/colorAccent"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:text="@string/Settings_FMDServer_LOW_BAT_Upload_Description" />
+
+        <CheckBox
+            android:id="@+id/checkBoxFMDServerLowBatUpload"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_normal"
+            android:text="@string/Enable" />
+
+    </LinearLayout>
+</ScrollView>

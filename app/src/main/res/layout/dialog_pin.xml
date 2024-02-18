@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,23 +13,25 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="FMD ID" />
+            android:text="@string/pin" />
 
         <EditText
-            android:id="@+id/editTextFMDID"
+            android:id="@+id/editTextPin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/margin_normal" />
+            android:layout_marginBottom="@dimen/margin_normal"
+            android:inputType="textPassword" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/password" />
+            android:text="@string/pin_repeat" />
 
         <EditText
-            android:id="@+id/editTextFMDPassword"
+            android:id="@+id/editTextPinRepeat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_normal"
             android:inputType="textPassword" />
 
     </LinearLayout>
