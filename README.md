@@ -13,6 +13,8 @@ It aims to be a secure open source alternative to Google's FindMyDevice.
 
 The wiki can be found [here](https://gitlab.com/Nulide/findmydevice/-/wikis/home).
 
+The default server can be found [here](https://fmd.nulide.de:1008/), read more about the server integration [here](https://gitlab.com/Nulide/findmydevice/-/wikis/FMD%20Server).
+
 ## Why?
 
 I have lost my  brand new phone last week.
