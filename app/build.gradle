@@ -31,6 +31,17 @@ android {
         }
     }
 
+    flavorDimensions "default"
+    productFlavors {
+        prod {
+            dimension "default"
+        }
+        dev {
+            dimension "default"
+            applicationIdSuffix ".dev"
+        }
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
