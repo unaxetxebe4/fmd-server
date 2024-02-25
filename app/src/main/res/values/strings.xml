@@ -5,6 +5,7 @@
     <string name="Ok" translatable="false">@android:string/ok</string>
     <string name="loading">Loading…</string>
     <string name="help">Help</string>
+    <string name="copy" translatable="false">@android:string/copy</string>
     <string name="copied">Copied</string>
     <string name="paste" translatable="false">@android:string/paste</string>
     <string name="accept">accept</string>
@@ -12,6 +13,12 @@
     <string name="Edit">Edit</string>
     <string name="GPS">GPS</string>
     <string name="Cell">Cell</string>
+
+    <!-- Generic errors -->
+    <string name="request_failed_title">Network Request Failed</string>
+    <string name="request_failed_status_code">Status code</string>
+    <string name="request_failed_response_body">Response Body</string>
+    <string name="request_failed_exception">Exception</string>
 
     <!-- MainActivity -->
     <string name="Granted">Granted: </string>
