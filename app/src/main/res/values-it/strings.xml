@@ -132,7 +132,6 @@
     <string name="MH_Help_Expert_Sound">\" Audio (on/off) - Attiva o disattiva l\'audio.\"</string>
     <string name="not_possible">Questa azione non è stata possibile.</string>
     <string name="MH_Help_Expert_Camera">" Camera (fronte/retro) - scatta una foto e la invia al server FMD.</string>
-    <string name="Notification_ForegroundService">Notifica per servizi specifici che verranno eseguiti in background. Come fotocamera, ecc…</string>
     <string name="Permission_Camera">Se si desidera ricevere immagini in remoto dal telefono, è necessaria l\'autorizzazione per la fotocamera.</string>
     <string name="Info_Camera">Camera:</string>
     <string name="Settings_Import">Importa Impostazioni</string>

@@ -141,7 +141,6 @@
     <string name="Notification_Security_Description">Notifications about security updates</string>
     <string name="Notification_FAIL">Fail</string>
     <string name="Notification_Fail_Description">Notification when something fails, like the connection to fmd server.</string>
-    <string name="Notification_ForegroundService">Notification for specific services that will run in the background. Like camera, ...</string>
 
     <!-- Varia -->
 
