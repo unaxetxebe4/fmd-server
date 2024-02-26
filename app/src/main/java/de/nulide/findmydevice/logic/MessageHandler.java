@@ -14,7 +14,7 @@ import de.nulide.findmydevice.logic.command.helper.Cell;
 import de.nulide.findmydevice.logic.command.helper.GPS;
 import de.nulide.findmydevice.logic.command.helper.Network;
 import de.nulide.findmydevice.logic.command.helper.Ringer;
-import de.nulide.findmydevice.ui.DummyCameraActivity;
+import de.nulide.findmydevice.ui.DummyCameraxActivity;
 import de.nulide.findmydevice.ui.LockScreenMessage;
 import de.nulide.findmydevice.utils.CypherUtils;
 import de.nulide.findmydevice.utils.Logger;
@@ -200,12 +200,12 @@ public class MessageHandler {
                 if(Permission.CAMERA) {
                     if(!((String) ch.getSettings().get(Settings.SET_FMDSERVER_ID)).isEmpty()) {
 
-                        Intent dummyCameraActivity = new Intent(context, DummyCameraActivity.class);
+                        Intent dummyCameraActivity = new Intent(context, DummyCameraxActivity.class);
                         dummyCameraActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         if (msg.contains("front")) {
-                            dummyCameraActivity.putExtra(DummyCameraActivity.CAMERA, 1);
+                            dummyCameraActivity.putExtra(DummyCameraxActivity.EXTRA_CAMERA, DummyCameraxActivity.CAMERA_FRONT);
                         } else {
-                            dummyCameraActivity.putExtra(DummyCameraActivity.CAMERA, 0);
+                            dummyCameraActivity.putExtra(DummyCameraxActivity.EXTRA_CAMERA, DummyCameraxActivity.CAMERA_BACK);
                         }
                         context.startActivity(dummyCameraActivity);
                         replyBuilder.append(context.getString(R.string.MH_CAM_CAPTURE)).append((String) ch.getSettings().get(Settings.SET_FMDSERVER_URL));
