@@ -1,15 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <!-- TODO: Following strings need to be translated into most languages -->
     <string name="Granted">Concesse: </string>
     <string name="Edit">Cambia</string>
-    <string name="contacts">contatti</string>
     <string name="Permission_IGNORE_BATTERY_OPTIMIZATION">Questa applicazione dovrebbe funzionare in background. Per assicurarsi che funzioni anche quando il telefono è in standby, è necessario disattivare l\'ottimizzazione della batteria per questa applicazione.</string>
-
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
     <string name="Introduction_Introduction">FindMyDevice (FMD) è un\'applicazione che può aiutarvi a ritrovare il vostro telefono quando viene smarrito. Utilizza gli SMS per comunicare e inviare comandi da un secondo dispositivo in modo da poter rintracciare il vostro telefono. Basta inviare un messaggio SMS contenente il comando \"fmd\". Si prega di notare che questa applicazione è ancora in fase beta.  - Nulide</string>
     <string name="Introduction_UpdatePermission">Sono necessarie alcune nuove autorizzazioni.\nPer continuare a usare questa applicazione, verificare le autorizzazioni seguenti o tornare a utilizzare una versione precedente.</string>
     <string name="Permission_SMS">Per poter inviare comandi al telefono, questa applicazione deve essere in grado di leggere i messaggi SMS. I messaggi non lasciano mai il telefono e non vengono utilizzati per nient\'altro che non sia la ricerca del telefono.\nQuesta autorizzazione è necessaria.</string>
@@ -24,19 +18,15 @@
     <string name="Introduction_Give_Permission">Concedi Autorizzazione</string>
     <string name="Introduction_Next">Avanti</string>
     <string name="Locked_Lock_Screen">Trova Dispositivo\nQuesto telefono è bloccato\!\nMessaggio del proprietario :</string>
-    <string name="About">Info</string>
     <string name="About_Text">Grazie per aver scaricato questa app\!\nC\'è ancora molto da fare, ma spero che questa app ti aiuti se ti trovi nella stessa situazione che ho avuto io. Perdere il telefono è spiacevole, ma perdere il telefono perché non ci sono app rispettose della privacy per aiutarti a trovarlo è ancora peggio.\nContributi e donazioni sono i benvenuti\! Basta andare su F-Droid e cercare la mia app.\n\n - Nulide</string>
     <string name="About_Used_APIs">API Usate:\n</string>
     <string name="Enable">Attiva</string>
     <string name="Settings_Pin_Description">Utilizzato come conferma prima di cancellare i dati del dispositivo o per l\'utilizzo temporaneo del servizio.</string>
     <string name="Settings_Lockscreenmessage_Description">Messaggio schermata di blocco:\nQuando si blocca il dispositivo, questo messaggio viene visualizzato nella schermata di blocco.</string>
     <string name="Settings_FMDCommand_Description">Comando utilizzato per comunicare con l\'applicazione FindMyDevice.</string>
-    <string name="Settings_PermissionDescription">Le autorizzazioni necessarie per determinate funzionalità</string>
-    <string name="Settings_Permission">Autorizzazioni</string>
     <string name="WhiteList_Add_Contact">Aggiungi Contatto</string>
     <string name="Enabled">Attivo</string>
     <string name="Disabled">Non Attivo</string>
-    <string name="Toast_Landcode_error">Si prega di aggiungere il prefisso internazionale (Landcode) al numero. (Come \"+39\", \"+44\", …)</string>
     <string name="Delete">Cancella</string>
     <string name="WhiteList_Select_Action">Seleziona una scelta:</string>
     <string name="Toast_Duplicate_contact">Questo contatto esiste già.</string>
@@ -84,8 +74,6 @@
     <string name="paste">Incolla</string>
     <string name="Alert_First_Time_contact_added">Congratulazioni. Avete aggiunto il vostro primo contatto. Ora è possibile comunicare con FMD inviando un messaggio SMS contenente "fmd" dal numero di telefono inserito nell\'elenco. Se tutto funziona, l\'applicazione risponderà.</string>
     <string name="R_Stop_ring">SMETTI DI SQUILLARE</string>
-    <string name="Settings_Log">Registro</string>
-    <string name="Settings_Show_log">Mostra registro</string>
     <string name="Crashed_Send_log">Invia registro</string>
     <string name="MH_No_GPS">Spiacente, la posizione è disattivata.</string>
     <string name="About_Version">Versione FMD:</string>
@@ -114,22 +102,15 @@
     <string name="FMDConfig_Alert_Pin">PIN</string>
     <string name="Ok">Ok</string>
     <string name="Log_Alert_LogData">Dati di Registro</string>
-    <string name="Sender_End_Of_Msg">---Fine Messaggio---</string>
     <string name="Settings_Ringer_Tone_Description">Seleziona una suoneria che verrà riprodotta quando viene inviato \"fmd ring\".</string>
     <string name="Settings_Select_Ringtone">Seleziona suoneria</string>
     <string name="WhiteList_Select_Number">Seleziona uno dei numeri di telefono.</string>
-    <string name="Settings_FMDServer_Description">Abilitando, l\'applicazione invierà costantemente la tua posizione al server specificato.</string>
-    <string name="Settings_FMDServer_URL_Description">URL per l\'accesso al server.</string>
     <string name="Settings_FMDServer_Update_Interval_Description">Il tempo in minuti in cui FMD deve inviare nuovi dati sulla posizione al server.</string>
-    <string name="Settings_FMDServer_ID">ID Server FMD</string>
     <string name="NOT_AVAILABLE">Non Disponibile</string>
     <string name="Available">Disponibile</string>
-    <string name="Settings_FMDServer_Register_Button">Registrati sul Server</string>
     <string name="Info_FMD_Command">Comando FMD:</string>
-    <string name="Info_Permission_Stats">Autorizzazioni Concesse:</string>
     <string name="Info_Server_Enabled">Servizio:</string>
     <string name="Info_Server_Registered">Registrato:</string>
-    <string name="value_true">si</string>
     <string name="registered">registrato</string>
     <string name="not_registered">non registrato</string>
     <string name="MH_LAST_KNOWN_LOCATION">Ultima posizione nota</string>
@@ -148,14 +129,10 @@
     <string name="Info_Notification_Access">Notifiche</string>
     <string name="Notification_Server">Server</string>
     <string name="NotificationServer_Description">Visualizza le notifiche inviate dal server.</string>
-    <string name="Settings_FMDServer_AutoUpload_Description">Quando la posizione viene richiesta tramite SMS o qualsiasi altro metodo futuro, la posizione può anche essere trasmessa al server se questa opzione è abilitata.</string>
     <string name="Info_Server_Push">Push:</string>
     <string name="Settings_FMDServer_Delete_Button">Cancella Dati</string>
     <string name="Settings_FMDServer_Alert_DeleteData">Cancella Dati</string>
     <string name="Settings_FMDServer_Alert_DeleteData_Desc">Questo cancellerà tutti i dati dal server\! Sei sicuro?</string>
-    <string name="Settings_FMD_Send_Loc_on_Boot">Invia la posizione del telefono all\'avvio del dispositivo.</string>
-    <string name="FMDConfig_Alert_Password">Password</string>
-    <string name="Settings_Enter_Password">Inserisci una password.</string>
     <string name="MH_Help_Expert_Sound">\" Audio (on/off) - Attiva o disattiva l\'audio.\"</string>
     <string name="not_possible">Questa azione non è stata possibile.</string>
     <string name="MH_Help_Expert_Camera">" Camera (fronte/retro) - scatta una foto e la invia al server FMD.</string>
@@ -166,7 +143,6 @@
     <string name="Settings_Export">Esporta Impostazioni</string>
     <string name="MH_CAM_CAPTURE">\"Il dispositivo invierà presto un\'immagine al server FMD. Puoi vederla a breve qui: \"</string>
     <string name="Settings_FMDServer_LOW_BAT_Upload_Description">Invia la posizione di questo dispositivo quando il livello della batteria si scarica. (Questo richiede l\'accesso alle notifiche)</string>
-    <string name="Main_WhiteListCounterText">Lista Bianca:</string>
     <string name="MH_FMDSERVER_NOT_REGISTERED">Questo dispositivo non è registrato su un server.</string>
     <string name="Settings_FMDServer_Login">Accedi</string>
     <string name="Settings_FMDServer_Register">Registra</string>
@@ -174,6 +150,4 @@
     <string name="Notification_Security_Description">Notifiche riguardo aggiornamenti di sicurezza</string>
     <string name="Notification_FAIL">Non riuscito</string>
     <string name="Notification_Fail_Description">Notifica quando qualcosa fallisce, come la connessione al server fmd.</string>
-    <string name="NOTIFY_PASSWORD_CHANGE_FAIL_TITLE">Cambio password fallito</string>
-    <string name="NOTIFY_PASSWORD_CHANGE_FAIL_CONTENT">Qualcosa è andato storto, password non aggiornata.</string>
 </resources>

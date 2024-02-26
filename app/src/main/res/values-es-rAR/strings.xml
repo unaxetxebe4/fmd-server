@@ -7,6 +7,4 @@
     <string name="Permission_DEVICE_ADMIN">Si quieres bloquear o borrar tu teléfono si se pierde, es necesario activar este permiso. Si no das este permiso, esta funcionalidad no va a ser activada.</string>
     <string name="Permission_OVERLAY">Esta aplicación puede mostrar un mensaje en la pantalla del teléfono cuando lo bloquees, para que pueda leerlo si alguien lo encuentra. Si no das este permiso, esta funcionalidad no va a ser activada.</string>
     <string name="Permission_WRITE_SECURE_SETTINGS">Esta aplicación es capaz de poder activar tu ubicación si normalmente la dejas desactivada. Si la ubicación esta desactivada, el comando fmd locate no va a funcionar. Para poder conseguir esto, la app necesita un permiso especial que tiene que ser otorgado con la ayuda de una computadora. Si no concedes este permiso, no hay problema, puedes seguir usando la app</string>
-    <string name="Settings_Permission">Permisos</string>
-
 </resources>
