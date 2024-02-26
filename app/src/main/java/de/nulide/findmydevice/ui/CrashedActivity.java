@@ -46,7 +46,7 @@ public class CrashedActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View v) {
         Intent intent = new Intent (Intent.ACTION_SEND);
         intent.setType ("plain/text");
-        intent.putExtra (Intent.EXTRA_EMAIL, new String[] {"Nulide@tutanota.de"});
+        intent.putExtra (Intent.EXTRA_EMAIL, new String[] {"Null@nulide.de"});
         intent.putExtra (Intent.EXTRA_SUBJECT, "CrashLog");
         intent.putExtra (Intent.EXTRA_TEXT, crashLog);
         startActivity (intent);
