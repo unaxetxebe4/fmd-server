@@ -130,6 +130,10 @@ public class FMDServerService extends JobService {
                 e.printStackTrace();
             }
         });
+        restHandler.setErrorListener(error -> {
+                error.printStackTrace();
+                postListener.onRestFinished(false);
+        });
         restHandler.setPostListener(postListener);
         restHandler.run();
     }
@@ -248,6 +252,10 @@ public class FMDServerService extends JobService {
                             }
 
                         }
+                    });
+                    atHandler.setErrorListener(error -> {
+                        error.printStackTrace();
+                        postListener.onRestFinished(false);
                     });
                     atHandler.run();
                 } catch (JSONException e) {
