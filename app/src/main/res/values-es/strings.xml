@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hello_blank_fragment">Hola fragmento en blanco</string>
     <string name="Introduction_Introduction">FindMyDevice (FMD) es una aplicación que puede ayudarlo a encontrar su teléfono cuando se pierda.\nUtiliza SMS (mensajes de texto) para comunicarse y enviar comandos desde un segundo dispositivo para que pueda rastrear su teléfono.\nSolo envíe un mensaje SMS que contenga el comando fmd.\nPor favor, tenga en cuenta que esta aplicación todavía está en fase beta.\n\n - Nulide</string>
     <string name="Introduction_UpdatePermission">Se necesitan algunos permisos nuevos.\nPor favor, compruebe los siguientes permisos para poder seguir utilizando esta aplicación, o regrese a una versión anterior.</string>
     <string name="Permission_SMS">Para poder ordenar al teléfono que haga algo, esta aplicación necesita poder ver sus mensajes SMS. Sus mensajes nunca salen de su teléfono, y nunca se utilizan para nada excepto para encontrar su teléfono.\nEste permiso es necesario.</string>
@@ -17,12 +16,9 @@
     <string name="Settings_Pin_Description">Usado como confirmación antes de borrar el dispositivo o para el uso temporal del servicio.</string>
     <string name="Settings_Lockscreenmessage_Description">Mensaje de la Pantalla de Bloqueo:\nAl bloquear el dispositivo, este mensaje aparecerá en la pantalla de bloqueo.</string>
     <string name="Settings_FMDCommand_Description">El comando usado para comunicarse con la aplicación FindMyDevice.</string>
-    <string name="Settings_PermissionDescription">Los permisos necesitados para ciertas características</string>
-    <string name="Settings_Permission">Permisos</string>
     <string name="WhiteList_Add_Contact">Añadir Contacto</string>
     <string name="Enabled">Activado</string>
     <string name="Disabled">Desactivado</string>
-    <string name="Toast_Landcode_error">Por favor, añada el código de país al número. (Como +49, +44, ...)</string>
     <string name="Delete">Eliminar</string>
     <string name="WhiteList_Select_Action">Seleccione una acción:</string>
     <string name="Toast_Duplicate_contact">Este contacto ya existe.</string>
@@ -45,8 +41,6 @@
     <string name="MH_Pin_Accepted">¡Pin aceptado!</string>
     <string name="Alert_First_Time_contact_added">Felicidades. Ha añadido su primer contacto. Ahora puede comunicarse con FMD enviando un mensaje SMS que contenga \"fmd\" desde el número de teléfono autorizado. Cuando todo funcione, la aplicación responderá.</string>
     <string name="R_Stop_ring">DEJAR DE TIMBRAR</string>
-    <string name="Settings_Log">Registro</string>
-    <string name="Settings_Show_log">Mostrar Registro</string>
     <string name="Crashed_Send_log">Enviar Registro</string>
     <string name="MH_No_GPS">Lo sentimos, la ubicación está desactivada.</string>
     <string name="Settings_FMDConfig">Configuración FMD</string>
@@ -57,7 +51,6 @@
     <string name="Settings_About">Acerca de</string>
     <string name="Settings_Settings">Ajustes</string>
     <string name="Error">Error</string>
-    <string name="Main_WhiteListCounterText">Lista Blanca</string>
     <string name="OpenCellId_OpenCellId">OpenCelliD</string>
     <string name="Notification_Usage">Uso</string>
     <string name="Pin_Usage">Uso de Pin</string>
@@ -72,23 +65,16 @@
     <string name="FMDConfig_Alert_Pin">PIN</string>
     <string name="Ok">Ok</string>
     <string name="Log_Alert_LogData">Datos del Registro</string>
-    <string name="Sender_End_Of_Msg">---Fin del Mensaje---</string>
     <string name="Settings_Ringer_Tone_Description">Seleccione un timbre que se reproducirá cuando se envíe fmd ring</string>
     <string name="Settings_Select_Ringtone">Seleccionar Timbre</string>
     <string name="WhiteList_Select_Number">Seleccione uno de los números de teléfono.</string>
-    <string name="Settings_FMDServer_Description">Al activarlo, la aplicación enviará constantemente su ubicación al servidor especificado.</string>
-    <string name="Settings_FMDServer_URL_Description">La URL para acceder al servidor.</string>
     <string name="Settings_FMDServer">FMD-Servidor</string>
     <string name="Settings_FMDServer_Update_Interval_Description">El tiempo en minutos en el que FMD debe enviar nuevos datos de ubicación al servidor.</string>
-    <string name="Settings_FMDServer_ID">ID del FMDServer</string>
     <string name="NOT_AVAILABLE">No Disponible</string>
     <string name="Available">Disponible</string>
-    <string name="Settings_FMDServer_Register_Button">Registrar en Servidor</string>
     <string name="Info_FMD_Command">Comando FMD:</string>
-    <string name="Info_Permission_Stats">Permisos Activados:</string>
     <string name="Info_Server_Enabled">Servicio:</string>
     <string name="Info_Server_Registered">Registrado:</string>
-    <string name="value_true">verdadero</string>
     <string name="registered">registrado</string>
     <string name="not_registered">no registrado</string>
     <string name="MH_LAST_KNOWN_LOCATION">Última ubicación conocida</string>
@@ -107,14 +93,10 @@
     <string name="Info_Notification_Access">Notificación</string>
     <string name="Notification_Server">Servidor</string>
     <string name="NotificationServer_Description">Mostrar notificaciones enviadas desde el servidor</string>
-    <string name="Settings_FMDServer_AutoUpload_Description">Cuando se solicita la localización por SMS o cualquier otro método futuro, la localización también puede ser transmitida al servidor si esta opción está activada.</string>
     <string name="Info_Server_Push">Push</string>
     <string name="Settings_FMDServer_Delete_Button">Eliminar Datos</string>
     <string name="Settings_FMDServer_Alert_DeleteData">Eliminar Datos</string>
     <string name="Settings_FMDServer_Alert_DeleteData_Desc">¡Esto eliminará todos los datos del servidor! ¿Está seguro/a?</string>
-    <string name="Settings_FMD_Send_Loc_on_Boot">Enviar la ubicación de su teléfono cuando el dispositivo encienda.</string>
-    <string name="FMDConfig_Alert_Password">Contraseña</string>
-    <string name="Settings_Enter_Password">Por favor, ingrese una contraseña.</string>
     <string name="MH_Help_Expert_Sound">" Sonido (on/off) - activa o desactiva el sonido."</string>
     <string name="not_possible">Esta acción no fue posible.</string>
     <string name="MH_Help_Expert_Camera">" Cámara (frontal/posterior) - toma una foto y la envía a FMDserver."</string>

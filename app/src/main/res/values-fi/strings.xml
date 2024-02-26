@@ -1,9 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name" translatable="false">FindMyDevice</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hei tyhjä katkelma</string>
-
     <string name="Introduction_Introduction">FMD on sovellus, joka auttaa löytämään kadonneen puhelimesi.\nSovellus käyttää SMS-viestejä kommunikointiin. Laitetta voit seurata toiselta, kuten ystäväsi, laitteelta.\nKirjoita vain tekstiviesti, joka sisältää "fmd"-komennon.\nSovellus on yhä beta-vaiheessa.\n\n - Nulide</string>
     <string name="Introduction_UpdatePermission">Sovellus vaatii joitain uusia käyttöoikeuksia.\nOle hyvä ja tarkista seuraavat käyttöoikeudet jatkaaksesi sovelluksen käyttöä. Vaihtoehtoisesti voit palata vanhempaan sovellusversioon.</string>
     <string name="Permission_SMS">Sovelluksen tekstiviestiohjausta varten sovellus tarvitsee käyttöoikeuden tekstiviestien lukemiseen.\nViestejä ei koskaan toimiteta eteenpäin ja niitä käytetään vain komentojen toteuttamiseen.</string>
@@ -27,13 +24,9 @@
     <string name="Settings_Pin_Description">Käytetään varmistamiseen ennen laitteen tyhjennystä tai väliaikaista palvelun käyttöä.</string>
     <string name="Settings_Lockscreenmessage_Description">Lukitusnäytön viesti.\nKun laite lukitaan, tämä viesti näkyy lukitusnäytöllä:</string>
     <string name="Settings_FMDCommand_Description">FindMyDevicen ohjaamiseen käytettävä komento.</string>
-    <string name="Settings_PermissionDescription">Tiettyihin toimintoihin vaadittavat käyttöoikeudet</string>
-    <string name="Settings_Permission">Käyttöoikeudet</string>
     <string name="WhiteList_Add_Contact">Lisää yhteystieto</string>
     <string name="Enabled">Käytössä</string>
     <string name="Disabled">Ei käytössä</string>
-    <string name="Main_Title" translatable="false">Info</string>
-    <string name="Toast_Landcode_error">Lisää maakoodi numeroon. (Kuten "+358", "+44"...)</string>
     <string name="Delete">Poista</string>
     <string name="WhiteList_Select_Action">Valitse toiminto:</string>
     <string name="Toast_Duplicate_contact">Yhteystieto on jo olemassa.</string>
@@ -56,8 +49,6 @@
     <string name="MH_Pin_Accepted">PIN-koodi hyväksytty!</string>
     <string name="Alert_First_Time_contact_added">Onneksi olkoon, olet lisännyt ensimmäisen yhteystiedon! Voit nyt kommunikoida FMD:n kanssa lähettämällä yhteystiedon puhelinnumerosta SMS-viestin, joka sisältää komennon \"fmd\". Sovellus vastaa SMS-viestiin.</string>
     <string name="R_Stop_ring">PYSÄYTÄ SOITTO</string>
-    <string name="Settings_Log">Loki</string>
-    <string name="Settings_Show_log">Näytä loki</string>
     <string name="Crashed_Send_log">Lähetä loki</string>
     <string name="MH_No_GPS">Pahoittelut, sijainti on poissa käytöstä.</string>
     <string name="Main_OpenWhiteList" translatable="false">+</string>
@@ -69,7 +60,6 @@
     <string name="Settings_About">Tietoa</string>
     <string name="Settings_Settings">Asetukset</string>
     <string name="Error">Virhe</string>
-    <string name="Main_WhiteListCounterText">Valkoinen lista:</string>
     <string name="OpenCellId_OpenCellId">OpenCelliD</string>
     <string name="Notification_Usage">Käyttö</string>
     <string name="Pin_Usage">PIN-koodin käyttö</string>
@@ -84,22 +74,15 @@
     <string name="FMDConfig_Alert_Pin">PIN</string>
     <string name="Ok">Ok</string>
     <string name="Log_Alert_LogData">Lokitiedot</string>
-    <string name="Sender_End_Of_Msg">---Viestin loppu---</string>
     <string name="Settings_Ringer_Tone_Description">Valitse soittoääni, joka soitetaan fmd ring-komennosta.</string>
     <string name="Settings_Select_Ringtone">Valitse soittoääni</string>
     <string name="WhiteList_Select_Number">Valitse yksi puhelinnumeroista.</string>
-    <string name="Settings_FMDServer_Description">Käyttöönotettuna sovellus lähettää sijainnin valitsemallesi palvelimelle säännöllisesti.</string>
-    <string name="Settings_FMDServer_URL_Description">Palvelimen URL-osoite.</string>
     <string name="Settings_FMDServer">FMD-palvelin</string>
     <string name="Settings_FMDServer_Update_Interval_Description">Aikaväli sijainnin lähettämiseen palvelimelle minuutteina</string>
-    <string name="Settings_FMDServer_ID">FMD-palvelimen ID</string>
     <string name="NOT_AVAILABLE">ei saatavilla</string>
-    <string name="Settings_FMDServer_Register_Button">Rekisteröidy palvelimelle</string>
     <string name="Info_FMD_Command">FMD-Komento:</string>
-    <string name="Info_Permission_Stats">Annetut käyttöoikeudet:</string>
     <string name="Info_Server_Enabled">Palvelin:</string>
     <string name="Info_Server_Registered">Rekisteröity:</string>
-    <string name="value_true">tosi</string>
     <string name="registered">rekisteröity</string>
     <string name="not_registered">ei rekisteröity</string>
     <string name="MH_LAST_KNOWN_LOCATION">Viimeisin sijainti</string>

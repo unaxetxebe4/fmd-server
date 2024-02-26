@@ -173,6 +173,13 @@ public class FMDServerService extends JobService {
     }
 
     public static void scheduleJob(Context context, int time) {
+        Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
+        ComponentHandler ch = new ComponentHandler(settings, context, null, null);
+        if (((Integer) ch.getSettings().get(Settings.SET_FMDSERVER_LOCATION_TYPE)) == 3) {
+            // user requested NOT to upload any location at regular intervals
+            return;
+        }
+
         ComponentName serviceComponent = new ComponentName(context, FMDServerService.class);
         JobInfo.Builder builder = new JobInfo.Builder(JOB_ID, serviceComponent);
         builder.setMinimumLatency(((long) time / 2) * 1000 * 60);
@@ -180,7 +187,6 @@ public class FMDServerService extends JobService {
         JobScheduler jobScheduler = context.getSystemService(JobScheduler.class);
         jobScheduler.schedule(builder.build());
         Logger.logSession("FMDServerService", "scheduled new job");
-
     }
 
     public static void cancelAll(Context context) {
@@ -305,6 +311,12 @@ public class FMDServerService extends JobService {
                     case 1:
                         locateCommand += " cell";
                         break;
+                    case 2:
+                        // no need to change the command
+                        break;
+                    case 3:
+                        // we should not be here...
+                        return true;
                 }
                 ch.getMessageHandler().handle(ch.getSettings().get(Settings.SET_FMD_COMMAND) + locateCommand, this);
             }

@@ -180,6 +180,9 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
     public void afterTextChanged(Editable editable) {
         if (editable == editTextServerUrl.getText()) {
             String url = editable.toString();
+            if (url.endsWith("/")) {
+                url = url.substring(0, url.length() - 1);
+            }
             settings.set(Settings.SET_FMDSERVER_URL, url);
             if (url.isEmpty()) {
                 btnRegister.setEnabled(false);

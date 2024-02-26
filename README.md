@@ -13,6 +13,8 @@ It aims to be a secure open source alternative to Google's FindMyDevice.
 
 The wiki can be found [here](https://gitlab.com/Nulide/findmydevice/-/wikis/home).
 
+The default server can be found [here](https://fmd.nulide.de:1008/), read more about the server integration [here](https://gitlab.com/Nulide/findmydevice/-/wikis/FMD%20Server).
+
 ## Why?
 
 I have lost my  brand new phone last week.
@@ -22,6 +24,10 @@ But why the heck did nobody created an open source application to find a lost de
 If you like and want to support this project, spread the info about this application or donate.
 
 ## Contributors - Translation
+
+Translations are hosted on [Weblate](https://hosted.weblate.org/projects/findmydevice/fmd-android/),
+thanks to their free Libre tier.
+See the translations instructions in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 |       |  |
 | ----------- | ----------- |

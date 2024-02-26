@@ -57,7 +57,7 @@
     <string name="Settings_FMDServer_Update_Interval_Title">Update-Intervall</string>
     <string name="Settings_FMDServer_Update_Interval_Description">FMD lädt den Gerätestandort alle X Minuten hoch.</string>
     <string name="Settings_FMDServer_Location_Type_Title">Standort-Quelle</string>
-    <string name="Settings_FMDServer_Location_Type_Description">Die Quelle dessen Standort hochgeladen werden soll. Wähle mindestens eine.</string>
+    <string name="Settings_FMDServer_Location_Type_Description">Die Quelle(n) dessen Standort regelmäßig im Hintergrund hochgeladen werden soll.\nFalls keine ausgewählt ist werden keine Standorte regelmäßig hochgeladen. (Sie können das Standort-Hochladen weiterhin über das Webinterface erzwingen. Dies benötigt Push.)</string>
     <string name="Settings_FMDServer_LOW_BAT_Upload_Title">Bei Niedrigem Akkustand Hochladen</string>
     <string name="Settings_FMDServer_LOW_BAT_Upload_Description">Lade den Standort hoch wenn der Akkustand niedrig wird. Dies benötigt Benachrichtigungszugriff.</string>
     <string name="password_old">Altes Passwort</string>
