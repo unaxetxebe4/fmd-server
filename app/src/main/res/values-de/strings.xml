@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <!-- Generic -->
     <string name="loading">Laden…</string>
     <string name="help">Hilfe</string>
@@ -11,14 +10,12 @@
     <string name="Edit">Bearbeiten</string>
     <string name="GPS">GPS</string>
     <string name="Cell">Mobilfunkzelle</string>
-
     <!-- MainActivity -->
     <string name="Granted">Zugelassen: </string>
     <string name="Info_Notification_Access">Benachrichtigungszugriff</string>
     <string name="Info_FMD_Command">FMD-Kommando:</string>
     <string name="Info_Server_Enabled">Dienst:</string>
     <string name="Info_Server_Registered">Angemeldet:</string>
-
     <!-- Settings (main screen, with the list) -->
     <string name="Settings_Settings">Einstellungen</string>
     <string name="Settings_FMDConfig">FMD-Einstellungen</string>
@@ -29,7 +26,6 @@
     <string name="Settings_Export">Einstellungen exportieren</string>
     <string name="Settings_Logs">Logs</string>
     <string name="Settings_About">Über</string>
-
     <!-- Settings: General -->
     <string name="Settings_FMD_via_Pin_Description">Erlauben Sie die Kommunikation mit FMD über eine Pin. Sie werden in eine temporäre Whitelist aufgenommen.</string>
     <string name="Settings_Pin_Description">Wird als Bestätigung vor dem Löschen des Geräts oder für eine vorübergehende Nutzung des Dienstes verwendet.</string>
@@ -40,7 +36,6 @@
     <string name="Settings_Ringer_Tone_Description">Wählen Sie einen Klingelton aus, der beim Senden von \"fmd ring\" abgespielt werden soll.</string>
     <string name="Settings_Select_Ringtone">Klingelton auswählen</string>
     <string name="Settings_Lockscreenmessage_Description">Sperrbildschirmnachricht:\nEine Nachricht, welche auf dem Sperrbildschirm angezeigt wird, wenn das Gerät gesperrt wird.</string>
-
     <!-- Settings: FMD Server -->
     <string name="Settings_FMD_Server_General">Allgemein</string>
     <string name="Settings_FMD_Server_Server_URL">Server URL:</string>
@@ -63,7 +58,6 @@
     <string name="password_old">Altes Passwort</string>
     <string name="password_new">Neues Passwort</string>
     <string name="password_new_repeat">Neues Passwort Wiederholen</string>
-
     <!-- FMD Server Registration/Login -->
     <string name="server_version">Server-Version</string>
     <string name="server_version_error">Laden der Server-Version fehlgeschlagen</string>
@@ -79,7 +73,6 @@
     <string name="password_repeat">Password Wiederholen</string>
     <string name="registration_token">Registration Token</string>
     <string name="registration_token_hint">Private Instanzen können ein geheimes Token erfordern. Lassen Sie dieses Feld leer wenn die Instanz öffentlich ist.</string>
-
     <!-- Settings: Allowed Contacts -->
     <string name="Whitelist_help">Die Kontakte in dieser Liste dürfen Ihnen FMD Befehle via SMS schicken. Befehle von allen anderen werden ignoriert.</string>
     <string name="Whitelist_empty">Keine erlaubten Kontakte. Klicken Sie den Button um Kontakte hinzuzufügen!</string>
@@ -87,30 +80,25 @@
     <string name="WhiteList_Select_Action">Wähle eine Aktion:</string>
     <string name="WhiteList_Select_Number">Wählen Sie eine der Telefonnummern aus.</string>
     <string name="Alert_First_Time_contact_added">Herzlichen Glückwunsch! Sie haben Ihren ersten Kontakt hinzugefügt. Sie können nun mit FMD kommunizieren, indem Sie eine SMS mit dem Inhalt \"fmd\" von der erlaubten Telefonnummer senden. Wenn alles funktioniert, wird die Anwendung antworten.</string>
-
     <!-- Settings: OpenCelliD -->
     <string name="OpenCellId_help">FMD kann den Dienst OpenCelliD benutzen um den ungefähren Standort zu bestimmen basierend auf der Mobilfunkzelle mit der das Gerät verbunden ist. Eine Internetverbindung ist benötigt für jede Standortanfrage. Außerdem müssen Sie ein OpenCelliD-Konto anlegen um ein eigenes API Access Token zu bekommen.</string>
     <string name="OpenCellId_privacy">Privatsphäre: bedenke dass OpenCelliD mit jeder API-Anfrage Ihre aktuelle Mobilfunkzelle und somit auch Ihren Standort erfährt.</string>
     <string name="OpenCellId_open_website">OpenCelliD Webseite öffnen</string>
     <string name="OpenCellId_test_opencellid">OpenCelliD-Verbindung Testen</string>
     <string name="OpenCellId_test_no_connection">Keine Mobilfunkverbindung</string>
-
     <!-- Settings: Import/Export -->
     <string name="settings_exported">Einstellungen exportiert</string>
-
     <!-- Settings: Logs -->
 
     <!-- Settings: About -->
     <string name="about">Über</string>
     <string name="about_source_code">Quellcode</string>
     <string name="about_wiki">Wiki</string>
-
     <!-- Crypto Update Boarding -->
     <string name="server_unregister_failed_title">Deregistrierung fehlgeschlagen</string>
     <string name="server_unregister_failed_body">Die Deregistrierung ist mit folgendem Fehler fehlgeschlagen: {ERROR}\n\nSie können trotzdem fortsetzen, aber es könnte sein, dass Ihr Account nicht vom Server gelöscht wurde. Falls Sie fortsetzen wird Ihr Account lokal von diesem Gerät gelöscht.</string>
     <string name="server_unregister_continue_anyway">Trotzdem fortsetzen</string>
     <string name="server_unregister_dont_continue">Nicht fortsetzen</string>
-
     <!-- Permissions -->
 
     <!-- Notification Channels -->
@@ -122,7 +110,6 @@
     <string name="Notification_Pin_Usage_Description">Benachrichtigung über die Nutzung des Pins.</string>
     <string name="Notification_Server">Server</string>
     <string name="NotificationServer_Description">Anzeige der vom Server gesendeten Benachrichtigungen.</string>
-
     <!-- Varia -->
 
     <!-- Not yet sorted -->
@@ -186,5 +173,10 @@
     <string name="About_Help">Hilfe</string>
     <string name="About_Version">FMD-Version:</string>
     <string name="About_Used_APIs">"Benutzte APIs:\n"</string>
-    
+    <string name="Notification_Security">Sicherheit</string>
+    <string name="Notification_FAIL">Fehler</string>
+    <string name="Notification_Fail_Description">Benachrichtigungen wenn etwas fehlschlägt</string>
+    <string name="app_description">Mit FMD (Find My Device) kannst du dein Gerät aus der Ferne orten. Du kannst mit FMD über SMS, Instant Messengers, oder über FMD Server kommunizieren. Orte dein Gerät, lass es klingeln, sperre es, oder setze es auf Werkseinstellungen zurück - alles aus der Ferne.</string>
+    <string name="Notification_Security_Description">Benachrichtigungen bzgl. Sicherheitsupdates</string>
+    <string name="not_possible">Diese Aktion war nicht möglich.</string>
 </resources>
