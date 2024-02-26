@@ -1,8 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
     <string name="Introduction_Introduction">FMD - это приложение, которое может помочь вам найти ваш телефон, если он потеряется.\nПриложение использует SMS (текст) для связи. Вам понадобится второе устройство или друг, чтобы вы могли отследить ваш телефон.\nПросто отправьте SMS-сообщение, которое содержит "fmd" команду.\nПриложение все еще в бета-тесте.\n\n - Nulide</string>
     <string name="Introduction_UpdatePermission">Требуются некоторые разрешения.\nПожалуйста, предоставьте требуемые разрешения для того, чтобы продолжить пользоваться приложением, или вернитесь на предыдущую версию приложения.</string>
     <string name="Permission_SMS">Чтобы приложение FindMyDevice распознавало ваши команды, отправляемые посредством SMS-сообщений, нужно предоставить приложению разрешение просматривать SMS-сообщения. Ваши SMS-сообщения никогда не покинут пределы вашего устройства, и никогда не будут использованы для чего-либо, кроме как для поиска вашего телефона.\nЭто обязательное разрешение.</string>
@@ -15,10 +12,8 @@
     <string name="Introduction_Give_Permission">Дать разрешение</string>
     <string name="Introduction_Next">Далее</string>
     <string name="Locked_Lock_Screen">FindMyDevice\nЭтот телефон заблокирован!\nСообщение от владельца:</string>
-    <string name="About">О приложении</string>
     <string name="About_Text">Спасибо за установку приложения!\nПредстоит еще много работы, но я надеюсь, что это приложение поможет вам в ситуации, в которой оказался я. Терять телефон - плохо, но терять свой телефон из-за того, что нет конфиденциальных приложений, которые могут помочь найти телефон - еще хуже.\nВклад в развитие приложения и пожертвования приветствуются! Просто зайдите в F-Droid и найдите FindMyDevice.\n\n - Nulide</string>
     <string name="About_Used_APIs">Использованные API:\n</string>
-    <string name="Info_Service" translatable="false">FMD</string>
     <string name="Info_CORE" translatable="false">CORE:</string>
     <string name="Info_GPS" translatable="false">GPS:</string>
     <string name="Info_DND" translatable="false">DND:</string>
@@ -29,13 +24,9 @@
     <string name="Settings_Pin_Description">Используется как подтверждение удаления данных устройства или для временного использования сервиса.</string>
     <string name="Settings_Lockscreenmessage_Description">Сообщение на заблокированном экране:\nКогда устройство заблокируется, это сообщение появится на экране.</string>
     <string name="Settings_FMDCommand_Description">Эта команда используется для связи с FindMyDevice.</string>
-    <string name="Settings_PermissionDescription">Разрешения требуются для определенных возможностей</string>
-    <string name="Settings_Permission">Разрешения</string>
     <string name="WhiteList_Add_Contact">Добавить контакт</string>
     <string name="Enabled">Включено</string>
     <string name="Disabled">Отключено</string>
-    <string name="Main_Title" translatable="false">Info</string>
-    <string name="Toast_Landcode_error">Пожалуйста, допишите код страны к номеру телефона. (Например "+7", "+44", ...)</string>
     <string name="Delete">Удалить</string>
     <string name="WhiteList_Select_Action">Выберите действие:</string>
     <string name="Toast_Duplicate_contact">Этот контакт уже существует.</string>
@@ -59,12 +50,9 @@
     <string name="MH_Pin_Accepted">Pin принят!</string>
     <string name="Alert_First_Time_contact_added">Поздравляем. Вы добавили ваш первый контакт. Теперь вы можете связываться с fmd при помощи SMS-сообщения с текстом \"fmd\" от разрешенных номеров. Если все работает как надо, то приложение должно ответить вам SMS-сообщением.</string>
     <string name="R_Stop_ring">ОСТАНОВИТЬ ЗВОНОК</string>
-    <string name="Settings_Log">Лог</string>
-    <string name="Settings_Show_log">Показать Лог</string>
     <string name="Crashed_Send_log">Отправить Лог</string>
     <string name="MH_No_GPS">Извините, геолокация отключена.</string>
     <string name="About_Version">Версия FMD:</string>
-    <string name="Main_OpenWhiteList" translatable="false">+</string>
     <string name="Settings_FMDConfig">Конфигурация FMD</string>
     <string name="Settings_WhiteList">Белый Список</string>
     <string name="Settings_OpenCellId">OpenCelliD</string>
@@ -73,7 +61,6 @@
     <string name="Settings_About">О приложении</string>
     <string name="Settings_Settings">Настройки</string>
     <string name="Error">Ошибка</string>
-    <string name="Main_WhiteListCounterText">Белый список:</string>
     <string name="OpenCellId_OpenCellId">OpenCelliD</string>
     <string name="Notification_Usage">Использование</string>
     <string name="Pin_Usage">Использование Pin</string>
@@ -88,7 +75,6 @@
     <string name="FMDConfig_Alert_Pin">PIN</string>
     <string name="Ok">Ок</string>
     <string name="Log_Alert_LogData">Log-Данные</string>
-    <string name="Sender_End_Of_Msg">---Конец сообщения---</string>
     <string name="Settings_Ringer_Tone_Description">Выберите рингтон, который будет играть, когда fmd-звонок будет отправлен.</string>
     <string name="Settings_Select_Ringtone">Выберите рингтон</string>
     <string name="WhiteList_Select_Number">Выберите один из номеров.</string>
