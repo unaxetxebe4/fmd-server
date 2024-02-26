@@ -92,7 +92,9 @@
 \nIP-er:
 \n</string>
     <string name="MH_Networks">"
+\n
 \nTilgjengelige Wi-Fi-nettverk:
+\n
 \n"</string>
     <string name="MH_Delete">Adjø …</string>
     <string name="MH_False_Pin">Feil PIN.</string>
