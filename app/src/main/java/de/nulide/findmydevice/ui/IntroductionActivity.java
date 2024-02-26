@@ -62,7 +62,7 @@ public class IntroductionActivity extends AppCompatActivity implements View.OnCl
     public void updateViews() {
         switch (position) {
             case 0:
-                buttonGivePermission.setText(getString(R.string.About_Help));
+                buttonGivePermission.setText(getString(R.string.about_wiki));
                 if ((Integer) Settings.get(Settings.SET_INTRODUCTION_VERSION) > 0) {
                     textViewInfoText.setText(getString(R.string.Introduction_UpdatePermission));
                 } else {

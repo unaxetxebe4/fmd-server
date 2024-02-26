@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'com.mikepenz.aboutlibraries.plugin'
 }
 
 android {
@@ -81,6 +82,13 @@ dependencies {
     implementation 'com.github.UnifiedPush:android-connector:2.1.1'
     implementation "org.apache.maven:maven-artifact:3.9.4" // for semantic versions
     implementation 'org.bouncycastle:bcprov-jdk18on:1.76'
+
+    // https://github.com/mikepenz/AboutLibraries/issues/881
+    //implementation "com.mikepenz:aboutlibraries:10.8.3"
+    implementation "com.mikepenz:aboutlibraries-core-android:10.8.3"
+    implementation("com.mikepenz:aboutlibraries:10.8.3") {
+        exclude group: 'com.mikepenz', module: 'aboutlibraries-core'
+    }
 
     // XXX: only used by javax.xml.bind.DatatypeConverter
     implementation 'jakarta.xml.bind:jakarta.xml.bind-api:2.3.2'

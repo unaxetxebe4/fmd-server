@@ -1,29 +1,25 @@
 package de.nulide.findmydevice.ui.settings;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.content.Intent;
-import android.content.IntentSender;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.ParcelFileDescriptor;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mikepenz.aboutlibraries.LibsBuilder;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.util.List;
 
 import de.nulide.findmydevice.R;
@@ -36,86 +32,68 @@ import de.nulide.findmydevice.ui.LogActivity;
 import de.nulide.findmydevice.ui.helper.SettingsEntry;
 import de.nulide.findmydevice.ui.helper.SettingsViewAdapter;
 
-public class SettingsActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
-
-    private ListView listSettings;
-
-    private List<SettingsEntry> settingsEntries;
+public class SettingsActivity extends AppCompatActivity {
 
     private final int EXPORT_REQ_CODE = 30;
-
     private final int IMPORT_REQ_CODE = 40;
-
-    private Settings settings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
+        List<SettingsEntry> settingsEntries = SettingsEntry.getSettingsEntries(this);
 
-        settingsEntries = SettingsEntry.getSettingsEntries(this);
-
-        listSettings = findViewById(R.id.listSettings);
+        ListView listSettings = findViewById(R.id.listSettings);
         listSettings.setAdapter(new SettingsViewAdapter(this, settingsEntries));
-        listSettings.setOnItemClickListener(this);
+        listSettings.setOnItemClickListener(this::onItemClick);
     }
 
-    @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
+        Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
 
         Intent settingIntent = null;
-        switch(position){
+        switch (position) {
             case 0:
                 settingIntent = new Intent(this, FMDConfigActivity.class);
                 break;
             case 1:
-                if(settings.isEmpty(Settings.SET_FMDSERVER_ID)){
+                if (settings.isEmpty(Settings.SET_FMDSERVER_ID)) {
                     settingIntent = new Intent(this, AddAccountActivity.class);
-                }else {
+                } else {
                     settingIntent = new Intent(this, FMDServerActivity.class);
                 }
                 break;
             case 2:
                 settingIntent = new Intent(this, WhiteListActivity.class);
                 break;
-
             case 3:
                 settingIntent = new Intent(this, OpenCellIdActivity.class);
                 break;
-
             case 4:
                 settingIntent = new Intent(this, IntroductionActivity.class);
                 settingIntent.putExtra(IntroductionActivity.POS_KEY, 1);
                 break;
-
             case 5:
-                settingIntent = null;
                 Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
                 intent.putExtra(Intent.EXTRA_TITLE, IO.settingsFileName);
                 intent.setType("*/*");
                 startActivityForResult(intent, EXPORT_REQ_CODE);
                 break;
-
             case 6:
-                settingIntent = null;
                 intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
                 intent.setType("*/*");
                 startActivityForResult(intent, IMPORT_REQ_CODE);
-
                 break;
-
             case 7:
                 settingIntent = new Intent(this, LogActivity.class);
                 break;
-
             case 8:
-                settingIntent = new Intent(this, AboutActivity.class);
+                String activityTitle = getString(R.string.Settings_About);
+                settingIntent = new LibsBuilder().withActivityTitle(activityTitle).withListener(AboutLibsListener.listener).intent(this);
                 break;
         }
-        if(settingIntent != null){
+        if (settingIntent != null) {
             startActivity(settingIntent);
         }
     }
@@ -124,9 +102,8 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == IMPORT_REQ_CODE && resultCode == Activity.RESULT_OK) {
-            Uri uri = null;
             if (data != null) {
-                uri = data.getData();
+                Uri uri = data.getData();
                 try {
                     InputStream inputStream = getContentResolver().openInputStream(uri);
 

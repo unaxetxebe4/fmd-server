@@ -24,4 +24,11 @@
         <item name="android:textAlignment">textStart</item>
     </style>
 
+    <!-- TODO: AboutLibraries requires Material3 with NoActionBar. Remove this style when the app theme uses Material3 -->
+    <style name="CustomAboutLibrariesStyle" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
 </resources>

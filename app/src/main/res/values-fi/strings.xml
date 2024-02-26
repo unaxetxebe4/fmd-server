@@ -13,8 +13,7 @@
     <string name="Introduction_Give_Permission">Myönnä käyttöoikeus</string>
     <string name="Introduction_Next">Seuraava</string>
     <string name="Locked_Lock_Screen">FindMyDevice\nTämä puhelin on lukittu!\nViesti omistajalta:</string>
-    <string name="About_Text">Kiitos sovelluksen lataamisesta!\nVaikka sovelluksessa on vielä paljon kehitettävää, toivon että se auttaa sinua, jos joudut samaan tilanteeseen kuin minä. Puhelimen hävittäminen on tylsää, mutta puhelimen hävittäminen sen vuoksi ettei ole yksityisyyttä kunnioittavia sovelluksia sen löytämiseen on vielä pahempaa.\nKontribuutiot ja lahjoitukset ovat tervetulleita! Mene vain F-Droidiin ja etsi sovellukseni.\n\n - Nulide</string>
-    <string name="About_Used_APIs">Käytetyt API:t:\n</string>
+    <string name="Info_Service" translatable="false">FMD</string>
     <string name="Info_CORE" translatable="false">CORE:</string>
     <string name="Info_GPS" translatable="false">GPS:</string>
     <string name="Info_DND" translatable="false">DND:</string>
@@ -45,7 +44,6 @@
     <string name="MH_Help_Lock">" lock - lukitsee puhelimen"</string>
     <string name="MH_Help_Stats">" stats - lähettää laitteen tiedot"</string>
     <string name="MH_Help_delete">" delete - nollaa puhelimen"</string>
-    <string name="About_Help">Ohje</string>
     <string name="Settings_FMD_via_Pin_Description">Kommunikoi FMD:n kanssa PIN-koodia käyttäen. Sinut lisätään väliaikaiselle valkoiselle listalle.</string>
     <string name="Settings_Enter_Pin">Syötä PIN-koodi</string>
     <string name="MH_Pin_Accepted">PIN-koodi hyväksytty!</string>
@@ -53,7 +51,7 @@
     <string name="R_Stop_ring">PYSÄYTÄ SOITTO</string>
     <string name="Crashed_Send_log">Lähetä loki</string>
     <string name="MH_No_GPS">Pahoittelut, sijainti on poissa käytöstä.</string>
-    <string name="About_Version">FMD:n versio:</string>
+    <string name="Main_OpenWhiteList" translatable="false">+</string>
     <string name="Settings_FMDConfig">FMD-SMS</string>
     <string name="Settings_WhiteList">Valkoinen lista</string>
     <string name="Settings_OpenCellId">OpenCelliD</string>

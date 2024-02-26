@@ -12,8 +12,7 @@
     <string name="Introduction_Give_Permission">Дать разрешение</string>
     <string name="Introduction_Next">Далее</string>
     <string name="Locked_Lock_Screen">FindMyDevice\nЭтот телефон заблокирован!\nСообщение от владельца:</string>
-    <string name="About_Text">Спасибо за установку приложения!\nПредстоит еще много работы, но я надеюсь, что это приложение поможет вам в ситуации, в которой оказался я. Терять телефон - плохо, но терять свой телефон из-за того, что нет конфиденциальных приложений, которые могут помочь найти телефон - еще хуже.\nВклад в развитие приложения и пожертвования приветствуются! Просто зайдите в F-Droid и найдите FindMyDevice.\n\n - Nulide</string>
-    <string name="About_Used_APIs">Использованные API:\n</string>
+    <string name="Info_Service" translatable="false">FMD</string>
     <string name="Info_CORE" translatable="false">CORE:</string>
     <string name="Info_GPS" translatable="false">GPS:</string>
     <string name="Info_DND" translatable="false">DND:</string>
@@ -44,7 +43,6 @@
     <string name="MH_Help_Lock">" lock - блокирует телефон"</string>
     <string name="MH_Help_Stats">" stats - отправляет информацию о телефоне"</string>
     <string name="MH_Help_delete">" delete - удаляет данные телефона"</string>
-    <string name="About_Help">Помощь</string>
     <string name="Settings_FMD_via_Pin_Description">Разрешить связываться с FMD при помощи pin. Вы будете временно добавлены в Белый Список.</string>
     <string name="Settings_Enter_Pin">Введите Pin</string>
     <string name="MH_Pin_Accepted">Pin принят!</string>
@@ -52,7 +50,7 @@
     <string name="R_Stop_ring">ОСТАНОВИТЬ ЗВОНОК</string>
     <string name="Crashed_Send_log">Отправить Лог</string>
     <string name="MH_No_GPS">Извините, геолокация отключена.</string>
-    <string name="About_Version">Версия FMD:</string>
+    <string name="Main_OpenWhiteList" translatable="false">+</string>
     <string name="Settings_FMDConfig">Конфигурация FMD</string>
     <string name="Settings_WhiteList">Белый Список</string>
     <string name="Settings_OpenCellId">OpenCelliD</string>
