@@ -23,6 +23,10 @@ If you like and want to support this project, spread the info about this applica
 
 ## Contributors - Translation
 
+Translations are hosted on [Weblate](https://hosted.weblate.org/projects/findmydevice/fmd-android/),
+thanks to their free Libre tier.
+See the translations instructions in [CONTRIBUTING.md](CONTRIBUTING.md).
+
 |       |  |
 | ----------- | ----------- |
 | John - [2br-2b](https://gitlab.com/2br-2b)    | nvallas - [nvallas](https://gitlab.com/nvallas)       |
