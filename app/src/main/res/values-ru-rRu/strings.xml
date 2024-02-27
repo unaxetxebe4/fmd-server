@@ -12,7 +12,6 @@
     <string name="Introduction_Give_Permission">Дать разрешение</string>
     <string name="Introduction_Next">Далее</string>
     <string name="Locked_Lock_Screen">FindMyDevice\nЭтот телефон заблокирован!\nСообщение от владельца:</string>
-    <string name="Info_Service" translatable="false">FMD</string>
     <string name="Info_CORE" translatable="false">CORE:</string>
     <string name="Info_GPS" translatable="false">GPS:</string>
     <string name="Info_DND" translatable="false">DND:</string>
@@ -50,7 +49,6 @@
     <string name="R_Stop_ring">ОСТАНОВИТЬ ЗВОНОК</string>
     <string name="Crashed_Send_log">Отправить Лог</string>
     <string name="MH_No_GPS">Извините, геолокация отключена.</string>
-    <string name="Main_OpenWhiteList" translatable="false">+</string>
     <string name="Settings_FMDConfig">Конфигурация FMD</string>
     <string name="Settings_WhiteList">Белый Список</string>
     <string name="Settings_OpenCellId">OpenCelliD</string>
