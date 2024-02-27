@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -10,29 +11,36 @@
         android:layout_marginVertical="16dp"
         android:orientation="vertical">
 
-        <TextView
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/pin" />
+            app:passwordToggleEnabled="true">
 
-        <EditText
-            android:id="@+id/editTextPin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/margin_normal"
-            android:inputType="textPassword" />
+            <EditText
+                android:id="@+id/editTextPin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_normal"
+                android:autofillHints="password"
+                android:hint="@string/pin"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/pin_repeat" />
+            android:layout_marginTop="@dimen/margin_small"
+            app:passwordToggleEnabled="true">
 
-        <EditText
-            android:id="@+id/editTextPinRepeat"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/margin_normal"
-            android:inputType="textPassword" />
+            <EditText
+                android:id="@+id/editTextPinRepeat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_normal"
+                android:autofillHints="password"
+                android:hint="@string/pin_repeat"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
 </ScrollView>
