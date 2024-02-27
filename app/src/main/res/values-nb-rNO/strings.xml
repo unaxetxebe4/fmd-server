@@ -97,10 +97,6 @@
     <string name="MH_Delete">Adjø …</string>
     <string name="MH_False_Pin">Feil PIN.</string>
     <string name="MH_NO_SECURE_SETTINGS">Programmet tillates ikke å gjøre dette.</string>
-    <string name="About_Used_APIs">Anvendte API-er:
-\n</string>
-    <string name="About_Version">FMD-versjon:</string>
-    <string name="About_Help">Hjelp</string>
     <string name="MH_CAM_CAPTURE">"Enheten vil snart sende et bilde til FMD-tjeneren. Du kan se det her snart: "</string>
     <string name="MH_FMDSERVER_NOT_REGISTERED">Enheten er ikke registrert på en tjener.</string>
     <string name="Settings_Logs">Loggføring</string>
