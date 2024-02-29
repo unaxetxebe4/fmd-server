@@ -1,6 +1,7 @@
 # FindMyDevice (FMD)
 
-Find your device via SMS, instant messengers, or a web interface (FMD Server).
+Find your device via SMS, instant messengers, or a web interface
+([FMD Server](https://gitlab.com/Nulide/findmydeviceserver)).
 
 FMD allows you to track, wipe and issue other commands to your device when it's lost.
 It aims to be a secure open source alternative to Google's FindMyDevice.
@@ -13,7 +14,8 @@ It aims to be a secure open source alternative to Google's FindMyDevice.
 
 The wiki can be found [here](https://gitlab.com/Nulide/findmydevice/-/wikis/home).
 
-The default server can be found [here](https://fmd.nulide.de:1008/), read more about the server integration [here](https://gitlab.com/Nulide/findmydevice/-/wikis/FMD%20Server).
+You can read more about FMD Server [here](https://gitlab.com/Nulide/findmydevice/-/wikis/FMD%20Server).
+The default server can be found [here](https://fmd.nulide.de:1008/).
 
 ## Why?
 
