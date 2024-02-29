@@ -2,12 +2,13 @@
     <string name="app_name" translatable="false">FindMyDevice</string>
 
     <!-- Generic -->
+    <string name="Ok" translatable="false">@android:string/ok</string>
     <string name="loading">Loading…</string>
     <string name="help">Help</string>
     <string name="copied">Copied</string>
-    <string name="paste">@android:string/paste</string>
+    <string name="paste" translatable="false">@android:string/paste</string>
     <string name="accept">accept</string>
-    <string name="cancel">@android:string/cancel</string>
+    <string name="cancel" translatable="false">@android:string/cancel</string>
     <string name="Edit">Edit</string>
     <string name="GPS">GPS</string>
     <string name="Cell">Cell</string>
@@ -140,7 +141,6 @@
     <string name="Notification_Security_Description">Notifications about security updates</string>
     <string name="Notification_FAIL">Fail</string>
     <string name="Notification_Fail_Description">Notification when something fails, like the connection to fmd server.</string>
-    <string name="Notification_ForegroundService">Notification for specific services that will run in the background. Like camera, ...</string>
 
     <!-- Varia -->
 
@@ -190,7 +190,6 @@
     <string name="LockScreen_Backbutton_pressed">LockScreenMessage: Back-Button pressed.</string>
     <string name="Toast_Empty_FMDCommand">Empty Command not allowed\n Returning to default.[fmd]</string>
     <string name="FMDConfig_Alert_Pin">PIN</string>
-    <string name="Ok">Ok</string>
     <string name="Log_Alert_LogData">LogData</string>
     <string name="NOT_AVAILABLE">Not Available</string>
     <string name="Available">Available</string>

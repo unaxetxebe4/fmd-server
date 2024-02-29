@@ -5,15 +5,17 @@
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
-    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
-    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -46,6 +48,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:replace="android:allowBackup">
+
         <activity
             android:name=".ui.settings.AddAccountActivity"
             android:exported="false"
@@ -145,12 +148,10 @@
         <service
             android:name=".services.FMDServerService"
             android:exported="true"
-            android:foregroundServiceType="location"
             android:permission="android.permission.BIND_JOB_SERVICE" />
         <service
             android:name=".services.FMDServerCommandService"
             android:exported="true"
-            android:foregroundServiceType="location"
             android:permission="android.permission.BIND_JOB_SERVICE" />
         <service
             android:name=".services.TempContactExpiredService"
@@ -166,13 +167,11 @@
             android:name=".services.FMDSMSService"
             android:enabled="true"
             android:exported="true"
-            android:foregroundServiceType="location"
             android:permission="android.permission.BIND_JOB_SERVICE" />
         <service
             android:name=".services.ThirdPartyAccessService"
             android:enabled="true"
             android:exported="true"
-            android:foregroundServiceType="location"
             android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
             <intent-filter>
                 <action android:name="android.service.notification.NotificationListenerService" />

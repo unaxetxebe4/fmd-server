@@ -1,6 +1,5 @@
 package de.nulide.findmydevice.utils;
 
-import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -25,8 +24,6 @@ public class Notifications {
 
     public static final int CHANNEL_FAILED = 47;
 
-    public static final int CHANNEL_FOREGROUND_SERVICE = 99;
-
     private static boolean silent;
 
 
@@ -49,11 +46,6 @@ public class Notifications {
         }
     }
 
-    public static Notification.Builder getForegroundNotification(Context context){
-        return new Notification.Builder(context,new Integer(CHANNEL_FOREGROUND_SERVICE).toString())
-                .setSmallIcon(R.mipmap.ic_launcher);
-    }
-
     public static void init(Context context, boolean silentWish) {
         silent = silentWish;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -69,8 +61,6 @@ public class Notifications {
             channel5.setDescription(context.getString(R.string.Notification_Security_Description));
             NotificationChannel channel6 = new NotificationChannel(new Integer(CHANNEL_FAILED).toString(), context.getString(R.string.Notification_FAIL), NotificationManager.IMPORTANCE_HIGH);
             channel6.setDescription(context.getString(R.string.Notification_Fail_Description));
-            NotificationChannel channel99 = new NotificationChannel(new Integer(CHANNEL_FOREGROUND_SERVICE).toString(), "ForegroundTask",  NotificationManager.IMPORTANCE_HIGH);
-            channel99.setDescription(context.getString(R.string.Notification_ForegroundService));
 
             NotificationManager notificationManager = context.getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel1);
@@ -79,7 +69,6 @@ public class Notifications {
             notificationManager.createNotificationChannel(channel4);
             notificationManager.createNotificationChannel(channel5);
             notificationManager.createNotificationChannel(channel6);
-            notificationManager.createNotificationChannel(channel99);
         }
     }
 
