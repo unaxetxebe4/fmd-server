@@ -83,7 +83,8 @@
     <string name="Settings_FMDServer_Alert_PrivacyPolicy_Title">Política de Privacidad</string>
     <string name="accept">aceptar</string>
     <string name="cancel">cancelar</string>
-    <string name="Settings_FMDServer_Location_Type_Description">Por favor, seleccione los datos de localización que desea enviar al servidor. (Es necesario seleccionar uno)</string>
+    <string name="Settings_FMDServer_Location_Type_Description">La(s) fuente(s) desde la(s) que se carga(n) los datos de localización a intervalos regulares en segundo plano.
+\nSi no se selecciona ninguna, no se cargarán localizaciones regularmente. (Puede seguir utilizando la interfaz web para forzar una carga. Esto requiere push).</string>
     <string name="GPS">GPS</string>
     <string name="Cell">Celular</string>
     <string name="MH_Help_Expert_GPS">" GPS (on/off) - activa o desactiva el GPS"</string>
