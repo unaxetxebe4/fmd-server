@@ -1,5 +1,6 @@
 package de.nulide.findmydevice.logic.command.helper;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiManager;
@@ -20,7 +21,7 @@ public class Network {
         wifiManager.setWifiEnabled(true);
         wifiManager.startScan();
 
-        List<ScanResult> results = wifiManager.getScanResults();
+        @SuppressLint("MissingPermission") List<ScanResult> results = wifiManager.getScanResults();
         return results;
     }
 

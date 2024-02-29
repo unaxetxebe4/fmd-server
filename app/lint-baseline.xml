@@ -1,0 +1,3678 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<issues format="6" by="lint 8.2.2" type="baseline" client="gradle" dependencies="false" name="AGP (8.2.2)" variant="all" version="8.2.2">
+
+    <issue
+        id="DefaultLocale"
+        message="Implicitly using the default locale is a common source of bugs: Use `toLowerCase(Locale)` instead. For strings meant to be internal use `Locale.ROOT`, otherwise `Locale.getDefault()`."
+        errorLine1="                settings.set(Settings.SET_FMD_COMMAND, edited.toString().toLowerCase());"
+        errorLine2="                                                                         ~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/nulide/findmydevice/ui/settings/FMDConfigActivity.java"
+            line="117"
+            column="74"/>
+    </issue>
+
+    <issue
+        id="DefaultLocale"
+        message="Implicitly using the default locale is a common source of bugs: Use `toLowerCase(Locale)` instead. For strings meant to be internal use `Locale.ROOT`, otherwise `Locale.getDefault()`."
+        errorLine1="        msg = msg.toLowerCase();"
+        errorLine2="                  ~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/nulide/findmydevice/logic/MessageHandler.java"
+            line="50"
+            column="19"/>
+    </issue>
+
+    <issue
+        id="DefaultLocale"
+        message="Implicitly using the default locale is a common source of bugs: Use `toLowerCase(Locale)` instead. For strings meant to be internal use `Locale.ROOT`, otherwise `Locale.getDefault()`."
+        errorLine1="                String msgLower = msg.toLowerCase();"
+        errorLine2="                                      ~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/nulide/findmydevice/services/ThirdPartyAccessService.java"
+            line="64"
+            column="39"/>
+    </issue>
+
+    <issue
+        id="InlinedApi"
+        message="Field requires API level 23 (current min is 21): `android.app.NotificationManager#INTERRUPTION_FILTER_ALL`"
+        errorLine1="                        nm.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_ALL);"
+        errorLine2="                                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/nulide/findmydevice/logic/MessageHandler.java"
+            line="196"
+            column="50"/>
+    </issue>
+
+    <issue
+        id="InlinedApi"
+        message="Field requires API level 23 (current min is 21): `android.app.NotificationManager#INTERRUPTION_FILTER_NONE`"
+        errorLine1="                        nm.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_NONE);"
+        errorLine2="                                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/nulide/findmydevice/logic/MessageHandler.java"
+            line="198"
+            column="50"/>
+    </issue>
+
+    <issue
+        id="InlinedApi"
+        message="Field requires API level 29 (current min is 21): `android.Manifest.permission#ACCESS_BACKGROUND_LOCATION`"
+        errorLine1="        ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.ACCESS_BACKGROUND_LOCATION}, PERM_GPS_ID);"
+        errorLine2="                                                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/nulide/findmydevice/utils/Permission.java"
+            line="105"
+            column="66"/>
+    </issue>
+
+    <issue
+        id="InlinedApi"
+        message="Field requires API level 23 (current min is 21): `android.provider.Settings#ACTION_MANAGE_OVERLAY_PERMISSION`"
+        errorLine1="            Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse(&quot;package:&quot; + activity.getPackageName()));"
+        errorLine2="                                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/nulide/findmydevice/utils/Permission.java"
+            line="123"
+            column="40"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level 23 (current min is 21): `android.content.Context#getSystemService`"
+        errorLine1="        JobScheduler jobScheduler = context.getSystemService(JobScheduler.class);"
+        errorLine2="                                            ~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/nulide/findmydevice/services/GPSTimeOutService.java"
+            line="60"
+            column="45"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level 24 (current min is 21): `android.app.job.JobScheduler#getPendingJob`"
+        errorLine1="        if(jobScheduler.getPendingJob(JOB_ID) != null) {"
+        errorLine2="                        ~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/nulide/findmydevice/services/GPSTimeOutService.java"
+            line="61"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level 23 (current min is 21): `android.app.NotificationManager#setInterruptionFilter`"
+        errorLine1="                        nm.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_ALL);"
+        errorLine2="                           ~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/nulide/findmydevice/logic/MessageHandler.java"
+            line="196"
+            column="28"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level 23 (current min is 21): `android.app.NotificationManager#setInterruptionFilter`"
+        errorLine1="                        nm.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_NONE);"
+        errorLine2="                           ~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/nulide/findmydevice/logic/MessageHandler.java"
+            line="198"
+            column="28"/>
+    </issue>
+
+    <issue
+        id="Range"
+        message="Value must be ≥ 0 but `getColumnIndex` can be -1"
+        errorLine1="                        String phoneNumber = c.getString(c.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));"
+        errorLine2="                                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/nulide/findmydevice/ui/settings/WhiteListActivity.java"
+            line="146"
+            column="58"/>
+    </issue>
+
+    <issue
+        id="Range"
+        message="Value must be ≥ 0 but `getColumnIndex` can be -1"
+        errorLine1="                            String cNumber = c.getString(c.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));"
+        errorLine2="                                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/nulide/findmydevice/ui/settings/WhiteListActivity.java"
+            line="152"
+            column="58"/>
+    </issue>
+
+    <issue
+        id="Range"
+        message="Value must be ≥ 0 but `getColumnIndex` can be -1"
+        errorLine1="                            String cName = c.getString(c.getColumnIndex(ContactsContract.Data.DISPLAY_NAME));"
+        errorLine2="                                                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/nulide/findmydevice/ui/settings/WhiteListActivity.java"
+            line="153"
+            column="56"/>
+    </issue>
+
+    <issue
+        id="ShowToast"
+        message="Toast created but not shown: did you forget to call `show()`?"
+        errorLine1="                    Toast.makeText(this, getString(R.string.not_possible), Toast.LENGTH_LONG);"
+        errorLine2="                    ~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/nulide/findmydevice/ui/settings/WhiteListActivity.java"
+            line="102"
+            column="21"/>
+    </issue>
+
+    <issue
+        id="UnusedAttribute"
+        message="Attribute `dataExtractionRules` is only used in API level 31 and higher (current min is 21)"
+        errorLine1="        android:dataExtractionRules=&quot;@xml/data_extraction_rules&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="42"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="UnusedAttribute"
+        message="Attribute `usesCleartextTraffic` is only used in API level 23 and higher (current min is 21)"
+        errorLine1="        android:usesCleartextTraffic=&quot;true&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="49"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="UnusedAttribute"
+        message="Attribute `showWhenLocked` is only used in API level 27 and higher (current min is 21)"
+        errorLine1="            android:showWhenLocked=&quot;true&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="60"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedAttribute"
+        message="Attribute `turnScreenOn` is only used in API level 27 and higher (current min is 21)"
+        errorLine1="            android:turnScreenOn=&quot;true&quot; />"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="62"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedAttribute"
+        message="Attribute `showWhenLocked` is only used in API level 27 and higher (current min is 21)"
+        errorLine1="            android:showWhenLocked=&quot;true&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="91"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedAttribute"
+        message="Attribute `turnScreenOn` is only used in API level 27 and higher (current min is 21)"
+        errorLine1="            android:turnScreenOn=&quot;true&quot; />"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="92"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedAttribute"
+        message="Attribute `directBootAware` is only used in API level 24 and higher (current min is 21)"
+        errorLine1="            android:directBootAware=&quot;true&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="123"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedAttribute"
+        message="Attribute `directBootAware` is only used in API level 24 and higher (current min is 21)"
+        errorLine1="            android:directBootAware=&quot;true&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="132"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="BatteryLife"
+        message="Use of `REQUEST_IGNORE_BATTERY_OPTIMIZATIONS` violates the Play Store Content Policy regarding acceptable use cases, as described in https://developer.android.com/training/monitoring-device-state/doze-standby.html"
+        errorLine1="                intent.setAction(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS);"
+        errorLine2="                                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/nulide/findmydevice/utils/Permission.java"
+            line="153"
+            column="43"/>
+    </issue>
+
+    <issue
+        id="InflateParams"
+        message="Avoid passing `null` as the view root (needed to resolve layout parameters on the inflated layout&apos;s root element)"
+        errorLine1="        view = inflater.inflate(R.layout.settings_item, null);"
+        errorLine2="                                                        ~~~~">
+        <location
+            file="src/main/java/de/nulide/findmydevice/ui/helper/SettingsViewAdapter.java"
+            line="42"
+            column="57"/>
+    </issue>
+
+    <issue
+        id="InflateParams"
+        message="Avoid passing `null` as the view root (needed to resolve layout parameters on the inflated layout&apos;s root element)"
+        errorLine1="        view = inflater.inflate(R.layout.whitelist_item, null);"
+        errorLine2="                                                         ~~~~">
+        <location
+            file="src/main/java/de/nulide/findmydevice/ui/helper/WhiteListViewAdapter.java"
+            line="41"
+            column="58"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.core:core-ktx than 1.10.1 is available: 1.12.0"
+        errorLine1="    implementation &apos;androidx.core:core-ktx:1.10.1&apos;"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="68"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.fragment:fragment-ktx than 1.6.1 is available: 1.6.2"
+        errorLine1="    implementation &quot;androidx.fragment:fragment-ktx:1.6.1&quot;"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="71"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.lifecycle:lifecycle-viewmodel-ktx than 2.6.1 is available: 2.7.0"
+        errorLine1="    implementation &apos;androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1&apos;"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="73"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.camera:camera-core than 1.2.3 is available: 1.3.1"
+        errorLine1="    implementation &quot;androidx.camera:camera-core:${camerax_version}&quot;"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="78"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.camera:camera-camera2 than 1.2.3 is available: 1.3.1"
+        errorLine1="    implementation &quot;androidx.camera:camera-camera2:${camerax_version}&quot;"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="79"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.camera:camera-lifecycle than 1.2.3 is available: 1.3.1"
+        errorLine1="    implementation &quot;androidx.camera:camera-lifecycle:${camerax_version}&quot;"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="80"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.camera:camera-video than 1.2.3 is available: 1.3.1"
+        errorLine1="    implementation &quot;androidx.camera:camera-video:${camerax_version}&quot;"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="81"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.camera:camera-view than 1.2.3 is available: 1.3.1"
+        errorLine1="    implementation &quot;androidx.camera:camera-view:${camerax_version}&quot;"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="82"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.camera:camera-extensions than 1.2.3 is available: 1.3.1"
+        errorLine1="    implementation &quot;androidx.camera:camera-extensions:${camerax_version}&quot;"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="83"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of com.google.android.material:material than 1.9.0 is available: 1.11.0"
+        errorLine1="    implementation &apos;com.google.android.material:material:1.9.0&apos;"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="92"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="InOrMmUsage"
+        message="Avoid using &quot;`mm`&quot; as units (it does not work accurately on all devices); use &quot;`dp`&quot; instead"
+        errorLine1="            android:layout_marginTop=&quot;1mm&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_add_account.xml"
+            line="39"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InOrMmUsage"
+        message="Avoid using &quot;`mm`&quot; as units (it does not work accurately on all devices); use &quot;`dp`&quot; instead"
+        errorLine1="                android:layout_margin=&quot;2mm&quot;"
+        errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_crashed.xml"
+            line="24"
+            column="17"/>
+    </issue>
+
+    <issue
+        id="InOrMmUsage"
+        message="Avoid using &quot;`mm`&quot; as units (it does not work accurately on all devices); use &quot;`dp`&quot; instead"
+        errorLine1="                android:layout_margin=&quot;2mm&quot;"
+        errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_crashed.xml"
+            line="32"
+            column="17"/>
+    </issue>
+
+    <issue
+        id="InOrMmUsage"
+        message="Avoid using &quot;`mm`&quot; as units (it does not work accurately on all devices); use &quot;`dp`&quot; instead"
+        errorLine1="            android:layout_margin=&quot;3mm&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_introduction.xml"
+            line="21"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InOrMmUsage"
+        message="Avoid using &quot;`mm`&quot; as units (it does not work accurately on all devices); use &quot;`dp`&quot; instead"
+        errorLine1="            android:layout_margin=&quot;2mm&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_introduction.xml"
+            line="37"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InOrMmUsage"
+        message="Avoid using &quot;`mm`&quot; as units (it does not work accurately on all devices); use &quot;`dp`&quot; instead"
+        errorLine1="            android:layout_margin=&quot;2mm&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_introduction.xml"
+            line="44"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InOrMmUsage"
+        message="Avoid using &quot;`mm`&quot; as units (it does not work accurately on all devices); use &quot;`dp`&quot; instead"
+        errorLine1="            android:padding=&quot;2mm&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_lock_screen_message.xml"
+            line="19"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InOrMmUsage"
+        message="Avoid using &quot;`mm`&quot; as units (it does not work accurately on all devices); use &quot;`dp`&quot; instead"
+        errorLine1="            android:padding=&quot;2mm&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_lock_screen_message.xml"
+            line="27"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InOrMmUsage"
+        message="Avoid using &quot;`mm`&quot; as units (it does not work accurately on all devices); use &quot;`dp`&quot; instead"
+        errorLine1="            android:layout_margin=&quot;1mm&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_log.xml"
+            line="16"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InOrMmUsage"
+        message="Avoid using &quot;`mm`&quot; as units (it does not work accurately on all devices); use &quot;`dp`&quot; instead"
+        errorLine1="        android:layout_margin=&quot;5mm&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_ring.xml"
+            line="14"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="LockedOrientationActivity"
+        message="Expecting `android:screenOrientation=&quot;unspecified&quot;` or `&quot;fullSensor&quot;` for this activity so the user can use the application in any orientation and provide a great experience on Chrome OS devices"
+        errorLine1="            android:screenOrientation=&quot;sensorPortrait&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="89"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="LockedOrientationActivity"
+        message="Expecting `android:screenOrientation=&quot;unspecified&quot;` or `&quot;fullSensor&quot;` for this activity so the user can use the application in any orientation and provide a great experience on Chrome OS devices"
+        errorLine1="            android:screenOrientation=&quot;sensorPortrait&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="97"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="SpUsage"
+        message="Should use &quot;`sp`&quot; instead of &quot;`dp`&quot; for text sizes"
+        errorLine1="            android:textSize=&quot;16dp&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_introduction.xml"
+            line="22"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="SpUsage"
+        message="Should use &quot;`sp`&quot; instead of &quot;`dp`&quot; for text sizes"
+        errorLine1="            android:textSize=&quot;27dp&quot;/>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_lock_screen_message.xml"
+            line="20"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="SpUsage"
+        message="Should use &quot;`sp`&quot; instead of &quot;`dp`&quot; for text sizes"
+        errorLine1="            android:textSize=&quot;18dp&quot;/>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_lock_screen_message.xml"
+            line="28"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="SpUsage"
+        message="Should use &quot;`sp`&quot; instead of &quot;`dp`&quot; for text sizes"
+        errorLine1="        android:textSize=&quot;32dp&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_ring.xml"
+            line="13"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;loading&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;loading&quot;>Loading…&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="6"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;help&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;it&quot; (Italian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;help&quot;>Help&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="7"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;copied&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;copied&quot;>Copied&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="8"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;accept&quot; is not translated in &quot;ru&quot; (Russian)"
+        errorLine1="    &lt;string name=&quot;accept&quot;>accept&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="10"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Edit&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;Edit&quot;>Edit&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="12"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;GPS&quot; is not translated in &quot;ru&quot; (Russian) or &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;GPS&quot;>GPS&lt;/string>"
+        errorLine2="            ~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="13"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Cell&quot; is not translated in &quot;ru&quot; (Russian) or &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;Cell&quot;>Cell&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="14"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Granted&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;Granted&quot;>Granted: &lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="17"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Info_Notification_Access&quot; is not translated in &quot;ru&quot; (Russian) or &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;Info_Notification_Access&quot;>Notification Access&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="24"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Info_FMD_Command&quot; is not translated in &quot;ru&quot; (Russian) or &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;Info_FMD_Command&quot;>FMD-Command:&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="26"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Info_Server_Enabled&quot; is not translated in &quot;ru&quot; (Russian)"
+        errorLine1="    &lt;string name=&quot;Info_Server_Enabled&quot;>Service:&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="27"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Info_Server_Registered&quot; is not translated in &quot;ru&quot; (Russian)"
+        errorLine1="    &lt;string name=&quot;Info_Server_Registered&quot;>Registered:&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="28"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Info_Server_Push&quot; is not translated in &quot;de&quot; (German), &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;Info_Server_Push&quot;>Push:&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="29"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Settings_FMDConfig&quot; is not translated in &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;Settings_FMDConfig&quot;>FMD-Config&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="33"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Settings_WhiteList&quot; is not translated in &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;Settings_WhiteList&quot;>Allowed Contacts&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="35"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Settings_OpenCellId&quot; is not translated in &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;Settings_OpenCellId&quot;>OpenCelliD&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="36"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Settings_Import&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;Settings_Import&quot;>Import Settings&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="38"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Settings_Export&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;Settings_Export&quot;>Export Settings&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="39"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Settings_Logs&quot; is not translated in &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;Settings_Logs&quot;>Logs&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="40"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;pin&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;it&quot; (Italian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;pin&quot;>PIN&lt;/string>"
+        errorLine2="            ~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="47"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;pin_repeat&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;it&quot; (Italian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;pin_repeat&quot;>Repeat PIN&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="48"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Settings_FMD_Server_General&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;Settings_FMD_Server_General&quot;>General&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="55"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Settings_FMD_Server_Server_URL&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;Settings_FMD_Server_Server_URL&quot;>Server URL:&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="56"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Settings_FMD_Server_User_ID&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;Settings_FMD_Server_User_ID&quot;>User ID:&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="57"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Settings_FMD_Server_ID_Desc&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;Settings_FMD_Server_ID_Desc&quot;>You need the user ID to find your device with FMD Server. Write it down and keep it safe.&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="58"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Settings_FMDServer_Change_Password_Button&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;it&quot; (Italian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;Settings_FMDServer_Change_Password_Button&quot;>Change Password&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="59"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Settings_FMDServer_Logout_Button&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;it&quot; (Italian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;Settings_FMDServer_Logout_Button&quot;>Log out&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="60"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Settings_FMDServer_Delete_Button&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;Settings_FMDServer_Delete_Button&quot;>Delete Data&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="61"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Settings_FMDServer_Alert_DeleteData&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;Settings_FMDServer_Alert_DeleteData&quot;>Delete Data&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="62"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Settings_FMDServer_Alert_DeleteData_Desc&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;Settings_FMDServer_Alert_DeleteData_Desc&quot;>This will delete all data from the Server! Are you sure?&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="63"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Settings_FMDServer_Push_Description_Missing&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;nb&quot; (Norwegian Bokmål), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;Settings_FMDServer_Push_Description_Missing&quot;>Sending commands from FMD Server to your phone requires a UnifiedPush distributor app. Install one, and then return here. It will automatically be detected.&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="64"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Settings_FMDServer_Push_Description_Available&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;Settings_FMDServer_Push_Description_Available&quot;>Successfully registered for push notifications.&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="65"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Settings_FMDServer_Push_Open_UP&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;nb&quot; (Norwegian Bokmål), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;Settings_FMDServer_Push_Open_UP&quot;>Open UnifiedPush Website&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="66"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Settings_FMDServer_Update_Interval_Title&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;it&quot; (Italian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;Settings_FMDServer_Update_Interval_Title&quot;>Update Interval&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="67"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Settings_FMDServer_Update_Interval_Description&quot; is not translated in &quot;ru&quot; (Russian)"
+        errorLine1="    &lt;string name=&quot;Settings_FMDServer_Update_Interval_Description&quot;>FMD uploads the device\&apos;s location every X minutes.&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="68"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Settings_FMDServer_Location_Type_Title&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;it&quot; (Italian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;Settings_FMDServer_Location_Type_Title&quot;>Location Source&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="69"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Settings_FMDServer_Location_Type_Description&quot; is not translated in &quot;ru&quot; (Russian)"
+        errorLine1="    &lt;string name=&quot;Settings_FMDServer_Location_Type_Description&quot;>The source(s) from which the location data is uploaded at regular intervals in the background.\nIf none is selected, no locations are uploaded regularly. (You can still use the web interface to force an upload. This requires push.)&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="70"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Settings_FMDServer_LOW_BAT_Upload_Title&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;it&quot; (Italian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;Settings_FMDServer_LOW_BAT_Upload_Title&quot;>Upload on Low Battery&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="71"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Settings_FMDServer_LOW_BAT_Upload_Description&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;nb&quot; (Norwegian Bokmål), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;Settings_FMDServer_LOW_BAT_Upload_Description&quot;>Upload the location of this device when the battery level goes low. This requires Notification Access.&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="72"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;password_old&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;it&quot; (Italian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;password_old&quot;>Old Password&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="73"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;password_new&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;it&quot; (Italian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;password_new&quot;>New Password&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="74"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;password_new_repeat&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;it&quot; (Italian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;password_new_repeat&quot;>Repeat New Password&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="75"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;server_version&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;server_version&quot;>Server version&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="78"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;server_version_error&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;server_version_error&quot;>Error getting server version&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="79"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;server_version_error_low_version&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;nb&quot; (Norwegian Bokmål), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;server_version_error_low_version&quot;>At least server version {MIN} is required, but the selected server has version {CURRENT}. Continue at your own risk.&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="80"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Settings_FMDServer_AddAccount&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;it&quot; (Italian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;Settings_FMDServer_AddAccount&quot;>FMD Server: Login/Register&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="81"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Settings_FMDServer_Info&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;nb&quot; (Norwegian Bokmål), &quot;it&quot; (Italian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;Settings_FMDServer_Info&quot;>With FMD Server you can send commands over the internet, from the server to the app. You can also view the device location on a map or view pictures taken by the device. For self-hosting instructions, see the website.&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="82"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Settings_FMDServer_open_website&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;nb&quot; (Norwegian Bokmål), &quot;it&quot; (Italian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;Settings_FMDServer_open_website&quot;>Open FMD Server Website&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="83"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Settings_FMDServer_use_default_server&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;it&quot; (Italian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;Settings_FMDServer_use_default_server&quot;>Use Nulide\&apos;s public server&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="84"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Settings_FMDServer_Login&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;Settings_FMDServer_Login&quot;>Login&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="85"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Settings_FMDServer_Register&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;Settings_FMDServer_Register&quot;>Register&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="86"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Settings_FMDServer_Alert_PrivacyPolicy_Title&quot; is not translated in &quot;ru&quot; (Russian) or &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;Settings_FMDServer_Alert_PrivacyPolicy_Title&quot;>Privacy Policy&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="87"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;password&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;it&quot; (Italian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;password&quot;>Password&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="88"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;password_repeat&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;it&quot; (Italian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;password_repeat&quot;>Repeat Password&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="89"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;registration_token&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;it&quot; (Italian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;registration_token&quot;>Registration Token&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="90"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;registration_token_hint&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;nb&quot; (Norwegian Bokmål), &quot;it&quot; (Italian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;registration_token_hint&quot;>Private instances may require a secret token. Leave this empty if the instance is public.&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="91"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Whitelist_help&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;nb&quot; (Norwegian Bokmål), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;Whitelist_help&quot;>The contacts in this list are allowed to send FMD commands via SMS. Commands from everyone else will be ignored.&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="94"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Whitelist_empty&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;nb&quot; (Norwegian Bokmål), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;Whitelist_empty&quot;>No allowed contacts. Click the button to add some!&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="95"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;OpenCellId_help&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;nb&quot; (Norwegian Bokmål), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;OpenCellId_help&quot;>FMD can use the OpenCelliD service to get an approximate location based on the cell tower that the phone is connected to. An internet connection is required for every location query. You also need to create an account at OpenCelliD and get your own API Access Token.&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="104"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;OpenCellId_privacy&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;nb&quot; (Norwegian Bokmål), &quot;it&quot; (Italian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;OpenCellId_privacy&quot;>Privacy: keep in mind that OpenCelliD learns your current cell tower and thus your location with every API query.&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="105"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;OpenCellId_open_website&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;OpenCellId_open_website&quot;>Open OpenCelliD website&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="106"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;OpenCellId_test_opencellid&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;it&quot; (Italian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;OpenCellId_test_opencellid&quot;>Test OpenCelliD Connection&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="107"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;OpenCellId_test_no_connection&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;it&quot; (Italian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;OpenCellId_test_no_connection&quot;>No cell connection&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="108"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;settings_exported&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;settings_exported&quot;>Settings exported&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="111"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;about&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;it&quot; (Italian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;about&quot;>About&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="116"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;about_source_code&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;it&quot; (Italian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;about_source_code&quot;>Source Code&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="117"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;about_wiki&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;it&quot; (Italian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;about_wiki&quot;>Wiki&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="118"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;app_description&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;nb&quot; (Norwegian Bokmål), &quot;it&quot; (Italian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;app_description&quot;>FMD (Find My Device) allows you to remotely locate your device. You can communicate with FMD over SMS, instant messengers, or using FMD Server. Locate your device, make it ring, lock it, or wipe it - all from remote.&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="119"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;notify_crypto_update_title&quot; is not translated in &quot;de&quot; (German), &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;notify_crypto_update_title&quot;>Action required&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="122"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;notify_crypto_update_text&quot; is not translated in &quot;de&quot; (German), &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;notify_crypto_update_text&quot;>You need to update some settings to continue using FMD. Click to open.&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="123"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;server_unregister_failed_title&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;server_unregister_failed_title&quot;>Unregistering failed&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="124"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;server_unregister_failed_body&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;nb&quot; (Norwegian Bokmål), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;server_unregister_failed_body&quot;>Unregistering failed with the following error: {ERROR}\n\nYou can continue anyway, but your account might not have been deleted from the server. If you continue, your account will be deleted locally from this device.&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="125"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;server_unregister_continue_anyway&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;server_unregister_continue_anyway&quot;>Continue anyway&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="126"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;server_unregister_dont_continue&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;server_unregister_dont_continue&quot;>Don\&apos;t continue&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="127"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Notification_Server&quot; is not translated in &quot;ru&quot; (Russian) or &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;Notification_Server&quot;>Server&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="138"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;NotificationServer_Description&quot; is not translated in &quot;ru&quot; (Russian) or &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;NotificationServer_Description&quot;>Display notifications sent from the server.&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="139"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Notification_Security&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;Notification_Security&quot;>Security&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="140"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Notification_Security_Description&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;Notification_Security_Description&quot;>Notifications about security updates&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="141"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Notification_FAIL&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;Notification_FAIL&quot;>Fail&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="142"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Notification_Fail_Description&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;Notification_Fail_Description&quot;>Notification when something fails, like the connection to fmd server.&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="143"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Permission_IGNORE_BATTERY_OPTIMIZATION&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;nb&quot; (Norwegian Bokmål), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;Permission_IGNORE_BATTERY_OPTIMIZATION&quot;>This application is supposed to work in the background. To ensure it works even when your phone is in standby, you need to turn off battery optimization for this app.&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="148"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Introduction_Introduction&quot; is not translated in &quot;nb&quot; (Norwegian Bokmål)"
+        errorLine1="    &lt;string name=&quot;Introduction_Introduction&quot;>FindMyDevice (FMD) is an application that can help you find your phone when it gets lost.\nIt uses SMS (texting) to communicate and send commands from a second device so you can track your phone.\nJust send a SMS message that contains the &quot;fmd&quot; command.\nPlease note that this application is still in beta.\n\n - Nulide&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="151"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Introduction_UpdatePermission&quot; is not translated in &quot;nb&quot; (Norwegian Bokmål)"
+        errorLine1="    &lt;string name=&quot;Introduction_UpdatePermission&quot;>Some new permissions are needed.\nPlease check the following permissions in order to continue using this application, or change back to an older version.&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="152"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Permission_SMS&quot; is not translated in &quot;nb&quot; (Norwegian Bokmål)"
+        errorLine1="    &lt;string name=&quot;Permission_SMS&quot;>In order to command the phone to do something, this application needs to be able to see your SMS messages. Your messages never leave your phone, and they are never used for anything except finding your phone.\nThis Permission is needed.&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="153"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Permission_CONTACTS&quot; is not translated in &quot;nb&quot; (Norwegian Bokmål)"
+        errorLine1="    &lt;string name=&quot;Permission_CONTACTS&quot;>Not everybody is allowed to send commands to your phone, so you need to select some contacts who will be able to locate your device.\nThis permission is needed.&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="154"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Permission_GPS&quot; is not translated in &quot;nb&quot; (Norwegian Bokmål)"
+        errorLine1="    &lt;string name=&quot;Permission_GPS&quot;>If you want to get the GPS coordinates from your phone, the application needs this permission. \nPlease also allow the application to locate your phone in the background.\nIf you don\&apos;t give this permission, this functionality will not be activated.&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="155"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Permission_DND&quot; is not translated in &quot;nb&quot; (Norwegian Bokmål)"
+        errorLine1="    &lt;string name=&quot;Permission_DND&quot;>You also can make your phone ring to help you locate it. When \&quot;Do Not Disturb\&quot; is active, it may be possible that the phone is muted.\nIf you don\&apos;t give this permission, this functionality will not be activated.&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="156"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Permission_DEVICE_ADMIN&quot; is not translated in &quot;nb&quot; (Norwegian Bokmål)"
+        errorLine1="    &lt;string name=&quot;Permission_DEVICE_ADMIN&quot;>If you want to lock or wipe your phone if it gets lost, this permission is needed.\nIf you don\&apos;t give this permission, this functionality will not be activated.&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="157"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Permission_WRITE_SECURE_SETTINGS&quot; is not translated in &quot;nb&quot; (Norwegian Bokmål)"
+        errorLine1="    &lt;string name=&quot;Permission_WRITE_SECURE_SETTINGS&quot;>This application is capable of turning on location if you normally leave location off.\nIf it is off, \&quot;fmd locate\&quot; will not work.\nIn order to achieve this, the application needs a special permission that you have to grant using a computer.\nIf you don\&apos;t give this permission, it\&apos;s no problem.\nYou can still use this application.&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="158"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Permission_OVERLAY&quot; is not translated in &quot;nb&quot; (Norwegian Bokmål)"
+        errorLine1="    &lt;string name=&quot;Permission_OVERLAY&quot;>When you remotely lock your device, this application can show a message on the lockscreen for whoever finds your phone.\nIf you don\&apos;t give this permission, this functionality will not be activated.&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="159"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Permission_POST_NOTIFICATIONS&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;nb&quot; (Norwegian Bokmål), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;Permission_POST_NOTIFICATIONS&quot;>FMD will occasionally send you notifications, for example to warn you that someone is locating your device.&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="160"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Locked_Lock_Screen&quot; is not translated in &quot;nb&quot; (Norwegian Bokmål)"
+        errorLine1="    &lt;string name=&quot;Locked_Lock_Screen&quot;>FindMyDevice\nThis phone is locked!\nMessage from the owner:&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="163"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Enable&quot; is not translated in &quot;nb&quot; (Norwegian Bokmål)"
+        errorLine1="    &lt;string name=&quot;Enable&quot;>Enable&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="164"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;MH_GPS_WILL_FOLLOW&quot; is not translated in &quot;nb&quot; (Norwegian Bokmål)"
+        errorLine1="    &lt;string name=&quot;MH_GPS_WILL_FOLLOW&quot;>GPS coordinates will be sent soon.&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="169"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;MH_rings&quot; is not translated in &quot;nb&quot; (Norwegian Bokmål)"
+        errorLine1="    &lt;string name=&quot;MH_rings&quot;>rings&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="170"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;MH_Locked&quot; is not translated in &quot;nb&quot; (Norwegian Bokmål)"
+        errorLine1="    &lt;string name=&quot;MH_Locked&quot;>locked&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="171"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;MH_Help_where&quot; is not translated in &quot;nb&quot; (Norwegian Bokmål)"
+        errorLine1="    &lt;string name=&quot;MH_Help_where&quot;>&quot; locate - sends the current location of the phone&quot;&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="178"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;MH_Help_ring&quot; is not translated in &quot;nb&quot; (Norwegian Bokmål)"
+        errorLine1="    &lt;string name=&quot;MH_Help_ring&quot;>&quot; ring - lets the phone ring&quot;&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="179"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;MH_Help_Lock&quot; is not translated in &quot;nb&quot; (Norwegian Bokmål)"
+        errorLine1="    &lt;string name=&quot;MH_Help_Lock&quot;>&quot; lock - locks the phone&quot;&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="180"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;MH_Help_Stats&quot; is not translated in &quot;nb&quot; (Norwegian Bokmål)"
+        errorLine1="    &lt;string name=&quot;MH_Help_Stats&quot;>&quot; stats - sends device information&quot;&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="181"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;MH_Help_delete&quot; is not translated in &quot;nb&quot; (Norwegian Bokmål)"
+        errorLine1="    &lt;string name=&quot;MH_Help_delete&quot;>&quot; delete - resets the phone&quot;&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="182"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;MH_Pin_Accepted&quot; is not translated in &quot;nb&quot; (Norwegian Bokmål)"
+        errorLine1="    &lt;string name=&quot;MH_Pin_Accepted&quot;>Pin accepted!&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="183"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;R_Stop_ring&quot; is not translated in &quot;nb&quot; (Norwegian Bokmål)"
+        errorLine1="    &lt;string name=&quot;R_Stop_ring&quot;>STOP RINGING&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="184"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;MH_No_GPS&quot; is not translated in &quot;nb&quot; (Norwegian Bokmål)"
+        errorLine1="    &lt;string name=&quot;MH_No_GPS&quot;>Sorry, location is turned off.&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="186"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;JSON_RL_Error&quot; is not translated in &quot;nb&quot; (Norwegian Bokmål)"
+        errorLine1="    &lt;string name=&quot;JSON_RL_Error&quot;>Error gaining location from OpenCelliD. Please try the following the link. The parameters you want are \&quot;lon\&quot; and \&quot;lat\&quot;.&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="188"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;LockScreen_Usage_detectd&quot; is not translated in &quot;nb&quot; (Norwegian Bokmål)"
+        errorLine1="    &lt;string name=&quot;LockScreen_Usage_detectd&quot;>LockScreenMessage: Usage detected.&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="189"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;LockScreen_Backbutton_pressed&quot; is not translated in &quot;nb&quot; (Norwegian Bokmål)"
+        errorLine1="    &lt;string name=&quot;LockScreen_Backbutton_pressed&quot;>LockScreenMessage: Back-Button pressed.&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="190"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Toast_Empty_FMDCommand&quot; is not translated in &quot;nb&quot; (Norwegian Bokmål) or &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;Toast_Empty_FMDCommand&quot;>Empty Command not allowed\n Returning to default.[fmd]&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="191"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;FMDConfig_Alert_Pin&quot; is not translated in &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;FMDConfig_Alert_Pin&quot;>PIN&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="192"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Log_Alert_LogData&quot; is not translated in &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;Log_Alert_LogData&quot;>LogData&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="193"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;NOT_AVAILABLE&quot; is not translated in &quot;ru&quot; (Russian)"
+        errorLine1="    &lt;string name=&quot;NOT_AVAILABLE&quot;>Not Available&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="194"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Available&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;Available&quot;>Available&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="195"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;registered&quot; is not translated in &quot;ru&quot; (Russian) or &quot;nb&quot; (Norwegian Bokmål)"
+        errorLine1="    &lt;string name=&quot;registered&quot;>registered&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="196"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;not_registered&quot; is not translated in &quot;ru&quot; (Russian) or &quot;nb&quot; (Norwegian Bokmål)"
+        errorLine1="    &lt;string name=&quot;not_registered&quot;>not registered&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="197"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;MH_LAST_KNOWN_LOCATION&quot; is not translated in &quot;ru&quot; (Russian)"
+        errorLine1="    &lt;string name=&quot;MH_LAST_KNOWN_LOCATION&quot;>Last known location&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="198"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;MH_LAST_KNOWN_LOCATION_NOT_AVAILABLE&quot; is not translated in &quot;ru&quot; (Russian)"
+        errorLine1="    &lt;string name=&quot;MH_LAST_KNOWN_LOCATION_NOT_AVAILABLE&quot;>Last location is not available.&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="199"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Alert_First_time_fmdserver&quot; is not translated in &quot;ru&quot; (Russian) or &quot;nb&quot; (Norwegian Bokmål)"
+        errorLine1="    &lt;string name=&quot;Alert_First_time_fmdserver&quot;>Here you can configure the application to communicate with FMDserver. If you want to configure a different server than default, you can do so by changing the URL. If you press &quot;register&quot; you can register the application to the server. Afterwards you can enable the server functionality. If you do so, your phone will send you location data to the specified server. You can check your phone\&apos;s location by entering the ID and the password on the page.&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="200"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;MH_Help_Expert_GPS&quot; is not translated in &quot;ru&quot; (Russian) or &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;MH_Help_Expert_GPS&quot;>&quot; GPS (on/off) - turns the GPS on or off.&quot;&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="201"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;MH_NO_SECURE_SETTINGS&quot; is not translated in &quot;ru&quot; (Russian) or &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;MH_NO_SECURE_SETTINGS&quot;>Sorry the application is not allowed to do so.&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="202"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;MH_Help_expert&quot; is not translated in &quot;ru&quot; (Russian) or &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;MH_Help_expert&quot;>&quot; expert - help page for expert commands.&quot;&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="203"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Permission_Notification&quot; is not translated in &quot;ru&quot; (Russian), &quot;nb&quot; (Norwegian Bokmål), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;Permission_Notification&quot;>If you want FMD to handle messages from other applications such as Telegram, Whatsapp, etc., you can give FMD access to notifications.&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="204"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;MH_Help_Expert_Sound&quot; is not translated in &quot;de&quot; (German), &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;MH_Help_Expert_Sound&quot;>&quot; Sound (on/off) - turns the sound on or off.&quot;&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="205"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;not_possible&quot; is not translated in &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;not_possible&quot;>This action was not possible.&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="206"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;MH_Help_Expert_Camera&quot; is not translated in &quot;de&quot; (German), &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;nb&quot; (Norwegian Bokmål), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;MH_Help_Expert_Camera&quot;>&quot; Camera (front/back) - takes a picture and sends it to FMDserver.&quot;&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="207"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;Permission_Camera&quot; is not translated in &quot;de&quot; (German), &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;nb&quot; (Norwegian Bokmål), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;Permission_Camera&quot;>If you want to remotely receive pictures from your phone, the camera permission is needed.&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="208"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;MH_CAM_CAPTURE&quot; is not translated in &quot;de&quot; (German), &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;MH_CAM_CAPTURE&quot;>&quot;The device will soon send a picture to fmdserver. You can view it here soon: &quot;&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="209"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingTranslation"
+        message="&quot;MH_FMDSERVER_NOT_REGISTERED&quot; is not translated in &quot;de&quot; (German), &quot;fi&quot; (Finnish), &quot;ru&quot; (Russian), &quot;fr&quot; (French)"
+        errorLine1="    &lt;string name=&quot;MH_FMDSERVER_NOT_REGISTERED&quot;>This device isn\&apos;t registered on a server.&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="210"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="Untranslatable"
+        message="The resource string &quot;app_name&quot; is marked as translatable=&quot;false&quot;, but is translated to &quot;fi&quot; (Finnish) here"
+        errorLine1="    &lt;string name=&quot;app_name&quot; translatable=&quot;false&quot;>FindMyDevice&lt;/string>"
+        errorLine2="                            ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values-fi/strings.xml"
+            line="3"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="Untranslatable"
+        message="The resource string &quot;paste&quot; has been marked as translatable=&quot;false&quot; elsewhere (usually in the `values` folder), but is translated to &quot;nb&quot; (Norwegian Bokmål) here"
+        errorLine1="    &lt;string name=&quot;paste&quot;>Lim inn&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values-nb-rNO/strings.xml"
+            line="6"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="Untranslatable"
+        message="The resource string &quot;paste&quot; has been marked as translatable=&quot;false&quot; elsewhere (usually in the `values` folder), but is translated to &quot;de&quot; (German) here"
+        errorLine1="    &lt;string name=&quot;paste&quot;>Einfügen&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values-de/strings.xml"
+            line="7"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="Untranslatable"
+        message="The resource string &quot;cancel&quot; has been marked as translatable=&quot;false&quot; elsewhere (usually in the `values` folder), but is translated to &quot;nb&quot; (Norwegian Bokmål) here"
+        errorLine1="    &lt;string name=&quot;cancel&quot;>avbryt&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values-nb-rNO/strings.xml"
+            line="8"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="Untranslatable"
+        message="The resource string &quot;cancel&quot; has been marked as translatable=&quot;false&quot; elsewhere (usually in the `values` folder), but is translated to &quot;de&quot; (German) here"
+        errorLine1="    &lt;string name=&quot;cancel&quot;>abbrechen&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values-de/strings.xml"
+            line="9"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="Untranslatable"
+        message="The resource string &quot;Info_CORE&quot; is marked as translatable=&quot;false&quot;, but is translated to &quot;ru&quot; (Russian) here"
+        errorLine1="    &lt;string name=&quot;Info_CORE&quot; translatable=&quot;false&quot;>CORE:&lt;/string>"
+        errorLine2="                             ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values-ru-rRu/strings.xml"
+            line="15"
+            column="30"/>
+    </issue>
+
+    <issue
+        id="Untranslatable"
+        message="The resource string &quot;Info_CORE&quot; is marked as translatable=&quot;false&quot;, but is translated to &quot;fi&quot; (Finnish) here"
+        errorLine1="    &lt;string name=&quot;Info_CORE&quot; translatable=&quot;false&quot;>CORE:&lt;/string>"
+        errorLine2="                             ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values-fi/strings.xml"
+            line="16"
+            column="30"/>
+    </issue>
+
+    <issue
+        id="Untranslatable"
+        message="The resource string &quot;Info_GPS&quot; is marked as translatable=&quot;false&quot;, but is translated to &quot;ru&quot; (Russian) here"
+        errorLine1="    &lt;string name=&quot;Info_GPS&quot; translatable=&quot;false&quot;>GPS:&lt;/string>"
+        errorLine2="                            ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values-ru-rRu/strings.xml"
+            line="16"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="Untranslatable"
+        message="The resource string &quot;Info_DND&quot; is marked as translatable=&quot;false&quot;, but is translated to &quot;ru&quot; (Russian) here"
+        errorLine1="    &lt;string name=&quot;Info_DND&quot; translatable=&quot;false&quot;>DND:&lt;/string>"
+        errorLine2="                            ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values-ru-rRu/strings.xml"
+            line="17"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="Untranslatable"
+        message="The resource string &quot;Info_GPS&quot; is marked as translatable=&quot;false&quot;, but is translated to &quot;fi&quot; (Finnish) here"
+        errorLine1="    &lt;string name=&quot;Info_GPS&quot; translatable=&quot;false&quot;>GPS:&lt;/string>"
+        errorLine2="                            ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values-fi/strings.xml"
+            line="17"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="Untranslatable"
+        message="The resource string &quot;Info_DEVICE_ADMIN&quot; is marked as translatable=&quot;false&quot;, but is translated to &quot;ru&quot; (Russian) here"
+        errorLine1="    &lt;string name=&quot;Info_DEVICE_ADMIN&quot; translatable=&quot;false&quot;>DeviceAdmin:&lt;/string>"
+        errorLine2="                                     ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values-ru-rRu/strings.xml"
+            line="18"
+            column="38"/>
+    </issue>
+
+    <issue
+        id="Untranslatable"
+        message="The resource string &quot;Info_DND&quot; is marked as translatable=&quot;false&quot;, but is translated to &quot;fi&quot; (Finnish) here"
+        errorLine1="    &lt;string name=&quot;Info_DND&quot; translatable=&quot;false&quot;>DND:&lt;/string>"
+        errorLine2="                            ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values-fi/strings.xml"
+            line="18"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="Untranslatable"
+        message="The resource string &quot;Info_DEVICE_ADMIN&quot; is marked as translatable=&quot;false&quot;, but is translated to &quot;fi&quot; (Finnish) here"
+        errorLine1="    &lt;string name=&quot;Info_DEVICE_ADMIN&quot; translatable=&quot;false&quot;>DeviceAdmin:&lt;/string>"
+        errorLine2="                                     ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values-fi/strings.xml"
+            line="19"
+            column="38"/>
+    </issue>
+
+    <issue
+        id="Untranslatable"
+        message="The resource string &quot;Info_Overlay&quot; is marked as translatable=&quot;false&quot;, but is translated to &quot;ru&quot; (Russian) here"
+        errorLine1="    &lt;string name=&quot;Info_Overlay&quot; translatable=&quot;false&quot;>Overlay:&lt;/string>"
+        errorLine2="                                ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values-ru-rRu/strings.xml"
+            line="19"
+            column="33"/>
+    </issue>
+
+    <issue
+        id="Untranslatable"
+        message="The resource string &quot;Info_Overlay&quot; is marked as translatable=&quot;false&quot;, but is translated to &quot;fi&quot; (Finnish) here"
+        errorLine1="    &lt;string name=&quot;Info_Overlay&quot; translatable=&quot;false&quot;>Overlay:&lt;/string>"
+        errorLine2="                                ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values-fi/strings.xml"
+            line="20"
+            column="33"/>
+    </issue>
+
+    <issue
+        id="Untranslatable"
+        message="The resource string &quot;Info_SecureSettings&quot; is marked as translatable=&quot;false&quot;, but is translated to &quot;ru&quot; (Russian) here"
+        errorLine1="    &lt;string name=&quot;Info_SecureSettings&quot; translatable=&quot;false&quot;>SecureSettings:&lt;/string>"
+        errorLine2="                                       ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values-ru-rRu/strings.xml"
+            line="20"
+            column="40"/>
+    </issue>
+
+    <issue
+        id="Untranslatable"
+        message="The resource string &quot;Info_SecureSettings&quot; is marked as translatable=&quot;false&quot;, but is translated to &quot;fi&quot; (Finnish) here"
+        errorLine1="    &lt;string name=&quot;Info_SecureSettings&quot; translatable=&quot;false&quot;>SecureSettings:&lt;/string>"
+        errorLine2="                                       ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values-fi/strings.xml"
+            line="21"
+            column="40"/>
+    </issue>
+
+    <issue
+        id="Untranslatable"
+        message="The resource string &quot;OpenCellId_OpenCellId&quot; has been marked as translatable=&quot;false&quot; elsewhere (usually in the `values` folder), but is translated to &quot;es&quot; (Spanish) here"
+        errorLine1="    &lt;string name=&quot;OpenCellId_OpenCellId&quot;>OpenCelliD&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values-es/strings.xml"
+            line="54"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="Untranslatable"
+        message="The resource string &quot;OpenCellId_OpenCellId&quot; has been marked as translatable=&quot;false&quot; elsewhere (usually in the `values` folder), but is translated to &quot;ru&quot; (Russian) here"
+        errorLine1="    &lt;string name=&quot;OpenCellId_OpenCellId&quot;>OpenCelliD&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values-ru-rRu/strings.xml"
+            line="60"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="Untranslatable"
+        message="The resource string &quot;OpenCellId_OpenCellId&quot; has been marked as translatable=&quot;false&quot; elsewhere (usually in the `values` folder), but is translated to &quot;fi&quot; (Finnish) here"
+        errorLine1="    &lt;string name=&quot;OpenCellId_OpenCellId&quot;>OpenCelliD&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values-fi/strings.xml"
+            line="61"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="Untranslatable"
+        message="The resource string &quot;Ok&quot; has been marked as translatable=&quot;false&quot; elsewhere (usually in the `values` folder), but is translated to &quot;es&quot; (Spanish) here"
+        errorLine1="    &lt;string name=&quot;Ok&quot;>Ok&lt;/string>"
+        errorLine2="            ~~~~~~~~~">
+        <location
+            file="src/main/res/values-es/strings.xml"
+            line="66"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="Untranslatable"
+        message="The resource string &quot;cancel&quot; has been marked as translatable=&quot;false&quot; elsewhere (usually in the `values` folder), but is translated to &quot;fr&quot; (French) here"
+        errorLine1="    &lt;string name=&quot;cancel&quot;>Retour&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values-fr-rFR/strings.xml"
+            line="66"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="Untranslatable"
+        message="The resource string &quot;Settings_FMDServer&quot; has been marked as translatable=&quot;false&quot; elsewhere (usually in the `values` folder), but is translated to &quot;es&quot; (Spanish) here"
+        errorLine1="    &lt;string name=&quot;Settings_FMDServer&quot;>FMD-Servidor&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values-es/strings.xml"
+            line="71"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="Untranslatable"
+        message="The resource string &quot;paste&quot; has been marked as translatable=&quot;false&quot; elsewhere (usually in the `values` folder), but is translated to &quot;it&quot; (Italian) here"
+        errorLine1="    &lt;string name=&quot;paste&quot;>Incolla&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values-it/strings.xml"
+            line="71"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="Untranslatable"
+        message="The resource string &quot;Ok&quot; has been marked as translatable=&quot;false&quot; elsewhere (usually in the `values` folder), but is translated to &quot;ru&quot; (Russian) here"
+        errorLine1="    &lt;string name=&quot;Ok&quot;>Ок&lt;/string>"
+        errorLine2="            ~~~~~~~~~">
+        <location
+            file="src/main/res/values-ru-rRu/strings.xml"
+            line="72"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="Untranslatable"
+        message="The resource string &quot;Ok&quot; has been marked as translatable=&quot;false&quot; elsewhere (usually in the `values` folder), but is translated to &quot;fi&quot; (Finnish) here"
+        errorLine1="    &lt;string name=&quot;Ok&quot;>Ok&lt;/string>"
+        errorLine2="            ~~~~~~~~~">
+        <location
+            file="src/main/res/values-fi/strings.xml"
+            line="73"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="Untranslatable"
+        message="The resource string &quot;Settings_FMDServer&quot; has been marked as translatable=&quot;false&quot; elsewhere (usually in the `values` folder), but is translated to &quot;fi&quot; (Finnish) here"
+        errorLine1="    &lt;string name=&quot;Settings_FMDServer&quot;>FMD-palvelin&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values-fi/strings.xml"
+            line="78"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="Untranslatable"
+        message="The resource string &quot;Ok&quot; has been marked as translatable=&quot;false&quot; elsewhere (usually in the `values` folder), but is translated to &quot;nb&quot; (Norwegian Bokmål) here"
+        errorLine1="    &lt;string name=&quot;Ok&quot;>OK&lt;/string>"
+        errorLine2="            ~~~~~~~~~">
+        <location
+            file="src/main/res/values-nb-rNO/strings.xml"
+            line="81"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="Untranslatable"
+        message="The resource string &quot;OpenCellId_OpenCellId&quot; has been marked as translatable=&quot;false&quot; elsewhere (usually in the `values` folder), but is translated to &quot;it&quot; (Italian) here"
+        errorLine1="    &lt;string name=&quot;OpenCellId_OpenCellId&quot;>OpenCelliD&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values-it/strings.xml"
+            line="84"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="Untranslatable"
+        message="The resource string &quot;cancel&quot; has been marked as translatable=&quot;false&quot; elsewhere (usually in the `values` folder), but is translated to &quot;es&quot; (Spanish) here"
+        errorLine1="    &lt;string name=&quot;cancel&quot;>cancelar&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values-es/strings.xml"
+            line="85"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="Untranslatable"
+        message="The resource string &quot;OpenCellId_API_Key_Description&quot; has been marked as translatable=&quot;false&quot; elsewhere (usually in the `values` folder), but is translated to &quot;it&quot; (Italian) here"
+        errorLine1="    &lt;string name=&quot;OpenCellId_API_Key_Description&quot;>Chiave API:&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values-it/strings.xml"
+            line="86"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="Untranslatable"
+        message="The resource string &quot;cancel&quot; has been marked as translatable=&quot;false&quot; elsewhere (usually in the `values` folder), but is translated to &quot;fi&quot; (Finnish) here"
+        errorLine1="    &lt;string name=&quot;cancel&quot;>Peru&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values-fi/strings.xml"
+            line="91"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="Untranslatable"
+        message="The resource string &quot;Ok&quot; has been marked as translatable=&quot;false&quot; elsewhere (usually in the `values` folder), but is translated to &quot;it&quot; (Italian) here"
+        errorLine1="    &lt;string name=&quot;Ok&quot;>Ok&lt;/string>"
+        errorLine2="            ~~~~~~~~~">
+        <location
+            file="src/main/res/values-it/strings.xml"
+            line="99"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="Untranslatable"
+        message="The resource string &quot;Info_Camera&quot; has been marked as translatable=&quot;false&quot; elsewhere (usually in the `values` folder), but is translated to &quot;es&quot; (Spanish) here"
+        errorLine1="    &lt;string name=&quot;Info_Camera&quot;>Cámara&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values-es/strings.xml"
+            line="105"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="Untranslatable"
+        message="The resource string &quot;paste&quot; has been marked as translatable=&quot;false&quot; elsewhere (usually in the `values` folder), but is translated to &quot;es&quot; (Spanish) here"
+        errorLine1="    &lt;string name=&quot;paste&quot;>Pegar&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values-es/strings.xml"
+            line="113"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="Untranslatable"
+        message="The resource string &quot;cancel&quot; has been marked as translatable=&quot;false&quot; elsewhere (usually in the `values` folder), but is translated to &quot;it&quot; (Italian) here"
+        errorLine1="    &lt;string name=&quot;cancel&quot;>cancella&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values-it/strings.xml"
+            line="117"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="Untranslatable"
+        message="The resource string &quot;Info_Camera&quot; has been marked as translatable=&quot;false&quot; elsewhere (usually in the `values` folder), but is translated to &quot;it&quot; (Italian) here"
+        errorLine1="    &lt;string name=&quot;Info_Camera&quot;>Camera:&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values-it/strings.xml"
+            line="136"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="Untranslatable"
+        message="The resource string &quot;Ok&quot; has been marked as translatable=&quot;false&quot; elsewhere (usually in the `values` folder), but is translated to &quot;de&quot; (German) here"
+        errorLine1="    &lt;string name=&quot;Ok&quot;>Ok&lt;/string>"
+        errorLine2="            ~~~~~~~~~">
+        <location
+            file="src/main/res/values-de/strings.xml"
+            line="159"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnprotectedSMSBroadcastReceiver"
+        message="BroadcastReceivers that declare an intent-filter for `SMS_DELIVER` or `SMS_RECEIVED` must ensure that the caller has the `BROADCAST_SMS` permission, otherwise it is possible for malicious actors to spoof intents"
+        errorLine1="        &lt;receiver"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="130"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="ExportedReceiver"
+        message="Exported receiver does not require permission"
+        errorLine1="        &lt;receiver"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="181"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="StaticFieldLeak"
+        message="Do not place Android context classes in static fields; this is a memory leak"
+        errorLine1="    public static Context context;"
+        errorLine2="           ~~~~~~">
+        <location
+            file="src/main/java/de/nulide/findmydevice/data/io/IO.java"
+            line="24"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="StaticFieldLeak"
+        message="Do not place Android context classes in static fields; this is a memory leak"
+        errorLine1="    private static Context context;"
+        errorLine2="            ~~~~~~">
+        <location
+            file="src/main/java/de/nulide/findmydevice/utils/Logger.java"
+            line="26"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UseCompoundDrawables"
+        message="This tag and its children can be replaced by one `&lt;TextView/>` and a compound drawable"
+        errorLine1="    &lt;LinearLayout"
+        errorLine2="     ~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_white_list.xml"
+            line="9"
+            column="6"/>
+    </issue>
+
+    <issue
+        id="UseCompoundDrawables"
+        message="This tag and its children can be replaced by one `&lt;TextView/>` and a compound drawable"
+        errorLine1="&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;"
+        errorLine2=" ~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/settings_item.xml"
+            line="2"
+            column="2"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (904 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector."
+        errorLine1="      android:pathData=&quot;M19.14,12.94c0.04,-0.3 0.06,-0.61 0.06,-0.94c0,-0.32 -0.02,-0.64 -0.07,-0.94l2.03,-1.58c0.18,-0.14 0.23,-0.41 0.12,-0.61l-1.92,-3.32c-0.12,-0.22 -0.37,-0.29 -0.59,-0.22l-2.39,0.96c-0.5,-0.38 -1.03,-0.7 -1.62,-0.94L14.4,2.81c-0.04,-0.24 -0.24,-0.41 -0.48,-0.41h-3.84c-0.24,0 -0.43,0.17 -0.47,0.41L9.25,5.35C8.66,5.59 8.12,5.92 7.63,6.29L5.24,5.33c-0.22,-0.08 -0.47,0 -0.59,0.22L2.74,8.87C2.62,9.08 2.66,9.34 2.86,9.48l2.03,1.58C4.84,11.36 4.8,11.69 4.8,12s0.02,0.64 0.07,0.94l-2.03,1.58c-0.18,0.14 -0.23,0.41 -0.12,0.61l1.92,3.32c0.12,0.22 0.37,0.29 0.59,0.22l2.39,-0.96c0.5,0.38 1.03,0.7 1.62,0.94l0.36,2.54c0.05,0.24 0.24,0.41 0.48,0.41h3.84c0.24,0 0.44,-0.17 0.47,-0.41l0.36,-2.54c0.59,-0.24 1.13,-0.56 1.62,-0.94l2.39,0.96c0.22,0.08 0.47,0 0.59,-0.22l1.92,-3.32c0.12,-0.22 0.07,-0.47 -0.12,-0.61L19.14,12.94zM12,15.6c-1.98,0 -3.6,-1.62 -3.6,-3.6s1.62,-3.6 3.6,-3.6s3.6,1.62 3.6,3.6S13.98,15.6 12,15.6z&quot;/>"
+        errorLine2="                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_settings.xml"
+            line="9"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="ViewHolder"
+        message="Unconditional layout inflation from view adapter: Should use View Holder pattern (use recycled view passed into this method as the second parameter) for smoother scrolling"
+        errorLine1="        view = inflater.inflate(R.layout.settings_item, null);"
+        errorLine2="               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/nulide/findmydevice/ui/helper/SettingsViewAdapter.java"
+            line="42"
+            column="16"/>
+    </issue>
+
+    <issue
+        id="ViewHolder"
+        message="Unconditional layout inflation from view adapter: Should use View Holder pattern (use recycled view passed into this method as the second parameter) for smoother scrolling"
+        errorLine1="        view = inflater.inflate(R.layout.whitelist_item, null);"
+        errorLine2="               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/nulide/findmydevice/ui/helper/WhiteListViewAdapter.java"
+            line="41"
+            column="16"/>
+    </issue>
+
+    <issue
+        id="MergeRootFrame"
+        message="This `&lt;FrameLayout>` can be replaced with a `&lt;merge>` tag"
+        errorLine1="&lt;FrameLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;"
+        errorLine2="^">
+        <location
+            file="src/main/res/layout/activity_settings.xml"
+            line="2"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="UseValueOf"
+        message="Use `Double.valueOf(location.getLatitude())` instead"
+        errorLine1="            String lat = new Double(location.getLatitude()).toString();"
+        errorLine2="                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/nulide/findmydevice/logic/command/helper/GPS.java"
+            line="42"
+            column="26"/>
+    </issue>
+
+    <issue
+        id="UseValueOf"
+        message="Use `Double.valueOf(location.getLongitude())` instead"
+        errorLine1="            String lon = new Double(location.getLongitude()).toString();"
+        errorLine2="                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/nulide/findmydevice/logic/command/helper/GPS.java"
+            line="43"
+            column="26"/>
+    </issue>
+
+    <issue
+        id="UseValueOf"
+        message="Use `Integer.valueOf(channelID)` instead"
+        errorLine1="            NotificationCompat.Builder builder = new NotificationCompat.Builder(context, new Integer(channelID).toString())"
+        errorLine2="                                                                                         ~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/nulide/findmydevice/utils/Notifications.java"
+            line="35"
+            column="90"/>
+    </issue>
+
+    <issue
+        id="UseValueOf"
+        message="Use `Integer.valueOf(CHANNEL_USAGE)` instead"
+        errorLine1="            NotificationChannel channel1 = new NotificationChannel(new Integer(CHANNEL_USAGE).toString(), context.getString(R.string.Notification_Usage), NotificationManager.IMPORTANCE_DEFAULT);"
+        errorLine2="                                                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/nulide/findmydevice/utils/Notifications.java"
+            line="59"
+            column="68"/>
+    </issue>
+
+    <issue
+        id="UseValueOf"
+        message="Use `Integer.valueOf(CHANNEL_LIFE)` instead"
+        errorLine1="            NotificationChannel channel2 = new NotificationChannel(new Integer(CHANNEL_LIFE).toString(), context.getString(R.string.Notification_Lifecycle), NotificationManager.IMPORTANCE_DEFAULT);"
+        errorLine2="                                                                   ~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/nulide/findmydevice/utils/Notifications.java"
+            line="61"
+            column="68"/>
+    </issue>
+
+    <issue
+        id="UseValueOf"
+        message="Use `Integer.valueOf(CHANNEL_PIN)` instead"
+        errorLine1="            NotificationChannel channel3 = new NotificationChannel(new Integer(CHANNEL_PIN).toString(), context.getString(R.string.Pin_Usage), NotificationManager.IMPORTANCE_DEFAULT);"
+        errorLine2="                                                                   ~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/nulide/findmydevice/utils/Notifications.java"
+            line="63"
+            column="68"/>
+    </issue>
+
+    <issue
+        id="UseValueOf"
+        message="Use `Integer.valueOf(CHANNEL_SERVER)` instead"
+        errorLine1="            NotificationChannel channel4 = new NotificationChannel(new Integer(CHANNEL_SERVER).toString(), context.getString(R.string.Notification_Server), NotificationManager.IMPORTANCE_DEFAULT);"
+        errorLine2="                                                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/nulide/findmydevice/utils/Notifications.java"
+            line="65"
+            column="68"/>
+    </issue>
+
+    <issue
+        id="UseValueOf"
+        message="Use `Integer.valueOf(CHANNEL_SECURITY)` instead"
+        errorLine1="            NotificationChannel channel5 = new NotificationChannel(new Integer(CHANNEL_SECURITY).toString(), context.getString(R.string.Notification_Security), NotificationManager.IMPORTANCE_DEFAULT);"
+        errorLine2="                                                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/nulide/findmydevice/utils/Notifications.java"
+            line="67"
+            column="68"/>
+    </issue>
+
+    <issue
+        id="UseValueOf"
+        message="Use `Integer.valueOf(CHANNEL_FAILED)` instead"
+        errorLine1="            NotificationChannel channel6 = new NotificationChannel(new Integer(CHANNEL_FAILED).toString(), context.getString(R.string.Notification_FAIL), NotificationManager.IMPORTANCE_HIGH);"
+        errorLine2="                                                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/nulide/findmydevice/utils/Notifications.java"
+            line="69"
+            column="68"/>
+    </issue>
+
+    <issue
+        id="UseValueOf"
+        message="Use `Integer.valueOf(android.provider.Settings.Secure.LOCATION_MODE_HIGH_ACCURACY)` instead"
+        errorLine1="            Settings.Secure.putString(context.getContentResolver(), android.provider.Settings.Secure.LOCATION_MODE, new Integer(android.provider.Settings.Secure.LOCATION_MODE_HIGH_ACCURACY).toString());"
+        errorLine2="                                                                                                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/nulide/findmydevice/utils/SecureSettings.java"
+            line="10"
+            column="117"/>
+    </issue>
+
+    <issue
+        id="UseValueOf"
+        message="Use `Integer.valueOf(android.provider.Settings.Secure.LOCATION_MODE_OFF)` instead"
+        errorLine1="            Settings.Secure.putString(context.getContentResolver(), android.provider.Settings.Secure.LOCATION_MODE, new Integer(android.provider.Settings.Secure.LOCATION_MODE_OFF).toString());"
+        errorLine2="                                                                                                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/nulide/findmydevice/utils/SecureSettings.java"
+            line="12"
+            column="117"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.aboutLibraries_description_name` appears to be unused"
+        errorLine1="    &lt;string name=&quot;aboutLibraries_description_name&quot; translatable=&quot;false&quot;>@string/app_name&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/aboutlibraries.xml"
+            line="3"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.aboutLibraries_description_showIcon` appears to be unused"
+        errorLine1="    &lt;string name=&quot;aboutLibraries_description_showIcon&quot; translatable=&quot;false&quot;>true&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/aboutlibraries.xml"
+            line="4"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.aboutLibraries_description_showVersion` appears to be unused"
+        errorLine1="    &lt;string name=&quot;aboutLibraries_description_showVersion&quot; translatable=&quot;false&quot;>true&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/aboutlibraries.xml"
+            line="5"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.aboutLibraries_description_text` appears to be unused"
+        errorLine1="    &lt;string name=&quot;aboutLibraries_description_text&quot; translatable=&quot;false&quot;>@string/app_description&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/aboutlibraries.xml"
+            line="6"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.aboutLibraries_description_special1_name` appears to be unused"
+        errorLine1="    &lt;string name=&quot;aboutLibraries_description_special1_name&quot; translatable=&quot;false&quot;>@string/about_source_code&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/aboutlibraries.xml"
+            line="8"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.aboutLibraries_description_special2_name` appears to be unused"
+        errorLine1="    &lt;string name=&quot;aboutLibraries_description_special2_name&quot; translatable=&quot;false&quot;>@string/about_wiki&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/aboutlibraries.xml"
+            line="9"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.ic_launcher_background` appears to be unused"
+        errorLine1="&lt;vector xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;"
+        errorLine2="^">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="2"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.help` appears to be unused"
+        errorLine1="    &lt;string name=&quot;help&quot;>Help&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="7"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.password_repeat` appears to be unused"
+        errorLine1="    &lt;string name=&quot;password_repeat&quot;>Repeat Password&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="89"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.about` appears to be unused"
+        errorLine1="    &lt;string name=&quot;about&quot;>About&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="116"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.about_source_code` appears to be unused"
+        errorLine1="    &lt;string name=&quot;about_source_code&quot;>Source Code&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="117"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.app_description` appears to be unused"
+        errorLine1="    &lt;string name=&quot;app_description&quot;>FMD (Find My Device) allows you to remotely locate your device. You can communicate with FMD over SMS, instant messengers, or using FMD Server. Locate your device, make it ring, lock it, or wipe it - all from remote.&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="119"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.Error` appears to be unused"
+        errorLine1="    &lt;string name=&quot;Error&quot;>Error&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="187"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.registered` appears to be unused"
+        errorLine1="    &lt;string name=&quot;registered&quot;>registered&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="196"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UselessLeaf"
+        message="This `LinearLayout` view is unnecessary (no children, no `background`, no `id`, no `style`)"
+        errorLine1="    &lt;LinearLayout"
+        errorLine2="     ~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_introduction.xml"
+            line="25"
+            column="6"/>
+    </issue>
+
+    <issue
+        id="UselessLeaf"
+        message="This `FrameLayout` view is unnecessary (no children, no `background`, no `id`, no `style`)"
+        errorLine1="        &lt;FrameLayout"
+        errorLine2="         ~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_updateboarding_modern_crypto.xml"
+            line="111"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="TypographyEllipsis"
+        message="Replace &quot;...&quot; with ellipsis character (…, &amp;#8230;) ?"
+        errorLine1="    &lt;string name=&quot;MH_Delete&quot;>Adiós...&lt;/string>"
+        errorLine2="                             ~~~~~~~~">
+        <location
+            file="src/main/res/values-es/strings.xml"
+            line="30"
+            column="30"/>
+    </issue>
+
+    <issue
+        id="TypographyEllipsis"
+        message="Replace &quot;...&quot; with ellipsis character (…, &amp;#8230;) ?"
+        errorLine1="    &lt;string name=&quot;MH_Delete&quot;>Прощай...&lt;/string>"
+        errorLine2="                             ~~~~~~~~~">
+        <location
+            file="src/main/res/values-ru-rRu/strings.xml"
+            line="36"
+            column="30"/>
+    </issue>
+
+    <issue
+        id="TypographyEllipsis"
+        message="Replace &quot;...&quot; with ellipsis character (…, &amp;#8230;) ?"
+        errorLine1="    &lt;string name=&quot;MH_Delete&quot;>Hyvästi...&lt;/string>"
+        errorLine2="                             ~~~~~~~~~~">
+        <location
+            file="src/main/res/values-fi/strings.xml"
+            line="37"
+            column="30"/>
+    </issue>
+
+    <issue
+        id="TypographyEllipsis"
+        message="Replace &quot;...&quot; with ellipsis character (…, &amp;#8230;) ?"
+        errorLine1="    &lt;string name=&quot;loading&quot;>Caricamento...&lt;/string>"
+        errorLine2="                           ~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values-it/strings.xml"
+            line="54"
+            column="28"/>
+    </issue>
+
+    <issue
+        id="TypographyEllipsis"
+        message="Replace &quot;...&quot; with ellipsis character (…, &amp;#8230;) ?"
+        errorLine1="    &lt;string name=&quot;Permission_Notification&quot;>Sovellus tarjoaa mahdollisuuden vastaanottaa komentoja SMS-viestien lisäksi myös muista viestisovelluksista (kuten Telegram, WhatsApp...). Viestien lukuun vaaditaan pääsy ilmoitusksien käyttöoikeus.&lt;/string>"
+        errorLine2="                                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values-fi/strings.xml"
+            line="98"
+            column="44"/>
+    </issue>
+
+    <issue
+        id="TypographyEllipsis"
+        message="Replace &quot;...&quot; with ellipsis character (…, &amp;#8230;) ?"
+        errorLine1="    &lt;string name=&quot;MH_Delete&quot;>Goodbye...&lt;/string>"
+        errorLine2="                             ~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="174"
+            column="30"/>
+    </issue>
+
+    <issue
+        id="IconXmlAndPng"
+        message="The following images appear both as density independent `.xml` files and as bitmap files: src/main/res/drawable/ic_launcher_background.xml, src/main/res/mipmap-hdpi/ic_launcher_background.png">
+        <location
+            file="src/main/res/mipmap-xxxhdpi/ic_launcher_background.png"/>
+        <location
+            file="src/main/res/mipmap-xxhdpi/ic_launcher_background.png"/>
+        <location
+            file="src/main/res/mipmap-xhdpi/ic_launcher_background.png"/>
+        <location
+            file="src/main/res/mipmap-mdpi/ic_launcher_background.png"/>
+        <location
+            file="src/main/res/mipmap-hdpi/ic_launcher_background.png"/>
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"/>
+    </issue>
+
+    <issue
+        id="MonochromeLauncherIcon"
+        message="The application adaptive roundIcon is missing a monochrome tag"
+        errorLine1="&lt;adaptive-icon xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;>"
+        errorLine2="^">
+        <location
+            file="src/dev/res/mipmap-anydpi-v26/ic_launcher_round.xml"
+            line="2"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="ButtonStyle"
+        message="Buttons in button bars should be borderless; use `style=&quot;?android:attr/buttonBarButtonStyle&quot;` (and `?android:attr/buttonBarStyle` on the parent)"
+        errorLine1="        &lt;Button"
+        errorLine2="         ~~~~~~">
+        <location
+            file="src/main/res/layout/activity_updateboarding_modern_crypto.xml"
+            line="124"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="ButtonStyle"
+        message="Buttons in button bars should be borderless; use `style=&quot;?android:attr/buttonBarButtonStyle&quot;` (and `?android:attr/buttonBarStyle` on the parent)"
+        errorLine1="        &lt;Button"
+        errorLine2="         ~~~~~~">
+        <location
+            file="src/main/res/layout/activity_updateboarding_modern_crypto.xml"
+            line="132"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="TextFields"
+        message="This text field does not specify an `inputType`"
+        errorLine1="        &lt;EditText"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_add_account.xml"
+            line="42"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="TextFields"
+        message="This text field does not specify an `inputType`"
+        errorLine1="        &lt;EditText"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_f_m_d_config.xml"
+            line="86"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="TextFields"
+        message="This text field does not specify an `inputType`"
+        errorLine1="        &lt;EditText"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_f_m_d_config.xml"
+            line="145"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="TextFields"
+        message="This text field does not specify an `inputType`"
+        errorLine1="                &lt;EditText"
+        errorLine2="                 ~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_open_cell_id.xml"
+            line="38"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="TextFields"
+        message="This text field does not specify an `inputType`"
+        errorLine1="            &lt;EditText"
+        errorLine2="             ~~~~~~~~">
+        <location
+            file="src/main/res/layout/dialog_login.xml"
+            line="18"
+            column="14"/>
+    </issue>
+
+    <issue
+        id="TextFields"
+        message="The view name (`@+id/editTextPin`) suggests this is a password, but it does not include &apos;`numberPassword`&apos; in the `inputType`"
+        errorLine1="                android:inputType=&quot;textPassword&quot; />"
+        errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/dialog_pin.xml"
+            line="26"
+            column="17"/>
+        <location
+            file="src/main/res/layout/dialog_pin.xml"
+            line="20"
+            column="17"
+            message="id defined here"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_add_account.xml"
+            line="42"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_f_m_d_config.xml"
+            line="86"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_f_m_d_config.xml"
+            line="145"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_f_m_d_server.xml"
+            line="162"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="                &lt;EditText"
+        errorLine2="                 ~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_open_cell_id.xml"
+            line="38"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="KtxExtensionAvailable"
+        message="Add suffix `-ktx` to enable the Kotlin extensions for this library"
+        errorLine1="    implementation &apos;androidx.preference:preference:1.2.1&apos;"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="74"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="ContentDescription"
+        message="Missing `contentDescription` attribute on image"
+        errorLine1="            &lt;ImageView"
+        errorLine2="             ~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_f_m_d_server.xml"
+            line="42"
+            column="14"/>
+    </issue>
+
+    <issue
+        id="ContentDescription"
+        message="Missing `contentDescription` attribute on image"
+        errorLine1="            &lt;ImageView"
+        errorLine2="             ~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_f_m_d_server.xml"
+            line="70"
+            column="14"/>
+    </issue>
+
+    <issue
+        id="ContentDescription"
+        message="Missing `contentDescription` attribute on image"
+        errorLine1="            &lt;ImageView"
+        errorLine2="             ~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_main.xml"
+            line="17"
+            column="14"/>
+    </issue>
+
+    <issue
+        id="ContentDescription"
+        message="Missing `contentDescription` attribute on image"
+        errorLine1="        &lt;ImageView"
+        errorLine2="         ~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_white_list.xml"
+            line="15"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="ContentDescription"
+        message="Missing `contentDescription` attribute on image"
+        errorLine1="    &lt;ImageView"
+        errorLine2="     ~~~~~~~~~">
+        <location
+            file="src/main/res/layout/settings_item.xml"
+            line="10"
+            column="6"/>
+    </issue>
+
+    <issue
+        id="LabelFor"
+        message="Missing accessibility label: provide either a view with an `android:labelFor` that references this view or provide an `android:hint`"
+        errorLine1="        &lt;EditText"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_add_account.xml"
+            line="42"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="LabelFor"
+        message="Missing accessibility label: provide either a view with an `android:labelFor` that references this view or provide an `android:hint`"
+        errorLine1="        &lt;EditText"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_f_m_d_config.xml"
+            line="86"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="LabelFor"
+        message="Missing accessibility label: provide either a view with an `android:labelFor` that references this view or provide an `android:hint`"
+        errorLine1="        &lt;EditText"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_f_m_d_config.xml"
+            line="145"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="LabelFor"
+        message="Missing accessibility label: provide either a view with an `android:labelFor` that references this view or provide an `android:hint`"
+        errorLine1="        &lt;EditText"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_f_m_d_server.xml"
+            line="162"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="LabelFor"
+        message="Missing accessibility label: provide either a view with an `android:labelFor` that references this view or provide an `android:hint`"
+        errorLine1="                &lt;EditText"
+        errorLine2="                 ~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_open_cell_id.xml"
+            line="38"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        message="Number formatting does not take into account locale settings. Consider using `String.format` instead."
+        errorLine1="        editTextFMDServerUpdateTime.setText(((Integer) settings.get(Settings.SET_FMDSERVER_UPDATE_TIME)).toString());"
+        errorLine2="                                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/nulide/findmydevice/ui/settings/FMDServerActivity.java"
+            line="95"
+            column="45"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        message="Number formatting does not take into account locale settings. Consider using `String.format` instead."
+        errorLine1="        textViewWhiteListCount.setText(Integer.valueOf(whiteList.size()).toString());"
+        errorLine2="                                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/nulide/findmydevice/ui/MainActivity.java"
+            line="130"
+            column="40"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        message="Do not concatenate text displayed with `setText`. Use resource string with placeholders."
+        errorLine1="                    &quot;Paras: $paras\n\nOpenCelliD: ${it.url}\n\nOpenStreetMap: $osm&quot;"
+        errorLine2="                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/nulide/findmydevice/ui/settings/OpenCellIdActivity.kt"
+            line="104"
+            column="21"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        message="String literal in `setText` can not be translated. Use Android resources instead."
+        errorLine1="                    &quot;Paras: $paras\n\nOpenCelliD: ${it.url}\n\nOpenStreetMap: $osm&quot;"
+        errorLine2="                     ~~~~~~~">
+        <location
+            file="src/main/java/de/nulide/findmydevice/ui/settings/OpenCellIdActivity.kt"
+            line="104"
+            column="22"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        message="String literal in `setText` can not be translated. Use Android resources instead."
+        errorLine1="                    &quot;Paras: $paras\n\nOpenCelliD: ${it.url}\n\nOpenStreetMap: $osm&quot;"
+        errorLine2="                                      ~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/nulide/findmydevice/ui/settings/OpenCellIdActivity.kt"
+            line="104"
+            column="39"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        message="String literal in `setText` can not be translated. Use Android resources instead."
+        errorLine1="                    &quot;Paras: $paras\n\nOpenCelliD: ${it.url}\n\nOpenStreetMap: $osm&quot;"
+        errorLine2="                                                               ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/nulide/findmydevice/ui/settings/OpenCellIdActivity.kt"
+            line="104"
+            column="64"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        message="Do not concatenate text displayed with `setText`. Use resource string with placeholders."
+        errorLine1="                    &quot;Paras: $paras\n\nOpenCelliD: ${it.url}\n\nError: ${it.error}&quot;"
+        errorLine2="                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/nulide/findmydevice/ui/settings/OpenCellIdActivity.kt"
+            line="108"
+            column="21"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        message="String literal in `setText` can not be translated. Use Android resources instead."
+        errorLine1="                    &quot;Paras: $paras\n\nOpenCelliD: ${it.url}\n\nError: ${it.error}&quot;"
+        errorLine2="                     ~~~~~~~">
+        <location
+            file="src/main/java/de/nulide/findmydevice/ui/settings/OpenCellIdActivity.kt"
+            line="108"
+            column="22"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        message="String literal in `setText` can not be translated. Use Android resources instead."
+        errorLine1="                    &quot;Paras: $paras\n\nOpenCelliD: ${it.url}\n\nError: ${it.error}&quot;"
+        errorLine2="                                      ~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/nulide/findmydevice/ui/settings/OpenCellIdActivity.kt"
+            line="108"
+            column="39"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        message="String literal in `setText` can not be translated. Use Android resources instead."
+        errorLine1="                    &quot;Paras: $paras\n\nOpenCelliD: ${it.url}\n\nError: ${it.error}&quot;"
+        errorLine2="                                                               ~~~~~~~">
+        <location
+            file="src/main/java/de/nulide/findmydevice/ui/settings/OpenCellIdActivity.kt"
+            line="108"
+            column="64"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;Server URL&quot;, should use `@string` resource"
+        errorLine1="            android:text=&quot;Server URL&quot; />"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_add_account.xml"
+            line="40"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;FMD via PIN&quot;, should use `@string` resource"
+        errorLine1="            android:text=&quot;FMD via PIN&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_f_m_d_config.xml"
+            line="18"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;fmd command&quot;, should use `@string` resource"
+        errorLine1="            android:text=&quot;fmd command&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_f_m_d_config.xml"
+            line="75"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;fmd&quot;, should use `@string` resource"
+        errorLine1="            android:text=&quot;fmd&quot; />"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_f_m_d_config.xml"
+            line="92"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;fmd ring&quot;, should use `@string` resource"
+        errorLine1="            android:text=&quot;fmd ring&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_f_m_d_config.xml"
+            line="105"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;fmd lock&quot;, should use `@string` resource"
+        errorLine1="            android:text=&quot;fmd lock&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_f_m_d_config.xml"
+            line="134"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;fmd delete&quot;, should use `@string` resource"
+        errorLine1="            android:text=&quot;fmd delete&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_f_m_d_config.xml"
+            line="164"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;Push&quot;, should use `@string` resource"
+        errorLine1="            android:text=&quot;Push&quot;"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_f_m_d_server.xml"
+            line="120"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;0&quot;, should use `@string` resource"
+        errorLine1="            android:text=&quot;0&quot; />"
+        errorLine2="            ~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_f_m_d_server.xml"
+            line="169"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;...&quot;, should use `@string` resource"
+        errorLine1="            android:text=&quot;...&quot; />"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_introduction.xml"
+            line="23"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;SMS&quot;, should use `@string` resource"
+        errorLine1="                android:text=&quot;SMS&quot; />"
+        errorLine2="                ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_main.xml"
+            line="58"
+            column="17"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;Server&quot;, should use `@string` resource"
+        errorLine1="                android:text=&quot;Server&quot; />"
+        errorLine2="                ~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_main.xml"
+            line="128"
+            column="17"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;Changes to FMD Server&quot;, should use `@string` resource"
+        errorLine1="                    android:text=&quot;Changes to FMD Server&quot;"
+        errorLine2="                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_updateboarding_modern_crypto.xml"
+            line="28"
+            column="21"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;The cryptography securing FMD Server has been redesigned. The migration requires deleting your existing account and creating a new one.&quot;, should use `@string` resource"
+        errorLine1="                    android:text=&quot;The cryptography securing FMD Server has been redesigned. The migration requires deleting your existing account and creating a new one.&quot; />"
+        errorLine2="                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_updateboarding_modern_crypto.xml"
+            line="37"
+            column="21"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;If you are okay with this, click &apos;I understand&apos;. Your old account will automatically be deleted from FMD Server. You then need to manually register again in the settings!&quot;, should use `@string` resource"
+        errorLine1="                    android:text=&quot;If you are okay with this, click &apos;I understand&apos;. Your old account will automatically be deleted from FMD Server. You then need to manually register again in the settings!&quot; />"
+        errorLine2="                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_updateboarding_modern_crypto.xml"
+            line="43"
+            column="21"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;If you don&apos;t want this you can click &apos;Exit FMD&apos;. You can downgrade to an older version of FMD, and login to your old account as usual. NOTE THAT THIS IS NOT RECOMMENDED AS THE OLD CRYPTOGRAPHY IS KNOWN TO BE WEAK.&quot;, should use `@string` resource"
+        errorLine1="                    android:text=&quot;If you don&apos;t want this you can click &apos;Exit FMD&apos;. You can downgrade to an older version of FMD, and login to your old account as usual. NOTE THAT THIS IS NOT RECOMMENDED AS THE OLD CRYPTOGRAPHY IS KNOWN TO BE WEAK.&quot; />"
+        errorLine2="                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_updateboarding_modern_crypto.xml"
+            line="49"
+            column="21"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;This release requires at least FMD Server 0.4.0. If you are self-hosting, make sure to update the server before re-registering.&quot;, should use `@string` resource"
+        errorLine1="                    android:text=&quot;This release requires at least FMD Server 0.4.0. If you are self-hosting, make sure to update the server before re-registering.&quot; />"
+        errorLine2="                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_updateboarding_modern_crypto.xml"
+            line="55"
+            column="21"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;Changes to FMD PIN&quot;, should use `@string` resource"
+        errorLine1="                    android:text=&quot;Changes to FMD PIN&quot;"
+        errorLine2="                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_updateboarding_modern_crypto.xml"
+            line="69"
+            column="21"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;The cryptography securing FMD PIN has been redesigned. The migration requires deleting your existing PIN and creating a new one.&quot;, should use `@string` resource"
+        errorLine1="                    android:text=&quot;The cryptography securing FMD PIN has been redesigned. The migration requires deleting your existing PIN and creating a new one.&quot; />"
+        errorLine2="                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_updateboarding_modern_crypto.xml"
+            line="78"
+            column="21"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;If you are okay with this, click &apos;I understand&apos;. Your old PIN will automatically be deleted. You then need to manually set it again in the settings!&quot;, should use `@string` resource"
+        errorLine1="                    android:text=&quot;If you are okay with this, click &apos;I understand&apos;. Your old PIN will automatically be deleted. You then need to manually set it again in the settings!&quot; />"
+        errorLine2="                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_updateboarding_modern_crypto.xml"
+            line="84"
+            column="21"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;If you don&apos;t want this you can click &apos;Exit FMD&apos;.&quot;, should use `@string` resource"
+        errorLine1="                    android:text=&quot;If you don&apos;t want this you can click &apos;Exit FMD&apos;.&quot; />"
+        errorLine2="                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_updateboarding_modern_crypto.xml"
+            line="90"
+            column="21"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;Export settings&quot;, should use `@string` resource"
+        errorLine1="            android:text=&quot;Export settings&quot; />"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_updateboarding_modern_crypto.xml"
+            line="109"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;Exit FMD&quot;, should use `@string` resource"
+        errorLine1="            android:text=&quot;Exit FMD&quot; />"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_updateboarding_modern_crypto.xml"
+            line="130"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;I understand&quot;, should use `@string` resource"
+        errorLine1="            android:text=&quot;I understand&quot; />"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_updateboarding_modern_crypto.xml"
+            line="138"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;FMD ID&quot;, should use `@string` resource"
+        errorLine1="                android:hint=&quot;FMD ID&quot; />"
+        errorLine2="                ~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/dialog_login.xml"
+            line="24"
+            column="17"/>
+    </issue>
+
+    <issue
+        id="RtlSymmetry"
+        message="When you define `paddingStart` you should probably also define `paddingEnd` for right-to-left symmetry"
+        errorLine1="                android:paddingStart=&quot;10dp&quot;"
+        errorLine2="                ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_main.xml"
+            line="28"
+            column="17"/>
+    </issue>
+
+    <issue
+        id="RtlSymmetry"
+        message="When you define `paddingStart` you should probably also define `paddingEnd` for right-to-left symmetry"
+        errorLine1="                android:paddingStart=&quot;10dp&quot;"
+        errorLine2="                ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_main.xml"
+            line="56"
+            column="17"/>
+    </issue>
+
+    <issue
+        id="RtlSymmetry"
+        message="When you define `paddingStart` you should probably also define `paddingEnd` for right-to-left symmetry"
+        errorLine1="                    android:paddingStart=&quot;20dp&quot;"
+        errorLine2="                    ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_main.xml"
+            line="71"
+            column="21"/>
+    </issue>
+
+    <issue
+        id="RtlSymmetry"
+        message="When you define `paddingEnd` you should probably also define `paddingStart` for right-to-left symmetry"
+        errorLine1="                    android:paddingEnd=&quot;20dp&quot;"
+        errorLine2="                    ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_main.xml"
+            line="81"
+            column="21"/>
+    </issue>
+
+    <issue
+        id="RtlSymmetry"
+        message="When you define `paddingStart` you should probably also define `paddingEnd` for right-to-left symmetry"
+        errorLine1="                    android:paddingStart=&quot;20dp&quot;"
+        errorLine2="                    ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_main.xml"
+            line="101"
+            column="21"/>
+    </issue>
+
+    <issue
+        id="RtlSymmetry"
+        message="When you define `paddingStart` you should probably also define `paddingEnd` for right-to-left symmetry"
+        errorLine1="                android:paddingStart=&quot;10dp&quot;"
+        errorLine2="                ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_main.xml"
+            line="126"
+            column="17"/>
+    </issue>
+
+    <issue
+        id="RtlSymmetry"
+        message="When you define `paddingStart` you should probably also define `paddingEnd` for right-to-left symmetry"
+        errorLine1="                    android:paddingStart=&quot;20dp&quot;"
+        errorLine2="                    ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_main.xml"
+            line="141"
+            column="21"/>
+    </issue>
+
+    <issue
+        id="RtlSymmetry"
+        message="When you define `paddingEnd` you should probably also define `paddingStart` for right-to-left symmetry"
+        errorLine1="                    android:paddingEnd=&quot;20dp&quot;"
+        errorLine2="                    ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_main.xml"
+            line="151"
+            column="21"/>
+    </issue>
+
+    <issue
+        id="RtlSymmetry"
+        message="When you define `paddingStart` you should probably also define `paddingEnd` for right-to-left symmetry"
+        errorLine1="                    android:paddingStart=&quot;20dp&quot;"
+        errorLine2="                    ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_main.xml"
+            line="169"
+            column="21"/>
+    </issue>
+
+    <issue
+        id="RtlSymmetry"
+        message="When you define `paddingEnd` you should probably also define `paddingStart` for right-to-left symmetry"
+        errorLine1="                    android:paddingEnd=&quot;20dp&quot;"
+        errorLine2="                    ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_main.xml"
+            line="179"
+            column="21"/>
+    </issue>
+
+    <issue
+        id="RtlSymmetry"
+        message="When you define `paddingStart` you should probably also define `paddingEnd` for right-to-left symmetry"
+        errorLine1="                    android:paddingStart=&quot;20dp&quot;"
+        errorLine2="                    ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_main.xml"
+            line="197"
+            column="21"/>
+    </issue>
+
+    <issue
+        id="RtlSymmetry"
+        message="When you define `paddingEnd` you should probably also define `paddingStart` for right-to-left symmetry"
+        errorLine1="                    android:paddingEnd=&quot;20dp&quot;"
+        errorLine2="                    ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_main.xml"
+            line="207"
+            column="21"/>
+    </issue>
+
+</issues>

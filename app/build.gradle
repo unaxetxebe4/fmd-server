@@ -13,6 +13,11 @@ android {
         }
     }
 
+    lint {
+            baseline = file("lint-baseline.xml")
+    }
+
+
     defaultConfig {
         applicationId "de.nulide.findmydevice"
         minSdkVersion 21

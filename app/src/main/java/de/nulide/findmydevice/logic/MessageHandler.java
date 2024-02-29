@@ -132,17 +132,19 @@ public class MessageHandler {
             //STATS
 
             } else if (msg.startsWith(COM_STATS)) {
-                executedCommand = COM_STATS;
-                replyBuilder.append(context.getString(R.string.MH_Stats));
-                Map<String, String> ips = Network.getAllIP();
-                for (String ii : ips.keySet()) {
-                    replyBuilder.append(ii).append(": ").append(ips.get(ii)).append("\n");
-                }
-                replyBuilder.append("\n").append(context.getString(R.string.MH_Networks)).append("\n");
-                for (ScanResult sr : Network.getWifiNetworks(context)) {
-                    replyBuilder.append("SSID: ");
-                    replyBuilder.append(sr.SSID).append("\nBSSID: ");
-                    replyBuilder.append(sr.BSSID).append("\n\n");
+                if (Permission.GPS) {
+                    executedCommand = COM_STATS;
+                    replyBuilder.append(context.getString(R.string.MH_Stats));
+                    Map<String, String> ips = Network.getAllIP();
+                    for (String ii : ips.keySet()) {
+                        replyBuilder.append(ii).append(": ").append(ips.get(ii)).append("\n");
+                    }
+                    replyBuilder.append("\n").append(context.getString(R.string.MH_Networks)).append("\n");
+                    for (ScanResult sr : Network.getWifiNetworks(context)) {
+                        replyBuilder.append("SSID: ");
+                        replyBuilder.append(sr.SSID).append("\nBSSID: ");
+                        replyBuilder.append(sr.BSSID).append("\n\n");
+                    }
                 }
 
             //DELETE
