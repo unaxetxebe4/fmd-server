@@ -54,7 +54,9 @@
     <string name="MH_Locked">заблокировано</string>
     <string name="MH_Stats">Информация о сети:\nIP: \n</string>
     <string name="MH_Networks">"
+\n
 \nДоступные Wi-Fi сети:
+\n
 \n"</string>
     <string name="MH_Delete">Прощайте...</string>
     <string name="MH_False_Pin">Неверный PIN-код!</string>
