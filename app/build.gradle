@@ -110,8 +110,8 @@ dependencies {
     implementation 'xerces:xercesImpl:2.12.1'
 
     // Shizuku
-    implementation "dev.rikka.shizuku:api:13.1.5"
-    implementation "dev.rikka.shizuku:provider:13.1.5"
+    implementation "dev.rikka.shizuku:api:12.1.0"
+    implementation "dev.rikka.shizuku:provider:12.1.0"
 
     // https://stackoverflow.com/questions/75263047/duplicate-class-in-kotlin-android
     constraints {

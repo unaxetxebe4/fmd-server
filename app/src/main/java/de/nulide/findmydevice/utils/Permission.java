@@ -29,6 +29,7 @@ import rikka.shizuku.Shizuku;
 import rikka.shizuku.ShizukuApiConstants;
 import rikka.shizuku.ShizukuBinderWrapper;
 import rikka.shizuku.ShizukuProvider;
+import rikka.shizuku.ShizukuRemoteProcess;
 import rikka.shizuku.SystemServiceHelper;
 
 public class Permission {
@@ -182,23 +183,17 @@ public class Permission {
 
 
     @SuppressLint("PrivateApi")
-    public static void requestWriteSecureSettingsPermissionViaShizuku(){
-
+    public static void requestWriteSecureSettingsPermissionViaShizuku(Context c){
+        String command = "pm grant "+c.getPackageName()+" android.permission.WRITE_SECURE_SETTINGS";
+        ShizukuRemoteProcess proc = Shizuku.newProcess(new String[]{"sh","-c",command}, null, "/");
         try {
-            Class<?> iPmClass = Class.forName("android.content.pm.IPackageManager");
-            Class<?> iPmStub = Class.forName("android.content.pm.IPackageManager$Stub");
-            Method asInterfaceMethod = iPmStub.getMethod("asInterface", IBinder.class);
-            Method grantRuntimePermissionMethod = iPmClass.getMethod("grantPermission", String.class, String.class);
-
-            Object iPmInstance = asInterfaceMethod.invoke(null, new ShizukuBinderWrapper(SystemServiceHelper.getSystemService("package")));
-
-            grantRuntimePermissionMethod.invoke(iPmInstance, "de.nulide.findmydevice", android.Manifest.permission.WRITE_SECURE_SETTINGS);
-        }catch (ClassNotFoundException cnfe){
-            Logger.logSession("Shizuku Error", cnfe.toString());
-            cnfe.printStackTrace();
-        } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
-            throw new RuntimeException(e);
+            proc.waitFor();
+        } catch (InterruptedException e) {
+            Toast.makeText(c, "Something went wrong", Toast.LENGTH_LONG).show();
+            e.printStackTrace();
+            Logger.log("ShizukuError", e.toString());
         }
+
     }
 
     public static void requestWriteSecureSettingsPermissionViaRoot(Context c){
@@ -206,7 +201,7 @@ public class Permission {
             String command = "pm grant "+c.getPackageName()+" android.permission.WRITE_SECURE_SETTINGS";
             RootAccess.execCommand(command);
         }else{
-            Toast.makeText(c,"Root access denied", Toast.LENGTH_LONG);
+            Toast.makeText(c,"Root access denied", Toast.LENGTH_LONG).show();
         }
 
     }

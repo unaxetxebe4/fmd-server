@@ -140,8 +140,8 @@ public class IntroductionActivity extends AppCompatActivity implements View.OnCl
             case 7: // Write Secure Settings Permission
                 if(Permission.isShizukuRunning()){
                     buttonShizuku.setVisibility(View.VISIBLE);
-                    if(Permission.checkShizukuPermission()){
-                        //Permission.requestWriteSecureSettingsPermissionViaShizuku();
+                    if(Permission.checkShizukuPermission() && !Permission.checkWriteSecurePermission(this)){
+                        Permission.requestWriteSecureSettingsPermissionViaShizuku(this);
                     }
                 }
                 buttonRoot.setVisibility(View.VISIBLE);
