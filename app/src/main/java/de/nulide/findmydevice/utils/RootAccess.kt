@@ -37,17 +37,6 @@ class RootAccess {
 
                 proc.waitFor()
 
-                val output = StringBuilder()
-                val inputStream: InputStream = proc.inputStream
-                val reader = BufferedReader(InputStreamReader(inputStream))
-                var line: String?
-                while (reader.readLine().also { line = it } != null) {
-                    output.append(line).append("\n")
-                }
-                System.out.println("hello")
-                System.out.println(output.toString())
-                System.out.println("bye")
-
 
             } catch (e: Exception) {
                 e.printStackTrace()
