@@ -20,7 +20,7 @@ android {
 
     defaultConfig {
         applicationId "de.nulide.findmydevice"
-        minSdkVersion 21
+        minSdkVersion 24
         targetSdkVersion 34
         versionCode 24
         versionName "0.4.0"
@@ -108,6 +108,10 @@ dependencies {
     // XXX: only used by javax.xml.bind.DatatypeConverter
     implementation 'jakarta.xml.bind:jakarta.xml.bind-api:2.3.2'
     implementation 'xerces:xercesImpl:2.12.1'
+
+    // Shizuku
+    implementation "dev.rikka.shizuku:api:13.1.5"
+    implementation "dev.rikka.shizuku:provider:13.1.5"
 
     // https://stackoverflow.com/questions/75263047/duplicate-class-in-kotlin-android
     constraints {

@@ -22,6 +22,9 @@ public class IntroductionActivity extends AppCompatActivity implements View.OnCl
     public static String POS_KEY = "pos";
 
     private TextView textViewInfoText;
+
+    private Button buttonRoot;
+    private Button buttonShizuku;
     private Button buttonNext;
     private Button buttonGivePermission;
     private int position = 0;
@@ -42,6 +45,10 @@ public class IntroductionActivity extends AppCompatActivity implements View.OnCl
         Settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
 
         textViewInfoText = findViewById(R.id.textViewInfoText);
+        buttonRoot = findViewById(R.id.buttonPermViaRoot);
+        buttonRoot.setOnClickListener(this);
+        buttonShizuku = findViewById(R.id.buttonPermViaShizuku);
+        buttonShizuku.setOnClickListener(this);
         buttonGivePermission = findViewById(R.id.buttonGivePermission);
         buttonGivePermission.setOnClickListener(this);
         buttonNext = findViewById(R.id.buttonNext);
@@ -69,7 +76,7 @@ public class IntroductionActivity extends AppCompatActivity implements View.OnCl
                     textViewInfoText.setText(getString(R.string.Introduction_Introduction));
                 }
                 break;
-            case 1:
+            case 1: // SMS Permission
                 buttonGivePermission.setText(getString(R.string.Introduction_Give_Permission));
                 textViewInfoText.setText(getString(R.string.Permission_SMS));
                 if (Permission.checkSMSPermission(this)) {
@@ -80,7 +87,7 @@ public class IntroductionActivity extends AppCompatActivity implements View.OnCl
                     buttonGivePermission.setBackgroundColor(colorDisabled);
                 }
                 break;
-            case 2:
+            case 2: //Contacts Permission
                 textViewInfoText.setText(getString(R.string.Permission_CONTACTS));
                 if (Permission.checkContactsPermission(this)) {
                     buttonNext.setEnabled(true);
@@ -90,7 +97,7 @@ public class IntroductionActivity extends AppCompatActivity implements View.OnCl
                     buttonGivePermission.setBackgroundColor(colorDisabled);
                 }
                 break;
-            case 3:
+            case 3: // GPS Permission
                 textViewInfoText.setText(getString(R.string.Permission_GPS));
                 if (Permission.checkGPSBackgroundPermission(this)) {
                     buttonGivePermission.setBackgroundColor(colorEnabled);
@@ -101,7 +108,7 @@ public class IntroductionActivity extends AppCompatActivity implements View.OnCl
                     Permission.requestGPSBackgroundPermission(this);
                 }
                 break;
-            case 4:
+            case 4: // DND Permission
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     textViewInfoText.setText(getString(R.string.Permission_DND));
                     if (Permission.checkDNDPermission(this)) {
@@ -114,7 +121,7 @@ public class IntroductionActivity extends AppCompatActivity implements View.OnCl
                     updateViews();
                 }
                 break;
-            case 5:
+            case 5: // DeviceAdmin Permission
                 textViewInfoText.setText(getString(R.string.Permission_DEVICE_ADMIN));
                 if (Permission.checkDeviceAdminPermission(this)) {
                     buttonGivePermission.setBackgroundColor(colorEnabled);
@@ -122,7 +129,7 @@ public class IntroductionActivity extends AppCompatActivity implements View.OnCl
                     buttonGivePermission.setBackgroundColor(colorDisabled);
                 }
                 break;
-            case 6:
+            case 6: // Overlay Permission
                 textViewInfoText.setText(getString(R.string.Permission_OVERLAY));
                 if (Permission.checkOverlayPermission(this)) {
                     buttonGivePermission.setBackgroundColor(colorEnabled);
@@ -130,7 +137,14 @@ public class IntroductionActivity extends AppCompatActivity implements View.OnCl
                     buttonGivePermission.setBackgroundColor(colorDisabled);
                 }
                 break;
-            case 7:
+            case 7: // Write Secure Settings Permission
+                if(Permission.isShizukuRunning()){
+                    buttonShizuku.setVisibility(View.VISIBLE);
+                    if(Permission.checkShizukuPermission()){
+                        //Permission.requestWriteSecureSettingsPermissionViaShizuku();
+                    }
+                }
+                buttonRoot.setVisibility(View.VISIBLE);
                 textViewInfoText.setText(getString(R.string.Permission_WRITE_SECURE_SETTINGS));
                 if (Permission.checkWriteSecurePermission(this)) {
                     buttonGivePermission.setBackgroundColor(colorEnabled);
@@ -138,7 +152,9 @@ public class IntroductionActivity extends AppCompatActivity implements View.OnCl
                     buttonGivePermission.setBackgroundColor(colorDisabled);
                 }
                 break;
-            case 8:
+            case 8: // Notificaton Permission
+                buttonShizuku.setVisibility(View.INVISIBLE);
+                buttonRoot.setVisibility(View.INVISIBLE);
                 textViewInfoText.setText(getString(R.string.Permission_Notification));
                 if (Permission.checkNotificationAccessPermission(this)) {
                     buttonGivePermission.setBackgroundColor(colorEnabled);
@@ -146,7 +162,7 @@ public class IntroductionActivity extends AppCompatActivity implements View.OnCl
                     buttonGivePermission.setBackgroundColor(colorDisabled);
                 }
                 break;
-            case 9:
+            case 9: // Camera Permission
                 textViewInfoText.setText(getString(R.string.Permission_Camera));
                 if (Permission.checkCameraPermissions(this)) {
                     buttonGivePermission.setBackgroundColor(colorEnabled);
@@ -154,7 +170,7 @@ public class IntroductionActivity extends AppCompatActivity implements View.OnCl
                     buttonGivePermission.setBackgroundColor(colorDisabled);
                 }
                 break;
-            case 10:
+            case 10:    // Battery Optimization Permission
                 textViewInfoText.setText(R.string.Permission_IGNORE_BATTERY_OPTIMIZATION);
                 if(Permission.checkBatteryOptimizationPermission(this)){
                     buttonGivePermission.setBackgroundColor(colorEnabled);
@@ -162,7 +178,7 @@ public class IntroductionActivity extends AppCompatActivity implements View.OnCl
                     buttonGivePermission.setBackgroundColor(colorDisabled);
                 }
                 break;
-            case 11:
+            case 11:    // Post Notification Permission
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                     textViewInfoText.setText(R.string.Permission_POST_NOTIFICATIONS);
                     if (Permission.checkPostNotificationsPermissions(this)) {
@@ -241,6 +257,11 @@ public class IntroductionActivity extends AppCompatActivity implements View.OnCl
             }
         } else if (v == buttonNext) {
             position++;
+            updateViews();
+        } else if (v == buttonShizuku){
+            Permission.requestShizukuPermission();
+        } else if (v == buttonRoot) {
+            Permission.requestWriteSecureSettingsPermissionViaRoot(this);
             updateViews();
         }
     }

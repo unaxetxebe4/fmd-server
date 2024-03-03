@@ -1,6 +1,7 @@
 package de.nulide.findmydevice.utils;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.NotificationManager;
 import android.app.admin.DevicePolicyManager;
@@ -10,15 +11,25 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
+import android.os.IBinder;
 import android.os.PowerManager;
 import android.provider.Settings;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
 import de.nulide.findmydevice.receiver.DeviceAdminReceiver;
 import de.nulide.findmydevice.services.ThirdPartyAccessService;
+import rikka.shizuku.Shizuku;
+import rikka.shizuku.ShizukuApiConstants;
+import rikka.shizuku.ShizukuBinderWrapper;
+import rikka.shizuku.ShizukuProvider;
+import rikka.shizuku.SystemServiceHelper;
 
 public class Permission {
 
@@ -27,6 +38,10 @@ public class Permission {
     private static final int PERM_CONTACT_ID = 61343;
     private static final int PERM_CAMERA_ID = 61344;
     private static final int PERM_POST_NOTIFICATIONS = 61345;
+
+    private static final int PERM_SHIZUKU_ID = 61346;
+
+    private static final int PERM_WRITE_SECURE_SETTINGS_ID = 61347;
 
     public static boolean GPS = false;
     public static boolean DEVICE_ADMIN = false;
@@ -155,6 +170,49 @@ public class Permission {
                 activity.startActivity(intent);
             }
         }
+    }
+
+    public static boolean isShizukuRunning(){
+        return Shizuku.pingBinder();
+    }
+
+    public static void requestShizukuPermission(){
+        Shizuku.requestPermission(PERM_SHIZUKU_ID);
+    }
+
+
+    @SuppressLint("PrivateApi")
+    public static void requestWriteSecureSettingsPermissionViaShizuku(){
+
+        try {
+            Class<?> iPmClass = Class.forName("android.content.pm.IPackageManager");
+            Class<?> iPmStub = Class.forName("android.content.pm.IPackageManager$Stub");
+            Method asInterfaceMethod = iPmStub.getMethod("asInterface", IBinder.class);
+            Method grantRuntimePermissionMethod = iPmClass.getMethod("grantPermission", String.class, String.class);
+
+            Object iPmInstance = asInterfaceMethod.invoke(null, new ShizukuBinderWrapper(SystemServiceHelper.getSystemService("package")));
+
+            grantRuntimePermissionMethod.invoke(iPmInstance, "de.nulide.findmydevice", android.Manifest.permission.WRITE_SECURE_SETTINGS);
+        }catch (ClassNotFoundException cnfe){
+            Logger.logSession("Shizuku Error", cnfe.toString());
+            cnfe.printStackTrace();
+        } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static void requestWriteSecureSettingsPermissionViaRoot(Context c){
+        if(RootAccess.isRooted()){
+            String command = "pm grant "+c.getPackageName()+" android.permission.WRITE_SECURE_SETTINGS";
+            RootAccess.execCommand(command);
+        }else{
+            Toast.makeText(c,"Root access denied", Toast.LENGTH_LONG);
+        }
+
+    }
+    public static boolean checkShizukuPermission(){
+        boolean isGranted = Shizuku.checkSelfPermission() == PackageManager.PERMISSION_GRANTED;
+        return isGranted;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
