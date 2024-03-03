@@ -259,7 +259,11 @@ public class IntroductionActivity extends AppCompatActivity implements View.OnCl
             position++;
             updateViews();
         } else if (v == buttonShizuku){
-            Permission.requestShizukuPermission();
+            if(Permission.checkShizukuPermission()){
+                Permission.requestWriteSecureSettingsPermissionViaShizuku(this);
+            }else {
+                Permission.requestShizukuPermission();
+            }
         } else if (v == buttonRoot) {
             Permission.requestWriteSecureSettingsPermissionViaRoot(this);
             updateViews();
