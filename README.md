@@ -56,6 +56,10 @@ See the translations instructions in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 <a href='https://ko-fi.com/H2H35JLOY' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://cdn.ko-fi.com/cdn/kofi4.png?v=2' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a> 
 
+<a href="bitcoin:bc1q700ukhzz6gk8fnjn5j0pedvxsknydx7yajc39x?message=Nulides%20Work;"><img src="https://www.drupal.org/files/project-images/bitcoindonate.png" alt="Bitcoin Donate Button"></a>
+
+Bitcoin Wallet: bc1q700ukhzz6gk8fnjn5j0pedvxsknydx7yajc39x
+
 ## Why is it taking that long to fix x?
 
 I am working full-time.
