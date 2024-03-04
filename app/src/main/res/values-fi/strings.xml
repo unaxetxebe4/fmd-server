@@ -1,22 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name" translatable="false">FindMyDevice</string>
-    <string name="Introduction_Introduction">FMD on sovellus, joka auttaa löytämään kadonneen puhelimesi.\nSovellus käyttää SMS-viestejä kommunikointiin. Laitetta voit seurata toiselta, kuten ystäväsi, laitteelta.\nKirjoita vain tekstiviesti, joka sisältää "fmd"-komennon.\nSovellus on yhä beta-vaiheessa.\n\n - Nulide</string>
-    <string name="Introduction_UpdatePermission">Sovellus vaatii joitain uusia käyttöoikeuksia.\nOle hyvä ja tarkista seuraavat käyttöoikeudet jatkaaksesi sovelluksen käyttöä. Vaihtoehtoisesti voit palata vanhempaan sovellusversioon.</string>
-    <string name="Permission_SMS">Sovelluksen tekstiviestiohjausta varten sovellus tarvitsee käyttöoikeuden tekstiviestien lukemiseen.\nViestejä ei koskaan toimiteta eteenpäin ja niitä käytetään vain komentojen toteuttamiseen.</string>
-    <string name="Permission_CONTACTS">Oikeus puhelimesi ohjaamiseen ja paikantamiseen on vain etukäteen määritetyillä yhteystiedoilla.\nYhteystietojen käyttöön tarvitaan käyttöoikeus.</string>
-    <string name="Permission_GPS">Puhelimen GPS-paikantamiseen tarvitaan sijainnin käyttöoikeus.\nOle hyvä ja anna sovellukselle käyttöoikeus paikantamiseen myös taustalla.\nIlman käyttöoikeutta paikannusta ei voida aktivoida.</string>
-    <string name="Permission_DND">Voit myös ohjata puhelimen toistamaan soittoääntä löytääksesi sen. Jos Älä häiritse-tila on käytössä, on mahdollista että puhelin on vaimennettu.\nIlman käyttöoikeutta soittoäänitoimintoa ei voida aktivoida.</string>
-    <string name="Permission_DEVICE_ADMIN">Kadonneen puhelimen lukitseminen tai tyhjentäminen vaatii käyttöoikeuden.\nIlman käyttöoikeutta toimintoja ei voida aktivoida.</string>
+    <string name="Introduction_Introduction">FMD on sovellus, joka auttaa löytämään kadonneen puhelimesi.
+\nSovellus käyttää SMS-viestejä kommunikointiin. Laitetta voit seurata toiselta, kuten ystäväsi, laitteelta.
+\nKirjoita vain tekstiviesti, joka sisältää fmd-komennon.
+\nSovellus on yhä beta-vaiheessa.
+\n
+\n - Nulide</string>
+    <string name="Introduction_UpdatePermission">Sovellus vaatii joitain uusia käyttöoikeuksia.
+\nOle hyvä ja tarkista seuraavat käyttöoikeudet jatkaaksesi sovelluksen käyttöä. Vaihtoehtoisesti voit palata vanhempaan sovellusversioon.</string>
+    <string name="Permission_SMS">Sovelluksen tekstiviestiohjausta varten sovellus tarvitsee käyttöoikeuden tekstiviestien lukemiseen.
+\nViestejä ei koskaan toimiteta eteenpäin ja niitä käytetään vain komentojen toteuttamiseen.</string>
+    <string name="Permission_CONTACTS">Oikeus puhelimesi ohjaamiseen ja paikantamiseen on vain etukäteen määritetyillä yhteystiedoilla.
+\nYhteystietojen käyttöön tarvitaan käyttöoikeus.</string>
+    <string name="Permission_GPS">Puhelimen GPS-paikantamiseen tarvitaan sijainnin käyttöoikeus.
+\nOle hyvä ja anna sovellukselle käyttöoikeus paikantamiseen myös taustalla.
+\nIlman käyttöoikeutta paikannusta ei voida aktivoida.</string>
+    <string name="Permission_DND">Voit myös ohjata puhelimen toistamaan soittoääntä löytääksesi sen. Jos Älä häiritse-tila on käytössä, on mahdollista että puhelin on vaimennettu.
+\nIlman käyttöoikeutta soittoäänitoimintoa ei voida aktivoida.</string>
+    <string name="Permission_DEVICE_ADMIN">Kadonneen puhelimen lukitseminen tai tyhjentäminen vaatii käyttöoikeuden.
+\nIlman käyttöoikeutta toimintoja ei voida aktivoida.</string>
     <string name="Permission_WRITE_SECURE_SETTINGS">Tämä sovellus voi kytkeä pois päältä olevan sijaistoiminnon päälle.
 \nJos se on pois päältä, \"fmd locate\" ei toimi.
 \nJotta sovellus saa sijaintitiedon tarvittaessa, se tarvitsee erityisen käyttöoikeuden, jonka myöntäminen vaatii puhelimen kytkemisen tietokoneeseen.
 \nJos et anna käyttöoikeutta, se ei ole ongelma.
 \nSovellusta voi käyttää myös ilman käyttöoikeutta.</string>
-    <string name="Permission_OVERLAY">Kun etälukitset puhelimen, sovellus voi näyttää viestin lukitusnäytöllä puhelimen löytäjälle.\nViestin näyttäminen vaatii käyttöoikeuden.</string>
+    <string name="Permission_OVERLAY">Kun etälukitset puhelimen, sovellus voi näyttää viestin lukitusnäytöllä puhelimen löytäjälle.
+\nViestin näyttäminen vaatii käyttöoikeuden.</string>
     <string name="Introduction_Give_Permission">Myönnä käyttöoikeus</string>
     <string name="Introduction_Next">Seuraava</string>
-    <string name="Locked_Lock_Screen">FindMyDevice\nTämä puhelin on lukittu!\nViesti omistajalta:</string>
+    <string name="Locked_Lock_Screen">FindMyDevice
+\nTämä puhelin on lukittu!
+\nViesti omistajalta:</string>
     <string name="Info_CORE" translatable="false">CORE:</string>
     <string name="Info_GPS" translatable="false">GPS:</string>
     <string name="Info_DND" translatable="false">DND:</string>
@@ -37,8 +52,12 @@
     <string name="MH_GPS_WILL_FOLLOW">GPS-koordinaatit lähetetään pian.</string>
     <string name="MH_rings">soi</string>
     <string name="MH_Locked">lukittu</string>
-    <string name="MH_Stats">Verkkotiedot:\nIP\'s: \n</string>
-    <string name="MH_Networks">\nKäytettävät WiFi-verkot:\n</string>
+    <string name="MH_Stats">Verkkotiedot:
+\nIP\'s:
+\n</string>
+    <string name="MH_Networks">"
+\nKäytettävät WiFi-verkot:
+\n"</string>
     <string name="MH_Delete">Hyvästi...</string>
     <string name="MH_False_Pin">Virheellinen PIN!</string>
     <string name="MH_Syntax">Syntaksi:</string>
@@ -73,7 +92,8 @@
     <string name="JSON_RL_Error">Virhe OpenCelliD:n sijaintitiedon saamisessa. Ole hyvä ja koita seuraavaa linkkiä. Lon- ja lat-parametrit vaaditaan.</string>
     <string name="LockScreen_Usage_detectd">FMD: Käyttö havaittu.</string>
     <string name="LockScreen_Backbutton_pressed">FMD: Takaisin-painiketta painettu.</string>
-    <string name="Toast_Empty_FMDCommand">Tyhjää komentoa ei hyväksytä\n Palautetaan oletus.[fmd]</string>
+    <string name="Toast_Empty_FMDCommand">Tyhjää komentoa ei hyväksytä
+\n Palautetaan oletus.[fmd]</string>
     <string name="FMDConfig_Alert_Pin">PIN</string>
     <string name="Ok">Ok</string>
     <string name="Log_Alert_LogData">Lokitiedot</string>
@@ -154,4 +174,35 @@
     <string name="Settings_Import">Tuo asetukset</string>
     <string name="Settings_Export">Vie asetukset</string>
     <string name="not_possible">Toiminto ei ollut mahdollinen.</string>
+    <string name="app_description"></string>
+    <string name="OpenCellId_open_website"></string>
+    <string name="Introduction_Shizuku"></string>
+    <string name="Permission_POST_NOTIFICATIONS"></string>
+    <string name="RootAccessDenied"></string>
+    <string name="OpenCellId_test_no_connection"></string>
+    <string name="Info_Camera" translatable="false"></string>
+    <string name="settings_exported"></string>
+    <string name="notify_crypto_update_title"></string>
+    <string name="Notification_Fail_Description"></string>
+    <string name="server_unregister_failed_body"></string>
+    <string name="OpenCellId_test_opencellid"></string>
+    <string name="Introduction_Root"></string>
+    <string name="server_unregister_failed_title"></string>
+    <string name="Notification_Security"></string>
+    <string name="Notification_FAIL"></string>
+    <string name="Notification_Security_Description"></string>
+    <string name="Settings_FMDServer_Info"></string>
+    <string name="registration_token_hint"></string>
+    <string name="registration_token"></string>
+    <string name="about"></string>
+    <string name="about_wiki"></string>
+    <string name="notify_crypto_update_text"></string>
+    <string name="paste" translatable="false"></string>
+    <string name="OpenCellId_API_Key_Description" translatable="false"></string>
+    <string name="OpenCellId_privacy"></string>
+    <string name="about_source_code"></string>
+    <string name="server_unregister_continue_anyway"></string>
+    <string name="server_unregister_dont_continue"></string>
+    <string name="Info_BatteryOptimization" translatable="false"></string>
+    <string name="Permission_IGNORE_BATTERY_OPTIMIZATION"></string>
 </resources>
