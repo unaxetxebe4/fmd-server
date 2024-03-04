@@ -156,11 +156,7 @@
     <string name="MH_Stats">नेटवर्क-आँकड़े:
 \nIP:
 \n</string>
-    <string name="MH_Networks">"
-\n
-\nउपलब्ध Wifi-नेटवर्क:
-\n
-\n"</string>
+    <string name="MH_Networks">"\nउपलब्ध Wifi-नेटवर्क:\n"</string>
     <string name="MH_Help_where">" locate - फ़ोन की वर्तमान लोकेशन भेजता है"</string>
     <string name="MH_Help_ring">" ring - फ़ोन की घंटी बजने देता है"</string>
     <string name="MH_Help_Stats">" stats - डिवाइस जानकारी भेजता है"</string>
