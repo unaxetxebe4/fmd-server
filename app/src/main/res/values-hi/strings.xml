@@ -193,20 +193,4 @@
     <string name="Alert_First_time_fmdserver">यहां आप FMDserver के साथ संचार करने के लिए एप्लिकेशन को कॉन्फ़िगर कर सकते हैं। यदि आप डिफ़ॉल्ट से भिन्न सर्वर कॉन्फ़िगर करना चाहते हैं, तो आप URL बदलकर ऐसा कर सकते हैं। यदि आप रजिस्टर दबाते हैं तो आप एप्लिकेशन को सर्वर पर पंजीकृत कर सकते हैं। बाद में आप सर्वर कार्यक्षमता को सक्षम कर सकते हैं। यदि आप ऐसा करते हैं, तो आपका फ़ोन आपको लोकेशन डेटा निर्दिष्ट सर्वर पर भेज देगा। आप पेज पर ID और पासवर्ड दर्ज करके अपने फोन की लोकेशन जांच सकते हैं।</string>
     <string name="Introduction_Shizuku">Shizuku के माध्यम से</string>
     <string name="Introduction_Root">रूट के माध्यम से</string>
-    <string name="OpenCellId_OpenCellId" translatable="false"></string>
-    <string name="OpenCellId_API_Key_Description" translatable="false"></string>
-    <string name="Info_BatteryOptimization" translatable="false"></string>
-    <string name="app_name" translatable="false"></string>
-    <string name="paste" translatable="false"></string>
-    <string name="cancel" translatable="false"></string>
-    <string name="Info_GPS" translatable="false"></string>
-    <string name="Info_CORE" translatable="false"></string>
-    <string name="Info_Overlay" translatable="false"></string>
-    <string name="Settings_FMDServer" translatable="false"></string>
-    <string name="RootAccessDenied"></string>
-    <string name="Info_DND" translatable="false"></string>
-    <string name="Info_Camera" translatable="false"></string>
-    <string name="Info_SecureSettings" translatable="false"></string>
-    <string name="Ok" translatable="false"></string>
-    <string name="Info_DEVICE_ADMIN" translatable="false"></string>
 </resources>
