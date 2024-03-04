@@ -1,17 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="Introduction_Introduction">FMD - это приложение, которое может помочь вам найти ваш телефон, если он потеряется.\nПриложение использует SMS (текст) для связи. Вам понадобится второе устройство или друг, чтобы вы могли отследить ваш телефон.\nПросто отправьте SMS-сообщение, которое содержит "fmd" команду.\nПриложение все еще в бета-тесте.\n\n - Nulide</string>
-    <string name="Introduction_UpdatePermission">Требуются некоторые разрешения.\nПожалуйста, предоставьте требуемые разрешения для того, чтобы продолжить пользоваться приложением, или вернитесь на предыдущую версию приложения.</string>
-    <string name="Permission_SMS">Чтобы приложение FindMyDevice распознавало ваши команды, отправляемые посредством SMS-сообщений, нужно предоставить приложению разрешение просматривать SMS-сообщения. Ваши SMS-сообщения никогда не покинут пределы вашего устройства, и никогда не будут использованы для чего-либо, кроме как для поиска вашего телефона.\nЭто обязательное разрешение.</string>
-    <string name="Permission_CONTACTS">Не каждому встречному разрешено удалять данные телефона или отслеживать его, так что вам нужно выбрать контакты людей, которые смогут отслеживать ваше устройство.\nЭто обязательное разрешение.</string>
-    <string name="Permission_GPS">Если вы хотите получать GPS-координаты телефона, то приложению нужно предоставить это разрешение. \nПожалуйста, также разрешите приложению отслеживать вас в фоновом режиме.\nЕсли вы не предоставите это разрешение, то данная функция не будет активирована.</string>
-    <string name="Permission_DND">Вы также можете послать команду \"звонок\", чтобы найти ваш телефон. Если будет активирован режим \"Не Беспокоить\", возможна такая ситуация, что телефон будет работать без звука.\nЕсли вы не предоставите это разрешение, то данная функция не будет активирована.</string>
-    <string name="Permission_DEVICE_ADMIN">Если вы хотите блокировать телефон, или удалять данные телефона, когда он потеряется, то это разрешение обязательно.\nЕсли вы не предоставите это разрешение, то данная функция не будет активирована.</string>
-    <string name="Permission_WRITE_SECURE_SETTINGS">Данное приложение способно включать геолокацию, если она отключена.\nЕсли геолокация отключена, то fmd не сможет отследить ваш телефон.\nДля того, чтобы приложение могло активировать геолокацию, вам нужно предоставить специальное разрешение с помощью вашего компьютера.\nЕсли вы не предоставите это разрешение, то ничего страшного.\nВы все еще сможете пользоваться приложением.</string>
-    <string name="Permission_OVERLAY">Если вы удаленно заблокируете устройство, то приложение сможет показать сообщение на заблокированном экране для того, кто нашел ваш телефон.\nЕсли вы не предоставите это разрешение, то данная функция не будет активирована.</string>
-    <string name="Introduction_Give_Permission">Дать разрешение</string>
+    <string name="Introduction_Introduction">Find My Device (FMD) - это приложение, которое может помочь вам найти ваше устройство, если оно будет утеряно.
+\nПриложение использует SMS сообщения для взаимодействия с ним через второе устройство, чтобы вы могли отследить ваше устройство.
+\nПросто отправьте SMS сообщение, которое содержит в себе fmd команду.
+\nПожалуйста, имейте ввиду, что приложение всё ещё является бета-версией и проходит тестирование.
+\n
+\n - Nulide</string>
+    <string name="Introduction_UpdatePermission">Необходимо выдать некоторые новые разрешения.
+\nПожалуйста, предоставьте требуемые разрешения для того, чтобы продолжить пользоваться данным приложением, либо же вернитесь на предыдущую версию приложения.</string>
+    <string name="Permission_SMS">Чтобы управлять вашим устройством через команды, приложению необходимо читать ваши SMS сообщения. Они никогда не будут отправлены куда-либо за пределы вашего устройства, и они никогда не будут использованы для чего-либо, кроме поиска вашего устройства.
+\nЭто обязательное разрешение.</string>
+    <string name="Permission_CONTACTS">Любой случайный человек не сможет отправлять команды на ваше устройство, поэтому вам необходимо выбрать некоторые контакты, которые смогут отслеживать ваше устройство.
+\nЭто обязательное разрешение.</string>
+    <string name="Permission_GPS">Если вы хотите получать GPS координаты вашего устройства, то приложению необходимо данное разрешение.
+\nПожалуйста, помимо этого, позвольте приложению отслеживать ваше устройство в фоновом режиме.
+\nЕсли вы не выдадите данное разрешение, эта функция не будет активирована.</string>
+    <string name="Permission_DND">Вы также можете сделать так, чтобы ваше устройство воспроизводило звук, что может помочь его найти. Когда режим \"Не беспокоить\" активирован, устройство может не быть способно это сделать.
+\nЕсли вы не выдадите данное разрешение, эта функция не будет активирована.</string>
+    <string name="Permission_DEVICE_ADMIN">Данное разрешение необходимо, если вы хотите блокировать устройство или удалять хранящиеся на нём данные, если оно будет утеряно.
+\nЕсли вы не выдадите данное разрешение, эта функция не будет активирована.</string>
+    <string name="Permission_WRITE_SECURE_SETTINGS">Данное приложение способно включать определение местоположения, если вы обычно выключаете его.
+\nЕсли оно выключено, то команда \"fmd locate\" не будет работать.
+\nЧтобы предотвратить подобную ситуацию, приложению необходимо выдать специальное разрешение, используя компьютер.
+\nЕсли вы не выдадите данное разрешение, то это не является проблемой.
+\nВы всё ещё сможете пользоваться данным приложением.</string>
+    <string name="Permission_OVERLAY">Когда вы удалённо заблокируете ваше устройство, это приложение отобразит сообщение на экране блокировки для кого бы то ни было, кто найдёт его.
+\n
+\nЕсли вы не выдадите данное разрешение, эта функция не будет активирована.</string>
+    <string name="Introduction_Give_Permission">Выдать разрешение</string>
     <string name="Introduction_Next">Далее</string>
-    <string name="Locked_Lock_Screen">FindMyDevice\nЭтот телефон заблокирован!\nСообщение от владельца:</string>
+    <string name="Locked_Lock_Screen">Find My Device
+\nЭто устройство заблокировано!
+\nСообщение от его владельца:</string>
     <string name="Info_CORE" translatable="false">CORE:</string>
     <string name="Info_GPS" translatable="false">GPS:</string>
     <string name="Info_DND" translatable="false">DND:</string>
@@ -19,38 +39,41 @@
     <string name="Info_Overlay" translatable="false">Overlay:</string>
     <string name="Info_SecureSettings" translatable="false">SecureSettings:</string>
     <string name="Enable">Включить</string>
-    <string name="Settings_Pin_Description">Используется как подтверждение удаления данных устройства или для временного использования сервиса.</string>
-    <string name="Settings_Lockscreenmessage_Description">Сообщение на заблокированном экране:\nКогда устройство заблокируется, это сообщение появится на экране.</string>
-    <string name="Settings_FMDCommand_Description">Эта команда используется для связи с FindMyDevice.</string>
+    <string name="Settings_Pin_Description">Используется как подтверждение удаления данных, хранящихся на устройстве или для временного использования сервиса.</string>
+    <string name="Settings_Lockscreenmessage_Description">Сообщение на экране блокировки:
+\nКогда устройство будет заблокировано, это сообщение появится на экране блокировки.</string>
+    <string name="Settings_FMDCommand_Description">Эта команда используется для взаимодействия с приложением Find My Device (FMD).</string>
     <string name="WhiteList_Add_Contact">Добавить контакт</string>
     <string name="Enabled">Включено</string>
     <string name="Disabled">Отключено</string>
     <string name="Delete">Удалить</string>
     <string name="WhiteList_Select_Action">Выберите действие:</string>
     <string name="Toast_Duplicate_contact">Этот контакт уже существует.</string>
-    <string name="MH_GPS_WILL_FOLLOW">GPS-координаты скоро будут отправлены.</string>
+    <string name="MH_GPS_WILL_FOLLOW">GPS координаты скоро будут отправлены.</string>
     <string name="MH_rings">звонки</string>
     <string name="MH_Locked">заблокировано</string>
     <string name="MH_Stats">Информация о сети:\nIP: \n</string>
-    <string name="MH_Networks">\nДоступные Wifi-сети:\n</string>
-    <string name="MH_Delete">Прощай...</string>
-    <string name="MH_False_Pin">Неправильный Pin!</string>
+    <string name="MH_Networks">"
+\nДоступные Wi-Fi сети:
+\n"</string>
+    <string name="MH_Delete">Прощайте...</string>
+    <string name="MH_False_Pin">Неверный PIN-код!</string>
     <string name="MH_Syntax">Синтаксис:</string>
-    <string name="MH_Title_Help">Команды FindMyDevice:</string>
-    <string name="MH_Help_where">" locate - отправляет текущее местоположение"</string>
-    <string name="MH_Help_ring">" ring - отправляет телефону команду \"звонить\""</string>
-    <string name="MH_Help_Lock">" lock - блокирует телефон"</string>
-    <string name="MH_Help_Stats">" stats - отправляет информацию о телефоне"</string>
-    <string name="MH_Help_delete">" delete - удаляет данные телефона"</string>
-    <string name="Settings_FMD_via_Pin_Description">Разрешить связываться с FMD при помощи pin. Вы будете временно добавлены в Белый Список.</string>
-    <string name="Settings_Enter_Pin">Введите Pin</string>
-    <string name="MH_Pin_Accepted">Pin принят!</string>
-    <string name="Alert_First_Time_contact_added">Поздравляем. Вы добавили ваш первый контакт. Теперь вы можете связываться с fmd при помощи SMS-сообщения с текстом \"fmd\" от разрешенных номеров. Если все работает как надо, то приложение должно ответить вам SMS-сообщением.</string>
-    <string name="R_Stop_ring">ОСТАНОВИТЬ ЗВОНОК</string>
-    <string name="Crashed_Send_log">Отправить Лог</string>
-    <string name="MH_No_GPS">Извините, геолокация отключена.</string>
+    <string name="MH_Title_Help">Команды Find My Device:</string>
+    <string name="MH_Help_where">" locate - отправляет текущее местоположение устройства"</string>
+    <string name="MH_Help_ring">" ring - заставляет устройство воспроизводить рингтон"</string>
+    <string name="MH_Help_Lock">" lock - блокирует устройство"</string>
+    <string name="MH_Help_Stats">" stats - отправляет информацию об устройстве"</string>
+    <string name="MH_Help_delete">" delete - удаляет данные, хранящиеся на устройстве"</string>
+    <string name="Settings_FMD_via_Pin_Description">Позволяет вам взаимодействовать с FMD через PIN-код. Вы будете добавлены во временный список разрешённых контактов.</string>
+    <string name="Settings_Enter_Pin">Введите PIN-код</string>
+    <string name="MH_Pin_Accepted">PIN-код принят!</string>
+    <string name="Alert_First_Time_contact_added">Поздравляем! Вы добавили ваш первый контакт. Теперь вы можете взаимодействовать с FMD через отправку SMS сообщений с разрешённых мобильных номеров, содержащих в себе нужные команды, например \"fmd lock\". Если всё будет работать, то приложение должно прислать вам ответ.</string>
+    <string name="R_Stop_ring">ОСТАНОВИТЬ РИНГТОН</string>
+    <string name="Crashed_Send_log">Отправить лог</string>
+    <string name="MH_No_GPS">Извините, определение местоположения отключено.</string>
     <string name="Settings_FMDConfig">Конфигурация FMD</string>
-    <string name="Settings_WhiteList">Белый Список</string>
+    <string name="Settings_WhiteList">Разрешённые контакты</string>
     <string name="Settings_OpenCellId">OpenCelliD</string>
     <string name="Settings_Permissions">Разрешения</string>
     <string name="Settings_Logs">Логи</string>
@@ -59,19 +82,120 @@
     <string name="Error">Ошибка</string>
     <string name="OpenCellId_OpenCellId">OpenCelliD</string>
     <string name="Notification_Usage">Использование</string>
-    <string name="Pin_Usage">Использование Pin</string>
+    <string name="Pin_Usage">Использование PIN-кода</string>
     <string name="Notification_Lifecycle">Жизненный цикл</string>
     <string name="Notification_Usage_Description">Уведомление об использовании сервиса.</string>
-    <string name="Notification_Lifecycle_Description">Уведомление о Жизненном цикле сервиса.</string>
-    <string name="Notification_Pin_Usage_Description">Уведомление об использовании Pin.</string>
-    <string name="JSON_RL_Error">Ошибка получения геолокации от OpenCelliD. Пожалуйста, попробуйте данную ссылку. Параметр, который вам нужен, - это долгота и широта.</string>
-    <string name="LockScreen_Usage_detectd">СообщениеНаЗаблокированномЭкране: Обнаружено использование телефона.</string>
-    <string name="LockScreen_Backbutton_pressed">СообщениеНаЗаблокированномЭкране: Нажата кнопка \"Назад\".</string>
-    <string name="Toast_Empty_FMDCommand">Пустая команда недопустима\n Возврат к значению по-умолчанию.[fmd]</string>
-    <string name="FMDConfig_Alert_Pin">PIN</string>
+    <string name="Notification_Lifecycle_Description">Уведомление о жизненном цикле сервиса.</string>
+    <string name="Notification_Pin_Usage_Description">Уведомление об использовании PIN-кода.</string>
+    <string name="JSON_RL_Error">Ошибка получения местоположения от OpenCelliD. Пожалуйста, попробуйте данную ссылку. Параметры, которые вам нужны - это \"lon\" (долгота) и \"lat\" (широта).</string>
+    <string name="LockScreen_Usage_detectd">Сообщение на экране блокировки: Обнаружено использование устройства.</string>
+    <string name="LockScreen_Backbutton_pressed">Сообщение на экране блокировки: Нажата кнопка \"Назад\".</string>
+    <string name="Toast_Empty_FMDCommand">Пустая команда недопустима
+\n Возврат к значению по умолчанию [fmd].</string>
+    <string name="FMDConfig_Alert_Pin">PIN-код</string>
     <string name="Ok">Ок</string>
-    <string name="Log_Alert_LogData">Log-Данные</string>
-    <string name="Settings_Ringer_Tone_Description">Выберите рингтон, который будет играть, когда fmd-звонок будет отправлен.</string>
+    <string name="Log_Alert_LogData">Данные лога</string>
+    <string name="Settings_Ringer_Tone_Description">Выберите рингтон, который будет воспроизводиться, когда команда \"fmd ring\" будет отправлена.</string>
     <string name="Settings_Select_Ringtone">Выберите рингтон</string>
-    <string name="WhiteList_Select_Number">Выберите один из номеров.</string>
+    <string name="WhiteList_Select_Number">Выберите один из мобильных номеров.</string>
+    <string name="Settings_FMD_Server_User_ID">ID пользователя:</string>
+    <string name="Settings_FMD_Server_ID_Desc">Вам необходим ID пользователя для нахождения вашего устройства с помощью FMD Сервера. Запишите его и храните в безопасности.</string>
+    <string name="Settings_FMDServer_Change_Password_Button">Сменить пароль</string>
+    <string name="Settings_FMDServer_Delete_Button">Удалить данные</string>
+    <string name="Settings_FMDServer_Logout_Button">Выйти</string>
+    <string name="Settings_FMDServer_Alert_DeleteData_Desc">Это удалит все данные с сервера. Вы уверены?</string>
+    <string name="Settings_FMDServer_Push_Open_UP">Открыть сайт UnifiedPush</string>
+    <string name="password_new_repeat">Повторите новый пароль</string>
+    <string name="password_repeat">Повторите пароль</string>
+    <string name="notify_crypto_update_text">Вам необходимо обновить некоторые настройки для продолжения использования FMD. Нажмите, чтобы открыть их.</string>
+    <string name="Whitelist_help">Контактам в этом списке разрешено отправлять FMD команды через SMS сообщения. Команды от всех остальных контактов будут проигнорированы.</string>
+    <string name="app_description">FMD (Find My Device) позволяет вам удалённо находить ваше устройство. Вы можете взаимодействовать с ним с помощью FMD через SMS сообщения, мессенджеры, или используя FMD Сервер. Находите ваше устройство, заставляйте его воспроизводить звук, блокируйте его, или удаляйте хранящиеся на нём данные - всё это можно сделать удалённо.</string>
+    <string name="Settings_FMDServer_Info">С FMD Сервером вы можете отправлять команды через интернет, от сервера к приложению. Вы также можете просматривать местоположение устройства на карте, или просматривать фотографии, сделанные устройством. Для инструкций по самостоятельному хостингу сервера, перейдите на сайт.</string>
+    <string name="server_unregister_failed_body">Отмена регистрации не удалась из-за следующей ошибки: {ERROR}
+\n
+\nВы всё равно можете продолжить, но ваш аккаунт может быть не удалён с сервера. Если вы продолжите, ваш аккаунт будет удалён лишь локально, с этого устройства.</string>
+    <string name="Alert_First_time_fmdserver">Здесь вы можете настроить приложение для взаимодействия с FMD Сервером. Если вы хотите настроить другой сервер, вместо стандартного, вы можете сделать это, изменив URL (ссылку). Если вы нажмёте \"Зарегистрироваться\", вы можете зарегистрировать приложение на сервере. После этого, вы можете включить различные функции сервера. Если вы сделаете это, ваше устройство отправит данные о вашем местоположении на указанный сервер. Вы можете проверить местоположение вашего устройства, введя ID и пароль на странице.</string>
+    <string name="Info_Server_Registered">Зарегистрировано:</string>
+    <string name="Info_Server_Push">Пуш:</string>
+    <string name="Settings_Import">Импортировать настройки</string>
+    <string name="Settings_Export">Экспортировать настройки</string>
+    <string name="Settings_FMD_Server_Server_URL">URL сервера:</string>
+    <string name="Settings_FMD_Server_General">Основные</string>
+    <string name="Settings_FMDServer_Alert_DeleteData">Удалить данные</string>
+    <string name="server_version">Версия сервера</string>
+    <string name="server_version_error">Ошибка получения версии сервера</string>
+    <string name="Settings_FMDServer_AddAccount">FMD Сервер: Войти/Зарегистрироваться</string>
+    <string name="Settings_FMDServer_open_website">Открыть сайт FMD Сервера</string>
+    <string name="Settings_FMDServer_use_default_server">Использовать публичный сервер от Nulide</string>
+    <string name="Settings_FMDServer_Login">Войти</string>
+    <string name="Settings_FMDServer_Alert_PrivacyPolicy_Title">Политика конфиденциальности</string>
+    <string name="password">Пароль</string>
+    <string name="registration_token">Токен регистрации</string>
+    <string name="registration_token_hint">Приватные инстанции могут потребовать секретный токен. Оставьте это поле пустым, если инстанция публичная.</string>
+    <string name="server_unregister_continue_anyway">Всё равно продолжить</string>
+    <string name="server_version_error_low_version">Необходима как минимум версия сервера {MIN}, а версия выбранного сервера {CURRENT}. Продолжайте на свой риск.</string>
+    <string name="Whitelist_empty">Нет разрешённых контактов. Нажмите на кнопку, чтобы добавить их.</string>
+    <string name="Settings_FMDServer_Push_Description_Missing">Отправка команд с FMD Сервера на ваше устройство требует установки приложения дистрибьютора UnifiedPush. Установите его, и затем вернитесь сюда. FMD автоматически обнаружит это.</string>
+    <string name="Settings_FMDServer_Push_Description_Available">Вы успешно зарегистрировались для получения пуш-уведомлений.</string>
+    <string name="server_unregister_failed_title">Отмена регистрации не удалась</string>
+    <string name="server_unregister_dont_continue">Не продолжать</string>
+    <string name="Notification_Server">Сервер</string>
+    <string name="Available">Доступно</string>
+    <string name="registered">зарегистрировано</string>
+    <string name="not_registered">не зарегистрировано</string>
+    <string name="MH_LAST_KNOWN_LOCATION">Последнее известное местоположение</string>
+    <string name="MH_LAST_KNOWN_LOCATION_NOT_AVAILABLE">Последнее известное местоположение недоступно.</string>
+    <string name="not_possible">Это действие было невозможно совершить.</string>
+    <string name="MH_Help_Expert_GPS">" GPS (on/off) - включает или выключает GPS."</string>
+    <string name="MH_NO_SECURE_SETTINGS">Извините, приложению запрещается сделать это.</string>
+    <string name="MH_Help_expert">" expert - страница помощи для экспертных команд."</string>
+    <string name="MH_Help_Expert_Camera">" Camera (front/back) - делает фотографию и отправляет её на FMD Сервер."</string>
+    <string name="Permission_Camera">Если вы хотите удалённо получать фотографии, сделанные вашим устройством, необходим доступ к камере.</string>
+    <string name="MH_FMDSERVER_NOT_REGISTERED">Это устройство не зарегистрировано на сервере.</string>
+    <string name="MH_CAM_CAPTURE">"Устройство скоро отправит фотографию на FMD Сервер. Вы скоро сможете её увидеть здесь: "</string>
+    <string name="loading">Загрузка…</string>
+    <string name="help">Помощь</string>
+    <string name="copied">Скопировано</string>
+    <string name="Granted">Выдано:</string>
+    <string name="Cell">Сотовая вышка</string>
+    <string name="accept">принять</string>
+    <string name="Edit">Редактировать</string>
+    <string name="GPS">GPS</string>
+    <string name="Info_FMD_Command">FMD-Команда:</string>
+    <string name="Info_Notification_Access">Доступ к уведомлениям</string>
+    <string name="Info_Server_Enabled">Сервис:</string>
+    <string name="pin">PIN-код</string>
+    <string name="pin_repeat">Повторите PIN-код</string>
+    <string name="Settings_FMDServer_Update_Interval_Title">Интервал обновления</string>
+    <string name="Settings_FMDServer_Update_Interval_Description">FMD выгружает местоположение устройства каждые X минут.</string>
+    <string name="Settings_FMDServer_Location_Type_Title">Источник местоположения</string>
+    <string name="Settings_FMDServer_LOW_BAT_Upload_Title">Выгружать при низком заряде аккумулятора</string>
+    <string name="Settings_FMDServer_LOW_BAT_Upload_Description">Выгружать местоположение этого устройства когда заряд аккумулятора становится низким. Это требует доступа к уведомлениям.</string>
+    <string name="password_old">Старый пароль</string>
+    <string name="password_new">Новый пароль</string>
+    <string name="Settings_FMDServer_Register">Зарегистрироваться</string>
+    <string name="OpenCellId_privacy">Приватность: имейте ввиду, что при каждом запросе к API, сервис OpenCelliD узнаёт вашу текущую сотовую вышку, а соответственно и ваше местоположение.</string>
+    <string name="OpenCellId_open_website">Открыть сайт OpenCelliD</string>
+    <string name="OpenCellId_test_opencellid">Проверить соединение с OpenCelliD</string>
+    <string name="OpenCellId_help">FMD может использовать сервис OpenCelliD чтобы получать примерное местоположение устройства, основываясь на сотовой вышке, к которой оно подключено. Подключение к интернету необходимо для каждого запроса местоположения. Вам также необходимо создать аккаунт на OpenCelliD и получить ваш собственный токен доступа к API.</string>
+    <string name="settings_exported">Настройки экспортированы</string>
+    <string name="about_source_code">Исходный код</string>
+    <string name="about_wiki">Вики</string>
+    <string name="notify_crypto_update_title">Необходимо совершить действие</string>
+    <string name="OpenCellId_test_no_connection">Нет подключения к сотовой вышке</string>
+    <string name="about">Подробности (информация)</string>
+    <string name="Notification_Fail_Description">Уведомление, когда что-то не удаётся сделать, например, подключиться к FMD Серверу.</string>
+    <string name="NotificationServer_Description">Отображать уведомления, отправленные с сервера.</string>
+    <string name="Notification_Security">Безопасность</string>
+    <string name="Notification_Security_Description">Уведомления об обновлениях безопасности</string>
+    <string name="Notification_FAIL">Не удалось</string>
+    <string name="Permission_IGNORE_BATTERY_OPTIMIZATION">Это приложение предназначено для работы в фоновом режиме. Чтобы убедиться, что оно работает даже когда ваше устройство не используется, вам необходимо отключить оптимизацию батареи для этого приложения.</string>
+    <string name="Permission_POST_NOTIFICATIONS">FMD будет периодически отправлять вам уведомления, например, чтобы предупреждать вас о том, что кто-то отслеживает ваше устройство.</string>
+    <string name="NOT_AVAILABLE">Недоступно</string>
+    <string name="MH_Help_Expert_Sound">" Sound (on/off) - включает или выключает звук."</string>
+    <string name="Permission_Notification">Если вы хотите, чтобы FMD обрабатывал сообщения из других приложений, таких как Telegram, WhatsApp и других, вы можете дать FMD доступ к уведомлениям.</string>
+    <string name="Settings_FMDServer_Location_Type_Description">Источник (источники) из которого данные о местоположении выгружаются с регулярными интервалами в фоновом режиме.
+\nЕсли не выбрано ни одного, местоположения не будут регулярно выгружаться (вы всё ещё можете использовать веб-интерфейс чтобы принудительно активировать выгрузку, для чего необходимы настроенные пуш-уведомления).</string>
+    <string name="Introduction_Shizuku">Выдать с помощью Shizuku</string>
+    <string name="Introduction_Root">Выдать с помощью Root</string>
 </resources>
