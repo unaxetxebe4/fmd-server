@@ -71,8 +71,6 @@
     <string name="Notification_Lifecycle">Cycle de vie</string>
     <string name="Pin_Usage">PinUsage</string>
     <string name="Info_Server_Enabled">Service:</string>
-<<<<<<< HEAD
-=======
     <string name="Introduction_Root"></string>
     <string name="Introduction_Shizuku"></string>
     <string name="RootAccessDenied"></string>
@@ -181,5 +179,4 @@
     <string name="MH_FMDSERVER_NOT_REGISTERED"></string>
     <string name="Info_Notification_Access"></string>
     <string name="Info_Camera" translatable="false"></string>
->>>>>>> 3734c70 (Translated using Weblate (French))
 </resources>
