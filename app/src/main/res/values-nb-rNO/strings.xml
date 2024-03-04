@@ -124,4 +124,66 @@
     <string name="server_version_error">Kunne ikke hente tjenerversjon</string>
     <string name="password_new">Nytt passord</string>
     <string name="MH_Help_Expert_GPS">" GPS (på/av) — skrur av og på posisjoneringsutstyret."</string>
+    <string name="RootAccessDenied"></string>
+    <string name="Settings_FMDServer_LOW_BAT_Upload_Description"></string>
+    <string name="Introduction_Shizuku"></string>
+    <string name="Introduction_Root"></string>
+    <string name="JSON_RL_Error"></string>
+    <string name="Permission_DEVICE_ADMIN"></string>
+    <string name="Toast_Empty_FMDCommand"></string>
+    <string name="Info_SecureSettings" translatable="false"></string>
+    <string name="Info_BatteryOptimization" translatable="false"></string>
+    <string name="Permission_CONTACTS"></string>
+    <string name="MH_Pin_Accepted"></string>
+    <string name="LockScreen_Usage_detectd"></string>
+    <string name="Enable"></string>
+    <string name="Permission_DND"></string>
+    <string name="Introduction_Introduction"></string>
+    <string name="MH_GPS_WILL_FOLLOW"></string>
+    <string name="Permission_IGNORE_BATTERY_OPTIMIZATION"></string>
+    <string name="MH_Help_Stats"></string>
+    <string name="MH_No_GPS"></string>
+    <string name="Info_DND" translatable="false"></string>
+    <string name="Info_CORE" translatable="false"></string>
+    <string name="Info_GPS" translatable="false"></string>
+    <string name="Info_DEVICE_ADMIN" translatable="false"></string>
+    <string name="Info_Overlay" translatable="false"></string>
+    <string name="Info_Camera" translatable="false"></string>
+    <string name="Settings_FMDServer" translatable="false"></string>
+    <string name="server_version_error_low_version"></string>
+    <string name="app_name" translatable="false"></string>
+    <string name="Settings_FMDServer_Push_Description_Missing"></string>
+    <string name="Settings_FMDServer_Push_Open_UP"></string>
+    <string name="registration_token_hint"></string>
+    <string name="Whitelist_help"></string>
+    <string name="Settings_FMDServer_Info"></string>
+    <string name="Settings_FMDServer_open_website"></string>
+    <string name="OpenCellId_API_Key_Description" translatable="false"></string>
+    <string name="server_unregister_failed_body"></string>
+    <string name="OpenCellId_help"></string>
+    <string name="OpenCellId_OpenCellId" translatable="false"></string>
+    <string name="Whitelist_empty"></string>
+    <string name="OpenCellId_privacy"></string>
+    <string name="app_description"></string>
+    <string name="Permission_GPS"></string>
+    <string name="Permission_OVERLAY"></string>
+    <string name="Permission_WRITE_SECURE_SETTINGS"></string>
+    <string name="Permission_SMS"></string>
+    <string name="Permission_POST_NOTIFICATIONS"></string>
+    <string name="Introduction_UpdatePermission"></string>
+    <string name="MH_Help_where"></string>
+    <string name="Permission_Notification"></string>
+    <string name="MH_Help_delete"></string>
+    <string name="MH_Help_ring"></string>
+    <string name="MH_Locked"></string>
+    <string name="not_registered"></string>
+    <string name="Locked_Lock_Screen"></string>
+    <string name="LockScreen_Backbutton_pressed"></string>
+    <string name="MH_Help_Lock"></string>
+    <string name="Alert_First_time_fmdserver"></string>
+    <string name="R_Stop_ring"></string>
+    <string name="MH_rings"></string>
+    <string name="registered"></string>
+    <string name="Permission_Camera"></string>
+    <string name="MH_Help_Expert_Camera"></string>
 </resources>
