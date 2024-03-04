@@ -170,4 +170,6 @@
     <string name="Notification_Fail_Description">Notificación cuando algo falla, como la conexión al servidor fmd.</string>
     <string name="Permission_IGNORE_BATTERY_OPTIMIZATION">Se supone que esta aplicación funciona en segundo plano. Para asegurarse de que funciona incluso cuando el teléfono está en modo de espera, es necesario desactivar la optimización de la batería para esta aplicación.</string>
     <string name="Permission_POST_NOTIFICATIONS">FMD le enviará ocasionalmente notificaciones, por ejemplo para avisarle de que alguien está localizando su dispositivo.</string>
+    <string name="Introduction_Root">Otorgar con Root</string>
+    <string name="Introduction_Shizuku">Otorgar con Shizuku</string>
 </resources>
