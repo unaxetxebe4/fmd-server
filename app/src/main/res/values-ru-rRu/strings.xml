@@ -202,12 +202,4 @@
 \nЕсли не выбрано ни одного, местоположения не будут регулярно выгружаться (вы всё ещё можете использовать веб-интерфейс чтобы принудительно активировать выгрузку, для чего необходимы настроенные пуш-уведомления).</string>
     <string name="Introduction_Shizuku">Выдать с помощью Shizuku</string>
     <string name="Introduction_Root">Выдать с помощью Root</string>
-    <string name="RootAccessDenied"></string>
-    <string name="Settings_FMDServer" translatable="false"></string>
-    <string name="OpenCellId_API_Key_Description" translatable="false"></string>
-    <string name="app_name" translatable="false"></string>
-    <string name="cancel" translatable="false"></string>
-    <string name="paste" translatable="false"></string>
-    <string name="Info_Camera" translatable="false"></string>
-    <string name="Info_BatteryOptimization" translatable="false"></string>
 </resources>

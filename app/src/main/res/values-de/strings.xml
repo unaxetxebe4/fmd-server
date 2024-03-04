@@ -198,26 +198,4 @@
     <string name="Notification_Security_Description">Benachrichtigungen bzgl. Sicherheitsupdates</string>
     <string name="not_possible">Diese Aktion war nicht möglich.</string>
     <string name="Info_Server_Push">Push:</string>
-    <string name="Introduction_Root"></string>
-    <string name="Introduction_Shizuku"></string>
-    <string name="notify_crypto_update_text"></string>
-    <string name="notify_crypto_update_title"></string>
-    <string name="MH_Help_Expert_Camera"></string>
-    <string name="Info_DEVICE_ADMIN" translatable="false"></string>
-    <string name="Info_GPS" translatable="false"></string>
-    <string name="Info_Overlay" translatable="false"></string>
-    <string name="Settings_FMDServer" translatable="false"></string>
-    <string name="RootAccessDenied"></string>
-    <string name="Info_SecureSettings" translatable="false"></string>
-    <string name="MH_FMDSERVER_NOT_REGISTERED"></string>
-    <string name="MH_CAM_CAPTURE"></string>
-    <string name="Permission_Camera"></string>
-    <string name="OpenCellId_API_Key_Description" translatable="false"></string>
-    <string name="Info_CORE" translatable="false"></string>
-    <string name="MH_Help_Expert_Sound"></string>
-    <string name="app_name" translatable="false"></string>
-    <string name="Info_Camera" translatable="false"></string>
-    <string name="OpenCellId_OpenCellId" translatable="false"></string>
-    <string name="Info_BatteryOptimization" translatable="false"></string>
-    <string name="Info_DND" translatable="false"></string>
 </resources>

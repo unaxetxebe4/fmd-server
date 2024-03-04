@@ -174,35 +174,4 @@
     <string name="Settings_Import">Tuo asetukset</string>
     <string name="Settings_Export">Vie asetukset</string>
     <string name="not_possible">Toiminto ei ollut mahdollinen.</string>
-    <string name="app_description"></string>
-    <string name="OpenCellId_open_website"></string>
-    <string name="Introduction_Shizuku"></string>
-    <string name="Permission_POST_NOTIFICATIONS"></string>
-    <string name="RootAccessDenied"></string>
-    <string name="OpenCellId_test_no_connection"></string>
-    <string name="Info_Camera" translatable="false"></string>
-    <string name="settings_exported"></string>
-    <string name="notify_crypto_update_title"></string>
-    <string name="Notification_Fail_Description"></string>
-    <string name="server_unregister_failed_body"></string>
-    <string name="OpenCellId_test_opencellid"></string>
-    <string name="Introduction_Root"></string>
-    <string name="server_unregister_failed_title"></string>
-    <string name="Notification_Security"></string>
-    <string name="Notification_FAIL"></string>
-    <string name="Notification_Security_Description"></string>
-    <string name="Settings_FMDServer_Info"></string>
-    <string name="registration_token_hint"></string>
-    <string name="registration_token"></string>
-    <string name="about"></string>
-    <string name="about_wiki"></string>
-    <string name="notify_crypto_update_text"></string>
-    <string name="paste" translatable="false"></string>
-    <string name="OpenCellId_API_Key_Description" translatable="false"></string>
-    <string name="OpenCellId_privacy"></string>
-    <string name="about_source_code"></string>
-    <string name="server_unregister_continue_anyway"></string>
-    <string name="server_unregister_dont_continue"></string>
-    <string name="Info_BatteryOptimization" translatable="false"></string>
-    <string name="Permission_IGNORE_BATTERY_OPTIMIZATION"></string>
 </resources>
