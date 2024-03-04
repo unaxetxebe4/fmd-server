@@ -174,9 +174,6 @@
     <string name="Settings_Import">Tuo asetukset</string>
     <string name="Settings_Export">Vie asetukset</string>
     <string name="not_possible">Toiminto ei ollut mahdollinen.</string>
-<<<<<<< HEAD
-</resources>
-=======
     <string name="app_description"></string>
     <string name="OpenCellId_open_website"></string>
     <string name="Introduction_Shizuku"></string>
@@ -209,4 +206,3 @@
     <string name="Info_BatteryOptimization" translatable="false"></string>
     <string name="Permission_IGNORE_BATTERY_OPTIMIZATION"></string>
 </resources>
->>>>>>> 0d8323f (Translated using Weblate (Finnish))
