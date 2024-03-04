@@ -11,7 +11,7 @@
     <string name="GPS">GPS</string>
     <string name="Cell">Mobilfunkzelle</string>
     <!-- MainActivity -->
-    <string name="Granted">Zugelassen: </string>
+    <string name="Granted">Zugelassen:</string>
     <string name="Info_Notification_Access">Benachrichtigungszugriff</string>
     <string name="Info_FMD_Command">FMD-Kommando:</string>
     <string name="Info_Server_Enabled">Dienst:</string>
@@ -35,7 +35,8 @@
     <string name="Settings_FMDCommand_Description">Der für die Kommunikation mit FindMyDevice verwendete Befehl.</string>
     <string name="Settings_Ringer_Tone_Description">Wählen Sie einen Klingelton aus, der beim Senden von \"fmd ring\" abgespielt werden soll.</string>
     <string name="Settings_Select_Ringtone">Klingelton auswählen</string>
-    <string name="Settings_Lockscreenmessage_Description">Sperrbildschirmnachricht:\nEine Nachricht, welche auf dem Sperrbildschirm angezeigt wird, wenn das Gerät gesperrt wird.</string>
+    <string name="Settings_Lockscreenmessage_Description">Sperrbildschirmnachricht:
+\nEine Nachricht, welche auf dem Sperrbildschirm angezeigt wird, wenn das Gerät gesperrt wird.</string>
     <!-- Settings: FMD Server -->
     <string name="Settings_FMD_Server_General">Allgemein</string>
     <string name="Settings_FMD_Server_Server_URL">Server URL:</string>
@@ -52,7 +53,8 @@
     <string name="Settings_FMDServer_Update_Interval_Title">Update-Intervall</string>
     <string name="Settings_FMDServer_Update_Interval_Description">FMD lädt den Gerätestandort alle X Minuten hoch.</string>
     <string name="Settings_FMDServer_Location_Type_Title">Standort-Quelle</string>
-    <string name="Settings_FMDServer_Location_Type_Description">Die Quelle(n) dessen Standort regelmäßig im Hintergrund hochgeladen werden soll.\nFalls keine ausgewählt ist werden keine Standorte regelmäßig hochgeladen. (Sie können das Standort-Hochladen weiterhin über das Webinterface erzwingen. Dies benötigt Push.)</string>
+    <string name="Settings_FMDServer_Location_Type_Description">Die Quelle(n) dessen Standort regelmäßig im Hintergrund hochgeladen werden soll.
+\nFalls keine ausgewählt ist werden keine Standorte regelmäßig hochgeladen. (Sie können das Standort-Hochladen weiterhin über das Webinterface erzwingen. Dies benötigt Push.)</string>
     <string name="Settings_FMDServer_LOW_BAT_Upload_Title">Bei Niedrigem Akkustand Hochladen</string>
     <string name="Settings_FMDServer_LOW_BAT_Upload_Description">Lade den Standort hoch wenn der Akkustand niedrig wird. Dies benötigt Benachrichtigungszugriff.</string>
     <string name="password_old">Altes Passwort</string>
@@ -96,7 +98,9 @@
     <string name="about_wiki">Wiki</string>
     <!-- Crypto Update Boarding -->
     <string name="server_unregister_failed_title">Deregistrierung fehlgeschlagen</string>
-    <string name="server_unregister_failed_body">Die Deregistrierung ist mit folgendem Fehler fehlgeschlagen: {ERROR}\n\nSie können trotzdem fortsetzen, aber es könnte sein, dass Ihr Account nicht vom Server gelöscht wurde. Falls Sie fortsetzen wird Ihr Account lokal von diesem Gerät gelöscht.</string>
+    <string name="server_unregister_failed_body">Die Deregistrierung ist mit folgendem Fehler fehlgeschlagen: {ERROR}
+\n
+\nSie können trotzdem fortsetzen, aber es könnte sein, dass Ihr Account nicht vom Server gelöscht wurde. Falls Sie fortsetzen wird Ihr Account lokal von diesem Gerät gelöscht.</string>
     <string name="server_unregister_continue_anyway">Trotzdem fortsetzen</string>
     <string name="server_unregister_dont_continue">Nicht fortsetzen</string>
     <!-- Permissions -->
@@ -120,16 +124,29 @@
     <string name="Enable">Aktiv</string>
     <string name="Introduction_Next">Weiter</string>
     <string name="Introduction_Give_Permission">Rechte erteilen</string>
-    <string name="Locked_Lock_Screen">FindMyDevice\nDieses Gerät wurde gesperrt!\nNachricht vom Besitzer:</string>
-    <string name="Introduction_UpdatePermission">Es werden einige neue Berechtigungen benötigt.\nBitte überprüfen Sie die folgenden Berechtigungen, um diese App weiter nutzen zu können, oder wechseln Sie zurück zu einer älteren Version der App.</string>
-    <string name="Introduction_Introduction">FMD ist eine Anwendung, welche es Ihnen ermöglicht ihr Handy wiederzufinden. FMD benutzt SMS zur Kommunikation. Sie benötigen somit ein zweites Handy oder einen Freund, dessen Handy sie ausleihend können. Schreiben sie einfach eine SMS mit dem fmd Kommando. Beta.    - Nulide</string>
-    <string name="Permission_SMS">Die Kommunikation mit dem verlorenen Handy findet über SMS statt. Deshalb benötigt die Anwendung die Rechte für SMS.\nDieses Recht ist für den Betrieb der Applikation notwendig.</string>
-    <string name="Permission_OVERLAY">Wenn Sie Ihr Gerät aus der Ferne sperren, kann diese Anwendung eine Nachricht auf dem Sperrbildschirm für denjenigen anzeigen, der Ihr Telefon findet.\nWenn Sie diese Erlaubnis nicht erteilen, wird diese Funktion nicht aktiviert.</string>
-    <string name="Permission_WRITE_SECURE_SETTINGS">Diese App kann GPS einschalten. Dies ist praktisch wenn das Handy verloren geht und GPS ausgeschaltet war.\nDafür wird eine spezielle Berechtigung benötigt, die ein paar extra Schritte benötigt.\nKlicken Sie auf den Button um mehr zu erfahren.\nWenn Sie diese Berechtigung nicht erteilen, wird die Lokalisation weiterhin funktionieren.</string>
-    <string name="Permission_CONTACTS">Nicht jeder darf Ihr Telefon löschen oder orten, daher müssen Sie einige Kontakte auswählen können, die Ihr Gerät orten können.\nDiese Berechtigung ist für den Betrieb der App notwendig.</string>
-    <string name="Permission_GPS">Wenn Sie die GPS-Koordinaten des Telefons orten möchten, benötigt die Anwendung diese Erlaubnis. \nBitte erlauben Sie der Anwendung auch, Sie im Hintergrund zu orten.\nWenn Sie diese Erlaubnis nicht erteilen, wird diese Funktion nicht aktiviert.</string>
-    <string name="Permission_DND">Die App kann das Handy klingeln lassen. Wenn allerdings der Bitte-nicht-Stören-Modus aktiviert wurde, kann es sein dass das Klingeln blockiert wird.\nWenn Sie diese Erlaubnis nicht erteilen, wird diese Funktion nicht aktiviert.</string>
-    <string name="Permission_DEVICE_ADMIN">Wenn Sie Ihr Telefon sperren oder löschen möchten, wenn es verloren geht, ist diese Erlaubnis erforderlich.\nWenn Sie diese Erlaubnis nicht erteilen, wird diese Funktion nicht aktiviert.</string>
+    <string name="Locked_Lock_Screen">FindMyDevice
+\nDieses Gerät wurde gesperrt!
+\nNachricht vom Besitzer:</string>
+    <string name="Introduction_UpdatePermission">Es werden einige neue Berechtigungen benötigt.
+\nBitte überprüfen Sie die folgenden Berechtigungen, um diese App weiter nutzen zu können, oder wechseln Sie zurück zu einer älteren Version der App.</string>
+    <string name="Introduction_Introduction">FMD ist eine Anwendung, welche es Ihnen ermöglicht ihr Handy wiederzufinden. FMD benutzt SMS zur Kommunikation. Sie benötigen somit ein zweites Handy oder einen Freund, dessen Handy sie ausleihend können. Schreiben sie einfach eine SMS mit dem fmd Kommando. Beta. - Nulide</string>
+    <string name="Permission_SMS">Die Kommunikation mit dem verlorenen Handy findet über SMS statt. Deshalb benötigt die Anwendung die Rechte für SMS.
+\nDieses Recht ist für den Betrieb der Applikation notwendig.</string>
+    <string name="Permission_OVERLAY">Wenn Sie Ihr Gerät aus der Ferne sperren, kann diese Anwendung eine Nachricht auf dem Sperrbildschirm für denjenigen anzeigen, der Ihr Telefon findet.
+\nWenn Sie diese Erlaubnis nicht erteilen, wird diese Funktion nicht aktiviert.</string>
+    <string name="Permission_WRITE_SECURE_SETTINGS">Diese App kann GPS einschalten. Dies ist praktisch wenn das Handy verloren geht und GPS ausgeschaltet war.
+\nDafür wird eine spezielle Berechtigung benötigt, die ein paar extra Schritte benötigt.
+\nKlicken Sie auf den Button um mehr zu erfahren.
+\nWenn Sie diese Berechtigung nicht erteilen, wird die Lokalisation weiterhin funktionieren.</string>
+    <string name="Permission_CONTACTS">Nicht jeder darf Ihr Telefon löschen oder orten, daher müssen Sie einige Kontakte auswählen können, die Ihr Gerät orten können.
+\nDiese Berechtigung ist für den Betrieb der App notwendig.</string>
+    <string name="Permission_GPS">Wenn Sie die GPS-Koordinaten des Telefons orten möchten, benötigt die Anwendung diese Erlaubnis.
+\nBitte erlauben Sie der Anwendung auch, Sie im Hintergrund zu orten.
+\nWenn Sie diese Erlaubnis nicht erteilen, wird diese Funktion nicht aktiviert.</string>
+    <string name="Permission_DND">Die App kann das Handy klingeln lassen. Wenn allerdings der Bitte-nicht-Stören-Modus aktiviert wurde, kann es sein dass das Klingeln blockiert wird.
+\nWenn Sie diese Erlaubnis nicht erteilen, wird diese Funktion nicht aktiviert.</string>
+    <string name="Permission_DEVICE_ADMIN">Wenn Sie Ihr Telefon sperren oder löschen möchten, wenn es verloren geht, ist diese Erlaubnis erforderlich.
+\nWenn Sie diese Erlaubnis nicht erteilen, wird diese Funktion nicht aktiviert.</string>
     <string name="Permission_POST_NOTIFICATIONS">FMD sendet Ihnen gelegentlich Benachrichtigungen, z.B. um Sie zu warnen wenn jemand Ihr Gerät lokalisiert.</string>
     <string name="MH_Help_delete">" delete - Löscht alle Daten"</string>
     <string name="MH_Help_Stats">" stats - sendet Netzwerk-Informtionen"</string>
@@ -139,8 +156,12 @@
     <string name="MH_Title_Help">FindMyDevice Kommandos:</string>
     <string name="MH_False_Pin">Falsche Pin!</string>
     <string name="MH_Delete">Tschüss</string>
-    <string name="MH_Networks">\nVerfügbare WLAN-Netzwerke:\n</string>
-    <string name="MH_Stats">Netzwerk_Statistik:\nIPs:\n</string>
+    <string name="MH_Networks">"
+\nVerfügbare WLAN-Netzwerke:
+\n"</string>
+    <string name="MH_Stats">Netzwerk_Statistik:
+\nIPs:
+\n</string>
     <string name="MH_Locked">gesperrt</string>
     <string name="MH_rings">klingelt</string>
     <string name="MH_GPS_WILL_FOLLOW">GPS-Koordinaten werden demnächst versendet.</string>
@@ -154,7 +175,8 @@
     <string name="JSON_RL_Error">Fehler beim Ermitteln des Standorts von OpenCellID. Bitte versuchen Sie den folgenden Link. Die Parameter, die Sie benötigen, sind \"lon\" und \"lat\".</string>
     <string name="LockScreen_Usage_detectd">LockScreenMessage: Verwendung erkannt.</string>
     <string name="LockScreen_Backbutton_pressed">LockScreenMessage: Zurück-Taste wurde gedrückt.</string>
-    <string name="Toast_Empty_FMDCommand">Kommando darf nicht leer sein.\nStandard [fmd] wird nun benutzt.</string>
+    <string name="Toast_Empty_FMDCommand">Kommando darf nicht leer sein.
+\nStandard [fmd] wird nun benutzt.</string>
     <string name="FMDConfig_Alert_Pin">PIN</string>
     <string name="Ok">Ok</string>
     <string name="Log_Alert_LogData">Log-Info</string>
@@ -176,4 +198,26 @@
     <string name="Notification_Security_Description">Benachrichtigungen bzgl. Sicherheitsupdates</string>
     <string name="not_possible">Diese Aktion war nicht möglich.</string>
     <string name="Info_Server_Push">Push:</string>
+    <string name="Introduction_Root"></string>
+    <string name="Introduction_Shizuku"></string>
+    <string name="notify_crypto_update_text"></string>
+    <string name="notify_crypto_update_title"></string>
+    <string name="MH_Help_Expert_Camera"></string>
+    <string name="Info_DEVICE_ADMIN" translatable="false"></string>
+    <string name="Info_GPS" translatable="false"></string>
+    <string name="Info_Overlay" translatable="false"></string>
+    <string name="Settings_FMDServer" translatable="false"></string>
+    <string name="RootAccessDenied"></string>
+    <string name="Info_SecureSettings" translatable="false"></string>
+    <string name="MH_FMDSERVER_NOT_REGISTERED"></string>
+    <string name="MH_CAM_CAPTURE"></string>
+    <string name="Permission_Camera"></string>
+    <string name="OpenCellId_API_Key_Description" translatable="false"></string>
+    <string name="Info_CORE" translatable="false"></string>
+    <string name="MH_Help_Expert_Sound"></string>
+    <string name="app_name" translatable="false"></string>
+    <string name="Info_Camera" translatable="false"></string>
+    <string name="OpenCellId_OpenCellId" translatable="false"></string>
+    <string name="Info_BatteryOptimization" translatable="false"></string>
+    <string name="Info_DND" translatable="false"></string>
 </resources>
