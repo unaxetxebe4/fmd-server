@@ -196,4 +196,14 @@
     <string name="Permission_POST_NOTIFICATIONS">FMD le enviará ocasionalmente notificaciones, por ejemplo para avisarle de que alguien está localizando su dispositivo.</string>
     <string name="Introduction_Root">Otorgar con Root</string>
     <string name="Introduction_Shizuku">Otorgar con Shizuku</string>
+    <string name="RootAccessDenied"></string>
+    <string name="app_name" translatable="false"></string>
+    <string name="Info_GPS" translatable="false"></string>
+    <string name="Info_DND" translatable="false"></string>
+    <string name="Info_Overlay" translatable="false"></string>
+    <string name="Info_DEVICE_ADMIN" translatable="false"></string>
+    <string name="Info_CORE" translatable="false"></string>
+    <string name="Info_SecureSettings" translatable="false"></string>
+    <string name="OpenCellId_API_Key_Description" translatable="false"></string>
+    <string name="Info_BatteryOptimization" translatable="false"></string>
 </resources>
