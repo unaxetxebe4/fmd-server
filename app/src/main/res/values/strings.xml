@@ -210,5 +210,6 @@
     <string name="MH_FMDSERVER_NOT_REGISTERED">This device isn\'t registered on a server.</string>
     <string name="Introduction_Shizuku">Give via Shizuku</string>
     <string name="Introduction_Root">Give via Root</string>
+    <string name="RootAccessDenied">Root access denied</string>
 
 </resources>

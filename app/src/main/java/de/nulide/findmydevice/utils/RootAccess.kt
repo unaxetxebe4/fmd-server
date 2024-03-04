@@ -1,6 +1,9 @@
 package de.nulide.findmydevice.utils
 
 import android.R.attr.process
+import android.content.Context
+import android.widget.Toast
+import de.nulide.findmydevice.R
 import java.io.BufferedReader
 import java.io.InputStream
 import java.io.InputStreamReader
@@ -24,7 +27,7 @@ class RootAccess {
         }
 
         @JvmStatic
-        fun execCommand(com: String) {
+        fun execCommand(context: Context, com: String) {
             var proc: Process? = null
             try {
                 val toExec = "$com && echo hi && exit\n"
@@ -39,6 +42,7 @@ class RootAccess {
 
 
             } catch (e: Exception) {
+                Toast.makeText(context, context.getString(R.string.RootAccessDenied), Toast.LENGTH_LONG).show()
                 e.printStackTrace()
             } finally {
                 proc?.destroy()

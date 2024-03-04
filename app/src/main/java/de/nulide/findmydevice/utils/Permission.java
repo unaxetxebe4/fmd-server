@@ -23,6 +23,7 @@ import androidx.core.content.ContextCompat;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.receiver.DeviceAdminReceiver;
 import de.nulide.findmydevice.services.ThirdPartyAccessService;
 import rikka.shizuku.Shizuku;
@@ -199,9 +200,9 @@ public class Permission {
     public static void requestWriteSecureSettingsPermissionViaRoot(Context c){
         if(RootAccess.isRooted()){
             String command = "pm grant "+c.getPackageName()+" android.permission.WRITE_SECURE_SETTINGS";
-            RootAccess.execCommand(command);
+            RootAccess.execCommand(c, command);
         }else{
-            Toast.makeText(c,"Root access denied", Toast.LENGTH_LONG).show();
+            Toast.makeText(c,c.getString(R.string.RootAccessDenied), Toast.LENGTH_LONG).show();
         }
 
     }
