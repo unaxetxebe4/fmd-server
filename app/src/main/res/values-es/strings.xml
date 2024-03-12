@@ -196,4 +196,5 @@
     <string name="Permission_POST_NOTIFICATIONS">FMD le enviará ocasionalmente notificaciones, por ejemplo para avisarle de que alguien está localizando su dispositivo.</string>
     <string name="Introduction_Root">Otorgar con Root</string>
     <string name="Introduction_Shizuku">Otorgar con Shizuku</string>
+    <string name="RootAccessDenied">Acceso root denegado</string>
 </resources>
