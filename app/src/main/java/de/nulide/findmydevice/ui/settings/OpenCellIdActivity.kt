@@ -68,7 +68,7 @@ class OpenCellIdActivity : AppCompatActivity(), TextWatcher {
     override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
     override fun afterTextChanged(edited: Editable) {
         if (edited === viewBinding.editTextOpenCellIDAPIKey.text) {
-            val newToken = edited.toString()
+            val newToken = edited.toString().trim()
             settings.setNow(Settings.SET_OPENCELLID_API_KEY, newToken)
             setupTestConnection(newToken.isEmpty())
         }

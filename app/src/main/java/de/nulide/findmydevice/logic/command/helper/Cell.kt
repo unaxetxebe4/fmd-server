@@ -17,6 +17,12 @@ class Cell {
         fun sendGSMCellLocation(ch: ComponentHandler) {
             val context = ch.context
 
+            val apiAccessToken = ch.settings.get(Settings.SET_OPENCELLID_API_KEY) as String
+            if (apiAccessToken.isEmpty()) {
+                Log.i(TAG, "Cannot send cell location: Missing API Access Token")
+                return
+            }
+
             val paras = CellParameters.queryCellParametersFromTelephonyManager(context)
             if (paras == null) {
                 Log.i(TAG, "No cell location found")
@@ -26,7 +32,6 @@ class Cell {
             ch.sender.sendNow(paras.prettyPrint())
 
             val repo = OpenCelliDRepository.getInstance(OpenCelliDSpec(context))
-            val apiAccessToken = ch.settings.get(Settings.SET_OPENCELLID_API_KEY) as String
 
             repo.getCellLocation(
                 paras, apiAccessToken,
