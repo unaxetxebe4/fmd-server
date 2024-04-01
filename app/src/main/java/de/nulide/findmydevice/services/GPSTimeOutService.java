@@ -1,6 +1,5 @@
 package de.nulide.findmydevice.services;
 
-import android.app.Service;
 import android.app.job.JobInfo;
 import android.app.job.JobParameters;
 import android.app.job.JobScheduler;
@@ -8,16 +7,13 @@ import android.app.job.JobService;
 import android.content.ComponentName;
 import android.content.Context;
 import android.os.Build;
-import android.os.PersistableBundle;
 
 import androidx.annotation.RequiresApi;
 
-import de.nulide.findmydevice.data.ConfigSMSRec;
 import de.nulide.findmydevice.data.Settings;
 import de.nulide.findmydevice.data.io.IO;
 import de.nulide.findmydevice.data.io.JSONFactory;
 import de.nulide.findmydevice.data.io.json.JSONMap;
-import de.nulide.findmydevice.sender.Sender;
 import de.nulide.findmydevice.utils.Logger;
 import de.nulide.findmydevice.utils.SecureSettings;
 
@@ -37,7 +33,7 @@ public class GPSTimeOutService extends JobService {
             Logger.logSession("GPS", "turned off");
         }
         Logger.writeLog();
-        FMDServerService.scheduleJob(this, (Integer)settings.get(Settings.SET_FMDSERVER_UPDATE_TIME));
+        FMDServerLocationUploadService.scheduleJob(this, (Integer)settings.get(Settings.SET_FMDSERVER_UPDATE_TIME));
         return false;
     }
 

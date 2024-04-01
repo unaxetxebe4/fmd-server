@@ -22,7 +22,8 @@ import de.nulide.findmydevice.data.io.IO
 import de.nulide.findmydevice.data.io.JSONFactory
 import de.nulide.findmydevice.data.io.json.JSONMap
 import de.nulide.findmydevice.databinding.ActivityDummyCameraxBinding
-import de.nulide.findmydevice.services.FMDServerService
+import de.nulide.findmydevice.net.FMDServerApiRepoSpec
+import de.nulide.findmydevice.net.FMDServerApiRepository
 import de.nulide.findmydevice.utils.CypherUtils
 import de.nulide.findmydevice.utils.imageToByteArray
 import kotlinx.coroutines.launch
@@ -116,14 +117,12 @@ class DummyCameraxActivity : AppCompatActivity() {
     }
 
     private fun uploadPhotoAndFinish(imgBytes: ByteArray) {
-        val settings =
-            JSONFactory.convertJSONSettings(IO.read(JSONMap::class.java, IO.settingsFileName))
-        val url = settings.get(Settings.SET_FMDSERVER_URL) as String
-        val userId = settings.get(Settings.SET_FMDSERVER_ID) as String
         val picture = CypherUtils.encodeBase64(imgBytes)
 
         // TODO: upload in a background job so that the activity can finish fast
-        FMDServerService.sendPicture(this, picture, url, userId)
+        val repo = FMDServerApiRepository.getInstance(FMDServerApiRepoSpec(this))
+        repo.sendPicture(picture)
+
         finish()
     }
 

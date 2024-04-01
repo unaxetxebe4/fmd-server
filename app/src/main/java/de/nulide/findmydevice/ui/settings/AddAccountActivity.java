@@ -1,5 +1,7 @@
 package de.nulide.findmydevice.ui.settings;
 
+import static de.nulide.findmydevice.net.FMDServerApiRepository.MIN_REQUIRED_SERVER_VERSION;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,6 +18,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.VolleyError;
+
 import org.apache.maven.artifact.versioning.ComparableVersion;
 
 import java.util.Calendar;
@@ -27,13 +31,15 @@ import de.nulide.findmydevice.data.Settings;
 import de.nulide.findmydevice.data.io.IO;
 import de.nulide.findmydevice.data.io.JSONFactory;
 import de.nulide.findmydevice.data.io.json.JSONMap;
-import de.nulide.findmydevice.net.interfaces.PostListener;
+import de.nulide.findmydevice.net.FMDServerApiRepoSpec;
+import de.nulide.findmydevice.net.FMDServerApiRepository;
 import de.nulide.findmydevice.receiver.PushReceiver;
-import de.nulide.findmydevice.services.FMDServerService;
+import de.nulide.findmydevice.services.FMDServerLocationUploadService;
 import de.nulide.findmydevice.utils.CypherUtils;
 import de.nulide.findmydevice.utils.Utils;
+import kotlin.Unit;
 
-public class AddAccountActivity extends AppCompatActivity implements TextWatcher, PostListener {
+public class AddAccountActivity extends AppCompatActivity implements TextWatcher {
 
     private EditText editTextServerUrl;
     private TextView textViewServerVersion;
@@ -41,6 +47,7 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
     private Button btnRegister;
 
     private Settings settings;
+    private FMDServerApiRepository fmdServerRepo;
 
     private AlertDialog loadingDialog;
 
@@ -53,6 +60,8 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
 
         settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
         String lastKnownServerUrl = (String) settings.get(Settings.SET_FMDSERVER_URL);
+
+        fmdServerRepo = FMDServerApiRepository.Companion.getInstance(new FMDServerApiRepoSpec(this));
 
         Button btnOpenWebsite = findViewById(R.id.buttonOpenFmdServerWebsite);
         btnOpenWebsite.setOnClickListener(v ->
@@ -89,7 +98,6 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
         EditText passwordInputCheck = registerLayout.findViewById(R.id.editTextFMDPasswordCheck);
         EditText registrationTokenInput = registerLayout.findViewById(R.id.editTextRegistrationToken);
 
-        PostListener postListener = this;
         final AlertDialog.Builder registerDialog = new AlertDialog.Builder(context)
                 .setTitle("Register")
                 .setView(registerLayout)
@@ -107,10 +115,12 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
                             FmdKeyPair keys = FmdKeyPair.generateNewFmdKeyPair(password);
                             settings.setKeys(keys);
                             String hashedPW = CypherUtils.hashPasswordForLogin(password);
-                            settings.set(Settings.SET_FMD_CRYPT_HPW, hashedPW);
+                            settings.setNow(Settings.SET_FMD_CRYPT_HPW, hashedPW);
                             settings.setNow(Settings.SET_FMDSERVER_PASSWORD_SET, true);
 
-                            FMDServerService.registerOnServer(context, keys.getEncryptedPrivateKey(), keys.getBase64PublicKey(), hashedPW, registrationToken, postListener);
+                            fmdServerRepo.registerAccount(keys.getEncryptedPrivateKey(), keys.getBase64PublicKey(), hashedPW, registrationToken,
+                                    this::onRegisterOrLoginSuccess, this::onRegisterOrLoginError
+                            );
                         }).start();
                     } else {
                         Toast.makeText(context, "Passwords do not match.", Toast.LENGTH_LONG).show();
@@ -127,7 +137,6 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
         EditText idInput = loginLayout.findViewById(R.id.editTextFMDID);
         EditText passwordInput = loginLayout.findViewById(R.id.editTextFMDPassword);
 
-        PostListener postListener = this;
         final AlertDialog.Builder loginDialog = new AlertDialog.Builder(context)
                 .setTitle("Login")
                 .setView(loginLayout)
@@ -139,7 +148,7 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
 
                     if (!id.isEmpty() && !password.isEmpty()) {
                         new Thread(() -> {
-                            FMDServerService.loginOnServer(context, id, password, postListener);
+                            fmdServerRepo.login(id, password, this::onRegisterOrLoginSuccess, this::onRegisterOrLoginError);
                         }).start();
                     } else {
                         Toast.makeText(context, "FMD ID and password must not be empty.", Toast.LENGTH_LONG).show();
@@ -183,7 +192,7 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
             if (url.endsWith("/")) {
                 url = url.substring(0, url.length() - 1);
             }
-            settings.set(Settings.SET_FMDSERVER_URL, url);
+            settings.setNow(Settings.SET_FMDSERVER_URL, url);
             if (url.isEmpty()) {
                 btnRegister.setEnabled(false);
                 btnLogin.setEnabled(false);
@@ -195,15 +204,10 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
         }
     }
 
-    @Override
-    public void onRestFinished(boolean success) {
+    private void onRegisterOrLoginSuccess(Unit unit) {
         runOnUiThread(() -> {
             Context context = getApplicationContext();
             loadingDialog.cancel();
-            if (!success) {
-                Toast.makeText(context, "Request failed", Toast.LENGTH_LONG).show();
-                return;
-            }
 
             settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
             if (((String) settings.get(Settings.SET_FMDSERVER_ID)).isEmpty()) {
@@ -211,12 +215,21 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
                 return;
             }
 
-            FMDServerService.scheduleJob(context, 0);
+            FMDServerLocationUploadService.scheduleJob(context, 0);
             PushReceiver.registerWithUnifiedPush(context);
 
             Intent fmdServerActivityIntent = new Intent(context, FMDServerActivity.class);
             startActivity(fmdServerActivityIntent);
             finish();
+        });
+    }
+
+    private void onRegisterOrLoginError(VolleyError error) {
+        runOnUiThread(() -> {
+            Context context = getApplicationContext();
+            loadingDialog.cancel();
+            error.printStackTrace();
+            Toast.makeText(context, "Request failed", Toast.LENGTH_LONG).show();
         });
     }
 
@@ -239,18 +252,19 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
             textViewServerVersion.setText("");
             return;
         }
-        new Thread(() -> FMDServerService.getServerVersion(context, serverBaseUrl,
+
+        new Thread(() -> fmdServerRepo.getServerVersion(serverBaseUrl,
                 (response) -> runOnUiThread(() -> {
                     String currentString = response;
                     if (currentString.startsWith("v")) {
                         currentString = currentString.substring(1);
                     }
-                    ComparableVersion minRequired = new ComparableVersion(FMDServerService.MIN_REQUIRED_SERVER_VERSION);
+                    ComparableVersion minRequired = new ComparableVersion(MIN_REQUIRED_SERVER_VERSION);
                     ComparableVersion current = new ComparableVersion(currentString);
 
                     if (current.compareTo(minRequired) < 0) {
                         String warningText = context.getString(R.string.server_version_error_low_version);
-                        warningText = warningText.replace("{MIN}", FMDServerService.MIN_REQUIRED_SERVER_VERSION);
+                        warningText = warningText.replace("{MIN}", MIN_REQUIRED_SERVER_VERSION);
                         warningText = warningText.replace("{CURRENT}", currentString);
                         textViewServerVersion.setText(warningText);
                     } else {

@@ -2,11 +2,10 @@ package de.nulide.findmydevice.receiver;
 
 import android.content.Context;
 import android.content.Intent;
-import android.widget.Toast;
 
 
 import de.nulide.findmydevice.data.ConfigSMSRec;
-import de.nulide.findmydevice.services.FMDServerService;
+import de.nulide.findmydevice.services.FMDServerLocationUploadService;
 import de.nulide.findmydevice.ui.onboarding.UpdateboardingModernCryptoActivity;
 import de.nulide.findmydevice.utils.Logger;
 
@@ -26,7 +25,7 @@ public class AppUpdatedReceiver extends SuperReceiver {
             UpdateboardingModernCryptoActivity.notifyAboutCryptoRefreshIfRequired(context);
 
             if (ch.getSettings().checkAccountExists()) {
-                FMDServerService.scheduleJob(context, 0);
+                FMDServerLocationUploadService.scheduleJob(context, 0);
             }
         }
     }

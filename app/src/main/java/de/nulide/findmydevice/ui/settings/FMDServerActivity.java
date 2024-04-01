@@ -27,8 +27,10 @@ import de.nulide.findmydevice.data.Settings;
 import de.nulide.findmydevice.data.io.IO;
 import de.nulide.findmydevice.data.io.JSONFactory;
 import de.nulide.findmydevice.data.io.json.JSONMap;
+import de.nulide.findmydevice.net.FMDServerApiRepoSpec;
+import de.nulide.findmydevice.net.FMDServerApiRepository;
 import de.nulide.findmydevice.receiver.PushReceiver;
-import de.nulide.findmydevice.services.FMDServerService;
+import de.nulide.findmydevice.services.FMDServerLocationUploadService;
 import de.nulide.findmydevice.utils.CypherUtils;
 import de.nulide.findmydevice.utils.UnregisterUtil;
 import de.nulide.findmydevice.utils.Utils;
@@ -36,6 +38,7 @@ import de.nulide.findmydevice.utils.Utils;
 public class FMDServerActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener, TextWatcher {
 
     private Settings settings;
+    private FMDServerApiRepository fmdServerRepo;
 
     private TextView textViewServerUrl;
     private TextView textViewUserId;
@@ -65,6 +68,7 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
         setContentView(R.layout.activity_f_m_d_server);
 
         settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
+        fmdServerRepo = FMDServerApiRepository.Companion.getInstance(new FMDServerApiRepoSpec(this));
         this.context = this;
 
         textViewServerUrl = findViewById(R.id.textViewServerUrl);
@@ -213,7 +217,7 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
         settings.set(Settings.SET_FMD_CRYPT_HPW, "");
         settings.set(Settings.SET_FMD_CRYPT_PRIVKEY, "");
         settings.set(Settings.SET_FMD_CRYPT_PUBKEY, "");
-        FMDServerService.cancelAll(this);
+        FMDServerLocationUploadService.cancelAll(this);
         finish();
     }
 
@@ -269,19 +273,18 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
                 String newPrivKey = CypherUtils.encryptPrivateKeyWithPassword(privKey, password);
                 String hashedPW = CypherUtils.hashPasswordForLogin(password);
 
-                FMDServerService.changePassword(context, newPrivKey, hashedPW,
-                        (response -> runOnUiThread(() -> {
-                            loadingDialog.cancel();
-                            if (response.has("Data")) {
+                runOnUiThread(() -> {
+                    fmdServerRepo.changePassword(hashedPW, newPrivKey,
+                            (response -> {
+                                loadingDialog.cancel();
                                 Toast.makeText(context, "Success", Toast.LENGTH_LONG).show();
-                            } else {
-                                Toast.makeText(context, "Failed - wrong password?", Toast.LENGTH_LONG).show();
-                            }
-                            settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
-                        })), (error) -> runOnUiThread(() -> {
-                            Toast.makeText(context, "Request failed", Toast.LENGTH_LONG).show();
-                            loadingDialog.cancel();
-                        }));
+                                settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
+                            }),
+                            (error) -> {
+                                Toast.makeText(context, "Request failed", Toast.LENGTH_LONG).show();
+                                loadingDialog.cancel();
+                            });
+                });
             } catch (Exception bdp) {
                 runOnUiThread(() -> {
                     Toast.makeText(context, "Wrong Password.", Toast.LENGTH_LONG).show();
@@ -293,25 +296,20 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
 
     private void runDelete() {
         showLoadingIndicator(context);
-        new Thread(() -> {
-            FMDServerService.unregisterOnServer(context,
-                    response -> {
-                        runOnUiThread(() -> {
-                            loadingDialog.cancel();
-                            Toast.makeText(context, "Unregister successful", Toast.LENGTH_LONG).show();
-                            FMDServerService.cancelAll(context);
-                            finish();
-                        });
-                    }, error -> {
-                        runOnUiThread(() -> {
-                            loadingDialog.cancel();
-                            UnregisterUtil.showUnregisterFailedDialog(context, error, () -> {
-                                FMDServerService.cancelAll(context);
-                                finish();
-                            });
-                        });
+        fmdServerRepo.unregister(
+                response -> {
+                    loadingDialog.cancel();
+                    Toast.makeText(context, "Unregister successful", Toast.LENGTH_LONG).show();
+                    FMDServerLocationUploadService.cancelAll(context);
+                    finish();
+                }, error -> {
+                    loadingDialog.cancel();
+                    UnregisterUtil.showUnregisterFailedDialog(context, error, () -> {
+                        FMDServerLocationUploadService.cancelAll(context);
+                        finish();
                     });
-        }).start();
+                }
+        );
     }
 
 }

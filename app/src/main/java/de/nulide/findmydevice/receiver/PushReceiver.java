@@ -1,6 +1,7 @@
 package de.nulide.findmydevice.receiver;
 
 import android.content.Context;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 
@@ -12,11 +13,14 @@ import org.unifiedpush.android.connector.UnifiedPush;
 
 import java.util.ArrayList;
 
-import de.nulide.findmydevice.services.FMDServerCommandService;
-import de.nulide.findmydevice.services.FMDServerService;
+import de.nulide.findmydevice.net.FMDServerApiRepoSpec;
+import de.nulide.findmydevice.net.FMDServerApiRepository;
+import de.nulide.findmydevice.services.FMDServerCommandDownloadService;
 
 
 public class PushReceiver extends MessagingReceiver {
+
+    private String TAG = PushReceiver.class.getSimpleName();
 
     public PushReceiver() {
         super();
@@ -24,12 +28,16 @@ public class PushReceiver extends MessagingReceiver {
 
     @Override
     public void onMessage(@NonNull Context context, @NonNull byte[] message, @NonNull String instance) {
-        FMDServerCommandService.scheduleJobNow(context);
+        Log.i(TAG, "Received push message");
+        FMDServerCommandDownloadService.scheduleJobNow(context);
     }
 
     @Override
     public void onNewEndpoint(@Nullable Context context, @NotNull String endpoint, @NotNull String instance) {
-        FMDServerService.registerPushWithFmdServer(context, endpoint);
+        FMDServerApiRepository repo = FMDServerApiRepository.Companion.getInstance(new FMDServerApiRepoSpec(context));
+        repo.registerPushEndpoint(endpoint, (error) -> {
+            error.printStackTrace();
+        });
     }
 
     @Override
@@ -39,7 +47,10 @@ public class PushReceiver extends MessagingReceiver {
 
     @Override
     public void onUnregistered(@Nullable Context context, @NotNull String s) {
-        FMDServerService.registerPushWithFmdServer(context, "");
+        FMDServerApiRepository repo = FMDServerApiRepository.Companion.getInstance(new FMDServerApiRepoSpec(context));
+        repo.registerPushEndpoint("", (error) -> {
+            error.printStackTrace();
+        });
     }
 
     public static void registerWithUnifiedPush(Context context) {
