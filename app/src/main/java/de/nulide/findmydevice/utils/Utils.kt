@@ -40,6 +40,11 @@ class Utils {
         }
 
         @JvmStatic
+        fun getGeoURI(lat: String, lon: String): String {
+            return "geo:$lat,$lon"
+        }
+
+        @JvmStatic
         fun getOpenStreetMapLink(lat: String, lon: String): String {
             return "https://www.openstreetmap.org/?mlat=$lat&mlon=$lon&zoom=14"
         }
