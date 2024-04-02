@@ -41,7 +41,7 @@ class Utils {
 
         @JvmStatic
         fun getOpenStreetMapLink(lat: String, lon: String): String {
-            return "https://www.openstreetmap.org/?mlat=$lat&mlon=$lon#map=14/$lat/$lon"
+            return "https://www.openstreetmap.org/?mlat=$lat&mlon=$lon&zoom=14"
         }
     }
 }
