@@ -51,7 +51,6 @@
 \nSi vous ne fournissez pas cette permission, cette fonctionnalité ne sera pas activée.</string>
     <string name="Permission_DND">Vous pouvez aussi faire sonner le téléphone pour vous aider à le trouver. Quand \"Ne pas Déranger\" est activé, il est possible que le téléphone soit en silencieux.
 \nSi vous ne donnez pas cette permission, cette fonctionnalité ne sera pas activée.</string>
-    <string name="Permission_GPS"></string>
     <string name="Permission_CONTACTS">Tout le monde n\'est pas autorisé à envoyer des commandes à votre téléphone, vous devez donc sélectionner certains contacts qui seront en capacité de localiser votre équipement.
 \nCette permission est requise.</string>
     <string name="Permission_SMS">Afin de pouvoir piloter le téléphone, cette application a besoin d\'être en capacité de voir les sms. Vos messages ne quittent jamais votre téléphone, et ils ne sont jamais utilisés pour faire autre chose que de retrouver votre téléphone.
@@ -91,7 +90,6 @@
     <string name="Granted">Autorisé :</string>
     <string name="Info_Notification_Access">Accès aux notifications</string>
     <string name="Info_Server_Push">Pousser :</string>
-    <string name="Info_FMD_Command"></string>
     <string name="Settings_Import">Importer les paramètres</string>
     <string name="Settings_Export">Exporter les paramètres</string>
     <string name="Settings_FMDServer_Logout_Button">Se déconnecter</string>
