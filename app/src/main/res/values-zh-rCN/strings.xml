@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="loading">加载中……</string>
+    <string name="help">帮助</string>
+    <string name="copied">复制</string>
+    <string name="Edit">编辑</string>
+    <string name="GPS">GPS</string>
+    <string name="Granted">授予：</string>
+    <string name="Cell">移动网络</string>
+    <string name="Info_Notification_Access">通知访问</string>
+    <string name="Info_FMD_Command">FMD-指令：</string>
+    <string name="Info_Server_Registered">注册：</string>
+    <string name="Info_Server_Push">推送：</string>
+    <string name="Info_Server_Enabled">服务：</string>
+    <string name="Settings_OpenCellId">打开移动网络ID</string>
+    <string name="Settings_Permissions">许可</string>
+    <string name="Settings_Import">导入设置</string>
+    <string name="Settings_Export">导出设置</string>
+    <string name="Settings_Logs">日志</string>
+    <string name="Settings_About">关于</string>
+    <string name="Settings_Pin_Description">在抹除设备前确认或临时使用服务。</string>
+    <string name="Settings_Enter_Pin">输入PIN</string>
+    <string name="pin">PIN</string>
+    <string name="Settings_Ringer_Tone_Description">选择一个将在FMD铃声发送时响起的铃声。</string>
+    <string name="Settings_Select_Ringtone">选择铃声</string>
+    <string name="Settings_Lockscreenmessage_Description">锁定屏幕通知：
+\n当设备锁定时，这条通知将会在锁屏上出现。</string>
+    <string name="Settings_FMD_Server_General">常规</string>
+    <string name="Settings_FMD_Server_Server_URL">服务器URL：</string>
+    <string name="Settings_FMD_Server_User_ID">用户ID：</string>
+    <string name="Settings_FMD_Server_ID_Desc">您需要使用用户ID来通过FMD服务器查找你的设备。写下它并且确保它的安全。</string>
+    <string name="Settings_FMDServer_Change_Password_Button">更改密码</string>
+    <string name="Settings_FMDServer_Logout_Button">登出</string>
+    <string name="Settings_FMDServer_Delete_Button">删除数据</string>
+    <string name="Settings_FMDServer_Alert_DeleteData">删除数据</string>
+    <string name="Settings_FMDServer_Alert_DeleteData_Desc">这将会从服务器上删除所有数据！您确定要这么做吗？</string>
+    <string name="Settings_FMDServer_Push_Description_Available">成功注册了通知推送权限。</string>
+    <string name="Settings_FMDServer_Push_Open_UP">打开 UnifiedPush 网站</string>
+    <string name="Settings_FMDServer_Update_Interval_Title">更新间隔</string>
+    <string name="Settings_FMDServer_Update_Interval_Description">FMD每X分钟上传一次设备的地理位置信息。</string>
+    <string name="Settings_FMDServer_Location_Type_Title">位置来源</string>
+    <string name="Settings_FMDServer_LOW_BAT_Upload_Title">低电量时仍上传</string>
+    <string name="Settings_FMDServer_LOW_BAT_Upload_Description">在此设备电池电量低的时候仍然更新位置信息。这需要通知访问权限。</string>
+    <string name="password_old">旧密码</string>
+    <string name="password_new">新密码</string>
+    <string name="password_new_repeat">重复新密码</string>
+    <string name="Settings_FMDServer_AddAccount">FMD 服务器：登录或注册</string>
+    <string name="Settings_FMDServer_Info">通过FMD服务器，您可以在服务端与应用之间通过因特网发送命令。您也可以查看地图上的设备地理位置或是设备拍摄的照片。如果需要自行托管，请查看网页。</string>
+    <string name="Settings_FMDServer_use_default_server">使用Nulide的公共服务器</string>
+    <string name="Settings_FMDServer_Login">登录</string>
+    <string name="Settings_FMDServer_Alert_PrivacyPolicy_Title">隐私协议</string>
+    <string name="password">密码</string>
+    <string name="password_repeat">重复密码</string>
+    <string name="registration_token">注册密钥</string>
+    <string name="registration_token_hint">私有实例可能需要一个私有密钥。如果为公有实例请留空。</string>
+    <string name="WhiteList_Select_Action">选择一个行为：</string>
+    <string name="WhiteList_Select_Number">选择其中一个手机号码。</string>
+    <string name="OpenCellId_privacy">隐私：请记住OpenCelliD了解您现在链接的信号塔，因此您的位置会随着每次API查询更新。</string>
+    <string name="OpenCellId_open_website">打开OpenCelliD网站</string>
+    <string name="OpenCellId_test_opencellid">测试OpenCelliD链接</string>
+    <string name="accept">允许</string>
+    <string name="Settings_Settings">设置</string>
+    <string name="Settings_FMDConfig">FMD-配置</string>
+    <string name="Settings_WhiteList">允许的会话</string>
+    <string name="Settings_FMD_via_Pin_Description">允许您通过PIN与FMD交流。您将被加入临时的允许名单。</string>
+    <string name="pin_repeat">重复PIN</string>
+    <string name="Settings_FMDCommand_Description">使用此指令与寻找我的设备应用交流。</string>
+    <string name="Settings_FMDServer_Push_Description_Missing">从FMD服务器发送指令到您的设备上需要 UnifiedPush distributor应用。安装它，然后回到这里。它将会被自动检测。</string>
+    <string name="Settings_FMDServer_Location_Type_Description">位置来源中的位置信息以一个规律的速度在后台更新。
+\n如果没有选择任何选项，则不会有规律的上传位置信息。（你仍可以使用网页接口来强制更新。需要通知推送服务。）</string>
+    <string name="server_version">服务端版本</string>
+    <string name="server_version_error">获取服务端版本时出现错误</string>
+    <string name="server_version_error_low_version">最低需要{MIN}版本的服务端，但是选择的服务端版本为{CURRENT}。若继续后果自负。</string>
+    <string name="Settings_FMDServer_open_website">打开FMD服务端网站</string>
+    <string name="Settings_FMDServer_Register">注册</string>
+    <string name="Whitelist_help">列表里的联系人允许通过SMS发送FMD指令。任何来自其他人的指令将被忽略。</string>
+    <string name="Whitelist_empty">没有允许的联系人。请点击这个按钮添加！</string>
+    <string name="WhiteList_Add_Contact">添加联系人</string>
+    <string name="Alert_First_Time_contact_added">恭喜。你刚刚添加了你的第一个联系人。你现在可以利用FMD发送包括“fmd”的内容通过允许的手机号码发送SMS信息。当一切工作正常时，应用程序会有所响应。</string>
+    <string name="OpenCellId_help">FMD可以利用OpenCelliD服务来得到基于设备所链接的信号塔的近似位置。每次位置查询都需要因特网链接。您也需要在OpenCelliD创建一个账号并且获取您的API访问密钥。</string>
+    <string name="OpenCellId_test_no_connection">没有移动网络连接</string>
+    <string name="settings_exported">设置已导出</string>
+    <string name="about">关于</string>
+    <string name="about_source_code">源代码</string>
+    <string name="about_wiki">维基</string>
+    <string name="app_description">FMD（寻找我的设备）允许您远程定位您的设备。你可以通过SMS来与FMD交流，即时消息，或使用FMD服务端。定位您的设备，使它响铃，锁定它，或抹掉它-全部都是远程控制的。</string>
+    <string name="server_unregister_failed_title">取消注册失败</string>
+    <string name="Notification_Lifecycle">生命周期</string>
+    <string name="Notification_Lifecycle_Description">有关于服务生命周期的通知。</string>
+    <string name="Notification_Usage_Description">有关于此服务用途的通知。</string>
+    <string name="Pin_Usage">PIN的用途</string>
+    <string name="Notification_Pin_Usage_Description">有关于PIN用途的通知。</string>
+    <string name="Notification_Server">服务</string>
+    <string name="NotificationServer_Description">显示从服务端发送的通知。</string>
+    <string name="Notification_Security">安全性</string>
+    <string name="Notification_FAIL">错误</string>
+    <string name="notify_crypto_update_title">需要行为</string>
+    <string name="server_unregister_failed_body">以下错误导致取消注册失败：{ERROR}
+\n
+\n您可以继续操作，但您的账号可能未从服务器中移除。如果您继续操作，您的账号将会在此设备本地删除。</string>
+    <string name="server_unregister_continue_anyway">仍旧继续</string>
+    <string name="server_unregister_dont_continue">不要继续</string>
+    <string name="notify_crypto_update_text">您需要更新某些设置来继续使用FMD。点击以打开。</string>
+    <string name="Notification_Usage">用途</string>
+    <string name="Notification_Security_Description">有关于安全性更新的通知</string>
+    <string name="Permission_IGNORE_BATTERY_OPTIMIZATION">此应用可以在后台运行。若确保它甚至能在设备休眠时运行，您需要关闭此应用的电池优化选项。</string>
+    <string name="Introduction_Introduction">寻找我的设备（FMD）是一个可以帮助您寻找丢失设备的应用。
+\n它使用来自第二设备发送的SMS（文字）来交流和发送指令，所以您可以破解您的设备。
+\n仅需要发送一个包含指令的SMS消息。
+\n请注意此应用仍处在Beta阶段。
+\n
+\n - Nulide</string>
+    <string name="Permission_CONTACTS">不是所有人都可以发送指令到您的设备上，所以您需要选择一些允许定位您设备的联系人。
+\n需要您的允许。</string>
+    <string name="Permission_DEVICE_ADMIN">如果您想要在设备丢失时锁定或抹除您的设备，请给予此权限。
+\n如果您没有给予此权限，此功能将会被禁用。</string>
+    <string name="Notification_Fail_Description">有关于错误的通知，比如与FMD服务器的连接。</string>
+    <string name="Introduction_UpdatePermission">需要一些新的权限。
+\n请检查以下权限来继续使用此应用，或回退到较老的版本。</string>
+    <string name="Permission_SMS">为了利用命令来使设备有所响应，此应用需要能了解您的SMS消息。您的消息永远不会发送出您的设备，并且它们也不会用于查找您的设备以外的任何用途。
+\n需要您的允许。</string>
+    <string name="Permission_GPS">如果您想要得到来自您设备的GPS坐标，此应用需要这个权限。
+\n也请允许此应用在后台定位您的设备。
+\n如果您没有给予此权限，此功能会被禁用。</string>
+    <string name="Permission_DND">您也可以使您的设备响铃来帮助您定位它。当“请勿打扰”开启时，它可能会将设备静音。
+\n如果您没有给与此权限，此功能将会被禁用。</string>
+</resources>
