@@ -75,7 +75,6 @@
     <string name="accept">قبول</string>
     <string name="Info_Server_Registered">مسجل:</string>
     <string name="GPS">GPS</string>
-    <string name="Settings_OpenCellId"></string>
     <string name="pin_repeat">كرر PIN</string>
     <string name="Settings_FMD_via_Pin_Description">يسمح لك بالتواصل مع FMD عبر الرقم السري. ستتم إضافتك إلى القائمة المسموح بها مؤقتًا.</string>
     <string name="Settings_Enter_Pin">أدخل الرقم السري</string>
