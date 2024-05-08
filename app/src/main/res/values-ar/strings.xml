@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="help">مساعدة</string>
+    <string name="Info_Server_Enabled">خدمة:</string>
+    <string name="Settings_Settings">الإعدادات</string>
+    <string name="Settings_WhiteList">جهات الاتصال المسموح بها</string>
+    <string name="Settings_Import">إستيراد الإعدادات</string>
+    <string name="Settings_Export">تصدير الإعدادات</string>
+    <string name="Settings_Logs">السجلات</string>
+    <string name="Settings_About">نبذة عن</string>
+    <string name="Settings_FMDCommand_Description">الأمر المستخدم للتواصل مع تطبيق FindMyDevice.</string>
+    <string name="Settings_Ringer_Tone_Description">حدد نغمة الرنين التي سيتم تشغيلها عند إرسال رنين fmd.</string>
+    <string name="Settings_Select_Ringtone">حدد نغمة الرنين</string>
+    <string name="Settings_FMD_Server_General">عام</string>
+    <string name="Settings_FMDServer_Logout_Button">تسجيل خروج</string>
+    <string name="Settings_FMDServer_Delete_Button">حذف البيانات</string>
+    <string name="Settings_FMDServer_Alert_DeleteData">حذف البيانات</string>
+    <string name="Settings_FMDServer_Update_Interval_Description">يقوم FMD بتحميل موقع الجهاز كل X دقيقة.</string>
+    <string name="Settings_FMDServer_Location_Type_Title">مصدر الموقع</string>
+    <string name="Settings_FMDServer_LOW_BAT_Upload_Title">تحميل على بطارية منخفضة</string>
+    <string name="password_old">كلمة المرور القديمة</string>
+    <string name="password_new">كلمة المرور الجديدة</string>
+    <string name="password_new_repeat">كرر كلمة المرور الجديدة</string>
+    <string name="server_version">إصدار الخادم</string>
+    <string name="server_version_error">حدث خطأ أثناء الحصول على إصدار الخادم</string>
+    <string name="Settings_FMDServer_open_website">فتح موقع خادم FMD</string>
+    <string name="Settings_FMDServer_Login">تسجيل الدخول</string>
+    <string name="Settings_FMDServer_Register">التسجيل</string>
+    <string name="Settings_FMDServer_Alert_PrivacyPolicy_Title">سياسة الخصوصية</string>
+    <string name="password_repeat">كرر كلمة المرور</string>
+    <string name="Whitelist_empty">لا توجد جهات اتصال مسموح بها. انقر فوق الزر لإضافة البعض!</string>
+    <string name="WhiteList_Select_Number">اختر أحد أرقام الهاتف.</string>
+    <string name="Alert_First_Time_contact_added">تهانينا. لقد قمت بإضافة جهة الاتصال الأولى الخاصة بك. يمكنك الآن التواصل مع FMD عن طريق إرسال رسالة نصية تحتوي على \"fmd\" من رقم الهاتف المسموح به. عندما يعمل كل شيء، سوف يستجيب التطبيق.</string>
+    <string name="notify_crypto_update_text">تحتاج إلى تحديث بعض الإعدادات لمواصلة استخدام FMD. انقر للفتح.</string>
+    <string name="server_unregister_failed_title">فشل إلغاء التسجيل</string>
+    <string name="server_unregister_continue_anyway">استمر على أي حال</string>
+    <string name="server_unregister_dont_continue">لا تستمر</string>
+    <string name="Notification_Usage_Description">إشعار حول استخدام الخدمة.</string>
+    <string name="NotificationServer_Description">عرض الإشعارات المرسلة من الخادم.</string>
+    <string name="Notification_FAIL">فشل</string>
+    <string name="Error">خطأ</string>
+    <string name="Toast_Empty_FMDCommand">أمر فارغ غير مسموح به
+\nالعودة إلى الوضع الافتراضي.[fmd]</string>
+    <string name="NOT_AVAILABLE">غير متاح</string>
+    <string name="MH_LAST_KNOWN_LOCATION">آخر موقع معروف</string>
+    <string name="not_possible">لم يكن هذا الإجراء ممكنا.</string>
+    <string name="MH_CAM_CAPTURE">"سيقوم الجهاز قريبًا بإرسال صورة إلى خادم fmd. يمكنك مشاهدتها هنا قريبا: "</string>
+    <string name="loading">تحميل…</string>
+    <string name="copied">تم النسخ</string>
+    <string name="Edit">تعديل</string>
+    <string name="Settings_FMDServer_Update_Interval_Title">الفاصل الزمني للتحديث</string>
+    <string name="Settings_FMDServer_Info">باستخدام خادم FMD يمكنك إرسال الأوامر عبر الإنترنت، من الخادم إلى التطبيق. يمكنك أيضًا عرض موقع الجهاز على الخريطة أو عرض الصور الملتقطة بواسطة الجهاز. للحصول على تعليمات الاستضافة الذاتية، راجع الموقع.</string>
+    <string name="Granted">ممنوح:</string>
+    <string name="Info_Notification_Access">الوصول إلى الإشعارات</string>
+    <string name="Settings_FMDServer_LOW_BAT_Upload_Description">قم بتحميل موقع هذا الجهاز عندما ينخفض مستوى البطارية. وهذا يتطلب الوصول إلى الإشعارات.</string>
+    <string name="Settings_Permissions">الأذونات</string>
+    <string name="Settings_Pin_Description">يستخدم للتأكيد قبل مسح الجهاز أو للاستخدام المؤقت للخدمة.</string>
+    <string name="Settings_Lockscreenmessage_Description">رسالة قفل الشاشة:
+\nعند قفل الجهاز، ستظهر هذه الرسالة على شاشة القفل.</string>
+    <string name="Settings_FMDServer_Change_Password_Button">تغيير كلمة المرور</string>
+    <string name="Settings_FMDServer_Alert_DeleteData_Desc">سيؤدي هذا إلى حذف كافة البيانات من الخادم! هل أنت متأكد؟</string>
+    <string name="password">كلمة المرور</string>
+    <string name="Whitelist_help">يُسمح لجهات الاتصال الموجودة في هذه القائمة بإرسال أوامر FMD عبر الرسائل القصيرة. سيتم تجاهل الأوامر من أي شخص آخر.</string>
+    <string name="WhiteList_Add_Contact">إضافة جهة اتصال</string>
+    <string name="settings_exported">تم تصدير الإعدادات</string>
+    <string name="about">نبذة عن</string>
+    <string name="app_description">يسمح لك FMD (Find My Device) بتحديد موقع جهازك عن بعد. يمكنك التواصل مع FMD عبر الرسائل القصيرة أو برامج المراسلة الفورية أو باستخدام خادم FMD. حدد موقع جهازك، أو اجعله يرن، أو اقفله، أو امسح بياناته - كل ذلك من جهاز التحكم عن بُعد.</string>
+    <string name="Notification_Security_Description">الإشعارات حول التحديثات الأمنية</string>
+    <string name="Permission_Camera">إذا كنت ترغب في تلقي الصور عن بعد من هاتفك، فيجب الحصول على إذن الكاميرا.</string>
+    <string name="MH_LAST_KNOWN_LOCATION_NOT_AVAILABLE">الموقع الأخير غير متوفر.</string>
+    <string name="RootAccessDenied">تم رفض الوصول إلى الجذر</string>
+    <string name="Crashed_Send_log">إرسال السجل</string>
+    <string name="Available">متاح</string>
+    <string name="MH_FMDSERVER_NOT_REGISTERED">هذا الجهاز غير مسجل على الخادم.</string>
+    <string name="accept">قبول</string>
+    <string name="Info_Server_Registered">مسجل:</string>
+    <string name="GPS">GPS</string>
+    <string name="Settings_OpenCellId"></string>
+    <string name="pin_repeat">كرر PIN</string>
+    <string name="Settings_FMD_via_Pin_Description">يسمح لك بالتواصل مع FMD عبر الرقم السري. ستتم إضافتك إلى القائمة المسموح بها مؤقتًا.</string>
+    <string name="Settings_Enter_Pin">أدخل الرقم السري</string>
+    <string name="pin">الرقم السري</string>
+    <string name="Settings_FMD_Server_ID_Desc">تحتاج إلى معرف المستخدم للعثور على جهازك باستخدام خادم FMD. دوِّنه واحتفظ به في مكان آمن.</string>
+    <string name="Settings_FMDServer_Push_Open_UP">فتح موقع UnifiedPush</string>
+    <string name="Settings_FMD_Server_Server_URL">عنوان URL للخادم:</string>
+    <string name="Settings_FMD_Server_User_ID">معرف المستخدم:</string>
+    <string name="server_version_error_low_version">مطلوب إصدار الخادم {MIN} على الأقل، ولكن الخادم المحدد لديه إصدار {CURRENT}. تابع على مسؤوليتك الخاصة.</string>
+    <string name="Settings_FMDServer_AddAccount">خادم FMD: تسجيل الدخول/التسجيل</string>
+    <string name="WhiteList_Select_Action">حدد إجراءً:</string>
+    <string name="Settings_FMDServer_use_default_server">استخدم خادم Nulide\'s العام</string>
+    <string name="OpenCellId_privacy">الخصوصية: ضع في اعتبارك أن OpenCelliD يتعرف على برجك الخلوي الحالي وبالتالي موقعك مع كل استعلام API.</string>
+    <string name="notify_crypto_update_title">الإجراء مطلوب</string>
+    <string name="OpenCellId_open_website">فتح موقع OpenCelliD</string>
+    <string name="OpenCellId_test_opencellid">اختبار الإتصال مع OpenCelliD</string>
+    <string name="server_unregister_failed_body">فشل إلغاء التسجيل بسبب الخطأ التالي: {ERROR}
+\n
+\nيمكنك المتابعة على أي حال، ولكن ربما لم يتم حذف حسابك من الخادم. إذا تابعت، فسيتم حذف حسابك محليًا من هذا الجهاز.</string>
+    <string name="Notification_Security">حماية</string>
+    <string name="Notification_Pin_Usage_Description">إشعار حول استخدام الرقم السري.</string>
+    <string name="Permission_IGNORE_BATTERY_OPTIMIZATION">من المفترض أن يعمل هذا التطبيق في الخلفية. للتأكد من أنه يعمل حتى عندما يكون هاتفك في وضع الاستعداد، تحتاج إلى إيقاف تشغيل تحسين البطارية لهذا التطبيق.</string>
+    <string name="Notification_Fail_Description">إشعار عند فشل شيء ما، مثل الاتصال بخادم fmd.</string>
+    <string name="Permission_DND">يمكنك أيضًا جعل هاتفك يرن لمساعدتك في تحديد موقعه. عندما يكون وضع \"عدم الإزعاج\" نشطًا، فمن الممكن أن يتم كتم صوت الهاتف.
+\nإذا لم تمنح هذا الإذن، فلن يتم تفعيل هذه الوظيفة.</string>
+    <string name="Permission_DEVICE_ADMIN">إذا كنت ترغب في قفل هاتفك أو مسح بياناته إذا ضاع، فإن هذا الإذن مطلوب.
+\nإذا لم تمنح هذا الإذن، فلن يتم تفعيل هذه الوظيفة.</string>
+    <string name="MH_Delete">وداعاً...</string>
+    <string name="MH_Networks">"
+\nشبكات Wifi المتاحة:
+\n"</string>
+    <string name="Disabled">معطل</string>
+    <string name="MH_False_Pin">الرقم السري خاطئ!</string>
+    <string name="MH_Pin_Accepted">تم قبول الرقم السري!</string>
+    <string name="MH_Help_Stats">" stats - يرسل معلومات الجهاز"</string>
+    <string name="LockScreen_Backbutton_pressed">رسالة شاشة القفل: تم الضغط على زر الرجوع.</string>
+    <string name="LockScreen_Usage_detectd">رسالة قفل الشاشة: تم اكتشاف الاستخدام.</string>
+    <string name="Log_Alert_LogData">سجل البيانات</string>
+    <string name="FMDConfig_Alert_Pin">الرقم السري</string>
+    <string name="JSON_RL_Error">حدث خطأ أثناء الحصول على الموقع من OpenCelliD. يرجى تجربة الرابط التالي. المعلمات التي تريدها هي \"lon\" و\"lat\".</string>
+    <string name="registered">مسجل</string>
+    <string name="MH_NO_SECURE_SETTINGS">آسف التطبيق غير مسموح له القيام بذلك.</string>
+    <string name="Introduction_Shizuku">منح عبر Shizuku</string>
+    <string name="Introduction_Root">منح عبر الجذر</string>
+    <string name="MH_Help_Expert_GPS">" GPS (on/off) - تشغيل GPS أو إيقافه."</string>
+    <string name="MH_Help_where">" locate - يرسل الموقع الحالي للهاتف"</string>
+    <string name="MH_Help_ring">" ring - يجعل الهاتف يرن"</string>
+    <string name="MH_Help_Lock">" lock - يقفل الهاتف"</string>
+    <string name="MH_Help_delete">" delete - يمسح بيانات الهاتف"</string>
+    <string name="R_Stop_ring">توقف عن الرنين</string>
+    <string name="MH_No_GPS">عذرًا، تم إيقاف GPS.</string>
+    <string name="Settings_FMDServer_Push_Description_Missing">يتطلب إرسال الأوامر من خادم FMD إلى هاتفك تطبيق موزع UnifiedPush. قم بتثبيت واحد، ثم عد إلى هنا. سيتم اكتشافه تلقائيًا.</string>
+    <string name="Introduction_UpdatePermission">هناك حاجة إلى بعض الأذونات الجديدة.
+\nيرجى التحقق من الأذونات التالية لمواصلة استخدام هذا التطبيق، أو العودة إلى الإصدار الأقدم.</string>
+    <string name="Permission_SMS">لكي تأمر الهاتف بفعل شيء ما، يجب أن يكون هذا التطبيق قادرًا على رؤية رسائلك النصية. لا تغادر رسائلك هاتفك أبدًا، ولا تُستخدم أبدًا في أي شيء باستثناء العثور على هاتفك.
+\nهذا الإذن مطلوب.</string>
+    <string name="Permission_CONTACTS">لا يُسمح للجميع بإرسال الأوامر إلى هاتفك، لذلك تحتاج إلى تحديد بعض جهات الاتصال التي ستتمكن من تحديد موقع جهازك.
+\nهذا الإذن مطلوب.</string>
+    <string name="Permission_GPS">إذا كنت ترغب في الحصول على إحداثيات GPS من هاتفك، فإن التطبيق يحتاج إلى هذا الإذن.
+\nيرجى أيضًا السماح للتطبيق بتحديد موقع هاتفك في الخلفية.
+\nإذا لم تمنح هذا الإذن، فلن يتم تفعيل هذه الوظيفة.</string>
+    <string name="not_registered">غير مسجل</string>
+    <string name="Permission_OVERLAY">عندما تقوم بقفل جهازك عن بعد، يمكن لهذا التطبيق عرض رسالة على شاشة القفل لمن يجد هاتفك.
+\nإذا لم تمنح هذا الإذن، فلن يتم تفعيل هذه الوظيفة.</string>
+    <string name="Permission_WRITE_SECURE_SETTINGS">هذا التطبيق قادر على تشغيل الموقع إذا كنت عادةً تترك الموقع مغلقًا.
+\nإذا كان قيد إيقاف التشغيل، فلن يعمل \"fmd locate\".
+\nومن أجل تحقيق ذلك، يحتاج التطبيق إلى إذن خاص يجب عليك منحه باستخدام جهاز الكمبيوتر.
+\nإذا لم تمنح هذا الإذن، فلا توجد مشكلة.
+\nلا يزال بإمكانك استخدام هذا التطبيق.</string>
+    <string name="Permission_POST_NOTIFICATIONS">سوف يرسل لك FMD أحيانًا إشعارات، على سبيل المثال لتحذيرك من أن شخصًا ما يحدد موقع جهازك.</string>
+    <string name="Locked_Lock_Screen">FindMyDevice
+\nهذا الهاتف مغلق!
+\nرسالة من المالك:</string>
+    <string name="Introduction_Give_Permission">منح الإذن</string>
+    <string name="Introduction_Next">التالي</string>
+    <string name="Toast_Duplicate_contact">جهة الاتصال هذه موجودة بالفعل.</string>
+    <string name="MH_GPS_WILL_FOLLOW">سيتم إرسال إحداثيات GPS قريبًا.</string>
+    <string name="Enabled">مفعل</string>
+    <string name="Delete">حذف</string>
+    <string name="MH_rings">يرن</string>
+    <string name="MH_Locked">مقفل</string>
+    <string name="MH_Title_Help">أوامر FindMyDevice:</string>
+    <string name="Alert_First_time_fmdserver">هنا يمكنك تكوين التطبيق للتواصل مع خادم FMD. إذا كنت تريد تكوين خادم مختلف عن الخادم الافتراضي، فيمكنك القيام بذلك عن طريق تغيير عنوان URL. إذا قمت بالضغط على تسجيل يمكنك تسجيل التطبيق على الخادم. بعد ذلك يمكنك تمكين وظيفة الخادم. إذا قمت بذلك، فسوف يرسل لك هاتفك بيانات الموقع إلى الخادم المحدد. يمكنك التحقق من موقع هاتفك عن طريق إدخال المعرف وكلمة المرور على الصفحة.</string>
+    <string name="OpenCellId_help">يمكن لـ FMD استخدام خدمة OpenCelliD للحصول على موقع تقريبي بناءً على البرج الخلوي الذي يتصل به الهاتف. مطلوب اتصال بالإنترنت لكل استعلام عن الموقع. تحتاج أيضًا إلى إنشاء حساب في OpenCelliD والحصول على Token للوصول إلى API الخاص بك.</string>
+    <string name="Enable">تفعيل</string>
+    <string name="Introduction_Introduction">(FMD) FindMyDevice تطبيق يمكنه مساعدتك في العثور على هاتفك عند فقدانه.
+\nيستخدم الرسائل النصية (SMS) للتواصل وإرسال الأوامر من جهاز آخر حتى تتمكن من تتبع هاتفك.
+\nفقط قم بإرسال رسالة SMS تحتوي على الأمر fmd.
+\nيرجى ملاحظة أن هذا التطبيق لا يزال في مرحلة تجريبية.
+\n
+\n-Nulide</string>
+    <string name="MH_Help_Expert_Sound">" Sound (on/off) - تشغيل الصوت أو إيقافه."</string>
+    <string name="MH_Help_Expert_Camera">" Camera (front/back) - يلتقط صورة ويرسلها إلى خادم FMD."</string>
+    <string name="Permission_Notification">إذا كنت تريد أن يتعامل FMD مع الرسائل الواردة من تطبيقات أخرى مثل Telegram وWhatsApp وما إلى ذلك، فيمكنك منح FMD إذن الوصول إلى الإشعارات.</string>
+</resources>
