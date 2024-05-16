@@ -1,6 +1,7 @@
 
 package de.nulide.findmydevice.logic;
 
+import static de.nulide.findmydevice.utils.Utils.getGeoURI;
 import static de.nulide.findmydevice.utils.Utils.getOpenStreetMapLink;
 
 import android.content.Context;
@@ -34,9 +35,10 @@ public class LocationHandler {
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     public void newLocation(String provider, String lat, String lon) {
-        StringBuilder sb = new StringBuilder(provider);
-        sb.append(": Lat: ").append(lat).append(" Lon: ").append(lon).append("\n\n").append(getOpenStreetMapLink(lat, lon));
-        ch.getSender().sendNow(sb.toString());
+        String msg = String.format("%s: Lat: %s Lon: %s\n%s\n%s",
+                provider, lat, lon,
+                getGeoURI(lat, lon), getOpenStreetMapLink(lat, lon));
+        ch.getSender().sendNow(msg);
 
         long timeMillis = Calendar.getInstance(TimeZone.getTimeZone("UTC")).getTimeInMillis();
 
@@ -58,9 +60,11 @@ public class LocationHandler {
         String lon = (String) settings.get(Settings.SET_LAST_KNOWN_LOCATION_LON);
         long time = (long) settings.get(Settings.SET_LAST_KNOWN_LOCATION_TIME);
         Date date = new Date(time);
-        StringBuilder sb = new StringBuilder(ch.getContext().getString(R.string.MH_LAST_KNOWN_LOCATION));
-        sb.append(": Lat: ").append(lat).append(" Lon: ").append(lon).append("\n\n").append("Time: ").append(date.toString()).append("\n\n").append(getOpenStreetMapLink(lat.toString(), lon.toString()));
-        ch.getSender().sendNow(sb.toString());
+        String msg = String.format("%s: Lat: %s Lon: %s\nTime: %s\n%s\n%s",
+                ch.getContext().getString(R.string.MH_LAST_KNOWN_LOCATION),
+                lat, lon, date.toString(),
+                getGeoURI(lat, lon), getOpenStreetMapLink(lat, lon));
+        ch.getSender().sendNow(msg);
     }
 
     public void setSendToServer(boolean sendToServer) {

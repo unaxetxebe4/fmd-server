@@ -227,10 +227,25 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
 
     private void onRegisterOrLoginError(VolleyError error) {
         runOnUiThread(() -> {
-            Context context = getApplicationContext();
             loadingDialog.cancel();
             error.printStackTrace();
-            Toast.makeText(context, "Request failed", Toast.LENGTH_LONG).show();
+
+            String message = "";
+            if (error.networkResponse != null) {
+                message = getString(R.string.request_failed_status_code) + ": " + error.networkResponse.statusCode + "\n"
+                        + getString(R.string.request_failed_response_body) + ": " + new String(error.networkResponse.data) + "\n";
+            }
+            message += getString(R.string.request_failed_exception) + ": " + error.getMessage();
+            String finalMessage = message; // needed to be able to use it in Lambda
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle(R.string.request_failed_title);
+            builder.setMessage(finalMessage);
+            builder.setNeutralButton(R.string.copy, (dialog, which) -> {
+                Utils.copyToClipboard(this, getString(R.string.request_failed_title), finalMessage);
+            });
+            builder.setPositiveButton(R.string.Ok, (dialog, which) -> dialog.dismiss());
+            builder.show();
         });
     }
 

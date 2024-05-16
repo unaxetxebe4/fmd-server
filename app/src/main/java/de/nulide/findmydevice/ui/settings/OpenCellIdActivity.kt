@@ -14,6 +14,7 @@ import de.nulide.findmydevice.databinding.ActivityOpenCellIdBinding
 import de.nulide.findmydevice.net.OpenCelliDRepository
 import de.nulide.findmydevice.net.OpenCelliDSpec
 import de.nulide.findmydevice.utils.CellParameters
+import de.nulide.findmydevice.utils.Utils.Companion.getGeoURI
 import de.nulide.findmydevice.utils.Utils.Companion.getOpenStreetMapLink
 import de.nulide.findmydevice.utils.Utils.Companion.openUrl
 import de.nulide.findmydevice.utils.Utils.Companion.pasteFromClipboard
@@ -89,9 +90,10 @@ class OpenCellIdActivity : AppCompatActivity(), TextWatcher {
         repo.getCellLocation(
             paras, apiAccessToken,
             onSuccess = {
+                val geoURI = getGeoURI(it.lat, it.lon)
                 val osm = getOpenStreetMapLink(it.lat, it.lon)
                 viewBinding.textViewTestOpenCellIdResponse.text =
-                    "Paras: $paras\n\nOpenCelliD: ${it.url}\n\nOpenStreetMap: $osm"
+                    "Paras: $paras\n\nOpenCelliD: ${it.url}\n${geoURI}\nOpenStreetMap: $osm"
             },
             onError = {
                 viewBinding.textViewTestOpenCellIdResponse.text =
