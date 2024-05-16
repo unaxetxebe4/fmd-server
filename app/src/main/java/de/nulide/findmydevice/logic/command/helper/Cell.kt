@@ -3,6 +3,8 @@ package de.nulide.findmydevice.logic.command.helper
 import android.util.Log
 import de.nulide.findmydevice.R
 import de.nulide.findmydevice.data.Settings
+import de.nulide.findmydevice.data.SettingsRepoSpec
+import de.nulide.findmydevice.data.SettingsRepository
 import de.nulide.findmydevice.logic.ComponentHandler
 import de.nulide.findmydevice.net.OpenCelliDRepository
 import de.nulide.findmydevice.net.OpenCelliDSpec
@@ -17,7 +19,8 @@ class Cell {
         fun sendGSMCellLocation(ch: ComponentHandler) {
             val context = ch.context
 
-            val apiAccessToken = ch.settings.get(Settings.SET_OPENCELLID_API_KEY) as String
+            val settings = SettingsRepository.getInstance(SettingsRepoSpec(context)).settings
+            val apiAccessToken = settings.get(Settings.SET_OPENCELLID_API_KEY) as String
             if (apiAccessToken.isEmpty()) {
                 Log.i(TAG, "Cannot send cell location: Missing API Access Token")
                 return
@@ -32,7 +35,6 @@ class Cell {
             ch.sender.sendNow(paras.prettyPrint())
 
             val repo = OpenCelliDRepository.getInstance(OpenCelliDSpec(context))
-
             repo.getCellLocation(
                 paras, apiAccessToken,
                 onSuccess = {

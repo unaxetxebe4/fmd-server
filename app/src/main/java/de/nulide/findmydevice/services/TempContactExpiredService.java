@@ -1,22 +1,14 @@
 package de.nulide.findmydevice.services;
 
-import android.app.Service;
 import android.app.job.JobInfo;
 import android.app.job.JobParameters;
 import android.app.job.JobScheduler;
 import android.app.job.JobService;
 import android.content.ComponentName;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Build;
-import android.os.IBinder;
-import android.os.PersistableBundle;
-import android.util.Log;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
-
-import java.util.TimerTask;
 
 import de.nulide.findmydevice.data.ConfigSMSRec;
 import de.nulide.findmydevice.data.io.IO;
@@ -36,13 +28,13 @@ public class TempContactExpiredService extends JobService {
         Sender sender = null;
         ConfigSMSRec config = JSONFactory.convertJSONConfig(IO.read(JSONMap.class, IO.SMSReceiverTempData));
         String destination = (String) config.get(ConfigSMSRec.CONF_TEMP_WHITELISTED_CONTACT);
-        if(destination != null && !destination.isEmpty()) {
+        if (destination != null && !destination.isEmpty()) {
             sender = new SMS(destination);
         }
 
         IO.context = this;
         Logger.init(Thread.currentThread(), this);
-        if(sender != null) {
+        if (sender != null) {
             sender.sendNow("FindMyDevive: Pin expired!");
             Logger.logSession("Session expired", sender.getDestination());
         }
@@ -66,8 +58,6 @@ public class TempContactExpiredService extends JobService {
         JobScheduler jobScheduler = context.getSystemService(JobScheduler.class);
         jobScheduler.schedule(builder.build());
     }
-
-
 
 
 }

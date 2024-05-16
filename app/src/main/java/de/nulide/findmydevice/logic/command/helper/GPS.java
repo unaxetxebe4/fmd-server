@@ -11,17 +11,21 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 
 import de.nulide.findmydevice.data.Settings;
+import de.nulide.findmydevice.data.SettingsRepoSpec;
+import de.nulide.findmydevice.data.SettingsRepository;
 import de.nulide.findmydevice.logic.ComponentHandler;
 import de.nulide.findmydevice.services.GPSTimeOutService;
 import de.nulide.findmydevice.utils.SecureSettings;
 
 public class GPS implements LocationListener {
 
+    private Settings settings;
     private ComponentHandler ch;
     private LocationManager locationManager;
     private boolean jobFullfilled;
 
     public GPS(ComponentHandler ch) {
+        settings = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(ch.getContext())).getSettings();
         this.ch = ch;
         locationManager = (LocationManager) ch.getContext().getSystemService(Context.LOCATION_SERVICE);
         jobFullfilled = false;
@@ -43,9 +47,9 @@ public class GPS implements LocationListener {
             String lon = new Double(location.getLongitude()).toString();
             ch.getLocationHandler().newLocation(provider, lat, lon);
             jobFullfilled = true;
-            if ((Integer) ch.getSettings().get(Settings.SET_GPS_STATE) == 2) {
+            if ((Integer) settings.get(Settings.SET_GPS_STATE) == 2) {
                 SecureSettings.turnGPS(ch.getContext(), false);
-                ch.getSettings().set(Settings.SET_GPS_STATE, 0);
+                settings.set(Settings.SET_GPS_STATE, 0);
             }
             ch.finishJob();
         } else {

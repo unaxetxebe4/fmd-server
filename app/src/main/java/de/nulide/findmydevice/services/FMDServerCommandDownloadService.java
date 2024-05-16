@@ -12,9 +12,8 @@ import android.util.Log;
 import androidx.annotation.RequiresApi;
 
 import de.nulide.findmydevice.data.Settings;
-import de.nulide.findmydevice.data.io.IO;
-import de.nulide.findmydevice.data.io.JSONFactory;
-import de.nulide.findmydevice.data.io.json.JSONMap;
+import de.nulide.findmydevice.data.SettingsRepoSpec;
+import de.nulide.findmydevice.data.SettingsRepository;
 import de.nulide.findmydevice.logic.ComponentHandler;
 import de.nulide.findmydevice.net.FMDServerApiRepoSpec;
 import de.nulide.findmydevice.net.FMDServerApiRepository;
@@ -37,8 +36,7 @@ public class FMDServerCommandDownloadService extends JobService {
 
     @Override
     public boolean onStartJob(JobParameters params) {
-        IO.context = this;
-        settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
+        settings = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(this)).getSettings();
         this.params = params;
 
         FMDServerApiRepository fmdServerRepo = FMDServerApiRepository.Companion.getInstance(new FMDServerApiRepoSpec(this));
@@ -76,7 +74,7 @@ public class FMDServerCommandDownloadService extends JobService {
         }
         Sender sender = new FooSender();
         Logger.init(Thread.currentThread(), this);
-        ComponentHandler ch = new ComponentHandler(settings, this, this, params);
+        ComponentHandler ch = new ComponentHandler(this, this, params);
         ch.setSender(sender);
         ch.getLocationHandler().setSendToServer(true);
         ch.getMessageHandler().setSilent(true);

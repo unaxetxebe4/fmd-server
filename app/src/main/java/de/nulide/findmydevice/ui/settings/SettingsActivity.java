@@ -24,9 +24,9 @@ import java.util.List;
 
 import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.data.Settings;
+import de.nulide.findmydevice.data.SettingsRepoSpec;
+import de.nulide.findmydevice.data.SettingsRepository;
 import de.nulide.findmydevice.data.io.IO;
-import de.nulide.findmydevice.data.io.JSONFactory;
-import de.nulide.findmydevice.data.io.json.JSONMap;
 import de.nulide.findmydevice.ui.IntroductionActivity;
 import de.nulide.findmydevice.ui.LogActivity;
 import de.nulide.findmydevice.ui.helper.SettingsEntry;
@@ -50,7 +50,7 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
+        Settings settings = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(this)).getSettings();
 
         Intent settingIntent = null;
         switch (position) {
@@ -123,7 +123,7 @@ public class SettingsActivity extends AppCompatActivity {
                         mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
                         if (!text.isEmpty()) {
                             Settings settings = mapper.readValue(text, Settings.class);
-                            settings.setNow(Settings.SET_INTRODUCTION_VERSION, settings.get(Settings.SET_INTRODUCTION_VERSION));
+                            settings.set(Settings.SET_INTRODUCTION_VERSION, settings.get(Settings.SET_INTRODUCTION_VERSION));
                             finish();
                         }
                     } catch (IOException e) {

@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.data.Settings;
+import de.nulide.findmydevice.data.SettingsRepoSpec;
+import de.nulide.findmydevice.data.SettingsRepository;
 import de.nulide.findmydevice.data.io.IO;
 import de.nulide.findmydevice.data.io.JSONFactory;
 import de.nulide.findmydevice.data.io.json.JSONMap;
@@ -25,6 +27,8 @@ public class UpdateboardingModernCryptoActivity extends AppCompatActivity {
 
     private final int EXPORT_REQ_CODE = 30;
 
+    private Settings settings;
+
     boolean isRegisteredWithServer;
     boolean isPinSet;
 
@@ -33,7 +37,7 @@ public class UpdateboardingModernCryptoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_updateboarding_modern_crypto);
 
-        Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
+        settings = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(this)).getSettings();
         isRegisteredWithServer = settings.checkAccountExists();
         isPinSet = !settings.get(Settings.SET_PIN).equals("");
 
@@ -78,8 +82,7 @@ public class UpdateboardingModernCryptoActivity extends AppCompatActivity {
 
     private void onConfirmClicked(View view) {
         if (isPinSet) {
-            Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
-            settings.setNow(Settings.SET_PIN, "");
+            settings.set(Settings.SET_PIN, "");
         }
         if (isRegisteredWithServer) {
             // SET_FMD_CRYPT_HPW still contains the old-style hash.
@@ -94,9 +97,7 @@ public class UpdateboardingModernCryptoActivity extends AppCompatActivity {
     }
 
     private void completeAndContinueToMain() {
-        // settings needs to be instantiated here, else we get race conditions on the file
-        Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
-        settings.setNow(Settings.SET_UPDATEBOARDING_MODERN_CRYPTO_COMPLETED, true);
+        settings.set(Settings.SET_UPDATEBOARDING_MODERN_CRYPTO_COMPLETED, true);
 
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
@@ -104,7 +105,7 @@ public class UpdateboardingModernCryptoActivity extends AppCompatActivity {
     }
 
     public static void notifyAboutCryptoRefreshIfRequired(Context context) {
-        Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
+        Settings settings = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(context)).getSettings();
         boolean alreadyCompleted = (Boolean) settings.get(Settings.SET_UPDATEBOARDING_MODERN_CRYPTO_COMPLETED);
         if (alreadyCompleted) return;
 

@@ -1,7 +1,6 @@
 package de.nulide.findmydevice.services;
 
 import android.content.Context;
-import android.os.Build;
 import android.provider.Telephony;
 import android.service.notification.NotificationListenerService;
 import android.service.notification.StatusBarNotification;
@@ -11,6 +10,8 @@ import java.util.Date;
 
 import de.nulide.findmydevice.data.ConfigSMSRec;
 import de.nulide.findmydevice.data.Settings;
+import de.nulide.findmydevice.data.SettingsRepoSpec;
+import de.nulide.findmydevice.data.SettingsRepository;
 import de.nulide.findmydevice.data.WhiteList;
 import de.nulide.findmydevice.data.io.IO;
 import de.nulide.findmydevice.data.io.JSONFactory;
@@ -26,17 +27,20 @@ import de.nulide.findmydevice.utils.Permission;
 
 public class ThirdPartyAccessService extends NotificationListenerService {
 
+    private Settings settings;
     protected WhiteList whiteList;
     protected ConfigSMSRec config;
 
     protected ComponentHandler ch;
     protected  String DEFAULT_SMS_PACKAGE_NAME = "";
+
     protected void init(Context context) {
         IO.context = context;
         Logger.init(Thread.currentThread(), context);
         whiteList = JSONFactory.convertJSONWhiteList(IO.read(JSONWhiteList.class, IO.whiteListFileName));
-        Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
+        settings = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(this)).getSettings();
         config = JSONFactory.convertJSONConfig(IO.read(JSONMap.class, IO.SMSReceiverTempData));
+
         if (config.get(ConfigSMSRec.CONF_LAST_USAGE) == null) {
             Calendar cal = Calendar.getInstance();
             cal.add(Calendar.MINUTE, -5);
@@ -44,7 +48,7 @@ public class ThirdPartyAccessService extends NotificationListenerService {
         }
         Notifications.init(context, false);
         Permission.initValues(context);
-        ch = new ComponentHandler(settings, context, null, null);
+        ch = new ComponentHandler(context, null, null);
 
         DEFAULT_SMS_PACKAGE_NAME = Telephony.Sms.getDefaultSmsPackage(context);
     }
@@ -62,7 +66,7 @@ public class ThirdPartyAccessService extends NotificationListenerService {
                 ch.setSender(sender);
                 String msg = msgCS.toString();
                 String msgLower = msg.toLowerCase();
-                String fmdcommand = (String) ch.getSettings().get(Settings.SET_FMD_COMMAND);
+                String fmdcommand = (String) settings.get(Settings.SET_FMD_COMMAND);
                 if (msgLower.contains(fmdcommand)) {
                     msg = ch.getMessageHandler().checkAndRemovePin(msg);
                     if (msg != null) {
@@ -71,7 +75,7 @@ public class ThirdPartyAccessService extends NotificationListenerService {
                     }
                 }
             }
-            if((Boolean)ch.getSettings().get(Settings.SET_FMD_LOW_BAT_SEND)) {
+            if ((Boolean) settings.get(Settings.SET_FMD_LOW_BAT_SEND)) {
                 if (sbn.getPackageName().equals("com.android.systemui")) {
                     if (sbn.getTag().equals("low_battery")) {
                         Long lastTime = (Long) config.get(ConfigSMSRec.CONF_TEMP_BAT_CHECK);
@@ -81,7 +85,7 @@ public class ThirdPartyAccessService extends NotificationListenerService {
                             Sender dummySender = new FooSender();
                             Logger.log("BatteryWarning", "Low Battery detected: sending message.");
                             ch.setSender(dummySender);
-                            String fmdcommand = (String) ch.getSettings().get(Settings.SET_FMD_COMMAND);
+                            String fmdcommand = (String) settings.get(Settings.SET_FMD_COMMAND);
                             ch.getMessageHandler().handle(fmdcommand + " locate", this);
                         }
                     }
@@ -93,7 +97,4 @@ public class ThirdPartyAccessService extends NotificationListenerService {
     @Override
     public void onNotificationRemoved(StatusBarNotification sbn) {
     }
-
-
-
 }

@@ -24,7 +24,7 @@ public class AppUpdatedReceiver extends SuperReceiver {
 
             UpdateboardingModernCryptoActivity.notifyAboutCryptoRefreshIfRequired(context);
 
-            if (ch.getSettings().checkAccountExists()) {
+            if (settings.checkAccountExists()) {
                 FMDServerLocationUploadService.scheduleJob(context, 0);
             }
         }

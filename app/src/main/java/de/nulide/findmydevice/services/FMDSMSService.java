@@ -1,6 +1,5 @@
 package de.nulide.findmydevice.services;
 
-import android.annotation.SuppressLint;
 import android.app.job.JobInfo;
 import android.app.job.JobParameters;
 import android.app.job.JobScheduler;
@@ -18,6 +17,8 @@ import java.util.Calendar;
 import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.data.ConfigSMSRec;
 import de.nulide.findmydevice.data.Settings;
+import de.nulide.findmydevice.data.SettingsRepoSpec;
+import de.nulide.findmydevice.data.SettingsRepository;
 import de.nulide.findmydevice.data.WhiteList;
 import de.nulide.findmydevice.data.io.IO;
 import de.nulide.findmydevice.data.io.JSONFactory;
@@ -30,6 +31,8 @@ import de.nulide.findmydevice.utils.Logger;
 import de.nulide.findmydevice.utils.Notifications;
 import de.nulide.findmydevice.utils.Permission;
 
+
+@RequiresApi(Build.VERSION_CODES.LOLLIPOP)
 public class FMDSMSService extends JobService {
 
     private static final int JOB_ID = 107;
@@ -64,8 +67,9 @@ public class FMDSMSService extends JobService {
         IO.context = this;
         Logger.init(Thread.currentThread(), this);
         whiteList = JSONFactory.convertJSONWhiteList(IO.read(JSONWhiteList.class, IO.whiteListFileName));
-        Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
+        Settings settings = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(this)).getSettings();
         config = JSONFactory.convertJSONConfig(IO.read(JSONMap.class, IO.SMSReceiverTempData));
+
         if (config.get(ConfigSMSRec.CONF_LAST_USAGE) == null) {
             Calendar cal = Calendar.getInstance();
             cal.add(Calendar.MINUTE, -5);
@@ -73,7 +77,7 @@ public class FMDSMSService extends JobService {
         }
         Notifications.init(this, false);
         Permission.initValues(this);
-        ch = new ComponentHandler(settings, this, this, params);
+        ch = new ComponentHandler( this, this, params);
         String receiver = params.getExtras().getString(DESTINATION);
         String msg = params.getExtras().getString(MESSAGE);
         Long time = params.getExtras().getLong(TIME);
@@ -87,7 +91,7 @@ public class FMDSMSService extends JobService {
                 inWhitelist = true;
             }
         }
-        if ((Boolean) ch.getSettings().get(Settings.SET_ACCESS_VIA_PIN) && !((String)ch.getSettings().get(Settings.SET_PIN)).isEmpty()) {
+        if ((Boolean) settings.get(Settings.SET_ACCESS_VIA_PIN) && !((String) settings.get(Settings.SET_PIN)).isEmpty()) {
             String tempContact = (String) config.get(ConfigSMSRec.CONF_TEMP_WHITELISTED_CONTACT);
             if (!inWhitelist && tempContact != null && PhoneNumberUtils.compare(tempContact, receiver)) {
                 Logger.logSession("Usage", receiver + " used FMD");

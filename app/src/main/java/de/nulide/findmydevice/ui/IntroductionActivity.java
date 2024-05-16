@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.data.Settings;
+import de.nulide.findmydevice.data.SettingsRepoSpec;
+import de.nulide.findmydevice.data.SettingsRepository;
 import de.nulide.findmydevice.data.io.IO;
 import de.nulide.findmydevice.data.io.JSONFactory;
 import de.nulide.findmydevice.data.io.json.JSONMap;
@@ -28,7 +30,7 @@ public class IntroductionActivity extends AppCompatActivity implements View.OnCl
     private Button buttonNext;
     private Button buttonGivePermission;
     private int position = 0;
-    private Settings Settings;
+    private Settings settings;
 
     private int colorEnabled;
     private int colorDisabled;
@@ -41,8 +43,7 @@ public class IntroductionActivity extends AppCompatActivity implements View.OnCl
         if (bundle != null && !bundle.isEmpty()) {
             position = bundle.getInt(POS_KEY);
         }
-        IO.context = this;
-        Settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
+        settings = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(this)).getSettings();
 
         textViewInfoText = findViewById(R.id.textViewInfoText);
         buttonRoot = findViewById(R.id.buttonPermViaRoot);
@@ -70,7 +71,7 @@ public class IntroductionActivity extends AppCompatActivity implements View.OnCl
         switch (position) {
             case 0:
                 buttonGivePermission.setText(getString(R.string.about_wiki));
-                if ((Integer) Settings.get(Settings.SET_INTRODUCTION_VERSION) > 0) {
+                if ((Integer) settings.get(Settings.SET_INTRODUCTION_VERSION) > 0) {
                     textViewInfoText.setText(getString(R.string.Introduction_UpdatePermission));
                 } else {
                     textViewInfoText.setText(getString(R.string.Introduction_Introduction));
@@ -194,7 +195,7 @@ public class IntroductionActivity extends AppCompatActivity implements View.OnCl
                 }
                 break;
             case 12:
-                Settings.setIntroductionPassed();
+                settings.setIntroductionPassed();
                 Intent myIntent = new Intent(this, MainActivity.class);
                 finish();
                 startActivity(myIntent);

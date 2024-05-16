@@ -11,9 +11,9 @@ import android.os.Build;
 import androidx.annotation.RequiresApi;
 
 import de.nulide.findmydevice.data.Settings;
+import de.nulide.findmydevice.data.SettingsRepoSpec;
+import de.nulide.findmydevice.data.SettingsRepository;
 import de.nulide.findmydevice.data.io.IO;
-import de.nulide.findmydevice.data.io.JSONFactory;
-import de.nulide.findmydevice.data.io.json.JSONMap;
 import de.nulide.findmydevice.utils.Logger;
 import de.nulide.findmydevice.utils.SecureSettings;
 
@@ -25,15 +25,15 @@ public class GPSTimeOutService extends JobService {
     public boolean onStartJob(JobParameters params) {
         IO.context = this;
         Logger.init(Thread.currentThread(), this);
-        Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
+        Settings settings = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(this)).getSettings();
         Logger.logSession("GPS", "GPS timed out.");
-        if(((Integer)settings.get(Settings.SET_GPS_STATE)) == 2){
+        if(((Integer) settings.get(Settings.SET_GPS_STATE)) == 2){
             settings.set(Settings.SET_GPS_STATE, 0);
             SecureSettings.turnGPS(this, false);
             Logger.logSession("GPS", "turned off");
         }
         Logger.writeLog();
-        FMDServerLocationUploadService.scheduleJob(this, (Integer)settings.get(Settings.SET_FMDSERVER_UPDATE_TIME));
+        FMDServerLocationUploadService.scheduleJob(this, (Integer) settings.get(Settings.SET_FMDSERVER_UPDATE_TIME));
         return false;
     }
 
