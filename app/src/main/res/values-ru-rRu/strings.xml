@@ -202,4 +202,5 @@
 \nЕсли не выбрано ни одного, местоположения не будут регулярно выгружаться (вы всё ещё можете использовать веб-интерфейс чтобы принудительно активировать выгрузку, для чего необходимы настроенные пуш-уведомления).</string>
     <string name="Introduction_Shizuku">Выдать с помощью Shizuku</string>
     <string name="Introduction_Root">Выдать с помощью Root</string>
+    <string name="RootAccessDenied">Root доступ отклонён</string>
 </resources>
