@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="Settings_Select_Ringtone">रिंगटोन चुनें</string>
-    <string name="Settings_FMD_Server_General">जनरल</string>
+    <string name="Settings_FMD_Server_General">सामान्य</string>
     <string name="Settings_FMD_Server_Server_URL">सर्वर URL:</string>
     <string name="Settings_Ringer_Tone_Description">एक रिंगटोन चुनें जो fmd ring भेजे जाने पर बजेगी।</string>
     <string name="Settings_FMDServer_Change_Password_Button">पासवर्ड बदलें</string>
     <string name="Settings_FMDServer_Logout_Button">लॉग आउट</string>
     <string name="Settings_FMDServer_Push_Open_UP">UnifiedPush वेबसाइट खोलें</string>
     <string name="Settings_FMDServer_Update_Interval_Title">अपडेट अंतराल</string>
-    <string name="Settings_FMDServer_Update_Interval_Description">FMD हर X मिनट में डिवाइस की लोकेशन अपलोड करता है।</string>
+    <string name="Settings_FMDServer_Update_Interval_Description">FMD हर X मिनट में डिवाइस का स्थान अपलोड करता है।</string>
     <string name="Settings_FMDServer_LOW_BAT_Upload_Title">कम बैटरी पर अपलोड करें</string>
-    <string name="Settings_FMDServer_Location_Type_Title">लोकेशन स्रोत</string>
-    <string name="Settings_FMDServer_LOW_BAT_Upload_Description">बैटरी का स्तर कम होने पर इस डिवाइस की लोकेशन अपलोड करें। इसके लिए नोटिफिकेशन एक्सेस की आवश्यकता है।</string>
+    <string name="Settings_FMDServer_Location_Type_Title">स्थान स्रोत</string>
+    <string name="Settings_FMDServer_LOW_BAT_Upload_Description">बैटरी का स्तर कम होने पर इस डिवाइस का स्थान अपलोड करें। इसके लिए नोटिफिकेशन पहुंच की आवश्यकता है।</string>
     <string name="password_new">नया पासवर्ड</string>
-    <string name="password_new_repeat">नया पासवर्ड दोहराएँ</string>
+    <string name="password_new_repeat">नया पासवर्ड दोहराएं</string>
     <string name="server_version_error">सर्वर संस्करण प्राप्त करने में त्रुटि</string>
     <string name="Settings_FMDServer_AddAccount">FMD सर्वर: लॉगिन/रजिस्टर</string>
     <string name="Settings_FMDServer_open_website">FMD सर्वर वेबसाइट खोलें</string>
     <string name="WhiteList_Add_Contact">संपर्क जोड़ें</string>
-    <string name="WhiteList_Select_Action">एक क्रिया चुनें:</string>
-    <string name="WhiteList_Select_Number">किसी एक फ़ोन नंबर का चयन करें।</string>
+    <string name="WhiteList_Select_Action">एक कार्रवाई चुनें:</string>
+    <string name="WhiteList_Select_Number">किसी एक फोन नंबर का चयन करें।</string>
     <string name="OpenCellId_test_no_connection">कोई सेल कनेक्शन नहीं</string>
-    <string name="about">बारे में</string>
+    <string name="about">ऐप के बारे में</string>
     <string name="about_source_code">सोर्स कोड</string>
     <string name="notify_crypto_update_title">कार्रवाई आवश्यक है</string>
     <string name="notify_crypto_update_text">FMD का उपयोग जारी रखने के लिए आपको कुछ सेटिंग्स अपडेट करने की आवश्यकता है। खोलने के लिए क्लिक करें।</string>
@@ -30,32 +30,32 @@
     <string name="server_unregister_dont_continue">जारी न रखें</string>
     <string name="Notification_Usage_Description">सेवा के उपयोग के बारे में अधिसूचना।</string>
     <string name="Notification_Lifecycle">जीवनचक्र</string>
-    <string name="Pin_Usage">PIN उपयोग</string>
+    <string name="Pin_Usage">पिन-उपयोग</string>
     <string name="Notification_Server">सर्वर</string>
     <string name="NotificationServer_Description">सर्वर से भेजी गई सूचनाएं प्रदर्शित करें।</string>
     <string name="Notification_Security">सुरक्षा</string>
     <string name="Notification_FAIL">असफल</string>
-    <string name="Introduction_UpdatePermission">कुछ नई अनुमतियों की आवश्यकता है.
+    <string name="Introduction_UpdatePermission">कुछ नई अनुमतियों की आवश्यकता है।
 \nकृपया इस एप्लिकेशन का उपयोग जारी रखने के लिए, या पुराने संस्करण में वापस बदलने के लिए निम्नलिखित अनुमतियों की जांच करें।</string>
-    <string name="Permission_DEVICE_ADMIN">यदि आप अपना फ़ोन खो जाने पर उसे लॉक करना या मिटाना चाहते हैं, तो इस अनुमति की आवश्यकता है।
+    <string name="Permission_DEVICE_ADMIN">यदि आप अपना फोन खो जाने पर उसे लॉक करना या मिटाना चाहते हैं, तो इस अनुमति की आवश्यकता है।
 \nयदि आप यह अनुमति नहीं देते हैं, तो यह कार्यक्षमता सक्रिय नहीं होगी।</string>
     <string name="Permission_POST_NOTIFICATIONS">FMD कभी-कभी आपको सूचनाएं भेजेगा, उदाहरण के लिए आपको चेतावनी देने के लिए कि कोई आपके डिवाइस का पता लगा रहा है।</string>
     <string name="Locked_Lock_Screen">FindMyDevice
-\nयह फ़ोन लॉक है!
+\nयह फोन लॉक है!
 \nमालिक की ओर से संदेश:</string>
-    <string name="Enabled">सक्रिय</string>
+    <string name="Enabled">सक्षम</string>
     <string name="Disabled">अक्षम</string>
     <string name="MH_Delete">अलविदा…</string>
-    <string name="MH_False_Pin">ग़लत PIN!</string>
+    <string name="MH_False_Pin">ग़लत पिन!</string>
     <string name="MH_Syntax">सिंटेक्स:</string>
-    <string name="MH_Title_Help">FindMyDevice कमांड:</string>
-    <string name="MH_Pin_Accepted">PIN स्वीकृत!</string>
+    <string name="MH_Title_Help">FindMyDevice के कमांड:</string>
+    <string name="MH_Pin_Accepted">पिन स्वीकृत!</string>
     <string name="R_Stop_ring">घंटी बजाना बंद करें</string>
     <string name="Crashed_Send_log">लॉग भेजें</string>
-    <string name="MH_No_GPS">क्षमा करें, लोकेशन बंद है।</string>
-    <string name="MH_Help_delete">" delete - फ़ोन रीसेट करता है"</string>
+    <string name="MH_No_GPS">क्षमा करें, स्थान बंद है।</string>
+    <string name="MH_Help_delete">" delete - फोन रीसेट करता है"</string>
     <string name="LockScreen_Usage_detectd">LockScreenMessage: उपयोग का पता चला।</string>
-    <string name="FMDConfig_Alert_Pin">PIN</string>
+    <string name="FMDConfig_Alert_Pin">पिन</string>
     <string name="Log_Alert_LogData">लॉगडेटा</string>
     <string name="NOT_AVAILABLE">उपलब्ध नहीं है</string>
     <string name="Available">उपलब्ध</string>
@@ -69,7 +69,7 @@
     <string name="Settings_Export">निर्यात सेटिंग्स</string>
     <string name="password_repeat">पासवर्ड दोहराएं</string>
     <string name="Settings_Permissions">अनुमतियां</string>
-    <string name="Settings_Enter_Pin">PIN दर्ज करें</string>
+    <string name="Settings_Enter_Pin">पिन दर्ज करें</string>
     <string name="help">सहायता</string>
     <string name="GPS">GPS</string>
     <string name="Info_Notification_Access">अधिसूचना पहुंच</string>
@@ -78,24 +78,24 @@
     <string name="Settings_Settings">सेटिंग्स</string>
     <string name="Settings_WhiteList">अनुमत संपर्क</string>
     <string name="Settings_Import">आयात सेटिंग्स</string>
-    <string name="Settings_Logs">लॉग्स</string>
-    <string name="Settings_Pin_Description">डिवाइस को पोंछने से पहले या सेवा के अस्थायी उपयोग के लिए पुष्टि के रूप में उपयोग किया जाता है।</string>
-    <string name="Settings_About">बारे में</string>
-    <string name="pin">PIN</string>
-    <string name="pin_repeat">PIN दोहराएँ</string>
+    <string name="Settings_Logs">लॉग</string>
+    <string name="Settings_Pin_Description">डिवाइस को खाली करने से पहले या सेवा के अस्थायी उपयोग के लिए पुष्टि के रूप में उपयोग किया जाता है।</string>
+    <string name="Settings_About">ऐप के बारे में</string>
+    <string name="pin">पिन</string>
+    <string name="pin_repeat">पिन दोहराएं</string>
     <string name="Settings_FMDCommand_Description">कमांड का उपयोग FindMyDevice एप्लिकेशन के साथ संचार करने के लिए किया जाता है।</string>
     <string name="Settings_Lockscreenmessage_Description">लॉक स्क्रीन संदेश:
 \nडिवाइस को लॉक करते समय यह संदेश लॉक स्क्रीन पर दिखाई देगा।</string>
-    <string name="Settings_FMD_Server_User_ID">उपयोगकर्ता ID:</string>
-    <string name="Settings_FMD_Server_ID_Desc">FMD सर्वर के साथ अपना डिवाइस ढूंढने के लिए आपको उपयोगकर्ता ID की आवश्यकता है। इसे लिख कर सुरक्षित रख लें।</string>
-    <string name="Settings_FMDServer_Delete_Button">डेटा हटाएँ</string>
-    <string name="Settings_FMDServer_Alert_DeleteData">डेटा हटाएँ</string>
-    <string name="Settings_FMDServer_Push_Description_Missing">FMD सर्वर से आपके फोन पर कमांड भेजने के लिए UnifiedPush डिस्ट्रीब्यूटर ऐप की आवश्यकता होती है। एक स्थापित करें, और फिर यहां वापस आएं। इसका स्वतः ही पता चल जाएगा।</string>
+    <string name="Settings_FMD_Server_User_ID">उपयोक्ता ID:</string>
+    <string name="Settings_FMD_Server_ID_Desc">FMD सर्वर के साथ अपना डिवाइस खोजने के लिए आपको उपयोक्ता ID की आवश्यकता है। इसे लिख कर सुरक्षित रख लें।</string>
+    <string name="Settings_FMDServer_Delete_Button">डेटा मिटाएं</string>
+    <string name="Settings_FMDServer_Alert_DeleteData">डेटा मिटाएं</string>
+    <string name="Settings_FMDServer_Push_Description_Missing">FMD सर्वर से आपके फोन पर कमांड भेजने के लिए UnifiedPush वितरक ऐप की आवश्यकता होती है। एक स्थापित करें, और फिर यहां वापस आएं। इसका स्वतः ही पता चल जाएगा।</string>
     <string name="Settings_FMDServer_Push_Description_Available">पुश सूचनाओं के लिए सफलतापूर्वक पंजीकृत किया गया।</string>
     <string name="server_version_error_low_version">कम से कम सर्वर संस्करण {MIN} आवश्यक है, लेकिन चयनित सर्वर का संस्करण {CURRENT} है। स्वयं के जोखिम पर आगे बढ़ें।</string>
     <string name="password_old">पुराना पासवर्ड</string>
     <string name="server_version">सर्वर संस्करण</string>
-    <string name="Settings_FMDServer_Info">FMD सर्वर से आप इंटरनेट पर सर्वर से ऐप तक कमांड भेज सकते हैं। आप मानचित्र पर डिवाइस का लोकेशन भी देख सकते हैं या डिवाइस द्वारा ली गई तस्वीरें भी देख सकते हैं। स्व-होस्टिंग निर्देशों के लिए वेबसाइट देखें।</string>
+    <string name="Settings_FMDServer_Info">FMD सर्वर से आप इंटरनेट पर सर्वर से ऐप तक कमांड भेज सकते हैं। आप मानचित्र पर डिवाइस का स्थान भी देख सकते हैं या डिवाइस द्वारा ली गई तस्वीरें भी देख सकते हैं। स्व-होस्टिंग निर्देशों के लिए वेबसाइट देखें।</string>
     <string name="Settings_FMDServer_use_default_server">Nulide के सार्वजनिक सर्वर का उपयोग करें</string>
     <string name="Settings_FMDServer_Register">रजिस्टर</string>
     <string name="Settings_FMDServer_Login">लॉगिन</string>
@@ -108,41 +108,41 @@
     <string name="Info_FMD_Command">FMD-कमांड:</string>
     <string name="Info_Server_Enabled">सेवा:</string>
     <string name="Info_Server_Registered">पंजीकृत:</string>
-    <string name="Settings_FMDConfig">FMD-कॉन्फिग</string>
+    <string name="Settings_FMDConfig">FMD-विन्यास</string>
     <string name="Settings_OpenCellId">OpenCelliD</string>
     <string name="Whitelist_help">इस सूची के संपर्कों को SMS के माध्यम से FMD कमांड भेजने की अनुमति है। बाकी सभी के आदेशों को नजरअंदाज कर दिया जाएगा।</string>
-    <string name="registration_token_hint">निजी इन्स्टन्स के लिए गुप्त टोकन की आवश्यकता हो सकती है। यदि इन्स्टन्स सार्वजनिक है तो इसे खाली छोड़ दें।</string>
-    <string name="Whitelist_empty">कोई अनुमत संपर्क नहीं. कुछ जोड़ने के लिए बटन पर क्लिक करें!</string>
-    <string name="Alert_First_Time_contact_added">बधाई हो। आपने अपना पहला संपर्क जोड़ लिया है. अब आप अनुमत फोन नंबर से \"fmd\" युक्त एक SMS संदेश भेजकर FMD के साथ संवाद कर सकते हैं। जब सब कुछ काम करेगा, तो एप्लिकेशन जवाब देगा।</string>
+    <string name="registration_token_hint">निजी इंस्टैंस के लिए गुप्त टोकन की आवश्यकता हो सकती है। यदि इंस्टैंस सार्वजनिक है तो इसे खाली छोड़ दें।</string>
+    <string name="Whitelist_empty">कोई अनुमत संपर्क नहीं। कुछ जोड़ने के लिए बटन पर क्लिक करें!</string>
+    <string name="Alert_First_Time_contact_added">बधाई हो। आपने अपना पहला संपर्क जोड़ लिया है। अब आप अनुमत फोन नंबर से \"fmd\" युक्त एक SMS संदेश भेजकर FMD के साथ संवाद कर सकते हैं। जब सब कुछ काम करेगा, तो एप्लिकेशन जवाब देगा।</string>
     <string name="OpenCellId_privacy">गोपनीयता: ध्यान रखें कि OpenCeliD आपके वर्तमान सेल टॉवर और इस प्रकार प्रत्येक API क्वेरी के साथ आपके लोकेशन को जानता है।</string>
     <string name="OpenCellId_open_website">OpenCeliD वेबसाइट खोलें</string>
     <string name="OpenCellId_test_opencellid">OpenCeliD कनेक्शन का परीक्षण करें</string>
-    <string name="settings_exported">सेटिंग्स निर्यात की गईं</string>
-    <string name="about_wiki">Wiki</string>
+    <string name="settings_exported">सेटिंग्स निर्यात की गई</string>
+    <string name="about_wiki">विकि</string>
     <string name="app_description">FMD (Find My Device) आपको दूर से अपने डिवाइस का पता लगाने की अनुमति देता है। आप FMD के साथ SMS, इंस्टेंट मैसेंजर या FMD सर्वर का उपयोग करके संचार कर सकते हैं। अपने डिवाइस का पता लगाएं, उसे बजाएं, उसे लॉक करें, या उसे मिटायें - यह सब रिमोट से।</string>
     <string name="server_unregister_failed_body">निम्न त्रुटि के साथ पंजीकरण रद्द करना विफल रहा: {ERROR}
 \n
-\nआप वैसे भी जारी रख सकते हैं, लेकिन हो सकता है कि आपका खाता सर्वर से हटाया न गया हो। यदि आप जारी रखते हैं, तो आपका खाता इस डिवाइस से स्थानीय रूप से हटा दिया जाएगा।</string>
+\nआप वैसे भी जारी रख सकते हैं, लेकिन हो सकता है कि आपका खाता सर्वर से मिटाया न गया हो। यदि आप जारी रखते हैं, तो आपका खाता इस डिवाइस से स्थानीय रूप से मिटा दिया जाएगा।</string>
     <string name="Notification_Usage">प्रयोग</string>
     <string name="Notification_Lifecycle_Description">सेवा के जीवनचक्र के बारे में अधिसूचना।</string>
-    <string name="Notification_Pin_Usage_Description">PIN उपयोग के बारे में अधिसूचना।</string>
+    <string name="Notification_Pin_Usage_Description">पिन उपयोग के बारे में अधिसूचना।</string>
     <string name="Notification_Security_Description">सुरक्षा अपडेट के बारे में सूचनाएं</string>
     <string name="Notification_Fail_Description">कुछ विफल होने पर अधिसूचना, जैसे fmd सर्वर से कनेक्शन।</string>
-    <string name="Permission_IGNORE_BATTERY_OPTIMIZATION">ऐसा माना जाता है कि यह एप्लिकेशन पृष्ठभूमि में काम करेगा. यह सुनिश्चित करने के लिए कि यह तब भी काम करता है जब आपका फ़ोन स्टैंडबाय में हो, आपको इस ऐप के लिए बैटरी अनुकूलन बंद करना होगा।</string>
-    <string name="Introduction_Introduction">FindMyDevice (FMD) एक एप्लिकेशन है जो आपका फ़ोन खो जाने पर उसे ढूंढने में आपकी सहायता कर सकता है।
+    <string name="Permission_IGNORE_BATTERY_OPTIMIZATION">ऐसा माना जाता है कि यह एप्लिकेशन पृष्ठभूमि में काम करेगा। यह सुनिश्चित करने के लिए कि यह तब भी काम करता है जब आपका फोन स्टैंडबाय में हो, आपको इस ऐप के लिए बैटरी अनुकूलन बंद करना होगा।</string>
+    <string name="Introduction_Introduction">FindMyDevice (FMD) एक एप्लिकेशन है जो आपका फोन खो जाने पर उसे खोजने में आपकी सहायता कर सकता है।
 \nयह दूसरे डिवाइस से संचार करने और कमांड भेजने के लिए SMS (टेक्स्टिंग) का उपयोग करता है ताकि आप अपने फोन को ट्रैक कर सकें।
 \nबस एक SMS संदेश भेजें जिसमें fmd कमांड हो।
 \nकृपया ध्यान दें कि यह एप्लिकेशन अभी भी बीटा में है।
 \n
 \n - न्यूलाइड</string>
-    <string name="Permission_SMS">फ़ोन को कुछ करने का आदेश देने के लिए, इस एप्लिकेशन को आपके SMS संदेशों को देखने में सक्षम होना चाहिए। आपके संदेश कभी भी आपका फ़ोन नहीं छोड़ते, और आपका फ़ोन ढूंढने के अलावा उनका उपयोग कभी भी किसी अन्य चीज़ के लिए नहीं किया जाता है।
+    <string name="Permission_SMS">फोन को कुछ करने का आदेश देने के लिए, इस एप्लिकेशन को आपके SMS संदेशों को देखने में सक्षम होना चाहिए। आपके संदेश कभी भी आपका फोन नहीं छोड़ते, और आपका फोन ढूंढने के अलावा उनका उपयोग कभी भी किसी अन्य चीज़ के लिए नहीं किया जाता है।
 \nयह अनुमति आवश्यक है।</string>
-    <string name="Permission_CONTACTS">हर किसी को आपके फ़ोन पर कमांड भेजने की अनुमति नहीं है, इसलिए आपको कुछ संपर्कों का चयन करना होगा जो आपके डिवाइस का पता लगाने में सक्षम होंगे।
+    <string name="Permission_CONTACTS">हर किसी को आपके फोन पर कमांड भेजने की अनुमति नहीं है, इसलिए आपको कुछ संपर्कों का चयन करना होगा जो आपके डिवाइस का पता लगाने में सक्षम होंगे।
 \nयह अनुमति आवश्यक है।</string>
     <string name="Permission_GPS">यदि आप अपने फोन से GPS निर्देशांक प्राप्त करना चाहते हैं, तो एप्लिकेशन को इस अनुमति की आवश्यकता है।
-\nकृपया एप्लिकेशन को पृष्ठभूमि में अपना फ़ोन ढूंढने की भी अनुमति दें।
+\nकृपया एप्लिकेशन को पृष्ठभूमि में अपना फोन ढूंढने की भी अनुमति दें।
 \nयदि आप यह अनुमति नहीं देते हैं, तो यह कार्यक्षमता सक्रिय नहीं होगी।</string>
-    <string name="Permission_DND">आप इसका पता लगाने में मदद के लिए अपने फ़ोन की घंटी भी बजा सकते हैं। जब \"परेशान न करें\" सक्रिय होता है, तो यह संभव हो सकता है कि फ़ोन म्यूट हो।
+    <string name="Permission_DND">आप इसका पता लगाने में मदद के लिए अपने फोन की घंटी भी बजा सकते हैं। जब \"परेशान न करें\" सक्रिय होता है, तो यह संभव हो सकता है कि फोन म्यूट हो।
 \nयदि आप यह अनुमति नहीं देते हैं, तो यह कार्यक्षमता सक्रिय नहीं होगी।</string>
     <string name="Toast_Duplicate_contact">यह संपर्क पहले से मौजूद है।</string>
     <string name="MH_Locked">बंद</string>
@@ -151,19 +151,19 @@
 \nयदि आप यह अनुमति नहीं देते हैं, तो यह कार्यक्षमता सक्रिय नहीं होगी।</string>
     <string name="Introduction_Give_Permission">अनुमति दें</string>
     <string name="Introduction_Next">अगला</string>
-    <string name="Enable">सक्षम</string>
-    <string name="Delete">हटाएं</string>
+    <string name="Enable">सक्षम करें</string>
+    <string name="Delete">मिटाएं</string>
     <string name="MH_Stats">नेटवर्क-आँकड़े:
 \nIP:
 \n</string>
     <string name="MH_Networks">"
 \nउपलब्ध Wifi-नेटवर्क:
 \n"</string>
-    <string name="MH_Help_where">" locate - फ़ोन की वर्तमान लोकेशन भेजता है"</string>
-    <string name="MH_Help_ring">" ring - फ़ोन की घंटी बजने देता है"</string>
+    <string name="MH_Help_where">" locate - फोन का वर्तमान स्थान भेजता है"</string>
+    <string name="MH_Help_ring">" ring - फोन की घंटी बजाता है"</string>
     <string name="MH_Help_Stats">" stats - डिवाइस जानकारी भेजता है"</string>
     <string name="Error">त्रुटि</string>
-    <string name="JSON_RL_Error">OpenCeliD से लोकेशन प्राप्त करने में त्रुटि. कृपया निम्नलिखित लिंक का प्रयास करें। जो पैरामीटर आप चाहते हैं वे \"देशा\" और \"अक्षां\" हैं।</string>
+    <string name="JSON_RL_Error">OpenCeliD से स्थान प्राप्त करने में त्रुटि। कृपया निम्नलिखित लिंक का प्रयास करें। जो पैरामीटर आप चाहते हैं वे \"देशा\" और \"अक्षां\" हैं।</string>
     <string name="LockScreen_Backbutton_pressed">LockScreenMessage: बैक-बटन दबाया गया।</string>
     <string name="Toast_Empty_FMDCommand">खाली कमांड की अनुमति नहीं है
 \n डिफ़ॉल्ट पर लौट रहा है।[fmd]</string>
@@ -171,25 +171,29 @@
     <string name="Permission_Notification">यदि आप चाहते हैं कि FMD Telegram, Whatsapp आदि जैसे अन्य एप्लिकेशन के संदेशों को संभाल सके, तो आप FMD को सूचनाओं तक पहुंच दे सकते हैं।</string>
     <string name="not_possible">यह कार्रवाई संभव नहीं थी।</string>
     <string name="MH_Help_Expert_Camera">" कैमरा (आगे/पीछे) - एक तस्वीर लेता है और उसे FMDserver को भेजता है।"</string>
-    <string name="Permission_Camera">यदि आप अपने फ़ोन से दूर से चित्र प्राप्त करना चाहते हैं, तो कैमरे की अनुमति की आवश्यकता है।</string>
+    <string name="Permission_Camera">यदि आप अपने फोन से दूर से चित्र प्राप्त करना चाहते हैं, तो कैमरे की अनुमति की आवश्यकता है।</string>
     <string name="Cell">सेल</string>
     <string name="Info_Server_Push">पुश:</string>
     <string name="Settings_FMD_via_Pin_Description">आपको PIN के माध्यम से FMD के साथ संचार करने की अनुमति देता है। आपको एक अस्थायी अनुमति सूची में जोड़ दिया जाएगा।</string>
-    <string name="Settings_FMDServer_Alert_DeleteData_Desc">इससे सर्वर से सारा डेटा डिलीट हो जाएगा! क्या आप निश्चित हैं?</string>
+    <string name="Settings_FMDServer_Alert_DeleteData_Desc">इससे सर्वर से सारा डेटा मिट जाएगा! क्या आप निश्चित हैं?</string>
     <string name="Permission_WRITE_SECURE_SETTINGS">यदि आप सामान्यतः लोकेशन बंद छोड़ देते हैं तो यह एप्लिकेशन लोकेशन चालू करने में सक्षम है।
 \nयदि यह बंद है, तो \"fmd locate\" काम नहीं करेगा।
 \nइसे प्राप्त करने के लिए, एप्लिकेशन को एक विशेष अनुमति की आवश्यकता होती है जिसे आपको कंप्यूटर का उपयोग करके देना होगा।
-\nयदि आप यह अनुमति नहीं देते तो कोई बात नहीं.
+\nयदि आप यह अनुमति नहीं देते तो कोई बात नहीं।
 \nआप अभी भी इस एप्लिकेशन का उपयोग कर सकते हैं।</string>
-    <string name="MH_rings">घंटी बजाता है</string>
-    <string name="MH_Help_Lock">" lock - फ़ोन को लॉक करता है"</string>
-    <string name="Settings_FMDServer_Location_Type_Description">वह स्रोत जिससे पृष्ठभूमि में नियमित अंतराल पर लोकेशन डेटा अपलोड किया जाता है।
-\nयदि कोई भी चयनित नहीं है, तो कोई भी लोकेशन नियमित रूप से अपलोड नहीं किया जाता है। (आप किसी अपलोड को बाध्य करने के लिए अभी भी वेब इंटरफ़ेस का उपयोग कर सकते हैं। इसके लिए पुश की आवश्यकता होती है।)</string>
-    <string name="OpenCellId_help">फ़ोन जिस सेल टावर से जुड़ा है, उसके आधार पर अनुमानित लोकेशन प्राप्त करने के लिए FMD OpenCeliD सेवा का उपयोग कर सकता है। प्रत्येक स्थान क्वेरी के लिए इंटरनेट कनेक्शन आवश्यक है। आपको OpenCeliD पर एक खाता बनाना होगा और अपना स्वयं का API एक्सेस टोकन प्राप्त करना होगा।</string>
-    <string name="MH_LAST_KNOWN_LOCATION">अंतिम ज्ञात लोकेशन</string>
-    <string name="MH_LAST_KNOWN_LOCATION_NOT_AVAILABLE">अंतिम लोकेशन उपलब्ध नहीं है।</string>
-    <string name="Alert_First_time_fmdserver">यहां आप FMDserver के साथ संचार करने के लिए एप्लिकेशन को कॉन्फ़िगर कर सकते हैं। यदि आप डिफ़ॉल्ट से भिन्न सर्वर कॉन्फ़िगर करना चाहते हैं, तो आप URL बदलकर ऐसा कर सकते हैं। यदि आप रजिस्टर दबाते हैं तो आप एप्लिकेशन को सर्वर पर पंजीकृत कर सकते हैं। बाद में आप सर्वर कार्यक्षमता को सक्षम कर सकते हैं। यदि आप ऐसा करते हैं, तो आपका फ़ोन आपको लोकेशन डेटा निर्दिष्ट सर्वर पर भेज देगा। आप पेज पर ID और पासवर्ड दर्ज करके अपने फोन की लोकेशन जांच सकते हैं।</string>
+    <string name="MH_rings">बजाता है</string>
+    <string name="MH_Help_Lock">" lock - फोन को लॉक करता है"</string>
+    <string name="Settings_FMDServer_Location_Type_Description">वह स्रोत जिससे पृष्ठभूमि में नियमित अंतराल पर स्थान डेटा अपलोड किया जाता है।
+\nयदि कोई भी चयनित नहीं है, तो कोई भी स्थान नियमित रूप से अपलोड नहीं किया जाता है। (आप किसी अपलोड को बाध्य करने के लिए अभी भी वेब इंटरफ़ेस का उपयोग कर सकते हैं। इसके लिए पुश की आवश्यकता होती है।)</string>
+    <string name="OpenCellId_help">फोन जिस सेल टावर से जुड़ा है, उसके आधार पर अनुमानित स्थान प्राप्त करने के लिए FMD OpenCeliD सेवा का उपयोग कर सकता है। प्रत्येक स्थान क्वेरी के लिए इंटरनेट कनेक्शन आवश्यक है। आपको OpenCeliD पर एक खाता बनाना होगा और अपना स्वयं का API एक्सेस टोकन प्राप्त करना होगा।</string>
+    <string name="MH_LAST_KNOWN_LOCATION">अंतिम ज्ञात स्थान</string>
+    <string name="MH_LAST_KNOWN_LOCATION_NOT_AVAILABLE">अंतिम स्थान उपलब्ध नहीं है।</string>
+    <string name="Alert_First_time_fmdserver">यहां आप FMDserver के साथ संचार करने के लिए एप्लिकेशन को विन्यस्त कर सकते हैं। यदि आप डिफ़ॉल्ट से भिन्न सर्वर विन्यस्त करना चाहते हैं, तो आप URL बदलकर ऐसा कर सकते हैं। यदि आप रजिस्टर दबाते हैं तो आप एप्लिकेशन को सर्वर पर पंजीकृत कर सकते हैं। बाद में आप सर्वर कार्यक्षमता को सक्षम कर सकते हैं। यदि आप ऐसा करते हैं, तो आपका फोन आपका स्थान डेटा निर्दिष्ट सर्वर पर भेज देगा। आप पेज पर ID और पासवर्ड दर्ज करके अपने फोन का स्थान जांच सकते हैं।</string>
     <string name="Introduction_Shizuku">Shizuku के माध्यम से</string>
     <string name="Introduction_Root">रूट के माध्यम से</string>
-    <string name="RootAccessDenied">रूट एक्सेस अस्वीकृत</string>
+    <string name="RootAccessDenied">रूट पहुंच अस्वीकृत</string>
+    <string name="request_failed_title">नेटवर्क अनुरोध विफल</string>
+    <string name="request_failed_status_code">स्थिति कोड</string>
+    <string name="request_failed_response_body">प्रतिक्रिया निकाय</string>
+    <string name="request_failed_exception">अपवाद</string>
 </resources>
