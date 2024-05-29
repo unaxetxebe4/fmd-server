@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="Alert_First_Time_contact_added">Gratulujeme. Přidali jste svůj první kontakt. Nnyí můžete komunikovat s FMD odesláním SMS zprávy obsahující „fmd“ z povoleného telefonního čísla. Pokud vše funguje, aplikace by měla odpovědět.</string>
+    <string name="OpenCellId_help">FMD může použít službu OpenCelliD pro získání přibližné polohy založené na mobilních věžích, ke kterém je mobil připojen. Pro každé dotázání se na polohu je vyžadován přístup k internetu. Také si budete muset vytvořit účet na OpenCelliD a získat svůj vlastní přístupový token k API.</string>
+    <string name="OpenCellId_open_website">Otevřít web OpenCelliD</string>
+    <string name="Permission_IGNORE_BATTERY_OPTIMIZATION">Tato aplikace potřebuje pracovat na pozadí. Abyste zajistili, že bude fungovat i v pohotovostním režimu zařízení, musíte vypnout optimalizace baterie pro tuto aplikaci.</string>
+    <string name="about">O aplikaci</string>
+    <string name="about_source_code">Zdrojový kód</string>
+    <string name="about_wiki">Wiki</string>
+    <string name="app_description">FMD (Find My Device) vám umožňuje vzdáleně zjistit polohu svého zařízení. S FMD můžete komunikovat přes SMS, messengery nebo použitím serveru FMD. Najděte své zařízení, prozvoňte jej nebo jej vymažte - vše odkudkoli na světě.</string>
+    <string name="notify_crypto_update_title">Vyžadována akce</string>
+    <string name="notify_crypto_update_text">Pro pokračování v používání FMD budete muset aktualizovat některá nastavení. Klepněte pro jejich otevření.</string>
+    <string name="server_unregister_failed_title">Zrušení registrace selhalo</string>
+    <string name="server_unregister_failed_body">Zrušení registrace selhalo s následující chybou: {ERROR}
+\n
+\nMůžete pokračovat dále, ale váš účet nemusel být smazán ze serveru. Pokud budete pokračovat, bude váš účet smazán lokálně z tohoto zařízení.</string>
+    <string name="server_unregister_dont_continue">Nepokračovat</string>
+    <string name="Notification_Usage">Využití</string>
+    <string name="Notification_Lifecycle_Description">Oznámení o cyklu služby.</string>
+    <string name="Notification_Usage_Description">Oznámení o využití služby.</string>
+    <string name="Notification_Pin_Usage_Description">Oznámení o využití PINu.</string>
+    <string name="NotificationServer_Description">Zobrazovat oznámení ze serveru.</string>
+    <string name="Introduction_Introduction">FindMyDevice (FMD) je aplikace, která vám pomůže najít telefon, když jej ztratíte.
+\nKe komunikaci a odesílání příkazů z druhého zařízení využívá SMS (textové zprávy), pomocí kterých můžete telefon sledovat.
+\nStačí odeslat SMS zprávu, která obsahuje příkaz fmd.
+\nUpozorňujeme, že tato aplikace je stále ve fázi beta.
+\n
+\n - Nulide</string>
+    <string name="Permission_SMS">Aby mohla aplikace vykonávat příkazy, potřebuje přístup k vašim SMS zprávám. Vaše zprávy nikdy neopustí vaše zařízení a nikdy nebudou použity k ničemu jinému, než je nalezení vašeho zařízení.
+\nToto oprávnění je vyžadováno.</string>
+    <string name="Permission_CONTACTS">Ne všichni mají povolení posílat příkazy vašemu zařízení, budete tedy muset vybrat kontakty, které mohou nalézt vaše zařízení.
+\nToto oprávnění je vyžadováno.</string>
+    <string name="Permission_GPS">Pokud chcete získat souřadnice GPS vašeho zařízení, potřebuje aplikace toto oprávnění.
+\nPovolte prosím také aplikaci používat polohu na pozadí.
+\nPokud neudělíte toto oprávnění, nebude tato funkce aktivována.</string>
+    <string name="Permission_DND">Pro nalezení svého zařízení jej také můžete nechat vyzvánět. Při aktivním režimu Nerušit bude zařízení nejspíš ztlumeno.
+\nPokud neudělíte toto oprávnění, nebude tato funkce aktivována.</string>
+    <string name="Permission_DEVICE_ADMIN">Pokud chcete zamknout nebo vymazat své zařízení, potřebuje aplikace toto oprávnění.
+\nPokud neudělíte toto oprávnění, nebude tato funkce aktivována.</string>
+    <string name="Permission_WRITE_SECURE_SETTINGS">Tato aplikace dokáže zapnout polohu, pokud ji obvykle necháváte vypnutou.
+\nPři vypnuté poloze nebude fungovat příkaz „fmd locate“.
+\nAby aplikace dokázala polohu zapnout, potřebuje speciální oprávnění, které musíte udělit pomocí počítače.
+\nPokud neudělíte toto oprávnění, nic se neděje.
+\nAplikaci můžete nadále používat.</string>
+    <string name="Permission_OVERLAY">Když vzdáleně zamknete zařízení, může aplikace zobrazit zprávu na zamykací obrazovce nálezci vašeho zařízení.
+\nPokud neudělíte toto oprávnění, nebude tato funkce aktivována.</string>
+    <string name="Permission_POST_NOTIFICATIONS">FMD vám bude čas od času posílat oznámení, například jako varování, že někdo vyhledává vaše zařízení.</string>
+    <string name="Locked_Lock_Screen">FindMyDevice
+\nToto zařízení je uzamčeno!
+\nZpráva od majitele:</string>
+    <string name="Delete">Odstranit</string>
+    <string name="MH_Locked">uzamceno</string>
+    <string name="MH_Syntax">Syntaxe:</string>
+    <string name="R_Stop_ring">ZASTAVIT VYZVÁNĚNÍ</string>
+    <string name="Crashed_Send_log">Odeslat protokol</string>
+    <string name="MH_No_GPS">Omlouvame se, poloha je vypnuta.</string>
+    <string name="MH_GPS_WILL_FOLLOW">Souradnice GPS budou brzy odeslany.</string>
+    <string name="MH_Stats">Sitove statistiky:
+\nIP adresy:
+\n</string>
+    <string name="MH_False_Pin">Nespravny PIN!</string>
+    <string name="MH_Title_Help">Prikazy FindMyDevice:</string>
+    <string name="MH_Help_Stats">" stats - odesle informace o zarizeni"</string>
+    <string name="MH_LAST_KNOWN_LOCATION">Posledni znama poloha</string>
+    <string name="MH_LAST_KNOWN_LOCATION_NOT_AVAILABLE">Posledni poloha neni dostupna.</string>
+    <string name="MH_Help_Expert_GPS">" GPS (on/off) - zapne nebo vypne GPS."</string>
+    <string name="MH_Help_expert">" expert - stranka napovedy pro expertni prikazy."</string>
+    <string name="MH_Help_Expert_Sound">" Sound (on/off) - zapne nebo vypne zvuk."</string>
+    <string name="MH_Help_Expert_Camera">" Camera (font/back) - poridi obrazek a posle jej na server FMD."</string>
+    <string name="MH_CAM_CAPTURE">"Zarizeni brzy odesle obrazek na server FMD. Brzy si jej budete moci zobrazit zde: "</string>
+    <string name="MH_FMDSERVER_NOT_REGISTERED">Toto zarizeni neni zaregistrovano na serveru.</string>
+    <string name="JSON_RL_Error">Chyba při získávání polohy z OpenCelliD. Vyzkoušejte prosím následující odkaz. Požadované parametry jsou „lon“ a „lat“.</string>
+    <string name="Toast_Empty_FMDCommand">Prázdný příkaz není povolen
+\n Vracím se na default.[fmd]</string>
+    <string name="FMDConfig_Alert_Pin">PIN</string>
+    <string name="Log_Alert_LogData">LogData</string>
+    <string name="NOT_AVAILABLE">Nedostupné</string>
+    <string name="Available">Dostupné</string>
+    <string name="registered">registrováno</string>
+    <string name="not_registered">neregistrováno</string>
+    <string name="Alert_First_time_fmdserver">Zde můžete nakonfigurovat komunikaci aplikace se serverem FMD. Pokud chcete nakonfigurovat jiný než výchozí server, můžete tak učinit změnou adresy URL. Pokud stisknete tlačítko Registrace, můžete aplikaci zaregistrovat na serveru. Poté můžete funkci serveru povolit. Pokud tak učiníte, bude zařízení odesílat údaje o poloze na zadaný server. Polohu zařízení můžete zkontrolovat na stránce zadáním ID a hesla.</string>
+    <string name="Permission_Notification">Pokud chcete, aby FMD pracoval i se zprávami z ostatních aplikací jako je Telegram, WhatsApp atd., můžete udělit FMD přístup k oznámením.</string>
+    <string name="Toast_Duplicate_contact">Tento kontakt již existuje.</string>
+    <string name="copied">Zkopírováno</string>
+    <string name="accept">přijmout</string>
+    <string name="Edit">Upravit</string>
+    <string name="GPS">GPS</string>
+    <string name="request_failed_status_code">Stavový kód</string>
+    <string name="request_failed_exception">Výjimka</string>
+    <string name="Info_Server_Enabled">Služba:</string>
+    <string name="Info_Server_Push">Push:</string>
+    <string name="Settings_OpenCellId">OpenCelliD</string>
+    <string name="Settings_FMD_via_Pin_Description">Umožňuje komunikovat s FMD pomocí kódu PIN. Kontakt bude přidán na dočasný seznam povolených.</string>
+    <string name="Settings_Enter_Pin">Zadat PIN</string>
+    <string name="pin">PIN</string>
+    <string name="pin_repeat">Zopakujte PIN</string>
+    <string name="Settings_Ringer_Tone_Description">Vyberte vyzvánění, které bude přehráno při použití fmd ring.</string>
+    <string name="Settings_Lockscreenmessage_Description">Zpráva na zamykací obrazovce:
+\nPři zamknutí zařízení bude tato zpráva zobrazena na zamykací obrazovce.</string>
+    <string name="Settings_FMD_Server_ID_Desc">Pro nalezení vašeho zařízení pomocí serveru FMD potřebujete uživatelské ID. Zapište si jej a uschovejte jej na bezpečném místě.</string>
+    <string name="Settings_FMDServer_Push_Description_Missing">Posílání příkazů ze serveru FMD do vašeho zařízení vyžaduje distributorskou aplikaci UnifiedPush. Nainstalujte si ji a pak se sem vraťte. Bude automaticky rozpoznána.</string>
+    <string name="Settings_FMDServer_Location_Type_Title">Zdroj polohy</string>
+    <string name="Settings_FMDServer_LOW_BAT_Upload_Title">Nahrát při nízké baterii</string>
+    <string name="password_old">Staré heslo</string>
+    <string name="password_new">Nové heslo</string>
+    <string name="server_version">Verze serveru</string>
+    <string name="Settings_FMDServer_AddAccount">Server FMD: přihlášení/registrace</string>
+    <string name="Settings_FMDServer_use_default_server">Použít veřejný server Nulide</string>
+    <string name="password">Heslo</string>
+    <string name="password_repeat">Zopakujte heslo</string>
+    <string name="registration_token">Registrační token</string>
+    <string name="Whitelist_help">Kontakty v tomto seznamu mohou posílat příkazy FMD pomocí SMS. Příkazy od všech ostatních budou ignorovány.</string>
+    <string name="WhiteList_Add_Contact">Přidat kontakt</string>
+    <string name="OpenCellId_privacy">Soukromí: vezměte prosím v potaz, že se OpenCelliD dozví vaše aktuální mobilní věže a tím pádem vaší polohu při každém dotazu na API.</string>
+    <string name="OpenCellId_test_opencellid">Vyzkoušet připojení k OpenCelliD</string>
+    <string name="OpenCellId_test_no_connection">Žádné mobilní připojení</string>
+    <string name="settings_exported">Nastavení exportována</string>
+    <string name="server_unregister_continue_anyway">Přesto pokračovat</string>
+    <string name="Notification_Lifecycle">Cyklus</string>
+    <string name="Pin_Usage">VyužitíPinu</string>
+    <string name="Notification_Server">Server</string>
+    <string name="Notification_Security">Zabezpečení</string>
+    <string name="Notification_Security_Description">Oznámení o aktualizacích zabezpečení</string>
+    <string name="Notification_FAIL">Chyba</string>
+    <string name="Notification_Fail_Description">Oznámení, když něco selže, například spojení se serverem FMD.</string>
+    <string name="Introduction_UpdatePermission">Jsou vyžadována nová oprávnění.
+\nAbyste mohli nadále využívat tuto aplikaci, zkontrolujte prosím následující oprávnění, nebo se vraťte zpět na starší verzi.</string>
+    <string name="Introduction_Give_Permission">Udělit oprávnění</string>
+    <string name="Introduction_Next">Další</string>
+    <string name="Enable">Povolit</string>
+    <string name="Enabled">Povoleno</string>
+    <string name="Disabled">Zakázáno</string>
+    <string name="MH_rings">prozvani</string>
+    <string name="MH_Delete">Nashledanou...</string>
+    <string name="MH_Networks">"
+\nDostupné site Wi-Fi:
+\n"</string>
+    <string name="MH_Help_where">" locate - odesle aktualni polohu zarizeni"</string>
+    <string name="MH_Help_ring">" ring - necha zarizeni vyzvanet"</string>
+    <string name="MH_Help_Lock">" lock - uzamkne zarizeni"</string>
+    <string name="MH_Help_delete">" delete - resetuje zarizeni"</string>
+    <string name="MH_Pin_Accepted">PIN prijat!</string>
+    <string name="Error">Chyba</string>
+    <string name="LockScreen_Usage_detectd">LockScreenMessage: detekováno použití.</string>
+    <string name="LockScreen_Backbutton_pressed">LockScreenMessage: stisknuto tlačítko zpět.</string>
+    <string name="MH_NO_SECURE_SETTINGS">Omlouvame se, aplikace nema k teto akci opravneni.</string>
+    <string name="not_possible">Tato akce nebyla možná.</string>
+    <string name="Permission_Camera">Pokud chcete vzdáleně získávat obrázky ze svého zařízení, je vyžadováno oprávnění k fotoaparátu.</string>
+    <string name="Introduction_Shizuku">Udělit pomocí Shizuku</string>
+    <string name="Introduction_Root">Udělit pomocí Rootu</string>
+    <string name="RootAccessDenied">Root přístup zamítnut</string>
+    <string name="loading">Načítání…</string>
+    <string name="help">Nápověda</string>
+    <string name="Cell">Mobilní síť</string>
+    <string name="request_failed_title">Síťová žádost selhala</string>
+    <string name="request_failed_response_body">Tělo odpovědi</string>
+    <string name="Granted">Uděleno:</string>
+    <string name="Info_Notification_Access">Přístup k oznámením</string>
+    <string name="Info_FMD_Command">Příkaz FMD:</string>
+    <string name="Info_Server_Registered">Registrováno:</string>
+    <string name="Settings_Settings">Nastavení</string>
+    <string name="Settings_FMDConfig">Nastavení FMD</string>
+    <string name="Settings_WhiteList">Povolené kontakty</string>
+    <string name="Settings_Permissions">Oprávnění</string>
+    <string name="Settings_Import">Importovat nastavení</string>
+    <string name="Settings_Export">Exportovat nastavení</string>
+    <string name="Settings_Logs">Protokoly</string>
+    <string name="Settings_About">O aplikaci</string>
+    <string name="Settings_Pin_Description">Použito pro potvrzení před vymazáním zařízení nebo pro dočasné použití služby.</string>
+    <string name="Settings_FMDCommand_Description">Příkaz používaný pro komunikaci s aplikací FindMyDevice.</string>
+    <string name="Settings_FMDServer_Push_Description_Available">Push oznámení úspěšně zaregistrována.</string>
+    <string name="Settings_FMDServer_Push_Open_UP">Otevřít web UnifiedPush</string>
+    <string name="Settings_FMDServer_Update_Interval_Title">Interval aktualizace</string>
+    <string name="Settings_FMDServer_Update_Interval_Description">FMD bude nahrávat polohu zařízení každých X minut.</string>
+    <string name="Settings_Select_Ringtone">Vybrat vyzvánění</string>
+    <string name="Settings_FMDServer_Location_Type_Description">Zdroje, ze kterých budou data o poloze v pravidelných intervalech nahrávána na pozadí.
+\nPokud není vybrán žádný zdroj, nebude poloha automaticky nahrávána. (Stále můžete použít webové rozhraní pro vynucení nahrání. Tato akce vyžaduje push.)</string>
+    <string name="Settings_FMDServer_LOW_BAT_Upload_Description">Nahrát polohu zařízení při nízké úrovni baterie. Tato akce vyžaduje přístup k oznámením.</string>
+    <string name="Settings_FMD_Server_General">Obecné</string>
+    <string name="Settings_FMD_Server_Server_URL">Adresa serveru:</string>
+    <string name="Settings_FMD_Server_User_ID">Uživatelské ID:</string>
+    <string name="Settings_FMDServer_Change_Password_Button">Změnit heslo</string>
+    <string name="Settings_FMDServer_Logout_Button">Odhlásit se</string>
+    <string name="Settings_FMDServer_Delete_Button">Smazat data</string>
+    <string name="Settings_FMDServer_Alert_DeleteData">Smazat data</string>
+    <string name="password_new_repeat">Zopakujte nové heslo</string>
+    <string name="server_version_error">Chyba při získávání verze serveru</string>
+    <string name="Settings_FMDServer_Alert_DeleteData_Desc">Tato akce odstraní všechna data ze serveru! Jste si jisti?</string>
+    <string name="server_version_error_low_version">Minimální požadovaná verze serveru je {MIN}, zvolený server ale běží na verzi {CURRENT}. Pokračujte na vlastní nebezpečí.</string>
+    <string name="Settings_FMDServer_Info">Se serverem FMD můžete posílat příkazy přes internet, ze serveru do aplikace. Také si můžete zobrazit polohu zařízení na mapě nebo zobrazit fotky pořízené zařízením. Návod, jak hostovat aplikaci na vlastním serveru, se nachází na webu.</string>
+    <string name="Settings_FMDServer_open_website">Otevřít web serveru FMD</string>
+    <string name="Settings_FMDServer_Login">Přihlášení</string>
+    <string name="Settings_FMDServer_Register">Registrace</string>
+    <string name="Settings_FMDServer_Alert_PrivacyPolicy_Title">Zásady ochrany osobních údajů</string>
+    <string name="registration_token_hint">Soukromé instance mohou vyžadovat tajný token. Ponechte prázdné, pokud se jedná o veřejnou instanci.</string>
+    <string name="Whitelist_empty">Žádné povolené kontakty. Klepněte na tlačítko pro jejich přidání!</string>
+    <string name="WhiteList_Select_Action">Zvolte akci:</string>
+    <string name="WhiteList_Select_Number">Vyberte jedno z mobilních čísel.</string>
+</resources>
