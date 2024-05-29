@@ -73,7 +73,7 @@
     <string name="Settings_FMDServer_Alert_PrivacyPolicy_Title">Datenschutzbestimmungen</string>
     <string name="password">Passwort</string>
     <string name="password_repeat">Password Wiederholen</string>
-    <string name="registration_token">Registration Token</string>
+    <string name="registration_token">Registrierungs-Token</string>
     <string name="registration_token_hint">Private Instanzen können ein geheimes Token erfordern. Lassen Sie dieses Feld leer wenn die Instanz öffentlich ist.</string>
     <!-- Settings: Allowed Contacts -->
     <string name="Whitelist_help">Die Kontakte in dieser Liste dürfen Ihnen FMD Befehle via SMS schicken. Befehle von allen anderen werden ignoriert.</string>
@@ -129,7 +129,10 @@
 \nNachricht vom Besitzer:</string>
     <string name="Introduction_UpdatePermission">Es werden einige neue Berechtigungen benötigt.
 \nBitte überprüfen Sie die folgenden Berechtigungen, um diese App weiter nutzen zu können, oder wechseln Sie zurück zu einer älteren Version der App.</string>
-    <string name="Introduction_Introduction">FMD ist eine Anwendung, welche es Ihnen ermöglicht ihr Handy wiederzufinden. FMD benutzt SMS zur Kommunikation. Sie benötigen somit ein zweites Handy oder einen Freund, dessen Handy sie ausleihend können. Schreiben sie einfach eine SMS mit dem fmd Kommando. Beta. - Nulide</string>
+    <string name="Introduction_Introduction">FMD ist eine App, die es ermöglicht, das Handy wiederzufinden.
+\nFMD benutzt SMS zur Kommunikation - es wird daher ein zweites Gerät benötigt, um das Handy verfolgen zu können.
+\nDazu einfach eine SMS mit dem FMD-Kommando schicken.
+\nBeachte, dass diese App sich im Beta-Stadium befindet.</string>
     <string name="Permission_SMS">Die Kommunikation mit dem verlorenen Handy findet über SMS statt. Deshalb benötigt die Anwendung die Rechte für SMS.
 \nDieses Recht ist für den Betrieb der Applikation notwendig.</string>
     <string name="Permission_OVERLAY">Wenn Sie Ihr Gerät aus der Ferne sperren, kann diese Anwendung eine Nachricht auf dem Sperrbildschirm für denjenigen anzeigen, der Ihr Telefon findet.
@@ -175,8 +178,8 @@
     <string name="JSON_RL_Error">Fehler beim Ermitteln des Standorts von OpenCellID. Bitte versuchen Sie den folgenden Link. Die Parameter, die Sie benötigen, sind \"lon\" und \"lat\".</string>
     <string name="LockScreen_Usage_detectd">LockScreenMessage: Verwendung erkannt.</string>
     <string name="LockScreen_Backbutton_pressed">LockScreenMessage: Zurück-Taste wurde gedrückt.</string>
-    <string name="Toast_Empty_FMDCommand">Kommando darf nicht leer sein.
-\n[fmd] greift daher auf die Standardeinstellungen zurück.</string>
+    <string name="Toast_Empty_FMDCommand">Lehres Kommando nicht erlaubt
+\n Rückfall auf Standard.[fmd]</string>
     <string name="FMDConfig_Alert_Pin">PIN</string>
     <string name="Ok">Ok</string>
     <string name="Log_Alert_LogData">Log-Info</string>
@@ -187,17 +190,29 @@
     <string name="MH_LAST_KNOWN_LOCATION">Letzter bekannter Standort</string>
     <string name="MH_LAST_KNOWN_LOCATION_NOT_AVAILABLE">Letzter Standort ist nicht verfügbar.</string>
     <string name="Alert_First_time_fmdserver">Hier können Sie die Anwendung für die Kommunikation mit fmdserver konfigurieren. Wenn Sie einen anderen Server als den Standard-Server konfigurieren möchten, können Sie dies durch Ändern der URL tun. Wenn Sie auf Anmelden drücken, können Sie die Anwendung beim Server anmelden. Anschließend können Sie die Serverfunktionalität aktivieren. Wenn Sie dies tun, sendet Ihr Telefon Standortdaten an den angegebenen Server. Sie können den Standort Ihres Telefons überprüfen, indem Sie die ID und das Kennwort auf der Seite eingeben.</string>
-    <string name="MH_Help_Expert_GPS">" gps (on/off) - schaltet das GPS ein/aus"</string>
+    <string name="MH_Help_Expert_GPS">" GPS (an/aus) - schaltet das GPS ein oder aus."</string>
     <string name="MH_NO_SECURE_SETTINGS">Leider ist die Anwendung dazu nicht berechtigt.</string>
-    <string name="MH_Help_expert">" expert - Hilfeseite für Expertenbefehle"</string>
+    <string name="MH_Help_expert">" Experte - Hilfeseite für Expertenbefehle."</string>
     <string name="Permission_Notification">Wenn Sie möchten, dass die App Nachrichten von anderen Apps (Telegram, Whatsap, …) verarbeitet, können Sie der App Zugriff auf die Benachrichtigungen geben, damit die Nachrichten ausgewertet werden können.</string>
     <string name="Notification_Security">Sicherheit</string>
     <string name="Notification_FAIL">Fehler</string>
-    <string name="Notification_Fail_Description">Benachrichtigungen wenn etwas fehlschlägt</string>
+    <string name="Notification_Fail_Description">Benachrichtigungen wenn etwas fehlschlägt (z.b. Verbindung zum FMD Server).</string>
     <string name="app_description">Mit FMD (Find My Device) kannst du dein Gerät aus der Ferne orten. Du kannst mit FMD über SMS, Instant Messengers, oder über FMD Server kommunizieren. Orte dein Gerät, lass es klingeln, sperre es, oder setze es auf Werkseinstellungen zurück - alles aus der Ferne.</string>
     <string name="Notification_Security_Description">Benachrichtigungen bzgl. Sicherheitsupdates</string>
     <string name="not_possible">Diese Aktion war nicht möglich.</string>
     <string name="Info_Server_Push">Push:</string>
     <string name="notify_crypto_update_title">Aktion erforderlich</string>
     <string name="notify_crypto_update_text">Sie müssen einige Einstellungen ändern, um weiterhin FMD benutzen zu können. Bitte hier klicken.</string>
+    <string name="request_failed_response_body">Response Body</string>
+    <string name="request_failed_exception">Exception</string>
+    <string name="MH_Help_Expert_Sound">" Ton (an/aus) - schaltet den Ton an oder aus."</string>
+    <string name="Permission_Camera">Kameraberechtigung wird benötigt, wenn Fotos remote empfangen werden sollen.</string>
+    <string name="MH_Help_Expert_Camera">" Kamera (Vorder-/Rückseite) - macht ein Foto und schickt es zum FMDserver."</string>
+    <string name="MH_FMDSERVER_NOT_REGISTERED">Dieses Gerät ist auf keinem Server registriert.</string>
+    <string name="Introduction_Shizuku">Erlaube via Shizuku</string>
+    <string name="Introduction_Root">Erlaube via Root</string>
+    <string name="RootAccessDenied">Root-Zugang verweigert</string>
+    <string name="MH_CAM_CAPTURE">"Das gerät wird in Kürze ein Bild zum FMDserver schicken. Dieses kann hier bald betrachtet werden: "</string>
+    <string name="request_failed_title">Netzwerkanfrage fehlgeschlagen</string>
+    <string name="request_failed_status_code">Statuscode</string>
 </resources>
