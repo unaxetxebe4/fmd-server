@@ -3,73 +3,196 @@
     <string name="loading">Nalaganje…</string>
     <string name="help">Pomoč</string>
     <string name="copied">Kopirano</string>
-    <string name="accept">Potrdi</string>
+    <string name="accept">sprejmi</string>
     <string name="Edit">Uredi</string>
     <string name="GPS">GPS</string>
     <string name="Granted">Dovoljeno:</string>
     <string name="Info_Notification_Access">Dostop do obvestil</string>
-    <string name="Info_FMD_Command">FMD-Ukaz:</string>
+    <string name="Info_FMD_Command">FMD ukaz:</string>
     <string name="Info_Server_Enabled">Storitev:</string>
-    <string name="Info_Server_Push">Potisno:</string>
-    <string name="Settings_OpenCellId">OpenCelliD</string>
+    <string name="Info_Server_Push">Potisna obvestila:</string>
+    <string name="Settings_OpenCellId">OpenCellID</string>
     <string name="Settings_Permissions">Dovoljenja</string>
-    <string name="Settings_Import">Uvozi Nastavitve</string>
-    <string name="Settings_About">O nas</string>
-    <string name="Settings_FMD_via_Pin_Description">Dovoli komunikacijo s FMD samo s pinom. Komunikacija vam bo začasno omogočena.</string>
-    <string name="Settings_Pin_Description">Uporablja se za potrditev brisanja naprave ali začasno uporabo storitve.</string>
-    <string name="Settings_Enter_Pin">Vnesi Pin</string>
+    <string name="Settings_Import">Uvozi nastavitve</string>
+    <string name="Settings_About">O aplikaciji</string>
+    <string name="Settings_FMD_via_Pin_Description">Dovoli komunikacijo s FMD samo s PIN kodo. Dodani boste na začasni seznam dovoljenih.</string>
+    <string name="Settings_Pin_Description">Uporablja se kot potrditev pred brisanjem naprave ali za začasno uporabo storitve.</string>
+    <string name="Settings_Enter_Pin">Vnesi PIN</string>
     <string name="pin">PIN</string>
     <string name="Settings_FMDCommand_Description">Ukaz, ki se uporablja za komunikacijo z FindMyDevice aplikacijo.</string>
-    <string name="Settings_Select_Ringtone">Izberi Melodijo</string>
-    <string name="Settings_Ringer_Tone_Description">Izberi melodijo za predvajanje ob ukazu fmd ring.</string>
+    <string name="Settings_Select_Ringtone">Izberi melodijo zvonenja</string>
+    <string name="Settings_Ringer_Tone_Description">Izberi melodijo za predvajanje ob ukazu \"fmd ring\".</string>
     <string name="Settings_Lockscreenmessage_Description">Sporočilo na zaklenjenem zaslonu:
-\nPo zaklepanju naprave, se bo na zaklenjenem zaslonu pokazalo to sporočilo.</string>
+\nKo boste napravo zaklenili, se bo na zaklenjenem zaslonu pokazalo to sporočilo.</string>
     <string name="Settings_FMD_Server_General">Splošno</string>
-    <string name="Settings_FMD_Server_Server_URL">URL serverja:</string>
-    <string name="Settings_FMD_Server_User_ID">ID uporabnika:</string>
-    <string name="Settings_FMD_Server_ID_Desc">Za iskanje naprave z FMD Servejem, potrebuješ ID uporabnika. Zapiši si ga in shrani na varno.</string>
+    <string name="Settings_FMD_Server_Server_URL">URL strežnika:</string>
+    <string name="Settings_FMD_Server_User_ID">ID naprave:</string>
+    <string name="Settings_FMD_Server_ID_Desc">Za iskanje naprave s FMD strežnikom, potrebujete ID naprave. Zapišite si ga, in ga shranite na varno mesto.</string>
     <string name="Settings_FMDServer_Logout_Button">Odjava</string>
-    <string name="Settings_FMDServer_Delete_Button">Izbriši Podatke</string>
-    <string name="Settings_FMDServer_Alert_DeleteData">Izbriši Podatke</string>
-    <string name="Settings_FMDServer_Alert_DeleteData_Desc">To bo izbrisalo vse podatke iz Serverja! Si prepričan?</string>
-    <string name="Settings_FMDServer_Push_Description_Available">Uspešna registracija za potisna obvestila.</string>
-    <string name="Settings_FMDServer_Push_Open_UP">Odpri UnifiedPush spletno stran</string>
+    <string name="Settings_FMDServer_Delete_Button">Izbriši podatke</string>
+    <string name="Settings_FMDServer_Alert_DeleteData">Izbriši podatke</string>
+    <string name="Settings_FMDServer_Alert_DeleteData_Desc">To bo izbrisalo vse podatke iz strežnika! Ste prepričani?</string>
+    <string name="Settings_FMDServer_Push_Description_Available">Registracija za sprejemanje potisnih obvestil je bila uspešna.</string>
+    <string name="Settings_FMDServer_Push_Open_UP">Odpri spletno stran UnifiedPush</string>
     <string name="Settings_FMDServer_Update_Interval_Title">Interval posodabljanja</string>
-    <string name="Settings_FMDServer_Update_Interval_Description">FMD posodobi lokacijo naprave vsakih X minut.</string>
+    <string name="Settings_FMDServer_Update_Interval_Description">FMD posodobi lokacijo vaše naprave vsakih X minut.</string>
     <string name="Settings_FMDServer_Location_Type_Title">Vir lokacije</string>
     <string name="Settings_FMDServer_LOW_BAT_Upload_Title">Posodobi ob nizki ravni baterije</string>
-    <string name="Settings_FMDServer_LOW_BAT_Upload_Description">Posodobi lokacijo te naprave, ko je raven baterije nizka. Zahteva dostop do obvestil.</string>
-    <string name="password_old">Staro Geslo</string>
-    <string name="password_new">Novo Geslo</string>
-    <string name="password_new_repeat">Ponovi Novo Geslo</string>
-    <string name="server_version">Verzija strežnika</string>
+    <string name="Settings_FMDServer_LOW_BAT_Upload_Description">Posodobi lokacijo te naprave, ko je raven baterije nizka. Zahteva pravico za dostop do obvestil.</string>
+    <string name="password_old">Staro geslo</string>
+    <string name="password_new">Novo geslo</string>
+    <string name="password_new_repeat">Ponovi novo geslo</string>
+    <string name="server_version">Različica strežnika</string>
     <string name="server_version_error">Napaka pri pridobivanju različice strežnika</string>
     <string name="Settings_FMDServer_AddAccount">FMD strežnik: Prijava/Registracija</string>
     <string name="Settings_FMDServer_open_website">Odpri spletno stran FMD strežnika</string>
     <string name="Settings_FMDServer_use_default_server">Uporabi Nulide-jev javni strežnik</string>
     <string name="Settings_FMDServer_Login">Prijava</string>
     <string name="Settings_FMDServer_Register">Registracija</string>
-    <string name="Settings_FMDServer_Alert_PrivacyPolicy_Title">Politika o zasebnosti</string>
+    <string name="Settings_FMDServer_Alert_PrivacyPolicy_Title">Politika zasebnosti</string>
     <string name="password">Geslo</string>
-    <string name="password_repeat">Ponovi Geslo</string>
-    <string name="Alert_First_Time_contact_added">Čestitam. Dodal si svoj prvi kontakt. Zdaj lahko komuniciraš s FMD s pošiljanjem SMS sporočila, ki vsebuje \"fmd\" iz dovoljenih telefonskih številk. Ko vse deluje, bo aplikacija odgovorila.</string>
+    <string name="password_repeat">Ponovi geslo</string>
+    <string name="Alert_First_Time_contact_added">Čestitamo. Dodali ste svoj prvi zaupanja vreden stik. Zdaj vam lahko ta stik pošilja FMD ukaze preko SMS sporočil. Če vse deluje kot je treba, mu bo aplikacija nazaj po SMS sporočilu posredovala odgovor.</string>
     <string name="Info_Server_Registered">Registriran:</string>
     <string name="Settings_Settings">Nastavitve</string>
-    <string name="Settings_FMDConfig">FMD-Konfiguracija</string>
-    <string name="Settings_WhiteList">Dovoljeni Kontakti</string>
-    <string name="Settings_Export">Izvozi Nastavitve</string>
-    <string name="server_version_error_low_version">"Potrebna je vsaj različica strežnika {MIN},  trenutno izbrani stražnik pa ima različico {CURRENT}. Nadaljujte na lastno odgovornost."</string>
-    <string name="Settings_FMDServer_Info">S FMD strežnikom lahko pošiljate ukaze preko interneta, od serverja v aplikacijo. Poleg tega lahko vidite lokacijo naprave na zemljevidu ali pa slike, ki jih je naprava posnela. Za navodila za samostojno gostovanje preverite spletno stran.</string>
-    <string name="registration_token">Žeton za Registracijo</string>
-    <string name="Whitelist_empty">Ni dovoljenih kotaktov. Pritisni gumb za dodajanje!</string>
-    <string name="WhiteList_Add_Contact">Dodaj Kontakt</string>
-    <string name="WhiteList_Select_Action">Označi dejanje:</string>
-    <string name="WhiteList_Select_Number">Označi eno ali več telefonskih številk.</string>
+    <string name="Settings_FMDConfig">FMD nastavitve</string>
+    <string name="Settings_WhiteList">Zaupanja vredni stiki</string>
+    <string name="Settings_Export">Izvozi nastavitve</string>
+    <string name="server_version_error_low_version">Potrebna je vsaj različica strežnika {MIN}, trenutno izbrani strežnik pa ima različico {CURRENT}. Nadaljujte na lastno odgovornost.</string>
+    <string name="Settings_FMDServer_Info">S FMD strežnikom lahko vašemu telefonu pošiljate ukaze preko interneta (od strežnika v aplikacijo). Na FMD strežniku lahko vidite lokacijo naprave na zemljevidu ter preko kamere zajamete slike. Navodila za postavitev lastnega FMD strežnika so na spletni strani projekta.</string>
+    <string name="registration_token">Registracijski žeton</string>
+    <string name="Whitelist_empty">Ni zaupanja vrednih stikov. Pritisnite gumb za dodajanje!</string>
+    <string name="WhiteList_Add_Contact">Dodaj stik</string>
+    <string name="WhiteList_Select_Action">Izberi dejanje:</string>
+    <string name="WhiteList_Select_Number">Izberi telefonsko številko.</string>
     <string name="pin_repeat">Ponovi PIN</string>
-    <string name="Settings_FMDServer_Change_Password_Button">Sprememba Gesla</string>
-    <string name="Settings_FMDServer_Push_Description_Missing">Za pošiljanje ukazov iz FMD Serverja v tvoj telefon, je potrebna UnifiedPush aplikacija. Po namestitvi bo avtomatsko zaznana.</string>
+    <string name="Settings_FMDServer_Change_Password_Button">Sprememba gesla</string>
+    <string name="Settings_FMDServer_Push_Description_Missing">Za pošiljanje ukazov iz FMD strežnika na vaš telefon, je potrebna UnifiedPush aplikacija za distribucijo potisnih obvestil. Po namestitvi bo samodejno zaznana.</string>
     <string name="Settings_FMDServer_Location_Type_Description">Vir(i) iz katerih se posodabljajo lokacijski podatki v ozadju rednih intervalih.
-\nČe niti eden ni izbran, se lokacija ne bo redno posodabljala. (Še vedno lahko uporabite spletni vmesnik, da vsilite posodobitev. To zahteva potisna obvestila.)</string>
-    <string name="registration_token_hint">Zasebni strežniki lahko zahtevajo skrivni žeton. Pustite prazno, če je strežnik javen.</string>
-    <string name="Whitelist_help">.Kontakti na tem listu lahko pošiljajo FMD ukaze preko SMS. Ukazi vseh drugih bodo prezrti.</string>
+\nČe ni izbran niti en vir, se lokacija ne bo redno posodabljala. (Še vedno pa lahko uporabite spletni vmesnik, da vsilite posodobitev. Za slednje pa so potrebna potisna obvestila.)</string>
+    <string name="registration_token_hint">Zasebni FMD strežniki lahko zahtevajo tim. registracijski žeton. Pustite prazno, če je strežnik javen.</string>
+    <string name="Whitelist_help">Stiki na tem seznamu lahko pošiljajo FMD ukaze preko SMS sporočil. Ukazi vseh drugih stikov bodo prezrti.</string>
+    <string name="Cell">Bazna postaja</string>
+    <string name="request_failed_title">Omrežna zahteva ni uspela</string>
+    <string name="settings_exported">Nastavitve izvožene</string>
+    <string name="about">O aplikaciji</string>
+    <string name="about_source_code">Izvorna koda</string>
+    <string name="OpenCellId_test_opencellid">Preveri OpenCellID povezavo</string>
+    <string name="OpenCellId_test_no_connection">Ni povezave</string>
+    <string name="about_wiki">Wiki</string>
+    <string name="notify_crypto_update_title">Zahtevano dejanje</string>
+    <string name="server_unregister_failed_title">Odjava spodletela</string>
+    <string name="server_unregister_continue_anyway">Vseeno nadaljuj</string>
+    <string name="notify_crypto_update_text">Potrebno je posodobiti nekatere nastavitve, če želite še naprej uporabjati FMD. Kliknite, da jih odprete.</string>
+    <string name="server_unregister_dont_continue">Ne nadaljuj</string>
+    <string name="Notification_Usage">Uporaba</string>
+    <string name="Notification_Lifecycle">Življenjski cikel</string>
+    <string name="Notification_Lifecycle_Description">Obvestilo o življenjskem ciklu storitve.</string>
+    <string name="Notification_Pin_Usage_Description">Obvestilo o uporabi PIN-a.</string>
+    <string name="Notification_Server">Strežnik</string>
+    <string name="NotificationServer_Description">Prikaži obvestila poslana iz strežnika.</string>
+    <string name="Notification_Security">Varnost</string>
+    <string name="Notification_Security_Description">Obvestila o varnostnih posodobitvah</string>
+    <string name="Notification_FAIL">Spodletelo</string>
+    <string name="Notification_Fail_Description">Obvestila ko kaj spodleti, npr. povezava na FMD strežnik.</string>
+    <string name="Introduction_UpdatePermission">Potrebnih je nekaj novih dovoljenj.
+\nPreverite naslednja dovoljenja, če želite še naprej uporabljati to aplikacijo, ali pa se vrnite na starejšo različico.</string>
+    <string name="Permission_SMS">Če želite telefonu poslati ukaz, mora ta aplikacija imeti možnost videti vaša sporočila SMS. Ta sporočila ne bodo posredovana tretjim osebam in se uporabljajo samo za iskanje vašega telefona.
+\nTo dovoljenje je zahtevano.</string>
+    <string name="Permission_GPS">Če želite pridobiti GPS lokacijo svojega telefona, aplikacija potrebuje to dovoljenje.
+\nDovolite aplikaciji tudi, da poišče vaš telefon, kadar deluje v ozadju.
+\nČe tega dovoljenja ne podelite, ta funkcija ne bo aktivirana.</string>
+    <string name="Permission_DEVICE_ADMIN">To dovoljenje je potrebno, če želite zakleniti ali izbrisati telefon, v primeru, da ga izgubite.
+\nČe tega dovoljenja ne podelite, ta funkcija ne bo aktivirana.</string>
+    <string name="Permission_OVERLAY">Ko svojo napravo zaklenete na daljavo, lahko ta aplikacija na zaklenjenem zaslonu vsem, ki najdejo vaš telefon, prikaže sporočilo.
+\nČe tega dovoljenja ne podelite, ta funkcija ne bo aktivirana.</string>
+    <string name="Permission_POST_NOTIFICATIONS">FMD vam bo občasno pošiljal obvestila, na primer, da vas opozori, da nekdo locira vašo napravo.</string>
+    <string name="Introduction_Next">Naprej</string>
+    <string name="Locked_Lock_Screen">FindMyDevice
+\nTelefon je zaklenjen!
+\nSporočilo lastnika:</string>
+    <string name="Introduction_Give_Permission">Podeli dovoljenje</string>
+    <string name="Enable">Omogoči</string>
+    <string name="Enabled">Omogočeno</string>
+    <string name="Disabled">Onemogočeno</string>
+    <string name="Toast_Duplicate_contact">Ta stik že obstaja.</string>
+    <string name="MH_rings">zvonenj</string>
+    <string name="MH_Locked">zaklenjen</string>
+    <string name="MH_Syntax">Sintaksa:</string>
+    <string name="MH_Title_Help">FindMyDevice ukazi:</string>
+    <string name="MH_Help_where">" locate - posreduje trenutno lokacijo telefona"</string>
+    <string name="MH_Help_Lock">" lock - zaklene telefon"</string>
+    <string name="MH_GPS_WILL_FOLLOW">GPS koordinate bodo kmalu poslane.</string>
+    <string name="MH_Stats">Omrežne statistike:
+\nIP naslovi:
+\n</string>
+    <string name="MH_Networks">"
+\nWiFi omrežja, ki so na voljo:
+\n"</string>
+    <string name="MH_Help_ring">" ring - oddaljeno sproži zvonenje na telefonu"</string>
+    <string name="R_Stop_ring">IZKLJUČI ZVONENJE</string>
+    <string name="Crashed_Send_log">Pošlji dnevniške zapise</string>
+    <string name="MH_No_GPS">Oprostite, lokacija je izključena.</string>
+    <string name="Error">Napaka</string>
+    <string name="JSON_RL_Error">Napaka pri pridobivanju lokacije iz OpenCellID. Poskusite s sledečo povezavo. Parametra, ki ju želite, sta \"lon\" in \"lat\".</string>
+    <string name="LockScreen_Usage_detectd">LockScreenMessage: zaznana uporaba.</string>
+    <string name="LockScreen_Backbutton_pressed">LockScreenMessage: pritisnjen gumb za nazaj.</string>
+    <string name="Toast_Empty_FMDCommand">Prazen ukaz ni dovoljen
+\n Vrnitev na privzeto. [fmd]</string>
+    <string name="NOT_AVAILABLE">Ni na voljo</string>
+    <string name="Available">Na voljo</string>
+    <string name="Log_Alert_LogData">Dnevniški zapisi</string>
+    <string name="registered">registriran</string>
+    <string name="not_registered">ni registriran</string>
+    <string name="MH_LAST_KNOWN_LOCATION">Zadnja znana lokacija</string>
+    <string name="MH_LAST_KNOWN_LOCATION_NOT_AVAILABLE">Zadnja lokacija ni na voljo.</string>
+    <string name="MH_NO_SECURE_SETTINGS">Oprostite, aplikacija nima dovoljenja za to.</string>
+    <string name="MH_Help_expert">" expert - stran s pomočjo za napredne ukaze."</string>
+    <string name="MH_Help_Expert_GPS">" GPS (on/off) - vključi ali izključi GPS."</string>
+    <string name="MH_Help_Expert_Sound">" Sound (on/off) - vključi ali izključi zvok."</string>
+    <string name="not_possible">To dejanje ni bilo mogoče.</string>
+    <string name="MH_Help_Expert_Camera">" Camera (front/back) - zajeme sliko in jo pošlje na FMD strežnik."</string>
+    <string name="MH_FMDSERVER_NOT_REGISTERED">Ta naprava ni registrirana na strežniku.</string>
+    <string name="Introduction_Shizuku">Podeli preko aplikacije Shizuku</string>
+    <string name="Permission_Camera">Če želite na daljavo zajemati slike iz vašega telefona, aplikacija potrebujete dovoljenje za dostop do kamere.</string>
+    <string name="Introduction_Root">Podeli preko korenskega uporabnika</string>
+    <string name="RootAccessDenied">Korenski dostop zavrnjen</string>
+    <string name="request_failed_status_code">Statusna koda</string>
+    <string name="request_failed_response_body">Telo odgovora</string>
+    <string name="request_failed_exception">Izjema</string>
+    <string name="Settings_Logs">Dnevniški zapisi</string>
+    <string name="OpenCellId_help">FMD lahko za pridobitev približne lokacije uporabi podatke o bazni postaji s katero je povezan telefon ter pri tem uporabi storitev OpenCellID. Za vsako poizvedbo o lokaciji je potrebna internetna povezava. Pri OpenCellID morate pred tem ustvariti račun in pridobiti lasten API dostopni žeton.</string>
+    <string name="OpenCellId_privacy">Zasebnost: ne pozabite, da OpenCelliD z vsako API poizvedbo izve na katero bazno postajo ste povezani in s tem ugotovi vašo lokacijo.</string>
+    <string name="OpenCellId_open_website">Odpri spletno stran OpenCellID</string>
+    <string name="app_description">Aplikacija FMD (Find My Device) vam omogoča oddaljeno lociranje vaše naprave. S FMD lahko komunicirate prek sporočil SMS, hitrih sporočil ali preko FMD strežnika. Poiščite svojo napravo, sprožite zvonjenje, jo zaklenite ali izbrišite – vse to na daljavo.</string>
+    <string name="server_unregister_failed_body">Odjava je spodletela zaradi naslednje napake: {ERROR}
+\n
+\nVseeno lahko nadaljujete, vendar vaš račun morda ni bil izbrisan iz strežnika. Če nadaljujete, bo vaš račun lokalno izbrisan iz te naprave.</string>
+    <string name="Notification_Usage_Description">Obvestilo o uporabi storitve.</string>
+    <string name="Permission_IGNORE_BATTERY_OPTIMIZATION">Ta aplikacija naj bi delovala v ozadju. Če želite zagotoviti, da deluje tudi, ko je vaš telefon v stanju pripravljenosti, morate za to aplikacijo izklopiti optimizacijo baterije.</string>
+    <string name="Introduction_Introduction">FindMyDevice (FMD) je aplikacija, ki vam lahko pomaga najti vaš telefon, ko se izgubi.
+\nIz telefona enega izmed zaupanja vrednih stikov lahko preko SMS sporočil pošiljate ukaze ter tako sledite svojemu telefonu.
+\nSamo pošljite SMS sporočilo, ki vsebuje ukaz \"fmd\".
+\nUpoštevajte, da je ta aplikacija še vedno v različici beta.
+\n
+\n - Nulide</string>
+    <string name="Permission_CONTACTS">Vašemu telefonu ukazov ne sme pošiljati kdorkoli. Zato morate določiti enega ali več zaupanja vrednih stikov, ki bodo lahko poiskali vašo napravo.
+\nTo dovoljenje je zahtevano.</string>
+    <string name="Delete">Izbriši</string>
+    <string name="MH_Delete">Nasvidenje...</string>
+    <string name="MH_Help_Stats">" stats - pošlje podatke o napravi"</string>
+    <string name="MH_Help_delete">" delete - telefon tovarniško ponastavi"</string>
+    <string name="FMDConfig_Alert_Pin">PIN</string>
+    <string name="Permission_WRITE_SECURE_SETTINGS">Ta aplikacija lahko vključi lokacijo tudi v primeru, če jo imate izključeno.
+\nČe je lokacija izključena, ukaz \"fmd locate\" ne bo deloval.
+\nV tem primeru aplikacija potrebuje posebno dovoljenje, ki ga morate dodeliti z uporabo računalnika.
+\nČe tega dovoljenja ne podelite, ta funkcija ne bo aktivirana.</string>
+    <string name="MH_Pin_Accepted">PIN sprejet!</string>
+    <string name="Permission_DND">Na telefon lahko tudi sprožite zvonenje, da ga lažje poiščete. Ko je vključena funkcija »Ne moti«, je telefon morda utišan.
+\nČe tega dovoljenja ne podelite, ta funkcija ne bo aktivirana.</string>
+    <string name="Alert_First_time_fmdserver">Tukaj lahko nastavite komunikacijo aplikacije s FMD strežnikom. Če želite nastaviti drugačen strežnik od privzetega, lahko to storite tako, da spremenite URL. Če pritisnete \"registriraj\", lahko aplikacijo registrirate na strežniku. Telefon bo nato podatke o lokaciji pošiljal na navedeni strežnik. Lokacijo svojega telefona lahko preverite tako, da spletni strani FMD strežnika vnesete ID vaše naprave in vaše geslo.</string>
+    <string name="Permission_Notification">Če želite, da FMD spremlja sporočila iz drugih aplikacij, kot so Telegram, Whatsapp itd., ji lahko omogočite dostop do obvestil. S tem boste aplikacijo FMD lahko upravljali tudi preko teh aplikacij in ne samo preko SMS sporočil.</string>
+    <string name="MH_CAM_CAPTURE">"Naprava bo zajeto sliko kmalu posredovala na FMD strežnik. Ogledali si jo boste lahko tukaj: "</string>
+    <string name="Pin_Usage">Uporaba PIN-a</string>
+    <string name="MH_False_Pin">Napačen PIN!</string>
 </resources>

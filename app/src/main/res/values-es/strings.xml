@@ -197,4 +197,8 @@
     <string name="Introduction_Root">Otorgar con Root</string>
     <string name="Introduction_Shizuku">Otorgar con Shizuku</string>
     <string name="RootAccessDenied">Acceso root denegado</string>
+    <string name="request_failed_title">Error en la solicitud de red</string>
+    <string name="request_failed_status_code">Código de estado</string>
+    <string name="request_failed_response_body">Cuerpo de la respuesta</string>
+    <string name="request_failed_exception">Excepción</string>
 </resources>
