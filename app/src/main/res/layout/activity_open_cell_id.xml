@@ -41,6 +41,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/margin_small"
                     android:layout_weight="0.8"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
                     android:text="" />
 
                 <Button

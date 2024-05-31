@@ -6,9 +6,6 @@ import android.app.job.JobScheduler;
 import android.app.job.JobService;
 import android.content.ComponentName;
 import android.content.Context;
-import android.os.Build;
-
-import androidx.annotation.RequiresApi;
 
 import de.nulide.findmydevice.data.Settings;
 import de.nulide.findmydevice.data.SettingsRepoSpec;
@@ -42,7 +39,6 @@ public class GPSTimeOutService extends JobService {
         return false;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
     public static void scheduleJob(Context context) {
         ComponentName serviceComponent = new ComponentName(context, GPSTimeOutService.class);
         JobInfo.Builder builder = new JobInfo.Builder(JOB_ID, serviceComponent);

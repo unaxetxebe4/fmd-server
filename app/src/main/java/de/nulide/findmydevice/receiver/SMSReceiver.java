@@ -30,15 +30,9 @@ public class SMSReceiver extends SuperReceiver {
                 String format = bundle.getString("format");
                 Object[] pdus = (Object[]) bundle.get("pdus");
                 if (pdus != null) {
-                    boolean isVersionM =
-                            (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M);
                     msgs = new SmsMessage[pdus.length];
                     for (int i = 0; i < msgs.length; i++) {
-                        if (isVersionM) {
-                            msgs[i] = SmsMessage.createFromPdu((byte[]) pdus[i], format);
-                        } else {
-                            msgs[i] = SmsMessage.createFromPdu((byte[]) pdus[i]);
-                        }
+                        msgs[i] = SmsMessage.createFromPdu((byte[]) pdus[i], format);
                         String receiver = msgs[i].getOriginatingAddress();
                         FMDSMSService.scheduleJob(context, receiver, msgs[i].getMessageBody(), time.getTimeInMillis());
                     }
@@ -49,5 +43,4 @@ public class SMSReceiver extends SuperReceiver {
         }
         Logger.writeLog();
     }
-
 }

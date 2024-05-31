@@ -6,30 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".ui.IntroductionActivity">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:baselineAligned="false"
         android:orientation="vertical">
 
-
         <TextView
             android:id="@+id/textViewInfoText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="3mm"
-            android:textSize="16dp"
-            android:text="..." />
+            android:layout_margin="16dp"
+            android:textSize="16sp" />
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical" >
-
-    </LinearLayout>
-
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
 
         <Button
             android:id="@+id/buttonPermViaShizuku"

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,7 +9,8 @@
         android:id="@+id/buttonStopRinging"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:textSize="32dp"
-        android:layout_margin="5mm"
-        android:text="@string/R_Stop_ring" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_margin="32dp"
+        android:text="@string/R_Stop_ring"
+        android:textSize="32sp" />
+
+</FrameLayout>

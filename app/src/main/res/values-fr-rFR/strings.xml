@@ -84,7 +84,6 @@
     <string name="MH_LAST_KNOWN_LOCATION_NOT_AVAILABLE">La dernière localisation n\'est pas disponible.</string>
     <string name="Alert_First_time_fmdserver">Ici, vous pouvez configurer l\'application pour communiquer avec fmdserver. Si vous souhaitez configurer un serveur différent de celui par défaut, vous pouvez le faire en modifiant l\'URL. Si vous appuyez sur enregistrer, vous pouvez enregistrer l\'application sur le serveur. Ensuite, vous pouvez activer la fonctionnalité de serveur. Si vous le faites, votre téléphone vous enverra des données de localisation au serveur spécifié. Vous pouvez vérifier l\'emplacement de votre téléphone en entrant l\'ID et le mot de passe sur la page.</string>
     <string name="accept">accepter</string>
-    <string name="cancel">Retour</string>
     <string name="Settings_FMDServer_Location_Type_Description">La ou les sources à partir desquelles les données de localisation sont envoyées à intervalles réguliers en arrière-plan.
 \nSi aucune n\'est sélectionnée, aucune localisation n\'est envoyée régulièrement. (Vous pouvez toujours utiliser l\'interface web pour forcer un envoi. Cela nécessite les notifications push.)</string>
     <string name="Error">Erreur</string>
@@ -121,7 +120,6 @@
     <string name="Settings_FMDServer_Register">S\'inscrire</string>
     <string name="password">Mot de passe</string>
     <string name="Settings_FMDServer_Alert_PrivacyPolicy_Title">Politique de confidentialité</string>
-    <string name="password_repeat">Répétez le mot de passe</string>
     <string name="registration_token">Token d\'enregistrement</string>
     <string name="Whitelist_help">Les contacts présents dans cette liste sont autorisé à envoyer des commandes FMD via sms. Les commandes provenant de n\'importe qui d\'autre sera ignoré.</string>
     <string name="Whitelist_empty">Aucun contact autorisé. Cliquez sur le bouton pour en ajouter !</string>

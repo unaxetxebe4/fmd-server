@@ -6,9 +6,6 @@ import android.app.job.JobScheduler;
 import android.app.job.JobService;
 import android.content.ComponentName;
 import android.content.Context;
-import android.os.Build;
-
-import androidx.annotation.RequiresApi;
 
 import de.nulide.findmydevice.data.ConfigSMSRec;
 import de.nulide.findmydevice.data.io.IO;
@@ -49,7 +46,6 @@ public class TempContactExpiredService extends JobService {
         return false;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
     public static void scheduleJob(Context context, Sender sender) {
         ComponentName serviceComponent = new ComponentName(context, TempContactExpiredService.class);
         JobInfo.Builder builder = new JobInfo.Builder(0, serviceComponent);

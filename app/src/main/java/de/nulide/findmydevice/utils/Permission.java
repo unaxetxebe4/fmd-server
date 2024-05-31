@@ -11,7 +11,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
-import android.os.IBinder;
 import android.os.PowerManager;
 import android.provider.Settings;
 import android.widget.Toast;
@@ -20,18 +19,11 @@ import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-
 import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.receiver.DeviceAdminReceiver;
 import de.nulide.findmydevice.services.ThirdPartyAccessService;
 import rikka.shizuku.Shizuku;
-import rikka.shizuku.ShizukuApiConstants;
-import rikka.shizuku.ShizukuBinderWrapper;
-import rikka.shizuku.ShizukuProvider;
 import rikka.shizuku.ShizukuRemoteProcess;
-import rikka.shizuku.SystemServiceHelper;
 
 public class Permission {
 
@@ -68,48 +60,43 @@ public class Permission {
         NOTIFICATION_ACCESS = checkNotificationAccessPermission(context);
         CAMERA = checkCameraPermissions(context);
         BATTERY_OPTIMIZATION = checkBatteryOptimizationPermission(context);
+        DND = checkDNDPermission(context);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            DND = checkDNDPermission(context);
-        }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            CORE = checkContactsPermission(context) && checkSMSPermission(context) && checkPostNotificationsPermissions(context);
-        } else {
-            CORE = checkContactsPermission(context) && checkSMSPermission(context);
-        }
-        if(GPS){
+        CORE = checkContactsPermission(context) && checkSMSPermission(context) && checkPostNotificationsPermissions(context);
+
+        if (GPS) {
             ENABLED_PERMISSIONS++;
         }
-        if(DEVICE_ADMIN){
+        if (DEVICE_ADMIN) {
             ENABLED_PERMISSIONS++;
         }
-        if(DND){
+        if (DND) {
             ENABLED_PERMISSIONS++;
         }
-        if(OVERLAY){
+        if (OVERLAY) {
             ENABLED_PERMISSIONS++;
         }
-        if(WRITE_SECURE_SETTINGS){
+        if (WRITE_SECURE_SETTINGS) {
             ENABLED_PERMISSIONS++;
         }
-        if(CORE){
+        if (CORE) {
             ENABLED_PERMISSIONS++;
         }
-        if(NOTIFICATION_ACCESS){
+        if (NOTIFICATION_ACCESS) {
             ENABLED_PERMISSIONS++;
         }
-        if(CAMERA){
+        if (CAMERA) {
             ENABLED_PERMISSIONS++;
         }
-        if(BATTERY_OPTIMIZATION){
+        if (BATTERY_OPTIMIZATION) {
             ENABLED_PERMISSIONS++;
         }
     }
 
     public static void requestSMSPermission(Activity activity) {
-        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.P) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.P) {
             ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.SEND_SMS, Manifest.permission.RECEIVE_SMS, Manifest.permission.READ_PHONE_STATE}, PERM_SMS_ID);
-        }else{
+        } else {
             ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.SEND_SMS, Manifest.permission.RECEIVE_SMS, Manifest.permission.READ_SMS}, PERM_SMS_ID);
         }
     }
@@ -119,7 +106,9 @@ public class Permission {
     }
 
     public static void requestGPSBackgroundPermission(Activity activity) {
-        ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.ACCESS_BACKGROUND_LOCATION}, PERM_GPS_ID);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.ACCESS_BACKGROUND_LOCATION}, PERM_GPS_ID);
+        }
     }
 
     public static void requestContactPermission(Activity activity) {
@@ -143,15 +132,13 @@ public class Permission {
     }
 
     public static void requestDNDPermission(Activity activity) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (!checkDNDPermission(activity)) {
-                Intent intent = new Intent(Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS);
-                activity.startActivity(intent);
-            }
+        if (!checkDNDPermission(activity)) {
+            Intent intent = new Intent(Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS);
+            activity.startActivity(intent);
         }
     }
 
-    public static void requestNotificationPermission(Activity activity){
+    public static void requestNotificationPermission(Activity activity) {
         activity.startActivity(new Intent("android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS"));
     }
 
@@ -161,32 +148,31 @@ public class Permission {
         activity.startActivity(intent);
     }
 
-    public static void requestBatteryOptimizationPermission(Activity activity){
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-            Intent intent = new Intent();
-            String packageName = activity.getPackageName();
-            PowerManager pm = (PowerManager) activity.getSystemService(Context.POWER_SERVICE);
-            if(!pm.isIgnoringBatteryOptimizations(packageName)){
-                intent.setAction(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS);
-                intent.setData(Uri.parse("package:" + packageName));
-                activity.startActivity(intent);
-            }
+    @SuppressLint("BatteryLife")
+    public static void requestBatteryOptimizationPermission(Activity activity) {
+        Intent intent = new Intent();
+        String packageName = activity.getPackageName();
+        PowerManager pm = (PowerManager) activity.getSystemService(Context.POWER_SERVICE);
+        if (!pm.isIgnoringBatteryOptimizations(packageName)) {
+            intent.setAction(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS);
+            intent.setData(Uri.parse("package:" + packageName));
+            activity.startActivity(intent);
         }
     }
 
-    public static boolean isShizukuRunning(){
+    public static boolean isShizukuRunning() {
         return Shizuku.pingBinder();
     }
 
-    public static void requestShizukuPermission(){
+    public static void requestShizukuPermission() {
         Shizuku.requestPermission(PERM_SHIZUKU_ID);
     }
 
 
     @SuppressLint("PrivateApi")
-    public static void requestWriteSecureSettingsPermissionViaShizuku(Context c){
-        String command = "pm grant "+c.getPackageName()+" android.permission.WRITE_SECURE_SETTINGS";
-        ShizukuRemoteProcess proc = Shizuku.newProcess(new String[]{"sh","-c",command}, null, "/");
+    public static void requestWriteSecureSettingsPermissionViaShizuku(Context c) {
+        String command = "pm grant " + c.getPackageName() + " android.permission.WRITE_SECURE_SETTINGS";
+        ShizukuRemoteProcess proc = Shizuku.newProcess(new String[]{"sh", "-c", command}, null, "/");
         try {
             proc.waitFor();
         } catch (InterruptedException e) {
@@ -197,31 +183,27 @@ public class Permission {
 
     }
 
-    public static void requestWriteSecureSettingsPermissionViaRoot(Context c){
-        if(RootAccess.isRooted()){
-            String command = "pm grant "+c.getPackageName()+" android.permission.WRITE_SECURE_SETTINGS";
+    public static void requestWriteSecureSettingsPermissionViaRoot(Context c) {
+        if (RootAccess.isRooted()) {
+            String command = "pm grant " + c.getPackageName() + " android.permission.WRITE_SECURE_SETTINGS";
             RootAccess.execCommand(c, command);
-        }else{
-            Toast.makeText(c,c.getString(R.string.RootAccessDenied), Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(c, c.getString(R.string.RootAccessDenied), Toast.LENGTH_LONG).show();
         }
 
     }
-    public static boolean checkShizukuPermission(){
-        boolean isGranted = Shizuku.checkSelfPermission() == PackageManager.PERMISSION_GRANTED;
-        return isGranted;
+
+    public static boolean checkShizukuPermission() {
+        return Shizuku.checkSelfPermission() == PackageManager.PERMISSION_GRANTED;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
     public static boolean checkDNDPermission(Context context) {
         NotificationManager mNotificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         return mNotificationManager.isNotificationPolicyAccessGranted();
     }
 
     public static boolean checkOverlayPermission(Context context) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            return Settings.canDrawOverlays(context);
-        }
-        return true;
+        return Settings.canDrawOverlays(context);
     }
 
     public static boolean checkWriteSecurePermission(Context context) {
@@ -229,10 +211,10 @@ public class Permission {
     }
 
     public static boolean checkSMSPermission(Context context) {
-        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.P) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.P) {
             return ContextCompat.checkSelfPermission(context, Manifest.permission.RECEIVE_SMS) == PackageManager.PERMISSION_GRANTED
                     && ContextCompat.checkSelfPermission(context, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED;
-        }else{
+        } else {
             return ContextCompat.checkSelfPermission(context, Manifest.permission.RECEIVE_SMS) == PackageManager.PERMISSION_GRANTED;
         }
     }
@@ -242,7 +224,7 @@ public class Permission {
     }
 
     public static boolean checkGPSBackgroundPermission(Context context) {
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             return ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_BACKGROUND_LOCATION) == PackageManager.PERMISSION_GRANTED;
         }
         return true;
@@ -263,23 +245,21 @@ public class Permission {
 
     public static boolean checkNotificationAccessPermission(Context context) {
         ComponentName cn = new ComponentName(context, ThirdPartyAccessService.class);
-        String flat = Settings.Secure.getString(context.getContentResolver(), "enabled_notification_listeners");
-        final boolean enabled = flat != null && flat.contains(cn.flattenToString());
-        return enabled;
+        String enabledListeners = Settings.Secure.getString(context.getContentResolver(), "enabled_notification_listeners");
+        return enabledListeners != null && enabledListeners.contains(cn.flattenToString());
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.TIRAMISU)
     public static boolean checkPostNotificationsPermissions(Context context) {
-        return ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED;
-    }
-
-    public static boolean checkBatteryOptimizationPermission(Context context){
-        String packageName = context.getPackageName();
-        PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            return pm.isIgnoringBatteryOptimizations(packageName);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            return ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED;
         }
         return true;
+    }
+
+    public static boolean checkBatteryOptimizationPermission(Context context) {
+        String packageName = context.getPackageName();
+        PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
+            return pm.isIgnoringBatteryOptimizations(packageName);
     }
 
 }

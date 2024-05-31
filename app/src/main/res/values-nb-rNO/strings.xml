@@ -3,9 +3,7 @@
     <string name="loading">Laster inn …</string>
     <string name="help">Hjelp</string>
     <string name="copied">Kopiert</string>
-    <string name="paste">Lim inn</string>
     <string name="accept">godta</string>
-    <string name="cancel">avbryt</string>
     <string name="Edit">Rediger</string>
     <string name="GPS">GPS</string>
     <string name="Info_Notification_Access">Merknadstilgang</string>
@@ -51,7 +49,6 @@
     <string name="Settings_FMDServer_Register">Registrering</string>
     <string name="Settings_FMDServer_Alert_PrivacyPolicy_Title">Personvernspraksis</string>
     <string name="password">Passord</string>
-    <string name="password_repeat">Gjenta passord</string>
     <string name="registration_token">Registreringssymbol</string>
     <string name="settings_exported">Innstillinger eksportert</string>
     <string name="about">Om</string>
@@ -78,7 +75,6 @@
     <string name="Notification_Pin_Usage_Description">Merknad om PIN-bruk.</string>
     <string name="Notification_Lifecycle">Tjenerstatus</string>
     <string name="Notification_Lifecycle_Description">Merknad om tjenerstatus.</string>
-    <string name="Ok">OK</string>
     <string name="NOT_AVAILABLE">Ikke tilgjengelig</string>
     <string name="Available">Tilgjengelig</string>
     <string name="MH_LAST_KNOWN_LOCATION">Sist kjente posisjon</string>

@@ -14,9 +14,6 @@ import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.data.Settings;
 import de.nulide.findmydevice.data.SettingsRepoSpec;
 import de.nulide.findmydevice.data.SettingsRepository;
-import de.nulide.findmydevice.data.io.IO;
-import de.nulide.findmydevice.data.io.JSONFactory;
-import de.nulide.findmydevice.data.io.json.JSONMap;
 import de.nulide.findmydevice.utils.Permission;
 
 public class IntroductionActivity extends AppCompatActivity implements View.OnClickListener {
@@ -55,13 +52,8 @@ public class IntroductionActivity extends AppCompatActivity implements View.OnCl
         buttonNext = findViewById(R.id.buttonNext);
         buttonNext.setOnClickListener(this);
 
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-            colorEnabled = getColor(R.color.colorEnabled);
-            colorDisabled = getColor(R.color.colorDisabled);
-        }else {
-            colorEnabled = getResources().getColor(R.color.colorEnabled);
-            colorDisabled = getResources().getColor(R.color.colorDisabled);
-        }
+        colorEnabled = getColor(R.color.colorEnabled);
+        colorDisabled = getColor(R.color.colorDisabled);
 
         updateViews();
 
@@ -105,21 +97,18 @@ public class IntroductionActivity extends AppCompatActivity implements View.OnCl
                 } else {
                     buttonGivePermission.setBackgroundColor(colorDisabled);
                 }
-                if(Permission.checkGPSForegroundPermission(this) && !Permission.checkGPSBackgroundPermission(this)){
+                if (Permission.checkGPSForegroundPermission(this)
+                        && !Permission.checkGPSBackgroundPermission(this)
+                        && Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                     Permission.requestGPSBackgroundPermission(this);
                 }
                 break;
             case 4: // DND Permission
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    textViewInfoText.setText(getString(R.string.Permission_DND));
-                    if (Permission.checkDNDPermission(this)) {
-                        buttonGivePermission.setBackgroundColor(colorEnabled);
-                    } else {
-                        buttonGivePermission.setBackgroundColor(colorDisabled);
-                    }
+                textViewInfoText.setText(getString(R.string.Permission_DND));
+                if (Permission.checkDNDPermission(this)) {
+                    buttonGivePermission.setBackgroundColor(colorEnabled);
                 } else {
-                    position++;
-                    updateViews();
+                    buttonGivePermission.setBackgroundColor(colorDisabled);
                 }
                 break;
             case 5: // DeviceAdmin Permission

@@ -1,11 +1,11 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name" translatable="false">FindMyDevice</string>
 
     <!-- Generic -->
     <string name="Ok" translatable="false">@android:string/ok</string>
     <string name="loading">Loading…</string>
     <string name="help">Help</string>
-    <string name="copy" translatable="false">@android:string/copy</string>
+    <string name="copy" translatable="false" tools:override="true">@android:string/copy</string>
     <string name="copied">Copied</string>
     <string name="paste" translatable="false">@android:string/paste</string>
     <string name="accept">accept</string>
@@ -89,11 +89,11 @@
     <string name="Settings_FMDServer_Info">With FMD Server you can send commands over the internet, from the server to the app. You can also view the device location on a map or view pictures taken by the device. For self-hosting instructions, see the website.</string>
     <string name="Settings_FMDServer_open_website">Open FMD Server Website</string>
     <string name="Settings_FMDServer_use_default_server">Use Nulide\'s public server</string>
+    <string name="Settings_FMDServer_Server_Url">Server URL</string>
     <string name="Settings_FMDServer_Login">Login</string>
     <string name="Settings_FMDServer_Register">Register</string>
     <string name="Settings_FMDServer_Alert_PrivacyPolicy_Title">Privacy Policy</string>
     <string name="password">Password</string>
-    <string name="password_repeat">Repeat Password</string>
     <string name="registration_token">Registration Token</string>
     <string name="registration_token_hint">Private instances may require a secret token. Leave this empty if the instance is public.</string>
 

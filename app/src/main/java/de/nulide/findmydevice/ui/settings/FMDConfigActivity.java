@@ -23,9 +23,6 @@ import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.data.Settings;
 import de.nulide.findmydevice.data.SettingsRepoSpec;
 import de.nulide.findmydevice.data.SettingsRepository;
-import de.nulide.findmydevice.data.io.IO;
-import de.nulide.findmydevice.data.io.JSONFactory;
-import de.nulide.findmydevice.data.io.json.JSONMap;
 import de.nulide.findmydevice.utils.CypherUtils;
 
 public class FMDConfigActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener, TextWatcher {
@@ -63,13 +60,8 @@ public class FMDConfigActivity extends AppCompatActivity implements CompoundButt
         editTextLockScreenMessage.setText((String) settings.get(Settings.SET_LOCKSCREEN_MESSAGE));
         editTextLockScreenMessage.addTextChangedListener(this);
 
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-            colorEnabled = getColor(R.color.colorEnabled);
-            colorDisabled = getColor(R.color.colorDisabled);
-        } else {
-            colorEnabled = getResources().getColor(R.color.colorEnabled);
-            colorDisabled = getResources().getColor(R.color.colorDisabled);
-        }
+        colorEnabled = getColor(R.color.colorEnabled);
+        colorDisabled = getColor(R.color.colorDisabled);
 
         buttonEnterPin = findViewById(R.id.buttonEnterPin);
         if (settings.get(Settings.SET_PIN).equals("")) {

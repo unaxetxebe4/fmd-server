@@ -6,10 +6,7 @@ import android.app.job.JobScheduler;
 import android.app.job.JobService;
 import android.content.ComponentName;
 import android.content.Context;
-import android.os.Build;
 import android.util.Log;
-
-import androidx.annotation.RequiresApi;
 
 import de.nulide.findmydevice.data.Settings;
 import de.nulide.findmydevice.data.SettingsRepoSpec;
@@ -25,7 +22,6 @@ import de.nulide.findmydevice.utils.Notifications;
 /**
  * Downloads the latest command and executes it
  */
-@RequiresApi(Build.VERSION_CODES.LOLLIPOP)
 public class FMDServerCommandDownloadService extends JobService {
 
     private String TAG = FMDServerCommandDownloadService.class.getSimpleName();
@@ -40,9 +36,7 @@ public class FMDServerCommandDownloadService extends JobService {
         this.params = params;
 
         FMDServerApiRepository fmdServerRepo = FMDServerApiRepository.Companion.getInstance(new FMDServerApiRepoSpec(this));
-        fmdServerRepo.getCommand(this::onResponse, error -> {
-            error.printStackTrace();
-        });
+        fmdServerRepo.getCommand(this::onResponse, Throwable::printStackTrace);
 
         return true;
     }
@@ -52,7 +46,6 @@ public class FMDServerCommandDownloadService extends JobService {
         return false;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
     public static void scheduleJobNow(Context context) {
         ComponentName serviceComponent = new ComponentName(context, FMDServerCommandDownloadService.class);
         JobInfo.Builder builder = new JobInfo.Builder(JOB_ID, serviceComponent);

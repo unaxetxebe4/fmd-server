@@ -11,21 +11,20 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/Locked_Lock_Screen"
-            android:padding="2mm"
-            android:textSize="27dp"/>
+            android:padding="16dp"
+            android:textSize="28sp"/>
 
         <TextView
             android:id="@+id/textViewLockScreenMessage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text=""
-            android:padding="2mm"
-            android:textSize="18dp"/>
+            android:padding="16dp"
+            android:textSize="18sp"/>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -107,7 +107,6 @@
     <string name="Settings_FMDServer_AddAccount">Server FMD: přihlášení/registrace</string>
     <string name="Settings_FMDServer_use_default_server">Použít veřejný server Nulide</string>
     <string name="password">Heslo</string>
-    <string name="password_repeat">Zopakujte heslo</string>
     <string name="registration_token">Registrační token</string>
     <string name="Whitelist_help">Kontakty v tomto seznamu mohou posílat příkazy FMD pomocí SMS. Příkazy od všech ostatních budou ignorovány.</string>
     <string name="WhiteList_Add_Contact">Přidat kontakt</string>

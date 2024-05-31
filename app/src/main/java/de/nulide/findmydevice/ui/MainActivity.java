@@ -125,17 +125,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         textViewFMDCommandName.setText((String) settings.get(Settings.SET_FMD_COMMAND));
         textViewWhiteListCount.setText(Integer.valueOf(whiteList.size()).toString());
 
-
-        int colorEnabled;
-        int colorDisabled;
-
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-            colorEnabled = getColor(R.color.colorEnabled);
-            colorDisabled = getColor(R.color.colorDisabled);
-        } else {
-            colorEnabled = getResources().getColor(R.color.colorEnabled);
-            colorDisabled = getResources().getColor(R.color.colorDisabled);
-        }
+        int colorEnabled = getColor(R.color.colorEnabled);
+        int colorDisabled = getColor(R.color.colorDisabled);
 
         ForegroundColorSpan whitelistCountColor;
         if (whiteList.size() > 0) {

@@ -67,7 +67,6 @@
     <string name="MH_CAM_CAPTURE">"डिवाइस शीघ्र ही fmdserver को एक चित्र भेजेगा। आप इसे जल्द ही यहां देख सकते हैं: "</string>
     <string name="MH_FMDSERVER_NOT_REGISTERED">यह डिवाइस सर्वर पर पंजीकृत नहीं है।</string>
     <string name="Settings_Export">निर्यात सेटिंग्स</string>
-    <string name="password_repeat">पासवर्ड दोहराएं</string>
     <string name="Settings_Permissions">अनुमतियां</string>
     <string name="Settings_Enter_Pin">पिन दर्ज करें</string>
     <string name="help">सहायता</string>

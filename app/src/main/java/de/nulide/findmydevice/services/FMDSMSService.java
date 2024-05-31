@@ -6,11 +6,8 @@ import android.app.job.JobScheduler;
 import android.app.job.JobService;
 import android.content.ComponentName;
 import android.content.Context;
-import android.os.Build;
 import android.os.PersistableBundle;
 import android.telephony.PhoneNumberUtils;
-
-import androidx.annotation.RequiresApi;
 
 import java.util.Calendar;
 
@@ -32,7 +29,6 @@ import de.nulide.findmydevice.utils.Notifications;
 import de.nulide.findmydevice.utils.Permission;
 
 
-@RequiresApi(Build.VERSION_CODES.LOLLIPOP)
 public class FMDSMSService extends JobService {
 
     private static final int JOB_ID = 107;
@@ -45,8 +41,6 @@ public class FMDSMSService extends JobService {
     private ComponentHandler ch;
     private ConfigSMSRec config;
 
-
-    @RequiresApi(api = Build.VERSION_CODES.M)
     public static void scheduleJob(Context context, String destination, String message, Long time) {
         PersistableBundle bundle = new PersistableBundle();
         bundle.putString(DESTINATION, destination);
@@ -104,9 +98,7 @@ public class FMDSMSService extends JobService {
                 Notifications.notify(this, "Pin", "The pin was used by the following number: "+receiver+"\nPlease change the Pin!", Notifications.CHANNEL_PIN);
                 config.set(ConfigSMSRec.CONF_TEMP_WHITELISTED_CONTACT, receiver);
                 config.set(ConfigSMSRec.CONF_TEMP_WHITELISTED_CONTACT_ACTIVE_SINCE, time);
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    TempContactExpiredService.scheduleJob(this, ch.getSender());
-                }
+                TempContactExpiredService.scheduleJob(this, ch.getSender());
             }
         }
         return executedCommand.equals(MessageHandler.COM_LOCATE);
