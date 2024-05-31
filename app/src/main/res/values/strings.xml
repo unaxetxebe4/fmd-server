@@ -137,17 +137,15 @@
 
     <!-- Notification Channels -->
     <string name="Notification_Usage">Usage</string>
-    <string name="Notification_Usage_Description">Notification about the service usage.</string>
-    <string name="Notification_Lifecycle">Lifecycle</string>
-    <string name="Notification_Lifecycle_Description">Notification about the Lifecycle of the Service.</string>
-    <string name="Pin_Usage">PinUsage</string>
-    <string name="Notification_Pin_Usage_Description">Notification about the pin usage.</string>
-    <string name="Notification_Server">Server</string>
-    <string name="NotificationServer_Description">Display notifications sent from the server.</string>
+    <string name="Notification_Usage_Description">Notifications when FMD is receiving commands</string>
+    <string name="Pin_Usage">PIN Usage</string>
+    <string name="Notification_Pin_Usage_Description">Notifications when FMD is accessed is via the PIN</string>
+    <string name="Notification_Server">FMD Server</string>
+    <string name="Notification_Server_Description">Notifications related to FMD Server</string>
     <string name="Notification_Security">Security</string>
     <string name="Notification_Security_Description">Notifications about security updates</string>
-    <string name="Notification_FAIL">Fail</string>
-    <string name="Notification_Fail_Description">Notification when something fails, like the connection to fmd server.</string>
+    <string name="Notification_FAIL">Failures</string>
+    <string name="Notification_Fail_Description">Notifications when something fails, like the connection to FMD Server</string>
 
     <!-- Varia -->
 
