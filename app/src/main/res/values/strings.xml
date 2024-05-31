@@ -48,12 +48,12 @@
     <string name="Settings_About">About</string>
 
     <!-- Settings: General -->
-    <string name="Settings_FMD_via_Pin_Description">Allows you to communicate with FMD via a pin. You will be added to a temporary allowlist.</string>
-    <string name="Settings_Pin_Description">Used as confirmation before wiping the device or for temporary usage of the service.</string>
-    <string name="Settings_Enter_Pin">Enter Pin</string>
+    <string name="Settings_FMD_via_Pin_Description">Allows you to communicate with FMD via a PIN. This allows you to send commands from a phone number that is not in the Allowed Contacts list.</string>
+    <string name="Settings_Pin_Description">Used as confirmation before wiping the device and for anonymous usage of the service.</string>
+    <string name="Settings_Enter_Pin">Enter PIN</string>
     <string name="pin">PIN</string>
     <string name="pin_repeat">Repeat PIN</string>
-    <string name="Settings_FMDCommand_Description">The command used to communicate with the FindMyDevice application.</string>
+    <string name="Settings_FMDCommand_Description">The command used to communicate with the FMD.</string>
     <string name="Settings_Ringer_Tone_Description">Select a ringtone that will be played when "fmd ring" is sent.</string>
     <string name="Settings_Select_Ringtone">Select Ringtone</string>
     <string name="Settings_Lockscreenmessage_Description">Lock Screen Message:\nWhen locking the device, this message will appear on the lock screen.</string>
