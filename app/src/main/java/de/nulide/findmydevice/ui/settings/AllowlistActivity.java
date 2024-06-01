@@ -5,46 +5,41 @@ import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
-import android.database.DataSetObserver;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
-import android.view.ContextMenu;
 import android.view.Gravity;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.LinkedList;
 import java.util.List;
 
 import de.nulide.findmydevice.R;
+import de.nulide.findmydevice.data.Allowlist;
 import de.nulide.findmydevice.data.Contact;
 import de.nulide.findmydevice.data.Settings;
 import de.nulide.findmydevice.data.SettingsRepoSpec;
 import de.nulide.findmydevice.data.SettingsRepository;
-import de.nulide.findmydevice.data.Allowlist;
 import de.nulide.findmydevice.data.io.IO;
 import de.nulide.findmydevice.data.io.JSONFactory;
 import de.nulide.findmydevice.data.io.json.JSONWhiteList;
-import de.nulide.findmydevice.ui.helper.WhiteListViewAdapter;
+import de.nulide.findmydevice.ui.allowlist.AllowlistAdapter;
+import kotlin.Unit;
 
-public class AllowlistActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
+public class AllowlistActivity extends AppCompatActivity {
 
     private Allowlist allowlist;
     private Settings settings;
 
-    private ListView listWhiteList;
-    private WhiteListViewAdapter whiteListAdapter;
+    private AllowlistAdapter allowlistAdapter;
+
     private TextView textWhitelistEmpty;
-    private Button buttonAddContact;
 
     private final static int REQUEST_CODE = 6438;
 
@@ -56,72 +51,38 @@ public class AllowlistActivity extends AppCompatActivity implements View.OnClick
         allowlist = JSONFactory.convertJSONWhiteList(IO.read(JSONWhiteList.class, IO.whiteListFileName));
         settings = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(this)).getSettings();
 
-        listWhiteList = findViewById(R.id.listWhiteList);
-        whiteListAdapter = new WhiteListViewAdapter(this, allowlist);
-        listWhiteList.setAdapter(whiteListAdapter);
-        listWhiteList.setOnItemClickListener(this);
-        registerForContextMenu(listWhiteList);
-
-        whiteListAdapter.registerDataSetObserver(new DataSetObserver() {
-            @Override
-            public void onChanged() {
-                if (allowlist.isEmpty()) {
-                    textWhitelistEmpty.setVisibility(View.VISIBLE);
-                } else {
-                    textWhitelistEmpty.setVisibility(View.GONE);
-                }
-            }
-        });
+        allowlistAdapter = new AllowlistAdapter(this::onDeleteContact);
+        RecyclerView recyclerView = findViewById(R.id.recycler_allowlist);
+        recyclerView.setAdapter(allowlistAdapter);
 
         textWhitelistEmpty = findViewById(R.id.whitelistEmpty);
+        findViewById(R.id.buttonAddContact).setOnClickListener(this::onAddContactClicked);
+
+        updateScreen();
+    }
+
+    private void updateScreen() {
         if (allowlist.isEmpty()) {
             textWhitelistEmpty.setVisibility(View.VISIBLE);
+        } else {
+            textWhitelistEmpty.setVisibility(View.GONE);
         }
 
-        buttonAddContact = findViewById(R.id.buttonAddContact);
-        buttonAddContact.setOnClickListener(this);
+        allowlistAdapter.submitList(allowlist);
     }
 
-    @Override
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        menu.setHeaderTitle(getString(R.string.WhiteList_Select_Action));
-        menu.add(0, v.getId(), 0, getString(R.string.Delete));
-    }
-
-    @Override
-    public void onClick(View v) {
-        if (v == buttonAddContact) {
-            Intent intent = new Intent(Intent.ACTION_PICK, ContactsContract.CommonDataKinds.Phone.CONTENT_URI);
+    private void onAddContactClicked(View v) {
+        Intent intent = new Intent(Intent.ACTION_PICK, ContactsContract.CommonDataKinds.Phone.CONTENT_URI);
+        try {
+            startActivityForResult(intent, REQUEST_CODE);
+        } catch (ActivityNotFoundException e) {
+            intent = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
             try {
                 startActivityForResult(intent, REQUEST_CODE);
-            } catch (ActivityNotFoundException e) {
-                intent = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
-                try {
-                    startActivityForResult(intent, REQUEST_CODE);
-                } catch (ActivityNotFoundException e2) {
-                    Toast.makeText(this, getString(R.string.not_possible), Toast.LENGTH_LONG).show();
-                }
+            } catch (ActivityNotFoundException e2) {
+                Toast.makeText(this, getString(R.string.not_possible), Toast.LENGTH_LONG).show();
             }
         }
-    }
-
-    @Override
-    public boolean onContextItemSelected(MenuItem item) {
-        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-        int index = info.position;
-        if (item.getTitle() == getString(R.string.Delete)) {
-            allowlist.remove(index);
-            whiteListAdapter.notifyDataSetChanged();
-        } else {
-            return false;
-        }
-        return true;
-    }
-
-
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
     }
 
     @Override
@@ -155,9 +116,9 @@ public class AllowlistActivity extends AppCompatActivity implements View.OnClick
                         }
                     }
 
-                    if(numbers.size() == 1){
-                        addContactToWiteList(contacts.get(0));
-                    }else{
+                    if (numbers.size() == 1) {
+                        addContactToAllowList(contacts.get(0));
+                    } else {
                         final List<Contact> finalContacts = contacts;
                         AlertDialog.Builder builder = new AlertDialog.Builder(this);
                         builder.setTitle(getString(R.string.WhiteList_Select_Number));
@@ -165,7 +126,7 @@ public class AllowlistActivity extends AppCompatActivity implements View.OnClick
                         builder.setItems(numbersArray, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                addContactToWiteList(finalContacts.get(which));
+                                addContactToAllowList(finalContacts.get(which));
                             }
                         });
                         AlertDialog dialog = builder.create();
@@ -179,11 +140,12 @@ public class AllowlistActivity extends AppCompatActivity implements View.OnClick
         }
     }
 
-    private void addContactToWiteList(Contact contact){
-        if(contact != null) {
+    private void addContactToAllowList(Contact contact) {
+        if (contact != null) {
             if (!allowlist.checkForDuplicates(contact)) {
                 allowlist.add(contact);
-                whiteListAdapter.notifyDataSetChanged();
+                updateScreen();
+
                 if (!(Boolean) settings.get(Settings.SET_FIRST_TIME_CONTACT_ADDED)) {
                     new AlertDialog.Builder(this)
                             .setMessage(this.getString(R.string.Alert_First_Time_contact_added))
@@ -200,6 +162,13 @@ public class AllowlistActivity extends AppCompatActivity implements View.OnClick
                 toast.show();
             }
         }
+    }
+
+    private Unit onDeleteContact(String phoneNumber) {
+        allowlist.remove(phoneNumber);
+        updateScreen();
+        // make Kotlin-interop happy
+        return null;
     }
 
 }

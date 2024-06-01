@@ -20,10 +20,11 @@
         android:layout_height="0dp"
         android:layout_weight="0.5">
 
-        <ListView
-            android:id="@+id/listWhiteList"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_allowlist"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            app:layoutManager="LinearLayoutManager"
             tools:listitem="@layout/item_allowlist" />
 
         <TextView
