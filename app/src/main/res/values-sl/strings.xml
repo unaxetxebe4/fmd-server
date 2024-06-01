@@ -62,7 +62,6 @@
     <string name="registration_token">Registracijski žeton</string>
     <string name="Whitelist_empty">Ni zaupanja vrednih stikov. Pritisnite gumb za dodajanje!</string>
     <string name="WhiteList_Add_Contact">Dodaj stik</string>
-    <string name="WhiteList_Select_Action">Izberi dejanje:</string>
     <string name="WhiteList_Select_Number">Izberi telefonsko številko.</string>
     <string name="pin_repeat">Ponovi PIN</string>
     <string name="Settings_FMDServer_Change_Password_Button">Sprememba gesla</string>

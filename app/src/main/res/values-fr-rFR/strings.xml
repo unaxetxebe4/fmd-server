@@ -34,7 +34,6 @@
     <string name="MH_rings">sonnerie</string>
     <string name="MH_GPS_WILL_FOLLOW">Les coordonnées GPS seront envoyées bientôt.</string>
     <string name="Toast_Duplicate_contact">Ce contact existe déjà.</string>
-    <string name="WhiteList_Select_Action">Sélectionner une action :</string>
     <string name="Delete">Effacer</string>
     <string name="Settings_About">A propos de</string>
     <string name="Disabled">Désactivé</string>

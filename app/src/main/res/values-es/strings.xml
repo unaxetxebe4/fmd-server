@@ -39,7 +39,6 @@
     <string name="Enabled">Activado</string>
     <string name="Disabled">Desactivado</string>
     <string name="Delete">Eliminar</string>
-    <string name="WhiteList_Select_Action">Seleccione una acción:</string>
     <string name="Toast_Duplicate_contact">Este contacto ya existe.</string>
     <string name="MH_GPS_WILL_FOLLOW">Las coordenadas GPS se enviarán pronto.</string>
     <string name="MH_rings">timbra</string>

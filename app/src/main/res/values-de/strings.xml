@@ -76,7 +76,6 @@
     <string name="Whitelist_help">Die Kontakte in dieser Liste dürfen Ihnen FMD Befehle via SMS schicken. Befehle von allen anderen werden ignoriert.</string>
     <string name="Whitelist_empty">Keine erlaubten Kontakte. Klicken Sie den Button um Kontakte hinzuzufügen!</string>
     <string name="WhiteList_Add_Contact">Kontakt hinzufügen</string>
-    <string name="WhiteList_Select_Action">Wähle eine Aktion:</string>
     <string name="WhiteList_Select_Number">Wählen Sie eine der Telefonnummern aus.</string>
     <string name="Alert_First_Time_contact_added">Herzlichen Glückwunsch! Sie haben Ihren ersten Kontakt hinzugefügt. Sie können nun mit FMD kommunizieren, indem Sie eine SMS mit dem Inhalt \"fmd\" von der erlaubten Telefonnummer senden. Wenn alles funktioniert, wird die Anwendung antworten.</string>
     <!-- Settings: OpenCelliD -->

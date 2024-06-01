@@ -83,7 +83,6 @@
     <string name="Settings_FMD_Server_User_ID">معرف المستخدم:</string>
     <string name="server_version_error_low_version">مطلوب إصدار الخادم {MIN} على الأقل، ولكن الخادم المحدد لديه إصدار {CURRENT}. تابع على مسؤوليتك الخاصة.</string>
     <string name="Settings_FMDServer_AddAccount">خادم FMD: تسجيل الدخول/التسجيل</string>
-    <string name="WhiteList_Select_Action">حدد إجراءً:</string>
     <string name="Settings_FMDServer_use_default_server">استخدم خادم Nulide\'s العام</string>
     <string name="OpenCellId_privacy">الخصوصية: ضع في اعتبارك أن OpenCelliD يتعرف على برجك الخلوي الحالي وبالتالي موقعك مع كل استعلام API.</string>
     <string name="notify_crypto_update_title">الإجراء مطلوب</string>

@@ -52,7 +52,6 @@
     <string name="password">密码</string>
     <string name="registration_token">注册密钥</string>
     <string name="registration_token_hint">私有实例可能需要一个私有密钥。如果为公有实例请留空。</string>
-    <string name="WhiteList_Select_Action">选择一个行为：</string>
     <string name="WhiteList_Select_Number">选择其中一个手机号码。</string>
     <string name="OpenCellId_privacy">隐私：请记住OpenCelliD了解您现在链接的信号塔，因此您的位置会随着每次API查询更新。</string>
     <string name="OpenCellId_open_website">打开OpenCelliD网站</string>
