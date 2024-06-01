@@ -4,9 +4,9 @@ import java.util.LinkedList;
 
 import de.nulide.findmydevice.data.io.IO;
 
-public class WhiteList extends LinkedList<Contact> {
+public class Allowlist extends LinkedList<Contact> {
 
-    public WhiteList() {
+    public Allowlist() {
 
     }
 

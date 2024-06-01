@@ -2,7 +2,6 @@ package de.nulide.findmydevice.receiver;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
 
 import java.util.Calendar;
 
@@ -10,7 +9,7 @@ import de.nulide.findmydevice.data.ConfigSMSRec;
 import de.nulide.findmydevice.data.Settings;
 import de.nulide.findmydevice.data.SettingsRepoSpec;
 import de.nulide.findmydevice.data.SettingsRepository;
-import de.nulide.findmydevice.data.WhiteList;
+import de.nulide.findmydevice.data.Allowlist;
 import de.nulide.findmydevice.data.io.IO;
 import de.nulide.findmydevice.data.io.JSONFactory;
 import de.nulide.findmydevice.data.io.json.JSONMap;
@@ -22,7 +21,7 @@ import de.nulide.findmydevice.utils.Permission;
 
 abstract class SuperReceiver extends BroadcastReceiver {
 
-    protected WhiteList whiteList;
+    protected Allowlist whiteList;
     protected ConfigSMSRec config;
     protected Settings settings;
 

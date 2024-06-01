@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.DataSetObserver;
 import android.net.Uri;
@@ -31,15 +30,15 @@ import de.nulide.findmydevice.data.Contact;
 import de.nulide.findmydevice.data.Settings;
 import de.nulide.findmydevice.data.SettingsRepoSpec;
 import de.nulide.findmydevice.data.SettingsRepository;
-import de.nulide.findmydevice.data.WhiteList;
+import de.nulide.findmydevice.data.Allowlist;
 import de.nulide.findmydevice.data.io.IO;
 import de.nulide.findmydevice.data.io.JSONFactory;
 import de.nulide.findmydevice.data.io.json.JSONWhiteList;
 import de.nulide.findmydevice.ui.helper.WhiteListViewAdapter;
 
-public class WhiteListActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
+public class AllowlistActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
 
-    private WhiteList whiteList;
+    private Allowlist allowlist;
     private Settings settings;
 
     private ListView listWhiteList;
@@ -52,13 +51,13 @@ public class WhiteListActivity extends AppCompatActivity implements View.OnClick
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_white_list);
+        setContentView(R.layout.activity_allowlist);
 
-        whiteList = JSONFactory.convertJSONWhiteList(IO.read(JSONWhiteList.class, IO.whiteListFileName));
+        allowlist = JSONFactory.convertJSONWhiteList(IO.read(JSONWhiteList.class, IO.whiteListFileName));
         settings = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(this)).getSettings();
 
         listWhiteList = findViewById(R.id.listWhiteList);
-        whiteListAdapter = new WhiteListViewAdapter(this, whiteList);
+        whiteListAdapter = new WhiteListViewAdapter(this, allowlist);
         listWhiteList.setAdapter(whiteListAdapter);
         listWhiteList.setOnItemClickListener(this);
         registerForContextMenu(listWhiteList);
@@ -66,7 +65,7 @@ public class WhiteListActivity extends AppCompatActivity implements View.OnClick
         whiteListAdapter.registerDataSetObserver(new DataSetObserver() {
             @Override
             public void onChanged() {
-                if (whiteList.isEmpty()) {
+                if (allowlist.isEmpty()) {
                     textWhitelistEmpty.setVisibility(View.VISIBLE);
                 } else {
                     textWhitelistEmpty.setVisibility(View.GONE);
@@ -75,7 +74,7 @@ public class WhiteListActivity extends AppCompatActivity implements View.OnClick
         });
 
         textWhitelistEmpty = findViewById(R.id.whitelistEmpty);
-        if (whiteList.isEmpty()) {
+        if (allowlist.isEmpty()) {
             textWhitelistEmpty.setVisibility(View.VISIBLE);
         }
 
@@ -111,7 +110,7 @@ public class WhiteListActivity extends AppCompatActivity implements View.OnClick
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         int index = info.position;
         if (item.getTitle() == getString(R.string.Delete)) {
-            whiteList.remove(index);
+            allowlist.remove(index);
             whiteListAdapter.notifyDataSetChanged();
         } else {
             return false;
@@ -182,8 +181,8 @@ public class WhiteListActivity extends AppCompatActivity implements View.OnClick
 
     private void addContactToWiteList(Contact contact){
         if(contact != null) {
-            if (!whiteList.checkForDuplicates(contact)) {
-                whiteList.add(contact);
+            if (!allowlist.checkForDuplicates(contact)) {
+                allowlist.add(contact);
                 whiteListAdapter.notifyDataSetChanged();
                 if (!(Boolean) settings.get(Settings.SET_FIRST_TIME_CONTACT_ADDED)) {
                     new AlertDialog.Builder(this)

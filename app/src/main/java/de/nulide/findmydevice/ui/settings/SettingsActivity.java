@@ -65,7 +65,7 @@ public class SettingsActivity extends AppCompatActivity {
                 }
                 break;
             case 2:
-                settingIntent = new Intent(this, WhiteListActivity.class);
+                settingIntent = new Intent(this, AllowlistActivity.class);
                 break;
             case 3:
                 settingIntent = new Intent(this, OpenCellIdActivity.class);

@@ -73,7 +73,7 @@
             android:name="com.mikepenz.aboutlibraries.ui.LibsActivity"
             android:theme="@style/CustomAboutLibrariesStyle" />
         <activity
-            android:name=".ui.settings.WhiteListActivity"
+            android:name=".ui.settings.AllowlistActivity"
             android:label="@string/Settings_WhiteList" />
         <activity
             android:name=".ui.settings.SettingsActivity"

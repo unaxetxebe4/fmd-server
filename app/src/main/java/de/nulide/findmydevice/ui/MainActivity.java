@@ -18,7 +18,7 @@ import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.data.Settings;
 import de.nulide.findmydevice.data.SettingsRepository;
 import de.nulide.findmydevice.data.SettingsRepoSpec;
-import de.nulide.findmydevice.data.WhiteList;
+import de.nulide.findmydevice.data.Allowlist;
 import de.nulide.findmydevice.data.io.IO;
 import de.nulide.findmydevice.data.io.JSONFactory;
 import de.nulide.findmydevice.data.io.json.JSONWhiteList;
@@ -26,13 +26,13 @@ import de.nulide.findmydevice.receiver.PushReceiver;
 import de.nulide.findmydevice.services.FMDServerLocationUploadService;
 import de.nulide.findmydevice.ui.onboarding.UpdateboardingModernCryptoActivity;
 import de.nulide.findmydevice.ui.settings.SettingsActivity;
-import de.nulide.findmydevice.ui.settings.WhiteListActivity;
+import de.nulide.findmydevice.ui.settings.AllowlistActivity;
 import de.nulide.findmydevice.utils.Logger;
 import de.nulide.findmydevice.utils.Notifications;
 import de.nulide.findmydevice.utils.Permission;
 import host.stjin.expandablecardview.ExpandableCardView;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity {
 
     private TextView textViewFMDCommandName;
     private TextView textViewWhiteListCount;
@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         textViewOverlay = findViewById(R.id.textViewOverlay);
         textViewNotification = findViewById(R.id.textViewNotification);
         buttonOpenWhitelist = findViewById(R.id.buttonOpenWhiteList);
-        buttonOpenWhitelist.setOnClickListener(this);
+        buttonOpenWhitelist.setOnClickListener(this::openAllowlistActivity);
         textViewServerServiceEnabled = findViewById(R.id.textViewServerEnabled);
         textViewServerRegistered = findViewById(R.id.textViewRegisteredOnServer);
         textViewPush = findViewById(R.id.textViewPushAvailable);
@@ -121,21 +121,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void updateViews() {
-        WhiteList whiteList = JSONFactory.convertJSONWhiteList(IO.read(JSONWhiteList.class, IO.whiteListFileName));
+        Allowlist allowlist = JSONFactory.convertJSONWhiteList(IO.read(JSONWhiteList.class, IO.whiteListFileName));
         textViewFMDCommandName.setText((String) settings.get(Settings.SET_FMD_COMMAND));
-        textViewWhiteListCount.setText(Integer.valueOf(whiteList.size()).toString());
+        textViewWhiteListCount.setText(Integer.valueOf(allowlist.size()).toString());
 
         int colorEnabled = getColor(R.color.colorEnabled);
         int colorDisabled = getColor(R.color.colorDisabled);
 
         ForegroundColorSpan whitelistCountColor;
-        if (whiteList.size() > 0) {
+        if (allowlist.size() > 0) {
             whitelistCountColor = new ForegroundColorSpan(colorEnabled);
         } else {
             whitelistCountColor = new ForegroundColorSpan(colorDisabled);
         }
         String whitelistPrefix = getString(R.string.Settings_WhiteList) + ": ";
-        String whitelistAll = whitelistPrefix + whiteList.size();
+        String whitelistAll = whitelistPrefix + allowlist.size();
         Spannable spannable = new SpannableString(whitelistAll);
         spannable.setSpan(whitelistCountColor, whitelistPrefix.length(), whitelistAll.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         textViewWhiteListCount.setText(spannable, TextView.BufferType.SPANNABLE);
@@ -246,11 +246,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onClick(View v) {
-        if(v == buttonOpenWhitelist){
-            Intent whiteListActivity = new Intent(this, WhiteListActivity.class);
-            startActivity(whiteListActivity);
-        }
+    private void openAllowlistActivity(View v) {
+            Intent allowlistActivity = new Intent(this, AllowlistActivity.class);
+            startActivity(allowlistActivity);
     }
 }

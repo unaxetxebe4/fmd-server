@@ -8,14 +8,14 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import de.nulide.findmydevice.R;
-import de.nulide.findmydevice.data.WhiteList;
+import de.nulide.findmydevice.data.Allowlist;
 
 public class WhiteListViewAdapter extends BaseAdapter {
 
-    private final WhiteList whitelist;
+    private final Allowlist whitelist;
     private final LayoutInflater inflater;
 
-    public WhiteListViewAdapter(Context context, WhiteList whitelist) {
+    public WhiteListViewAdapter(Context context, Allowlist whitelist) {
         this.whitelist = whitelist;
         inflater = (LayoutInflater.from(context));
     }
@@ -37,7 +37,7 @@ public class WhiteListViewAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View view, ViewGroup parent) {
-        view = inflater.inflate(R.layout.item_whitelist, null);
+        view = inflater.inflate(R.layout.item_allowlist, null);
         TextView name = view.findViewById(R.id.textViewWLItem1);
         TextView number = view.findViewById(R.id.textViewWLItem2);
         name.setText(whitelist.get(position).getName());
