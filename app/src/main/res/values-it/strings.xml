@@ -44,7 +44,6 @@
     <string name="Enabled">Attivo</string>
     <string name="Disabled">Non Attivo</string>
     <string name="Delete">Cancella</string>
-    <string name="WhiteList_Select_Action">Seleziona una scelta:</string>
     <string name="Toast_Duplicate_contact">Questo contatto esiste già.</string>
     <string name="MH_GPS_WILL_FOLLOW">Le coordinate GPS verranno inviate a breve.</string>
     <string name="MH_rings">squilli</string>

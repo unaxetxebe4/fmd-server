@@ -190,6 +190,5 @@
     <string name="Settings_FMDServer_Alert_PrivacyPolicy_Title">Zásady ochrany osobních údajů</string>
     <string name="registration_token_hint">Soukromé instance mohou vyžadovat tajný token. Ponechte prázdné, pokud se jedná o veřejnou instanci.</string>
     <string name="Whitelist_empty">Žádné povolené kontakty. Klepněte na tlačítko pro jejich přidání!</string>
-    <string name="WhiteList_Select_Action">Zvolte akci:</string>
     <string name="WhiteList_Select_Number">Vyberte jedno z mobilních čísel.</string>
 </resources>

@@ -40,7 +40,6 @@
     <string name="Enabled">Käytössä</string>
     <string name="Disabled">Ei käytössä</string>
     <string name="Delete">Poista</string>
-    <string name="WhiteList_Select_Action">Valitse toiminto:</string>
     <string name="Toast_Duplicate_contact">Yhteystieto on jo olemassa.</string>
     <string name="MH_GPS_WILL_FOLLOW">GPS-koordinaatit lähetetään pian.</string>
     <string name="MH_rings">soi</string>

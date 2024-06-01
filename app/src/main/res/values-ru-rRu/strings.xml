@@ -41,7 +41,6 @@
     <string name="Enabled">Включено</string>
     <string name="Disabled">Отключено</string>
     <string name="Delete">Удалить</string>
-    <string name="WhiteList_Select_Action">Выберите действие:</string>
     <string name="Toast_Duplicate_contact">Этот контакт уже существует.</string>
     <string name="MH_GPS_WILL_FOLLOW">GPS координаты скоро будут отправлены.</string>
     <string name="MH_rings">звонки</string>
