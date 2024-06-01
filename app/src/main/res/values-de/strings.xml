@@ -25,7 +25,7 @@
     <string name="Settings_Logs">Logs</string>
     <string name="Settings_About">Über</string>
     <!-- Settings: General -->
-    <string name="Settings_FMD_via_Pin_Description">Hiermit kannst du mit FMD über einen PIN kommunizieren. So kannst du Befehle von einer Telefonnummer schicken, welche nicht in deinen Erlaubten Kontakten ist.</string>
+    <string name="Settings_FMD_via_Pin_Description">Hiermit kannst du mit FMD über eine PIN kommunizieren. So kannst du Befehle von einer Telefonnummer schicken, welche nicht in deinen Erlaubten Kontakten ist.</string>
     <string name="Settings_Pin_Description">Wird als Bestätigung vor dem Löschen des Geräts und für die anonyme Nutzung von FMD verwendet.</string>
     <string name="Settings_Enter_Pin">PIN eingeben</string>
     <string name="pin">PIN</string>
