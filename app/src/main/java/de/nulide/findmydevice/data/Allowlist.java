@@ -1,12 +1,13 @@
 package de.nulide.findmydevice.data;
 
 import java.util.LinkedList;
+import java.util.Objects;
 
 import de.nulide.findmydevice.data.io.IO;
 
-public class WhiteList extends LinkedList<Contact> {
+public class Allowlist extends LinkedList<Contact> {
 
-    public WhiteList() {
+    public Allowlist() {
 
     }
 
@@ -20,6 +21,16 @@ public class WhiteList extends LinkedList<Contact> {
         super.remove(index);
         IO.write(this, IO.whiteListFileName);
         return c;
+    }
+
+    public void remove(String phoneNumber) {
+        for (Contact c : this) {
+            if (Objects.equals(c.getNumber(), phoneNumber)) {
+                remove(c);
+                break;
+            }
+        }
+        IO.write(this, IO.whiteListFileName);
     }
 
     @Override

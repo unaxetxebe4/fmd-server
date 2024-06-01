@@ -16,7 +16,7 @@ import de.nulide.findmydevice.data.ConfigSMSRec;
 import de.nulide.findmydevice.data.Settings;
 import de.nulide.findmydevice.data.SettingsRepoSpec;
 import de.nulide.findmydevice.data.SettingsRepository;
-import de.nulide.findmydevice.data.WhiteList;
+import de.nulide.findmydevice.data.Allowlist;
 import de.nulide.findmydevice.data.io.IO;
 import de.nulide.findmydevice.data.io.JSONFactory;
 import de.nulide.findmydevice.data.io.json.JSONMap;
@@ -37,7 +37,7 @@ public class FMDSMSService extends JobService {
     private static final String MESSAGE = "msg";
     private static final String TIME = "time";
 
-    private WhiteList whiteList;
+    private Allowlist allowlist;
     private ComponentHandler ch;
     private ConfigSMSRec config;
 
@@ -60,7 +60,7 @@ public class FMDSMSService extends JobService {
     public boolean onStartJob(JobParameters params) {
         IO.context = this;
         Logger.init(Thread.currentThread(), this);
-        whiteList = JSONFactory.convertJSONWhiteList(IO.read(JSONWhiteList.class, IO.whiteListFileName));
+        allowlist = JSONFactory.convertJSONWhiteList(IO.read(JSONWhiteList.class, IO.whiteListFileName));
         Settings settings = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(this)).getSettings();
         config = JSONFactory.convertJSONConfig(IO.read(JSONMap.class, IO.SMSReceiverTempData));
 
@@ -78,8 +78,8 @@ public class FMDSMSService extends JobService {
         ch.setSender(new SMS(receiver));
         boolean inWhitelist = false;
         String executedCommand = "";
-        for (int iwl = 0; iwl < whiteList.size(); iwl++) {
-            if (PhoneNumberUtils.compare(whiteList.get(iwl).getNumber(), receiver)) {
+        for (int iwl = 0; iwl < allowlist.size(); iwl++) {
+            if (PhoneNumberUtils.compare(allowlist.get(iwl).getNumber(), receiver)) {
                 Logger.logSession("Usage", receiver + " used FMD");
                 executedCommand = ch.getMessageHandler().handle(msg, this);
                 inWhitelist = true;

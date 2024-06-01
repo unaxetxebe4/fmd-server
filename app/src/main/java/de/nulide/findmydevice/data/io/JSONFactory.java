@@ -5,7 +5,7 @@ import de.nulide.findmydevice.data.Contact;
 import de.nulide.findmydevice.data.Settings;
 import de.nulide.findmydevice.data.LogData;
 import de.nulide.findmydevice.data.LogEntry;
-import de.nulide.findmydevice.data.WhiteList;
+import de.nulide.findmydevice.data.Allowlist;
 import de.nulide.findmydevice.data.io.json.JSONContact;
 import de.nulide.findmydevice.data.io.json.JSONLog;
 import de.nulide.findmydevice.data.io.json.JSONLogEntry;
@@ -39,17 +39,17 @@ public class JSONFactory {
         return jsonContact;
     }
 
-    public static WhiteList convertJSONWhiteList(JSONWhiteList jsonWhiteList) {
-        WhiteList whiteList = new WhiteList();
+    public static Allowlist convertJSONWhiteList(JSONWhiteList jsonWhiteList) {
+        Allowlist allowlist = new Allowlist();
         if(jsonWhiteList != null) {
             for (JSONContact jsonContact : jsonWhiteList) {
-                whiteList.superAdd(convertJSONContact(jsonContact));
+                allowlist.superAdd(convertJSONContact(jsonContact));
             }
         }
-        return whiteList;
+        return allowlist;
     }
 
-    public static JSONWhiteList convertWhiteList(WhiteList whiteList) {
+    public static JSONWhiteList convertWhiteList(Allowlist whiteList) {
         JSONWhiteList jsonWhiteList = new JSONWhiteList();
         for (Contact c : whiteList) {
             jsonWhiteList.add(convertContact(c));

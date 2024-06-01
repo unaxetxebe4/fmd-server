@@ -12,7 +12,7 @@ import de.nulide.findmydevice.data.ConfigSMSRec;
 import de.nulide.findmydevice.data.Settings;
 import de.nulide.findmydevice.data.SettingsRepoSpec;
 import de.nulide.findmydevice.data.SettingsRepository;
-import de.nulide.findmydevice.data.WhiteList;
+import de.nulide.findmydevice.data.Allowlist;
 import de.nulide.findmydevice.data.io.IO;
 import de.nulide.findmydevice.data.io.JSONFactory;
 import de.nulide.findmydevice.data.io.json.JSONMap;
@@ -28,7 +28,7 @@ import de.nulide.findmydevice.utils.Permission;
 public class ThirdPartyAccessService extends NotificationListenerService {
 
     private Settings settings;
-    protected WhiteList whiteList;
+    protected Allowlist allowlist;
     protected ConfigSMSRec config;
 
     protected ComponentHandler ch;
@@ -37,7 +37,7 @@ public class ThirdPartyAccessService extends NotificationListenerService {
     protected void init(Context context) {
         IO.context = context;
         Logger.init(Thread.currentThread(), context);
-        whiteList = JSONFactory.convertJSONWhiteList(IO.read(JSONWhiteList.class, IO.whiteListFileName));
+        allowlist = JSONFactory.convertJSONWhiteList(IO.read(JSONWhiteList.class, IO.whiteListFileName));
         settings = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(this)).getSettings();
         config = JSONFactory.convertJSONConfig(IO.read(JSONMap.class, IO.SMSReceiverTempData));
 

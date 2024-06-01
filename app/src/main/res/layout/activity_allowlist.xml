@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.settings.WhiteListActivity">
+    tools:context=".ui.settings.AllowlistActivity">
 
     <TextView
         android:layout_width="match_parent"
@@ -20,11 +20,12 @@
         android:layout_height="0dp"
         android:layout_weight="0.5">
 
-        <ListView
-            android:id="@+id/listWhiteList"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_allowlist"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:listitem="@layout/whitelist_item" />
+            app:layoutManager="LinearLayoutManager"
+            tools:listitem="@layout/item_allowlist" />
 
         <TextView
             android:id="@+id/whitelistEmpty"
