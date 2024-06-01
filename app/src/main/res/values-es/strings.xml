@@ -28,13 +28,14 @@
 \nSi no otorga este permiso, esta funcionalidad no se activará.</string>
     <string name="Introduction_Give_Permission">Otorgar Permiso</string>
     <string name="Introduction_Next">Siguiente</string>
-    <string name="Locked_Lock_Screen">FindMyDevice ¡Este teléfono está bloqueado!
-\nMensaje del/de la dueño/a:</string>
+    <string name="Locked_Lock_Screen">FindMyDevice
+\n¡Este teléfono está bloqueado!
+\nMensaje del propietari@:</string>
     <string name="Enable">Activar</string>
-    <string name="Settings_Pin_Description">Usado como confirmación antes de borrar el dispositivo o para el uso temporal del servicio.</string>
+    <string name="Settings_Pin_Description">Se utiliza como confirmación antes de borrar el dispositivo y para el uso anónimo del servicio.</string>
     <string name="Settings_Lockscreenmessage_Description">Mensaje de la Pantalla de Bloqueo:
 \nAl bloquear el dispositivo, este mensaje aparecerá en la pantalla de bloqueo.</string>
-    <string name="Settings_FMDCommand_Description">El comando usado para comunicarse con la aplicación FindMyDevice.</string>
+    <string name="Settings_FMDCommand_Description">El comando utilizado para comunicarse con el FMD.</string>
     <string name="WhiteList_Add_Contact">Añadir Contacto</string>
     <string name="Enabled">Activado</string>
     <string name="Disabled">Desactivado</string>
@@ -58,8 +59,8 @@
     <string name="MH_Help_Lock">" lock - bloquea el teléfono"</string>
     <string name="MH_Help_Stats">" stats - envía la información del dispositivo"</string>
     <string name="MH_Help_delete">" delete - restablece el dispositivo"</string>
-    <string name="Settings_FMD_via_Pin_Description">Le permite comunicarse con FMD mediante un pin. Será añadido/a a una Lista Blanca temporal.</string>
-    <string name="Settings_Enter_Pin">Ingresar Pin</string>
+    <string name="Settings_FMD_via_Pin_Description">Te permite comunicarte con FMD mediante un PIN. Esto te permite enviar comandos desde un número de teléfono que no está en la lista de contactos permitidos.</string>
+    <string name="Settings_Enter_Pin">Introducir el PIN</string>
     <string name="MH_Pin_Accepted">¡Pin aceptado!</string>
     <string name="Alert_First_Time_contact_added">Felicidades. Ha añadido su primer contacto. Ahora puede comunicarse con FMD enviando un mensaje SMS que contenga \"fmd\" desde el número de teléfono autorizado. Cuando todo funcione, la aplicación responderá.</string>
     <string name="R_Stop_ring">DEJAR DE TIMBRAR</string>
@@ -74,9 +75,9 @@
     <string name="Settings_Settings">Ajustes</string>
     <string name="Error">Error</string>
     <string name="Notification_Usage">Uso</string>
-    <string name="Pin_Usage">Uso de Pin</string>
-    <string name="Notification_Usage_Description">Notificación acerca del uso del servicio.</string>
-    <string name="Notification_Pin_Usage_Description">Notificación acerca del uso del pin.</string>
+    <string name="Pin_Usage">Uso del PIN</string>
+    <string name="Notification_Usage_Description">Notificaciones cuando FMD está recibiendo comandos</string>
+    <string name="Notification_Pin_Usage_Description">Las notificaciones cuando se accede a FMD se realizan a través del PIN</string>
     <string name="JSON_RL_Error">Error al obtener la ubicación desde OpenCelliD. Por favor, intenta ir al siguiente enlace. Los parámetros que quiere son \"lon\" y \"lat\".</string>
     <string name="LockScreen_Usage_detectd">LockScreenMessage: Uso detectado.</string>
     <string name="LockScreen_Backbutton_pressed">Mensaje de la Pantalla de Bloqueo: Botón de Retroceso pulsado.</string>
@@ -104,12 +105,12 @@
 \nSi no se selecciona ninguna, no se cargarán localizaciones regularmente. (Puede seguir utilizando la interfaz web para forzar una carga. Esto requiere push.)</string>
     <string name="GPS">GPS</string>
     <string name="Cell">Celular</string>
-    <string name="MH_Help_Expert_GPS">" GPS (on/off) - activa o desactiva el GPS"</string>
+    <string name="MH_Help_Expert_GPS">" GPS (encendido/apagado): enciende o apaga el GPS."</string>
     <string name="MH_NO_SECURE_SETTINGS">Lo sentimos, la aplicación no tiene permiso para hacerlo.</string>
     <string name="MH_Help_expert">" expert - página de ayuda para los comandos expertos."</string>
     <string name="Permission_Notification">Si quieres que FMD responda a los mensajes de otras aplicaciones, como Telegram, Whatsapp, etc., puede darle a FMD acceso a las notificaciones.</string>
     <string name="Info_Notification_Access">Notificación</string>
-    <string name="Notification_Server">Servidor</string>
+    <string name="Notification_Server">Servidor FMD</string>
     <string name="Info_Server_Push">Push:</string>
     <string name="Settings_FMDServer_Delete_Button">Eliminar Datos</string>
     <string name="Settings_FMDServer_Alert_DeleteData">Eliminar Datos</string>
@@ -121,7 +122,7 @@
     <string name="Settings_Import">Importar Ajustes</string>
     <string name="Settings_Export">Exportar Ajustes</string>
     <string name="MH_CAM_CAPTURE">"El dispositivo pronto enviará una imagen a fmdserver. Pronto podrá verla aquí: "</string>
-    <string name="Settings_FMDServer_LOW_BAT_Upload_Description">Enviar la ubicación de este dispositivo cuando el nivel de la batería sea bajo. (Esto requiere Acceso a las Notificaciones)</string>
+    <string name="Settings_FMDServer_LOW_BAT_Upload_Description">Enviar la ubicación de este dispositivo cuando el nivel de la batería sea bajo. Esto requiere acceso a las notificaciones.</string>
     <string name="loading">Cargando…</string>
     <string name="help">Ayuda</string>
     <string name="copied">Copiado</string>
@@ -179,8 +180,8 @@
 \nAún puedes continuar, pero es posible que tu cuenta no haya sido eliminada del servidor. Si continúa, su cuenta se eliminará localmente de este dispositivo.</string>
     <string name="server_unregister_dont_continue">No continuar</string>
     <string name="Notification_Security">Seguridad</string>
-    <string name="Notification_FAIL">Fallido</string>
-    <string name="Notification_Fail_Description">Notificación cuando algo falla, como la conexión al servidor fmd.</string>
+    <string name="Notification_FAIL">Fallos</string>
+    <string name="Notification_Fail_Description">Notificaciones cuando algo falla, como la conexión al servidor FMD</string>
     <string name="Permission_IGNORE_BATTERY_OPTIMIZATION">Se supone que esta aplicación funciona en segundo plano. Para asegurarse de que funciona incluso cuando el teléfono está en modo de espera, es necesario desactivar la optimización de la batería para esta aplicación.</string>
     <string name="Permission_POST_NOTIFICATIONS">FMD le enviará ocasionalmente notificaciones, por ejemplo para avisarle de que alguien está localizando su dispositivo.</string>
     <string name="Introduction_Root">Otorgar con Root</string>
@@ -190,4 +191,6 @@
     <string name="request_failed_status_code">Código de estado</string>
     <string name="request_failed_response_body">Cuerpo de la respuesta</string>
     <string name="request_failed_exception">Excepción</string>
+    <string name="Settings_FMDServer_Server_Url">URL del servidor</string>
+    <string name="Notification_Server_Description">Notificaciones relacionadas con el servidor FMD</string>
 </resources>
