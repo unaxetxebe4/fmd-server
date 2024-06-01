@@ -85,13 +85,10 @@
     <string name="about_wiki">维基</string>
     <string name="app_description">FMD（寻找我的设备）允许您远程定位您的设备。你可以通过SMS来与FMD交流，即时消息，或使用FMD服务端。定位您的设备，使它响铃，锁定它，或抹掉它-全部都是远程控制的。</string>
     <string name="server_unregister_failed_title">取消注册失败</string>
-    <string name="Notification_Lifecycle">生命周期</string>
-    <string name="Notification_Lifecycle_Description">有关于服务生命周期的通知。</string>
     <string name="Notification_Usage_Description">有关于此服务用途的通知。</string>
     <string name="Pin_Usage">PIN的用途</string>
     <string name="Notification_Pin_Usage_Description">有关于PIN用途的通知。</string>
     <string name="Notification_Server">服务</string>
-    <string name="NotificationServer_Description">显示从服务端发送的通知。</string>
     <string name="Notification_Security">安全性</string>
     <string name="Notification_FAIL">错误</string>
     <string name="notify_crypto_update_title">需要行为</string>

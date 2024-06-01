@@ -110,9 +110,7 @@
     <string name="OpenCellId_API_Key_Description">Chiave API:</string>
     <string name="Notification_Usage">Utilizzo</string>
     <string name="Pin_Usage">Utilizzo Pin</string>
-    <string name="Notification_Lifecycle">Durata</string>
     <string name="Notification_Usage_Description">Notifica sull\'utilizzo del servizio.</string>
-    <string name="Notification_Lifecycle_Description">Notifica relativa alla durata del servizio.</string>
     <string name="Notification_Pin_Usage_Description">Notifica sull\'utilizzo del pin.</string>
     <string name="JSON_RL_Error">Errore durante l\'acquisizione della posizione da OpenCelliD. Si prega di provare il seguente link. I parametri necessari sono \"lon\" e \"lat\".</string>
     <string name="LockScreen_Usage_detectd">MessaggioBloccoSchermo: Rilevato utilizzo.</string>
@@ -149,7 +147,6 @@
     <string name="Permission_Notification">Se vuoi che FMD gestisca i messaggi da altre applicazioni come Telegram, Whatsapp, ecc., Puoi dare accesso alle notifiche di FMD.</string>
     <string name="Info_Notification_Access">Notifiche</string>
     <string name="Notification_Server">Server</string>
-    <string name="NotificationServer_Description">Visualizza le notifiche inviate dal server.</string>
     <string name="Info_Server_Push">Push:</string>
     <string name="Settings_FMDServer_Delete_Button">Cancella Dati</string>
     <string name="Settings_FMDServer_Alert_DeleteData">Cancella Dati</string>

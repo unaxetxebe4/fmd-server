@@ -36,7 +36,6 @@
     <string name="server_unregister_continue_anyway">استمر على أي حال</string>
     <string name="server_unregister_dont_continue">لا تستمر</string>
     <string name="Notification_Usage_Description">إشعار حول استخدام الخدمة.</string>
-    <string name="NotificationServer_Description">عرض الإشعارات المرسلة من الخادم.</string>
     <string name="Notification_FAIL">فشل</string>
     <string name="Error">خطأ</string>
     <string name="Toast_Empty_FMDCommand">أمر فارغ غير مسموح به

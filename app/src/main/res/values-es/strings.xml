@@ -77,9 +77,7 @@
     <string name="OpenCellId_OpenCellId">OpenCelliD</string>
     <string name="Notification_Usage">Uso</string>
     <string name="Pin_Usage">Uso de Pin</string>
-    <string name="Notification_Lifecycle">Ciclo de vida</string>
     <string name="Notification_Usage_Description">Notificación acerca del uso del servicio.</string>
-    <string name="Notification_Lifecycle_Description">Notificación acerca del Ciclo de vida del Servicio</string>
     <string name="Notification_Pin_Usage_Description">Notificación acerca del uso del pin.</string>
     <string name="JSON_RL_Error">Error al obtener la ubicación desde OpenCelliD. Por favor, intenta ir al siguiente enlace. Los parámetros que quiere son \"lon\" y \"lat\".</string>
     <string name="LockScreen_Usage_detectd">LockScreenMessage: Uso detectado.</string>
@@ -117,7 +115,6 @@
     <string name="Permission_Notification">Si quieres que FMD responda a los mensajes de otras aplicaciones, como Telegram, Whatsapp, etc., puede darle a FMD acceso a las notificaciones.</string>
     <string name="Info_Notification_Access">Notificación</string>
     <string name="Notification_Server">Servidor</string>
-    <string name="NotificationServer_Description">Mostrar notificaciones enviadas desde el servidor</string>
     <string name="Info_Server_Push">Push:</string>
     <string name="Settings_FMDServer_Delete_Button">Eliminar Datos</string>
     <string name="Settings_FMDServer_Alert_DeleteData">Eliminar Datos</string>

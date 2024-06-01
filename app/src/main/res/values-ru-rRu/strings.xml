@@ -87,9 +87,7 @@
     <string name="OpenCellId_OpenCellId">OpenCelliD</string>
     <string name="Notification_Usage">Использование</string>
     <string name="Pin_Usage">Использование PIN-кода</string>
-    <string name="Notification_Lifecycle">Жизненный цикл</string>
     <string name="Notification_Usage_Description">Уведомление об использовании сервиса.</string>
-    <string name="Notification_Lifecycle_Description">Уведомление о жизненном цикле сервиса.</string>
     <string name="Notification_Pin_Usage_Description">Уведомление об использовании PIN-кода.</string>
     <string name="JSON_RL_Error">Ошибка получения местоположения от OpenCelliD. Пожалуйста, попробуйте данную ссылку. Параметры, которые вам нужны - это \"lon\" (долгота) и \"lat\" (широта).</string>
     <string name="LockScreen_Usage_detectd">Сообщение на экране блокировки: Обнаружено использование устройства.</string>
@@ -189,7 +187,6 @@
     <string name="OpenCellId_test_no_connection">Нет подключения к сотовой вышке</string>
     <string name="about">Подробности (информация)</string>
     <string name="Notification_Fail_Description">Уведомление, когда что-то не удаётся сделать, например, подключиться к FMD Серверу.</string>
-    <string name="NotificationServer_Description">Отображать уведомления, отправленные с сервера.</string>
     <string name="Notification_Security">Безопасность</string>
     <string name="Notification_Security_Description">Уведомления об обновлениях безопасности</string>
     <string name="Notification_FAIL">Не удалось</string>

@@ -16,10 +16,8 @@
 \nMůžete pokračovat dále, ale váš účet nemusel být smazán ze serveru. Pokud budete pokračovat, bude váš účet smazán lokálně z tohoto zařízení.</string>
     <string name="server_unregister_dont_continue">Nepokračovat</string>
     <string name="Notification_Usage">Využití</string>
-    <string name="Notification_Lifecycle_Description">Oznámení o cyklu služby.</string>
     <string name="Notification_Usage_Description">Oznámení o využití služby.</string>
     <string name="Notification_Pin_Usage_Description">Oznámení o využití PINu.</string>
-    <string name="NotificationServer_Description">Zobrazovat oznámení ze serveru.</string>
     <string name="Introduction_Introduction">FindMyDevice (FMD) je aplikace, která vám pomůže najít telefon, když jej ztratíte.
 \nKe komunikaci a odesílání příkazů z druhého zařízení využívá SMS (textové zprávy), pomocí kterých můžete telefon sledovat.
 \nStačí odeslat SMS zprávu, která obsahuje příkaz fmd.
@@ -116,7 +114,6 @@
     <string name="OpenCellId_test_no_connection">Žádné mobilní připojení</string>
     <string name="settings_exported">Nastavení exportována</string>
     <string name="server_unregister_continue_anyway">Přesto pokračovat</string>
-    <string name="Notification_Lifecycle">Cyklus</string>
     <string name="Pin_Usage">VyužitíPinu</string>
     <string name="Notification_Server">Server</string>
     <string name="Notification_Security">Zabezpečení</string>

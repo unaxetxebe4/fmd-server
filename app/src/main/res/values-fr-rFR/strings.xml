@@ -67,7 +67,6 @@
     <string name="Permission_SMS">Afin de pouvoir piloter le téléphone, cette application a besoin d\'être en capacité de voir les sms. Vos messages ne quittent jamais votre téléphone, et ils ne sont jamais utilisés pour faire autre chose que de retrouver votre téléphone.
 \nCette permission est requise.</string>
     <string name="Notification_Usage_Description">Notification de l\'utilisation du service.</string>
-    <string name="Notification_Lifecycle_Description">Notification sur le cycle de vie du service.</string>
     <string name="Notification_Pin_Usage_Description">Notification de l\'usage du code pin.</string>
     <string name="JSON_RL_Error">Erreur lors de l\'obtention de l\'emplacement depuis OpenCelliD. Veuillez essayer le lien suivant. Les paramètres que vous voulez sont lon et lat.</string>
     <string name="LockScreen_Usage_detectd">LockScreenMessage : Usage detecté.</string>
@@ -90,7 +89,6 @@
     <string name="Error">Erreur</string>
     <string name="Settings_Settings">Paramètres</string>
     <string name="Notification_Usage">Usage</string>
-    <string name="Notification_Lifecycle">Cycle de vie</string>
     <string name="Pin_Usage">Utilisation du PIN</string>
     <string name="Info_Server_Enabled">Service :</string>
     <string name="RootAccessDenied">Accès root interdit</string>
@@ -150,7 +148,6 @@
     <string name="MH_Help_Expert_Camera">" Caméra (avant/arrière) - prend une photo et l\'envoie au serveur FMD."</string>
     <string name="not_possible">Cette action n\'est pas possible.</string>
     <string name="Introduction_Root">Donner via Root</string>
-    <string name="NotificationServer_Description">Afficher les notifications envoyées depuis le serveur.</string>
     <string name="Settings_FMDServer_LOW_BAT_Upload_Description">Envoi la localisation de l\'appareil lorsque le niveau de la batterie est faible. Cela nécessite l\'accès aux notifications.</string>
     <string name="help">Aide</string>
     <string name="Settings_WhiteList">Contacts autorisés</string>

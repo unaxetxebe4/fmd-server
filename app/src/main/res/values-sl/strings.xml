@@ -86,11 +86,8 @@
     <string name="notify_crypto_update_text">Potrebno je posodobiti nekatere nastavitve, če želite še naprej uporabjati FMD. Kliknite, da jih odprete.</string>
     <string name="server_unregister_dont_continue">Ne nadaljuj</string>
     <string name="Notification_Usage">Uporaba</string>
-    <string name="Notification_Lifecycle">Življenjski cikel</string>
-    <string name="Notification_Lifecycle_Description">Obvestilo o življenjskem ciklu storitve.</string>
     <string name="Notification_Pin_Usage_Description">Obvestilo o uporabi PIN-a.</string>
     <string name="Notification_Server">Strežnik</string>
-    <string name="NotificationServer_Description">Prikaži obvestila poslana iz strežnika.</string>
     <string name="Notification_Security">Varnost</string>
     <string name="Notification_Security_Description">Obvestila o varnostnih posodobitvah</string>
     <string name="Notification_FAIL">Spodletelo</string>
