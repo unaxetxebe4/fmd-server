@@ -6,6 +6,7 @@ import android.os.Build
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.util.Log
+import android.util.Size
 import android.view.Surface
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
@@ -13,14 +14,12 @@ import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
 import androidx.camera.core.ImageCaptureException
 import androidx.camera.core.ImageProxy
+import androidx.camera.core.resolutionselector.ResolutionSelector
+import androidx.camera.core.resolutionselector.ResolutionStrategy
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.concurrent.futures.await
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
-import de.nulide.findmydevice.data.Settings
-import de.nulide.findmydevice.data.io.IO
-import de.nulide.findmydevice.data.io.JSONFactory
-import de.nulide.findmydevice.data.io.json.JSONMap
 import de.nulide.findmydevice.databinding.ActivityDummyCameraxBinding
 import de.nulide.findmydevice.net.FMDServerApiRepoSpec
 import de.nulide.findmydevice.net.FMDServerApiRepository
@@ -85,6 +84,18 @@ class DummyCameraxActivity : AppCompatActivity() {
             .setCaptureMode(ImageCapture.CAPTURE_MODE_MINIMIZE_LATENCY)
             .setFlashMode(ImageCapture.FLASH_MODE_OFF)
             .setTargetRotation(Surface.ROTATION_0)
+            // Set the resolution to 720 x 1280, aka "720p" (flipped because it is in portrait).
+            // Or lower, if this resolution is not available.
+            // This should be large enough for most use cases.
+            // By default CameraX uses the highest resolution, but then the images are large, making the upload slow.
+            .setResolutionSelector(
+                ResolutionSelector.Builder().setResolutionStrategy(
+                    ResolutionStrategy(
+                        Size(720, 1280),
+                        ResolutionStrategy.FALLBACK_RULE_CLOSEST_LOWER
+                    )
+                ).build()
+            )
             .build()
 
         val cameraSelector =
