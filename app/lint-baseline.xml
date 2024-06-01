@@ -2,6 +2,13 @@
 <issues format="6" by="lint 8.2.2" type="baseline" client="gradle" dependencies="false" name="AGP (8.2.2)" variant="all" version="8.2.2">
 
     <issue
+        id="ObsoleteLintCustomCheck"
+        message="Library lint checks reference invalid APIs; these checks **will be skipped**!&#xA;&#xA;Lint found an issue registry (`androidx.lifecycle.lint.LiveDataCoreIssueRegistry`)&#xA;which contains some references to invalid API:&#xA;org.jetbrains.kotlin.analysis.api.session.KtAnalysisSessionProvider: org.jetbrains.kotlin.analysis.api.lifetime.KtLifetimeTokenFactory getTokenFactory()&#xA;(Referenced from androidx/lifecycle/lint/NonNullableMutableLiveDataDetector$createUastHandler$1.class)&#xA;&#xA;Therefore, this lint check library is **not** included&#xA;in analysis. This affects the following lint checks:&#xA;`NullSafeMutableLiveData`&#xA;&#xA;To use this lint check, upgrade to a more recent version&#xA;of the library.">
+        <location
+            file="$GRADLE_USER_HOME/caches/transforms-4/a069ca95f7abb599d84d07ece75b76c4/transformed/lifecycle-livedata-core-2.8.1/jars/lint.jar"/>
+    </issue>
+
+    <issue
         id="DefaultLocale"
         message="Implicitly using the default locale is a common source of bugs: Use `toLowerCase(Locale)` instead. For strings meant to be internal use `Locale.ROOT`, otherwise `Locale.getDefault()`."
         errorLine1="                settings.set(Settings.SET_FMD_COMMAND, edited.toString().toLowerCase());"
@@ -40,8 +47,8 @@
         errorLine1="                        String phoneNumber = c.getString(c.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));"
         errorLine2="                                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/java/de/nulide/findmydevice/ui/settings/WhiteListActivity.java"
-            line="142"
+            file="src/main/java/de/nulide/findmydevice/ui/settings/AllowlistActivity.java"
+            line="104"
             column="58"/>
     </issue>
 
@@ -51,8 +58,8 @@
         errorLine1="                            String cNumber = c.getString(c.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));"
         errorLine2="                                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/java/de/nulide/findmydevice/ui/settings/WhiteListActivity.java"
-            line="148"
+            file="src/main/java/de/nulide/findmydevice/ui/settings/AllowlistActivity.java"
+            line="110"
             column="58"/>
     </issue>
 
@@ -62,8 +69,8 @@
         errorLine1="                            String cName = c.getString(c.getColumnIndex(ContactsContract.Data.DISPLAY_NAME));"
         errorLine2="                                                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="src/main/java/de/nulide/findmydevice/ui/settings/WhiteListActivity.java"
-            line="149"
+            file="src/main/java/de/nulide/findmydevice/ui/settings/AllowlistActivity.java"
+            line="111"
             column="56"/>
     </issue>
 
@@ -125,155 +132,12 @@
     <issue
         id="InflateParams"
         message="Avoid passing `null` as the view root (needed to resolve layout parameters on the inflated layout&apos;s root element)"
-        errorLine1="        view = inflater.inflate(R.layout.settings_item, null);"
+        errorLine1="        view = inflater.inflate(R.layout.item_settings, null);"
         errorLine2="                                                        ~~~~">
         <location
             file="src/main/java/de/nulide/findmydevice/ui/helper/SettingsViewAdapter.java"
             line="42"
             column="57"/>
-    </issue>
-
-    <issue
-        id="InflateParams"
-        message="Avoid passing `null` as the view root (needed to resolve layout parameters on the inflated layout&apos;s root element)"
-        errorLine1="        view = inflater.inflate(R.layout.whitelist_item, null);"
-        errorLine2="                                                         ~~~~">
-        <location
-            file="src/main/java/de/nulide/findmydevice/ui/helper/WhiteListViewAdapter.java"
-            line="41"
-            column="58"/>
-    </issue>
-
-    <issue
-        id="GradleDependency"
-        message="A newer version of androidx.appcompat:appcompat than 1.6.1 is available: 1.7.0"
-        errorLine1="    implementation &apos;androidx.appcompat:appcompat:1.6.1&apos;"
-        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="build.gradle"
-            line="70"
-            column="20"/>
-    </issue>
-
-    <issue
-        id="GradleDependency"
-        message="A newer version of androidx.core:core-ktx than 1.10.1 is available: 1.13.1"
-        errorLine1="    implementation &apos;androidx.core:core-ktx:1.10.1&apos;"
-        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="build.gradle"
-            line="71"
-            column="20"/>
-    </issue>
-
-    <issue
-        id="GradleDependency"
-        message="A newer version of androidx.fragment:fragment-ktx than 1.6.1 is available: 1.7.1"
-        errorLine1="    implementation &quot;androidx.fragment:fragment-ktx:1.6.1&quot;"
-        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="build.gradle"
-            line="74"
-            column="20"/>
-    </issue>
-
-    <issue
-        id="GradleDependency"
-        message="A newer version of androidx.lifecycle:lifecycle-viewmodel-ktx than 2.6.1 is available: 2.8.1"
-        errorLine1="    implementation &apos;androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1&apos;"
-        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="build.gradle"
-            line="76"
-            column="20"/>
-    </issue>
-
-    <issue
-        id="GradleDependency"
-        message="A newer version of androidx.camera:camera-core than 1.2.3 is available: 1.3.3"
-        errorLine1="    implementation &quot;androidx.camera:camera-core:${camerax_version}&quot;"
-        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="build.gradle"
-            line="81"
-            column="20"/>
-    </issue>
-
-    <issue
-        id="GradleDependency"
-        message="A newer version of androidx.camera:camera-camera2 than 1.2.3 is available: 1.3.3"
-        errorLine1="    implementation &quot;androidx.camera:camera-camera2:${camerax_version}&quot;"
-        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="build.gradle"
-            line="82"
-            column="20"/>
-    </issue>
-
-    <issue
-        id="GradleDependency"
-        message="A newer version of androidx.camera:camera-lifecycle than 1.2.3 is available: 1.3.3"
-        errorLine1="    implementation &quot;androidx.camera:camera-lifecycle:${camerax_version}&quot;"
-        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="build.gradle"
-            line="83"
-            column="20"/>
-    </issue>
-
-    <issue
-        id="GradleDependency"
-        message="A newer version of androidx.camera:camera-video than 1.2.3 is available: 1.3.3"
-        errorLine1="    implementation &quot;androidx.camera:camera-video:${camerax_version}&quot;"
-        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="build.gradle"
-            line="84"
-            column="20"/>
-    </issue>
-
-    <issue
-        id="GradleDependency"
-        message="A newer version of androidx.camera:camera-view than 1.2.3 is available: 1.3.3"
-        errorLine1="    implementation &quot;androidx.camera:camera-view:${camerax_version}&quot;"
-        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="build.gradle"
-            line="85"
-            column="20"/>
-    </issue>
-
-    <issue
-        id="GradleDependency"
-        message="A newer version of androidx.camera:camera-extensions than 1.2.3 is available: 1.3.3"
-        errorLine1="    implementation &quot;androidx.camera:camera-extensions:${camerax_version}&quot;"
-        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="build.gradle"
-            line="86"
-            column="20"/>
-    </issue>
-
-    <issue
-        id="GradleDependency"
-        message="A newer version of com.google.android.material:material than 1.9.0 is available: 1.12.0"
-        errorLine1="    implementation &apos;com.google.android.material:material:1.9.0&apos;"
-        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="build.gradle"
-            line="95"
-            column="20"/>
-    </issue>
-
-    <issue
-        id="GradleDependency"
-        message="A newer version of com.fasterxml.jackson.core:jackson-databind than 2.11.1 is available: 2.12.7.1"
-        errorLine1="    implementation &apos;com.fasterxml.jackson.core:jackson-databind:2.11.1&apos;"
-        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="build.gradle"
-            line="97"
-            column="20"/>
     </issue>
 
     <issue
@@ -337,7 +201,7 @@
         errorLine1="&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;"
         errorLine2=" ~~~~~~~~~~~~">
         <location
-            file="src/main/res/layout/settings_item.xml"
+            file="src/main/res/layout/item_settings.xml"
             line="2"
             column="2"/>
     </issue>
@@ -356,22 +220,11 @@
     <issue
         id="ViewHolder"
         message="Unconditional layout inflation from view adapter: Should use View Holder pattern (use recycled view passed into this method as the second parameter) for smoother scrolling"
-        errorLine1="        view = inflater.inflate(R.layout.settings_item, null);"
+        errorLine1="        view = inflater.inflate(R.layout.item_settings, null);"
         errorLine2="               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/java/de/nulide/findmydevice/ui/helper/SettingsViewAdapter.java"
             line="42"
-            column="16"/>
-    </issue>
-
-    <issue
-        id="ViewHolder"
-        message="Unconditional layout inflation from view adapter: Should use View Holder pattern (use recycled view passed into this method as the second parameter) for smoother scrolling"
-        errorLine1="        view = inflater.inflate(R.layout.whitelist_item, null);"
-        errorLine2="               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/java/de/nulide/findmydevice/ui/helper/WhiteListViewAdapter.java"
-            line="41"
             column="16"/>
     </issue>
 
@@ -384,105 +237,6 @@
             file="src/main/res/layout/activity_ring.xml"
             line="2"
             column="1"/>
-    </issue>
-
-    <issue
-        id="UseValueOf"
-        message="Use `Integer.valueOf(channelID)` instead"
-        errorLine1="            NotificationCompat.Builder builder = new NotificationCompat.Builder(context, new Integer(channelID).toString())"
-        errorLine2="                                                                                         ~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/java/de/nulide/findmydevice/utils/Notifications.java"
-            line="35"
-            column="90"/>
-    </issue>
-
-    <issue
-        id="UseValueOf"
-        message="Use `Integer.valueOf(CHANNEL_USAGE)` instead"
-        errorLine1="            NotificationChannel channel1 = new NotificationChannel(new Integer(CHANNEL_USAGE).toString(), context.getString(R.string.Notification_Usage), NotificationManager.IMPORTANCE_DEFAULT);"
-        errorLine2="                                                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/java/de/nulide/findmydevice/utils/Notifications.java"
-            line="61"
-            column="68"/>
-    </issue>
-
-    <issue
-        id="UseValueOf"
-        message="Use `Integer.valueOf(CHANNEL_LIFE)` instead"
-        errorLine1="            NotificationChannel channel2 = new NotificationChannel(new Integer(CHANNEL_LIFE).toString(), context.getString(R.string.Notification_Lifecycle), NotificationManager.IMPORTANCE_DEFAULT);"
-        errorLine2="                                                                   ~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/java/de/nulide/findmydevice/utils/Notifications.java"
-            line="63"
-            column="68"/>
-    </issue>
-
-    <issue
-        id="UseValueOf"
-        message="Use `Integer.valueOf(CHANNEL_PIN)` instead"
-        errorLine1="            NotificationChannel channel3 = new NotificationChannel(new Integer(CHANNEL_PIN).toString(), context.getString(R.string.Pin_Usage), NotificationManager.IMPORTANCE_DEFAULT);"
-        errorLine2="                                                                   ~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/java/de/nulide/findmydevice/utils/Notifications.java"
-            line="65"
-            column="68"/>
-    </issue>
-
-    <issue
-        id="UseValueOf"
-        message="Use `Integer.valueOf(CHANNEL_SERVER)` instead"
-        errorLine1="            NotificationChannel channel4 = new NotificationChannel(new Integer(CHANNEL_SERVER).toString(), context.getString(R.string.Notification_Server), NotificationManager.IMPORTANCE_DEFAULT);"
-        errorLine2="                                                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/java/de/nulide/findmydevice/utils/Notifications.java"
-            line="67"
-            column="68"/>
-    </issue>
-
-    <issue
-        id="UseValueOf"
-        message="Use `Integer.valueOf(CHANNEL_SECURITY)` instead"
-        errorLine1="            NotificationChannel channel5 = new NotificationChannel(new Integer(CHANNEL_SECURITY).toString(), context.getString(R.string.Notification_Security), NotificationManager.IMPORTANCE_DEFAULT);"
-        errorLine2="                                                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/java/de/nulide/findmydevice/utils/Notifications.java"
-            line="69"
-            column="68"/>
-    </issue>
-
-    <issue
-        id="UseValueOf"
-        message="Use `Integer.valueOf(CHANNEL_FAILED)` instead"
-        errorLine1="            NotificationChannel channel6 = new NotificationChannel(new Integer(CHANNEL_FAILED).toString(), context.getString(R.string.Notification_FAIL), NotificationManager.IMPORTANCE_HIGH);"
-        errorLine2="                                                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/java/de/nulide/findmydevice/utils/Notifications.java"
-            line="71"
-            column="68"/>
-    </issue>
-
-    <issue
-        id="UseValueOf"
-        message="Use `Integer.valueOf(android.provider.Settings.Secure.LOCATION_MODE_HIGH_ACCURACY)` instead"
-        errorLine1="            Settings.Secure.putString(context.getContentResolver(), android.provider.Settings.Secure.LOCATION_MODE, new Integer(android.provider.Settings.Secure.LOCATION_MODE_HIGH_ACCURACY).toString());"
-        errorLine2="                                                                                                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/java/de/nulide/findmydevice/utils/SecureSettings.java"
-            line="10"
-            column="117"/>
-    </issue>
-
-    <issue
-        id="UseValueOf"
-        message="Use `Integer.valueOf(android.provider.Settings.Secure.LOCATION_MODE_OFF)` instead"
-        errorLine1="            Settings.Secure.putString(context.getContentResolver(), android.provider.Settings.Secure.LOCATION_MODE, new Integer(android.provider.Settings.Secure.LOCATION_MODE_OFF).toString());"
-        errorLine2="                                                                                                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/java/de/nulide/findmydevice/utils/SecureSettings.java"
-            line="12"
-            column="117"/>
     </issue>
 
     <issue
@@ -503,7 +257,7 @@
         errorLine2="            ~~~~~~~~~~~~">
         <location
             file="src/main/res/values/strings.xml"
-            line="123"
+            line="122"
             column="13"/>
     </issue>
 
@@ -514,7 +268,7 @@
         errorLine2="            ~~~~~~~~~~~~">
         <location
             file="src/main/res/values/strings.xml"
-            line="194"
+            line="191"
             column="13"/>
     </issue>
 
@@ -525,7 +279,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/res/values/strings.xml"
-            line="203"
+            line="200"
             column="13"/>
     </issue>
 
@@ -536,7 +290,7 @@
         errorLine2="                             ~~~~~~~~">
         <location
             file="src/main/res/values-es/strings.xml"
-            line="53"
+            line="52"
             column="30"/>
     </issue>
 
@@ -547,7 +301,7 @@
         errorLine2="                             ~~~~~~~~~~">
         <location
             file="src/main/res/values-fi/strings.xml"
-            line="54"
+            line="53"
             column="30"/>
     </issue>
 
@@ -558,7 +312,7 @@
         errorLine2="                             ~~~~~~~~~~~">
         <location
             file="src/main/res/values-ru-rRu/strings.xml"
-            line="57"
+            line="56"
             column="30"/>
     </issue>
 
@@ -569,7 +323,7 @@
         errorLine2="                             ~~~~~~~~~">
         <location
             file="src/main/res/values-ar/strings.xml"
-            line="104"
+            line="102"
             column="30"/>
     </issue>
 
@@ -580,7 +334,7 @@
         errorLine2="                                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/res/values-fi/strings.xml"
-            line="113"
+            line="110"
             column="44"/>
     </issue>
 
@@ -591,7 +345,7 @@
         errorLine2="                             ~~~~~~~~~~~~~~">
         <location
             file="src/main/res/values-cs/strings.xml"
-            line="133"
+            line="130"
             column="30"/>
     </issue>
 
@@ -602,7 +356,7 @@
         errorLine2="                             ~~~~~~~~~~~~~">
         <location
             file="src/main/res/values-sl/strings.xml"
-            line="181"
+            line="177"
             column="30"/>
     </issue>
 
@@ -613,7 +367,7 @@
         errorLine2="                             ~~~~~~~~~~">
         <location
             file="src/main/res/values/strings.xml"
-            line="181"
+            line="178"
             column="30"/>
     </issue>
 
@@ -631,17 +385,6 @@
             line="20"
             column="17"
             message="id defined here"/>
-    </issue>
-
-    <issue
-        id="KtxExtensionAvailable"
-        message="Add suffix `-ktx` to enable the Kotlin extensions for this library"
-        errorLine1="    implementation &apos;androidx.preference:preference:1.2.1&apos;"
-        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="build.gradle"
-            line="77"
-            column="20"/>
     </issue>
 
     <issue
@@ -683,7 +426,7 @@
         errorLine1="    &lt;ImageView"
         errorLine2="     ~~~~~~~~~">
         <location
-            file="src/main/res/layout/settings_item.xml"
+            file="src/main/res/layout/item_settings.xml"
             line="10"
             column="6"/>
     </issue>
@@ -746,7 +489,7 @@
     <issue
         id="SetTextI18n"
         message="Number formatting does not take into account locale settings. Consider using `String.format` instead."
-        errorLine1="        textViewWhiteListCount.setText(Integer.valueOf(whiteList.size()).toString());"
+        errorLine1="        textViewWhiteListCount.setText(Integer.valueOf(allowlist.size()).toString());"
         errorLine2="                                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/java/de/nulide/findmydevice/ui/MainActivity.java"
