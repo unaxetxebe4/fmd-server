@@ -31,6 +31,15 @@ They are then synced down from Weblate to Gitlab, Weblate will automatically ope
 
 ### Fixing translation conflicts
 
+TLDR:
+
+```
+git checkout -b fix-weblate
+git remote update weblate
+git merge --strategy-option theirs weblate/master
+git push --set-upstream origin fix-weblate
+```
+
 Sometimes there are conflicts with Weblate (and it is not always clear where they come from...).
 
 To fix them, follow Weblate's instructions here: https://docs.weblate.org/en/latest/faq.html#merge.
