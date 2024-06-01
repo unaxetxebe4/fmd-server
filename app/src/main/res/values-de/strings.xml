@@ -105,12 +105,9 @@
     <!-- Notification Channels -->
     <string name="Notification_Usage">Nutzung</string>
     <string name="Notification_Usage_Description">Benachrichtigung über die Nutzung von FMD.</string>
-    <string name="Notification_Lifecycle">Serverstatus</string>
-    <string name="Notification_Lifecycle_Description">Benachrichtigung über den Status von FMD.</string>
     <string name="Pin_Usage">Pin-Nutzung</string>
     <string name="Notification_Pin_Usage_Description">Benachrichtigung über die Nutzung des Pins.</string>
     <string name="Notification_Server">Server</string>
-    <string name="NotificationServer_Description">Anzeige der vom Server gesendeten Benachrichtigungen.</string>
     <!-- Varia -->
 
     <!-- Not yet sorted -->

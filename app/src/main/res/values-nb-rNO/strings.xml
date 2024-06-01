@@ -65,7 +65,6 @@
     <string name="WhiteList_Select_Number">Velg én av telefonnumrene.</string>
     <string name="Notification_Usage_Description">Merknad om tjenestebruk.</string>
     <string name="Notification_Server">Tjener</string>
-    <string name="NotificationServer_Description">Vis merknader sendt fra tjeneren.</string>
     <string name="Notification_Security">Sikkerhet</string>
     <string name="Notification_Security_Description">Merknader om sikkerhetsoppgraderinger</string>
     <string name="Notification_FAIL">Mislyktes</string>
@@ -73,8 +72,7 @@
     <string name="Introduction_Next">Neste</string>
     <string name="Pin_Usage">PIN-bruk</string>
     <string name="Notification_Pin_Usage_Description">Merknad om PIN-bruk.</string>
-    <string name="Notification_Lifecycle">Tjenerstatus</string>
-    <string name="Notification_Lifecycle_Description">Merknad om tjenerstatus.</string>
+    <string name="Ok">OK</string>
     <string name="NOT_AVAILABLE">Ikke tilgjengelig</string>
     <string name="Available">Tilgjengelig</string>
     <string name="MH_LAST_KNOWN_LOCATION">Sist kjente posisjon</string>

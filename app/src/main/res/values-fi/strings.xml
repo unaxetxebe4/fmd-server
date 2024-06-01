@@ -77,9 +77,7 @@
     <string name="Error">Virhe</string>
     <string name="Notification_Usage">Käyttö</string>
     <string name="Pin_Usage">PIN-koodin käyttö</string>
-    <string name="Notification_Lifecycle">Palvelimen tila</string>
     <string name="Notification_Usage_Description">Ilmoitus FMD:n käytöstä.</string>
-    <string name="Notification_Lifecycle_Description">Ilmoitus FindMyDevicen tilasta.</string>
     <string name="Notification_Pin_Usage_Description">Ilmoitus PIN-koodin käytöstä.</string>
     <string name="JSON_RL_Error">Virhe OpenCelliD:n sijaintitiedon saamisessa. Ole hyvä ja koita seuraavaa linkkiä. Lon- ja lat-parametrit vaaditaan.</string>
     <string name="LockScreen_Usage_detectd">FMD: Käyttö havaittu.</string>
@@ -113,7 +111,6 @@
     <string name="Permission_Notification">Sovellus tarjoaa mahdollisuuden vastaanottaa komentoja SMS-viestien lisäksi myös muista viestisovelluksista (kuten Telegram, WhatsApp...). Viestien lukuun vaaditaan pääsy ilmoitusksien käyttöoikeus.</string>
     <string name="Info_Notification_Access">Ilmoitukset</string>
     <string name="Notification_Server">Palvelin</string>
-    <string name="NotificationServer_Description">Näytä palvelimelta lähetetyt ilmoitukset.</string>
     <string name="Edit">Muokkaa</string>
     <string name="Granted">Myönnetty:</string>
     <string name="Settings_FMDServer_Logout_Button">Kirjaudu ulos</string>

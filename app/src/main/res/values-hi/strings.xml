@@ -29,10 +29,8 @@
     <string name="server_unregister_continue_anyway">फिर भी जारी रखें</string>
     <string name="server_unregister_dont_continue">जारी न रखें</string>
     <string name="Notification_Usage_Description">सेवा के उपयोग के बारे में अधिसूचना।</string>
-    <string name="Notification_Lifecycle">जीवनचक्र</string>
     <string name="Pin_Usage">पिन-उपयोग</string>
     <string name="Notification_Server">सर्वर</string>
-    <string name="NotificationServer_Description">सर्वर से भेजी गई सूचनाएं प्रदर्शित करें।</string>
     <string name="Notification_Security">सुरक्षा</string>
     <string name="Notification_FAIL">असफल</string>
     <string name="Introduction_UpdatePermission">कुछ नई अनुमतियों की आवश्यकता है।
@@ -123,7 +121,6 @@
 \n
 \nआप वैसे भी जारी रख सकते हैं, लेकिन हो सकता है कि आपका खाता सर्वर से मिटाया न गया हो। यदि आप जारी रखते हैं, तो आपका खाता इस डिवाइस से स्थानीय रूप से मिटा दिया जाएगा।</string>
     <string name="Notification_Usage">प्रयोग</string>
-    <string name="Notification_Lifecycle_Description">सेवा के जीवनचक्र के बारे में अधिसूचना।</string>
     <string name="Notification_Pin_Usage_Description">पिन उपयोग के बारे में अधिसूचना।</string>
     <string name="Notification_Security_Description">सुरक्षा अपडेट के बारे में सूचनाएं</string>
     <string name="Notification_Fail_Description">कुछ विफल होने पर अधिसूचना, जैसे fmd सर्वर से कनेक्शन।</string>
