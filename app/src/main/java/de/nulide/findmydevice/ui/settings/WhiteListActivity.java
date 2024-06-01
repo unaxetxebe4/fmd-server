@@ -47,6 +47,8 @@ public class WhiteListActivity extends AppCompatActivity implements View.OnClick
     private TextView textWhitelistEmpty;
     private Button buttonAddContact;
 
+    private final static int REQUEST_CODE = 6438;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,22 +92,17 @@ public class WhiteListActivity extends AppCompatActivity implements View.OnClick
     @Override
     public void onClick(View v) {
         if (v == buttonAddContact) {
-            PackageManager packageManager = getPackageManager();
             Intent intent = new Intent(Intent.ACTION_PICK, ContactsContract.CommonDataKinds.Phone.CONTENT_URI);
-
             try {
-                startActivityForResult(intent, 1);
-            }catch(ActivityNotFoundException e) {
+                startActivityForResult(intent, REQUEST_CODE);
+            } catch (ActivityNotFoundException e) {
                 intent = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
                 try {
-                    startActivityForResult(intent, 1);
-                }catch(ActivityNotFoundException e2){
-                    Toast.makeText(this, getString(R.string.not_possible), Toast.LENGTH_LONG);
+                    startActivityForResult(intent, REQUEST_CODE);
+                } catch (ActivityNotFoundException e2) {
+                    Toast.makeText(this, getString(R.string.not_possible), Toast.LENGTH_LONG).show();
                 }
-
             }
-
-
         }
     }
 
@@ -132,7 +129,7 @@ public class WhiteListActivity extends AppCompatActivity implements View.OnClick
     public void onActivityResult(int reqCode, int resultCode, Intent data) {
         super.onActivityResult(reqCode, resultCode, data);
         switch (reqCode) {
-            case (1):
+            case (REQUEST_CODE):
                 if (resultCode == Activity.RESULT_OK) {
                     Uri contactData = data.getData();
                     String[] projection = new String[]{

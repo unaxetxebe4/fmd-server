@@ -6,9 +6,6 @@ import android.app.job.JobScheduler;
 import android.app.job.JobService;
 import android.content.ComponentName;
 import android.content.Context;
-import android.os.Build;
-
-import androidx.annotation.RequiresApi;
 
 import de.nulide.findmydevice.data.Settings;
 import de.nulide.findmydevice.data.SettingsRepoSpec;
@@ -24,7 +21,6 @@ import de.nulide.findmydevice.utils.Permission;
 /**
  * Uploads the location at regular intervals in the background
  */
-@RequiresApi(Build.VERSION_CODES.M)
 public class FMDServerLocationUploadService extends JobService {
 
     private static final int JOB_ID = 108;

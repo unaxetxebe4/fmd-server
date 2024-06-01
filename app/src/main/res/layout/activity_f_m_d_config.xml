@@ -89,6 +89,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/margin_small"
             android:ems="10"
+            android:importantForAutofill="no"
+            android:inputType="text"
             android:text="fmd" />
 
         <View
@@ -148,6 +150,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/margin_small"
             android:ems="10"
+            android:importantForAutofill="no"
+            android:inputType="text"
             android:text="" />
 
         <View

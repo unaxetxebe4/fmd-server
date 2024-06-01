@@ -6,9 +6,6 @@ import static de.nulide.findmydevice.utils.Utils.getOpenStreetMapLink;
 
 import android.content.Context;
 import android.os.BatteryManager;
-import android.os.Build;
-
-import androidx.annotation.RequiresApi;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -33,7 +30,6 @@ public class LocationHandler {
         this.ch = ch;
     }
 
-    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     public void newLocation(String provider, String lat, String lon) {
         String msg = String.format("%s: Lat: %s Lon: %s\n%s\n%s",
                 provider, lat, lon,

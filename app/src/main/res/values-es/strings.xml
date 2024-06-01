@@ -74,7 +74,6 @@
     <string name="Settings_About">Acerca de</string>
     <string name="Settings_Settings">Ajustes</string>
     <string name="Error">Error</string>
-    <string name="OpenCellId_OpenCellId">OpenCelliD</string>
     <string name="Notification_Usage">Uso</string>
     <string name="Pin_Usage">Uso de Pin</string>
     <string name="Notification_Lifecycle">Ciclo de vida</string>
@@ -87,12 +86,10 @@
     <string name="Toast_Empty_FMDCommand">Comando Vacío no permitido
 \n Volviendo a valor predeterminado.[fmd]</string>
     <string name="FMDConfig_Alert_Pin">PIN</string>
-    <string name="Ok">Ok</string>
     <string name="Log_Alert_LogData">Datos del Registro</string>
     <string name="Settings_Ringer_Tone_Description">Seleccione un tono de llamada que se reproducirá cuando se envíe fmd ring.</string>
     <string name="Settings_Select_Ringtone">Seleccionar Timbre</string>
     <string name="WhiteList_Select_Number">Seleccione uno de los números de teléfono.</string>
-    <string name="Settings_FMDServer">FMD-Servidor</string>
     <string name="Settings_FMDServer_Update_Interval_Description">El tiempo en minutos en el que FMD debe enviar nuevos datos de ubicación al servidor.</string>
     <string name="NOT_AVAILABLE">No Disponible</string>
     <string name="Available">Disponible</string>
@@ -106,7 +103,6 @@
     <string name="Alert_First_time_fmdserver">Aquí puede configurar la aplicación para comunicarse con FMDserver. Si quiere configurar un servidor diferente al predeterminado, puede hacerlo cambiando la URL. Si pulsa registro puede registrar la aplicación en el servidor. Después puede activar la funcionalidad del servidor. Si lo haces, su teléfono enviará los datos de ubicación al servidor especificado. Puede comprobar la ubicación de su teléfono introduciendo el ID y la contraseña en la página.</string>
     <string name="Settings_FMDServer_Alert_PrivacyPolicy_Title">Política de Privacidad</string>
     <string name="accept">aceptar</string>
-    <string name="cancel">cancelar</string>
     <string name="Settings_FMDServer_Location_Type_Description">La(s) fuente(s) desde la(s) que se carga(n) los datos de localización a intervalos regulares en segundo plano.
 \nSi no se selecciona ninguna, no se cargarán localizaciones regularmente. (Puede seguir utilizando la interfaz web para forzar una carga. Esto requiere push.)</string>
     <string name="GPS">GPS</string>
@@ -126,7 +122,6 @@
     <string name="not_possible">Esta acción no fue posible.</string>
     <string name="MH_Help_Expert_Camera">" Cámara (frontal/posterior) - toma una foto y la envía a FMDserver."</string>
     <string name="Permission_Camera">Si quiere recibir fotos de su teléfono de forma remota, es necesario el permiso de cámara.</string>
-    <string name="Info_Camera">Cámara</string>
     <string name="Settings_Import">Importar Ajustes</string>
     <string name="Settings_Export">Exportar Ajustes</string>
     <string name="MH_CAM_CAPTURE">"El dispositivo pronto enviará una imagen a fmdserver. Pronto podrá verla aquí: "</string>
@@ -134,7 +129,6 @@
     <string name="loading">Cargando…</string>
     <string name="help">Ayuda</string>
     <string name="copied">Copiado</string>
-    <string name="paste">Pegar</string>
     <string name="Edit">Editar</string>
     <string name="pin">PIN</string>
     <string name="pin_repeat">Repetir el pin</string>
@@ -156,7 +150,6 @@
     <string name="Settings_FMDServer_Login">Iniciar sesión</string>
     <string name="Settings_FMDServer_Register">Registrarse</string>
     <string name="password">Contraseña</string>
-    <string name="password_repeat">Repita la contraseña</string>
     <string name="registration_token">Token de registro</string>
     <string name="registration_token_hint">Las instancias privadas pueden requerir un token secreto. Déjelo vacío si la instancia es pública.</string>
     <string name="Whitelist_help">Los contactos de esta lista pueden enviar comandos FMD por SMS. Los comandos de todos los demás serán ignorados.</string>

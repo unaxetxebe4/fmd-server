@@ -40,11 +40,11 @@ public class GPS implements LocationListener {
     }
 
     @Override
-    public void onLocationChanged(Location location) {
-        if (location != null && !jobFullfilled) {
+    public void onLocationChanged(@NonNull Location location) {
+        if (!jobFullfilled) {
             String provider = location.getProvider();
-            String lat = new Double(location.getLatitude()).toString();
-            String lon = new Double(location.getLongitude()).toString();
+            String lat = Double.valueOf(location.getLatitude()).toString();
+            String lon = Double.valueOf(location.getLongitude()).toString();
             ch.getLocationHandler().newLocation(provider, lat, lon);
             jobFullfilled = true;
             if ((Integer) settings.get(Settings.SET_GPS_STATE) == 2) {

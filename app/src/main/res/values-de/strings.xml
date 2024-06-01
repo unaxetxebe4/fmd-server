@@ -4,9 +4,7 @@
     <string name="loading">Laden…</string>
     <string name="help">Hilfe</string>
     <string name="copied">Kopiert</string>
-    <string name="paste">Einfügen</string>
     <string name="accept">akzeptieren</string>
-    <string name="cancel">abbrechen</string>
     <string name="Edit">Bearbeiten</string>
     <string name="GPS">GPS</string>
     <string name="Cell">Mobilfunkzelle</string>
@@ -72,7 +70,6 @@
     <string name="Settings_FMDServer_Register">Registrieren</string>
     <string name="Settings_FMDServer_Alert_PrivacyPolicy_Title">Datenschutzbestimmungen</string>
     <string name="password">Passwort</string>
-    <string name="password_repeat">Password Wiederholen</string>
     <string name="registration_token">Registrierungs-Token</string>
     <string name="registration_token_hint">Private Instanzen können ein geheimes Token erfordern. Lassen Sie dieses Feld leer wenn die Instanz öffentlich ist.</string>
     <!-- Settings: Allowed Contacts -->
@@ -181,7 +178,6 @@
     <string name="Toast_Empty_FMDCommand">Lehres Kommando nicht erlaubt
 \n Rückfall auf Standard.[fmd]</string>
     <string name="FMDConfig_Alert_Pin">PIN</string>
-    <string name="Ok">Ok</string>
     <string name="Log_Alert_LogData">Log-Info</string>
     <string name="NOT_AVAILABLE">Nicht verfügbar</string>
     <string name="Available">Verfügbar</string>

@@ -92,7 +92,6 @@
     <string name="copied">Copiato</string>
     <string name="Whitelist_help">I contatti di questo elenco possono inviare comandi FMD via SMS. I comandi provenienti da tutti gli altri verranno ignorati.</string>
     <string name="Whitelist_empty">Nessun contatto fidato. Fare clic sul pulsante per aggiungerne alcuni!</string>
-    <string name="paste">Incolla</string>
     <string name="Alert_First_Time_contact_added">Congratulazioni. Avete aggiunto il vostro primo contatto. Ora è possibile comunicare con FMD inviando un messaggio SMS contenente fmd dal numero di telefono inserito nell\'elenco. Se tutto funziona, l\'applicazione risponderà.</string>
     <string name="R_Stop_ring">SMETTI DI SQUILLARE</string>
     <string name="Crashed_Send_log">Invia registro</string>
@@ -105,9 +104,7 @@
     <string name="Settings_About">Info</string>
     <string name="Settings_Settings">Impostazioni</string>
     <string name="Error">Errore</string>
-    <string name="OpenCellId_OpenCellId">OpenCelliD</string>
     <string name="Permission_POST_NOTIFICATIONS">FMD invierà occasionalmente notifiche all\'utente, ad esempio per avvisarlo che qualcuno sta localizzando il suo dispositivo.</string>
-    <string name="OpenCellId_API_Key_Description">Chiave API:</string>
     <string name="Notification_Usage">Utilizzo</string>
     <string name="Pin_Usage">Utilizzo Pin</string>
     <string name="Notification_Lifecycle">Durata</string>
@@ -120,7 +117,6 @@
     <string name="Toast_Empty_FMDCommand">Comando vuoto non consentito
 \n Ripristinato valore predefinito. [fmd]</string>
     <string name="FMDConfig_Alert_Pin">PIN</string>
-    <string name="Ok">Ok</string>
     <string name="Log_Alert_LogData">Dati di Registro</string>
     <string name="Settings_Ringer_Tone_Description">Seleziona una suoneria che verrà riprodotta quando viene inviato \"fmd ring\".</string>
     <string name="Settings_Select_Ringtone">Seleziona suoneria</string>
@@ -138,7 +134,6 @@
     <string name="Alert_First_time_fmdserver">Qui è possibile configurare l\'applicazione per comunicare con un server FMD. Se si desidera configurare un server diverso da quello predefinito, è possibile farlo modificando l\'URL. Se si preme \"registrati\" è possibile registrare l\'applicazione sul server. Successivamente è possibile abilitare la funzionalità del server. Se lo fai, il tuo telefono ti invierà i dati sulla posizione al server specificato. Puoi controllare la posizione del tuo telefono inserendo l\'ID e la password sulla pagina.</string>
     <string name="Settings_FMDServer_Alert_PrivacyPolicy_Title">Info Privacy</string>
     <string name="accept">accetta</string>
-    <string name="cancel">cancella</string>
     <string name="Settings_FMDServer_Location_Type_Description">L\'origine/i da cui i dati della posizione vengono caricati a intervalli regolari in background.
 \nSe non viene selezionato niente, nessuna posizione viene caricata regolarmente. (È ancora possibile utilizzare l\'interfaccia web per forzare il caricamento. Questo richiede il push.)</string>
     <string name="GPS">GPS</string>
@@ -158,7 +153,6 @@
     <string name="not_possible">Questa azione non è stata possibile.</string>
     <string name="MH_Help_Expert_Camera">" Camera (fronte/retro) - scatta una foto e la invia al server FMD."</string>
     <string name="Permission_Camera">Se si desidera ricevere immagini in remoto dal telefono, è necessaria l\'autorizzazione per la fotocamera.</string>
-    <string name="Info_Camera">Camera:</string>
     <string name="Settings_Import">Importa Impostazioni</string>
     <string name="Settings_Export">Esporta Impostazioni</string>
     <string name="MH_CAM_CAPTURE">"Il dispositivo invierà presto un\'immagine al server FMD. Puoi vederla a breve qui: "</string>
@@ -188,7 +182,6 @@
     <string name="Introduction_Shizuku">Concedi via Shizuku</string>
     <string name="Introduction_Root">Concedi via Root</string>
     <string name="registration_token">Token di registrazione</string>
-    <string name="password_repeat">Ripeti Password</string>
     <string name="help">Aiuto</string>
     <string name="Settings_FMDServer_Change_Password_Button">Cambia Password</string>
     <string name="Settings_FMDServer_Update_Interval_Title">Intervallo di Aggiornamento</string>
