@@ -25,12 +25,12 @@
     <string name="Settings_Logs">Logs</string>
     <string name="Settings_About">Über</string>
     <!-- Settings: General -->
-    <string name="Settings_FMD_via_Pin_Description">Erlauben Sie die Kommunikation mit FMD über eine Pin. Sie werden in eine temporäre Whitelist aufgenommen.</string>
-    <string name="Settings_Pin_Description">Wird als Bestätigung vor dem Löschen des Geräts oder für eine vorübergehende Nutzung des Dienstes verwendet.</string>
-    <string name="Settings_Enter_Pin">Pin eingeben</string>
+    <string name="Settings_FMD_via_Pin_Description">Hiermit kannst du mit FMD über eine PIN kommunizieren. So kannst du Befehle von einer Telefonnummer schicken, welche nicht in deinen Erlaubten Kontakten ist.</string>
+    <string name="Settings_Pin_Description">Wird als Bestätigung vor dem Löschen des Geräts und für die anonyme Nutzung von FMD verwendet.</string>
+    <string name="Settings_Enter_Pin">PIN eingeben</string>
     <string name="pin">PIN</string>
     <string name="pin_repeat">PIN Wiederholen</string>
-    <string name="Settings_FMDCommand_Description">Der für die Kommunikation mit FindMyDevice verwendete Befehl.</string>
+    <string name="Settings_FMDCommand_Description">Der für die Kommunikation mit FMD verwendete Befehl.</string>
     <string name="Settings_Ringer_Tone_Description">Wählen Sie einen Klingelton aus, der beim Senden von \"fmd ring\" abgespielt werden soll.</string>
     <string name="Settings_Select_Ringtone">Klingelton auswählen</string>
     <string name="Settings_Lockscreenmessage_Description">Sperrbildschirmnachricht:
@@ -103,10 +103,10 @@
 
     <!-- Notification Channels -->
     <string name="Notification_Usage">Nutzung</string>
-    <string name="Notification_Usage_Description">Benachrichtigung über die Nutzung von FMD.</string>
-    <string name="Pin_Usage">Pin-Nutzung</string>
-    <string name="Notification_Pin_Usage_Description">Benachrichtigung über die Nutzung des Pins.</string>
-    <string name="Notification_Server">Server</string>
+    <string name="Notification_Usage_Description">Benachrichtigungen wenn FMD Befehle erhält</string>
+    <string name="Pin_Usage">PIN Nutzung</string>
+    <string name="Notification_Pin_Usage_Description">Benachrichtigungen wenn mit der PIN auf FMD zugegriffen wird</string>
+    <string name="Notification_Server">FMD Server</string>
     <!-- Varia -->
 
     <!-- Not yet sorted -->
@@ -188,7 +188,7 @@
     <string name="Permission_Notification">Wenn Sie möchten, dass die App Nachrichten von anderen Apps (Telegram, Whatsap, …) verarbeitet, können Sie der App Zugriff auf die Benachrichtigungen geben, damit die Nachrichten ausgewertet werden können.</string>
     <string name="Notification_Security">Sicherheit</string>
     <string name="Notification_FAIL">Fehler</string>
-    <string name="Notification_Fail_Description">Benachrichtigungen wenn etwas fehlschlägt (z.b. Verbindung zum FMD Server).</string>
+    <string name="Notification_Fail_Description">Benachrichtigungen wenn etwas fehlschlägt (z.B. die Verbindung zu FMD Server)</string>
     <string name="app_description">Mit FMD (Find My Device) kannst du dein Gerät aus der Ferne orten. Du kannst mit FMD über SMS, Instant Messengers, oder über FMD Server kommunizieren. Orte dein Gerät, lass es klingeln, sperre es, oder setze es auf Werkseinstellungen zurück - alles aus der Ferne.</string>
     <string name="Notification_Security_Description">Benachrichtigungen bzgl. Sicherheitsupdates</string>
     <string name="not_possible">Diese Aktion war nicht möglich.</string>
@@ -207,4 +207,6 @@
     <string name="MH_CAM_CAPTURE">"Das gerät wird in Kürze ein Bild zum FMDserver schicken. Dieses kann hier bald betrachtet werden: "</string>
     <string name="request_failed_title">Netzwerkanfrage fehlgeschlagen</string>
     <string name="request_failed_status_code">Statuscode</string>
+    <string name="Notification_Server_Description">Benachrichtigungen bezüglich FMD Server</string>
+    <string name="Settings_FMDServer_Server_Url">Server URL</string>
 </resources>
