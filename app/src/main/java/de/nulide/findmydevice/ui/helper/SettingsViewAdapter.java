@@ -39,7 +39,7 @@ public class SettingsViewAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View view, ViewGroup parent) {
-        view = inflater.inflate(R.layout.settings_item, null);
+        view = inflater.inflate(R.layout.item_settings, null);
         SettingsEntry entry = settingsEntries.get(position);
         TextView name = view.findViewById(R.id.textViewSettingsTitle);
         name.setText(entry.string);

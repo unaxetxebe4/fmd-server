@@ -24,7 +24,7 @@
             android:id="@+id/listWhiteList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:listitem="@layout/whitelist_item" />
+            tools:listitem="@layout/item_whitelist" />
 
         <TextView
             android:id="@+id/whitelistEmpty"
