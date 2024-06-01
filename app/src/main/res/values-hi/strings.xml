@@ -27,11 +27,11 @@
     <string name="server_unregister_failed_title">अपंजीकरण विफल रहा</string>
     <string name="server_unregister_continue_anyway">फिर भी जारी रखें</string>
     <string name="server_unregister_dont_continue">जारी न रखें</string>
-    <string name="Notification_Usage_Description">सेवा के उपयोग के बारे में अधिसूचना।</string>
-    <string name="Pin_Usage">पिन-उपयोग</string>
-    <string name="Notification_Server">सर्वर</string>
+    <string name="Notification_Usage_Description">जब FMD को आदेश प्राप्त हो रहे हों तो अधिसूचनाएं</string>
+    <string name="Pin_Usage">पिन उपयोग</string>
+    <string name="Notification_Server">FMD सर्वर</string>
     <string name="Notification_Security">सुरक्षा</string>
-    <string name="Notification_FAIL">असफल</string>
+    <string name="Notification_FAIL">विफलताएं</string>
     <string name="Introduction_UpdatePermission">कुछ नई अनुमतियों की आवश्यकता है।
 \nकृपया इस एप्लिकेशन का उपयोग जारी रखने के लिए, या पुराने संस्करण में वापस बदलने के लिए निम्नलिखित अनुमतियों की जांच करें।</string>
     <string name="Permission_DEVICE_ADMIN">यदि आप अपना फोन खो जाने पर उसे लॉक करना या मिटाना चाहते हैं, तो इस अनुमति की आवश्यकता है।
@@ -43,7 +43,7 @@
     <string name="Enabled">सक्षम</string>
     <string name="Disabled">अक्षम</string>
     <string name="MH_Delete">अलविदा…</string>
-    <string name="MH_False_Pin">ग़लत पिन!</string>
+    <string name="MH_False_Pin">गलत पिन!</string>
     <string name="MH_Syntax">सिंटेक्स:</string>
     <string name="MH_Title_Help">FindMyDevice के कमांड:</string>
     <string name="MH_Pin_Accepted">पिन स्वीकृत!</string>
@@ -75,11 +75,11 @@
     <string name="Settings_WhiteList">अनुमत संपर्क</string>
     <string name="Settings_Import">आयात सेटिंग्स</string>
     <string name="Settings_Logs">लॉग</string>
-    <string name="Settings_Pin_Description">डिवाइस को खाली करने से पहले या सेवा के अस्थायी उपयोग के लिए पुष्टि के रूप में उपयोग किया जाता है।</string>
+    <string name="Settings_Pin_Description">डिवाइस को खाली करने से पहले पुष्टि के रूप में और सेवा के गुमनाम उपयोग के लिए उपयोग किया जाता है।</string>
     <string name="Settings_About">ऐप के बारे में</string>
     <string name="pin">पिन</string>
     <string name="pin_repeat">पिन दोहराएं</string>
-    <string name="Settings_FMDCommand_Description">कमांड का उपयोग FindMyDevice एप्लिकेशन के साथ संचार करने के लिए किया जाता है।</string>
+    <string name="Settings_FMDCommand_Description">कमांड का उपयोग FMD एप्लिकेशन के साथ संचार करने के लिए किया जाता है।</string>
     <string name="Settings_Lockscreenmessage_Description">लॉक स्क्रीन संदेश:
 \nडिवाइस को लॉक करते समय यह संदेश लॉक स्क्रीन पर दिखाई देगा।</string>
     <string name="Settings_FMD_Server_User_ID">उपयोक्ता ID:</string>
@@ -120,9 +120,9 @@
 \n
 \nआप वैसे भी जारी रख सकते हैं, लेकिन हो सकता है कि आपका खाता सर्वर से मिटाया न गया हो। यदि आप जारी रखते हैं, तो आपका खाता इस डिवाइस से स्थानीय रूप से मिटा दिया जाएगा।</string>
     <string name="Notification_Usage">प्रयोग</string>
-    <string name="Notification_Pin_Usage_Description">पिन उपयोग के बारे में अधिसूचना।</string>
+    <string name="Notification_Pin_Usage_Description">पिन के माध्यम से FMD तक पहुंचने पर अधिसूचनाएं</string>
     <string name="Notification_Security_Description">सुरक्षा अपडेट के बारे में सूचनाएं</string>
-    <string name="Notification_Fail_Description">कुछ विफल होने पर अधिसूचना, जैसे fmd सर्वर से कनेक्शन।</string>
+    <string name="Notification_Fail_Description">कुछ विफल होने पर अधिसूचना, जैसे FMD सर्वर से कनेक्शन</string>
     <string name="Permission_IGNORE_BATTERY_OPTIMIZATION">ऐसा माना जाता है कि यह एप्लिकेशन पृष्ठभूमि में काम करेगा। यह सुनिश्चित करने के लिए कि यह तब भी काम करता है जब आपका फोन स्टैंडबाय में हो, आपको इस ऐप के लिए बैटरी अनुकूलन बंद करना होगा।</string>
     <string name="Introduction_Introduction">FindMyDevice (FMD) एक एप्लिकेशन है जो आपका फोन खो जाने पर उसे खोजने में आपकी सहायता कर सकता है।
 \nयह दूसरे डिवाइस से संचार करने और कमांड भेजने के लिए SMS (टेक्स्टिंग) का उपयोग करता है ताकि आप अपने फोन को ट्रैक कर सकें।
@@ -169,7 +169,7 @@
     <string name="Permission_Camera">यदि आप अपने फोन से दूर से चित्र प्राप्त करना चाहते हैं, तो कैमरे की अनुमति की आवश्यकता है।</string>
     <string name="Cell">सेल</string>
     <string name="Info_Server_Push">पुश:</string>
-    <string name="Settings_FMD_via_Pin_Description">आपको PIN के माध्यम से FMD के साथ संचार करने की अनुमति देता है। आपको एक अस्थायी अनुमति सूची में जोड़ दिया जाएगा।</string>
+    <string name="Settings_FMD_via_Pin_Description">आपको PIN के माध्यम से FMD के साथ संचार करने की अनुमति देता है। यह आपको ऐसे फोन नंबर से आदेश भेजने की अनुमति देता है जो अनुमत संपर्क सूची में नहीं है।</string>
     <string name="Settings_FMDServer_Alert_DeleteData_Desc">इससे सर्वर से सारा डेटा मिट जाएगा! क्या आप निश्चित हैं?</string>
     <string name="Permission_WRITE_SECURE_SETTINGS">यदि आप सामान्यतः लोकेशन बंद छोड़ देते हैं तो यह एप्लिकेशन लोकेशन चालू करने में सक्षम है।
 \nयदि यह बंद है, तो \"fmd locate\" काम नहीं करेगा।
@@ -191,4 +191,6 @@
     <string name="request_failed_status_code">स्थिति कोड</string>
     <string name="request_failed_response_body">प्रतिक्रिया निकाय</string>
     <string name="request_failed_exception">अपवाद</string>
+    <string name="Notification_Server_Description">FMD सर्वर से संबंधित अधिसूचनाएं</string>
+    <string name="Settings_FMDServer_Server_Url">सर्वर URL</string>
 </resources>
