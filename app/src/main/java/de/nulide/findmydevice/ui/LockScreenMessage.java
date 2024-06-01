@@ -58,6 +58,7 @@ public class LockScreenMessage extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        super.onBackPressed();
         sender.sendNow(getString(R.string.LockScreen_Backbutton_pressed));
         finish();
     }
