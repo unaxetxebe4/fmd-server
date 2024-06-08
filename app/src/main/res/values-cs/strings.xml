@@ -16,8 +16,8 @@
 \nMůžete pokračovat dále, ale váš účet nemusel být smazán ze serveru. Pokud budete pokračovat, bude váš účet smazán lokálně z tohoto zařízení.</string>
     <string name="server_unregister_dont_continue">Nepokračovat</string>
     <string name="Notification_Usage">Využití</string>
-    <string name="Notification_Usage_Description">Oznámení o využití služby.</string>
-    <string name="Notification_Pin_Usage_Description">Oznámení o využití PINu.</string>
+    <string name="Notification_Usage_Description">Oznámení, když FMD přijímá příkazy</string>
+    <string name="Notification_Pin_Usage_Description">Oznámení při přístupu k FMD pomocí PINu</string>
     <string name="Introduction_Introduction">FindMyDevice (FMD) je aplikace, která vám pomůže najít telefon, když jej ztratíte.
 \nKe komunikaci a odesílání příkazů z druhého zařízení využívá SMS (textové zprávy), pomocí kterých můžete telefon sledovat.
 \nStačí odeslat SMS zprávu, která obsahuje příkaz fmd.
@@ -88,7 +88,7 @@
     <string name="Info_Server_Enabled">Služba:</string>
     <string name="Info_Server_Push">Push:</string>
     <string name="Settings_OpenCellId">OpenCelliD</string>
-    <string name="Settings_FMD_via_Pin_Description">Umožňuje komunikovat s FMD pomocí kódu PIN. Kontakt bude přidán na dočasný seznam povolených.</string>
+    <string name="Settings_FMD_via_Pin_Description">Umožňuje komunikovat s FMD pomocí kódu PIN. To vám umožní posílat příkazy z mobilního čísla, které se nenachází na seznamu povolených kontaktů.</string>
     <string name="Settings_Enter_Pin">Zadat PIN</string>
     <string name="pin">PIN</string>
     <string name="pin_repeat">Zopakujte PIN</string>
@@ -113,12 +113,12 @@
     <string name="OpenCellId_test_no_connection">Žádné mobilní připojení</string>
     <string name="settings_exported">Nastavení exportována</string>
     <string name="server_unregister_continue_anyway">Přesto pokračovat</string>
-    <string name="Pin_Usage">VyužitíPinu</string>
-    <string name="Notification_Server">Server</string>
+    <string name="Pin_Usage">Využití PINu</string>
+    <string name="Notification_Server">Server FMD</string>
     <string name="Notification_Security">Zabezpečení</string>
     <string name="Notification_Security_Description">Oznámení o aktualizacích zabezpečení</string>
-    <string name="Notification_FAIL">Chyba</string>
-    <string name="Notification_Fail_Description">Oznámení, když něco selže, například spojení se serverem FMD.</string>
+    <string name="Notification_FAIL">Chyby</string>
+    <string name="Notification_Fail_Description">Oznámení, když něco selže, například spojení se serverem FMD</string>
     <string name="Introduction_UpdatePermission">Jsou vyžadována nová oprávnění.
 \nAbyste mohli nadále využívat tuto aplikaci, zkontrolujte prosím následující oprávnění, nebo se vraťte zpět na starší verzi.</string>
     <string name="Introduction_Give_Permission">Udělit oprávnění</string>
@@ -129,7 +129,7 @@
     <string name="MH_rings">prozvani</string>
     <string name="MH_Delete">Nashledanou...</string>
     <string name="MH_Networks">"
-\nDostupné site Wi-Fi:
+\nDostupne site Wi-Fi:
 \n"</string>
     <string name="MH_Help_where">" locate - odesle aktualni polohu zarizeni"</string>
     <string name="MH_Help_ring">" ring - necha zarizeni vyzvanet"</string>
@@ -162,8 +162,8 @@
     <string name="Settings_Export">Exportovat nastavení</string>
     <string name="Settings_Logs">Protokoly</string>
     <string name="Settings_About">O aplikaci</string>
-    <string name="Settings_Pin_Description">Použito pro potvrzení před vymazáním zařízení nebo pro dočasné použití služby.</string>
-    <string name="Settings_FMDCommand_Description">Příkaz používaný pro komunikaci s aplikací FindMyDevice.</string>
+    <string name="Settings_Pin_Description">Použito pro potvrzení před vymazáním zařízení a pro anonymní použití služby.</string>
+    <string name="Settings_FMDCommand_Description">Příkaz používaný pro komunikaci s FMD.</string>
     <string name="Settings_FMDServer_Push_Description_Available">Push oznámení úspěšně zaregistrována.</string>
     <string name="Settings_FMDServer_Push_Open_UP">Otevřít web UnifiedPush</string>
     <string name="Settings_FMDServer_Update_Interval_Title">Interval aktualizace</string>
@@ -191,4 +191,6 @@
     <string name="registration_token_hint">Soukromé instance mohou vyžadovat tajný token. Ponechte prázdné, pokud se jedná o veřejnou instanci.</string>
     <string name="Whitelist_empty">Žádné povolené kontakty. Klepněte na tlačítko pro jejich přidání!</string>
     <string name="WhiteList_Select_Number">Vyberte jedno z mobilních čísel.</string>
+    <string name="Notification_Server_Description">Oznámení týkající se serveru FMD</string>
+    <string name="Settings_FMDServer_Server_Url">Adresa serveru</string>
 </resources>
