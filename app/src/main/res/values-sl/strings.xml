@@ -15,11 +15,11 @@
     <string name="Settings_Permissions">Dovoljenja</string>
     <string name="Settings_Import">Uvozi nastavitve</string>
     <string name="Settings_About">O aplikaciji</string>
-    <string name="Settings_FMD_via_Pin_Description">Dovoli komunikacijo s FMD samo s PIN kodo. Dodani boste na začasni seznam dovoljenih.</string>
-    <string name="Settings_Pin_Description">Uporablja se kot potrditev pred brisanjem naprave ali za začasno uporabo storitve.</string>
+    <string name="Settings_FMD_via_Pin_Description">Omogoči komunikacijo s FMD s PIN kodo. V tem primeru bodo fmd ukaze preko SMS sporočil lahko pošiljali tudi stiki, ki niso na seznamu zaupanja vrednih, vendar bodo morali v sporočilu poslati PIN kodo.</string>
+    <string name="Settings_Pin_Description">Uporablja se kot potrditev pred brisanjem naprave ter za tim. anonimno uporabo storitve.</string>
     <string name="Settings_Enter_Pin">Vnesi PIN</string>
     <string name="pin">PIN</string>
-    <string name="Settings_FMDCommand_Description">Ukaz, ki se uporablja za komunikacijo z FindMyDevice aplikacijo.</string>
+    <string name="Settings_FMDCommand_Description">Ukaz, ki se uporablja za komunikacijo s FMD aplikacijo.</string>
     <string name="Settings_Select_Ringtone">Izberi melodijo zvonenja</string>
     <string name="Settings_Ringer_Tone_Description">Izberi melodijo za predvajanje ob ukazu \"fmd ring\".</string>
     <string name="Settings_Lockscreenmessage_Description">Sporočilo na zaklenjenem zaslonu:
@@ -84,12 +84,12 @@
     <string name="notify_crypto_update_text">Potrebno je posodobiti nekatere nastavitve, če želite še naprej uporabjati FMD. Kliknite, da jih odprete.</string>
     <string name="server_unregister_dont_continue">Ne nadaljuj</string>
     <string name="Notification_Usage">Uporaba</string>
-    <string name="Notification_Pin_Usage_Description">Obvestilo o uporabi PIN-a.</string>
-    <string name="Notification_Server">Strežnik</string>
+    <string name="Notification_Pin_Usage_Description">Obvestilo o uporabi PIN kode</string>
+    <string name="Notification_Server">FMD strežnik</string>
     <string name="Notification_Security">Varnost</string>
     <string name="Notification_Security_Description">Obvestila o varnostnih posodobitvah</string>
-    <string name="Notification_FAIL">Spodletelo</string>
-    <string name="Notification_Fail_Description">Obvestila ko kaj spodleti, npr. povezava na FMD strežnik.</string>
+    <string name="Notification_FAIL">Napake</string>
+    <string name="Notification_Fail_Description">Obvestila ko se pojavi napaka, npr. spodleti povezava na FMD strežnik.</string>
     <string name="Introduction_UpdatePermission">Potrebnih je nekaj novih dovoljenj.
 \nPreverite naslednja dovoljenja, če želite še naprej uporabljati to aplikacijo, ali pa se vrnite na starejšo različico.</string>
     <string name="Permission_SMS">Če želite telefonu poslati ukaz, mora ta aplikacija imeti možnost videti vaša sporočila SMS. Ta sporočila ne bodo posredovana tretjim osebam in se uporabljajo samo za iskanje vašega telefona.
@@ -163,7 +163,7 @@
     <string name="server_unregister_failed_body">Odjava je spodletela zaradi naslednje napake: {ERROR}
 \n
 \nVseeno lahko nadaljujete, vendar vaš račun morda ni bil izbrisan iz strežnika. Če nadaljujete, bo vaš račun lokalno izbrisan iz te naprave.</string>
-    <string name="Notification_Usage_Description">Obvestilo o uporabi storitve.</string>
+    <string name="Notification_Usage_Description">Obvestilo, ko FMD prejema ukaze.</string>
     <string name="Permission_IGNORE_BATTERY_OPTIMIZATION">Ta aplikacija naj bi delovala v ozadju. Če želite zagotoviti, da deluje tudi, ko je vaš telefon v stanju pripravljenosti, morate za to aplikacijo izklopiti optimizacijo baterije.</string>
     <string name="Introduction_Introduction">FindMyDevice (FMD) je aplikacija, ki vam lahko pomaga najti vaš telefon, ko se izgubi.
 \nIz telefona enega izmed zaupanja vrednih stikov lahko preko SMS sporočil pošiljate ukaze ter tako sledite svojemu telefonu.
@@ -188,6 +188,8 @@
     <string name="Alert_First_time_fmdserver">Tukaj lahko nastavite komunikacijo aplikacije s FMD strežnikom. Če želite nastaviti drugačen strežnik od privzetega, lahko to storite tako, da spremenite URL. Če pritisnete \"registriraj\", lahko aplikacijo registrirate na strežniku. Telefon bo nato podatke o lokaciji pošiljal na navedeni strežnik. Lokacijo svojega telefona lahko preverite tako, da spletni strani FMD strežnika vnesete ID vaše naprave in vaše geslo.</string>
     <string name="Permission_Notification">Če želite, da FMD spremlja sporočila iz drugih aplikacij, kot so Telegram, Whatsapp itd., ji lahko omogočite dostop do obvestil. S tem boste aplikacijo FMD lahko upravljali tudi preko teh aplikacij in ne samo preko SMS sporočil.</string>
     <string name="MH_CAM_CAPTURE">"Naprava bo zajeto sliko kmalu posredovala na FMD strežnik. Ogledali si jo boste lahko tukaj: "</string>
-    <string name="Pin_Usage">Uporaba PIN-a</string>
+    <string name="Pin_Usage">Uporaba PIN kode</string>
     <string name="MH_False_Pin">Napačen PIN!</string>
+    <string name="Notification_Server_Description">Obvestila povezana s FMD strežnikom</string>
+    <string name="Settings_FMDServer_Server_Url">URL strežnika</string>
 </resources>
