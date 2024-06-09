@@ -64,7 +64,7 @@ lintDebug:
     - ./gradlew -Pci --console=plain :app:lint -PbuildDir=lint
   artifacts:
     paths:
-      - app/lint/reports/lint-results-debug.html
+      - app/lint/reports/lint-results-devDebug.html
     expose_as: "lint-report"
     when: always
 
