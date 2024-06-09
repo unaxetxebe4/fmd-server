@@ -36,14 +36,25 @@ class LocationPermission : Permission() {
     val REQUEST_CODE = 8050
 
     override fun request(activity: Activity) {
-        val array = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            arrayOf(
-                Manifest.permission.ACCESS_FINE_LOCATION,
-                Manifest.permission.ACCESS_BACKGROUND_LOCATION
+        // We cannot request ACCESS_FINE_LOCATION and ACCESS_BACKGROUND_LOCATION at the same time
+        // The must be granted one after the other.
+        // Thus this method will usually be called twice (since calling it once will not get you both permissions).
+        if (!isForegroundGranted(activity.applicationContext)) {
+            ActivityCompat.requestPermissions(
+                activity,
+                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                REQUEST_CODE
             )
-        } else {
-            arrayOf(Manifest.permission.ACCESS_FINE_LOCATION)
+            return
         }
-        ActivityCompat.requestPermissions(activity, array, REQUEST_CODE)
+        if (!isBackgroundGranted(activity.applicationContext)) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                ActivityCompat.requestPermissions(
+                    activity,
+                    arrayOf(Manifest.permission.ACCESS_BACKGROUND_LOCATION),
+                    REQUEST_CODE
+                )
+            }
+        }
     }
 }
