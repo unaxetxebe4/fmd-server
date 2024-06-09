@@ -14,7 +14,7 @@ import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.data.Settings;
 import de.nulide.findmydevice.data.SettingsRepoSpec;
 import de.nulide.findmydevice.data.SettingsRepository;
-import de.nulide.findmydevice.logic.command.helper.Ringer;
+import de.nulide.findmydevice.utils.RingerUtils;
 import de.nulide.findmydevice.tasks.RingerTimerTask;
 
 public class RingerActivity extends AppCompatActivity implements View.OnClickListener {
@@ -36,7 +36,7 @@ public class RingerActivity extends AppCompatActivity implements View.OnClickLis
         Bundle bundle = getIntent().getExtras();
 
         Settings settings = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(this)).getSettings();
-        Ringtone ringtone = Ringer.getRingtone(this, (String) settings.get(Settings.SET_RINGER_TONE));
+        Ringtone ringtone = RingerUtils.getRingtone(this, (String) settings.get(Settings.SET_RINGER_TONE));
 
         Timer t = new Timer();
         ringerTask = new RingerTimerTask(t, ringtone, this);
