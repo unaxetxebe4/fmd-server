@@ -11,30 +11,26 @@ import de.nulide.findmydevice.data.ConfigSMSRec;
 import de.nulide.findmydevice.data.io.IO;
 import de.nulide.findmydevice.data.io.JSONFactory;
 import de.nulide.findmydevice.data.io.json.JSONMap;
-import de.nulide.findmydevice.sender.SMS;
-import de.nulide.findmydevice.sender.Sender;
+import de.nulide.findmydevice.transports.SmsTransport;
+import de.nulide.findmydevice.transports.Transport;
 import de.nulide.findmydevice.utils.Logger;
 
 public class TempContactExpiredService extends JobService {
 
-    public final static String SENDER_TYPE = "sender";
-    public static final String DESTINATION = "dest";
-
     @Override
     public boolean onStartJob(JobParameters params) {
-        Sender sender = null;
         ConfigSMSRec config = JSONFactory.convertJSONConfig(IO.read(JSONMap.class, IO.SMSReceiverTempData));
-        String destination = (String) config.get(ConfigSMSRec.CONF_TEMP_WHITELISTED_CONTACT);
-        if (destination != null && !destination.isEmpty()) {
-            sender = new SMS(destination);
-        }
+        String phoneNumber = (String) config.get(ConfigSMSRec.CONF_TEMP_WHITELISTED_CONTACT);
 
         IO.context = this;
         Logger.init(Thread.currentThread(), this);
-        if (sender != null) {
-            sender.sendNow("FindMyDevive: Pin expired!");
-            Logger.logSession("Session expired", sender.getDestination());
+
+        if (phoneNumber != null && !phoneNumber.isEmpty()) {
+            Transport<String> transport = new SmsTransport(phoneNumber);
+            transport.send(this, "FindMyDevice: Pin expired!");
+            Logger.logSession("Session expired", phoneNumber);
         }
+
         config.set(ConfigSMSRec.CONF_TEMP_WHITELISTED_CONTACT, null);
         config.set(ConfigSMSRec.CONF_TEMP_WHITELISTED_CONTACT_ACTIVE_SINCE, null);
 
@@ -46,7 +42,7 @@ public class TempContactExpiredService extends JobService {
         return false;
     }
 
-    public static void scheduleJob(Context context, Sender sender) {
+    public static void scheduleJob(Context context) {
         ComponentName serviceComponent = new ComponentName(context, TempContactExpiredService.class);
         JobInfo.Builder builder = new JobInfo.Builder(0, serviceComponent);
         builder.setMinimumLatency(10 * 1000 * 60);
@@ -54,6 +50,4 @@ public class TempContactExpiredService extends JobService {
         JobScheduler jobScheduler = context.getSystemService(JobScheduler.class);
         jobScheduler.schedule(builder.build());
     }
-
-
 }
