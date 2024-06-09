@@ -13,7 +13,7 @@ import de.nulide.findmydevice.utils.Logger
 import de.nulide.findmydevice.utils.Notifications
 
 
-private fun availableCommands(context: Context): List<Command> {
+fun availableCommands(context: Context): List<Command> {
     val commands = mutableListOf(
         CameraCommand(context),
         DeleteCommand(context),

@@ -4,8 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.ComponentActivity
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
 import de.nulide.findmydevice.R
+import de.nulide.findmydevice.commands.availableCommands
+
 
 class CommandListFragment : Fragment() {
 
@@ -15,5 +19,15 @@ class CommandListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_command_list, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val commandListAdapter = CommandListAdapter(activity as ComponentActivity)
+        val recyclerView = view.findViewById<RecyclerView>(R.id.recycler_commands)
+        recyclerView.adapter = commandListAdapter
+
+        commandListAdapter.submitList(availableCommands(view.context))
     }
 }
