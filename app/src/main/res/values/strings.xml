@@ -35,6 +35,10 @@
     <string name="Info_Server_Registered">Registered:</string>
     <string name="Info_Server_Push">Push:</string>
 
+    <string name="bottom_nav_commands">Commands</string>
+    <string name="bottom_nav_transports">Transport Channels</string>
+    <string name="bottom_nav_settings">Settings</string>
+
     <!-- Settings (main screen, with the list) -->
     <string name="Settings_Settings">Settings</string>
     <string name="Settings_FMDConfig">FMD-Config</string>

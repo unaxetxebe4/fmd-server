@@ -2,56 +2,39 @@ package de.nulide.findmydevice.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.style.ForegroundColorSpan;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 
 import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.data.Settings;
-import de.nulide.findmydevice.data.SettingsRepository;
 import de.nulide.findmydevice.data.SettingsRepoSpec;
-import de.nulide.findmydevice.data.Allowlist;
+import de.nulide.findmydevice.data.SettingsRepository;
 import de.nulide.findmydevice.data.io.IO;
-import de.nulide.findmydevice.data.io.JSONFactory;
-import de.nulide.findmydevice.data.io.json.JSONWhiteList;
 import de.nulide.findmydevice.receiver.PushReceiver;
 import de.nulide.findmydevice.services.FMDServerLocationUploadService;
+import de.nulide.findmydevice.ui.home.CommandListFragment;
+import de.nulide.findmydevice.ui.home.SettingsFragment;
+import de.nulide.findmydevice.ui.home.TransportListFragment;
 import de.nulide.findmydevice.ui.onboarding.UpdateboardingModernCryptoActivity;
 import de.nulide.findmydevice.ui.settings.SettingsActivity;
-import de.nulide.findmydevice.ui.settings.AllowlistActivity;
 import de.nulide.findmydevice.utils.Logger;
 import de.nulide.findmydevice.utils.Notifications;
 import de.nulide.findmydevice.utils.Permission;
-import host.stjin.expandablecardview.ExpandableCardView;
+
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView textViewFMDCommandName;
-    private TextView textViewWhiteListCount;
-    private TextView textViewCORE;
-    private TextView textViewGPS;
-    private TextView textViewDND;
-    private TextView textViewDeviceAdmin;
-    private TextView textViewWriteSecureSettings;
-    private TextView textViewOverlay;
-    private TextView textViewNotification;
-    private TextView textViewCamera;
-    private TextView textViewBatteryOptimization;
-    private TextView textViewServerServiceEnabled;
-    private TextView textViewServerRegistered;
-    private TextView textViewPush;
-    private Button buttonOpenWhitelist;
-    private ExpandableCardView expandableCardViewPermissions;
-
     private Settings settings;
+
+    private Fragment commandsFragment, transportFragment, settingsFragment;
+    private Fragment activeFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,146 +73,46 @@ public class MainActivity extends AppCompatActivity {
         if (settings.checkAccountExists()) {
             FMDServerLocationUploadService.scheduleJob(this, 0);
         }
-        findAllViewsById();
+
+        BottomNavigationView bottomNav = findViewById(R.id.bottom_nav);
+        bottomNav.setOnItemSelectedListener(navListener);
+
+        commandsFragment = new CommandListFragment();
+        transportFragment = new TransportListFragment();
+        settingsFragment = new SettingsFragment();
+        activeFragment = commandsFragment;
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         Permission.initValues(this);
-        updateViews();
+
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, activeFragment)
+                .commit();
     }
 
-    public void findAllViewsById() {
-        textViewFMDCommandName = findViewById(R.id.textViewFMDCommandName);
-        textViewWhiteListCount = findViewById(R.id.textViewWhiteListCount);
-        textViewCORE = findViewById(R.id.textViewCORE);
-        textViewGPS = findViewById(R.id.textViewGPS);
-        textViewDND = findViewById(R.id.textViewDND);
-        textViewDeviceAdmin = findViewById(R.id.textViewDeviceAdmin);
-        textViewWriteSecureSettings = findViewById(R.id.textViewWriteSecureSettings);
-        textViewOverlay = findViewById(R.id.textViewOverlay);
-        textViewNotification = findViewById(R.id.textViewNotification);
-        buttonOpenWhitelist = findViewById(R.id.buttonOpenWhiteList);
-        buttonOpenWhitelist.setOnClickListener(this::openAllowlistActivity);
-        textViewServerServiceEnabled = findViewById(R.id.textViewServerEnabled);
-        textViewServerRegistered = findViewById(R.id.textViewRegisteredOnServer);
-        textViewPush = findViewById(R.id.textViewPushAvailable);
-        textViewCamera = findViewById(R.id.textViewCamera);
-        textViewBatteryOptimization = findViewById(R.id.textviewBatteryOptimization);
-        expandableCardViewPermissions = findViewById(R.id.expandableCardViewPermissions);
-    }
-
-    public void updateViews() {
-        Allowlist allowlist = JSONFactory.convertJSONWhiteList(IO.read(JSONWhiteList.class, IO.whiteListFileName));
-        textViewFMDCommandName.setText((String) settings.get(Settings.SET_FMD_COMMAND));
-        textViewWhiteListCount.setText(Integer.valueOf(allowlist.size()).toString());
-
-        int colorEnabled = getColor(R.color.colorEnabled);
-        int colorDisabled = getColor(R.color.colorDisabled);
-
-        ForegroundColorSpan whitelistCountColor;
-        if (allowlist.size() > 0) {
-            whitelistCountColor = new ForegroundColorSpan(colorEnabled);
-        } else {
-            whitelistCountColor = new ForegroundColorSpan(colorDisabled);
+    private final NavigationBarView.OnItemSelectedListener navListener = (item) -> {
+        switch (item.getItemId()) {
+            case R.id.nav_commands: {
+                activeFragment = commandsFragment;
+                break;
+            }
+            case R.id.nav_transports: {
+                activeFragment = transportFragment;
+                break;
+            }
+            case R.id.nav_settings: {
+                activeFragment = settingsFragment;
+                break;
+            }
         }
-        String whitelistPrefix = getString(R.string.Settings_WhiteList) + ": ";
-        String whitelistAll = whitelistPrefix + allowlist.size();
-        Spannable spannable = new SpannableString(whitelistAll);
-        spannable.setSpan(whitelistCountColor, whitelistPrefix.length(), whitelistAll.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        textViewWhiteListCount.setText(spannable, TextView.BufferType.SPANNABLE);
-
-        if (Permission.CORE) {
-            textViewCORE.setText(getString(R.string.Enabled));
-            textViewCORE.setTextColor(colorEnabled);
-        } else {
-            textViewCORE.setText(getString(R.string.Disabled));
-            textViewCORE.setTextColor(colorDisabled);
-        }
-        if (Permission.GPS) {
-            textViewGPS.setText(getString(R.string.Enabled));
-            textViewGPS.setTextColor(colorEnabled);
-        } else {
-            textViewGPS.setText(getString(R.string.Disabled));
-            textViewGPS.setTextColor(colorDisabled);
-        }
-        if (Permission.DND) {
-            textViewDND.setText(getString(R.string.Enabled));
-            textViewDND.setTextColor(colorEnabled);
-        } else {
-            textViewDND.setText(getString(R.string.Disabled));
-            textViewDND.setTextColor(colorDisabled);
-        }
-        if (Permission.DEVICE_ADMIN) {
-            textViewDeviceAdmin.setText(getString(R.string.Enabled));
-            textViewDeviceAdmin.setTextColor(colorEnabled);
-        } else {
-            textViewDeviceAdmin.setText(getString(R.string.Disabled));
-            textViewDeviceAdmin.setTextColor(colorDisabled);
-        }
-        if (Permission.WRITE_SECURE_SETTINGS) {
-            textViewWriteSecureSettings.setText(getString(R.string.Enabled));
-            textViewWriteSecureSettings.setTextColor(colorEnabled);
-        } else {
-            textViewWriteSecureSettings.setText(getString(R.string.Disabled));
-            textViewWriteSecureSettings.setTextColor(colorDisabled);
-        }
-        if (Permission.OVERLAY) {
-            textViewOverlay.setText(getString(R.string.Enabled));
-            textViewOverlay.setTextColor(colorEnabled);
-        } else {
-            textViewOverlay.setText(getString(R.string.Disabled));
-            textViewOverlay.setTextColor(colorDisabled);
-        }
-        if (Permission.NOTIFICATION_ACCESS) {
-            textViewNotification.setText(getString(R.string.Enabled));
-            textViewNotification.setTextColor(colorEnabled);
-        } else {
-            textViewNotification.setText(getString(R.string.Disabled));
-            textViewNotification.setTextColor(colorDisabled);
-        }
-        if(Permission.CAMERA){
-            textViewCamera.setText(getString(R.string.Enabled));
-            textViewCamera.setTextColor(colorEnabled);
-        } else {
-            textViewCamera.setText(getString(R.string.Disabled));
-            textViewCamera.setTextColor(colorDisabled);
-        }
-        if(Permission.BATTERY_OPTIMIZATION){
-            textViewBatteryOptimization.setText(R.string.Enabled);
-            textViewBatteryOptimization.setTextColor(colorEnabled);
-        } else {
-            textViewBatteryOptimization.setText(R.string.Disabled);
-            textViewBatteryOptimization.setTextColor(colorDisabled);
-        }
-        expandableCardViewPermissions.setTitle(-1, getString(R.string.Granted) + " " + Permission.ENABLED_PERMISSIONS + "/" + Permission.AVAILABLE_PERMISSIONS);
-
-        if (settings.checkAccountExists()) {
-            textViewServerServiceEnabled.setText(getString(R.string.Enabled));
-            textViewServerServiceEnabled.setTextColor(colorEnabled);
-        }else{
-            textViewServerServiceEnabled.setText(getString(R.string.Disabled));
-            textViewServerServiceEnabled.setTextColor(colorDisabled);
-        }
-
-        if (settings.checkAccountExists()) {
-            textViewServerRegistered.setText(getString(R.string.Enabled));
-            textViewServerRegistered.setTextColor(colorEnabled);
-        }else{
-            textViewServerRegistered.setText(getString(R.string.Disabled));
-            textViewServerRegistered.setTextColor(colorDisabled);
-        }
-
-        if (PushReceiver.isRegisteredWithUnifiedPush(this)) {
-            textViewPush.setText(R.string.Available);
-            textViewPush.setTextColor(colorEnabled);
-        } else {
-            textViewPush.setTextColor(colorDisabled);
-            textViewPush.setText(R.string.NOT_AVAILABLE);
-        }
-
-    }
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, activeFragment)
+                .commit();
+        return true;
+    };
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -239,15 +122,10 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId() == R.id.menuItemSettings){
+        if (item.getItemId() == R.id.menuItemSettings) {
             Intent settingsIntent = new Intent(this, SettingsActivity.class);
             startActivity(settingsIntent);
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    private void openAllowlistActivity(View v) {
-            Intent allowlistActivity = new Intent(this, AllowlistActivity.class);
-            startActivity(allowlistActivity);
     }
 }
