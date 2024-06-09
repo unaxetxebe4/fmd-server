@@ -1,0 +1,44 @@
+package de.nulide.findmydevice.commands
+
+import android.content.Context
+import androidx.annotation.StringRes
+import de.nulide.findmydevice.R
+import de.nulide.findmydevice.permissions.LocationPermission
+import de.nulide.findmydevice.services.FmdJobService
+import de.nulide.findmydevice.transports.Transport
+import de.nulide.findmydevice.utils.NetworkUtils
+
+
+class StatsCommand(context: Context) : Command(context) {
+
+    override val keyword = "stats"
+    override val usage = "stats"
+
+    @get:StringRes
+    override val shortDescription = R.string.cmd_stats_description_short
+
+    override val longDescription = R.string.cmd_stats_description_long
+
+    override val requiredPermissions = listOf(LocationPermission())
+
+    override fun <T> execute(
+        args: List<String>,
+        transport: Transport<T>,
+        job: FmdJobService?,
+    ) {
+        super.execute(args, transport, job)
+
+        val ips = NetworkUtils.getAllIP()
+        val ipsString = ips.map { i -> i.key }.joinToString { "\n" }
+
+        val wifis = NetworkUtils.getWifiNetworks(context)
+        val wifisString = wifis
+            .map { sr -> "SSID: ${sr.SSID}\nBSSID: ${sr.BSSID}" }
+            .joinToString { "\n\n" }
+
+        val reply = context.getString(R.string.cmd_stats_response, ipsString, wifisString)
+
+        transport.send(context, reply)
+        job?.jobFinished()
+    }
+}
