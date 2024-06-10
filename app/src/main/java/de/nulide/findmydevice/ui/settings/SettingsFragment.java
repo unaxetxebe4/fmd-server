@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -112,6 +113,7 @@ public class SettingsFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        Context context = getActivity();
         if (requestCode == IMPORT_REQ_CODE && resultCode == Activity.RESULT_OK) {
             if (data != null) {
                 Uri uri = data.getData();
@@ -135,18 +137,21 @@ public class SettingsFragment extends Fragment {
                             Settings settings = mapper.readValue(text, Settings.class);
                             settings.set(Settings.SET_INTRODUCTION_VERSION, settings.get(Settings.SET_INTRODUCTION_VERSION));
                         }
+                        SettingsRepository.Companion.getInstance(new SettingsRepoSpec(context)).forceReload();
+                        Toast.makeText(context, getString(R.string.Settings_Import_Success), Toast.LENGTH_SHORT).show();
                     } catch (IOException e) {
                         e.printStackTrace();
+                        Toast.makeText(context, getString(R.string.Settings_Import_Failed), Toast.LENGTH_SHORT).show();
                     }
-
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
+                    Toast.makeText(context, getString(R.string.Settings_Import_Failed), Toast.LENGTH_SHORT).show();
                 }
             }
         } else if (requestCode == EXPORT_REQ_CODE && resultCode == Activity.RESULT_OK) {
             if (data != null) {
                 Uri uri = data.getData();
-                Settings.writeToUri(getActivity(), uri);
+                Settings.writeToUri(context, uri);
             }
         }
     }
