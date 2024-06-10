@@ -20,7 +20,7 @@ import de.nulide.findmydevice.data.io.IO;
 import de.nulide.findmydevice.receiver.PushReceiver;
 import de.nulide.findmydevice.services.FMDServerLocationUploadService;
 import de.nulide.findmydevice.ui.home.CommandListFragment;
-import de.nulide.findmydevice.ui.home.SettingsFragment;
+import de.nulide.findmydevice.ui.settings.SettingsFragment;
 import de.nulide.findmydevice.ui.home.TransportListFragment;
 import de.nulide.findmydevice.ui.onboarding.UpdateboardingModernCryptoActivity;
 import de.nulide.findmydevice.ui.settings.SettingsActivity;
@@ -62,7 +62,6 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
             return;
-
         }
         if (!(Boolean) settings.get(Settings.SET_UPDATEBOARDING_MODERN_CRYPTO_COMPLETED)) {
             Intent intent = new Intent(this, UpdateboardingModernCryptoActivity.class);
