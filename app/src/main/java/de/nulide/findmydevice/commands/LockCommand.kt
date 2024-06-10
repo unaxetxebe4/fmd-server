@@ -15,12 +15,12 @@ import de.nulide.findmydevice.ui.LockScreenMessage
 class LockCommand(context: Context) : Command(context) {
 
     override val keyword = "lock"
-    override val usage = "lock"
+    override val usage = "lock [msg]"
 
     @get:StringRes
     override val shortDescription = R.string.cmd_lock_description_short
 
-    override val longDescription = R.string.cmd_lock_description_short
+    override val longDescription = R.string.cmd_lock_description_long
 
     override val requiredPermissions = listOf(DeviceAdminPermission(), OverlayPermission())
 
