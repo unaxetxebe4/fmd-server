@@ -5,6 +5,7 @@ import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.os.BatteryManager
 import android.os.Build
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -47,6 +48,12 @@ class Utils {
         @JvmStatic
         fun getOpenStreetMapLink(lat: String, lon: String): String {
             return "https://www.openstreetmap.org/?mlat=$lat&mlon=$lon&zoom=14"
+        }
+
+        fun getBatteryLevel(context: Context): String {
+            val manager = context.getSystemService(Context.BATTERY_SERVICE) as BatteryManager
+            val level = manager.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY)
+            return Integer.valueOf(level).toString()
         }
     }
 }
