@@ -5,27 +5,24 @@ import android.content.Context;
 
 import java.util.Calendar;
 
+import de.nulide.findmydevice.data.Allowlist;
 import de.nulide.findmydevice.data.ConfigSMSRec;
 import de.nulide.findmydevice.data.Settings;
 import de.nulide.findmydevice.data.SettingsRepoSpec;
 import de.nulide.findmydevice.data.SettingsRepository;
-import de.nulide.findmydevice.data.Allowlist;
 import de.nulide.findmydevice.data.io.IO;
 import de.nulide.findmydevice.data.io.JSONFactory;
 import de.nulide.findmydevice.data.io.json.JSONMap;
 import de.nulide.findmydevice.data.io.json.JSONWhiteList;
-import de.nulide.findmydevice.logic.ComponentHandler;
 import de.nulide.findmydevice.utils.Logger;
 import de.nulide.findmydevice.utils.Notifications;
-import de.nulide.findmydevice.utils.Permission;
+
 
 abstract class SuperReceiver extends BroadcastReceiver {
 
     protected Allowlist whiteList;
     protected ConfigSMSRec config;
     protected Settings settings;
-
-    protected ComponentHandler ch;
 
     protected void init(Context context) {
         IO.context = context;
@@ -39,8 +36,5 @@ abstract class SuperReceiver extends BroadcastReceiver {
             config.set(ConfigSMSRec.CONF_LAST_USAGE, cal.getTimeInMillis());
         }
         Notifications.init(context, false);
-        Permission.initValues(context);
-        ch = new ComponentHandler(context, null, null);
     }
-
 }

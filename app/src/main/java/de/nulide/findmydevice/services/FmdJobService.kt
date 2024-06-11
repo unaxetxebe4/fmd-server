@@ -30,7 +30,8 @@ abstract class FmdJobService : JobService() {
         return false
     }
 
-    fun jobFinished() {
+    @CallSuper
+    open fun jobFinished() {
         Log.d(TAG, "Finishing job ${params?.jobId}")
         coroutineScope.cancel()
         params?.let { this.jobFinished(it, false) }

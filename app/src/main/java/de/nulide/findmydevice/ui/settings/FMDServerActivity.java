@@ -216,7 +216,7 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
         settings.set(Settings.SET_FMD_CRYPT_HPW, "");
         settings.set(Settings.SET_FMD_CRYPT_PRIVKEY, "");
         settings.set(Settings.SET_FMD_CRYPT_PUBKEY, "");
-        FMDServerLocationUploadService.cancelAll(this);
+        FMDServerLocationUploadService.cancelJob(this);
         finish();
     }
 
@@ -294,18 +294,15 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
 
     private void runDelete() {
         showLoadingIndicator(context);
+        FMDServerLocationUploadService.cancelJob(context);
         fmdServerRepo.unregister(
                 response -> {
                     loadingDialog.cancel();
                     Toast.makeText(context, "Unregister successful", Toast.LENGTH_LONG).show();
-                    FMDServerLocationUploadService.cancelAll(context);
                     finish();
                 }, error -> {
                     loadingDialog.cancel();
-                    UnregisterUtil.showUnregisterFailedDialog(context, error, () -> {
-                        FMDServerLocationUploadService.cancelAll(context);
-                        finish();
-                    });
+                    UnregisterUtil.showUnregisterFailedDialog(context, error, this::finish);
                 }
         );
     }

@@ -24,7 +24,7 @@ import de.nulide.findmydevice.data.io.IO;
 import de.nulide.findmydevice.data.io.JSONFactory;
 import de.nulide.findmydevice.data.io.OldKeyIO;
 import de.nulide.findmydevice.data.io.json.JSONMap;
-import de.nulide.findmydevice.logic.command.helper.Ringer;
+import de.nulide.findmydevice.utils.RingerUtils;
 import de.nulide.findmydevice.utils.CypherUtils;
 
 
@@ -108,7 +108,7 @@ public class Settings extends HashMap<Integer, Object> {
                 case SET_SET_VERSION:
                     return 0;
                 case SET_RINGER_TONE:
-                    return Ringer.getDefaultRingtoneAsString();
+                    return RingerUtils.getDefaultRingtoneAsString();
                 case SET_PIN:
                 case SET_FMDSERVER_ID:
                 case SET_LAST_KNOWN_LOCATION_LAT:
