@@ -193,4 +193,60 @@
     <string name="Toast_Empty_FMDCommand">Comando vazio não permitido
 \n Retornando ao padrão. [fmd]</string>
     <string name="NOT_AVAILABLE">Indisponível</string>
+    <string name="cmd_missing_permissions">Não foi possível executar o comando %s: Faltando a(s) permissão(ões) %s.</string>
+    <string name="cmd_camera_description_long">Tira uma foto da câmera frontal/traseira e faz upload dela pro Servidor FMD. Atualmente só é possível fazer upload para o Servidor FMD. Vocẽ pode enviar este comando atráves de outros canais de transporte, também, e a foto será enviada ao Servidor FMD (se uma conta existe).</string>
+    <string name="cmd_delete_description_short">Redefinir o dispositivo de fábrica</string>
+    <string name="cmd_gps_description_short">Ativar/desativar o GPS</string>
+    <string name="cmd_lock_response">O dispositivo deve estar bloqueado agora.</string>
+    <string name="cmd_ring_description_short">Fazer o dispositivo tocar</string>
+    <string name="cmd_nodisturb_response_on">Modo \"Não Perturbe\" ativado.</string>
+    <string name="cmd_nodisturb_response_off">Modo \"Não Perturbe\" desativado.</string>
+    <string name="cmd_stats_description_short">Obter estatísticas de rede</string>
+    <string name="perm_sms_name">SMS</string>
+    <string name="perm_write_secure_settings_name">Escrever nas Configurações Seguras</string>
+    <string name="grant_write_secure_settings_title">Conceder Escrita ás Configurações Seguras</string>
+    <string name="grant_write_secure_settings_description">Esta permissão só pode ser concedida com a ferramenta \"pm grant\" de terminal do Android. Você pode executar este comando manualmente atráves do Android Debug Bridge (ADB) usando um computador. Você também pode executá-lo diretamente no seu dispositivo usando root ou o Shizuku.</string>
+    <string name="cmd_camera_description_short">Tirar uma foto</string>
+    <string name="cmd_delete_response_pwd_wrong">Não foi possível executar o delete: senha errada.</string>
+    <string name="cmd_camera_response_no_fmd_server">Não foi possível tirar foto: nenhum conta do Servidor FMD existe.</string>
+    <string name="cmd_camera_response_success">O dispositivo está tirando uma foto e mandará ela ao Servidor FMD. Você pode ver ela aqui logo: %s</string>
+    <string name="cmd_delete_description_long">Apaga todos os dados. Depois, não será mais possível se comunicar com o dispositivo. Para prevenir uso malicioso ou acidental, este comando requer uma senha e precisa estar ativado explicitamente nas configurações.</string>
+    <string name="cmd_delete_response_disabled">Não foi possível executar o delete: comando delete não está ativado nas configurações.</string>
+    <string name="cmd_delete_response_pwd_missing">Não foi possível executar o delete: nenhuma senha. Uso: %s.</string>
+    <string name="cmd_delete_response_success">Seu dispositivo agora deve ter sido apagado. Adeus!</string>
+    <string name="cmd_gps_response_on">GPS ativado.</string>
+    <string name="cmd_gps_response_off">GPS desativado.</string>
+    <string name="cmd_help_description_short">Mostrar a ajuda</string>
+    <string name="cmd_locate_description_long">Localizar o dispositivo usando um ou mais provedores de localização. O provedor do sistema operacional normalmente é o GPS, algumas vezes com uma combinação de outras fontes. Um provedor secundário é o OpenCelliD, que usa um banco de dados de torres de redes móveis.</string>
+    <string name="perm_location_name">Localização</string>
+    <string name="perm_overlay_name">Sobrepor a Outros Apps</string>
+    <string name="optional_permissions_title">Permissões Opcionais</string>
+    <string name="cmd_locate_description_short">Localizar o dispositivo</string>
+    <string name="cmd_lock_description_short">Bloquear o dispositivo</string>
+    <string name="cmd_nodisturb_description_short">Ativar/desativar o \"Não Perturbe\"</string>
+    <string name="perm_root_denied">Acesso root negado</string>
+    <string name="usage_notification_title">Comando executado</string>
+    <string name="cmd_ring_response">O dispositivo deve estar tocando agora.</string>
+    <string name="cmd_stats_description_long">Obter estatísticas de rede do dispositivo. Por exemplo, seu endereço de IP, e uma lista de redes Wi-Fi por perto.</string>
+    <string name="perm_post_notification_name">Mandar Notificações</string>
+    <string name="grant">Conceder</string>
+    <string name="cmd_stats_response">Estatísticas de rede:
+\n
+\nEndereços IP do dispositivo:
+\n%s
+\n
+\nRedes Wi-Fi:
+\n%s</string>
+    <string name="perm_battery_optimizations_name">Ignorar Otimizações de Bateria</string>
+    <string name="perm_camera_name">Câmera</string>
+    <string name="perm_contacts_name">Contatos</string>
+    <string name="perm_device_admin_name">Administrador do Dispositivo</string>
+    <string name="perm_do_not_disturb_access_name">Acesso ao \"Não Perturbe\"</string>
+    <string name="perm_notification_access_name">Acesso às Notificações</string>
+    <string name="required_permissions_title">Permissões Necessárias</string>
+    <string name="grant_via_root">Conceder via Root</string>
+    <string name="grant_via_shizuku">Conceder via Shizuku</string>
+    <string name="grant_via_adb">Conceder via ADB</string>
+    <string name="perm_shizuku_failed">Conceder via Shizuku falhou</string>
+    <string name="usage_notification_text">O comando \"%s\" foi executado.</string>
 </resources>

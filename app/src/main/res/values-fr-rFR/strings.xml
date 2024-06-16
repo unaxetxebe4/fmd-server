@@ -14,7 +14,7 @@
     <string name="Alert_First_Time_contact_added">Félicitations. Vous avez ajouté votre premier contact. Vous pouvez maintenant communiquer avec FMD en envoyant un sms qui contient \"fmd\" à partir du numéro de téléphone autorisé. Quand tout marchera, l\'application répondra.</string>
     <string name="MH_Pin_Accepted">Code PIN accepté !</string>
     <string name="Settings_Enter_Pin">Entrez le code PIN</string>
-    <string name="Settings_FMD_via_Pin_Description">Vous permet de communiquer avec FMD via un code PIN. Vous serez ajouté à une liste d\'autorisation temporaire.</string>
+    <string name="Settings_FMD_via_Pin_Description">Permet de communiquer avec FMD via un code PIN. Cela vous permet d\'envoyer des commandes à partir d\'un numéro de téléphone qui ne figure pas dans la liste des contacts autorisés.</string>
     <string name="MH_Help_delete">" delete - réinitialiser votre téléphone"</string>
     <string name="MH_Help_Stats">" stats - envoyer les informations du périphérique"</string>
     <string name="MH_Help_Lock">" lock - verrouiller le téléphone"</string>
@@ -40,10 +40,10 @@
     <string name="Enabled">Activé</string>
     <string name="WhiteList_Add_Contact">Ajouter un contact</string>
     <string name="Settings_Permissions">Permissions</string>
-    <string name="Settings_FMDCommand_Description">La commande utilisée pour communiquer avec FindMyDevice.</string>
+    <string name="Settings_FMDCommand_Description">La commande utilisée pour communiquer avec FMD.</string>
     <string name="Settings_Lockscreenmessage_Description">Message sur l\'écran de verrouillage :
 \nLors du verrouillage de l\'appareil, ce message apparaitra sur l\'écran de verrouillage.</string>
-    <string name="Settings_Pin_Description">Utilisé comme confirmation avant d\'effacer l\'appareil ou pour une utilisation temporaire du service.</string>
+    <string name="Settings_Pin_Description">Utilisé comme confirmation avant d\'effacer l\'appareil et pour l\'utilisation anonyme du service.</string>
     <string name="Enable">Activer</string>
     <string name="Locked_Lock_Screen">FindMyDevice
 \nCe téléphone est verrouillé !
@@ -65,8 +65,8 @@
 \nCette permission est requise.</string>
     <string name="Permission_SMS">Afin de pouvoir piloter le téléphone, cette application a besoin d\'être en capacité de voir les sms. Vos messages ne quittent jamais votre téléphone, et ils ne sont jamais utilisés pour faire autre chose que de retrouver votre téléphone.
 \nCette permission est requise.</string>
-    <string name="Notification_Usage_Description">Notification de l\'utilisation du service.</string>
-    <string name="Notification_Pin_Usage_Description">Notification de l\'usage du code pin.</string>
+    <string name="Notification_Usage_Description">Notifications lorsque FMD reçoit des commandes</string>
+    <string name="Notification_Pin_Usage_Description">Notifications lorsque FMD est utilisé avec le code PIN</string>
     <string name="JSON_RL_Error">Erreur lors de l\'obtention de l\'emplacement depuis OpenCelliD. Veuillez essayer le lien suivant. Les paramètres que vous voulez sont lon et lat.</string>
     <string name="LockScreen_Usage_detectd">LockScreenMessage : Usage detecté.</string>
     <string name="LockScreen_Backbutton_pressed">LockScreenMessage : Bouton retour pressé.</string>
@@ -124,10 +124,10 @@
     <string name="notify_crypto_update_text">Vous devez mettre à jour certains paramètres pour continuer à utiliser FMD. Appuyez pour ouvrir.</string>
     <string name="server_unregister_continue_anyway">Continuer tout de même</string>
     <string name="server_unregister_dont_continue">Ne pas continuer</string>
-    <string name="Notification_Server">Serveur</string>
+    <string name="Notification_Server">Serveur FMD</string>
     <string name="Notification_Security_Description">Notifications à propos des mise à jour de sécurité</string>
-    <string name="Notification_FAIL">Echoué</string>
-    <string name="Notification_Fail_Description">Notification lorsque quelques chose échoue, tel que la connection au serveur FMD.</string>
+    <string name="Notification_FAIL">Échecs</string>
+    <string name="Notification_Fail_Description">Notifications en cas d\'échec, comme la connexion au serveur FMD</string>
     <string name="Available">Disponible</string>
     <string name="Introduction_Shizuku">Donner via Shizuku</string>
     <string name="Settings_OpenCellId">OpenCelliD</string>
@@ -191,4 +191,41 @@
     <string name="Permission_IGNORE_BATTERY_OPTIMIZATION">Cette application est censée fonctionner en arrière-plan. Pour garantir son fonctionnement même lorsque votre téléphone est en veille, vous devez désactiver l\'optimisation de la batterie pour cette application.</string>
     <string name="Toast_Empty_FMDCommand">Commande vide non autorisée.
 \n Retour à la valeur par défaut.[fmd]</string>
+    <string name="Settings_FMDServer_Server_Url">URL du serveur</string>
+    <string name="cmd_camera_description_short">Prend une photo</string>
+    <string name="cmd_camera_response_no_fmd_server">Impossible de prendre une photo : aucun compte FMD n\'existe.</string>
+    <string name="cmd_camera_response_success">L\'appareil prend une photo et l\'enverra au serveur FMD. Vous pourrez bientôt la voir ici : %s</string>
+    <string name="cmd_delete_description_short">Réinitialise l\'appareil</string>
+    <string name="cmd_delete_response_disabled">Réinitialisation impossible : la commande de réinitialisation n\'est pas activée dans les paramètres.</string>
+    <string name="cmd_delete_response_pwd_missing">Réinitialisation impossible : mot de passe manquant. Utilisation : %s.</string>
+    <string name="cmd_delete_response_pwd_wrong">Réinitialisation impossible : mot de passe incorrect.</string>
+    <string name="cmd_delete_response_success">L\'appareil devrait maintenant avoir été réinitialisé aux paramètres d\'usine. Au revoir !</string>
+    <string name="cmd_gps_description_short">Active ou désactive le GPS</string>
+    <string name="cmd_gps_response_on">GPS activé.</string>
+    <string name="cmd_gps_response_off">GPS désactivé.</string>
+    <string name="cmd_help_description_short">Affiche l\'aide</string>
+    <string name="cmd_lock_description_short">Verrouille l\'appareil</string>
+    <string name="cmd_lock_response">L\'appareil devrait maintenant être verrouillé.</string>
+    <string name="cmd_stats_description_short">Obtient les statistiques réseau</string>
+    <string name="cmd_stats_description_long">Obtient les statistiques réseau à partir de l\'appareil. Par exemple, son adresse IP et une liste des réseaux Wifi environnants.</string>
+    <string name="cmd_stats_response">Statistiques réseau :
+\n
+\nAdresses IP de l\'appareil :
+\n%s
+\n
+\nRéseaux Wifi :
+\n%s</string>
+    <string name="perm_contacts_name">Contacts</string>
+    <string name="cmd_missing_permissions">Impossible d\'exécuter la commande %s : autorisation(s) manquante(s) %s.</string>
+    <string name="cmd_camera_description_long">Prend une photo avec la caméra avant/arrière et l\'envoie vers le serveur FMD. Actuellement, seule le transfert vers le serveur FMD est pris en charge. Vous pouvez également envoyer cette commande via d\'autres canaux de communication, et la photo sera téléversée vers le serveur FMD (si un compte existe).</string>
+    <string name="cmd_delete_description_long">Cela efface toutes les données. Par la suite, vous ne pourrez plus communiquer avec l\'appareil. Pour prévenir une utilisation accidentelle et malveillante, cette commande requiert un mot de passe et doit être explicitement activée dans les paramètres.</string>
+    <string name="cmd_locate_description_short">Localise l\'appareil</string>
+    <string name="cmd_locate_description_long">Localise l\'appareil en utilisant un ou plusieurs fournisseurs de localisation. Le fournisseur du système d\'exploitation est généralement le GPS, parfois en combinaison avec d\'autres sources. Un deuxième fournisseur est OpenCelliD, qui utilise une base de données des emplacements d\'antenne relais.</string>
+    <string name="cmd_nodisturb_description_short">Active ou désactive le mode Ne pas déranger</string>
+    <string name="usage_notification_title">Commande exécutée</string>
+    <string name="cmd_ring_description_short">Fait sonner l\'appareil</string>
+    <string name="cmd_ring_response">L\'appareil devrait maintenant sonner.</string>
+    <string name="usage_notification_text">La commande \"%s\" a été exécutée.</string>
+    <string name="cmd_nodisturb_response_on">Le mode Ne pas déranger est activé.</string>
+    <string name="cmd_nodisturb_response_off">Le mode Ne pas déranger est désactivé.</string>
 </resources>
