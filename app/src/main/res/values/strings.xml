@@ -183,7 +183,6 @@
     <!-- Permissions: Names -->
     <string name="perm_battery_optimizations_name">Ignore Battery Optimizations</string>
     <string name="perm_camera_name">Camera</string>
-    <string name="perm_contacts_name">Contacts</string>
     <string name="perm_device_admin_name">Device Admin</string>
     <string name="perm_do_not_disturb_access_name">Do Not Disturb Access</string>
     <string name="perm_location_name">Location</string>
