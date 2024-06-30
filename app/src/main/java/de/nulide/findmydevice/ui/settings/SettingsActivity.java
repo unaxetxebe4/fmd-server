@@ -27,7 +27,6 @@ import de.nulide.findmydevice.data.Settings;
 import de.nulide.findmydevice.data.SettingsRepoSpec;
 import de.nulide.findmydevice.data.SettingsRepository;
 import de.nulide.findmydevice.data.io.IO;
-import de.nulide.findmydevice.ui.IntroductionActivity;
 import de.nulide.findmydevice.ui.LogActivity;
 import de.nulide.findmydevice.ui.helper.SettingsEntry;
 import de.nulide.findmydevice.ui.helper.SettingsViewAdapter;
@@ -71,24 +70,20 @@ public class SettingsActivity extends AppCompatActivity {
                 settingIntent = new Intent(this, OpenCellIdActivity.class);
                 break;
             case 4:
-                settingIntent = new Intent(this, IntroductionActivity.class);
-                settingIntent.putExtra(IntroductionActivity.POS_KEY, 1);
-                break;
-            case 5:
                 Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
                 intent.putExtra(Intent.EXTRA_TITLE, IO.settingsFileName);
                 intent.setType("*/*");
                 startActivityForResult(intent, EXPORT_REQ_CODE);
                 break;
-            case 6:
+            case 5:
                 intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
                 intent.setType("*/*");
                 startActivityForResult(intent, IMPORT_REQ_CODE);
                 break;
-            case 7:
+            case 6:
                 settingIntent = new Intent(this, LogActivity.class);
                 break;
-            case 8:
+            case 7:
                 String activityTitle = getString(R.string.Settings_About);
                 settingIntent = new LibsBuilder().withActivityTitle(activityTitle).withListener(AboutLibsListener.listener).intent(this);
                 break;
@@ -107,7 +102,6 @@ public class SettingsActivity extends AppCompatActivity {
                 try {
                     InputStream inputStream = getContentResolver().openInputStream(uri);
 
-
                     BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
                     StringBuilder json = new StringBuilder();
                     try {
@@ -123,7 +117,7 @@ public class SettingsActivity extends AppCompatActivity {
                         mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
                         if (!text.isEmpty()) {
                             Settings settings = mapper.readValue(text, Settings.class);
-                            settings.set(Settings.SET_INTRODUCTION_VERSION, settings.get(Settings.SET_INTRODUCTION_VERSION));
+                            settings.saveToFile();
                             finish();
                         }
                     } catch (IOException e) {

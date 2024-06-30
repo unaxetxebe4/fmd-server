@@ -79,7 +79,7 @@ class WriteSecureSettingsPermission : Permission() {
                 "pm grant ${context.packageName} ${Manifest.permission.WRITE_SECURE_SETTINGS}"
             execCommand(context, command)
         } else {
-            Toast.makeText(context, context.getString(R.string.RootAccessDenied), Toast.LENGTH_LONG)
+            Toast.makeText(context, context.getString(R.string.perm_root_denied), Toast.LENGTH_LONG)
                 .show()
         }
     }

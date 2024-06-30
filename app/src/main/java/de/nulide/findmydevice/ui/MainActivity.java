@@ -25,7 +25,6 @@ import de.nulide.findmydevice.ui.settings.SettingsActivity;
 import de.nulide.findmydevice.ui.settings.SettingsFragment;
 import de.nulide.findmydevice.utils.Logger;
 import de.nulide.findmydevice.utils.Notifications;
-import de.nulide.findmydevice.utils.Permission;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -55,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
         IO.context = this;
         Logger.init(Thread.currentThread(), this);
         Notifications.init(this, false);
-        Permission.initValues(this);
 
         settings = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(this)).getSettings();
 
@@ -100,8 +98,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Permission.initValues(this);
-
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, activeFragment, activeFragment.getStaticTag())
                 .commit();

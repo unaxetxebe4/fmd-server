@@ -204,6 +204,8 @@
     <string name="grant_via_shizuku">Grant via Shizuku</string>
     <string name="perm_root_denied">Root access denied</string>
     <string name="perm_shizuku_failed">Granting via Shizuku failed</string>
+    <string name="Permission_IGNORE_BATTERY_OPTIMIZATION">This application is supposed to work in the background. To ensure it works even when your phone is in standby, you need to turn off battery optimization for this app.</string>
+    <string name="Permission_POST_NOTIFICATIONS">FMD will occasionally send you notifications, for example to warn you that someone is locating your device.</string>
 
     <!-- Transports -->
 
@@ -240,21 +242,7 @@
     <!-- Varia -->
 
     <!-- Not yet sorted -->
-    <string name="Permission_IGNORE_BATTERY_OPTIMIZATION">This application is supposed to work in the background. To ensure it works even when your phone is in standby, you need to turn off battery optimization for this app.</string>
     <string name="Info_BatteryOptimization" translatable="false">OptimizeBattery</string>
-
-    <string name="Introduction_Introduction">FindMyDevice (FMD) is an application that can help you find your phone when it gets lost.\nIt uses SMS (texting) to communicate and send commands from a second device so you can track your phone.\nJust send a SMS message that contains the "fmd" command.\nPlease note that this application is still in beta.\n\n - Nulide</string>
-    <string name="Introduction_UpdatePermission">Some new permissions are needed.\nPlease check the following permissions in order to continue using this application, or change back to an older version.</string>
-    <string name="Permission_SMS">In order to command the phone to do something, this application needs to be able to see your SMS messages. Your messages never leave your phone, and they are never used for anything except finding your phone.\nThis Permission is needed.</string>
-    <string name="Permission_CONTACTS">Not everybody is allowed to send commands to your phone, so you need to select some contacts who will be able to locate your device.\nThis permission is needed.</string>
-    <string name="Permission_GPS">If you want to get the GPS coordinates from your phone, the application needs this permission. \nPlease also allow the application to locate your phone in the background.\nIf you don\'t give this permission, this functionality will not be activated.</string>
-    <string name="Permission_DND">You also can make your phone ring to help you locate it. When \"Do Not Disturb\" is active, it may be possible that the phone is muted.\nIf you don\'t give this permission, this functionality will not be activated.</string>
-    <string name="Permission_DEVICE_ADMIN">If you want to lock or wipe your phone if it gets lost, this permission is needed.\nIf you don\'t give this permission, this functionality will not be activated.</string>
-    <string name="Permission_WRITE_SECURE_SETTINGS">This application is capable of turning on location if you normally leave location off.\nIf it is off, \"fmd locate\" will not work.\nIn order to achieve this, the application needs a special permission that you have to grant using a computer.\nIf you don\'t give this permission, it\'s no problem.\nYou can still use this application.</string>
-    <string name="Permission_OVERLAY">When you remotely lock your device, this application can show a message on the lockscreen for whoever finds your phone.\nIf you don\'t give this permission, this functionality will not be activated.</string>
-    <string name="Permission_POST_NOTIFICATIONS">FMD will occasionally send you notifications, for example to warn you that someone is locating your device.</string>
-    <string name="Introduction_Give_Permission">Give Permission</string>
-    <string name="Introduction_Next">Next</string>
     <string name="Locked_Lock_Screen">FindMyDevice\nThis phone is locked!\nMessage from the owner:</string>
     <string name="Enable">Enable</string>
     <string name="Enabled">Enabled</string>
@@ -296,15 +284,10 @@
     <string name="MH_Help_Expert_GPS">" GPS (on/off) - turns the GPS on or off."</string>
     <string name="MH_NO_SECURE_SETTINGS">Sorry the application is not allowed to do so.</string>
     <string name="MH_Help_expert">" expert - help page for expert commands."</string>
-    <string name="Permission_Notification">If you want FMD to handle messages from other applications such as Telegram, Whatsapp, etc., you can give FMD access to notifications.</string>
     <string name="MH_Help_Expert_Sound">" Sound (on/off) - turns the sound on or off."</string>
     <string name="not_possible">This action was not possible.</string>
     <string name="MH_Help_Expert_Camera">" Camera (front/back) - takes a picture and sends it to FMDserver."</string>
-    <string name="Permission_Camera">If you want to remotely receive pictures from your phone, the camera permission is needed.</string>
     <string name="MH_CAM_CAPTURE">"The device will soon send a picture to fmdserver. You can view it here soon: "</string>
     <string name="MH_FMDSERVER_NOT_REGISTERED">This device isn\'t registered on a server.</string>
-    <string name="Introduction_Shizuku">Give via Shizuku</string>
-    <string name="Introduction_Root">Give via Root</string>
-    <string name="RootAccessDenied">Root access denied</string>
 
 </resources>
