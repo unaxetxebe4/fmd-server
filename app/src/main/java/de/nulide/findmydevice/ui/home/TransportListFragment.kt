@@ -5,13 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.ComponentActivity
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import de.nulide.findmydevice.R
 import de.nulide.findmydevice.transports.availableTransports
+import de.nulide.findmydevice.ui.TaggedFragment
 
 
-class TransportListFragment : Fragment() {
+class TransportListFragment : TaggedFragment() {
+
+    override fun getStaticTag() = "TransportListFragment"
 
     override fun onCreateView(
         inflater: LayoutInflater,

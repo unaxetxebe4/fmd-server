@@ -14,7 +14,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -34,14 +33,21 @@ import de.nulide.findmydevice.data.SettingsRepository;
 import de.nulide.findmydevice.data.io.IO;
 import de.nulide.findmydevice.ui.IntroductionActivity;
 import de.nulide.findmydevice.ui.LogActivity;
+import de.nulide.findmydevice.ui.TaggedFragment;
 import de.nulide.findmydevice.ui.helper.SettingsEntry;
 import de.nulide.findmydevice.ui.helper.SettingsViewAdapter;
 
 
-public class SettingsFragment extends Fragment {
+public class SettingsFragment extends TaggedFragment {
 
     private final int EXPORT_REQ_CODE = 30;
     private final int IMPORT_REQ_CODE = 40;
+
+    @NonNull
+    @Override
+    public String getStaticTag() {
+        return "SettingsFragment";
+    }
 
     @Nullable
     @Override

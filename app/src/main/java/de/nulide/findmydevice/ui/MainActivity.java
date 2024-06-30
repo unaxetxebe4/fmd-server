@@ -7,7 +7,6 @@ import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -20,10 +19,10 @@ import de.nulide.findmydevice.data.io.IO;
 import de.nulide.findmydevice.receiver.PushReceiver;
 import de.nulide.findmydevice.services.FMDServerLocationUploadService;
 import de.nulide.findmydevice.ui.home.CommandListFragment;
-import de.nulide.findmydevice.ui.settings.SettingsFragment;
 import de.nulide.findmydevice.ui.home.TransportListFragment;
 import de.nulide.findmydevice.ui.onboarding.UpdateboardingModernCryptoActivity;
 import de.nulide.findmydevice.ui.settings.SettingsActivity;
+import de.nulide.findmydevice.ui.settings.SettingsFragment;
 import de.nulide.findmydevice.utils.Logger;
 import de.nulide.findmydevice.utils.Notifications;
 import de.nulide.findmydevice.utils.Permission;
@@ -31,10 +30,20 @@ import de.nulide.findmydevice.utils.Permission;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String KEY_ACTIVE_FRAGMENT_TAG = "activeFragmentTag";
+
     private Settings settings;
 
-    private Fragment commandsFragment, transportFragment, settingsFragment;
-    private Fragment activeFragment;
+    private TaggedFragment commandsFragment, transportFragment, settingsFragment;
+    private TaggedFragment activeFragment;
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        // for some reason, getTag() returns null, so we need to use getStaticTag()
+        outState.putString(KEY_ACTIVE_FRAGMENT_TAG, activeFragment.getStaticTag());
+
+        super.onSaveInstanceState(outState);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +88,19 @@ public class MainActivity extends AppCompatActivity {
         commandsFragment = new CommandListFragment();
         transportFragment = new TransportListFragment();
         settingsFragment = new SettingsFragment();
-        activeFragment = commandsFragment;
+
+        if (savedInstanceState == null) {
+            activeFragment = commandsFragment;
+        } else {
+            String tag = savedInstanceState.getString(KEY_ACTIVE_FRAGMENT_TAG);
+            if (tag == null || tag.equals(commandsFragment.getStaticTag())) {
+                activeFragment = commandsFragment;
+            } else if (tag.equals(transportFragment.getStaticTag())) {
+                activeFragment = transportFragment;
+            } else if (tag.equals(settingsFragment.getStaticTag())) {
+                activeFragment = settingsFragment;
+            }
+        }
     }
 
     @Override
@@ -88,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
         Permission.initValues(this);
 
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, activeFragment)
+                .replace(R.id.fragment_container, activeFragment, activeFragment.getStaticTag())
                 .commit();
     }
 
