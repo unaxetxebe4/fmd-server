@@ -6,13 +6,30 @@
     android:gravity="center_vertical"
     android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/perm_name"
+    <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:layout_marginEnd="@dimen/margin_normal"
-        tools:text="Location" />
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/perm_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Location" />
+
+        <TextView
+            android:id="@+id/perm_description"
+            style="@style/TextAppearance.Material3.BodySmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="@dimen/margin_normal"
+            android:visibility="gone"
+            tools:text="This permission is needed because xyz."
+            tools:visibility="visible" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/button_grant"

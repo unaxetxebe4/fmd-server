@@ -1,10 +1,11 @@
-package de.nulide.findmydevice.ui.home
+package de.nulide.findmydevice.ui
 
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.activity.ComponentActivity
 import de.nulide.findmydevice.permissions.Permission
+import de.nulide.findmydevice.ui.home.PermissionView
 
 
 fun setupPermissionsList(

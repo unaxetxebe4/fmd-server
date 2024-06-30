@@ -8,6 +8,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import de.nulide.findmydevice.R
 import de.nulide.findmydevice.commands.Command
+import de.nulide.findmydevice.ui.setupPermissionsList
 
 
 class CommandListViewHolder(

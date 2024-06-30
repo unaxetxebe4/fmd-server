@@ -15,6 +15,9 @@ class PostNotificationsPermission : Permission() {
     @get:StringRes
     override val name = R.string.perm_post_notification_name
 
+    @get:StringRes
+    override val description = R.string.Permission_POST_NOTIFICATIONS
+
     override fun isGranted(context: Context): Boolean {
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             ContextCompat.checkSelfPermission(

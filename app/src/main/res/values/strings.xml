@@ -192,6 +192,10 @@
     <string name="perm_sms_name">SMS</string>
     <string name="perm_write_secure_settings_name">Write Secure Settings</string>
 
+    <!-- Permissions: Descriptions -->
+    <string name="Permission_IGNORE_BATTERY_OPTIMIZATION">This application is supposed to work in the background. To ensure it works even when your phone is in standby, you need to turn off battery optimization for this app.</string>
+    <string name="Permission_POST_NOTIFICATIONS">FMD will occasionally send you notifications, for example to warn you that someone is locating your device.</string>
+
     <!-- Permissions: Other strings -->
     <string name="required_permissions_title">Required Permissions</string>
     <string name="optional_permissions_title">Optional Permissions</string>
@@ -203,8 +207,6 @@
     <string name="grant_via_shizuku">Grant via Shizuku</string>
     <string name="perm_root_denied">Root access denied</string>
     <string name="perm_shizuku_failed">Granting via Shizuku failed</string>
-    <string name="Permission_IGNORE_BATTERY_OPTIMIZATION">This application is supposed to work in the background. To ensure it works even when your phone is in standby, you need to turn off battery optimization for this app.</string>
-    <string name="Permission_POST_NOTIFICATIONS">FMD will occasionally send you notifications, for example to warn you that someone is locating your device.</string>
 
     <!-- Transports -->
 
@@ -237,6 +239,11 @@
     <!-- Usage notifications -->
     <string name="usage_notification_title">Command executed</string>
     <string name="usage_notification_text">The command \"%s\" was executed.</string>
+
+    <!-- Setup Warnings -->
+    <string name="setup_warnings_title">Setup Warnings</string>
+    <string name="missing_permissions_title">Missing Permissions</string>
+    <string name="missing_permissions_description">The following permissions are needed for FMD to run.</string>
 
     <!-- Varia -->
 

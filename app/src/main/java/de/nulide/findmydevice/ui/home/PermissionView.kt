@@ -39,6 +39,14 @@ class PermissionView @JvmOverloads constructor(
 
         binding.permName.text = context.getString(p.name)
 
+        val description = p.description
+        if (description != null) {
+            binding.permDescription.visibility = View.VISIBLE
+            binding.permDescription.text = context.getString(description)
+        } else {
+            binding.permDescription.visibility = View.GONE
+        }
+
         if (p.isGranted(context)) {
             binding.icCheck.visibility = View.VISIBLE
             binding.buttonGrant.visibility = View.GONE

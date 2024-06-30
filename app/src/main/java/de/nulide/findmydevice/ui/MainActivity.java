@@ -16,6 +16,7 @@ import de.nulide.findmydevice.data.Settings;
 import de.nulide.findmydevice.data.SettingsRepoSpec;
 import de.nulide.findmydevice.data.SettingsRepository;
 import de.nulide.findmydevice.data.io.IO;
+import de.nulide.findmydevice.permissions.PermissionsUtilKt;
 import de.nulide.findmydevice.receiver.PushReceiver;
 import de.nulide.findmydevice.services.FMDServerLocationUploadService;
 import de.nulide.findmydevice.ui.home.CommandListFragment;
@@ -126,15 +127,22 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_app_bar, menu);
+        if (PermissionsUtilKt.isMissingGlobalAppPermission(this)) {
+            getMenuInflater().inflate(R.menu.main_app_bar_warnings, menu);
+        } else {
+            getMenuInflater().inflate(R.menu.main_app_bar, menu);
+        }
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.menuItemSettings) {
-            Intent settingsIntent = new Intent(this, SettingsActivity.class);
-            startActivity(settingsIntent);
+            Intent intent = new Intent(this, SettingsActivity.class);
+            startActivity(intent);
+        } else if (item.getItemId() == R.id.menuItemSetupWarnings) {
+            Intent intent = new Intent(this, SetupWarningsActivity.class);
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }

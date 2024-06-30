@@ -61,6 +61,9 @@
             android:theme="@style/Theme.AppCompat.Translucent"
             android:turnScreenOn="true" />
         <activity
+            android:name=".ui.SetupWarningsActivity"
+            android:label="@string/setup_warnings_title" />
+        <activity
             android:name=".ui.settings.FMDServerActivity"
             android:label="@string/Settings_FMDServer" />
         <activity
