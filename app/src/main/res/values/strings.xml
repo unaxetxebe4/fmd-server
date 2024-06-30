@@ -248,11 +248,8 @@
     <!-- Varia -->
 
     <!-- Not yet sorted -->
-    <string name="Info_BatteryOptimization" translatable="false">OptimizeBattery</string>
     <string name="Locked_Lock_Screen">FindMyDevice\nThis phone is locked!\nMessage from the owner:</string>
     <string name="Enable">Enable</string>
-    <string name="Enabled">Enabled</string>
-    <string name="Disabled">Disabled</string>
     <string name="Delete">Delete</string>
     <string name="Toast_Duplicate_contact">This contact already exists.</string>
     <string name="MH_GPS_WILL_FOLLOW">GPS coordinates will be sent soon.</string>
@@ -273,17 +270,12 @@
     <string name="R_Stop_ring">STOP RINGING</string>
     <string name="Crashed_Send_log">Send Log</string>
     <string name="MH_No_GPS">Sorry, location is turned off.</string>
-    <string name="Error">Error</string>
     <string name="JSON_RL_Error">Error gaining location from OpenCelliD. Please try the following the link. The parameters you want are \"lon\" and \"lat\".</string>
     <string name="LockScreen_Usage_detectd">LockScreenMessage: Usage detected.</string>
     <string name="LockScreen_Backbutton_pressed">LockScreenMessage: Back-Button pressed.</string>
     <string name="Toast_Empty_FMDCommand">Empty Command not allowed\n Returning to default.[fmd]</string>
     <string name="FMDConfig_Alert_Pin">PIN</string>
     <string name="Log_Alert_LogData">LogData</string>
-    <string name="NOT_AVAILABLE">Not Available</string>
-    <string name="Available">Available</string>
-    <string name="registered">registered</string>
-    <string name="not_registered">not registered</string>
     <string name="MH_LAST_KNOWN_LOCATION">Last known location</string>
     <string name="MH_LAST_KNOWN_LOCATION_NOT_AVAILABLE">Last location is not available.</string>
     <string name="Alert_First_time_fmdserver">Here you can configure the application to communicate with FMDserver. If you want to configure a different server than default, you can do so by changing the URL. If you press "register" you can register the application to the server. Afterwards you can enable the server functionality. If you do so, your phone will send you location data to the specified server. You can check your phone\'s location by entering the ID and the password on the page.</string>
