@@ -66,12 +66,6 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
         settings.updateSettings();
-        if (!settings.isIntroductionPassed() || !Permission.CORE) {
-            Intent intent = new Intent(this, IntroductionActivity.class);
-            startActivity(intent);
-            finish();
-            return;
-        }
         if (!(Boolean) settings.get(Settings.SET_UPDATEBOARDING_MODERN_CRYPTO_COMPLETED)) {
             Intent intent = new Intent(this, UpdateboardingModernCryptoActivity.class);
             startActivity(intent);
