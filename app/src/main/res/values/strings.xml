@@ -205,6 +205,22 @@
     <string name="perm_root_denied">Root access denied</string>
     <string name="perm_shizuku_failed">Granting via Shizuku failed</string>
 
+    <!-- Transports -->
+
+    <string name="transport_sms_title">SMS</string>
+    <string name="transport_sms_description">Send commands to your phone over SMS. E.g., text \"fmd help\" to your phone. FMD will reply with an SMS.</string>
+    <string name="transport_sms_description_auth">Only phone numbers that are in the allowlist can send commands. To send commands from a phone number that is not in the allowlist, you have to include the PIN: \"fmd mypin help\". For convenience, so that you don\'t have to re-type the PIN every time, this new phone number is added to a temporary allowlist for the next 10 minutes.</string>
+    <string name="transport_sms_description_note">SMS may incur costs for both you and the person texting you. SMS requires your SIM card to be unlocked (e.g., after a reboot).</string>
+
+    <string name="transport_notification_reply_title">Notification Reply</string>
+    <string name="transport_notification_reply_description">You can allow FMD to read your notifications to listen for commands. FMD can then reply via Android\'s built-in notification reply feature. This allows you to control FMD using a messaging application of your choice, as long as it posts notifications that can be replied to. E.g., you can send a Signal message \"fmd mypin help\" to your phone.</string>
+    <string name="transport_notification_reply_description_auth">Controlling FMD via Notification Reply requires the FMD PIN to be set. Every message must contain the correct PIN.</string>
+
+    <string name="transport_fmd_server_title">FMD Server</string>
+    <string name="transport_fmd_server_description">FMD Server provides a web interface to control your phone, view its location, and view pictures it sent. You can self-host FMD Server or use the provided instance. Data is stored encrypted on the server, protected by your password.</string>
+    <string name="transport_fmd_server_description_auth">Anyone who knows your username and password can log in to FMD Server and control your phone.</string>
+    <string name="transport_fmd_server_description_note">FMD Server requires your phone to have an internet connection. This can be a mobile network (thus the SIM needs to be unlocked) or WiFi.</string>
+
     <!-- Notification Channels -->
     <string name="Notification_Usage">Usage</string>
     <string name="Notification_Usage_Description">Notifications when FMD is receiving commands</string>

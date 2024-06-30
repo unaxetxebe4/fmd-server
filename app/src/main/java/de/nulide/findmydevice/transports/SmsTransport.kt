@@ -2,13 +2,30 @@ package de.nulide.findmydevice.transports
 
 import android.content.Context
 import android.telephony.SmsManager
-import de.nulide.findmydevice.locationproviders.LocationProvider
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
+import de.nulide.findmydevice.R
 import de.nulide.findmydevice.permissions.SmsPermission
 
 
 class SmsTransport(
     private val destination: String
 ) : Transport<String>(destination) {
+
+    @get:DrawableRes
+    override val icon = R.drawable.ic_sms
+
+    @get:StringRes
+    override val title = R.string.transport_sms_title
+
+    @get:StringRes
+    override val description = R.string.transport_sms_description
+
+    @get:StringRes
+    override val descriptionAuth = R.string.transport_sms_description_auth
+
+    @get:StringRes
+    override val descriptionNote = R.string.transport_sms_description_note
 
     override val requiredPermissions = listOf(SmsPermission())
 

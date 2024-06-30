@@ -13,6 +13,7 @@ import de.nulide.findmydevice.utils.Logger
 import de.nulide.findmydevice.utils.Notifications
 
 
+// Order matters for the home screen
 fun availableCommands(context: Context): List<Command> {
     val commands = mutableListOf(
         CameraCommand(context),

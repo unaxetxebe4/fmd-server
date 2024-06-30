@@ -7,7 +7,6 @@ import androidx.activity.ComponentActivity
 import androidx.recyclerview.widget.RecyclerView
 import de.nulide.findmydevice.R
 import de.nulide.findmydevice.commands.Command
-import de.nulide.findmydevice.permissions.Permission
 
 
 class CommandListViewHolder(
@@ -35,29 +34,11 @@ class CommandListViewHolder(
         // Required permissions
         val permReqTitle = itemView.findViewById<TextView>(R.id.permissions_required_title)
         val permReqList = itemView.findViewById<LinearLayout>(R.id.permissions_required_list)
-        setupPermissionsList(permReqTitle, permReqList, item.requiredPermissions)
+        setupPermissionsList(activity, permReqTitle, permReqList, item.requiredPermissions)
 
         // Optional permissions
         val permOptTitle = itemView.findViewById<TextView>(R.id.permissions_optional_title)
         val permOptList = itemView.findViewById<LinearLayout>(R.id.permissions_optional_list)
-        setupPermissionsList(permOptTitle, permOptList, item.optionalPermissions)
-    }
-
-    private fun setupPermissionsList(title: TextView, list: LinearLayout, perms: List<Permission>) {
-        if (perms.isEmpty()) {
-            title.visibility = View.GONE
-            list.visibility = View.GONE
-            return
-        }
-        title.visibility = View.VISIBLE
-        list.visibility = View.VISIBLE
-
-        list.removeAllViews()
-        for (p in perms) {
-            val pView = PermissionView(title.context)
-            pView.setPermission(p, activity)
-            list.addView(pView)
-            activity.lifecycle.addObserver(pView)
-        }
+        setupPermissionsList(activity, permOptTitle, permOptList, item.optionalPermissions)
     }
 }
