@@ -3,6 +3,7 @@ package de.nulide.findmydevice.commands
 import android.app.admin.DevicePolicyManager
 import android.content.Context
 import android.content.Intent
+import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import de.nulide.findmydevice.R
 import de.nulide.findmydevice.permissions.DeviceAdminPermission
@@ -16,6 +17,9 @@ class LockCommand(context: Context) : Command(context) {
 
     override val keyword = "lock"
     override val usage = "lock [msg]"
+
+    @get:DrawableRes
+    override val icon = R.drawable.ic_phone_lock
 
     @get:StringRes
     override val shortDescription = R.string.cmd_lock_description_short

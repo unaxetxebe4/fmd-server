@@ -1,6 +1,7 @@
 package de.nulide.findmydevice.commands
 
 import android.content.Context
+import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import de.nulide.findmydevice.R
 import de.nulide.findmydevice.data.Settings
@@ -14,6 +15,9 @@ class GpsCommand(context: Context) : Command(context) {
 
     override val keyword = "gps"
     override val usage = "gps [on | off]"
+
+    @get:DrawableRes
+    override val icon = R.drawable.ic_satellite
 
     @get:StringRes
     override val shortDescription = R.string.cmd_gps_description_short

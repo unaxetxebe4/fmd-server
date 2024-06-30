@@ -4,6 +4,7 @@ import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.activity.ComponentActivity
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import de.nulide.findmydevice.R
 import de.nulide.findmydevice.commands.Command
@@ -17,7 +18,11 @@ class CommandListViewHolder(
     fun bind(item: Command) {
         val context = itemView.context
 
-        itemView.findViewById<TextView>(R.id.usage).text = item.usage
+        itemView.findViewById<TextView>(R.id.usage).apply {
+            text = item.usage
+            val drawable = ContextCompat.getDrawable(context, item.icon)
+            setCompoundDrawablesRelativeWithIntrinsicBounds(drawable, null, null, null)
+        }
 
         itemView.findViewById<TextView>(R.id.description_short).text =
             context.getString(item.shortDescription)

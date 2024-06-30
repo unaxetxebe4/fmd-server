@@ -1,6 +1,7 @@
 package de.nulide.findmydevice.commands
 
 import android.content.Context
+import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import de.nulide.findmydevice.R
 import de.nulide.findmydevice.permissions.Permission
@@ -15,6 +16,9 @@ class HelpCommand(
 
     override val keyword = "help"
     override val usage = "help"
+
+    @get:DrawableRes
+    override val icon = R.drawable.ic_help
 
     @get:StringRes
     override val shortDescription = R.string.cmd_help_description_short

@@ -3,6 +3,7 @@ package de.nulide.findmydevice.commands
 import android.content.Context
 import android.content.Intent
 import android.util.Log
+import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import de.nulide.findmydevice.R
 import de.nulide.findmydevice.data.Settings
@@ -19,6 +20,9 @@ class CameraCommand(context: Context) : Command(context) {
 
     override val keyword = "camera"
     override val usage = "camera [front | back]"
+
+    @get:DrawableRes
+    override val icon = R.drawable.ic_camera
 
     @get:StringRes
     override val shortDescription = R.string.cmd_camera_description_short
