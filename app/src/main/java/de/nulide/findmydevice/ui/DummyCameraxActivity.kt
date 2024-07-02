@@ -92,7 +92,7 @@ class DummyCameraxActivity : AppCompatActivity() {
                 ResolutionSelector.Builder().setResolutionStrategy(
                     ResolutionStrategy(
                         Size(720, 1280),
-                        ResolutionStrategy.FALLBACK_RULE_CLOSEST_LOWER
+                        ResolutionStrategy.FALLBACK_RULE_CLOSEST_LOWER_THEN_HIGHER
                     )
                 ).build()
             )
@@ -102,7 +102,16 @@ class DummyCameraxActivity : AppCompatActivity() {
             if (cameraExtra == CAMERA_FRONT) CameraSelector.DEFAULT_FRONT_CAMERA else CameraSelector.DEFAULT_BACK_CAMERA
 
         cameraProvider.unbindAll()
-        cameraProvider.bindToLifecycle(this, cameraSelector, imageCapture)
+        try {
+            cameraProvider.bindToLifecycle(this, cameraSelector, imageCapture)
+        } catch (e: IllegalArgumentException) {
+            e.printStackTrace()
+            Log.e(
+                TAG,
+                "Cannot take picture: bindToLifecycle failed, see the stacktrace. message=${e.message} cause=${e.cause}"
+            )
+            return
+        }
 
         imageCapture.takePicture(
             cameraExecutor,
