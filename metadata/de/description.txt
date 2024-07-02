@@ -19,7 +19,7 @@ Für SMS können Sie entweder eine Liste von vertrauenswürdigen Kontakten (Tele
 Oder Sie können eine PIN festlegen um anonyme Nutzung zu ermöglichen.
 Dann können auch nicht vertrauenswürdige Telefonnummern Befehle senden, indem sie die PIN in die SMS schreiben.
 Das ist nützlich, denn wenn Sie Ihr Telefon verlieren können Sie nun eine beliebige Person um Hilfe bitten um Ihr Telefon aus der Ferne zu zurückzusetzen.
-Wenn Sie einfach "fmd" an Ihr Telefon schicken, antwortet FMD mit einer SMS die die verfügbaren Befehle auflistet.
+Wenn Sie einfach "fmd" an Ihr Telefon schicken, antwortet FMD mit einer SMS welche die verfügbaren Befehle auflistet.
 
 FMD Server ist ein Webinterface um Befehle zu senden, den Standort des Geräts auf einer Karte anzuzeigen,
 und Bilder die vom Gerät aufgenommen wurden anzuschauen.
