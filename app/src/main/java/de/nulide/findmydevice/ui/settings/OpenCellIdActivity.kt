@@ -13,6 +13,7 @@ import de.nulide.findmydevice.data.SettingsRepository
 import de.nulide.findmydevice.databinding.ActivityOpenCellIdBinding
 import de.nulide.findmydevice.net.OpenCelliDRepository
 import de.nulide.findmydevice.net.OpenCelliDSpec
+import de.nulide.findmydevice.permissions.LocationPermission
 import de.nulide.findmydevice.utils.CellParameters
 import de.nulide.findmydevice.utils.Utils.Companion.getGeoURI
 import de.nulide.findmydevice.utils.Utils.Companion.getOpenStreetMapLink
@@ -75,6 +76,12 @@ class OpenCellIdActivity : AppCompatActivity(), TextWatcher {
 
     private fun onTestConnectionClicked(view: View) {
         val context = view.context
+
+        val permission = LocationPermission()
+        if (!permission.isGranted(context)) {
+            permission.request(this)
+            return
+        }
 
         val paras = CellParameters.queryCellParametersFromTelephonyManager(context)
         if (paras == null) {
