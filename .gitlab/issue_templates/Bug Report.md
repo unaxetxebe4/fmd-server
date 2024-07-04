@@ -1,4 +1,4 @@
-- [ ] I have searched for duplicates
+- [ ] I have searched for duplicates (including closed issues)
 - [ ] I have read the [wiki](https://gitlab.com/Nulide/findmydevice/-/wikis/home)
 
 ### Bug Summary
@@ -26,7 +26,7 @@ ExampleThing happens.
 - ROM name: Graphene/Lineage/Huawei stock/Samsung stock
 
 - Clean install: yes/no
-  - If no: upgrade from version: 0.0.0
+- If no: upgrade from version: 0.0.0
 
 ### Logs
 
@@ -45,4 +45,3 @@ crash log
 <!-- Other things that you want to add -->
 
 /label ~"BUG"
-
