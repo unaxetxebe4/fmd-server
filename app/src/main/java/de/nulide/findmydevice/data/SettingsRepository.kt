@@ -25,6 +25,12 @@ class SettingsRepository private constructor(spec: SettingsRepoSpec) {
 
     var settings: Settings
         private set
+        get() {
+            // FIXME: there are still race conditions between Activities/Fragments/Jobs :/
+            // So for now, force reload the file on every get.
+            forceReload()
+            return field
+        }
 
     init {
         IO.context = spec.context
