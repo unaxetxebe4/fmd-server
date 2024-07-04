@@ -1,7 +1,6 @@
 package de.nulide.findmydevice.commands
 
 import android.content.Context
-import android.util.Log
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import de.nulide.findmydevice.R
@@ -13,7 +12,6 @@ import de.nulide.findmydevice.permissions.LocationPermission
 import de.nulide.findmydevice.permissions.WriteSecureSettingsPermission
 import de.nulide.findmydevice.services.FmdJobService
 import de.nulide.findmydevice.transports.Transport
-import de.nulide.findmydevice.utils.SecureSettings
 import de.nulide.findmydevice.utils.Utils
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -57,25 +55,6 @@ class LocateCommand(context: Context) : Command(context) {
             // Because requesting "last" explicitly asks not to refresh the location.
             job?.jobFinished()
             return
-        }
-
-        // is GPS on?
-        val isOn = if (GpsLocationProvider.isGpsOn(context)) 1 else 0
-        settings.set<Int>(Settings.SET_GPS_STATE, isOn)
-
-        if ((option == "all" || option == "gps") && isOn == 0) {
-            if (WriteSecureSettingsPermission().isGranted(context)) {
-                SecureSettings.turnGPS(context, true)
-                settings.set<Int>(Settings.SET_GPS_STATE, 2)
-            } else {
-                Log.w(
-                    TAG,
-                    "Cannot run fmd locate: GPS is off and missing permission WRITE_SECURE_SETTINGS"
-                )
-                transport.send(context, context.getString(R.string.cmd_locate_response_location_off))
-                job?.jobFinished()
-                return
-            }
         }
 
         // build the location providers

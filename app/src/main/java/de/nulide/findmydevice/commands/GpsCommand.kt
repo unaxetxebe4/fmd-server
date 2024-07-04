@@ -1,10 +1,11 @@
 package de.nulide.findmydevice.commands
 
 import android.content.Context
+import android.util.Log
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import de.nulide.findmydevice.R
-import de.nulide.findmydevice.data.Settings
+import de.nulide.findmydevice.locationproviders.GpsLocationProvider
 import de.nulide.findmydevice.permissions.WriteSecureSettingsPermission
 import de.nulide.findmydevice.services.FmdJobService
 import de.nulide.findmydevice.transports.Transport
@@ -35,11 +36,9 @@ class GpsCommand(context: Context) : Command(context) {
 
         if (args.contains("on")) {
             SecureSettings.turnGPS(context, true)
-            settings.set(Settings.SET_GPS_STATE, 1)
             transport.send(context, context.getString(R.string.cmd_gps_response_on))
         } else if (args.contains("off")) {
             SecureSettings.turnGPS(context, false)
-            settings.set(Settings.SET_GPS_STATE, 0)
             transport.send(context, context.getString(R.string.cmd_gps_response_off))
         }
         job?.jobFinished()
