@@ -222,6 +222,7 @@
     <string name="cmd_stats_response">Nettverksstatistikk:
 \n
 \nEnhets-IP-er:
+\n%s
 \n
 \nWi-Fi-nettverk:
 \n%s</string>
