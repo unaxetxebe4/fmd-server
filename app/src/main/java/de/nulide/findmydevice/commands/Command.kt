@@ -53,7 +53,7 @@ abstract class Command(val context: Context) {
             val msg = context.getString(
                 R.string.cmd_missing_permissions,
                 args.joinToString(" "),
-                missing.joinToString(", ")
+                missing.joinToString(", ") { it.toString(context) }
             )
             Log.w(TAG, msg)
             transport.send(context, msg)
