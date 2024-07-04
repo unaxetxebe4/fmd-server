@@ -26,7 +26,9 @@ class LockCommand(context: Context) : Command(context) {
 
     override val longDescription = R.string.cmd_lock_description_long
 
-    override val requiredPermissions = listOf(DeviceAdminPermission(), OverlayPermission())
+    override val requiredPermissions = listOf(DeviceAdminPermission())
+
+    override val optionalPermissions = listOf(OverlayPermission())
 
     override fun <T> execute(
         args: List<String>,
@@ -42,7 +44,7 @@ class LockCommand(context: Context) : Command(context) {
         // Only show the full-screen activity if there is a message. This allows you to silently
         // lock your device (by not providing a message) without alerting the potential thief.
         val customText = args.subList(2, args.size)
-        if (customText.isNotEmpty()) {
+        if (customText.isNotEmpty() && OverlayPermission().isGranted(context)) {
             val customMessage = customText.joinToString(" ")
 
             val lockScreenMessage = Intent(context, LockScreenMessage::class.java)
