@@ -188,11 +188,13 @@
     <string name="perm_overlay_name">Display Over Other Apps</string>
     <string name="perm_post_notification_name">Post Notifications</string>
     <string name="perm_sms_name">SMS</string>
+    <string name="perm_unused_app_name">Unused App Restrictions</string>
     <string name="perm_write_secure_settings_name">Write Secure Settings</string>
 
     <!-- Permissions: Descriptions -->
     <string name="Permission_IGNORE_BATTERY_OPTIMIZATION">This application is supposed to work in the background. To ensure it works even when your device is in standby, you need to turn off battery optimization for this app.</string>
     <string name="Permission_POST_NOTIFICATIONS">FMD will occasionally send you notifications, for example to warn you that someone is locating your device.</string>
+    <string name="perm_unused_app_description">Android pauses apps that are not opened for a few months and removes their permissions. FMD, however, is supposed to work in the background. After setting it up you rarely need to open it. Therefore you need to exempt FMD from being paused, otherwise it may not work in a few months.</string>
 
     <!-- Permissions: Other strings -->
     <string name="required_permissions_title">Required Permissions</string>

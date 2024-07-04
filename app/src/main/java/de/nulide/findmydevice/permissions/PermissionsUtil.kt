@@ -6,6 +6,7 @@ import android.content.Context
 fun globalAppPermissions() = listOf(
     PostNotificationsPermission(),
     BatteryOptimizationsPermission(),
+    UnusedAppRestrictionsPermission(),
 )
 
 fun isMissingGlobalAppPermission(context: Context): Boolean {
