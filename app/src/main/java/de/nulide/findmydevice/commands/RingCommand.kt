@@ -29,13 +29,11 @@ class RingCommand(context: Context) : Command(context) {
 
     override val optionalPermissions = listOf(DoNotDisturbAccessPermission())
 
-    override fun <T> execute(
+    override fun <T> executeInternal(
         args: List<String>,
         transport: Transport<T>,
         job: FmdJobService?,
     ) {
-        super.execute(args, transport, job)
-
         val firstArg = args.getOrElse(0) { "" }
 
         var duration = 30

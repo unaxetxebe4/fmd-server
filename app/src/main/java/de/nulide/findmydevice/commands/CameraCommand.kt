@@ -31,13 +31,11 @@ class CameraCommand(context: Context) : Command(context) {
 
     override val requiredPermissions = listOf(CameraPermission())
 
-    override fun <T> execute(
+    override fun <T> executeInternal(
         args: List<String>,
         transport: Transport<T>,
         job: FmdJobService?,
     ) {
-        super.execute(args, transport, job)
-
         if ((settings[Settings.SET_FMDSERVER_ID] as String).isEmpty()) {
             Log.w(TAG, "Cannot take picture: no FMD Server account")
             transport.send(context, context.getString(R.string.cmd_camera_response_no_fmd_server))

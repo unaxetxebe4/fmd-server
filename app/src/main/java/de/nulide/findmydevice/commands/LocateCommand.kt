@@ -40,13 +40,11 @@ class LocateCommand(context: Context) : Command(context) {
 
     override val optionalPermissions = listOf(WriteSecureSettingsPermission())
 
-    override fun <T> execute(
+    override fun <T> executeInternal(
         args: List<String>,
         transport: Transport<T>,
         job: FmdJobService?,
     ) {
-        super.execute(args, transport, job)
-
         // ignore everything except the first option (if it exists)
         val option = args.getOrElse(2) { "all" }
 

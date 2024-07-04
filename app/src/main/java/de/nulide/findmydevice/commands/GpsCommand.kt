@@ -26,13 +26,11 @@ class GpsCommand(context: Context) : Command(context) {
 
     override val requiredPermissions = listOf(WriteSecureSettingsPermission())
 
-    override fun <T> execute(
+    override fun <T> executeInternal(
         args: List<String>,
         transport: Transport<T>,
         job: FmdJobService?,
     ) {
-        super.execute(args, transport, job)
-
         if (args.contains("on")) {
             SecureSettings.turnGPS(context, true)
             settings.set(Settings.SET_GPS_STATE, 1)

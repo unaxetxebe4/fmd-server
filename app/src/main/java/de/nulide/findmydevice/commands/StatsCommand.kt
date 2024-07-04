@@ -25,13 +25,11 @@ class StatsCommand(context: Context) : Command(context) {
 
     override val requiredPermissions = listOf(LocationPermission())
 
-    override fun <T> execute(
+    override fun <T> executeInternal(
         args: List<String>,
         transport: Transport<T>,
         job: FmdJobService?,
     ) {
-        super.execute(args, transport, job)
-
         val ips = NetworkUtils.getAllIP()
         val ipsString = ips.map { i -> i.key }.joinToString { "\n" }
 
