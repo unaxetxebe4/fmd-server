@@ -19,7 +19,7 @@
 
     <style name="FMD.Text.SectionTitle" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@color/colorAccent</item>
-        <item name="android:textSize">23sp</item>
+        <item name="android:textSize">17sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textAlignment">textStart</item>
     </style>
