@@ -19,6 +19,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+
 import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.data.Settings;
 import de.nulide.findmydevice.data.SettingsRepoSpec;
@@ -120,7 +122,7 @@ public class FMDConfigActivity extends AppCompatActivity implements CompoundButt
         EditText editTextPin = pinLayout.findViewById(R.id.editTextPin);
         EditText editTextPinRepeat = pinLayout.findViewById(R.id.editTextPinRepeat);
 
-        new AlertDialog.Builder(context)
+        new MaterialAlertDialogBuilder(context)
                 .setTitle(getString(R.string.Settings_Enter_Pin))
                 .setView(pinLayout)
                 .setPositiveButton(getString(R.string.Ok), new DialogInterface.OnClickListener() {

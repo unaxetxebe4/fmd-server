@@ -19,6 +19,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -81,7 +83,7 @@ public class AllowlistActivity extends AppCompatActivity {
         EditText nameInput = layout.findViewById(R.id.editTextName);
         EditText phoneNumberInput = layout.findViewById(R.id.editTextPhoneNumber);
 
-        new AlertDialog.Builder(context)
+        new MaterialAlertDialogBuilder(context)
                 .setTitle(context.getString(R.string.allowlist_add_phone_number))
                 .setView(layout)
                 .setPositiveButton(getString(R.string.add), (dialog, whichButton) -> {
@@ -143,7 +145,7 @@ public class AllowlistActivity extends AppCompatActivity {
                         addContactToAllowList(contacts.get(0));
                     } else {
                         final List<Contact> finalContacts = contacts;
-                        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                        AlertDialog.Builder builder = new MaterialAlertDialogBuilder(this);
                         builder.setTitle(getString(R.string.WhiteList_Select_Number));
                         String[] numbersArray = numbers.toArray(new String[numbers.size()]);
                         builder.setItems(numbersArray, new DialogInterface.OnClickListener() {
@@ -170,7 +172,7 @@ public class AllowlistActivity extends AppCompatActivity {
                 updateScreen();
 
                 if (!(Boolean) settings.get(Settings.SET_FIRST_TIME_CONTACT_ADDED)) {
-                    new AlertDialog.Builder(this)
+                    new MaterialAlertDialogBuilder(this)
                             .setMessage(this.getString(R.string.Alert_First_Time_contact_added))
                             .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {

@@ -19,6 +19,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.VolleyError;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import org.apache.maven.artifact.versioning.ComparableVersion;
 
@@ -98,7 +99,7 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
         EditText passwordInputCheck = registerLayout.findViewById(R.id.editTextFMDPasswordCheck);
         EditText registrationTokenInput = registerLayout.findViewById(R.id.editTextRegistrationToken);
 
-        final AlertDialog.Builder registerDialog = new AlertDialog.Builder(context)
+        final AlertDialog.Builder registerDialog = new MaterialAlertDialogBuilder(context)
                 .setTitle("Register")
                 .setView(registerLayout)
                 .setPositiveButton(getString(R.string.Ok), (dialog, whichButton) -> {
@@ -137,7 +138,7 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
         EditText idInput = loginLayout.findViewById(R.id.editTextFMDID);
         EditText passwordInput = loginLayout.findViewById(R.id.editTextFMDPassword);
 
-        final AlertDialog.Builder loginDialog = new AlertDialog.Builder(context)
+        final AlertDialog.Builder loginDialog = new MaterialAlertDialogBuilder(context)
                 .setTitle("Login")
                 .setView(loginLayout)
                 .setPositiveButton(getString(R.string.Ok), (dialog, whichButton) -> {
@@ -163,7 +164,7 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
         webView.clearCache(true); // make sure to load the latest policy
         webView.loadUrl(editTextServerUrl.getText().toString() + "/ds.html");
 
-        new AlertDialog.Builder(context)
+        new MaterialAlertDialogBuilder(context)
                 .setTitle(getString(R.string.Settings_FMDServer_Alert_PrivacyPolicy_Title))
                 .setView(webView)
                 .setPositiveButton(getString(R.string.accept), (dialog, which) -> dialogToShowAfterAccepting.show())
@@ -173,7 +174,7 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
 
     private void showLoadingIndicator(Context context) {
         View loadingLayout = getLayoutInflater().inflate(R.layout.dialog_loading, null);
-        loadingDialog = new AlertDialog.Builder(context).setView(loadingLayout).setCancelable(false).create();
+        loadingDialog = new MaterialAlertDialogBuilder(context).setView(loadingLayout).setCancelable(false).create();
         loadingDialog.show();
     }
 
@@ -236,7 +237,7 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
             message += getString(R.string.request_failed_exception) + ": " + error.getMessage();
             String finalMessage = message; // needed to be able to use it in Lambda
 
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            AlertDialog.Builder builder = new MaterialAlertDialogBuilder(this);
             builder.setTitle(R.string.request_failed_title);
             builder.setMessage(finalMessage);
             builder.setNeutralButton(R.string.copy, (dialog, which) -> {
