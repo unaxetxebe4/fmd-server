@@ -51,7 +51,7 @@ public class LogActivity extends AppCompatActivity implements AdapterView.OnItem
         new MaterialAlertDialogBuilder(this)
                 .setTitle(getString(R.string.Log_Alert_LogData))
                 .setMessage(logData.get(position).getText())
-                .setIcon(android.R.drawable.ic_dialog_info)
+                .setIcon(R.drawable.ic_info)
                 .show();
     }
 }
