@@ -127,7 +127,7 @@
 
         <Button
             android:id="@+id/buttonOpenUnifiedPush"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            style="?attr/materialButtonOutlinedStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/margin_normal"

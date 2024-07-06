@@ -16,7 +16,6 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -40,6 +39,8 @@ public class FMDConfigActivity extends AppCompatActivity implements CompoundButt
 
     int colorEnabled;
     int colorDisabled;
+    int textColorEnabled;
+    int textColorDisabled;
 
     private final int REQUEST_CODE_RINGTONE = 5;
 
@@ -62,14 +63,18 @@ public class FMDConfigActivity extends AppCompatActivity implements CompoundButt
         editTextLockScreenMessage.setText((String) settings.get(Settings.SET_LOCKSCREEN_MESSAGE));
         editTextLockScreenMessage.addTextChangedListener(this);
 
-        colorEnabled = getColor(R.color.colorEnabled);
-        colorDisabled = getColor(R.color.colorDisabled);
+        colorEnabled = getColor(R.color.colorPrimary);
+        colorDisabled = getColor(R.color.md_theme_error);
+        textColorEnabled = getColor(R.color.md_theme_onPrimary);
+        textColorDisabled = getColor(R.color.md_theme_onError);
 
         buttonEnterPin = findViewById(R.id.buttonEnterPin);
         if (settings.get(Settings.SET_PIN).equals("")) {
             buttonEnterPin.setBackgroundColor(colorDisabled);
+            buttonEnterPin.setTextColor(textColorDisabled);
         } else {
             buttonEnterPin.setBackgroundColor(colorEnabled);
+            buttonEnterPin.setTextColor(textColorEnabled);
         }
         buttonEnterPin.setOnClickListener(this::onEnterPinClicked);
 
@@ -134,9 +139,11 @@ public class FMDConfigActivity extends AppCompatActivity implements CompoundButt
                             if (pin.isEmpty()) {
                                 settings.set(Settings.SET_PIN, "");
                                 buttonEnterPin.setBackgroundColor(colorDisabled);
+                                buttonEnterPin.setTextColor(textColorDisabled);
                             } else {
                                 settings.set(Settings.SET_PIN, CypherUtils.hashPasswordForFmdPin(pin));
                                 buttonEnterPin.setBackgroundColor(colorEnabled);
+                                buttonEnterPin.setTextColor(textColorEnabled);
                             }
                         } else {
                             Toast.makeText(context, "PINs do not match", Toast.LENGTH_LONG).show();

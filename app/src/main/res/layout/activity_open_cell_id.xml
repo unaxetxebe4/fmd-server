@@ -64,7 +64,7 @@
 
             <Button
                 android:id="@+id/buttonOpenOpenCellIdWebsite"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                style="?attr/materialButtonOutlinedStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_small"
@@ -72,7 +72,7 @@
 
             <Button
                 android:id="@+id/buttonTestOpenCellId"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                style="?attr/materialButtonOutlinedStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_small"
