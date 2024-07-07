@@ -54,13 +54,15 @@ public class ThirdPartyAccessService extends NotificationListenerService {
         init(this);
 
         // SMS is handled separately
-        if (sbn.getPackageName().equals(Telephony.Sms.getDefaultSmsPackage(this))) {
+        String packageName = sbn.getPackageName();
+        if (packageName.equals(Telephony.Sms.getDefaultSmsPackage(this))) {
             return;
         }
 
         if ((Boolean) settings.get(Settings.SET_FMD_LOW_BAT_SEND)) {
-            if (sbn.getPackageName().equals("com.android.systemui")) {
-                if (sbn.getTag().equals("low_battery")) {
+            if (packageName.equals("com.android.systemui")) {
+                String tag = sbn.getTag();
+                if (tag != null && tag.equals("low_battery")) {
                     handleLowBatteryNotification();
                     return;
                 }
