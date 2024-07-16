@@ -18,30 +18,6 @@
     <string name="Notification_Usage">Využití</string>
     <string name="Notification_Usage_Description">Oznámení, když FMD přijímá příkazy</string>
     <string name="Notification_Pin_Usage_Description">Oznámení při přístupu k FMD pomocí PINu</string>
-    <string name="Introduction_Introduction">FindMyDevice (FMD) je aplikace, která vám pomůže najít telefon, když jej ztratíte.
-\nKe komunikaci a odesílání příkazů z druhého zařízení využívá SMS (textové zprávy), pomocí kterých můžete telefon sledovat.
-\nStačí odeslat SMS zprávu, která obsahuje příkaz fmd.
-\nUpozorňujeme, že tato aplikace je stále ve fázi beta.
-\n
-\n - Nulide</string>
-    <string name="Permission_SMS">Aby mohla aplikace vykonávat příkazy, potřebuje přístup k vašim SMS zprávám. Vaše zprávy nikdy neopustí vaše zařízení a nikdy nebudou použity k ničemu jinému, než je nalezení vašeho zařízení.
-\nToto oprávnění je vyžadováno.</string>
-    <string name="Permission_CONTACTS">Ne všichni mají povolení posílat příkazy vašemu zařízení, budete tedy muset vybrat kontakty, které mohou nalézt vaše zařízení.
-\nToto oprávnění je vyžadováno.</string>
-    <string name="Permission_GPS">Pokud chcete získat souřadnice GPS vašeho zařízení, potřebuje aplikace toto oprávnění.
-\nPovolte prosím také aplikaci používat polohu na pozadí.
-\nPokud neudělíte toto oprávnění, nebude tato funkce aktivována.</string>
-    <string name="Permission_DND">Pro nalezení svého zařízení jej také můžete nechat vyzvánět. Při aktivním režimu Nerušit bude zařízení nejspíš ztlumeno.
-\nPokud neudělíte toto oprávnění, nebude tato funkce aktivována.</string>
-    <string name="Permission_DEVICE_ADMIN">Pokud chcete zamknout nebo vymazat své zařízení, potřebuje aplikace toto oprávnění.
-\nPokud neudělíte toto oprávnění, nebude tato funkce aktivována.</string>
-    <string name="Permission_WRITE_SECURE_SETTINGS">Tato aplikace dokáže zapnout polohu, pokud ji obvykle necháváte vypnutou.
-\nPři vypnuté poloze nebude fungovat příkaz „fmd locate“.
-\nAby aplikace dokázala polohu zapnout, potřebuje speciální oprávnění, které musíte udělit pomocí počítače.
-\nPokud neudělíte toto oprávnění, nic se neděje.
-\nAplikaci můžete nadále používat.</string>
-    <string name="Permission_OVERLAY">Když vzdáleně zamknete zařízení, může aplikace zobrazit zprávu na zamykací obrazovce nálezci vašeho zařízení.
-\nPokud neudělíte toto oprávnění, nebude tato funkce aktivována.</string>
     <string name="Permission_POST_NOTIFICATIONS">FMD vám bude čas od času posílat oznámení, například jako varování, že někdo vyhledává vaše zařízení.</string>
     <string name="Locked_Lock_Screen">FindMyDevice
 \nToto zařízení je uzamčeno!
@@ -72,12 +48,7 @@
 \n Vracím se na default.[fmd]</string>
     <string name="FMDConfig_Alert_Pin">PIN</string>
     <string name="Log_Alert_LogData">LogData</string>
-    <string name="NOT_AVAILABLE">Nedostupné</string>
-    <string name="Available">Dostupné</string>
-    <string name="registered">registrováno</string>
-    <string name="not_registered">neregistrováno</string>
     <string name="Alert_First_time_fmdserver">Zde můžete nakonfigurovat komunikaci aplikace se serverem FMD. Pokud chcete nakonfigurovat jiný než výchozí server, můžete tak učinit změnou adresy URL. Pokud stisknete tlačítko Registrace, můžete aplikaci zaregistrovat na serveru. Poté můžete funkci serveru povolit. Pokud tak učiníte, bude zařízení odesílat údaje o poloze na zadaný server. Polohu zařízení můžete zkontrolovat na stránce zadáním ID a hesla.</string>
-    <string name="Permission_Notification">Pokud chcete, aby FMD pracoval i se zprávami z ostatních aplikací jako je Telegram, WhatsApp atd., můžete udělit FMD přístup k oznámením.</string>
     <string name="Toast_Duplicate_contact">Tento kontakt již existuje.</string>
     <string name="copied">Zkopírováno</string>
     <string name="accept">přijmout</string>
@@ -119,13 +90,7 @@
     <string name="Notification_Security_Description">Oznámení o aktualizacích zabezpečení</string>
     <string name="Notification_FAIL">Chyby</string>
     <string name="Notification_Fail_Description">Oznámení, když něco selže, například spojení se serverem FMD</string>
-    <string name="Introduction_UpdatePermission">Jsou vyžadována nová oprávnění.
-\nAbyste mohli nadále využívat tuto aplikaci, zkontrolujte prosím následující oprávnění, nebo se vraťte zpět na starší verzi.</string>
-    <string name="Introduction_Give_Permission">Udělit oprávnění</string>
-    <string name="Introduction_Next">Další</string>
     <string name="Enable">Povolit</string>
-    <string name="Enabled">Povoleno</string>
-    <string name="Disabled">Zakázáno</string>
     <string name="MH_rings">prozvani</string>
     <string name="MH_Delete">Nashledanou...</string>
     <string name="MH_Networks">"
@@ -136,15 +101,10 @@
     <string name="MH_Help_Lock">" lock - uzamkne zarizeni"</string>
     <string name="MH_Help_delete">" delete - resetuje zarizeni"</string>
     <string name="MH_Pin_Accepted">PIN prijat!</string>
-    <string name="Error">Chyba</string>
     <string name="LockScreen_Usage_detectd">LockScreenMessage: detekováno použití.</string>
     <string name="LockScreen_Backbutton_pressed">LockScreenMessage: stisknuto tlačítko zpět.</string>
     <string name="MH_NO_SECURE_SETTINGS">Omlouvame se, aplikace nema k teto akci opravneni.</string>
     <string name="not_possible">Tato akce nebyla možná.</string>
-    <string name="Permission_Camera">Pokud chcete vzdáleně získávat obrázky ze svého zařízení, je vyžadováno oprávnění k fotoaparátu.</string>
-    <string name="Introduction_Shizuku">Udělit pomocí Shizuku</string>
-    <string name="Introduction_Root">Udělit pomocí Rootu</string>
-    <string name="RootAccessDenied">Root přístup zamítnut</string>
     <string name="loading">Načítání…</string>
     <string name="help">Nápověda</string>
     <string name="Cell">Mobilní síť</string>
@@ -210,7 +170,6 @@
     <string name="cmd_stats_description_long">Získat síťové statistiky ze zařízení. Zahrnuje například jeho IP adresu a seznam okolních sítí Wi-Fi.</string>
     <string name="perm_battery_optimizations_name">Ignorovat optimalizace baterie</string>
     <string name="perm_camera_name">Fotoaparát</string>
-    <string name="perm_contacts_name">Kontakty</string>
     <string name="perm_device_admin_name">Správce zařízení</string>
     <string name="perm_do_not_disturb_access_name">Přístup k režimu Nerušit</string>
     <string name="perm_location_name">Poloha</string>

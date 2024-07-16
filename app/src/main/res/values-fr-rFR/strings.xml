@@ -1,13 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="Introduction_Introduction">FindMyDevice (FMD) est une application qui peut aider à trouver un téléphone lorsqu\'il est perdu.
-\nIl utilise les sms (textuel) pour communiquer et envoyer des commandes à un second appareil afin que vous puissiez suivre votre téléphone.
-\nEnvoyé seulement un sms qui contient la commande fmd.
-\nVeuillez noter que cette application est toujours en beta.
-\n
-\n - Nulide</string>
-    <string name="Introduction_UpdatePermission">De nouvelles permissions sont nécessaires.
-\nVeuillez vérifier les permissions suivantes afin de pouvoir continuer à utiliser cet application, ou changez pour une version antérieur.</string>
     <string name="MH_No_GPS">Désolé, la localisation est éteinte.</string>
     <string name="Crashed_Send_log">Envoyer les logs</string>
     <string name="R_Stop_ring">ARRETER DE SONNER</string>
@@ -36,8 +28,6 @@
     <string name="Toast_Duplicate_contact">Ce contact existe déjà.</string>
     <string name="Delete">Effacer</string>
     <string name="Settings_About">A propos de</string>
-    <string name="Disabled">Désactivé</string>
-    <string name="Enabled">Activé</string>
     <string name="WhiteList_Add_Contact">Ajouter un contact</string>
     <string name="Settings_Permissions">Permissions</string>
     <string name="Settings_FMDCommand_Description">La commande utilisée pour communiquer avec FMD.</string>
@@ -48,23 +38,6 @@
     <string name="Locked_Lock_Screen">FindMyDevice
 \nCe téléphone est verrouillé !
 \nMessage du propriétaire :</string>
-    <string name="Introduction_Next">Suivant</string>
-    <string name="Introduction_Give_Permission">Donner les permissions</string>
-    <string name="Permission_OVERLAY">Quand vous verrouillez votre appareil à distance, cette application peut afficher un message sur l\'écran de verrouillage pour la personne qui trouvera votre téléphone.
-\nSi vous ne donnez pas cette permission, cette fonctionnalité ne sera pas activée.</string>
-    <string name="Permission_WRITE_SECURE_SETTINGS">Cette application est capable d\'activer la localisation même si vous l\'avez désactivée.
-\nSi elle est désactivée, \"fmd locate\" ne fonctionnera pas.
-\nPour ce faire, l\'application a besoin d\'une autorisation spéciale que vous devez accorder en utilisant un ordinateur.
-\nSi vous ne donnez pas cette autorisation, ce n\'est pas un problème.
-\nVous pouvez toujours utiliser cette application.</string>
-    <string name="Permission_DEVICE_ADMIN">Si vous voulez verrouiller ou réinitialiser votre téléphone s\'il est perdu, cette permission est requise.
-\nSi vous ne fournissez pas cette permission, cette fonctionnalité ne sera pas activée.</string>
-    <string name="Permission_DND">Vous pouvez aussi faire sonner le téléphone pour vous aider à le trouver. Quand \"Ne pas Déranger\" est activé, il est possible que le téléphone soit en silencieux.
-\nSi vous ne donnez pas cette permission, cette fonctionnalité ne sera pas activée.</string>
-    <string name="Permission_CONTACTS">Tout le monde n\'est pas autorisé à envoyer des commandes à votre téléphone, vous devez donc sélectionner certains contacts qui seront en capacité de localiser votre équipement.
-\nCette permission est requise.</string>
-    <string name="Permission_SMS">Afin de pouvoir piloter le téléphone, cette application a besoin d\'être en capacité de voir les sms. Vos messages ne quittent jamais votre téléphone, et ils ne sont jamais utilisés pour faire autre chose que de retrouver votre téléphone.
-\nCette permission est requise.</string>
     <string name="Notification_Usage_Description">Notifications lorsque FMD reçoit des commandes</string>
     <string name="Notification_Pin_Usage_Description">Notifications lorsque FMD est utilisé avec le code PIN</string>
     <string name="JSON_RL_Error">Erreur lors de l\'obtention de l\'emplacement depuis OpenCelliD. Veuillez essayer le lien suivant. Les paramètres que vous voulez sont lon et lat.</string>
@@ -74,22 +47,17 @@
     <string name="Settings_Select_Ringtone">Sélectionnez une sonnerie</string>
     <string name="WhiteList_Select_Number">Sélectionnez l\'un des numéros de téléphones.</string>
     <string name="Settings_FMDServer_Update_Interval_Description">FMD envoi la localisation de l\'appareil toutes les X minutes.</string>
-    <string name="NOT_AVAILABLE">indisponible</string>
     <string name="Info_Server_Registered">Enregistré :</string>
-    <string name="registered">enregistré</string>
-    <string name="not_registered">Non enregistré</string>
     <string name="MH_LAST_KNOWN_LOCATION">Dernière localisation connue</string>
     <string name="MH_LAST_KNOWN_LOCATION_NOT_AVAILABLE">La dernière localisation n\'est pas disponible.</string>
     <string name="Alert_First_time_fmdserver">Ici, vous pouvez configurer l\'application pour communiquer avec fmdserver. Si vous souhaitez configurer un serveur différent de celui par défaut, vous pouvez le faire en modifiant l\'URL. Si vous appuyez sur enregistrer, vous pouvez enregistrer l\'application sur le serveur. Ensuite, vous pouvez activer la fonctionnalité de serveur. Si vous le faites, votre téléphone vous enverra des données de localisation au serveur spécifié. Vous pouvez vérifier l\'emplacement de votre téléphone en entrant l\'ID et le mot de passe sur la page.</string>
     <string name="accept">accepter</string>
     <string name="Settings_FMDServer_Location_Type_Description">La ou les sources à partir desquelles les données de localisation sont envoyées à intervalles réguliers en arrière-plan.
 \nSi aucune n\'est sélectionnée, aucune localisation n\'est envoyée régulièrement. (Vous pouvez toujours utiliser l\'interface web pour forcer un envoi. Cela nécessite les notifications push.)</string>
-    <string name="Error">Erreur</string>
     <string name="Settings_Settings">Paramètres</string>
     <string name="Notification_Usage">Usage</string>
     <string name="Pin_Usage">Utilisation du PIN</string>
     <string name="Info_Server_Enabled">Service :</string>
-    <string name="RootAccessDenied">Accès root interdit</string>
     <string name="loading">Chargement…</string>
     <string name="Edit">Modifier</string>
     <string name="GPS">GPS</string>
@@ -128,8 +96,6 @@
     <string name="Notification_Security_Description">Notifications à propos des mise à jour de sécurité</string>
     <string name="Notification_FAIL">Échecs</string>
     <string name="Notification_Fail_Description">Notifications en cas d\'échec, comme la connexion au serveur FMD</string>
-    <string name="Available">Disponible</string>
-    <string name="Introduction_Shizuku">Donner via Shizuku</string>
     <string name="Settings_OpenCellId">OpenCelliD</string>
     <string name="notify_crypto_update_title">Action requise</string>
     <string name="Settings_FMD_Server_User_ID">Identifiant utilisateur :</string>
@@ -144,7 +110,6 @@
     <string name="Log_Alert_LogData">Données de journalisation</string>
     <string name="MH_Help_Expert_Camera">" Caméra (avant/arrière) - prend une photo et l\'envoie au serveur FMD."</string>
     <string name="not_possible">Cette action n\'est pas possible.</string>
-    <string name="Introduction_Root">Donner via Root</string>
     <string name="Settings_FMDServer_LOW_BAT_Upload_Description">Envoi la localisation de l\'appareil lorsque le niveau de la batterie est faible. Cela nécessite l\'accès aux notifications.</string>
     <string name="help">Aide</string>
     <string name="Settings_WhiteList">Contacts autorisés</string>
@@ -174,16 +139,11 @@
     <string name="OpenCellId_help">OpenCelliD peut être utilisé par FMD pour obtenir une localisation approximative basée sur l\'antenne-relais connectée au téléphone. Une connexion internet est nécessaire pour chaque requête de localisation. De plus, il est requis de créer un compte sur OpenCelliD et d\'obtenir son propre jeton d\'accès API.</string>
     <string name="app_description">FMD (Find My Device) vous permet de localiser à distance votre appareil. Vous pouvez communiquer avec FMD via SMS, des messageries instantanées, ou en utilisant le serveur FMD. Localisez votre appareil, faites-le sonner, verrouillez-le ou effacez son contenu - le tout à distance.</string>
     <string name="Permission_POST_NOTIFICATIONS">FMD vous enverra occasionnellement des notifications, par exemple pour vous avertir que quelqu\'un est en train de localiser votre appareil.</string>
-    <string name="Permission_Notification">Si vous souhaitez que FMD gère les messages provenant d\'autres applications telles que Telegram, Whatsapp, etc., vous pouvez autoriser FMD à accéder aux notifications.</string>
     <string name="MH_CAM_CAPTURE">"L\'appareil enverra bientôt une photo au serveur FMD. Vous pourrez bientôt la voir ici : "</string>
-    <string name="Permission_Camera">Pour recevoir des photos de votre téléphone à distance, l\'autorisation d\'accès à la caméra est nécessaire.</string>
     <string name="server_unregister_failed_title">Échec de la désinscription</string>
     <string name="server_unregister_failed_body">La désinscription a échoué avec l\'erreur suivante : {ERROR}
 \n
 \nVous pouvez continuer quand même, mais votre compte pourrait ne pas avoir été supprimé du serveur. Si vous continuez, votre compte sera supprimé localement de cet appareil.</string>
-    <string name="Permission_GPS">Si vous souhaitez obtenir les coordonnées GPS de votre téléphone, l\'application a besoin de cette autorisation.
-\nVeuillez également autoriser l\'application à localiser votre téléphone en arrière-plan.
-\nSi vous ne donnez pas cette autorisation, cette fonctionnalité ne sera pas activée.</string>
     <string name="OpenCellId_test_opencellid">Test de connexion à OpenCelliD</string>
     <string name="MH_NO_SECURE_SETTINGS">Désolé, l\'application n\'est pas autorisée à le faire.</string>
     <string name="Settings_FMDServer_Info">Avec le serveur FMD, vous pouvez envoyer des commandes via Internet, du serveur vers l\'application. Vous pouvez également visualiser la localisation de l\'appareil sur une carte ou consulter les photos prises par l\'appareil. Pour les instructions sur la manière de configurer votre propre serveur, veuillez consulter le site.</string>
@@ -215,7 +175,6 @@
 \n
 \nRéseaux Wifi :
 \n%s</string>
-    <string name="perm_contacts_name">Contacts</string>
     <string name="cmd_missing_permissions">Impossible d\'exécuter la commande %s : autorisation(s) manquante(s) %s.</string>
     <string name="cmd_camera_description_long">Prend une photo avec la caméra avant/arrière et l\'envoie vers le serveur FMD. Actuellement, seule le transfert vers le serveur FMD est pris en charge. Vous pouvez également envoyer cette commande via d\'autres canaux de communication, et la photo sera téléversée vers le serveur FMD (si un compte existe).</string>
     <string name="cmd_delete_description_long">Cela efface toutes les données. Par la suite, vous ne pourrez plus communiquer avec l\'appareil. Pour prévenir une utilisation accidentelle et malveillante, cette commande requiert un mot de passe et doit être explicitement activée dans les paramètres.</string>

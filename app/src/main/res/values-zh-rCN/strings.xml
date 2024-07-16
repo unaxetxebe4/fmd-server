@@ -99,24 +99,5 @@
     <string name="Notification_Usage">用途</string>
     <string name="Notification_Security_Description">有关于安全性更新的通知</string>
     <string name="Permission_IGNORE_BATTERY_OPTIMIZATION">此应用可以在后台运行。若确保它甚至能在设备休眠时运行，您需要关闭此应用的电池优化选项。</string>
-    <string name="Introduction_Introduction">寻找我的设备（FMD）是一个可以帮助您寻找丢失设备的应用。
-\n它使用来自第二设备发送的SMS（文字）来交流和发送指令，所以您可以破解您的设备。
-\n仅需要发送一个包含指令的SMS消息。
-\n请注意此应用仍处在Beta阶段。
-\n
-\n - Nulide</string>
-    <string name="Permission_CONTACTS">不是所有人都可以发送指令到您的设备上，所以您需要选择一些允许定位您设备的联系人。
-\n需要您的允许。</string>
-    <string name="Permission_DEVICE_ADMIN">如果您想要在设备丢失时锁定或抹除您的设备，请给予此权限。
-\n如果您没有给予此权限，此功能将会被禁用。</string>
     <string name="Notification_Fail_Description">有关于错误的通知，比如与FMD服务器的连接。</string>
-    <string name="Introduction_UpdatePermission">需要一些新的权限。
-\n请检查以下权限来继续使用此应用，或回退到较老的版本。</string>
-    <string name="Permission_SMS">为了利用命令来使设备有所响应，此应用需要能了解您的SMS消息。您的消息永远不会发送出您的设备，并且它们也不会用于查找您的设备以外的任何用途。
-\n需要您的允许。</string>
-    <string name="Permission_GPS">如果您想要得到来自您设备的GPS坐标，此应用需要这个权限。
-\n也请允许此应用在后台定位您的设备。
-\n如果您没有给予此权限，此功能会被禁用。</string>
-    <string name="Permission_DND">您也可以使您的设备响铃来帮助您定位它。当“请勿打扰”开启时，它可能会将设备静音。
-\n如果您没有给与此权限，此功能将会被禁用。</string>
 </resources>

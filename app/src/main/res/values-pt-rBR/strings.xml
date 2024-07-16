@@ -67,22 +67,7 @@
     <string name="server_unregister_failed_title">Falha ao remover o registro</string>
     <string name="Notification_Fail_Description">Notificações de quando algo falha, como a conexão ao Servidor FMD</string>
     <string name="Permission_IGNORE_BATTERY_OPTIMIZATION">Este aplicativo é feita para rodar em segundo plano. Para ter certeza que ela funciona mesmo quando o seu dispositivo está em standby, você precisa desativar as otimizações de bateria para este app.</string>
-    <string name="Introduction_UpdatePermission">Algumas permissões novas são necessárias.
-\nVerifique as permissões seguintes para que possa continuar usando este aplicativo, ou volte para uma versão antiga.</string>
-    <string name="Permission_SMS">Para que seja possível comandar o dispositivo a fazer algo, este aplicativo precisa ver suas mensagens SMS. Suas mensagens nunca saem de seu dispositivo, e nunca são usadas para nada, exceto encontrar seu dispositivo.
-\nEsta permissão é necessária.</string>
-    <string name="Permission_CONTACTS">Não são todos que podem enviar comandos ao seu dispositivo, então você precisa selecionar alguns contatos que poderão localizar seu dispositivo.
-\nEsta permissão é necessária.</string>
-    <string name="Permission_WRITE_SECURE_SETTINGS">Este aplicativo é capaz de ativar a localização se você normalmente a deixa desativada.
-\nSe estiver desativada, o \"fmd locate\" não funcionará.
-\nPara que isto seja possível, o aplicativo precisa de uma permissão especial que você precisará conceder através de um computador.
-\nSe você não conceder esta permissão, não tem problema.
-\nVocê ainda pode usar este aplicativo.</string>
-    <string name="Permission_OVERLAY">Quando você bloqueia o seu dispositivo remotamente, este aplicativo pode mostrar uma mensagem na tela de bloqueio para quem encontrá-lo.
-\nSe você não conceder esta permissão, esta funcionalidade não estará ativa.</string>
     <string name="Permission_POST_NOTIFICATIONS">O FMD irá te enviar notificações ocasionalmente, por exemplo, para te avisar que alguém está localizando seu dispositivo.</string>
-    <string name="Introduction_Give_Permission">Conceder Permissão</string>
-    <string name="Introduction_Next">Próximo</string>
     <string name="Locked_Lock_Screen">FindMyDevice
 \nEste dispositivo está bloqueado!
 \nMensagem do dono:</string>
@@ -101,31 +86,22 @@
     <string name="MH_Help_where">" locate - envia a localização atual do dispositivo"</string>
     <string name="MH_Help_ring">" ring - faz com que o dispositivo toque"</string>
     <string name="MH_Help_Lock">" lock - bloqueia o dispositivo"</string>
-    <string name="Error">Erro</string>
     <string name="JSON_RL_Error">Erro tentando obter localização do OpenCelliD. Tente o link seguinte. Os parâmetros que você quer são \"lon\" e \"lat\".</string>
     <string name="LockScreen_Usage_detectd">Mensagem da Tela de Bloqueio: Uso detectado.</string>
     <string name="LockScreen_Backbutton_pressed">Mensagem da Tela de Bloqueio: Botão de voltar pressionado.</string>
     <string name="loading">Carregando…</string>
     <string name="copied">Copiado</string>
-    <string name="Available">Disponível</string>
-    <string name="registered">registrado</string>
-    <string name="not_registered">não registrado</string>
     <string name="MH_LAST_KNOWN_LOCATION">Última localização conhecida</string>
     <string name="MH_LAST_KNOWN_LOCATION_NOT_AVAILABLE">A última localização não está disponível.</string>
     <string name="Alert_First_time_fmdserver">Aqui você pode configurar o aplicativo para que se comunique com o Servidor FMD. Se você quer configurar um servidor diferente do padrão, você pode fazer isso mudando a URL. Se você pressionar em Registrar você pode registrar o aplicativo ao servidor. Depois, você pode ativar a funcionalidade de servidor. Se você fazer isto, o seu dispositivo irá enviar seus dados de localização ao servidor especificado. Você pode verificar a localização do seu dispositivo digitando o ID e a senha na página.</string>
     <string name="MH_Help_Expert_GPS">" GPS (on/off) - ativa ou desativa o GPS."</string>
     <string name="MH_NO_SECURE_SETTINGS">Desculpe, o aplicativo não tem esta permissão.</string>
     <string name="MH_Help_expert">" expert - página de ajuda para comandos para especialistas."</string>
-    <string name="Permission_Notification">Se você quer que o FMD lide com mensagens de outros apps como o Signal, WhatsApp, ou outros, você deve dar acesso às notificações para o FMD.</string>
     <string name="not_possible">Esta ação não foi possível.</string>
     <string name="MH_Help_Expert_Sound">" Sound (on/off) - ativa ou desativa o som."</string>
     <string name="MH_Help_Expert_Camera">" Camera (front/back) - tira uma foto e a envia para o Servidor FMD."</string>
-    <string name="Permission_Camera">Se você quer tirar fotos remotamente através de seu dispositivo, a permissão de câmera é necessária.</string>
     <string name="MH_CAM_CAPTURE">"O dispositivo irá enviar uma foto ao Servidor FDM em breve. Você poderá visualizá-la aqui logo: "</string>
     <string name="MH_FMDSERVER_NOT_REGISTERED">Este dispositivo não está registrado em um servidor.</string>
-    <string name="Introduction_Shizuku">Conceder via Shizuku</string>
-    <string name="Introduction_Root">Conceder via Root</string>
-    <string name="RootAccessDenied">Acesso root negado</string>
     <string name="help">Ajuda</string>
     <string name="Cell">Redes móveis</string>
     <string name="request_failed_title">Solicitação de Rede Falhou</string>
@@ -163,22 +139,7 @@
     <string name="notify_crypto_update_title">Ação necessária</string>
     <string name="notify_crypto_update_text">Você precisará atualizar algumas configurações para continuar usando o FMD. Clique para abrir.</string>
     <string name="app_description">FMD (Find My Device) permite que você localize remotamente o seu dispositivo. Você pode se comunicar com o FMD por SMS, mensageiros, ou usando um Servidor FMD. Localize seu dispositivo, faça-o tocar, bloqueie-o, ou formate ele - tudo remotamente.</string>
-    <string name="Introduction_Introduction">FindMyDevice (FMD) é um aplicativo que pode te ajudar a encontrar seu dispositivo quando é perdido.
-\nEle utiliza SMS (mensagens instantâneas) para comunicar e enviar comandos de um dispositivo secundário para que você possa rastrear seu dispositivo.
-\nÉ só enviar uma mensagem SMS que contém o comando fmd.
-\nTenha em mente que este aplicativo ainda está em beta.
-\n
-\n - Nulide</string>
-    <string name="Permission_DEVICE_ADMIN">Se você querer bloquear, ou formatar seu dispositivo se ele for perdido, esta permissão é necessária.
-\nSe você não conceder esta permissão, esta funcionalidade não estará ativa.</string>
-    <string name="Permission_DND">Você pode também fazer com que seu dispositivo toque para te ajudar a encontrá-lo. Quando o \"Não Perturbe\" está ativo, pode ser que o dispositivo esteja no silencioso.
-\nSe você não conceder esta permissão, esta funcionalidade não estará ativa.</string>
-    <string name="Permission_GPS">Se você querer as coordenadas GPS do seu dispositivo, o aplicativo precisará dessa permissão.
-\nTambém permita que o aplicativo localize seu dispositivo em segundo plano.
-\nSe você não conceder esta permissão, esta funcionalidade não estará ativa.</string>
     <string name="Enable">Ativar</string>
-    <string name="Enabled">Ativado</string>
-    <string name="Disabled">Desativado</string>
     <string name="Delete">Excluir</string>
     <string name="MH_GPS_WILL_FOLLOW">Coordenadas GPS serão enviadas em breve.</string>
     <string name="MH_Help_delete">" delete - formata o dispositivo"</string>
@@ -192,7 +153,6 @@
     <string name="Log_Alert_LogData">Dados de Registro</string>
     <string name="Toast_Empty_FMDCommand">Comando vazio não permitido
 \n Retornando ao padrão. [fmd]</string>
-    <string name="NOT_AVAILABLE">Indisponível</string>
     <string name="cmd_missing_permissions">Não foi possível executar o comando %s: Faltando a(s) permissão(ões) %s.</string>
     <string name="cmd_camera_description_long">Tira uma foto da câmera frontal/traseira e faz upload dela pro Servidor FMD. Atualmente só é possível fazer upload para o Servidor FMD. Vocẽ pode enviar este comando atráves de outros canais de transporte, também, e a foto será enviada ao Servidor FMD (se uma conta existe).</string>
     <string name="cmd_delete_description_short">Redefinir o dispositivo de fábrica</string>
@@ -239,7 +199,6 @@
 \n%s</string>
     <string name="perm_battery_optimizations_name">Ignorar Otimizações de Bateria</string>
     <string name="perm_camera_name">Câmera</string>
-    <string name="perm_contacts_name">Contatos</string>
     <string name="perm_device_admin_name">Administrador do Dispositivo</string>
     <string name="perm_do_not_disturb_access_name">Acesso ao \"Não Perturbe\"</string>
     <string name="perm_notification_access_name">Acesso às Notificações</string>

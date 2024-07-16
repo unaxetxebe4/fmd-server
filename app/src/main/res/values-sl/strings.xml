@@ -90,26 +90,11 @@
     <string name="Notification_Security_Description">Obvestila o varnostnih posodobitvah</string>
     <string name="Notification_FAIL">Napake</string>
     <string name="Notification_Fail_Description">Obvestila ko se pojavi napaka, npr. spodleti povezava na FMD strežnik.</string>
-    <string name="Introduction_UpdatePermission">Potrebnih je nekaj novih dovoljenj.
-\nPreverite naslednja dovoljenja, če želite še naprej uporabljati to aplikacijo, ali pa se vrnite na starejšo različico.</string>
-    <string name="Permission_SMS">Če želite telefonu poslati ukaz, mora ta aplikacija imeti možnost videti vaša sporočila SMS. Ta sporočila ne bodo posredovana tretjim osebam in se uporabljajo samo za iskanje vašega telefona.
-\nTo dovoljenje je zahtevano.</string>
-    <string name="Permission_GPS">Če želite pridobiti GPS lokacijo svojega telefona, aplikacija potrebuje to dovoljenje.
-\nDovolite aplikaciji tudi, da poišče vaš telefon, kadar deluje v ozadju.
-\nČe tega dovoljenja ne podelite, ta funkcija ne bo aktivirana.</string>
-    <string name="Permission_DEVICE_ADMIN">To dovoljenje je potrebno, če želite zakleniti ali izbrisati telefon, v primeru, da ga izgubite.
-\nČe tega dovoljenja ne podelite, ta funkcija ne bo aktivirana.</string>
-    <string name="Permission_OVERLAY">Ko svojo napravo zaklenete na daljavo, lahko ta aplikacija na zaklenjenem zaslonu vsem, ki najdejo vaš telefon, prikaže sporočilo.
-\nČe tega dovoljenja ne podelite, ta funkcija ne bo aktivirana.</string>
     <string name="Permission_POST_NOTIFICATIONS">FMD vam bo občasno pošiljal obvestila, na primer, da vas opozori, da nekdo locira vašo napravo.</string>
-    <string name="Introduction_Next">Naprej</string>
     <string name="Locked_Lock_Screen">FindMyDevice
 \nTelefon je zaklenjen!
 \nSporočilo lastnika:</string>
-    <string name="Introduction_Give_Permission">Podeli dovoljenje</string>
     <string name="Enable">Omogoči</string>
-    <string name="Enabled">Omogočeno</string>
-    <string name="Disabled">Onemogočeno</string>
     <string name="Toast_Duplicate_contact">Ta stik že obstaja.</string>
     <string name="MH_rings">zvonenj</string>
     <string name="MH_Locked">zaklenjen</string>
@@ -128,17 +113,12 @@
     <string name="R_Stop_ring">IZKLJUČI ZVONENJE</string>
     <string name="Crashed_Send_log">Pošlji dnevniške zapise</string>
     <string name="MH_No_GPS">Oprostite, lokacija je izključena.</string>
-    <string name="Error">Napaka</string>
     <string name="JSON_RL_Error">Napaka pri pridobivanju lokacije iz OpenCellID. Poskusite s sledečo povezavo. Parametra, ki ju želite, sta \"lon\" in \"lat\".</string>
     <string name="LockScreen_Usage_detectd">LockScreenMessage: zaznana uporaba.</string>
     <string name="LockScreen_Backbutton_pressed">LockScreenMessage: pritisnjen gumb za nazaj.</string>
     <string name="Toast_Empty_FMDCommand">Prazen ukaz ni dovoljen
 \n Vrnitev na privzeto. [fmd]</string>
-    <string name="NOT_AVAILABLE">Ni na voljo</string>
-    <string name="Available">Na voljo</string>
     <string name="Log_Alert_LogData">Dnevniški zapisi</string>
-    <string name="registered">registriran</string>
-    <string name="not_registered">ni registriran</string>
     <string name="MH_LAST_KNOWN_LOCATION">Zadnja znana lokacija</string>
     <string name="MH_LAST_KNOWN_LOCATION_NOT_AVAILABLE">Zadnja lokacija ni na voljo.</string>
     <string name="MH_NO_SECURE_SETTINGS">Oprostite, aplikacija nima dovoljenja za to.</string>
@@ -148,10 +128,6 @@
     <string name="not_possible">To dejanje ni bilo mogoče.</string>
     <string name="MH_Help_Expert_Camera">" Camera (front/back) - zajeme sliko in jo pošlje na FMD strežnik."</string>
     <string name="MH_FMDSERVER_NOT_REGISTERED">Ta naprava ni registrirana na strežniku.</string>
-    <string name="Introduction_Shizuku">Podeli preko aplikacije Shizuku</string>
-    <string name="Permission_Camera">Če želite na daljavo zajemati slike iz vašega telefona, aplikacija potrebujete dovoljenje za dostop do kamere.</string>
-    <string name="Introduction_Root">Podeli preko korenskega uporabnika</string>
-    <string name="RootAccessDenied">Korenski dostop zavrnjen</string>
     <string name="request_failed_status_code">Statusna koda</string>
     <string name="request_failed_response_body">Telo odgovora</string>
     <string name="request_failed_exception">Izjema</string>
@@ -165,28 +141,13 @@
 \nVseeno lahko nadaljujete, vendar vaš račun morda ni bil izbrisan iz strežnika. Če nadaljujete, bo vaš račun lokalno izbrisan iz te naprave.</string>
     <string name="Notification_Usage_Description">Obvestilo, ko FMD prejema ukaze.</string>
     <string name="Permission_IGNORE_BATTERY_OPTIMIZATION">Ta aplikacija naj bi delovala v ozadju. Če želite zagotoviti, da deluje tudi, ko je vaš telefon v stanju pripravljenosti, morate za to aplikacijo izklopiti optimizacijo baterije.</string>
-    <string name="Introduction_Introduction">FindMyDevice (FMD) je aplikacija, ki vam lahko pomaga najti vaš telefon, ko se izgubi.
-\nIz telefona enega izmed zaupanja vrednih stikov lahko preko SMS sporočil pošiljate ukaze ter tako sledite svojemu telefonu.
-\nSamo pošljite SMS sporočilo, ki vsebuje ukaz \"fmd\".
-\nUpoštevajte, da je ta aplikacija še vedno v različici beta.
-\n
-\n - Nulide</string>
-    <string name="Permission_CONTACTS">Vašemu telefonu ukazov ne sme pošiljati kdorkoli. Zato morate določiti enega ali več zaupanja vrednih stikov, ki bodo lahko poiskali vašo napravo.
-\nTo dovoljenje je zahtevano.</string>
     <string name="Delete">Izbriši</string>
     <string name="MH_Delete">Nasvidenje...</string>
     <string name="MH_Help_Stats">" stats - pošlje podatke o napravi"</string>
     <string name="MH_Help_delete">" delete - telefon tovarniško ponastavi"</string>
     <string name="FMDConfig_Alert_Pin">PIN</string>
-    <string name="Permission_WRITE_SECURE_SETTINGS">Ta aplikacija lahko vključi lokacijo tudi v primeru, če jo imate izključeno.
-\nČe je lokacija izključena, ukaz \"fmd locate\" ne bo deloval.
-\nV tem primeru aplikacija potrebuje posebno dovoljenje, ki ga morate dodeliti z uporabo računalnika.
-\nČe tega dovoljenja ne podelite, ta funkcija ne bo aktivirana.</string>
     <string name="MH_Pin_Accepted">PIN sprejet!</string>
-    <string name="Permission_DND">Na telefon lahko tudi sprožite zvonenje, da ga lažje poiščete. Ko je vključena funkcija »Ne moti«, je telefon morda utišan.
-\nČe tega dovoljenja ne podelite, ta funkcija ne bo aktivirana.</string>
     <string name="Alert_First_time_fmdserver">Tukaj lahko nastavite komunikacijo aplikacije s FMD strežnikom. Če želite nastaviti drugačen strežnik od privzetega, lahko to storite tako, da spremenite URL. Če pritisnete \"registriraj\", lahko aplikacijo registrirate na strežniku. Telefon bo nato podatke o lokaciji pošiljal na navedeni strežnik. Lokacijo svojega telefona lahko preverite tako, da spletni strani FMD strežnika vnesete ID vaše naprave in vaše geslo.</string>
-    <string name="Permission_Notification">Če želite, da FMD spremlja sporočila iz drugih aplikacij, kot so Telegram, Whatsapp itd., ji lahko omogočite dostop do obvestil. S tem boste aplikacijo FMD lahko upravljali tudi preko teh aplikacij in ne samo preko SMS sporočil.</string>
     <string name="MH_CAM_CAPTURE">"Naprava bo zajeto sliko kmalu posredovala na FMD strežnik. Ogledali si jo boste lahko tukaj: "</string>
     <string name="Pin_Usage">Uporaba PIN kode</string>
     <string name="MH_False_Pin">Napačen PIN!</string>

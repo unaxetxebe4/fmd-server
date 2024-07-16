@@ -67,12 +67,8 @@
     <string name="Notification_Security">Sikkerhet</string>
     <string name="Notification_Security_Description">Merknader om sikkerhetsoppgraderinger</string>
     <string name="Notification_FAIL">Mislyktes</string>
-    <string name="Introduction_Give_Permission">Innvilg tilgang</string>
-    <string name="Introduction_Next">Neste</string>
     <string name="Pin_Usage">PIN-bruk</string>
     <string name="Notification_Pin_Usage_Description">Merknad om PIN-bruk.</string>
-    <string name="NOT_AVAILABLE">Ikke tilgjengelig</string>
-    <string name="Available">Tilgjengelig</string>
     <string name="MH_LAST_KNOWN_LOCATION">Sist kjente posisjon</string>
     <string name="MH_LAST_KNOWN_LOCATION_NOT_AVAILABLE">Siste posisjon er ikke tilgjengelig.</string>
     <string name="MH_Syntax">Syntaks:</string>
@@ -103,9 +99,6 @@
     <string name="server_unregister_continue_anyway">Fortsett uansett</string>
     <string name="Toast_Duplicate_contact">Denne kontakten finnes allerede.</string>
     <string name="Notification_Usage">Bruk</string>
-    <string name="Enabled">Avskrudd</string>
-    <string name="Error">Feil</string>
-    <string name="Disabled">Påskrudd</string>
     <string name="Delete">Slett</string>
     <string name="Crashed_Send_log">Send logg</string>
     <string name="Notification_Fail_Description">Merknad når noe går galt, som f.eks. tilkoblingen til FMD-tjeneren.</string>
@@ -118,8 +111,6 @@
     <string name="MH_Help_Expert_GPS">" GPS (på/av) — skrur av og på posisjoneringsutstyret."</string>
     <string name="MH_Help_ring">" ring - får enheten til å ringe"</string>
     <string name="Notification_Server_Description">Merknader som har med FMD-tjeneren å gjøre</string>
-    <string name="Permission_SMS">For å sende kommandoer til enheten må programmet ha tilgang til å se SMS-meldingene dine. Meldingene forlater aldri telefonen, og de brukes kun til å finne telefonen.
-\nTilgangen er påkrevd.</string>
     <string name="MH_rings">ringer</string>
     <string name="Permission_POST_NOTIFICATIONS">FMD vil sende deg merknader nå og da, for eksempel hvis noen prøver å finne enhten din.</string>
     <string name="MH_Locked">låst</string>
@@ -131,21 +122,13 @@
     <string name="registration_token_hint">Det kan hende en privat instans krever et hemmelig symbol. La stå tomt hvis instansen er offentlig.</string>
     <string name="Whitelist_help">Kontaktene i denne listen kan sende FMD-kommandoer via SMS. Kommandoer annensteds fra vil bli ignorert.</string>
     <string name="Permission_IGNORE_BATTERY_OPTIMIZATION">Programmet er ment å kjøre i bakgrunnen. Skru av batterioptimaliseringer for å forsikre at alt fungerer i hvilemodus.</string>
-    <string name="Permission_DND">Du kan få enheten til å ringe for å finne den. Når «Ikke forstyrr» er aktivert kan det være at telefonen er forstummet.
-\nHvis du ikke innvilger denne tilgangen vil du ikke ha tilgang til funksjonaliteten.</string>
     <string name="MH_Help_Stats">" stats - sender enhetsinfo"</string>
     <string name="MH_Help_delete">" delete - tilbakestiller enheten"</string>
     <string name="R_Stop_ring">Legg på</string>
     <string name="MH_No_GPS">Beklager. Posisjon er avskrudd.</string>
-    <string name="registered">registrert</string>
-    <string name="not_registered">ikke registrert</string>
-    <string name="RootAccessDenied">Rot-tilgang nektet</string>
-    <string name="Permission_Notification">Hvis du ønsker at FMD skal håndtere meldinger fra andre programmer, som f.eks. Telegram, SimpleX, osv. kan du gi FMD tilgang til merknader.</string>
-    <string name="Introduction_Root">Innvilg via rot-tilgang</string>
     <string name="request_failed_exception">Unntak</string>
     <string name="cmd_camera_response_no_fmd_server">Kan ikke knipse bilde: Ingen FMD-tjenerkonto finnes.</string>
     <string name="perm_camera_name">Kamera</string>
-    <string name="perm_contacts_name">Kontakter</string>
     <string name="perm_notification_access_name">Merknadstilgang</string>
     <string name="perm_overlay_name">Visning over andre programmer</string>
     <string name="perm_post_notification_name">Posting av merknader</string>
@@ -165,33 +148,14 @@
     <string name="MH_Help_where">" locate - sender enhetens nåværende posisjon"</string>
     <string name="Settings_FMDServer_LOW_BAT_Upload_Description">Last opp enhetens posisjon når batterinivået blir lavt. Dette krever merknadstilgang.</string>
     <string name="MH_Help_Lock">" lock - låser enheten"</string>
-    <string name="Introduction_Introduction">FindMyDevice (FMD) er et program som hjelper deg å finne enheten hvis den går tapt.
-\nDet buker SMS (tekstmeldinger) til å kommunisere og sende kommandoer fra en sekundær enhet slik at du kan spore enheten.
-\nDu sender bare en SMS-melding som inneholder «fmd»-kommandoen.
-\nMerk deg at programmet fremdeles er i beta-stadie.
-\n
-\n - Nulide</string>
     <string name="Alert_First_time_fmdserver">Her kan du sette opp kommunikasjon mellom programmet og FMD-tjeneren. Hvis du vil sette opp en annen tjener enn forvalget kan du gjøre dette ved å endre nettadressen. Hvis du trykker «Registrering» kan du registrere programmet til tjeneren. Etterpå kan du skru på tjenerfunksjonaliteten. Hvis du gjør dette vil telefonen sende posisjonsdata til angitt tjener. Du kan sjekke enhetens posisjon ved å skrive inn ID-en og passordet på siden.</string>
-    <string name="Permission_DEVICE_ADMIN">Hvis du vil låse eller slette enheten hvis den går tapt er denne tilgangen påkrevd.
-\nHvis du ikke innvilger tilgangen vil du ikke ha tilgang til funksjonaliteten.</string>
-    <string name="Introduction_Shizuku">Innvilg via Shizuku</string>
     <string name="cmd_delete_description_long">Dette fjerner all data. Etterpå vil du ikke kunne kommunisere med enheten. For å forhindre utilsiktet og ondsinnet bruk krever kommandoen et passord, og det må innvilges spesielt i innstillingene.</string>
     <string name="OpenCellId_help">FMD kan bruke OpenCelliD-tjenesten til å hente en omtrentlig posisjon basert på mobilmasten(e) enheten er tilkoblet. Tilkobling til Internett kreves for hver posisjonsspørring. Du må også opprette en konto på OpenCelliD og skaffe ditt eget API-tilgangssymbol.</string>
     <string name="app_description">FMD, Find My Device (finn enheten min) lar deg finne enheten din annensteds fra. Du kan kommunisere med FMD over SMS, lynmeldinger, eller ved bruk av FMD-tjeneren. Finn enheten din, få den til å ringe, lås den, eller slett den - alt fra der du er.</string>
-    <string name="Permission_OVERLAY">Når du låser en enhet annensteds fra kan dette programmet vise en melding på låseskjermen for vedkommende som finner den.
-\nHvis du ikke innvilger denne tilgangen vil du ikke ha tilgang til funksjonaliteten.</string>
     <string name="server_unregister_failed_body">"Avregistrering mislyktes med følgende feil:  {ERROR}
 \n
 \nDu kan fortsette uansett, men kontoen din kan ha blitt slettet fra tjeneren. Hvis du fortsetter vil kontoen din bli slettet lokalt på enheten."</string>
     <string name="cmd_locate_description_long">Finn enheten ved bruk av én eller flere posisjonstilbydere. Operativsystemstilbyderen betyr vanligvis GPS, noen ganger med en kombinasjon av andre kilder. En sekundær tilbyder er OpenCelliD, som bruker en database av mobilmastposisjoner.</string>
-    <string name="Permission_GPS">Hvis du vil hente GPS-koordinatene fra telefonen din, trenger programmet denne tilgangen.
-\nTillat også programmet å kjøre i bakgrunnen.
-\nHvis du ikke innvilger tilgangen vil du ikke ha tilgang til funksjonaliteten.</string>
-    <string name="Permission_WRITE_SECURE_SETTINGS">Dette programmet kan skru på posisjonering hvis du har det avskrudd.
-\nHvis det er av fungerer ikke «fmd locate».
-\nFor å oppnå dette krever programmet en spesialtilgang du må innvilge ved bruk av en datamaskin.
-\nHvis du ikke innvilger denne tilgangen er det ikke noe problem,
-\nog du kan fremdeles bruke programmet til andre ting.</string>
     <string name="cmd_camera_description_short">Knips et bilde</string>
     <string name="cmd_delete_description_short">Fabrikk-tilbakestill enheten</string>
     <string name="cmd_missing_permissions">Kan ikke kjøre kommandoen «%s»: Manglende tilgang(er) %s.</string>
@@ -234,10 +198,6 @@
     <string name="grant_write_secure_settings_title">Innvilg skriving av sikkerhetsinnstillinger</string>
     <string name="grant_write_secure_settings_description">Denne tilgangen kan kun innvilges med Androids «pm grant»-kommandolinjeverktøy. Du kan kjøre denne kommandoen manuelt via Android-avlusningsbroen (ADB) ved å bruke en datamaskin. Du kan også kjøre det direkte på enheten din ved bruk av rot-tilgang eller Shizuku.</string>
     <string name="perm_write_secure_settings_name">Skriving av sikkerhetsinnstillinger</string>
-    <string name="Permission_CONTACTS">Kun kontakter du velger kan sende kommandoer til telefonen, for å finne den.
-\nTilgangen er påkrevd.</string>
-    <string name="Introduction_UpdatePermission">Noen nye tilganger kreves.
-\nSjekk at følgende tilganger er innvilget for å forsette å bruke programmet, eller bytt til en eldre versjon.</string>
     <string name="Locked_Lock_Screen">FindMyDevice
 \nDenne enheten er låst.
 \nMelding fra eieren:</string>
@@ -249,5 +209,4 @@
     <string name="Settings_FMDServer_Info">Med FMD-tjeneren kan du sende kommandoer over Internett fra tjeneren til programmet. Du kan også vise enhetsposisjon på kartet, eller vise bilder tatt av enheten. Instruks om egen vertstjening er å finne på nettsiden.</string>
     <string name="Whitelist_empty">Klikk for å legge til tillatte kontakter.</string>
     <string name="MH_Help_Expert_Camera">" Kamera (front/bakside) - knipser et bilde og sender det til FMD-tjenren."</string>
-    <string name="Permission_Camera">Hvis du ønsker å motta bilder fra enheten som er et annet sted kreves kameratilgang.</string>
 </resources>

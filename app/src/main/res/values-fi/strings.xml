@@ -1,33 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="Introduction_Introduction">FMD on sovellus, joka auttaa löytämään kadonneen puhelimesi.
-\nSovellus käyttää SMS-viestejä kommunikointiin. Laitetta voit seurata toiselta, kuten ystäväsi, laitteelta.
-\nKirjoita vain tekstiviesti, joka sisältää fmd-komennon.
-\nSovellus on yhä beta-vaiheessa.
-\n
-\n - Nulide</string>
-    <string name="Introduction_UpdatePermission">Sovellus vaatii joitain uusia käyttöoikeuksia.
-\nOle hyvä ja tarkista seuraavat käyttöoikeudet jatkaaksesi sovelluksen käyttöä. Vaihtoehtoisesti voit palata vanhempaan sovellusversioon.</string>
-    <string name="Permission_SMS">Sovelluksen tekstiviestiohjausta varten sovellus tarvitsee käyttöoikeuden tekstiviestien lukemiseen.
-\nViestejä ei koskaan toimiteta eteenpäin ja niitä käytetään vain komentojen toteuttamiseen.</string>
-    <string name="Permission_CONTACTS">Oikeus puhelimesi ohjaamiseen ja paikantamiseen on vain etukäteen määritetyillä yhteystiedoilla.
-\nYhteystietojen käyttöön tarvitaan käyttöoikeus.</string>
-    <string name="Permission_GPS">Puhelimen GPS-paikantamiseen tarvitaan sijainnin käyttöoikeus.
-\nOle hyvä ja anna sovellukselle käyttöoikeus paikantamiseen myös taustalla.
-\nIlman käyttöoikeutta paikannusta ei voida aktivoida.</string>
-    <string name="Permission_DND">Voit myös ohjata puhelimen toistamaan soittoääntä löytääksesi sen. Jos Älä häiritse-tila on käytössä, on mahdollista että puhelin on vaimennettu.
-\nIlman käyttöoikeutta soittoäänitoimintoa ei voida aktivoida.</string>
-    <string name="Permission_DEVICE_ADMIN">Kadonneen puhelimen lukitseminen tai tyhjentäminen vaatii käyttöoikeuden.
-\nIlman käyttöoikeutta toimintoja ei voida aktivoida.</string>
-    <string name="Permission_WRITE_SECURE_SETTINGS">Tämä sovellus voi kytkeä pois päältä olevan sijaistoiminnon päälle.
-\nJos se on pois päältä, \"fmd locate\" ei toimi.
-\nJotta sovellus saa sijaintitiedon tarvittaessa, se tarvitsee erityisen käyttöoikeuden, jonka myöntäminen vaatii puhelimen kytkemisen tietokoneeseen.
-\nJos et anna käyttöoikeutta, se ei ole ongelma.
-\nSovellusta voi käyttää myös ilman käyttöoikeutta.</string>
-    <string name="Permission_OVERLAY">Kun etälukitset puhelimen, sovellus voi näyttää viestin lukitusnäytöllä puhelimen löytäjälle.
-\nViestin näyttäminen vaatii käyttöoikeuden.</string>
-    <string name="Introduction_Give_Permission">Myönnä käyttöoikeus</string>
-    <string name="Introduction_Next">Seuraava</string>
     <string name="Locked_Lock_Screen">FindMyDevice
 \nTämä puhelin on lukittu!
 \nViesti omistajalta:</string>
@@ -37,8 +9,6 @@
 \nKun laite lukitaan, tämä viesti näkyy lukitusnäytöllä.</string>
     <string name="Settings_FMDCommand_Description">FindMyDevicen ohjaamiseen käytettävä komento.</string>
     <string name="WhiteList_Add_Contact">Lisää yhteystieto</string>
-    <string name="Enabled">Käytössä</string>
-    <string name="Disabled">Ei käytössä</string>
     <string name="Delete">Poista</string>
     <string name="Toast_Duplicate_contact">Yhteystieto on jo olemassa.</string>
     <string name="MH_GPS_WILL_FOLLOW">GPS-koordinaatit lähetetään pian.</string>
@@ -73,7 +43,6 @@
     <string name="Settings_Logs">Lokit</string>
     <string name="Settings_About">Tietoa</string>
     <string name="Settings_Settings">Asetukset</string>
-    <string name="Error">Virhe</string>
     <string name="Notification_Usage">Käyttö</string>
     <string name="Pin_Usage">PIN-koodin käyttö</string>
     <string name="Notification_Usage_Description">Ilmoitus FMD:n käytöstä.</string>
@@ -89,12 +58,9 @@
     <string name="Settings_Select_Ringtone">Valitse soittoääni</string>
     <string name="WhiteList_Select_Number">Valitse yksi puhelinnumeroista.</string>
     <string name="Settings_FMDServer_Update_Interval_Description">Aikaväli sijainnin lähettämiseen palvelimelle minuutteina.</string>
-    <string name="NOT_AVAILABLE">ei saatavilla</string>
     <string name="Info_FMD_Command">FMD-Komento:</string>
     <string name="Info_Server_Enabled">Palvelin:</string>
     <string name="Info_Server_Registered">Rekisteröity:</string>
-    <string name="registered">rekisteröity</string>
-    <string name="not_registered">ei rekisteröity</string>
     <string name="MH_LAST_KNOWN_LOCATION">Viimeisin sijainti</string>
     <string name="MH_LAST_KNOWN_LOCATION_NOT_AVAILABLE">Viimeisintä sijaintitietoa ei ole saatavilla.</string>
     <string name="Settings_FMDServer_Alert_PrivacyPolicy_Title">Tietosuojakäytäntö</string>
@@ -107,7 +73,6 @@
     <string name="MH_Help_Expert_GPS">" gps (on/off) - GPS päälle/pois."</string>
     <string name="MH_NO_SECURE_SETTINGS">Pahoittelut, sovelluksella ei ole käyttöoikeutta tähän.</string>
     <string name="MH_Help_expert">" expert - ohjesivu asiantuntijakomennoille."</string>
-    <string name="Permission_Notification">Sovellus tarjoaa mahdollisuuden vastaanottaa komentoja SMS-viestien lisäksi myös muista viestisovelluksista (kuten Telegram, WhatsApp...). Viestien lukuun vaaditaan pääsy ilmoitusksien käyttöoikeus.</string>
     <string name="Info_Notification_Access">Ilmoitukset</string>
     <string name="Notification_Server">Palvelin</string>
     <string name="Edit">Muokkaa</string>
@@ -117,7 +82,6 @@
     <string name="Settings_FMDServer_Push_Description_Missing">Komentojen lähettäminen FMD-palvelimelta puhelimeesi vaatii UnifiedPush-sovelluksen. Asenna sellainen ja palaa tähän. Sovellus tunnistetaan automaattisesti.</string>
     <string name="MH_Help_Expert_Sound">" Ääni (päälle/pois) - laittaa äänen päälle tai pois päältä."</string>
     <string name="MH_Help_Expert_Camera">" Kamera (etu/taka) - ottaa kuvan ja lähettää sen FMD-palvelimelle."</string>
-    <string name="Permission_Camera">Jos haluat vastaanottaa etänä kuvia puhelimeltasi, kameran käyttöoikeus vaaditaan.</string>
     <string name="Whitelist_help">Vain tässä listassa olevat yhteystiedot voivat lähettää FMD-komentoja tekstiviestitse. Muut yhteystiedot ohitetaan.</string>
     <string name="pin">PIN</string>
     <string name="pin_repeat">Toista PIN</string>
@@ -152,7 +116,6 @@
     <string name="Settings_FMDServer_Login">Kirjaudu sisään</string>
     <string name="Settings_FMDServer_Register">Rekisteröidy</string>
     <string name="OpenCellId_help">FMD voi käyttää OpenCelliD-palvelua saadakseen arvioidun sijainnin, joka perustuu puhelintorniin johon puhelin on yhdistetty. Internetyhteys vaaditaan jokaiseen hakuun. Sinun tulee myös luoda OpenCelliD-tunnus saadaksesi oman API-käyttötunnisteen.</string>
-    <string name="Available">Saatavilla</string>
     <string name="MH_CAM_CAPTURE">"Laite lähettää pian kuvan FMD-palvelimelle. Näet sen pian täällä: "</string>
     <string name="MH_FMDSERVER_NOT_REGISTERED">Tämä laite ei ole rekisteröitynä palvelimelle.</string>
     <string name="Settings_Import">Tuo asetukset</string>
