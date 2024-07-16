@@ -45,11 +45,11 @@
     <string name="MH_Delete">अलविदा…</string>
     <string name="MH_False_Pin">गलत पिन!</string>
     <string name="MH_Syntax">सिंटेक्स:</string>
-    <string name="MH_Title_Help">FindMyDevice के कमांड:</string>
+    <string name="cmd_help_message_start">FindMyDevice के कमांड:</string>
     <string name="MH_Pin_Accepted">पिन स्वीकृत!</string>
-    <string name="R_Stop_ring">घंटी बजाना बंद करें</string>
+    <string name="ringer_stop_ringing">घंटी बजाना बंद करें</string>
     <string name="Crashed_Send_log">लॉग भेजें</string>
-    <string name="MH_No_GPS">क्षमा करें, स्थान बंद है।</string>
+    <string name="cmd_locate_response_location_off">क्षमा करें, स्थान बंद है।</string>
     <string name="MH_Help_delete">" delete - फोन रीसेट करता है"</string>
     <string name="LockScreen_Usage_detectd">LockScreenMessage: उपयोग का पता चला।</string>
     <string name="FMDConfig_Alert_Pin">पिन</string>
@@ -141,7 +141,7 @@
 \nयदि आप यह अनुमति नहीं देते हैं, तो यह कार्यक्षमता सक्रिय नहीं होगी।</string>
     <string name="Toast_Duplicate_contact">यह संपर्क पहले से मौजूद है।</string>
     <string name="MH_Locked">बंद</string>
-    <string name="MH_GPS_WILL_FOLLOW">GPS निर्देशांक जल्द ही भेजे जाएंगे।</string>
+    <string name="cmd_locate_response_gps_will_follow">GPS निर्देशांक जल्द ही भेजे जाएंगे।</string>
     <string name="Permission_OVERLAY">जब आप अपने डिवाइस को दूरस्थ रूप से लॉक करते हैं, तो यह एप्लिकेशन आपके फोन को ढूंढने वाले को लॉकस्क्रीन पर एक संदेश दिखा सकता है।
 \nयदि आप यह अनुमति नहीं देते हैं, तो यह कार्यक्षमता सक्रिय नहीं होगी।</string>
     <string name="Introduction_Give_Permission">अनुमति दें</string>
@@ -158,7 +158,7 @@
     <string name="MH_Help_ring">" ring - फोन की घंटी बजाता है"</string>
     <string name="MH_Help_Stats">" stats - डिवाइस जानकारी भेजता है"</string>
     <string name="Error">त्रुटि</string>
-    <string name="JSON_RL_Error">OpenCeliD से स्थान प्राप्त करने में त्रुटि। कृपया निम्नलिखित लिंक का प्रयास करें। जो पैरामीटर आप चाहते हैं वे \"देशा\" और \"अक्षां\" हैं।</string>
+    <string name="cmd_locate_response_opencellid_failed">OpenCeliD से स्थान प्राप्त करने में त्रुटि। कृपया निम्नलिखित लिंक का प्रयास करें। जो पैरामीटर आप चाहते हैं वे \"देशा\" और \"अक्षां\" हैं।</string>
     <string name="LockScreen_Backbutton_pressed">LockScreenMessage: बैक-बटन दबाया गया।</string>
     <string name="Toast_Empty_FMDCommand">खाली कमांड की अनुमति नहीं है
 \n डिफ़ॉल्ट पर लौट रहा है।[fmd]</string>
@@ -181,8 +181,8 @@
     <string name="Settings_FMDServer_Location_Type_Description">वह स्रोत जिससे पृष्ठभूमि में नियमित अंतराल पर स्थान डेटा अपलोड किया जाता है।
 \nयदि कोई भी चयनित नहीं है, तो कोई भी स्थान नियमित रूप से अपलोड नहीं किया जाता है। (आप किसी अपलोड को बाध्य करने के लिए अभी भी वेब इंटरफ़ेस का उपयोग कर सकते हैं। इसके लिए पुश की आवश्यकता होती है।)</string>
     <string name="OpenCellId_help">फोन जिस सेल टावर से जुड़ा है, उसके आधार पर अनुमानित स्थान प्राप्त करने के लिए FMD OpenCeliD सेवा का उपयोग कर सकता है। प्रत्येक स्थान क्वेरी के लिए इंटरनेट कनेक्शन आवश्यक है। आपको OpenCeliD पर एक खाता बनाना होगा और अपना स्वयं का API एक्सेस टोकन प्राप्त करना होगा।</string>
-    <string name="MH_LAST_KNOWN_LOCATION">अंतिम ज्ञात स्थान</string>
-    <string name="MH_LAST_KNOWN_LOCATION_NOT_AVAILABLE">अंतिम स्थान उपलब्ध नहीं है।</string>
+    <string name="cmd_locate_last_known_location_text">अंतिम ज्ञात स्थान</string>
+    <string name="cmd_locate_last_known_location_not_available">अंतिम स्थान उपलब्ध नहीं है।</string>
     <string name="Alert_First_time_fmdserver">यहां आप FMDserver के साथ संचार करने के लिए एप्लिकेशन को विन्यस्त कर सकते हैं। यदि आप डिफ़ॉल्ट से भिन्न सर्वर विन्यस्त करना चाहते हैं, तो आप URL बदलकर ऐसा कर सकते हैं। यदि आप रजिस्टर दबाते हैं तो आप एप्लिकेशन को सर्वर पर पंजीकृत कर सकते हैं। बाद में आप सर्वर कार्यक्षमता को सक्षम कर सकते हैं। यदि आप ऐसा करते हैं, तो आपका फोन आपका स्थान डेटा निर्दिष्ट सर्वर पर भेज देगा। आप पेज पर ID और पासवर्ड दर्ज करके अपने फोन का स्थान जांच सकते हैं।</string>
     <string name="Introduction_Shizuku">Shizuku के माध्यम से</string>
     <string name="Introduction_Root">रूट के माध्यम से</string>

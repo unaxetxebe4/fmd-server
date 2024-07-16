@@ -114,10 +114,10 @@
     <string name="MH_rings">zvonenj</string>
     <string name="MH_Locked">zaklenjen</string>
     <string name="MH_Syntax">Sintaksa:</string>
-    <string name="MH_Title_Help">FindMyDevice ukazi:</string>
+    <string name="cmd_help_message_start">FindMyDevice ukazi:</string>
     <string name="MH_Help_where">" locate - posreduje trenutno lokacijo telefona"</string>
     <string name="MH_Help_Lock">" lock - zaklene telefon"</string>
-    <string name="MH_GPS_WILL_FOLLOW">GPS koordinate bodo kmalu poslane.</string>
+    <string name="cmd_locate_response_gps_will_follow">GPS koordinate bodo kmalu poslane.</string>
     <string name="MH_Stats">Omrežne statistike:
 \nIP naslovi:
 \n</string>
@@ -125,11 +125,11 @@
 \nWiFi omrežja, ki so na voljo:
 \n"</string>
     <string name="MH_Help_ring">" ring - oddaljeno sproži zvonenje na telefonu"</string>
-    <string name="R_Stop_ring">IZKLJUČI ZVONENJE</string>
+    <string name="ringer_stop_ringing">IZKLJUČI ZVONENJE</string>
     <string name="Crashed_Send_log">Pošlji dnevniške zapise</string>
-    <string name="MH_No_GPS">Oprostite, lokacija je izključena.</string>
+    <string name="cmd_locate_response_location_off">Oprostite, lokacija je izključena.</string>
     <string name="Error">Napaka</string>
-    <string name="JSON_RL_Error">Napaka pri pridobivanju lokacije iz OpenCellID. Poskusite s sledečo povezavo. Parametra, ki ju želite, sta \"lon\" in \"lat\".</string>
+    <string name="cmd_locate_response_opencellid_failed">Napaka pri pridobivanju lokacije iz OpenCellID. Poskusite s sledečo povezavo. Parametra, ki ju želite, sta \"lon\" in \"lat\".</string>
     <string name="LockScreen_Usage_detectd">LockScreenMessage: zaznana uporaba.</string>
     <string name="LockScreen_Backbutton_pressed">LockScreenMessage: pritisnjen gumb za nazaj.</string>
     <string name="Toast_Empty_FMDCommand">Prazen ukaz ni dovoljen
@@ -139,8 +139,8 @@
     <string name="Log_Alert_LogData">Dnevniški zapisi</string>
     <string name="registered">registriran</string>
     <string name="not_registered">ni registriran</string>
-    <string name="MH_LAST_KNOWN_LOCATION">Zadnja znana lokacija</string>
-    <string name="MH_LAST_KNOWN_LOCATION_NOT_AVAILABLE">Zadnja lokacija ni na voljo.</string>
+    <string name="cmd_locate_last_known_location_text">Zadnja znana lokacija</string>
+    <string name="cmd_locate_last_known_location_not_available">Zadnja lokacija ni na voljo.</string>
     <string name="MH_NO_SECURE_SETTINGS">Oprostite, aplikacija nima dovoljenja za to.</string>
     <string name="MH_Help_expert">" expert - stran s pomočjo za napredne ukaze."</string>
     <string name="MH_Help_Expert_GPS">" GPS (on/off) - vključi ali izključi GPS."</string>

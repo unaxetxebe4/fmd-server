@@ -56,7 +56,7 @@ class GpsLocationProvider<T>(
             def.complete(Unit)
             return def
         }
-        transport.send(context, context.getString(R.string.MH_GPS_WILL_FOLLOW))
+        transport.send(context, context.getString(R.string.cmd_locate_response_gps_will_follow))
 
         Log.d(TAG, "Requesting location update from GPS")
         for (provider in locationManager.allProviders) {

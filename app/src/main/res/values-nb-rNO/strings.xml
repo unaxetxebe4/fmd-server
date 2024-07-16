@@ -73,10 +73,10 @@
     <string name="Notification_Pin_Usage_Description">Merknad om PIN-bruk.</string>
     <string name="NOT_AVAILABLE">Ikke tilgjengelig</string>
     <string name="Available">Tilgjengelig</string>
-    <string name="MH_LAST_KNOWN_LOCATION">Sist kjente posisjon</string>
-    <string name="MH_LAST_KNOWN_LOCATION_NOT_AVAILABLE">Siste posisjon er ikke tilgjengelig.</string>
+    <string name="cmd_locate_last_known_location_text">Sist kjente posisjon</string>
+    <string name="cmd_locate_last_known_location_not_available">Siste posisjon er ikke tilgjengelig.</string>
     <string name="MH_Syntax">Syntaks:</string>
-    <string name="MH_Title_Help">FindMyDevice-kommandoer:</string>
+    <string name="cmd_help_message_start">FindMyDevice-kommandoer:</string>
     <string name="Log_Alert_LogData">Loggdata</string>
     <string name="MH_Help_expert">" ekspert — hjelpeside for ekspertkommandoer."</string>
     <string name="not_possible">Ustøttet handling.</string>
@@ -135,8 +135,8 @@
 \nHvis du ikke innvilger denne tilgangen vil du ikke ha tilgang til funksjonaliteten.</string>
     <string name="MH_Help_Stats">" stats - sender enhetsinfo"</string>
     <string name="MH_Help_delete">" delete - tilbakestiller enheten"</string>
-    <string name="R_Stop_ring">Legg på</string>
-    <string name="MH_No_GPS">Beklager. Posisjon er avskrudd.</string>
+    <string name="ringer_stop_ringing">Legg på</string>
+    <string name="cmd_locate_response_location_off">Beklager. Posisjon er avskrudd.</string>
     <string name="registered">registrert</string>
     <string name="not_registered">ikke registrert</string>
     <string name="RootAccessDenied">Rot-tilgang nektet</string>
@@ -158,10 +158,10 @@
     <string name="Enable">Skru på</string>
     <string name="cmd_delete_response_pwd_wrong">Kan ikke slette: Feil passord.</string>
     <string name="cmd_delete_response_success">Enheten bør nå være slettet. Adjø.</string>
-    <string name="MH_GPS_WILL_FOLLOW">GPS-koordinater vil bli sendt snart.</string>
+    <string name="cmd_locate_response_gps_will_follow">GPS-koordinater vil bli sendt snart.</string>
     <string name="MH_Pin_Accepted">PIN godtatt.</string>
     <string name="Settings_FMDServer_Push_Description_Missing">Å sende komandoer fra FMD-tjenren til din enhet krever et UnifiedPush-distribusjonsprogram. Installer det og prøv igjen.</string>
-    <string name="JSON_RL_Error">Kunne ikke hente posisjon fra OpenCelliD. Prøv følgende lenke: (Parameterne du ønsker er «lon» og «lat».</string>
+    <string name="cmd_locate_response_opencellid_failed">Kunne ikke hente posisjon fra OpenCelliD. Prøv følgende lenke: (Parameterne du ønsker er «lon» og «lat».</string>
     <string name="MH_Help_where">" locate - sender enhetens nåværende posisjon"</string>
     <string name="Settings_FMDServer_LOW_BAT_Upload_Description">Last opp enhetens posisjon når batterinivået blir lavt. Dette krever merknadstilgang.</string>
     <string name="MH_Help_Lock">" lock - låser enheten"</string>

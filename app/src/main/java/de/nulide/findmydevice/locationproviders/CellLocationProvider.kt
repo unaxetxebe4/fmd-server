@@ -61,7 +61,7 @@ class CellLocationProvider<T>(
             onError = {
                 Log.i(TAG, "Failed to get location from OpenCelliD")
                 val msg =
-                    context.getString(R.string.JSON_RL_Error) + it.url + "\n\n" + paras.prettyPrint()
+                    context.getString(R.string.cmd_locate_response_opencellid_failed) + it.url + "\n\n" + paras.prettyPrint()
                 transport.send(context, msg)
                 deferred.complete(Unit)
             },

@@ -72,7 +72,7 @@ class LocateCommand(context: Context) : Command(context) {
                     TAG,
                     "Cannot run fmd locate: GPS is off and missing permission WRITE_SECURE_SETTINGS"
                 )
-                transport.send(context, context.getString(R.string.MH_No_GPS))
+                transport.send(context, context.getString(R.string.cmd_locate_response_location_off))
                 job?.jobFinished()
                 return
             }
@@ -115,14 +115,14 @@ class LocateCommand(context: Context) : Command(context) {
         val msg = if (lat.isNotEmpty() && lon.isNotEmpty()) {
             val batteryLevel = Utils.getBatteryLevel(context)
             LocationProvider.buildLocationString(
-                context.getString(R.string.MH_LAST_KNOWN_LOCATION),
+                context.getString(R.string.cmd_locate_last_known_location_text),
                 lat,
                 lon,
                 batteryLevel,
                 timeMillis,
             )
         } else {
-            context.getString(R.string.MH_LAST_KNOWN_LOCATION_NOT_AVAILABLE)
+            context.getString(R.string.cmd_locate_last_known_location_not_available)
         }
         transport.send(context, msg)
     }
