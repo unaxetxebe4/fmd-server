@@ -36,29 +36,18 @@
     <string name="Locked_Lock_Screen">FindMyDevice
 \nयह फोन लॉक है!
 \nमालिक की ओर से संदेश:</string>
-    <string name="MH_Delete">अलविदा…</string>
-    <string name="MH_False_Pin">गलत पिन!</string>
-    <string name="MH_Syntax">सिंटेक्स:</string>
     <string name="cmd_help_message_start">FindMyDevice के कमांड:</string>
     <string name="MH_Pin_Accepted">पिन स्वीकृत!</string>
     <string name="ringer_stop_ringing">घंटी बजाना बंद करें</string>
     <string name="Crashed_Send_log">लॉग भेजें</string>
     <string name="cmd_locate_response_location_off">क्षमा करें, स्थान बंद है।</string>
-    <string name="MH_Help_delete">" delete - फोन रीसेट करता है"</string>
     <string name="LockScreen_Usage_detectd">LockScreenMessage: उपयोग का पता चला।</string>
-    <string name="FMDConfig_Alert_Pin">पिन</string>
     <string name="Log_Alert_LogData">लॉगडेटा</string>
-    <string name="MH_Help_Expert_GPS">" GPS (चालू/बंद) - GPS को चालू या बंद करता है।"</string>
-    <string name="MH_NO_SECURE_SETTINGS">क्षमा करें एप्लिकेशन को ऐसा करने की अनुमति नहीं है।</string>
-    <string name="MH_Help_Expert_Sound">" ध्वनि (चालू/बंद) - ध्वनि को चालू या बंद करता है।"</string>
-    <string name="MH_CAM_CAPTURE">"डिवाइस शीघ्र ही fmdserver को एक चित्र भेजेगा। आप इसे जल्द ही यहां देख सकते हैं: "</string>
-    <string name="MH_FMDSERVER_NOT_REGISTERED">यह डिवाइस सर्वर पर पंजीकृत नहीं है।</string>
     <string name="Settings_Export">निर्यात सेटिंग्स</string>
     <string name="Settings_Permissions">अनुमतियां</string>
     <string name="Settings_Enter_Pin">पिन दर्ज करें</string>
     <string name="help">सहायता</string>
     <string name="GPS">GPS</string>
-    <string name="Info_Notification_Access">अधिसूचना पहुंच</string>
     <string name="copied">कॉपी किया गया</string>
     <string name="Edit">संपादित करें</string>
     <string name="Settings_Settings">सेटिंग्स</string>
@@ -90,10 +79,6 @@
     <string name="registration_token">रजिस्ट्रेशन टोकन</string>
     <string name="loading">लोड हो रहा है…</string>
     <string name="accept">स्वीकार करें</string>
-    <string name="Granted">स्वीकृत:</string>
-    <string name="Info_FMD_Command">FMD-कमांड:</string>
-    <string name="Info_Server_Enabled">सेवा:</string>
-    <string name="Info_Server_Registered">पंजीकृत:</string>
     <string name="Settings_FMDConfig">FMD-विन्यास</string>
     <string name="Settings_OpenCellId">OpenCelliD</string>
     <string name="Whitelist_help">इस सूची के संपर्कों को SMS के माध्यम से FMD कमांड भेजने की अनुमति है। बाकी सभी के आदेशों को नजरअंदाज कर दिया जाएगा।</string>
@@ -115,38 +100,19 @@
     <string name="Notification_Fail_Description">कुछ विफल होने पर अधिसूचना, जैसे FMD सर्वर से कनेक्शन</string>
     <string name="Permission_IGNORE_BATTERY_OPTIMIZATION">ऐसा माना जाता है कि यह एप्लिकेशन पृष्ठभूमि में काम करेगा। यह सुनिश्चित करने के लिए कि यह तब भी काम करता है जब आपका फोन स्टैंडबाय में हो, आपको इस ऐप के लिए बैटरी अनुकूलन बंद करना होगा।</string>
     <string name="Toast_Duplicate_contact">यह संपर्क पहले से मौजूद है।</string>
-    <string name="MH_Locked">बंद</string>
-    <string name="MH_GPS_WILL_FOLLOW">GPS निर्देशांक जल्द ही भेजे जाएंगे।</string>
     <string name="Enable">सक्षम करें</string>
     <string name="Delete">मिटाएं</string>
-    <string name="MH_Stats">नेटवर्क-आंकड़े:
-\nIP:
-\n</string>
-    <string name="MH_Networks">"
-\nउपलब्ध Wifi-नेटवर्क:
-\n"</string>
-    <string name="MH_Help_where">" locate - फोन का वर्तमान स्थान भेजता है"</string>
-    <string name="MH_Help_ring">" ring - फोन की घंटी बजाता है"</string>
-    <string name="MH_Help_Stats">" stats - डिवाइस जानकारी भेजता है"</string>
-    <string name="JSON_RL_Error">OpenCeliD से स्थान प्राप्त करने में त्रुटि। कृपया निम्नलिखित लिंक का प्रयास करें। जो पैरामीटर आप चाहते हैं वे \"देशा\" और \"अक्षां\" हैं।</string>
     <string name="LockScreen_Backbutton_pressed">LockScreenMessage: बैक-बटन दबाया गया।</string>
     <string name="Toast_Empty_FMDCommand">खाली कमांड की अनुमति नहीं है
 \n डिफ़ॉल्ट पर लौट रहा है।[fmd]</string>
-    <string name="MH_Help_expert">" expert - विशेषज्ञ आदेशों के लिए सहायता पेज।"</string>
-    <string name="not_possible">यह कार्रवाई संभव नहीं थी।</string>
-    <string name="MH_Help_Expert_Camera">" कैमरा (आगे/पीछे) - एक तस्वीर लेता है और उसे FMDserver को भेजता है।"</string>
     <string name="Cell">सेल</string>
-    <string name="Info_Server_Push">पुश:</string>
     <string name="Settings_FMD_via_Pin_Description">आपको PIN के माध्यम से FMD के साथ संचार करने की अनुमति देता है। यह आपको ऐसे फोन नंबर से आदेश भेजने की अनुमति देता है जो अनुमत संपर्क सूची में नहीं है।</string>
     <string name="Settings_FMDServer_Alert_DeleteData_Desc">इससे सर्वर से सारा डेटा मिट जाएगा! क्या आप निश्चित हैं?</string>
-    <string name="MH_rings">बजाता है</string>
-    <string name="MH_Help_Lock">" lock - फोन को लॉक करता है"</string>
     <string name="Settings_FMDServer_Location_Type_Description">वह स्रोत जिससे पृष्ठभूमि में नियमित अंतराल पर स्थान डेटा अपलोड किया जाता है।
 \nयदि कोई भी चयनित नहीं है, तो कोई भी स्थान नियमित रूप से अपलोड नहीं किया जाता है। (आप किसी अपलोड को बाध्य करने के लिए अभी भी वेब इंटरफ़ेस का उपयोग कर सकते हैं। इसके लिए पुश की आवश्यकता होती है।)</string>
     <string name="OpenCellId_help">फोन जिस सेल टावर से जुड़ा है, उसके आधार पर अनुमानित स्थान प्राप्त करने के लिए FMD OpenCeliD सेवा का उपयोग कर सकता है। प्रत्येक स्थान क्वेरी के लिए इंटरनेट कनेक्शन आवश्यक है। आपको OpenCeliD पर एक खाता बनाना होगा और अपना स्वयं का API एक्सेस टोकन प्राप्त करना होगा।</string>
     <string name="cmd_locate_last_known_location_text">अंतिम ज्ञात स्थान</string>
     <string name="cmd_locate_last_known_location_not_available">अंतिम स्थान उपलब्ध नहीं है।</string>
-    <string name="Alert_First_time_fmdserver">यहां आप FMDserver के साथ संचार करने के लिए एप्लिकेशन को विन्यस्त कर सकते हैं। यदि आप डिफ़ॉल्ट से भिन्न सर्वर विन्यस्त करना चाहते हैं, तो आप URL बदलकर ऐसा कर सकते हैं। यदि आप रजिस्टर दबाते हैं तो आप एप्लिकेशन को सर्वर पर पंजीकृत कर सकते हैं। बाद में आप सर्वर कार्यक्षमता को सक्षम कर सकते हैं। यदि आप ऐसा करते हैं, तो आपका फोन आपका स्थान डेटा निर्दिष्ट सर्वर पर भेज देगा। आप पेज पर ID और पासवर्ड दर्ज करके अपने फोन का स्थान जांच सकते हैं।</string>
     <string name="request_failed_title">नेटवर्क अनुरोध विफल</string>
     <string name="request_failed_status_code">स्थिति कोड</string>
     <string name="request_failed_response_body">प्रतिक्रिया निकाय</string>

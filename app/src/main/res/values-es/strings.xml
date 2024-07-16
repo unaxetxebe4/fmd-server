@@ -12,23 +12,7 @@
     <string name="Delete">Eliminar</string>
     <string name="Toast_Duplicate_contact">Este contacto ya existe.</string>
     <string name="cmd_locate_response_gps_will_follow">Las coordenadas GPS se enviarán pronto.</string>
-    <string name="MH_rings">timbra</string>
-    <string name="MH_Locked">bloqueado</string>
-    <string name="MH_Stats">Estadísticas de Red:
-\nIPs:
-\n</string>
-    <string name="MH_Networks">"
-\nRedes Wifi disponibles:
-\n"</string>
-    <string name="MH_Delete">Adiós...</string>
-    <string name="MH_False_Pin">¡Pin Falso!</string>
-    <string name="MH_Syntax">Sintaxis:</string>
     <string name="cmd_help_message_start">Comandos de FindMyDevice:</string>
-    <string name="MH_Help_where">" locate - envía la ubicación actual del teléfono"</string>
-    <string name="MH_Help_ring">" ring - deja que suene el teléfono"</string>
-    <string name="MH_Help_Lock">" lock - bloquea el teléfono"</string>
-    <string name="MH_Help_Stats">" stats - envía la información del dispositivo"</string>
-    <string name="MH_Help_delete">" delete - restablece el dispositivo"</string>
     <string name="Settings_FMD_via_Pin_Description">Te permite comunicarte con FMD mediante un PIN. Esto te permite enviar comandos desde un número de teléfono que no está en la lista de contactos permitidos.</string>
     <string name="Settings_Enter_Pin">Introducir el PIN</string>
     <string name="MH_Pin_Accepted">¡Pin aceptado!</string>
@@ -52,39 +36,23 @@
     <string name="LockScreen_Backbutton_pressed">Mensaje de la Pantalla de Bloqueo: Botón de Retroceso pulsado.</string>
     <string name="Toast_Empty_FMDCommand">Comando Vacío no permitido
 \n Volviendo a valor predeterminado.[fmd]</string>
-    <string name="FMDConfig_Alert_Pin">PIN</string>
     <string name="Log_Alert_LogData">Datos del Registro</string>
     <string name="Settings_Ringer_Tone_Description">Seleccione un tono de llamada que se reproducirá cuando se envíe fmd ring.</string>
     <string name="Settings_Select_Ringtone">Seleccionar Timbre</string>
     <string name="WhiteList_Select_Number">Seleccione uno de los números de teléfono.</string>
     <string name="Settings_FMDServer_Update_Interval_Description">El tiempo en minutos en el que FMD debe enviar nuevos datos de ubicación al servidor.</string>
-    <string name="Info_FMD_Command">Comando FMD:</string>
-    <string name="Info_Server_Enabled">Servicio:</string>
-    <string name="Info_Server_Registered">Registrado:</string>
-    <string name="MH_LAST_KNOWN_LOCATION">Última ubicación conocida</string>
-    <string name="MH_LAST_KNOWN_LOCATION_NOT_AVAILABLE">La última ubicación no está disponible.</string>
-    <string name="Alert_First_time_fmdserver">Aquí puede configurar la aplicación para comunicarse con FMDserver. Si quiere configurar un servidor diferente al predeterminado, puede hacerlo cambiando la URL. Si pulsa registro puede registrar la aplicación en el servidor. Después puede activar la funcionalidad del servidor. Si lo haces, su teléfono enviará los datos de ubicación al servidor especificado. Puede comprobar la ubicación de su teléfono introduciendo el ID y la contraseña en la página.</string>
     <string name="Settings_FMDServer_Alert_PrivacyPolicy_Title">Política de Privacidad</string>
     <string name="accept">aceptar</string>
     <string name="Settings_FMDServer_Location_Type_Description">La(s) fuente(s) desde la(s) que se carga(n) los datos de localización a intervalos regulares en segundo plano.
 \nSi no se selecciona ninguna, no se cargarán localizaciones regularmente. (Puede seguir utilizando la interfaz web para forzar una carga. Esto requiere push.)</string>
     <string name="GPS">GPS</string>
     <string name="Cell">Celular</string>
-    <string name="MH_Help_Expert_GPS">" GPS (encendido/apagado): enciende o apaga el GPS."</string>
-    <string name="MH_NO_SECURE_SETTINGS">Lo sentimos, la aplicación no tiene permiso para hacerlo.</string>
-    <string name="MH_Help_expert">" expert - página de ayuda para los comandos expertos."</string>
-    <string name="Info_Notification_Access">Notificación</string>
     <string name="Notification_Server">Servidor FMD</string>
-    <string name="Info_Server_Push">Push:</string>
     <string name="Settings_FMDServer_Delete_Button">Eliminar Datos</string>
     <string name="Settings_FMDServer_Alert_DeleteData">Eliminar Datos</string>
     <string name="Settings_FMDServer_Alert_DeleteData_Desc">¡Esto eliminará todos los datos del servidor! ¿Está seguro/a?</string>
-    <string name="MH_Help_Expert_Sound">" Sonido (on/off) - activa o desactiva el sonido."</string>
-    <string name="not_possible">Esta acción no fue posible.</string>
-    <string name="MH_Help_Expert_Camera">" Cámara (frontal/posterior) - toma una foto y la envía a FMDserver."</string>
     <string name="Settings_Import">Importar Ajustes</string>
     <string name="Settings_Export">Exportar Ajustes</string>
-    <string name="MH_CAM_CAPTURE">"El dispositivo pronto enviará una imagen a fmdserver. Pronto podrá verla aquí: "</string>
     <string name="Settings_FMDServer_LOW_BAT_Upload_Description">Enviar la ubicación de este dispositivo cuando el nivel de la batería sea bajo. Esto requiere acceso a las notificaciones.</string>
     <string name="loading">Cargando…</string>
     <string name="help">Ayuda</string>
@@ -124,8 +92,6 @@
     <string name="server_unregister_failed_title">Error al cancelar el registro</string>
     <string name="server_unregister_continue_anyway">De todas maneras, continúe</string>
     <string name="Notification_Security_Description">Notificaciones sobre las actualizaciones de seguridad</string>
-    <string name="MH_FMDSERVER_NOT_REGISTERED">Este dispositivo no está registrado en un servidor.</string>
-    <string name="Granted">Concedido:</string>
     <string name="Settings_FMD_Server_General">General</string>
     <string name="Settings_FMDServer_Change_Password_Button">Cambiar la contraseña</string>
     <string name="Settings_FMDServer_Logout_Button">Cerrar sesión</string>

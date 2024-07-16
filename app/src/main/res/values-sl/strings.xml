@@ -6,11 +6,6 @@
     <string name="accept">sprejmi</string>
     <string name="Edit">Uredi</string>
     <string name="GPS">GPS</string>
-    <string name="Granted">Dovoljeno:</string>
-    <string name="Info_Notification_Access">Dostop do obvestil</string>
-    <string name="Info_FMD_Command">FMD ukaz:</string>
-    <string name="Info_Server_Enabled">Storitev:</string>
-    <string name="Info_Server_Push">Potisna obvestila:</string>
     <string name="Settings_OpenCellId">OpenCellID</string>
     <string name="Settings_Permissions">Dovoljenja</string>
     <string name="Settings_Import">Uvozi nastavitve</string>
@@ -52,7 +47,6 @@
     <string name="Settings_FMDServer_Alert_PrivacyPolicy_Title">Politika zasebnosti</string>
     <string name="password">Geslo</string>
     <string name="Alert_First_Time_contact_added">Čestitamo. Dodali ste svoj prvi zaupanja vreden stik. Zdaj vam lahko ta stik pošilja FMD ukaze preko SMS sporočil. Če vse deluje kot je treba, mu bo aplikacija nazaj po SMS sporočilu posredovala odgovor.</string>
-    <string name="Info_Server_Registered">Registriran:</string>
     <string name="Settings_Settings">Nastavitve</string>
     <string name="Settings_FMDConfig">FMD nastavitve</string>
     <string name="Settings_WhiteList">Zaupanja vredni stiki</string>
@@ -96,38 +90,15 @@
 \nSporočilo lastnika:</string>
     <string name="Enable">Omogoči</string>
     <string name="Toast_Duplicate_contact">Ta stik že obstaja.</string>
-    <string name="MH_rings">zvonenj</string>
-    <string name="MH_Locked">zaklenjen</string>
-    <string name="MH_Syntax">Sintaksa:</string>
     <string name="cmd_help_message_start">FindMyDevice ukazi:</string>
-    <string name="MH_Help_where">" locate - posreduje trenutno lokacijo telefona"</string>
-    <string name="MH_Help_Lock">" lock - zaklene telefon"</string>
     <string name="cmd_locate_response_gps_will_follow">GPS koordinate bodo kmalu poslane.</string>
-    <string name="MH_Stats">Omrežne statistike:
-\nIP naslovi:
-\n</string>
-    <string name="MH_Networks">"
-\nWiFi omrežja, ki so na voljo:
-\n"</string>
-    <string name="MH_Help_ring">" ring - oddaljeno sproži zvonenje na telefonu"</string>
     <string name="ringer_stop_ringing">IZKLJUČI ZVONENJE</string>
     <string name="Crashed_Send_log">Pošlji dnevniške zapise</string>
-    <string name="MH_No_GPS">Oprostite, lokacija je izključena.</string>
-    <string name="JSON_RL_Error">Napaka pri pridobivanju lokacije iz OpenCellID. Poskusite s sledečo povezavo. Parametra, ki ju želite, sta \"lon\" in \"lat\".</string>
     <string name="LockScreen_Usage_detectd">LockScreenMessage: zaznana uporaba.</string>
     <string name="LockScreen_Backbutton_pressed">LockScreenMessage: pritisnjen gumb za nazaj.</string>
     <string name="Toast_Empty_FMDCommand">Prazen ukaz ni dovoljen
 \n Vrnitev na privzeto. [fmd]</string>
     <string name="Log_Alert_LogData">Dnevniški zapisi</string>
-    <string name="MH_LAST_KNOWN_LOCATION">Zadnja znana lokacija</string>
-    <string name="MH_LAST_KNOWN_LOCATION_NOT_AVAILABLE">Zadnja lokacija ni na voljo.</string>
-    <string name="MH_NO_SECURE_SETTINGS">Oprostite, aplikacija nima dovoljenja za to.</string>
-    <string name="MH_Help_expert">" expert - stran s pomočjo za napredne ukaze."</string>
-    <string name="MH_Help_Expert_GPS">" GPS (on/off) - vključi ali izključi GPS."</string>
-    <string name="MH_Help_Expert_Sound">" Sound (on/off) - vključi ali izključi zvok."</string>
-    <string name="not_possible">To dejanje ni bilo mogoče.</string>
-    <string name="MH_Help_Expert_Camera">" Camera (front/back) - zajeme sliko in jo pošlje na FMD strežnik."</string>
-    <string name="MH_FMDSERVER_NOT_REGISTERED">Ta naprava ni registrirana na strežniku.</string>
     <string name="request_failed_status_code">Statusna koda</string>
     <string name="request_failed_response_body">Telo odgovora</string>
     <string name="request_failed_exception">Izjema</string>
@@ -142,15 +113,8 @@
     <string name="Notification_Usage_Description">Obvestilo, ko FMD prejema ukaze.</string>
     <string name="Permission_IGNORE_BATTERY_OPTIMIZATION">Ta aplikacija naj bi delovala v ozadju. Če želite zagotoviti, da deluje tudi, ko je vaš telefon v stanju pripravljenosti, morate za to aplikacijo izklopiti optimizacijo baterije.</string>
     <string name="Delete">Izbriši</string>
-    <string name="MH_Delete">Nasvidenje...</string>
-    <string name="MH_Help_Stats">" stats - pošlje podatke o napravi"</string>
-    <string name="MH_Help_delete">" delete - telefon tovarniško ponastavi"</string>
-    <string name="FMDConfig_Alert_Pin">PIN</string>
     <string name="MH_Pin_Accepted">PIN sprejet!</string>
-    <string name="Alert_First_time_fmdserver">Tukaj lahko nastavite komunikacijo aplikacije s FMD strežnikom. Če želite nastaviti drugačen strežnik od privzetega, lahko to storite tako, da spremenite URL. Če pritisnete \"registriraj\", lahko aplikacijo registrirate na strežniku. Telefon bo nato podatke o lokaciji pošiljal na navedeni strežnik. Lokacijo svojega telefona lahko preverite tako, da spletni strani FMD strežnika vnesete ID vaše naprave in vaše geslo.</string>
-    <string name="MH_CAM_CAPTURE">"Naprava bo zajeto sliko kmalu posredovala na FMD strežnik. Ogledali si jo boste lahko tukaj: "</string>
     <string name="Pin_Usage">Uporaba PIN kode</string>
-    <string name="MH_False_Pin">Napačen PIN!</string>
     <string name="Notification_Server_Description">Obvestila povezana s FMD strežnikom</string>
     <string name="Settings_FMDServer_Server_Url">URL strežnika</string>
 </resources>

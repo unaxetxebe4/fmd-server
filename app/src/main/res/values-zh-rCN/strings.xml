@@ -5,13 +5,7 @@
     <string name="copied">复制</string>
     <string name="Edit">编辑</string>
     <string name="GPS">GPS</string>
-    <string name="Granted">授予：</string>
     <string name="Cell">移动网络</string>
-    <string name="Info_Notification_Access">通知访问</string>
-    <string name="Info_FMD_Command">FMD-指令：</string>
-    <string name="Info_Server_Registered">注册：</string>
-    <string name="Info_Server_Push">推送：</string>
-    <string name="Info_Server_Enabled">服务：</string>
     <string name="Settings_OpenCellId">打开移动网络ID</string>
     <string name="Settings_Permissions">许可</string>
     <string name="Settings_Import">导入设置</string>

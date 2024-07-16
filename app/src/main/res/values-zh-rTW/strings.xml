@@ -9,15 +9,6 @@
     <string name="Notification_Usage">用途</string>
     <string name="Enable">啟用</string>
     <string name="Delete">刪除</string>
-    <string name="MH_Stats">網路統計：
-\nIP：
-\n</string>
-    <string name="MH_rings">響鈴</string>
-    <string name="MH_Locked">已鎖定</string>
-    <string name="MH_Networks">"
-\n可用的 Wi-Fi 網路：
-\n"</string>
-    <string name="MH_Delete">再見…</string>
     <string name="Settings_FMDServer_Server_Url">伺服器網址</string>
     <string name="perm_device_admin_name">裝置管理員</string>
     <string name="perm_notification_access_name">通知存取</string>
@@ -25,16 +16,10 @@
     <string name="required_permissions_title">所需權限</string>
     <string name="optional_permissions_title">選擇性權限</string>
     <string name="usage_notification_title">指令已執行</string>
-    <string name="MH_False_Pin">錯誤的 PIN！</string>
     <string name="Settings_FMDServer_Update_Interval_Description">FMD 每 X 分鐘上載一次裝置的位置。</string>
-    <string name="Info_Server_Enabled">服務：</string>
-    <string name="Info_Notification_Access">通知存取</string>
-    <string name="Info_FMD_Command">FMD 指令：</string>
-    <string name="Info_Server_Push">推送：</string>
     <string name="Settings_FMDConfig">FMD 配置</string>
     <string name="Settings_OpenCellId">OpenCelliD</string>
     <string name="Settings_Permissions">權限</string>
-    <string name="Info_Server_Registered">已註冊：</string>
     <string name="Settings_Settings">設定</string>
     <string name="Settings_Import">匯入設定</string>
     <string name="Settings_WhiteList">允許的聯絡人</string>
@@ -46,7 +31,6 @@
     <string name="Settings_FMDServer_open_website">開啟 FMD 伺服器網站</string>
     <string name="Settings_FMDServer_Info">使用 FMD 伺服器，你可以透過網路從伺服器向應用程式發送指令。你也可以在地圖上檢視裝置位置或檢視裝置所拍攝的照片。有關自行託管指示，請參閱網站。</string>
     <string name="OpenCellId_test_opencellid">測試 OpenCelliD 連接</string>
-    <string name="not_possible">這個動作是不可能的。</string>
     <string name="perm_camera_name">相機</string>
     <string name="perm_location_name">位置</string>
     <string name="perm_sms_name">簡訊</string>
@@ -62,7 +46,6 @@
     <string name="request_failed_exception">例外</string>
     <string name="request_failed_title">網路請求失敗</string>
     <string name="request_failed_response_body">回應內容</string>
-    <string name="Granted">已授予：</string>
     <string name="Settings_Export">匯出設定</string>
     <string name="Settings_Logs">日誌</string>
     <string name="Settings_About">關於</string>
@@ -113,18 +96,4 @@
     <string name="Notification_Security">安全</string>
     <string name="Notification_FAIL">失敗</string>
     <string name="Notification_Server">FMD 伺服器</string>
-    <string name="MH_Syntax">語法：</string>
-    <string name="MH_Title_Help">FindMyDevice 指令：</string>
-    <string name="R_Stop_ring">停止響鈴</string>
-    <string name="FMDConfig_Alert_Pin">PIN</string>
-    <string name="MH_LAST_KNOWN_LOCATION">最後已知位置</string>
-    <string name="MH_LAST_KNOWN_LOCATION_NOT_AVAILABLE">最後的位置不可用。</string>
-    <string name="Alert_First_time_fmdserver">你可以在此處配置應用程式以與 FMDserver 進行交流。如果你想要配置非預設伺服器，可以透過變更網址來實現。如果按下註冊，你可以將應用程式註冊至伺服器。之後你可以啟用伺服器功能。如果你這樣做，你的手機會將你的位置資料傳送至指定的伺服器。你可以透過在頁面上輸入 ID 和密碼來查看你手機的位置。</string>
-    <string name="MH_Help_Expert_GPS">" GPS（開／關）—開啟或關閉 GPS。"</string>
-    <string name="MH_NO_SECURE_SETTINGS">抱歉，應用程式不允許這樣做。</string>
-    <string name="MH_Help_expert">" 專家—專家指令的幫助頁面。"</string>
-    <string name="MH_Help_Expert_Sound">" 聲音（開／關）—開啟或關閉聲音。"</string>
-    <string name="MH_FMDSERVER_NOT_REGISTERED">這個裝置未在伺服器上註冊。</string>
-    <string name="MH_CAM_CAPTURE">"裝置很快就會向 fmdserver 傳送圖片。你很快就可以在這裏檢視： "</string>
-    <string name="MH_Help_Expert_Camera">" 相機（前/後）—拍攝照片並將其傳送至 FMDserver。"</string>
 </resources>

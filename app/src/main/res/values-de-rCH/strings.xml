@@ -9,8 +9,6 @@
     <string name="request_failed_status_code">Statuscode</string>
     <string name="request_failed_response_body">Response Body</string>
     <string name="request_failed_exception">Usnahmefehler</string>
-    <string name="Info_Notification_Access">Benachrichtigungszuegriff</string>
-    <string name="Info_FMD_Command">FMD-Befehl:</string>
     <string name="Settings_Settings">Iistellige</string>
     <string name="Settings_FMDConfig">FMD-Iistellige</string>
     <string name="Settings_WhiteList">Erlaubti Kontäkt</string>
