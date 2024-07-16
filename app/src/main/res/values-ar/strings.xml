@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="help">مساعدة</string>
-    <string name="Info_Server_Enabled">خدمة:</string>
     <string name="Settings_Settings">الإعدادات</string>
     <string name="Settings_WhiteList">جهات الاتصال المسموح بها</string>
     <string name="Settings_Import">إستيراد الإعدادات</string>
@@ -38,16 +37,11 @@
     <string name="Notification_FAIL">فشل</string>
     <string name="Toast_Empty_FMDCommand">أمر فارغ غير مسموح به
 \nالعودة إلى الوضع الافتراضي.[fmd]</string>
-    <string name="MH_LAST_KNOWN_LOCATION">آخر موقع معروف</string>
-    <string name="not_possible">لم يكن هذا الإجراء ممكنا.</string>
-    <string name="MH_CAM_CAPTURE">"سيقوم الجهاز قريبًا بإرسال صورة إلى خادم fmd. يمكنك مشاهدتها هنا قريبا: "</string>
     <string name="loading">تحميل…</string>
     <string name="copied">تم النسخ</string>
     <string name="Edit">تعديل</string>
     <string name="Settings_FMDServer_Update_Interval_Title">الفاصل الزمني للتحديث</string>
     <string name="Settings_FMDServer_Info">باستخدام خادم FMD يمكنك إرسال الأوامر عبر الإنترنت، من الخادم إلى التطبيق. يمكنك أيضًا عرض موقع الجهاز على الخريطة أو عرض الصور الملتقطة بواسطة الجهاز. للحصول على تعليمات الاستضافة الذاتية، راجع الموقع.</string>
-    <string name="Granted">ممنوح:</string>
-    <string name="Info_Notification_Access">الوصول إلى الإشعارات</string>
     <string name="Settings_FMDServer_LOW_BAT_Upload_Description">قم بتحميل موقع هذا الجهاز عندما ينخفض مستوى البطارية. وهذا يتطلب الوصول إلى الإشعارات.</string>
     <string name="Settings_Permissions">الأذونات</string>
     <string name="Settings_Pin_Description">يستخدم للتأكيد قبل مسح الجهاز أو للاستخدام المؤقت للخدمة.</string>
@@ -62,11 +56,8 @@
     <string name="about">نبذة عن</string>
     <string name="app_description">يسمح لك FMD (Find My Device) بتحديد موقع جهازك عن بعد. يمكنك التواصل مع FMD عبر الرسائل القصيرة أو برامج المراسلة الفورية أو باستخدام خادم FMD. حدد موقع جهازك، أو اجعله يرن، أو اقفله، أو امسح بياناته - كل ذلك من جهاز التحكم عن بُعد.</string>
     <string name="Notification_Security_Description">الإشعارات حول التحديثات الأمنية</string>
-    <string name="MH_LAST_KNOWN_LOCATION_NOT_AVAILABLE">الموقع الأخير غير متوفر.</string>
     <string name="Crashed_Send_log">إرسال السجل</string>
-    <string name="MH_FMDSERVER_NOT_REGISTERED">هذا الجهاز غير مسجل على الخادم.</string>
     <string name="accept">قبول</string>
-    <string name="Info_Server_Registered">مسجل:</string>
     <string name="GPS">GPS</string>
     <string name="pin_repeat">كرر PIN</string>
     <string name="Settings_FMD_via_Pin_Description">يسمح لك بالتواصل مع FMD عبر الرقم السري. ستتم إضافتك إلى القائمة المسموح بها مؤقتًا.</string>
@@ -90,24 +81,10 @@
     <string name="Notification_Pin_Usage_Description">إشعار حول استخدام الرقم السري.</string>
     <string name="Permission_IGNORE_BATTERY_OPTIMIZATION">من المفترض أن يعمل هذا التطبيق في الخلفية. للتأكد من أنه يعمل حتى عندما يكون هاتفك في وضع الاستعداد، تحتاج إلى إيقاف تشغيل تحسين البطارية لهذا التطبيق.</string>
     <string name="Notification_Fail_Description">إشعار عند فشل شيء ما، مثل الاتصال بخادم fmd.</string>
-    <string name="MH_Delete">وداعاً...</string>
-    <string name="MH_Networks">"
-\nشبكات Wifi المتاحة:
-\n"</string>
-    <string name="MH_False_Pin">الرقم السري خاطئ!</string>
     <string name="MH_Pin_Accepted">تم قبول الرقم السري!</string>
-    <string name="MH_Help_Stats">" stats - يرسل معلومات الجهاز"</string>
     <string name="LockScreen_Backbutton_pressed">رسالة شاشة القفل: تم الضغط على زر الرجوع.</string>
     <string name="LockScreen_Usage_detectd">رسالة قفل الشاشة: تم اكتشاف الاستخدام.</string>
     <string name="Log_Alert_LogData">سجل البيانات</string>
-    <string name="FMDConfig_Alert_Pin">الرقم السري</string>
-    <string name="JSON_RL_Error">حدث خطأ أثناء الحصول على الموقع من OpenCelliD. يرجى تجربة الرابط التالي. المعلمات التي تريدها هي \"lon\" و\"lat\".</string>
-    <string name="MH_NO_SECURE_SETTINGS">آسف التطبيق غير مسموح له القيام بذلك.</string>
-    <string name="MH_Help_Expert_GPS">" GPS (on/off) - تشغيل GPS أو إيقافه."</string>
-    <string name="MH_Help_where">" locate - يرسل الموقع الحالي للهاتف"</string>
-    <string name="MH_Help_ring">" ring - يجعل الهاتف يرن"</string>
-    <string name="MH_Help_Lock">" lock - يقفل الهاتف"</string>
-    <string name="MH_Help_delete">" delete - يمسح بيانات الهاتف"</string>
     <string name="ringer_stop_ringing">توقف عن الرنين</string>
     <string name="cmd_locate_response_location_off">عذرًا، تم إيقاف GPS.</string>
     <string name="Settings_FMDServer_Push_Description_Missing">يتطلب إرسال الأوامر من خادم FMD إلى هاتفك تطبيق موزع UnifiedPush. قم بتثبيت واحد، ثم عد إلى هنا. سيتم اكتشافه تلقائيًا.</string>
@@ -116,14 +93,8 @@
 \nهذا الهاتف مغلق!
 \nرسالة من المالك:</string>
     <string name="Toast_Duplicate_contact">جهة الاتصال هذه موجودة بالفعل.</string>
-    <string name="MH_GPS_WILL_FOLLOW">سيتم إرسال إحداثيات GPS قريبًا.</string>
     <string name="Delete">حذف</string>
-    <string name="MH_rings">يرن</string>
-    <string name="MH_Locked">مقفل</string>
     <string name="cmd_help_message_start">أوامر FindMyDevice:</string>
-    <string name="Alert_First_time_fmdserver">هنا يمكنك تكوين التطبيق للتواصل مع خادم FMD. إذا كنت تريد تكوين خادم مختلف عن الخادم الافتراضي، فيمكنك القيام بذلك عن طريق تغيير عنوان URL. إذا قمت بالضغط على تسجيل يمكنك تسجيل التطبيق على الخادم. بعد ذلك يمكنك تمكين وظيفة الخادم. إذا قمت بذلك، فسوف يرسل لك هاتفك بيانات الموقع إلى الخادم المحدد. يمكنك التحقق من موقع هاتفك عن طريق إدخال المعرف وكلمة المرور على الصفحة.</string>
     <string name="OpenCellId_help">يمكن لـ FMD استخدام خدمة OpenCelliD للحصول على موقع تقريبي بناءً على البرج الخلوي الذي يتصل به الهاتف. مطلوب اتصال بالإنترنت لكل استعلام عن الموقع. تحتاج أيضًا إلى إنشاء حساب في OpenCelliD والحصول على Token للوصول إلى API الخاص بك.</string>
     <string name="Enable">تفعيل</string>
-    <string name="MH_Help_Expert_Sound">" Sound (on/off) - تشغيل الصوت أو إيقافه."</string>
-    <string name="MH_Help_Expert_Camera">" Camera (front/back) - يلتقط صورة ويرسلها إلى خادم FMD."</string>
 </resources>

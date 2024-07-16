@@ -12,25 +12,7 @@
     <string name="Delete">Удалить</string>
     <string name="Toast_Duplicate_contact">Этот контакт уже существует.</string>
     <string name="cmd_locate_response_gps_will_follow">GPS координаты скоро будут отправлены.</string>
-    <string name="MH_rings">звонки</string>
-    <string name="MH_Locked">заблокировано</string>
-    <string name="MH_Stats">Информация о сети:
-\nIP:
-\n</string>
-    <string name="MH_Networks">"
-\n
-\nДоступные Wi-Fi сети:
-\n
-\n"</string>
-    <string name="MH_Delete">Прощайте...</string>
-    <string name="MH_False_Pin">Неверный PIN-код!</string>
-    <string name="MH_Syntax">Синтаксис:</string>
     <string name="cmd_help_message_start">Команды Find My Device:</string>
-    <string name="MH_Help_where">" locate - отправляет текущее местоположение устройства"</string>
-    <string name="MH_Help_ring">" ring - заставляет устройство воспроизводить рингтон"</string>
-    <string name="MH_Help_Lock">" lock - блокирует устройство"</string>
-    <string name="MH_Help_Stats">" stats - отправляет информацию об устройстве"</string>
-    <string name="MH_Help_delete">" delete - удаляет данные, хранящиеся на устройстве"</string>
     <string name="Settings_FMD_via_Pin_Description">Позволяет вам взаимодействовать с FMD через PIN-код. Вы будете добавлены во временный список разрешённых контактов.</string>
     <string name="Settings_Enter_Pin">Введите PIN-код</string>
     <string name="MH_Pin_Accepted">PIN-код принят!</string>
@@ -54,7 +36,6 @@
     <string name="LockScreen_Backbutton_pressed">Сообщение на экране блокировки: Нажата кнопка \"Назад\".</string>
     <string name="Toast_Empty_FMDCommand">Пустая команда недопустима
 \n Возврат к значению по умолчанию [fmd].</string>
-    <string name="FMDConfig_Alert_Pin">PIN-код</string>
     <string name="Log_Alert_LogData">Данные лога</string>
     <string name="Settings_Ringer_Tone_Description">Выберите рингтон, который будет воспроизводиться, когда команда \"fmd ring\" будет отправлена.</string>
     <string name="Settings_Select_Ringtone">Выберите рингтон</string>
@@ -74,9 +55,6 @@
     <string name="server_unregister_failed_body">Отмена регистрации не удалась из-за следующей ошибки: {ERROR}
 \n
 \nВы всё равно можете продолжить, но ваш аккаунт может быть не удалён с сервера. Если вы продолжите, ваш аккаунт будет удалён лишь локально, с этого устройства.</string>
-    <string name="Alert_First_time_fmdserver">Здесь вы можете настроить приложение для взаимодействия с FMD Сервером. Если вы хотите настроить другой сервер, вместо стандартного, вы можете сделать это, изменив URL (ссылку). Если вы нажмёте \"Зарегистрироваться\", вы можете зарегистрировать приложение на сервере. После этого, вы можете включить различные функции сервера. Если вы сделаете это, ваше устройство отправит данные о вашем местоположении на указанный сервер. Вы можете проверить местоположение вашего устройства, введя ID и пароль на странице.</string>
-    <string name="Info_Server_Registered">Зарегистрировано:</string>
-    <string name="Info_Server_Push">Пуш:</string>
     <string name="Settings_Import">Импортировать настройки</string>
     <string name="Settings_Export">Экспортировать настройки</string>
     <string name="Settings_FMD_Server_Server_URL">URL сервера:</string>
@@ -100,26 +78,13 @@
     <string name="server_unregister_failed_title">Отмена регистрации не удалась</string>
     <string name="server_unregister_dont_continue">Не продолжать</string>
     <string name="Notification_Server">Сервер</string>
-    <string name="MH_LAST_KNOWN_LOCATION">Последнее известное местоположение</string>
-    <string name="MH_LAST_KNOWN_LOCATION_NOT_AVAILABLE">Последнее известное местоположение недоступно.</string>
-    <string name="not_possible">Это действие было невозможно совершить.</string>
-    <string name="MH_Help_Expert_GPS">" GPS (on/off) - включает или выключает GPS."</string>
-    <string name="MH_NO_SECURE_SETTINGS">Извините, приложению запрещается сделать это.</string>
-    <string name="MH_Help_expert">" expert - страница помощи для экспертных команд."</string>
-    <string name="MH_Help_Expert_Camera">" Camera (front/back) - делает фотографию и отправляет её на FMD Сервер."</string>
-    <string name="MH_FMDSERVER_NOT_REGISTERED">Это устройство не зарегистрировано на сервере.</string>
-    <string name="MH_CAM_CAPTURE">"Устройство скоро отправит фотографию на FMD Сервер. Вы скоро сможете её увидеть здесь: "</string>
     <string name="loading">Загрузка…</string>
     <string name="help">Помощь</string>
     <string name="copied">Скопировано</string>
-    <string name="Granted">Выдано:</string>
     <string name="Cell">Сотовая вышка</string>
     <string name="accept">принять</string>
     <string name="Edit">Редактировать</string>
     <string name="GPS">GPS</string>
-    <string name="Info_FMD_Command">FMD-Команда:</string>
-    <string name="Info_Notification_Access">Доступ к уведомлениям</string>
-    <string name="Info_Server_Enabled">Сервис:</string>
     <string name="pin">PIN-код</string>
     <string name="pin_repeat">Повторите PIN-код</string>
     <string name="Settings_FMDServer_Update_Interval_Title">Интервал обновления</string>
@@ -146,7 +111,6 @@
     <string name="Notification_FAIL">Не удалось</string>
     <string name="Permission_IGNORE_BATTERY_OPTIMIZATION">Это приложение предназначено для работы в фоновом режиме. Чтобы убедиться, что оно работает даже когда ваше устройство не используется, вам необходимо отключить оптимизацию батареи для этого приложения.</string>
     <string name="Permission_POST_NOTIFICATIONS">FMD будет периодически отправлять вам уведомления, например, чтобы предупреждать вас о том, что кто-то отслеживает ваше устройство.</string>
-    <string name="MH_Help_Expert_Sound">" Sound (on/off) - включает или выключает звук."</string>
     <string name="Settings_FMDServer_Location_Type_Description">Источник (источники) из которого данные о местоположении выгружаются с регулярными интервалами в фоновом режиме.
 \nЕсли не выбрано ни одного, местоположения не будут регулярно выгружаться (вы всё ещё можете использовать веб-интерфейс чтобы принудительно активировать выгрузку, для чего необходимы настроенные пуш-уведомления).</string>
 </resources>

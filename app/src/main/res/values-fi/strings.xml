@@ -12,23 +12,7 @@
     <string name="Delete">Poista</string>
     <string name="Toast_Duplicate_contact">Yhteystieto on jo olemassa.</string>
     <string name="cmd_locate_response_gps_will_follow">GPS-koordinaatit lähetetään pian.</string>
-    <string name="MH_rings">soi</string>
-    <string name="MH_Locked">lukittu</string>
-    <string name="MH_Stats">Verkkotiedot:
-\nIP\'s:
-\n</string>
-    <string name="MH_Networks">"
-\nKäytettävät WiFi-verkot:
-\n"</string>
-    <string name="MH_Delete">Hyvästi...</string>
-    <string name="MH_False_Pin">Virheellinen PIN!</string>
-    <string name="MH_Syntax">Syntaksi:</string>
     <string name="cmd_help_message_start">FindMyDevice-komennot:</string>
-    <string name="MH_Help_where">" locate - lähettää nykyisen sijainnin"</string>
-    <string name="MH_Help_ring">" ring - soita puhelimen soittoääntä"</string>
-    <string name="MH_Help_Lock">" lock - lukitsee puhelimen"</string>
-    <string name="MH_Help_Stats">" stats - lähettää laitteen tiedot"</string>
-    <string name="MH_Help_delete">" delete - nollaa puhelimen"</string>
     <string name="Settings_FMD_via_Pin_Description">Kommunikoi FMD:n kanssa PIN-koodia käyttäen. Sinut lisätään väliaikaiselle valkoiselle listalle.</string>
     <string name="Settings_Enter_Pin">Syötä PIN-koodi</string>
     <string name="MH_Pin_Accepted">PIN-koodi hyväksytty!</string>
@@ -52,36 +36,22 @@
     <string name="LockScreen_Backbutton_pressed">FMD: Takaisin-painiketta painettu.</string>
     <string name="Toast_Empty_FMDCommand">Tyhjää komentoa ei hyväksytä
 \n Palautetaan oletus.[fmd]</string>
-    <string name="FMDConfig_Alert_Pin">PIN</string>
     <string name="Log_Alert_LogData">Lokitiedot</string>
     <string name="Settings_Ringer_Tone_Description">Valitse soittoääni, joka soitetaan fmd ring-komennosta.</string>
     <string name="Settings_Select_Ringtone">Valitse soittoääni</string>
     <string name="WhiteList_Select_Number">Valitse yksi puhelinnumeroista.</string>
     <string name="Settings_FMDServer_Update_Interval_Description">Aikaväli sijainnin lähettämiseen palvelimelle minuutteina.</string>
-    <string name="Info_FMD_Command">FMD-Komento:</string>
-    <string name="Info_Server_Enabled">Palvelin:</string>
-    <string name="Info_Server_Registered">Rekisteröity:</string>
-    <string name="MH_LAST_KNOWN_LOCATION">Viimeisin sijainti</string>
-    <string name="MH_LAST_KNOWN_LOCATION_NOT_AVAILABLE">Viimeisintä sijaintitietoa ei ole saatavilla.</string>
     <string name="Settings_FMDServer_Alert_PrivacyPolicy_Title">Tietosuojakäytäntö</string>
-    <string name="Alert_First_time_fmdserver">Täällä voit määrittää sovelluksen yhteyden FMD-palvelimeen. Voit valita oletuspalvelimen tilalle toisen palvelimen syöttämällä sen URL-osoitteen. Rekisteröidy palvelimelle painamalla rekisteröidy-painiketta, sen jälkeen voit ottaa käyttöön palvelimen toimintoja. Siten puhelimesi lähettää sijaintitietosi määrittelemällesi palvelimelle. Voit tarkistaa puhelimesi sijainnin syöttämäll ID:n ja salasanan palvelimen verkkosivulla.</string>
     <string name="accept">Hyväksy</string>
     <string name="Settings_FMDServer_Location_Type_Description">Lähteet, joista sijaintitieto ladataan palvelimelle säännöllisin väliajoin taustalla.
 \nJos lähteitä ei ole valittu, sijaintitietoja ei ladata säännöllisesti. (Voit silti pyytää sijaintitiedon verkkokäyttöliittymän kautta. Tämä vaatii pushin.)</string>
     <string name="GPS">GPS</string>
     <string name="Cell">Tukiasema</string>
-    <string name="MH_Help_Expert_GPS">" gps (on/off) - GPS päälle/pois."</string>
-    <string name="MH_NO_SECURE_SETTINGS">Pahoittelut, sovelluksella ei ole käyttöoikeutta tähän.</string>
-    <string name="MH_Help_expert">" expert - ohjesivu asiantuntijakomennoille."</string>
-    <string name="Info_Notification_Access">Ilmoitukset</string>
     <string name="Notification_Server">Palvelin</string>
     <string name="Edit">Muokkaa</string>
-    <string name="Granted">Myönnetty:</string>
     <string name="Settings_FMDServer_Logout_Button">Kirjaudu ulos</string>
     <string name="Settings_FMDServer_Alert_DeleteData">Poista tiedot</string>
     <string name="Settings_FMDServer_Push_Description_Missing">Komentojen lähettäminen FMD-palvelimelta puhelimeesi vaatii UnifiedPush-sovelluksen. Asenna sellainen ja palaa tähän. Sovellus tunnistetaan automaattisesti.</string>
-    <string name="MH_Help_Expert_Sound">" Ääni (päälle/pois) - laittaa äänen päälle tai pois päältä."</string>
-    <string name="MH_Help_Expert_Camera">" Kamera (etu/taka) - ottaa kuvan ja lähettää sen FMD-palvelimelle."</string>
     <string name="Whitelist_help">Vain tässä listassa olevat yhteystiedot voivat lähettää FMD-komentoja tekstiviestitse. Muut yhteystiedot ohitetaan.</string>
     <string name="pin">PIN</string>
     <string name="pin_repeat">Toista PIN</string>
@@ -105,7 +75,6 @@
     <string name="copied">Kopioitu</string>
     <string name="loading">Ladataan…</string>
     <string name="help">Apua</string>
-    <string name="Info_Server_Push">Push:</string>
     <string name="Settings_FMDServer_Update_Interval_Title">Päivitysväli</string>
     <string name="Settings_FMDServer_Location_Type_Title">Sijainnin lähde</string>
     <string name="Settings_FMDServer_LOW_BAT_Upload_Title">Lataa matalalla akun varauksella</string>
@@ -116,9 +85,6 @@
     <string name="Settings_FMDServer_Login">Kirjaudu sisään</string>
     <string name="Settings_FMDServer_Register">Rekisteröidy</string>
     <string name="OpenCellId_help">FMD voi käyttää OpenCelliD-palvelua saadakseen arvioidun sijainnin, joka perustuu puhelintorniin johon puhelin on yhdistetty. Internetyhteys vaaditaan jokaiseen hakuun. Sinun tulee myös luoda OpenCelliD-tunnus saadaksesi oman API-käyttötunnisteen.</string>
-    <string name="MH_CAM_CAPTURE">"Laite lähettää pian kuvan FMD-palvelimelle. Näet sen pian täällä: "</string>
-    <string name="MH_FMDSERVER_NOT_REGISTERED">Tämä laite ei ole rekisteröitynä palvelimelle.</string>
     <string name="Settings_Import">Tuo asetukset</string>
     <string name="Settings_Export">Vie asetukset</string>
-    <string name="not_possible">Toiminto ei ollut mahdollinen.</string>
 </resources>

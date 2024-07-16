@@ -8,12 +8,6 @@
     <string name="Edit">Bearbeiten</string>
     <string name="GPS">GPS</string>
     <string name="Cell">Mobilfunkzelle</string>
-    <!-- MainActivity -->
-    <string name="Granted">Zugelassen:</string>
-    <string name="Info_Notification_Access">Benachrichtigungszugriff</string>
-    <string name="Info_FMD_Command">FMD-Kommando:</string>
-    <string name="Info_Server_Enabled">Dienst:</string>
-    <string name="Info_Server_Registered">Angemeldet:</string>
     <!-- Settings (main screen, with the list) -->
     <string name="Settings_Settings">Einstellungen</string>
     <string name="Settings_FMDConfig">FMD-Einstellungen</string>
@@ -45,7 +39,7 @@
     <string name="Settings_FMDServer_Delete_Button">Daten löschen</string>
     <string name="Settings_FMDServer_Alert_DeleteData">Daten löschen</string>
     <string name="Settings_FMDServer_Alert_DeleteData_Desc">Dadurch werden alle Daten auf dem Server gelöscht. Sind Sie sicher?</string>
-    <string name="Settings_FMDServer_Push_Description_Missing">Das Senden von Befehlen von FMD Server zu Ihrem Handy benötigt eine UnifiedPush-Distributor-App. Installiere eine, und komm dann hierher zurück. UnifiedPush wird automatisch erkannt.</string>
+    <string name="Settings_FMDServer_Push_Description_Missing">Das Senden von Befehlen von FMD Server zu deinem Gerät benötigt eine UnifiedPush-Distributor-App. Installiere eine, und komm dann hierher zurück. UnifiedPush wird automatisch erkannt.</string>
     <string name="Settings_FMDServer_Push_Description_Available">Erfolgreich für Pushnachrichten registriert.</string>
     <string name="Settings_FMDServer_Push_Open_UP">UnifiedPush Webseite Öffnen</string>
     <string name="Settings_FMDServer_Update_Interval_Title">Update-Intervall</string>
@@ -116,58 +110,28 @@
     <string name="Locked_Lock_Screen">FindMyDevice
 \nDieses Gerät wurde gesperrt!
 \nNachricht vom Besitzer:</string>
-    <string name="Permission_POST_NOTIFICATIONS">FMD sendet Ihnen gelegentlich Benachrichtigungen, z.B. um Sie zu warnen wenn jemand Ihr Gerät lokalisiert.</string>
-    <string name="MH_Help_delete">" delete - Löscht alle Daten"</string>
-    <string name="MH_Help_Stats">" stats - sendet Netzwerk-Informtionen"</string>
-    <string name="MH_Help_Lock">" lock - Sperrt das Gerät"</string>
-    <string name="MH_Help_ring">" ring - lässt das Handy klingeln"</string>
-    <string name="MH_Help_where">" locate - sendet den derzeitigen Standort des Handys"</string>
+    <string name="Permission_POST_NOTIFICATIONS">FMD sendet gelegentlich Benachrichtigungen, z.B. um zu warnen wenn jemand das Gerät ortet.</string>
     <string name="cmd_help_message_start">FindMyDevice Kommandos:</string>
-    <string name="MH_False_Pin">Falsche Pin!</string>
-    <string name="MH_Delete">Tschüss</string>
-    <string name="MH_Networks">"
-\nVerfügbare WLAN-Netzwerke:
-\n"</string>
-    <string name="MH_Stats">Netzwerk_Statistik:
-\nIPs:
-\n</string>
-    <string name="MH_Locked">gesperrt</string>
-    <string name="MH_rings">klingelt</string>
     <string name="cmd_locate_response_gps_will_follow">GPS-Koordinaten werden demnächst versendet.</string>
     <string name="Toast_Duplicate_contact">Dieser Kontakt existiert bereits.</string>
-    <string name="MH_Syntax">Syntax:</string>
     <string name="MH_Pin_Accepted">Pin akzeptiert!</string>
-    <string name="ringer_stop_ringing">STOPPE KLINGELN</string>
-    <string name="cmd_locate_response_location_off">Ortung ist ausgeschaltet.</string>
+    <string name="ringer_stop_ringing">KLINGELN STOPPEN</string>
+    <string name="cmd_locate_response_location_off">Ortung fehlgeschlagen: der Standort ist ausgeschaltet.</string>
     <string name="Crashed_Send_log">Log senden</string>
-    <string name="JSON_RL_Error">Fehler beim Ermitteln des Standorts von OpenCellID. Bitte versuchen Sie den folgenden Link. Die Parameter, die Sie benötigen, sind \"lon\" und \"lat\".</string>
     <string name="LockScreen_Usage_detectd">LockScreenMessage: Verwendung erkannt.</string>
     <string name="LockScreen_Backbutton_pressed">LockScreenMessage: Zurück-Taste wurde gedrückt.</string>
     <string name="Toast_Empty_FMDCommand">Lehres Kommando nicht erlaubt
 \n Rückfall auf Standard.[fmd]</string>
-    <string name="FMDConfig_Alert_Pin">PIN</string>
     <string name="Log_Alert_LogData">Log-Info</string>
-    <string name="MH_LAST_KNOWN_LOCATION">Letzter bekannter Standort</string>
-    <string name="MH_LAST_KNOWN_LOCATION_NOT_AVAILABLE">Letzter Standort ist nicht verfügbar.</string>
-    <string name="Alert_First_time_fmdserver">Hier können Sie die Anwendung für die Kommunikation mit fmdserver konfigurieren. Wenn Sie einen anderen Server als den Standard-Server konfigurieren möchten, können Sie dies durch Ändern der URL tun. Wenn Sie auf Anmelden drücken, können Sie die Anwendung beim Server anmelden. Anschließend können Sie die Serverfunktionalität aktivieren. Wenn Sie dies tun, sendet Ihr Telefon Standortdaten an den angegebenen Server. Sie können den Standort Ihres Telefons überprüfen, indem Sie die ID und das Kennwort auf der Seite eingeben.</string>
-    <string name="MH_Help_Expert_GPS">" GPS (an/aus) - schaltet das GPS ein oder aus."</string>
-    <string name="MH_NO_SECURE_SETTINGS">Leider ist die Anwendung dazu nicht berechtigt.</string>
-    <string name="MH_Help_expert">" Experte - Hilfeseite für Expertenbefehle."</string>
     <string name="Notification_Security">Sicherheit</string>
     <string name="Notification_FAIL">Fehler</string>
     <string name="Notification_Fail_Description">Benachrichtigungen wenn etwas fehlschlägt (z.B. die Verbindung zu FMD Server)</string>
     <string name="app_description">Mit FMD (Find My Device) kannst du dein Gerät aus der Ferne orten. Du kannst mit FMD über SMS, Instant Messengers, oder über FMD Server kommunizieren. Orte dein Gerät, lass es klingeln, sperre es, oder setze es auf Werkseinstellungen zurück - alles aus der Ferne.</string>
     <string name="Notification_Security_Description">Benachrichtigungen bzgl. Sicherheitsupdates</string>
-    <string name="not_possible">Diese Aktion war nicht möglich.</string>
-    <string name="Info_Server_Push">Push:</string>
     <string name="notify_crypto_update_title">Aktion erforderlich</string>
     <string name="notify_crypto_update_text">Sie müssen einige Einstellungen ändern, um weiterhin FMD benutzen zu können. Bitte hier klicken.</string>
     <string name="request_failed_response_body">Response Body</string>
     <string name="request_failed_exception">Exception</string>
-    <string name="MH_Help_Expert_Sound">" Ton (an/aus) - schaltet den Ton an oder aus."</string>
-    <string name="MH_Help_Expert_Camera">" Kamera (Vorder-/Rückseite) - macht ein Foto und schickt es zum FMDserver."</string>
-    <string name="MH_FMDSERVER_NOT_REGISTERED">Dieses Gerät ist auf keinem Server registriert.</string>
-    <string name="MH_CAM_CAPTURE">"Das gerät wird in Kürze ein Bild zum FMDserver schicken. Dieses kann hier bald betrachtet werden: "</string>
     <string name="request_failed_title">Netzwerkanfrage fehlgeschlagen</string>
     <string name="request_failed_status_code">Statuscode</string>
     <string name="Notification_Server_Description">Benachrichtigungen bzgl. FMD Server</string>
@@ -208,7 +172,7 @@
     <string name="cmd_camera_response_no_fmd_server">Bild kann nicht aufgenommen werden: ein FMD Server-Konto fehlt.</string>
     <string name="cmd_camera_response_success">Das Gerät nimmt gerade das Bild auf und wird es zu FMD Server hochladen. Du kannst es gleich hier anschauen: %s</string>
     <string name="cmd_delete_response_pwd_wrong">Löschen nicht möglich: falsches Passwort.</string>
-    <string name="cmd_locate_description_short">Gerät orte</string>
+    <string name="cmd_locate_description_short">Gerät orten</string>
     <string name="cmd_gps_description_short">GPS ein- oder ausschalten</string>
     <string name="cmd_ring_response">Das Gerät sollte nun klingeln.</string>
     <string name="cmd_lock_response">Das Gerät sollte nun gesperrt sein.</string>
@@ -227,4 +191,28 @@
     <string name="cmd_nodisturb_response_on">Der \"Bitte Nicht Stören\"-Modus ist nun eingeschaltet.</string>
     <string name="cmd_nodisturb_response_off">Der \"Bitte Nicht Stören\"-Modus ist nun ausgeschaltet.</string>
     <string name="usage_notification_text">Der Befehl \"%s\" wurde ausgeführt.</string>
+    <string name="Settings_Import_Failed">Import fehlgeschlagen</string>
+    <string name="cmd_locate_response_opencellid_failed">Fehler beim Finden des Standorts mit OpenCelliD. Bitte versuche stattdessen den folgenden Link. Die wichtigen Parameter sind \"lat\" und \"lon\".</string>
+    <string name="cmd_locate_last_known_location_not_available">Kein letzter bekannter Standort. Frage den aktuellen Standort an, um ein Standort-Update zu erzwingen.</string>
+    <string name="transport_sms_description_note">SMS kann Kosten verursachen, sowohl für dich als auch für die Personen, die dir SMS schicken. Für SMS muss deine SIM-Karte entsperrt sein (z. B. nach einem Neustart).</string>
+    <string name="transport_notification_reply_title">Antworten auf Benachrichtigungen</string>
+    <string name="transport_notification_reply_description_auth">Um FMD per Antworten auf Benachrichtigungen zu steuern muss die FMD-PIN gesetzt sein. Jede Nachricht muss die korrekte PIN enthalten.</string>
+    <string name="transport_fmd_server_title">FMD Server</string>
+    <string name="transport_fmd_server_description">FMD Server bietet eine Webschnittstelle, über die du dein Gerät steuern, seinen Standort abfragen und die von ihm gesendeten Bilder ansehen kannst. Du kannst FMD Server selbst hosten oder die bereitgestellte Instanz nutzen. Die Daten werden verschlüsselt auf dem Server gespeichert und sind durch dein Passwort geschützt.</string>
+    <string name="transport_fmd_server_description_auth">Jeder der deinen Benutzernamen und dein Passwort kennt kann sich bei FMD Server anmelden und dein Gerät steuern.</string>
+    <string name="transport_fmd_server_description_note">FMD Server benötigt eine Internetverbindung. Dies kann Mobilfunk sein (dann muss die SIM-Karte entsperrt sein) oder WLAN.</string>
+    <string name="missing_permissions_description">FMD benötigt die folgenden Berechtigungen.</string>
+    <string name="bottom_nav_transports">Transportkanäle</string>
+    <string name="bottom_nav_commands">Befehle</string>
+    <string name="cmd_locate_last_known_location_text">Letzter bekannter Standort</string>
+    <string name="Settings_Import_Success">Import erfolgreich</string>
+    <string name="WhiteList_no_contact_picker">Keine Kontakt-Auswahl-App gefunden!</string>
+    <string name="transport_notification_reply_description">Du kannst FMD erlauben deine Benachrichtigungen zu lesen um auf Befehle zu warten. FMD kann dann über die in Android integrierte Benachrichtigungsfunktion antworten. So kannst du FMD über eine Messaging-App deiner Wahl steuern, solange diese App Benachrichtigungen sendet, auf die man antworten kann. Du kannst z.B. eine Signal-Nachricht „fmd mypin help“ an dein Gerät senden.</string>
+    <string name="bottom_nav_settings">Einstellungen</string>
+    <string name="missing_permissions_title">Fehlende Berechtigungen</string>
+    <string name="transport_sms_title">SMS</string>
+    <string name="cmd_lock_description_long">Sperre das Gerät und zeige optional eine Nachricht auf dem Sperrbildschirm an. Danach ist die biometrische Sperre nicht verfügbar und dein Gerät kann nur mit dem Gerätepasswort entsperrt werden.</string>
+    <string name="setup_warnings_title">Setup-Warnungen</string>
+    <string name="transport_sms_description">Schicke Befehle per SMS an dein Gerät. Schicke z.B. eine SMS mit \"fmd help\" an dein Gerät. FMD wird per SMS antworten.</string>
+    <string name="transport_sms_description_auth">Nur Telefonnummern, die in der Liste erlaubter Nummern sind, können Befehle senden. Um Befehle von einer Telefonnummer zu senden, die nicht in dieser Liste ist, muss die Nachricht die PIN enthalten: „fmd mypin help“. Damit du die PIN nicht jedes Mal neu eingeben musst, wird diese neue Telefonnummer für die nächsten 10 Minuten in eine temporäre Erlaubnisliste aufgenommen.</string>
 </resources>

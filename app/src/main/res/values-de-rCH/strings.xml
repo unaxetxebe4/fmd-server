@@ -9,8 +9,6 @@
     <string name="request_failed_status_code">Statuscode</string>
     <string name="request_failed_response_body">Response Body</string>
     <string name="request_failed_exception">Usnahmefehler</string>
-    <string name="Info_Notification_Access">Benachrichtigungszuegriff</string>
-    <string name="Info_FMD_Command">FMD-Befehl:</string>
     <string name="Settings_Settings">Iistellige</string>
     <string name="Settings_FMDConfig">FMD-Iistellige</string>
     <string name="Settings_WhiteList">Erlaubti Kontäkt</string>
@@ -29,7 +27,7 @@
     <string name="Settings_FMDServer_Delete_Button">Date lösche</string>
     <string name="Settings_FMDServer_Alert_DeleteData">Date lösche</string>
     <string name="Settings_FMDServer_Alert_DeleteData_Desc">Alli Date werded vom Server glöscht. Bisch sicher?</string>
-    <string name="Settings_FMDServer_Push_Description_Missing">Zum Befehl vo FMD Server a dis Handy zschicke bruchts en UnifiedPush-Verteiler-App. Installier eini und chum dahii zrugg. Sie wird automatisch erkennt.</string>
+    <string name="Settings_FMDServer_Push_Description_Missing">Zum Befehl vo FMD Server a dis Gerät zschicke bruchts en UnifiedPush-Verteiler-App. Installier eini und chum dahii zrugg. Sie wird automatisch erkennt.</string>
     <string name="Settings_FMDServer_Push_Description_Available">Erfolgriich für Push-Mitteilige registriert.</string>
     <string name="Settings_FMDServer_Push_Open_UP">UnifiedPush-Websiite öffne</string>
     <string name="Settings_FMDServer_Update_Interval_Title">Update-Intervall</string>
@@ -154,4 +152,47 @@
 \n
 \nWLAN-Netzwerke:
 \n%s</string>
+    <string name="WhiteList_Select_Number">Wähl eini vode Telefonnummere uus.</string>
+    <string name="Enable">Iistelle</string>
+    <string name="Delete">Lösche</string>
+    <string name="Toast_Duplicate_contact">De Kontakt gits scho.</string>
+    <string name="Permission_POST_NOTIFICATIONS">FMD schickt mengisch Benachrichtigunge, z.B. zum Warne dass öpper s Gerät ortet.</string>
+    <string name="Locked_Lock_Screen">FindMyDevice
+\nS Gerät isch gsperrt worde!
+\nNachricht vom Besitzer:</string>
+    <string name="transport_fmd_server_title">FMD Server</string>
+    <string name="transport_notification_reply_description_auth">Zum FMD per Antworte uf Benachrichtigunge steuern muss d FMD-PIN gesetzt sii. Jedi Nachricht muss d korrekti PIN enthalte.</string>
+    <string name="transport_fmd_server_description_auth">Jede wo diin Benutzername und diis Passwort kennt chan sich bii FMD Server aamelde und diis Gerät stüre.</string>
+    <string name="missing_permissions_description">FMD brucht die folgende Berechtigunge.</string>
+    <string name="setup_warnings_title">Setup-Warnige</string>
+    <string name="missing_permissions_title">Fehlendi Berechtigunge</string>
+    <string name="Toast_Empty_FMDCommand">En leere Befehl isch nöd erlaubt.
+\n Zrugg zum Default.[fmd]</string>
+    <string name="bottom_nav_commands">D Befehl</string>
+    <string name="bottom_nav_transports">Transportkanäl</string>
+    <string name="bottom_nav_settings">Iistellige</string>
+    <string name="WhiteList_no_contact_picker">Kei Kontakt-Uuswahl-Aawendig gfunde!</string>
+    <string name="Log_Alert_LogData">Log Date</string>
+    <string name="cmd_help_message_start">FindMyDevice Befehl:</string>
+    <string name="cmd_locate_response_location_off">Ortung fehlgschlage: de Standort isch abgstellt.</string>
+    <string name="cmd_locate_response_gps_will_follow">D GPS Koordinate werdet gad gschickt.</string>
+    <string name="cmd_locate_last_known_location_text">Letzte bekannte Standort</string>
+    <string name="transport_sms_title">SMS</string>
+    <string name="transport_sms_description_auth">Nume Telefonnummere, wo ide Lischte vode erlaubte Nummere sind, chönnt Befehl schicke. Zum Befehl vonere Telefonnummere z schicke, wo nöd in dere Lischte isch, muss d Nachricht d PIN enthalte: „fmd mypin help“. Damit du d PIN nöd jedes Mal neu musch iigäh, wird die neui Rufnummere für die nächschte 10 Minute i en temporäri Erlaubnisliste ufgno.</string>
+    <string name="transport_sms_description_note">SMS chan Chöschte verursache, sowohl für dich als au für die Persone, wo dir SMS schicket. Für SMS muss dini SIM-Karte entsperrt sii (z. B. nacheme Neustart).</string>
+    <string name="transport_notification_reply_title">Antworte uf Benachrichtigunge</string>
+    <string name="LockScreen_Usage_detectd">LockScreenMessage: Verwendig erkannt.</string>
+    <string name="Crashed_Send_log">Log schicke</string>
+    <string name="MH_Pin_Accepted">PIN akzeptiert!</string>
+    <string name="LockScreen_Backbutton_pressed">LockScreenMessage: Zrugg-Taste isch druckt worde.</string>
+    <string name="ringer_stop_ringing">HÖR UF LÜÜTE</string>
+    <string name="cmd_locate_response_opencellid_failed">Fehler bim Finde vom Standort mit OpenCelliD. Bitte probier de folgendi Link. Die wichtige Parameter sind \"lat\" und \"lon\".</string>
+    <string name="cmd_locate_last_known_location_not_available">Kein letzte bekannte Standort. Frög de aktuelli Standort aa zum es Standort-Update becho.</string>
+    <string name="cmd_lock_description_long">Sperrs Gerät und zeig optional en Nachricht ufem Sperrbildschirm aa. Nachher isch d Biometrie nüme verfügbar und es brucht s Gerätepasswort zum entsperre.</string>
+    <string name="transport_sms_description">Schick Befehl per SMS an dis Gerät. Schick z.B. es SMS mit \"fmd help\" an dis Gerät. FMD wird per SMS antworte.</string>
+    <string name="transport_fmd_server_description">FMD Server isch en Webschnittstell. Mit ihre chasch diis Gerät stüre, siin Standort aafröge und d Bilder wos gschickt het aaluege. Du chasch FMD Server selber hoste oder die bereitgstellti Instanz nutze. D Date werdet verschlüsselt ufem Server gspeichert und sind dur diis Passwort gschützt.</string>
+    <string name="transport_fmd_server_description_note">FMD Server brucht en Internetverbindig. Das chan Mobilfunk sii (denn muss d SIM-Karte entsperrt sii) oder WLAN.</string>
+    <string name="Settings_Import_Success">Import erfolgriich</string>
+    <string name="Settings_Import_Failed">Import fehlgschlage</string>
+    <string name="transport_notification_reply_description">Du chasch FMD erlaube dini Benachrichtigunge zlese zum Befehl abzwarte. FMD chan denn über die in Android integrierti Benachrichtigungsfunktion antworte. So chasch du FMD über en Messaging-App vo dinere Wahl stüere, solang d App Benachrichtigungen sendet, womer druf chan antworte. Du chasch z.B. en Signal-Nachricht „fmd mypin help“ a diis Gerät schicke.</string>
 </resources>

@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- TODO: Following strings need to be translated into most languages -->
-    <string name="Granted">Concesse:</string>
     <string name="Edit">Modifica</string>
     <string name="Permission_IGNORE_BATTERY_OPTIMIZATION">Questa applicazione dovrebbe funzionare in background. Per assicurarsi che funzioni anche quando il telefono è in standby, è necessario disattivare l\'ottimizzazione della batteria per questa applicazione.</string>
     <string name="Locked_Lock_Screen">FindMyDevice
@@ -16,23 +14,7 @@
     <string name="Delete">Cancella</string>
     <string name="Toast_Duplicate_contact">Questo contatto esiste già.</string>
     <string name="cmd_locate_response_gps_will_follow">Le coordinate GPS verranno inviate a breve.</string>
-    <string name="MH_rings">squilli</string>
-    <string name="MH_Locked">bloccato</string>
-    <string name="MH_Stats">Statistiche di rete:
-\nIP\'s:
-\n</string>
-    <string name="MH_Networks">"
-\nReti Wifi disponibili:
-\n"</string>
-    <string name="MH_Delete">Addio…</string>
-    <string name="MH_False_Pin">Pin Errato!</string>
-    <string name="MH_Syntax">Sintassi:</string>
     <string name="cmd_help_message_start">Comandi FindMyDevice:</string>
-    <string name="MH_Help_where">" locate - invia la posizione attuale del telefono"</string>
-    <string name="MH_Help_ring">" ring - fa squillare il telefono"</string>
-    <string name="MH_Help_Lock">" lock - blocca il telefono"</string>
-    <string name="MH_Help_Stats">" stats - invia informazioni del dispositivo"</string>
-    <string name="MH_Help_delete">" delete - ripristina il telefono"</string>
     <string name="Settings_FMD_via_Pin_Description">Consente di comunicare con FMD tramite un pin. Verrete aggiunti a una lista bianca temporanea.</string>
     <string name="Settings_Enter_Pin">Inserisci Pin</string>
     <string name="MH_Pin_Accepted">Pin corretto!</string>
@@ -82,41 +64,24 @@
     <string name="LockScreen_Backbutton_pressed">MessaggioBloccoSchermo: Premuto pulsante Indietro.</string>
     <string name="Toast_Empty_FMDCommand">Comando vuoto non consentito
 \n Ripristinato valore predefinito. [fmd]</string>
-    <string name="FMDConfig_Alert_Pin">PIN</string>
     <string name="Log_Alert_LogData">Dati di Registro</string>
     <string name="Settings_Ringer_Tone_Description">Seleziona una suoneria che verrà riprodotta quando viene inviato \"fmd ring\".</string>
     <string name="Settings_Select_Ringtone">Seleziona suoneria</string>
     <string name="WhiteList_Select_Number">Seleziona uno dei numeri di telefono.</string>
     <string name="Settings_FMDServer_Update_Interval_Description">Il tempo in minuti in cui FMD deve inviare nuovi dati sulla posizione al server.</string>
-    <string name="Info_FMD_Command">Comando FMD:</string>
-    <string name="Info_Server_Enabled">Servizio:</string>
-    <string name="Info_Server_Registered">Registrato:</string>
-    <string name="MH_LAST_KNOWN_LOCATION">Ultima posizione nota</string>
-    <string name="MH_LAST_KNOWN_LOCATION_NOT_AVAILABLE">Ultima posizione non disponibile.</string>
-    <string name="Alert_First_time_fmdserver">Qui è possibile configurare l\'applicazione per comunicare con un server FMD. Se si desidera configurare un server diverso da quello predefinito, è possibile farlo modificando l\'URL. Se si preme \"registrati\" è possibile registrare l\'applicazione sul server. Successivamente è possibile abilitare la funzionalità del server. Se lo fai, il tuo telefono ti invierà i dati sulla posizione al server specificato. Puoi controllare la posizione del tuo telefono inserendo l\'ID e la password sulla pagina.</string>
     <string name="Settings_FMDServer_Alert_PrivacyPolicy_Title">Info Privacy</string>
     <string name="accept">accetta</string>
     <string name="Settings_FMDServer_Location_Type_Description">L\'origine/i da cui i dati della posizione vengono caricati a intervalli regolari in background.
 \nSe non viene selezionato niente, nessuna posizione viene caricata regolarmente. (È ancora possibile utilizzare l\'interfaccia web per forzare il caricamento. Questo richiede il push.)</string>
     <string name="GPS">GPS</string>
     <string name="Cell">Cella</string>
-    <string name="MH_Help_Expert_GPS">" GPS (on/off) - accende o spegne il GPS."</string>
-    <string name="MH_NO_SECURE_SETTINGS">Spiacente, l\'applicazione non ha l\'autorizzazione per farlo.</string>
-    <string name="MH_Help_expert">" Avanzato - pagina di aiuto per comandi avanzati."</string>
-    <string name="Info_Notification_Access">Notifiche</string>
     <string name="Notification_Server">Server</string>
-    <string name="Info_Server_Push">Push:</string>
     <string name="Settings_FMDServer_Delete_Button">Cancella Dati</string>
     <string name="Settings_FMDServer_Alert_DeleteData">Cancella Dati</string>
     <string name="Settings_FMDServer_Alert_DeleteData_Desc">Questo cancellerà tutti i dati dal server Sei sicuro?</string>
-    <string name="MH_Help_Expert_Sound">" Audio (on/off) - Attiva o disattiva l\'audio."</string>
-    <string name="not_possible">Questa azione non è stata possibile.</string>
-    <string name="MH_Help_Expert_Camera">" Camera (fronte/retro) - scatta una foto e la invia al server FMD."</string>
     <string name="Settings_Import">Importa Impostazioni</string>
     <string name="Settings_Export">Esporta Impostazioni</string>
-    <string name="MH_CAM_CAPTURE">"Il dispositivo invierà presto un\'immagine al server FMD. Puoi vederla a breve qui: "</string>
     <string name="Settings_FMDServer_LOW_BAT_Upload_Description">Invia la posizione di questo dispositivo quando il livello della batteria è basso. (Questo richiede l\'accesso alle notifiche).</string>
-    <string name="MH_FMDSERVER_NOT_REGISTERED">Questo dispositivo non è registrato su un server.</string>
     <string name="Settings_FMDServer_Login">Accedi</string>
     <string name="Settings_FMDServer_Register">Registra</string>
     <string name="Notification_Security">Sicurezza</string>

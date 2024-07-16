@@ -2,12 +2,6 @@
 <resources>
     <string name="request_failed_response_body">Corpo da Resposta</string>
     <string name="request_failed_exception">Exceção</string>
-    <string name="Granted">Concedido:</string>
-    <string name="Info_Notification_Access">Acesso às Notificações</string>
-    <string name="Info_FMD_Command">Comando-FMD:</string>
-    <string name="Info_Server_Enabled">Serviço:</string>
-    <string name="Info_Server_Registered">Registrado:</string>
-    <string name="Info_Server_Push">Push:</string>
     <string name="Settings_Settings">Configurações</string>
     <string name="Settings_Export">Exportar Configurações</string>
     <string name="Settings_Logs">Registros</string>
@@ -71,37 +65,11 @@
     <string name="Locked_Lock_Screen">FindMyDevice
 \nEste dispositivo está bloqueado!
 \nMensagem do dono:</string>
-    <string name="MH_rings">toca</string>
-    <string name="MH_Locked">bloqueado</string>
-    <string name="MH_Stats">Estatísticas de Rede:
-\nIPs:
-\n</string>
-    <string name="MH_Networks">"
-\nRedes Wi-Fi disponíveis:
-\n"</string>
-    <string name="MH_Delete">Adeus...</string>
-    <string name="MH_False_Pin">PIN falso!</string>
-    <string name="MH_Syntax">Sintaxe:</string>
     <string name="cmd_help_message_start">Comandos do FindMyDevice:</string>
-    <string name="MH_Help_where">" locate - envia a localização atual do dispositivo"</string>
-    <string name="MH_Help_ring">" ring - faz com que o dispositivo toque"</string>
-    <string name="MH_Help_Lock">" lock - bloqueia o dispositivo"</string>
-    <string name="JSON_RL_Error">Erro tentando obter localização do OpenCelliD. Tente o link seguinte. Os parâmetros que você quer são \"lon\" e \"lat\".</string>
     <string name="LockScreen_Usage_detectd">Mensagem da Tela de Bloqueio: Uso detectado.</string>
     <string name="LockScreen_Backbutton_pressed">Mensagem da Tela de Bloqueio: Botão de voltar pressionado.</string>
     <string name="loading">Carregando…</string>
     <string name="copied">Copiado</string>
-    <string name="MH_LAST_KNOWN_LOCATION">Última localização conhecida</string>
-    <string name="MH_LAST_KNOWN_LOCATION_NOT_AVAILABLE">A última localização não está disponível.</string>
-    <string name="Alert_First_time_fmdserver">Aqui você pode configurar o aplicativo para que se comunique com o Servidor FMD. Se você quer configurar um servidor diferente do padrão, você pode fazer isso mudando a URL. Se você pressionar em Registrar você pode registrar o aplicativo ao servidor. Depois, você pode ativar a funcionalidade de servidor. Se você fazer isto, o seu dispositivo irá enviar seus dados de localização ao servidor especificado. Você pode verificar a localização do seu dispositivo digitando o ID e a senha na página.</string>
-    <string name="MH_Help_Expert_GPS">" GPS (on/off) - ativa ou desativa o GPS."</string>
-    <string name="MH_NO_SECURE_SETTINGS">Desculpe, o aplicativo não tem esta permissão.</string>
-    <string name="MH_Help_expert">" expert - página de ajuda para comandos para especialistas."</string>
-    <string name="not_possible">Esta ação não foi possível.</string>
-    <string name="MH_Help_Expert_Sound">" Sound (on/off) - ativa ou desativa o som."</string>
-    <string name="MH_Help_Expert_Camera">" Camera (front/back) - tira uma foto e a envia para o Servidor FMD."</string>
-    <string name="MH_CAM_CAPTURE">"O dispositivo irá enviar uma foto ao Servidor FDM em breve. Você poderá visualizá-la aqui logo: "</string>
-    <string name="MH_FMDSERVER_NOT_REGISTERED">Este dispositivo não está registrado em um servidor.</string>
     <string name="help">Ajuda</string>
     <string name="Cell">Redes móveis</string>
     <string name="request_failed_title">Solicitação de Rede Falhou</string>
@@ -142,11 +110,8 @@
     <string name="Enable">Ativar</string>
     <string name="Delete">Excluir</string>
     <string name="cmd_locate_response_gps_will_follow">Coordenadas GPS serão enviadas em breve.</string>
-    <string name="MH_Help_delete">" delete - formata o dispositivo"</string>
     <string name="Toast_Duplicate_contact">Este contato já existe.</string>
     <string name="Crashed_Send_log">Enviar Registro</string>
-    <string name="MH_Help_Stats">" stats - envia informações do dispositivo"</string>
-    <string name="FMDConfig_Alert_Pin">PIN</string>
     <string name="MH_Pin_Accepted">PIN aceito!</string>
     <string name="cmd_locate_response_location_off">Desculpe, a localização está desativada.</string>
     <string name="ringer_stop_ringing">PARAR DE TOCAR</string>
@@ -215,12 +180,12 @@
     <string name="transport_notification_reply_title">Respostas de Notificação</string>
     <string name="transport_fmd_server_title">Servidor FMD</string>
     <string name="transport_fmd_server_description_auth">Alguém que sabe seu nome de usuário e senha pode iniciar uma sessão no Servidor FMD e controlar seu dispositivo.</string>
-    <string name="transport_fmd_server_description_note">Usar o Servidor FMD necessita que seu dispositivo tenha uma conexão à internet. Pode ser uma rede móvel (significando que seu SIM precisa estar desbloqueado) ou Wi-Fi.</string>
+    <string name="transport_fmd_server_description_note">Usar o Servidor FMD necessita uma conexão à internet. Pode ser uma rede móvel (significando que seu SIM precisa estar desbloqueado) ou Wi-Fi.</string>
     <string name="bottom_nav_commands">Comandos</string>
     <string name="bottom_nav_transports">Canais de Transporte</string>
     <string name="Settings_Import_Failed">Importação falhou</string>
     <string name="transport_fmd_server_description">O Servidor FMD fornece uma interface web para controlar seu dispositivo, ver sua localização, e ver as imagens que mandou. Você pode hospedar o Servidor FMD você mesmo, ou usar o servidor fornecido. Dados são armazenamentos com criptografia no servidor, protegidos por sua senha.</string>
-    <string name="cmd_lock_description_long">Bloqueie o dispositivo e opcionalmente mostre uma mensagem na tela de bloqueio. Depois disso, o desbloqueio biométrico é desativado e a senha do seu dispositivo é necessária para desbloquear o dispositivo.</string>
+    <string name="cmd_lock_description_long">Bloqueie o dispositivo e opcionalmente mostre uma mensagem na tela de bloqueio. Depois disso, o desbloqueio biométrico fica indisponível e a senha do seu dispositivo é necessária para desbloquear o dispositivo.</string>
     <string name="transport_sms_description">Envie comandos para o seu dispositivo via SMS. Ex: envie uma mensagem contendo \"fmp help\" para o seu dispositivo. O FMD responderá com um SMS.</string>
     <string name="transport_sms_description_auth">Somente números de telefone que estão na lista branca podem enviar comandos. Para enviar comandos de um número de telefone que não esta na lista branca, você deve incluir o PIN: \"fmd meuPIN help\". Para conveniência, para que você não precise digitar o PIN sempre, este novo número de telefone será adicionado à uma lista branca temporária pelos próximos 10 minutos.</string>
     <string name="setup_warnings_title">Avisos de Configuração</string>
@@ -228,4 +193,8 @@
     <string name="transport_notification_reply_description">Você pode permitir que o FMD leia suas notificações para a escuta de comandos. O FMD pode responder via a função de responder notificações do Android. Isto permite que você controle o FMD usando um aplicativo de mensagens de sua escolha, contanto que ele envie notificações que podem ser respondidas. Ex: você pode enviar uma mensagem pelo Signal como \"fmd meuPIN help\" para o seu dispositivo.</string>
     <string name="transport_notification_reply_description_auth">Controlar o FMD pelas Respostas de Notificação necessita que o PIN do FMD esteja definido. Cada mensagem deve conter o PIN correto.</string>
     <string name="missing_permissions_description">As seguintes permissões são necessitadas para o funcionamento do FMD.</string>
+    <string name="WhiteList_no_contact_picker">Nenhum aplicativo selecionador de contato encontrado!</string>
+    <string name="cmd_locate_response_opencellid_failed">Um erro ocorreu ao obter localização do OpenCelliD. Por favor tente o seguinte link. Os parâmetros importantes são \"lat\" e \"lon\".</string>
+    <string name="cmd_locate_last_known_location_not_available">A ultima localização não é conhecida. Solicite a localização mais recente para forçar uma atualização da localização.</string>
+    <string name="cmd_locate_last_known_location_text">Última localização</string>
 </resources>

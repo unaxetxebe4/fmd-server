@@ -1,29 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="MH_No_GPS">Désolé, la localisation est éteinte.</string>
     <string name="Crashed_Send_log">Envoyer les logs</string>
     <string name="ringer_stop_ringing">ARRETER DE SONNER</string>
     <string name="Alert_First_Time_contact_added">Félicitations. Vous avez ajouté votre premier contact. Vous pouvez maintenant communiquer avec FMD en envoyant un sms qui contient \"fmd\" à partir du numéro de téléphone autorisé. Quand tout marchera, l\'application répondra.</string>
     <string name="MH_Pin_Accepted">Code PIN accepté !</string>
     <string name="Settings_Enter_Pin">Entrez le code PIN</string>
     <string name="Settings_FMD_via_Pin_Description">Permet de communiquer avec FMD via un code PIN. Cela vous permet d\'envoyer des commandes à partir d\'un numéro de téléphone qui ne figure pas dans la liste des contacts autorisés.</string>
-    <string name="MH_Help_delete">" delete - réinitialiser votre téléphone"</string>
-    <string name="MH_Help_Stats">" stats - envoyer les informations du périphérique"</string>
-    <string name="MH_Help_Lock">" lock - verrouiller le téléphone"</string>
-    <string name="MH_Help_ring">" ring - faire sonner le téléphone"</string>
-    <string name="MH_Help_where">" locate - envoyer la localisation courante"</string>
     <string name="cmd_help_message_start">les commandes de FindMyDevice :</string>
-    <string name="MH_Syntax">Syntaxe :</string>
-    <string name="MH_False_Pin">Mauvais code PIN !</string>
-    <string name="MH_Delete">Au revoir …</string>
-    <string name="MH_Networks">"
-\nRéseaux Wi-Fi disponibles :
-\n"</string>
-    <string name="MH_Stats">Statistiques Réseau :
-\nAdresses IP :
-\n</string>
-    <string name="MH_Locked">verrouillé</string>
-    <string name="MH_rings">sonnerie</string>
     <string name="cmd_locate_response_gps_will_follow">Les coordonnées GPS seront envoyées bientôt.</string>
     <string name="Toast_Duplicate_contact">Ce contact existe déjà.</string>
     <string name="Delete">Effacer</string>
@@ -47,24 +30,16 @@
     <string name="Settings_Select_Ringtone">Sélectionnez une sonnerie</string>
     <string name="WhiteList_Select_Number">Sélectionnez l\'un des numéros de téléphones.</string>
     <string name="Settings_FMDServer_Update_Interval_Description">FMD envoi la localisation de l\'appareil toutes les X minutes.</string>
-    <string name="Info_Server_Registered">Enregistré :</string>
-    <string name="MH_LAST_KNOWN_LOCATION">Dernière localisation connue</string>
-    <string name="MH_LAST_KNOWN_LOCATION_NOT_AVAILABLE">La dernière localisation n\'est pas disponible.</string>
-    <string name="Alert_First_time_fmdserver">Ici, vous pouvez configurer l\'application pour communiquer avec fmdserver. Si vous souhaitez configurer un serveur différent de celui par défaut, vous pouvez le faire en modifiant l\'URL. Si vous appuyez sur enregistrer, vous pouvez enregistrer l\'application sur le serveur. Ensuite, vous pouvez activer la fonctionnalité de serveur. Si vous le faites, votre téléphone vous enverra des données de localisation au serveur spécifié. Vous pouvez vérifier l\'emplacement de votre téléphone en entrant l\'ID et le mot de passe sur la page.</string>
     <string name="accept">accepter</string>
     <string name="Settings_FMDServer_Location_Type_Description">La ou les sources à partir desquelles les données de localisation sont envoyées à intervalles réguliers en arrière-plan.
 \nSi aucune n\'est sélectionnée, aucune localisation n\'est envoyée régulièrement. (Vous pouvez toujours utiliser l\'interface web pour forcer un envoi. Cela nécessite les notifications push.)</string>
     <string name="Settings_Settings">Paramètres</string>
     <string name="Notification_Usage">Usage</string>
     <string name="Pin_Usage">Utilisation du PIN</string>
-    <string name="Info_Server_Enabled">Service :</string>
     <string name="loading">Chargement…</string>
     <string name="Edit">Modifier</string>
     <string name="GPS">GPS</string>
     <string name="Cell">Mobile</string>
-    <string name="Granted">Autorisé :</string>
-    <string name="Info_Notification_Access">Accès aux notifications</string>
-    <string name="Info_Server_Push">Notifications push :</string>
     <string name="Settings_Import">Importer les paramètres</string>
     <string name="Settings_Export">Exporter les paramètres</string>
     <string name="Settings_FMDServer_Logout_Button">Se déconnecter</string>
@@ -108,8 +83,6 @@
     <string name="Settings_FMDServer_Alert_DeleteData">Supprimer les données</string>
     <string name="Settings_FMDServer_Update_Interval_Title">interval de mise à jour</string>
     <string name="Log_Alert_LogData">Données de journalisation</string>
-    <string name="MH_Help_Expert_Camera">" Caméra (avant/arrière) - prend une photo et l\'envoie au serveur FMD."</string>
-    <string name="not_possible">Cette action n\'est pas possible.</string>
     <string name="Settings_FMDServer_LOW_BAT_Upload_Description">Envoi la localisation de l\'appareil lorsque le niveau de la batterie est faible. Cela nécessite l\'accès aux notifications.</string>
     <string name="help">Aide</string>
     <string name="Settings_WhiteList">Contacts autorisés</string>
@@ -122,30 +95,22 @@
     <string name="settings_exported">Paramètres exportés</string>
     <string name="about">A propos</string>
     <string name="Notification_Security">Sécurité</string>
-    <string name="FMDConfig_Alert_Pin">PIN</string>
-    <string name="MH_Help_Expert_GPS">" GPS (on/off) - active ou désactive le GPS."</string>
-    <string name="MH_Help_expert">" expert - page d\'aide pour les commandes expertes."</string>
-    <string name="MH_Help_Expert_Sound">" Son (on/off) - active ou désactive le son."</string>
-    <string name="MH_FMDSERVER_NOT_REGISTERED">Cette appareil n\'est pas enregistré sur un serveur.</string>
     <string name="request_failed_title">L\'accès au réseau a échoué</string>
     <string name="request_failed_exception">Exception</string>
     <string name="request_failed_status_code">Code d\'état</string>
     <string name="request_failed_response_body">Corps de la réponse</string>
     <string name="registration_token_hint">Les instances privées peuvent nécessiter un jeton secret. Laissez-le vide si l\'instance est publique.</string>
-    <string name="Info_FMD_Command">Commande FMD :</string>
     <string name="Settings_FMDConfig">Configuration de FMD</string>
     <string name="Settings_FMDServer_Push_Description_Missing">L\'envoi de commandes du serveur FMD vers votre téléphone nécessite une application UnifiedPush Distributor. Installez-en une, puis revenez ici. Elle sera détectée automatiquement.</string>
     <string name="Settings_FMDServer_Push_Description_Available">Enregistrement aux notifications push réussi.</string>
     <string name="OpenCellId_help">OpenCelliD peut être utilisé par FMD pour obtenir une localisation approximative basée sur l\'antenne-relais connectée au téléphone. Une connexion internet est nécessaire pour chaque requête de localisation. De plus, il est requis de créer un compte sur OpenCelliD et d\'obtenir son propre jeton d\'accès API.</string>
     <string name="app_description">FMD (Find My Device) vous permet de localiser à distance votre appareil. Vous pouvez communiquer avec FMD via SMS, des messageries instantanées, ou en utilisant le serveur FMD. Localisez votre appareil, faites-le sonner, verrouillez-le ou effacez son contenu - le tout à distance.</string>
     <string name="Permission_POST_NOTIFICATIONS">FMD vous enverra occasionnellement des notifications, par exemple pour vous avertir que quelqu\'un est en train de localiser votre appareil.</string>
-    <string name="MH_CAM_CAPTURE">"L\'appareil enverra bientôt une photo au serveur FMD. Vous pourrez bientôt la voir ici : "</string>
     <string name="server_unregister_failed_title">Échec de la désinscription</string>
     <string name="server_unregister_failed_body">La désinscription a échoué avec l\'erreur suivante : {ERROR}
 \n
 \nVous pouvez continuer quand même, mais votre compte pourrait ne pas avoir été supprimé du serveur. Si vous continuez, votre compte sera supprimé localement de cet appareil.</string>
     <string name="OpenCellId_test_opencellid">Test de connexion à OpenCelliD</string>
-    <string name="MH_NO_SECURE_SETTINGS">Désolé, l\'application n\'est pas autorisée à le faire.</string>
     <string name="Settings_FMDServer_Info">Avec le serveur FMD, vous pouvez envoyer des commandes via Internet, du serveur vers l\'application. Vous pouvez également visualiser la localisation de l\'appareil sur une carte ou consulter les photos prises par l\'appareil. Pour les instructions sur la manière de configurer votre propre serveur, veuillez consulter le site.</string>
     <string name="OpenCellId_privacy">Confidentialité : gardez à l\'esprit qu\'OpenCelliD enregistre votre antenne-relais actuelle et donc votre emplacement à chaque requête API.</string>
     <string name="Permission_IGNORE_BATTERY_OPTIMIZATION">Cette application est censée fonctionner en arrière-plan. Pour garantir son fonctionnement même lorsque votre téléphone est en veille, vous devez désactiver l\'optimisation de la batterie pour cette application.</string>

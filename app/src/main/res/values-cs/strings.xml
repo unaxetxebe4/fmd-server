@@ -23,32 +23,17 @@
 \nToto zařízení je uzamčeno!
 \nZpráva od majitele:</string>
     <string name="Delete">Odstranit</string>
-    <string name="MH_Locked">uzamceno</string>
-    <string name="MH_Syntax">Syntaxe:</string>
     <string name="ringer_stop_ringing">ZASTAVIT VYZVÁNĚNÍ</string>
     <string name="Crashed_Send_log">Odeslat protokol</string>
     <string name="cmd_locate_response_location_off">Omlouvame se, poloha je vypnuta.</string>
     <string name="cmd_locate_response_gps_will_follow">Souradnice GPS budou brzy odeslany.</string>
-    <string name="MH_Stats">Sitove statistiky:
-\nIP adresy:
-\n</string>
-    <string name="MH_False_Pin">Nespravny PIN!</string>
     <string name="cmd_help_message_start">Prikazy FindMyDevice:</string>
-    <string name="MH_Help_Stats">" stats - odesle informace o zarizeni"</string>
     <string name="cmd_locate_last_known_location_text">Posledni znama poloha</string>
     <string name="cmd_locate_last_known_location_not_available">Posledni poloha neni dostupna.</string>
-    <string name="MH_Help_Expert_GPS">" GPS (on/off) - zapne nebo vypne GPS."</string>
-    <string name="MH_Help_expert">" expert - stranka napovedy pro expertni prikazy."</string>
-    <string name="MH_Help_Expert_Sound">" Sound (on/off) - zapne nebo vypne zvuk."</string>
-    <string name="MH_Help_Expert_Camera">" Camera (font/back) - poridi obrazek a posle jej na server FMD."</string>
-    <string name="MH_CAM_CAPTURE">"Zarizeni brzy odesle obrazek na server FMD. Brzy si jej budete moci zobrazit zde: "</string>
-    <string name="MH_FMDSERVER_NOT_REGISTERED">Toto zarizeni neni zaregistrovano na serveru.</string>
     <string name="cmd_locate_response_opencellid_failed">Chyba při získávání polohy z OpenCelliD. Vyzkoušejte prosím následující odkaz. Požadované parametry jsou „lon“ a „lat“.</string>
     <string name="Toast_Empty_FMDCommand">Prázdný příkaz není povolen
 \n Vracím se na default.[fmd]</string>
-    <string name="FMDConfig_Alert_Pin">PIN</string>
     <string name="Log_Alert_LogData">LogData</string>
-    <string name="Alert_First_time_fmdserver">Zde můžete nakonfigurovat komunikaci aplikace se serverem FMD. Pokud chcete nakonfigurovat jiný než výchozí server, můžete tak učinit změnou adresy URL. Pokud stisknete tlačítko Registrace, můžete aplikaci zaregistrovat na serveru. Poté můžete funkci serveru povolit. Pokud tak učiníte, bude zařízení odesílat údaje o poloze na zadaný server. Polohu zařízení můžete zkontrolovat na stránce zadáním ID a hesla.</string>
     <string name="Toast_Duplicate_contact">Tento kontakt již existuje.</string>
     <string name="copied">Zkopírováno</string>
     <string name="accept">přijmout</string>
@@ -56,8 +41,6 @@
     <string name="GPS">GPS</string>
     <string name="request_failed_status_code">Stavový kód</string>
     <string name="request_failed_exception">Výjimka</string>
-    <string name="Info_Server_Enabled">Služba:</string>
-    <string name="Info_Server_Push">Push:</string>
     <string name="Settings_OpenCellId">OpenCelliD</string>
     <string name="Settings_FMD_via_Pin_Description">Umožňuje komunikovat s FMD pomocí kódu PIN. To vám umožní posílat příkazy z mobilního čísla, které se nenachází na seznamu povolených kontaktů.</string>
     <string name="Settings_Enter_Pin">Zadat PIN</string>
@@ -91,29 +74,14 @@
     <string name="Notification_FAIL">Chyby</string>
     <string name="Notification_Fail_Description">Oznámení, když něco selže, například spojení se serverem FMD</string>
     <string name="Enable">Povolit</string>
-    <string name="MH_rings">prozvani</string>
-    <string name="MH_Delete">Nashledanou...</string>
-    <string name="MH_Networks">"
-\nDostupne site Wi-Fi:
-\n"</string>
-    <string name="MH_Help_where">" locate - odesle aktualni polohu zarizeni"</string>
-    <string name="MH_Help_ring">" ring - necha zarizeni vyzvanet"</string>
-    <string name="MH_Help_Lock">" lock - uzamkne zarizeni"</string>
-    <string name="MH_Help_delete">" delete - resetuje zarizeni"</string>
     <string name="MH_Pin_Accepted">PIN prijat!</string>
     <string name="LockScreen_Usage_detectd">LockScreenMessage: detekováno použití.</string>
     <string name="LockScreen_Backbutton_pressed">LockScreenMessage: stisknuto tlačítko zpět.</string>
-    <string name="MH_NO_SECURE_SETTINGS">Omlouvame se, aplikace nema k teto akci opravneni.</string>
-    <string name="not_possible">Tato akce nebyla možná.</string>
     <string name="loading">Načítání…</string>
     <string name="help">Nápověda</string>
     <string name="Cell">Mobilní síť</string>
     <string name="request_failed_title">Síťová žádost selhala</string>
     <string name="request_failed_response_body">Tělo odpovědi</string>
-    <string name="Granted">Uděleno:</string>
-    <string name="Info_Notification_Access">Přístup k oznámením</string>
-    <string name="Info_FMD_Command">Příkaz FMD:</string>
-    <string name="Info_Server_Registered">Registrováno:</string>
     <string name="Settings_Settings">Nastavení</string>
     <string name="Settings_FMDConfig">Nastavení FMD</string>
     <string name="Settings_WhiteList">Povolené kontakty</string>
