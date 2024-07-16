@@ -110,7 +110,7 @@
     <!-- Varia -->
 
     <!-- Not yet sorted -->
-    <string name="Permission_IGNORE_BATTERY_OPTIMIZATION">Diese Anwendung soll im Hintergrund laufen. Um sicherzustellen, dass sie auch im Standby funktioniert, ist es nötig, Akku-Optimierung für diese App auszustellen.</string>
+    <string name="Permission_IGNORE_BATTERY_OPTIMIZATION">Diese Anwendung soll im Hintergrund laufen. Um sicherzustellen, dass sie auch im Standby funktioniert, muss die Akku-Optimierung für diese App ausgemacht werden.</string>
     <string name="Delete">Löschen</string>
     <string name="Enabled">Aktiviert</string>
     <string name="Disabled">Deaktiviert</string>
@@ -207,12 +207,12 @@
     <string name="MH_CAM_CAPTURE">"Das gerät wird in Kürze ein Bild zum FMDserver schicken. Dieses kann hier bald betrachtet werden: "</string>
     <string name="request_failed_title">Netzwerkanfrage fehlgeschlagen</string>
     <string name="request_failed_status_code">Statuscode</string>
-    <string name="Notification_Server_Description">Benachrichtigungen bezüglich FMD Server</string>
+    <string name="Notification_Server_Description">Benachrichtigungen bzgl. FMD Server</string>
     <string name="Settings_FMDServer_Server_Url">Server URL</string>
     <string name="cmd_camera_description_short">Bild aufnehmen</string>
     <string name="cmd_delete_description_short">Gerät auf Werkseinstellungen zurücksetzen</string>
     <string name="cmd_delete_description_long">Alle Daten werden gelöscht. Danach kannst Du nicht mehr mit dem Gerät kommunizieren. Um versehentliche und böswillige Nutzung zu verhindern, erfordert dieser Befehl ein Kennwort und er muss in den Einstellungen ausdrücklich aktiviert werden.</string>
-    <string name="cmd_delete_response_disabled">Löschen nicht möglich: Der delete-Befehl ist in den Einstellungen nicht aktiviert.</string>
+    <string name="cmd_delete_response_disabled">Löschen nicht möglich: Der delete-Befehl ist nicht in den Einstellungen aktiviert.</string>
     <string name="cmd_delete_response_pwd_missing">Löschen nicht möglich: Passwort fehlt. Syntax: %s.</string>
     <string name="cmd_delete_response_success">Das Gerät sollte nun gelöscht werden. Auf Wiedersehen!</string>
     <string name="cmd_gps_response_on">GPS ist eingeschaltet.</string>
@@ -232,7 +232,7 @@
     <string name="optional_permissions_title">Optionale Berechtigungen</string>
     <string name="grant">Zulassen</string>
     <string name="grant_write_secure_settings_title">Verwalten der Secure Settings zulassen</string>
-    <string name="grant_write_secure_settings_description">Diese Berechtigung kann nur mit Android\'s Kommandozeilenbefehl \"pm grant\" erteilt werden. Du kannst diesen Befehl manuell über die Android Debug Bridge (ADB) von einem Computer aus ausführen. Du kannst ihn auch direkt auf deinem Gerät mit Root oder Shizuku ausführen.</string>
+    <string name="grant_write_secure_settings_description">Diese Berechtigung kann nur mit Androids Kommandozeilenbefehl \"pm grant\" erteilt werden. Du kannst diesen Befehl manuell über die Android Debug Bridge (ADB) von einem Computer aus ausführen. Du kannst ihn auch direkt auf deinem Gerät mit Root oder Shizuku ausführen.</string>
     <string name="grant_via_adb">Via ADB erlauben</string>
     <string name="grant_via_root">Via Root erlauben</string>
     <string name="grant_via_shizuku">Via Shizuku erlauben</string>
@@ -245,11 +245,11 @@
     <string name="cmd_camera_response_no_fmd_server">Bild kann nicht aufgenommen werden: ein FMD Server-Konto fehlt.</string>
     <string name="cmd_camera_response_success">Das Gerät nimmt gerade das Bild auf und wird es zu FMD Server hochladen. Du kannst es gleich hier anschauen: %s</string>
     <string name="cmd_delete_response_pwd_wrong">Löschen nicht möglich: falsches Passwort.</string>
-    <string name="cmd_locate_description_short">Gerät lokalisieren</string>
+    <string name="cmd_locate_description_short">Gerät orte</string>
     <string name="cmd_gps_description_short">GPS ein- oder ausschalten</string>
     <string name="cmd_ring_response">Das Gerät sollte nun klingeln.</string>
     <string name="cmd_lock_response">Das Gerät sollte nun gesperrt sein.</string>
-    <string name="cmd_locate_description_long">Lokalisieren Sie das Gerät mithilfe eines oder mehrerer Standortanbieter. Der Betriebssystemanbieter ist meistens GPS, manchmal auch eine Kombination aus anderen Quellen. Ein zweiter Anbieter ist OpenCelliD, was eine Datenbank mit Mobilfunkmaststandorten verwendet.</string>
+    <string name="cmd_locate_description_long">Orte das Gerät mithilfe eines oder mehrerer Standortanbieter. Der Betriebssystemanbieter ist meistens GPS, manchmal auch eine Kombination aus anderen Quellen. Ein zweiter Anbieter ist OpenCelliD, was eine Datenbank mit Mobilfunkmaststandorten verwendet.</string>
     <string name="cmd_lock_description_short">Gerät sperren</string>
     <string name="cmd_nodisturb_description_short">\"Bitte Nicht Stören\"-Modus ein- oder ausschalten</string>
     <string name="cmd_stats_description_long">Rufe die Netzwerkstatistiken des Geräts ab. Zum Beispiel seine IP-Adresse und eine Liste der umliegenden WLAN-Netzwerke.</string>
