@@ -3,6 +3,7 @@ package de.nulide.findmydevice.commands
 import android.content.Context
 import android.util.Log
 import androidx.annotation.CallSuper
+import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import de.nulide.findmydevice.R
 import de.nulide.findmydevice.data.Settings
@@ -24,6 +25,9 @@ abstract class Command(val context: Context) {
 
     abstract val keyword: String
     abstract val usage: String
+
+    @get:DrawableRes
+    abstract val icon: Int
 
     @get:StringRes
     abstract val shortDescription: Int

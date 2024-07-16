@@ -2,6 +2,7 @@ package de.nulide.findmydevice.commands
 
 import android.app.NotificationManager
 import android.content.Context
+import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import de.nulide.findmydevice.R
 import de.nulide.findmydevice.permissions.DoNotDisturbAccessPermission
@@ -13,6 +14,9 @@ class NoDisturbCommand(context: Context) : Command(context) {
 
     override val keyword = "nodisturb"
     override val usage = "nodisturb [on | off]"
+
+    @get:DrawableRes
+    override val icon = R.drawable.ic_do_not_disturb
 
     @get:StringRes
     override val shortDescription = R.string.cmd_nodisturb_description_short

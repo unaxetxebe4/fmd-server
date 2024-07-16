@@ -2,6 +2,7 @@ package de.nulide.findmydevice.commands
 
 import android.content.Context
 import android.util.Log
+import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import de.nulide.findmydevice.R
 import de.nulide.findmydevice.data.Settings
@@ -25,6 +26,9 @@ class LocateCommand(context: Context) : Command(context) {
 
     override val keyword = "locate"
     override val usage = "locate [last | all | cell | gps]"
+
+    @get:DrawableRes
+    override val icon = R.drawable.ic_location
 
     @get:StringRes
     override val shortDescription = R.string.cmd_locate_description_short

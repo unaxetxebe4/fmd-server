@@ -1,6 +1,7 @@
 package de.nulide.findmydevice.commands
 
 import android.content.Context
+import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import de.nulide.findmydevice.R
 import de.nulide.findmydevice.permissions.DoNotDisturbAccessPermission
@@ -14,6 +15,9 @@ class RingCommand(context: Context) : Command(context) {
 
     override val keyword = "ring"
     override val usage = "ring [long]"
+
+    @get:DrawableRes
+    override val icon = R.drawable.ic_volume_up
 
     @get:StringRes
     override val shortDescription = R.string.cmd_ring_description_short

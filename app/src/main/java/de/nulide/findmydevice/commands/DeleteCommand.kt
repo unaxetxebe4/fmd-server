@@ -3,6 +3,7 @@ package de.nulide.findmydevice.commands
 import android.app.admin.DevicePolicyManager
 import android.content.Context
 import android.util.Log
+import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import de.nulide.findmydevice.R
 import de.nulide.findmydevice.data.Settings
@@ -19,6 +20,9 @@ class DeleteCommand(context: Context) : Command(context) {
 
     override val keyword = "delete"
     override val usage = "delete <pin>"
+
+    @get:DrawableRes
+    override val icon = R.drawable.ic_delete_outline
 
     @get:StringRes
     override val shortDescription = R.string.cmd_delete_description_short

@@ -10,6 +10,9 @@ abstract class Permission {
     @get:StringRes
     abstract val name: Int
 
+    @get:StringRes
+    open val description: Int? = null
+
     abstract fun isGranted(context: Context): Boolean
 
     abstract fun request(activity: Activity)

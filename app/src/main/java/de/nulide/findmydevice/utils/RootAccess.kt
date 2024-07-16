@@ -42,7 +42,7 @@ class RootAccess {
 
 
             } catch (e: Exception) {
-                Toast.makeText(context, context.getString(R.string.RootAccessDenied), Toast.LENGTH_LONG).show()
+                Toast.makeText(context, context.getString(R.string.perm_root_denied), Toast.LENGTH_LONG).show()
                 e.printStackTrace()
             } finally {
                 proc?.destroy()

@@ -30,8 +30,6 @@ import de.nulide.findmydevice.utils.CypherUtils;
 
 public class Settings extends HashMap<Integer, Object> {
 
-    public static final int newestIntroductionVersion = 5;
-
     public static final int settingsVersion = 2;
 
     public static final int SET_WIPE_ENABLED = 0;
@@ -40,7 +38,7 @@ public class Settings extends HashMap<Integer, Object> {
     public static final int SET_PIN = 3;
     public static final int SET_FMD_COMMAND = 4;
     public static final int SET_OPENCELLID_API_KEY = 5;
-    public static final int SET_INTRODUCTION_VERSION = 6;
+    //public static final int SET_INTRODUCTION_VERSION = 6;
     public static final int SET_RINGER_TONE = 7;
     public static final int SET_SET_VERSION = 8;
 
@@ -83,6 +81,10 @@ public class Settings extends HashMap<Integer, Object> {
         IO.write(JSONFactory.convertSettings(this), IO.settingsFileName);
     }
 
+    public void saveToFile() {
+        IO.write(JSONFactory.convertSettings(this), IO.settingsFileName);
+    }
+
     public Object get(int key) {
         if (super.containsKey(key)) {
             return super.get(key);
@@ -102,7 +104,7 @@ public class Settings extends HashMap<Integer, Object> {
                     return "fmd";
                 case SET_FMDSERVER_UPDATE_TIME:
                     return 60;
-                case SET_INTRODUCTION_VERSION:
+                //case SET_INTRODUCTION_VERSION:
                 case SET_FMDSMS_COUNTER:
                 case SET_FMDSERVER_LOCATION_TYPE:
                 case SET_SET_VERSION:
@@ -132,14 +134,6 @@ public class Settings extends HashMap<Integer, Object> {
         return ((String) get(key)).equals("");
     }
 
-    public boolean isIntroductionPassed() {
-        return newestIntroductionVersion == (Integer) get(SET_INTRODUCTION_VERSION);
-    }
-
-    public void setIntroductionPassed() {
-        set(SET_INTRODUCTION_VERSION, newestIntroductionVersion);
-    }
-
     public FmdKeyPair getKeys() {
         if (get(SET_FMD_CRYPT_PUBKEY).equals("")) {
             return null;
@@ -164,7 +158,7 @@ public class Settings extends HashMap<Integer, Object> {
     }
 
     public void updateSettings() {
-        if (((Integer) get(SET_SET_VERSION)) < settingsVersion && ((Integer) get(SET_INTRODUCTION_VERSION)) > 0) {
+        if (((Integer) get(SET_SET_VERSION)) < settingsVersion) {
             if (!((String) get(SET_FMDSERVER_ID)).isEmpty()) {
                 FmdKeyPair keys = OldKeyIO.readKeys();
                 String HashedPW = OldKeyIO.readHashedPW();

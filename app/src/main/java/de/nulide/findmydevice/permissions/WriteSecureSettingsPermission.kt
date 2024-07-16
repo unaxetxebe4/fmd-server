@@ -14,6 +14,9 @@ import de.nulide.findmydevice.R
 import de.nulide.findmydevice.utils.Logger
 import de.nulide.findmydevice.utils.RootAccess.Companion.execCommand
 import de.nulide.findmydevice.utils.RootAccess.Companion.isRooted
+import de.nulide.findmydevice.utils.ShizukuUtil.Companion.isShizukuPermissionGranted
+import de.nulide.findmydevice.utils.ShizukuUtil.Companion.isShizukuRunning
+import de.nulide.findmydevice.utils.ShizukuUtil.Companion.requestShizukuPermission
 import rikka.shizuku.Shizuku
 
 
@@ -29,13 +32,16 @@ class WriteSecureSettingsPermission : Permission() {
     }
 
     override fun request(activity: Activity) {
-        MaterialAlertDialogBuilder(activity)
-            .setTitle(R.string.grant_write_secure_settings_title)
-            .setMessage(R.string.grant_write_secure_settings_description)
-            .setNegativeButton(R.string.grant_via_root) { _, _ -> requestViaRoot(activity) }
-            .setNeutralButton(R.string.grant_via_shizuku) { _, _ -> requestViaShizuku(activity) }
-            .setPositiveButton(R.string.grant_via_adb) { _, _ -> requestManually(activity) }
-            .show()
+        MaterialAlertDialogBuilder(activity).apply {
+            setTitle(R.string.grant_write_secure_settings_title)
+            setMessage(R.string.grant_write_secure_settings_description)
+
+            setNegativeButton(R.string.grant_via_root) { _, _ -> requestViaRoot(activity) }
+            if (isShizukuRunning()) {
+                setNeutralButton(R.string.grant_via_shizuku) { _, _ -> requestViaShizuku(activity) }
+            }
+            setPositiveButton(R.string.grant_via_adb) { _, _ -> requestManually(activity) }
+        }.show()
     }
 
     private fun requestManually(activity: Activity) {
@@ -47,6 +53,11 @@ class WriteSecureSettingsPermission : Permission() {
     }
 
     private fun requestViaShizuku(context: Context) {
+        if (!isShizukuPermissionGranted()) {
+            requestShizukuPermission()
+            return
+        }
+
         val command = "pm grant ${context.packageName} ${Manifest.permission.WRITE_SECURE_SETTINGS}"
         val proc = Shizuku.newProcess(arrayOf("sh", "-c", command), null, "/")
         try {
@@ -68,7 +79,7 @@ class WriteSecureSettingsPermission : Permission() {
                 "pm grant ${context.packageName} ${Manifest.permission.WRITE_SECURE_SETTINGS}"
             execCommand(context, command)
         } else {
-            Toast.makeText(context, context.getString(R.string.RootAccessDenied), Toast.LENGTH_LONG)
+            Toast.makeText(context, context.getString(R.string.perm_root_denied), Toast.LENGTH_LONG)
                 .show()
         }
     }

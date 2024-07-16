@@ -14,7 +14,7 @@ import de.nulide.findmydevice.services.ThirdPartyAccessService
 
 class NotificationAccessPermission : Permission() {
     @get:StringRes
-    override val name = R.string.perm_do_not_disturb_access_name
+    override val name = R.string.perm_notification_access_name
 
     override fun isGranted(context: Context): Boolean {
         val cn = ComponentName(context, ThirdPartyAccessService::class.java)

@@ -4,21 +4,44 @@ import android.app.PendingIntent.CanceledException
 import android.content.Context
 import android.service.notification.StatusBarNotification
 import android.util.Log
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import com.robj.notificationhelperlibrary.utils.NotificationUtils
+import de.nulide.findmydevice.R
 import de.nulide.findmydevice.permissions.NotificationAccessPermission
 
 
 class NotificationReplyTransport(
-    private val destination: StatusBarNotification
-) : Transport<StatusBarNotification>(destination) {
+    // should only be null for the availableTransports list
+    private val destination: StatusBarNotification?
+) : Transport<StatusBarNotification?>(destination) {
+
     companion object {
         private val TAG = this::class.simpleName
     }
+
+    @get:DrawableRes
+    override val icon = R.drawable.ic_notifications
+
+    @get:StringRes
+    override val title = R.string.transport_notification_reply_title
+
+    @get:StringRes
+    override val description = R.string.transport_notification_reply_description
+
+    @get:StringRes
+    override val descriptionAuth = R.string.transport_notification_reply_description_auth
+
+    override val descriptionNote = null
 
     override val requiredPermissions = listOf(NotificationAccessPermission())
 
     override fun send(context: Context, msg: String) {
         super.send(context, msg)
+        if (destination == null) {
+            Log.w(TAG, "Cannot reply, destination is null!")
+            return
+        }
 
         val action = NotificationUtils.getQuickReplyAction(
             destination.notification, context.packageName

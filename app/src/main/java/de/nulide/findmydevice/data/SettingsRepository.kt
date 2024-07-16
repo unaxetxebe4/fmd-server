@@ -23,10 +23,22 @@ class SettingsRepository private constructor(spec: SettingsRepoSpec) {
         val TAG = SettingsRepository::class.simpleName
     }
 
-    val settings: Settings
+    var settings: Settings
+        private set
 
     init {
         IO.context = spec.context
+        settings = JSONFactory.convertJSONSettings(
+            IO.read(JSONMap::class.java, IO.settingsFileName)
+        )
+    }
+
+    /**
+     * Reload the settings.
+     * Call this when you know the underlying file has changed,
+     * e.g., after importing the settings.
+     */
+    fun forceReload() {
         settings = JSONFactory.convertJSONSettings(
             IO.read(JSONMap::class.java, IO.settingsFileName)
         )

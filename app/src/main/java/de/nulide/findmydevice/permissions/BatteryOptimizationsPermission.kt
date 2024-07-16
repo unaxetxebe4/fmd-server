@@ -15,6 +15,9 @@ class BatteryOptimizationsPermission() : Permission() {
     @get:StringRes
     override val name = R.string.perm_battery_optimizations_name
 
+    @get:StringRes
+    override val description = R.string.Permission_IGNORE_BATTERY_OPTIMIZATION
+
     override fun isGranted(context: Context): Boolean {
         val pm = context.getSystemService(Context.POWER_SERVICE) as PowerManager
         return pm.isIgnoringBatteryOptimizations(context.packageName)
