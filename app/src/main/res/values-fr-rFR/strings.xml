@@ -8,9 +8,9 @@
 \n - Nulide</string>
     <string name="Introduction_UpdatePermission">De nouvelles permissions sont nécessaires.
 \nVeuillez vérifier les permissions suivantes afin de pouvoir continuer à utiliser cet application, ou changez pour une version antérieur.</string>
-    <string name="MH_No_GPS">Désolé, la localisation est éteinte.</string>
+    <string name="cmd_locate_response_location_off">Désolé, la localisation est éteinte.</string>
     <string name="Crashed_Send_log">Envoyer les logs</string>
-    <string name="R_Stop_ring">ARRETER DE SONNER</string>
+    <string name="ringer_stop_ringing">ARRETER DE SONNER</string>
     <string name="Alert_First_Time_contact_added">Félicitations. Vous avez ajouté votre premier contact. Vous pouvez maintenant communiquer avec FMD en envoyant un sms qui contient \"fmd\" à partir du numéro de téléphone autorisé. Quand tout marchera, l\'application répondra.</string>
     <string name="MH_Pin_Accepted">Code PIN accepté !</string>
     <string name="Settings_Enter_Pin">Entrez le code PIN</string>
@@ -20,7 +20,7 @@
     <string name="MH_Help_Lock">" lock - verrouiller le téléphone"</string>
     <string name="MH_Help_ring">" ring - faire sonner le téléphone"</string>
     <string name="MH_Help_where">" locate - envoyer la localisation courante"</string>
-    <string name="MH_Title_Help">les commandes de FindMyDevice :</string>
+    <string name="cmd_help_message_start">les commandes de FindMyDevice :</string>
     <string name="MH_Syntax">Syntaxe :</string>
     <string name="MH_False_Pin">Mauvais code PIN !</string>
     <string name="MH_Delete">Au revoir …</string>
@@ -32,7 +32,7 @@
 \n</string>
     <string name="MH_Locked">verrouillé</string>
     <string name="MH_rings">sonnerie</string>
-    <string name="MH_GPS_WILL_FOLLOW">Les coordonnées GPS seront envoyées bientôt.</string>
+    <string name="cmd_locate_response_gps_will_follow">Les coordonnées GPS seront envoyées bientôt.</string>
     <string name="Toast_Duplicate_contact">Ce contact existe déjà.</string>
     <string name="Delete">Effacer</string>
     <string name="Settings_About">A propos de</string>
@@ -67,7 +67,7 @@
 \nCette permission est requise.</string>
     <string name="Notification_Usage_Description">Notifications lorsque FMD reçoit des commandes</string>
     <string name="Notification_Pin_Usage_Description">Notifications lorsque FMD est utilisé avec le code PIN</string>
-    <string name="JSON_RL_Error">Erreur lors de l\'obtention de l\'emplacement depuis OpenCelliD. Veuillez essayer le lien suivant. Les paramètres que vous voulez sont lon et lat.</string>
+    <string name="cmd_locate_response_opencellid_failed">Erreur lors de l\'obtention de l\'emplacement depuis OpenCelliD. Veuillez essayer le lien suivant. Les paramètres que vous voulez sont lon et lat.</string>
     <string name="LockScreen_Usage_detectd">LockScreenMessage : Usage detecté.</string>
     <string name="LockScreen_Backbutton_pressed">LockScreenMessage : Bouton retour pressé.</string>
     <string name="Settings_Ringer_Tone_Description">Sélectionnez une sonnerie qui sera jouée lors de l\'envoi de la commande fmd ring.</string>
@@ -78,8 +78,8 @@
     <string name="Info_Server_Registered">Enregistré :</string>
     <string name="registered">enregistré</string>
     <string name="not_registered">Non enregistré</string>
-    <string name="MH_LAST_KNOWN_LOCATION">Dernière localisation connue</string>
-    <string name="MH_LAST_KNOWN_LOCATION_NOT_AVAILABLE">La dernière localisation n\'est pas disponible.</string>
+    <string name="cmd_locate_last_known_location_text">Dernière localisation connue</string>
+    <string name="cmd_locate_last_known_location_not_available">La dernière localisation n\'est pas disponible.</string>
     <string name="Alert_First_time_fmdserver">Ici, vous pouvez configurer l\'application pour communiquer avec fmdserver. Si vous souhaitez configurer un serveur différent de celui par défaut, vous pouvez le faire en modifiant l\'URL. Si vous appuyez sur enregistrer, vous pouvez enregistrer l\'application sur le serveur. Ensuite, vous pouvez activer la fonctionnalité de serveur. Si vous le faites, votre téléphone vous enverra des données de localisation au serveur spécifié. Vous pouvez vérifier l\'emplacement de votre téléphone en entrant l\'ID et le mot de passe sur la page.</string>
     <string name="accept">accepter</string>
     <string name="Settings_FMDServer_Location_Type_Description">La ou les sources à partir desquelles les données de localisation sont envoyées à intervalles réguliers en arrière-plan.

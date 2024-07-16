@@ -35,7 +35,7 @@ class HelpCommand(
         super.execute(args, transport, job)
 
         val reply = StringBuilder()
-        reply.appendLine(context.getString(R.string.MH_Title_Help))
+        reply.appendLine(context.getString(R.string.cmd_help_message_start))
         reply.appendLine()
         for (cmd in availableCommands) {
             reply.appendLine("${cmd.keyword} - ${context.getString(cmd.shortDescription)}")

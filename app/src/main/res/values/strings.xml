@@ -11,6 +11,8 @@
     <string name="accept">accept</string>
     <string name="cancel" translatable="false">@android:string/cancel</string>
     <string name="Edit">Edit</string>
+    <string name="Enable">Enable</string>
+    <string name="Delete">Delete</string>
     <string name="GPS">GPS</string>
     <string name="Cell">Cell</string>
 
@@ -21,20 +23,6 @@
     <string name="request_failed_exception">Exception</string>
 
     <!-- MainActivity -->
-    <string name="Granted">Granted: </string>
-    <string name="Info_CORE" translatable="false">CORE</string>
-    <string name="Info_GPS" translatable="false">GPS</string>
-    <string name="Info_DND" translatable="false">DND</string>
-    <string name="Info_DEVICE_ADMIN" translatable="false">DeviceAdmin</string>
-    <string name="Info_Overlay" translatable="false">Overlay</string>
-    <string name="Info_SecureSettings" translatable="false">SecureSettings</string>
-    <string name="Info_Notification_Access">Notification Access</string>
-    <string name="Info_Camera" translatable="false">Camera</string>
-    <string name="Info_FMD_Command">FMD-Command:</string>
-    <string name="Info_Server_Enabled">Service:</string>
-    <string name="Info_Server_Registered">Registered:</string>
-    <string name="Info_Server_Push">Push:</string>
-
     <string name="bottom_nav_commands">Commands</string>
     <string name="bottom_nav_transports">Transport Channels</string>
     <string name="bottom_nav_settings">Settings</string>
@@ -60,6 +48,7 @@
     <string name="pin">PIN</string>
     <string name="pin_repeat">Repeat PIN</string>
     <string name="Settings_FMDCommand_Description">The command used to communicate with the FMD.</string>
+    <string name="Toast_Empty_FMDCommand">Empty Command not allowed\n Returning to default.[fmd]</string>
     <string name="Settings_Ringer_Tone_Description">Select a ringtone that will be played when "fmd ring" is sent.</string>
     <string name="Settings_Select_Ringtone">Select Ringtone</string>
     <string name="Settings_Lockscreenmessage_Description">Lock Screen Message:\nWhen locking the device, this message will appear on the lock screen.</string>
@@ -109,6 +98,8 @@
     <string name="WhiteList_Add_Contact">Add Contact</string>
     <string name="WhiteList_Select_Number">Select one of the phone numbers.</string>
     <string name="Alert_First_Time_contact_added">Congratulations. You have added your first contact. You can now communicate with FMD by sending a SMS message that contains \"fmd\" from the allowed phone number. When everything works, the application will respond.</string>
+    <string name="Toast_Duplicate_contact">This contact already exists.</string>
+    <string name="WhiteList_no_contact_picker">No contact picker application found!</string>
 
     <!-- Settings: OpenCelliD -->
     <string name="OpenCellId_OpenCellId" translatable="false">OpenCelliD</string>
@@ -123,6 +114,7 @@
     <string name="settings_exported">Settings exported</string>
 
     <!-- Settings: Logs -->
+    <string name="Log_Alert_LogData">LogData</string>
 
     <!-- Settings: About -->
     <string name="about">About</string>
@@ -159,9 +151,15 @@
     <string name="cmd_gps_response_off">GPS turned off.</string>
 
     <string name="cmd_help_description_short">Show the help</string>
+    <string name="cmd_help_message_start">FindMyDevice Commands:</string>
 
     <string name="cmd_locate_description_short">Locate the device</string>
     <string name="cmd_locate_description_long">Locate the device using one or more location providers. The operating system provider is usually GPS, sometimes with a combination of other sources. A second provider is OpenCelliD, which uses a database of cell tower locations.</string>
+    <string name="cmd_locate_response_location_off">Cannot locate: location is turned off.</string>
+    <string name="cmd_locate_response_gps_will_follow">GPS coordinates will be sent soon.</string>
+    <string name="cmd_locate_response_opencellid_failed">Error gaining location from OpenCelliD. Please try the following the link. The parameters you want are \"lon\" and \"lat\".</string>
+    <string name="cmd_locate_last_known_location_text">Last known location</string>
+    <string name="cmd_locate_last_known_location_not_available">Last location is not available.</string>
 
     <string name="cmd_lock_description_short">Lock the device</string>
     <string name="cmd_lock_description_long">Lock the device and optionally show a message on the lockscreen. After this, biometric unlock is disabled and your device password is required to unlock the device.</string>
@@ -245,47 +243,18 @@
     <string name="missing_permissions_title">Missing Permissions</string>
     <string name="missing_permissions_description">The following permissions are needed for FMD to run.</string>
 
-    <!-- Varia -->
-
-    <!-- Not yet sorted -->
+    <!-- Lock screen message-->
     <string name="Locked_Lock_Screen">FindMyDevice\nThis phone is locked!\nMessage from the owner:</string>
-    <string name="Enable">Enable</string>
-    <string name="Delete">Delete</string>
-    <string name="Toast_Duplicate_contact">This contact already exists.</string>
-    <string name="MH_GPS_WILL_FOLLOW">GPS coordinates will be sent soon.</string>
-    <string name="MH_rings">rings</string>
-    <string name="MH_Locked">locked</string>
-    <string name="MH_Stats">Network-Stats:\nIP\'s: \n</string>
-    <string name="MH_Networks">\nAvailable Wifi-Networks:\n</string>
-    <string name="MH_Delete">Goodbye...</string>
-    <string name="MH_False_Pin">False Pin!</string>
-    <string name="MH_Syntax">Syntax:</string>
-    <string name="MH_Title_Help">FindMyDevice Commands:</string>
-    <string name="MH_Help_where">" locate - sends the current location of the phone"</string>
-    <string name="MH_Help_ring">" ring - lets the phone ring"</string>
-    <string name="MH_Help_Lock">" lock - locks the phone"</string>
-    <string name="MH_Help_Stats">" stats - sends device information"</string>
-    <string name="MH_Help_delete">" delete - resets the phone"</string>
-    <string name="MH_Pin_Accepted">Pin accepted!</string>
-    <string name="R_Stop_ring">STOP RINGING</string>
-    <string name="Crashed_Send_log">Send Log</string>
-    <string name="MH_No_GPS">Sorry, location is turned off.</string>
-    <string name="JSON_RL_Error">Error gaining location from OpenCelliD. Please try the following the link. The parameters you want are \"lon\" and \"lat\".</string>
     <string name="LockScreen_Usage_detectd">LockScreenMessage: Usage detected.</string>
     <string name="LockScreen_Backbutton_pressed">LockScreenMessage: Back-Button pressed.</string>
-    <string name="Toast_Empty_FMDCommand">Empty Command not allowed\n Returning to default.[fmd]</string>
-    <string name="FMDConfig_Alert_Pin">PIN</string>
-    <string name="Log_Alert_LogData">LogData</string>
-    <string name="MH_LAST_KNOWN_LOCATION">Last known location</string>
-    <string name="MH_LAST_KNOWN_LOCATION_NOT_AVAILABLE">Last location is not available.</string>
-    <string name="Alert_First_time_fmdserver">Here you can configure the application to communicate with FMDserver. If you want to configure a different server than default, you can do so by changing the URL. If you press "register" you can register the application to the server. Afterwards you can enable the server functionality. If you do so, your phone will send you location data to the specified server. You can check your phone\'s location by entering the ID and the password on the page.</string>
-    <string name="MH_Help_Expert_GPS">" GPS (on/off) - turns the GPS on or off."</string>
-    <string name="MH_NO_SECURE_SETTINGS">Sorry the application is not allowed to do so.</string>
-    <string name="MH_Help_expert">" expert - help page for expert commands."</string>
-    <string name="MH_Help_Expert_Sound">" Sound (on/off) - turns the sound on or off."</string>
-    <string name="not_possible">This action was not possible.</string>
-    <string name="MH_Help_Expert_Camera">" Camera (front/back) - takes a picture and sends it to FMDserver."</string>
-    <string name="MH_CAM_CAPTURE">"The device will soon send a picture to fmdserver. You can view it here soon: "</string>
-    <string name="MH_FMDSERVER_NOT_REGISTERED">This device isn\'t registered on a server.</string>
+
+    <!-- RingerActivity -->
+    <string name="ringer_stop_ringing">STOP RINGING</string>
+
+    <!-- CrashedActivity -->
+    <string name="Crashed_Send_log">Send Log</string>
+
+    <!-- Varia -->
+    <string name="MH_Pin_Accepted">Pin accepted!</string>
 
 </resources>

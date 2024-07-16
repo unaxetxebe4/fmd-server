@@ -41,7 +41,7 @@
     <string name="Disabled">Desactivado</string>
     <string name="Delete">Eliminar</string>
     <string name="Toast_Duplicate_contact">Este contacto ya existe.</string>
-    <string name="MH_GPS_WILL_FOLLOW">Las coordenadas GPS se enviarán pronto.</string>
+    <string name="cmd_locate_response_gps_will_follow">Las coordenadas GPS se enviarán pronto.</string>
     <string name="MH_rings">timbra</string>
     <string name="MH_Locked">bloqueado</string>
     <string name="MH_Stats">Estadísticas de Red:
@@ -53,7 +53,7 @@
     <string name="MH_Delete">Adiós...</string>
     <string name="MH_False_Pin">¡Pin Falso!</string>
     <string name="MH_Syntax">Sintaxis:</string>
-    <string name="MH_Title_Help">Comandos de FindMyDevice:</string>
+    <string name="cmd_help_message_start">Comandos de FindMyDevice:</string>
     <string name="MH_Help_where">" locate - envía la ubicación actual del teléfono"</string>
     <string name="MH_Help_ring">" ring - deja que suene el teléfono"</string>
     <string name="MH_Help_Lock">" lock - bloquea el teléfono"</string>
@@ -63,9 +63,9 @@
     <string name="Settings_Enter_Pin">Introducir el PIN</string>
     <string name="MH_Pin_Accepted">¡Pin aceptado!</string>
     <string name="Alert_First_Time_contact_added">Felicidades. Ha añadido su primer contacto. Ahora puede comunicarse con FMD enviando un mensaje SMS que contenga \"fmd\" desde el número de teléfono autorizado. Cuando todo funcione, la aplicación responderá.</string>
-    <string name="R_Stop_ring">DEJAR DE TIMBRAR</string>
+    <string name="ringer_stop_ringing">DEJAR DE TIMBRAR</string>
     <string name="Crashed_Send_log">Enviar Registro</string>
-    <string name="MH_No_GPS">Lo sentimos, la ubicación está desactivada.</string>
+    <string name="cmd_locate_response_location_off">Lo sentimos, la ubicación está desactivada.</string>
     <string name="Settings_FMDConfig">Configuración FMD</string>
     <string name="Settings_WhiteList">Lista Blanca</string>
     <string name="Settings_OpenCellId">OpenCelliD</string>
@@ -78,7 +78,7 @@
     <string name="Pin_Usage">Uso del PIN</string>
     <string name="Notification_Usage_Description">Notificaciones cuando FMD está recibiendo comandos</string>
     <string name="Notification_Pin_Usage_Description">Las notificaciones cuando se accede a FMD se realizan a través del PIN</string>
-    <string name="JSON_RL_Error">Error al obtener la ubicación desde OpenCelliD. Por favor, intenta ir al siguiente enlace. Los parámetros que quiere son \"lon\" y \"lat\".</string>
+    <string name="cmd_locate_response_opencellid_failed">Error al obtener la ubicación desde OpenCelliD. Por favor, intenta ir al siguiente enlace. Los parámetros que quiere son \"lon\" y \"lat\".</string>
     <string name="LockScreen_Usage_detectd">LockScreenMessage: Uso detectado.</string>
     <string name="LockScreen_Backbutton_pressed">Mensaje de la Pantalla de Bloqueo: Botón de Retroceso pulsado.</string>
     <string name="Toast_Empty_FMDCommand">Comando Vacío no permitido
@@ -96,8 +96,8 @@
     <string name="Info_Server_Registered">Registrado:</string>
     <string name="registered">registrado</string>
     <string name="not_registered">no registrado</string>
-    <string name="MH_LAST_KNOWN_LOCATION">Última ubicación conocida</string>
-    <string name="MH_LAST_KNOWN_LOCATION_NOT_AVAILABLE">La última ubicación no está disponible.</string>
+    <string name="cmd_locate_last_known_location_text">Última ubicación conocida</string>
+    <string name="cmd_locate_last_known_location_not_available">La última ubicación no está disponible.</string>
     <string name="Alert_First_time_fmdserver">Aquí puede configurar la aplicación para comunicarse con FMDserver. Si quiere configurar un servidor diferente al predeterminado, puede hacerlo cambiando la URL. Si pulsa registro puede registrar la aplicación en el servidor. Después puede activar la funcionalidad del servidor. Si lo haces, su teléfono enviará los datos de ubicación al servidor especificado. Puede comprobar la ubicación de su teléfono introduciendo el ID y la contraseña en la página.</string>
     <string name="Settings_FMDServer_Alert_PrivacyPolicy_Title">Política de Privacidad</string>
     <string name="accept">aceptar</string>

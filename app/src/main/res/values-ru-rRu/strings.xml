@@ -42,7 +42,7 @@
     <string name="Disabled">Отключено</string>
     <string name="Delete">Удалить</string>
     <string name="Toast_Duplicate_contact">Этот контакт уже существует.</string>
-    <string name="MH_GPS_WILL_FOLLOW">GPS координаты скоро будут отправлены.</string>
+    <string name="cmd_locate_response_gps_will_follow">GPS координаты скоро будут отправлены.</string>
     <string name="MH_rings">звонки</string>
     <string name="MH_Locked">заблокировано</string>
     <string name="MH_Stats">Информация о сети:
@@ -56,7 +56,7 @@
     <string name="MH_Delete">Прощайте...</string>
     <string name="MH_False_Pin">Неверный PIN-код!</string>
     <string name="MH_Syntax">Синтаксис:</string>
-    <string name="MH_Title_Help">Команды Find My Device:</string>
+    <string name="cmd_help_message_start">Команды Find My Device:</string>
     <string name="MH_Help_where">" locate - отправляет текущее местоположение устройства"</string>
     <string name="MH_Help_ring">" ring - заставляет устройство воспроизводить рингтон"</string>
     <string name="MH_Help_Lock">" lock - блокирует устройство"</string>
@@ -66,9 +66,9 @@
     <string name="Settings_Enter_Pin">Введите PIN-код</string>
     <string name="MH_Pin_Accepted">PIN-код принят!</string>
     <string name="Alert_First_Time_contact_added">Поздравляем! Вы добавили ваш первый контакт. Теперь вы можете взаимодействовать с FMD через отправку SMS сообщений с разрешённых мобильных номеров, содержащих в себе нужные команды, например \"fmd lock\". Если всё будет работать, то приложение должно прислать вам ответ.</string>
-    <string name="R_Stop_ring">ОСТАНОВИТЬ РИНГТОН</string>
+    <string name="ringer_stop_ringing">ОСТАНОВИТЬ РИНГТОН</string>
     <string name="Crashed_Send_log">Отправить лог</string>
-    <string name="MH_No_GPS">Извините, определение местоположения отключено.</string>
+    <string name="cmd_locate_response_location_off">Извините, определение местоположения отключено.</string>
     <string name="Settings_FMDConfig">Конфигурация FMD</string>
     <string name="Settings_WhiteList">Разрешённые контакты</string>
     <string name="Settings_OpenCellId">OpenCelliD</string>
@@ -81,7 +81,7 @@
     <string name="Pin_Usage">Использование PIN-кода</string>
     <string name="Notification_Usage_Description">Уведомление об использовании сервиса.</string>
     <string name="Notification_Pin_Usage_Description">Уведомление об использовании PIN-кода.</string>
-    <string name="JSON_RL_Error">Ошибка получения местоположения от OpenCelliD. Пожалуйста, попробуйте данную ссылку. Параметры, которые вам нужны - это \"lon\" (долгота) и \"lat\" (широта).</string>
+    <string name="cmd_locate_response_opencellid_failed">Ошибка получения местоположения от OpenCelliD. Пожалуйста, попробуйте данную ссылку. Параметры, которые вам нужны - это \"lon\" (долгота) и \"lat\" (широта).</string>
     <string name="LockScreen_Usage_detectd">Сообщение на экране блокировки: Обнаружено использование устройства.</string>
     <string name="LockScreen_Backbutton_pressed">Сообщение на экране блокировки: Нажата кнопка \"Назад\".</string>
     <string name="Toast_Empty_FMDCommand">Пустая команда недопустима
@@ -135,8 +135,8 @@
     <string name="Available">Доступно</string>
     <string name="registered">зарегистрировано</string>
     <string name="not_registered">не зарегистрировано</string>
-    <string name="MH_LAST_KNOWN_LOCATION">Последнее известное местоположение</string>
-    <string name="MH_LAST_KNOWN_LOCATION_NOT_AVAILABLE">Последнее известное местоположение недоступно.</string>
+    <string name="cmd_locate_last_known_location_text">Последнее известное местоположение</string>
+    <string name="cmd_locate_last_known_location_not_available">Последнее известное местоположение недоступно.</string>
     <string name="not_possible">Это действие было невозможно совершить.</string>
     <string name="MH_Help_Expert_GPS">" GPS (on/off) - включает или выключает GPS."</string>
     <string name="MH_NO_SECURE_SETTINGS">Извините, приложению запрещается сделать это.</string>

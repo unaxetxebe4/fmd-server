@@ -45,7 +45,7 @@
     <string name="Disabled">Non Attivo</string>
     <string name="Delete">Cancella</string>
     <string name="Toast_Duplicate_contact">Questo contatto esiste già.</string>
-    <string name="MH_GPS_WILL_FOLLOW">Le coordinate GPS verranno inviate a breve.</string>
+    <string name="cmd_locate_response_gps_will_follow">Le coordinate GPS verranno inviate a breve.</string>
     <string name="MH_rings">squilli</string>
     <string name="MH_Locked">bloccato</string>
     <string name="MH_Stats">Statistiche di rete:
@@ -57,7 +57,7 @@
     <string name="MH_Delete">Addio…</string>
     <string name="MH_False_Pin">Pin Errato!</string>
     <string name="MH_Syntax">Sintassi:</string>
-    <string name="MH_Title_Help">Comandi FindMyDevice:</string>
+    <string name="cmd_help_message_start">Comandi FindMyDevice:</string>
     <string name="MH_Help_where">" locate - invia la posizione attuale del telefono"</string>
     <string name="MH_Help_ring">" ring - fa squillare il telefono"</string>
     <string name="MH_Help_Lock">" lock - blocca il telefono"</string>
@@ -92,9 +92,9 @@
     <string name="Whitelist_help">I contatti di questo elenco possono inviare comandi FMD via SMS. I comandi provenienti da tutti gli altri verranno ignorati.</string>
     <string name="Whitelist_empty">Nessun contatto fidato. Fare clic sul pulsante per aggiungerne alcuni!</string>
     <string name="Alert_First_Time_contact_added">Congratulazioni. Avete aggiunto il vostro primo contatto. Ora è possibile comunicare con FMD inviando un messaggio SMS contenente fmd dal numero di telefono inserito nell\'elenco. Se tutto funziona, l\'applicazione risponderà.</string>
-    <string name="R_Stop_ring">SMETTI DI SQUILLARE</string>
+    <string name="ringer_stop_ringing">SMETTI DI SQUILLARE</string>
     <string name="Crashed_Send_log">Invia registro</string>
-    <string name="MH_No_GPS">Spiacente, la posizione è disattivata.</string>
+    <string name="cmd_locate_response_location_off">Spiacente, la posizione è disattivata.</string>
     <string name="Settings_FMDConfig">Configurazione FMD</string>
     <string name="Settings_WhiteList">Lista Bianca</string>
     <string name="Settings_OpenCellId">OpenCelliD</string>
@@ -108,7 +108,7 @@
     <string name="Pin_Usage">Utilizzo Pin</string>
     <string name="Notification_Usage_Description">Notifica sull\'utilizzo del servizio.</string>
     <string name="Notification_Pin_Usage_Description">Notifica sull\'utilizzo del pin.</string>
-    <string name="JSON_RL_Error">Errore durante l\'acquisizione della posizione da OpenCelliD. Si prega di provare il seguente link. I parametri necessari sono \"lon\" e \"lat\".</string>
+    <string name="cmd_locate_response_opencellid_failed">Errore durante l\'acquisizione della posizione da OpenCelliD. Si prega di provare il seguente link. I parametri necessari sono \"lon\" e \"lat\".</string>
     <string name="LockScreen_Usage_detectd">MessaggioBloccoSchermo: Rilevato utilizzo.</string>
     <string name="LockScreen_Backbutton_pressed">MessaggioBloccoSchermo: Premuto pulsante Indietro.</string>
     <string name="Toast_Empty_FMDCommand">Comando vuoto non consentito
@@ -126,8 +126,8 @@
     <string name="Info_Server_Registered">Registrato:</string>
     <string name="registered">registrato</string>
     <string name="not_registered">non registrato</string>
-    <string name="MH_LAST_KNOWN_LOCATION">Ultima posizione nota</string>
-    <string name="MH_LAST_KNOWN_LOCATION_NOT_AVAILABLE">Ultima posizione non disponibile.</string>
+    <string name="cmd_locate_last_known_location_text">Ultima posizione nota</string>
+    <string name="cmd_locate_last_known_location_not_available">Ultima posizione non disponibile.</string>
     <string name="Alert_First_time_fmdserver">Qui è possibile configurare l\'applicazione per comunicare con un server FMD. Se si desidera configurare un server diverso da quello predefinito, è possibile farlo modificando l\'URL. Se si preme \"registrati\" è possibile registrare l\'applicazione sul server. Successivamente è possibile abilitare la funzionalità del server. Se lo fai, il tuo telefono ti invierà i dati sulla posizione al server specificato. Puoi controllare la posizione del tuo telefono inserendo l\'ID e la password sulla pagina.</string>
     <string name="Settings_FMDServer_Alert_PrivacyPolicy_Title">Info Privacy</string>
     <string name="accept">accetta</string>

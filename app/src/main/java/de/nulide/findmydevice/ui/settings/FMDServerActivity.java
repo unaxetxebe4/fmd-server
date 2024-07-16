@@ -98,20 +98,6 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
         editTextFMDServerUpdateTime.setText(((Integer) settings.get(Settings.SET_FMDSERVER_UPDATE_TIME)).toString());
         editTextFMDServerUpdateTime.addTextChangedListener(this);
 
-
-        if (!(Boolean) settings.get(Settings.SET_FIRST_TIME_FMD_SERVER)) {
-            new AlertDialog.Builder(this)
-                    .setTitle(getString(R.string.Settings_FMDServer))
-                    .setMessage(this.getString(R.string.Alert_First_time_fmdserver))
-                    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            settings.set(Settings.SET_FIRST_TIME_FMD_SERVER, true);
-                        }
-                    })
-                    .setIcon(android.R.drawable.ic_dialog_info)
-                    .show();
-        }
-
         checkBoxFMDServerGPS = findViewById(R.id.checkBoxFMDServerGPS);
         checkBoxFMDServerCell = findViewById(R.id.checkBoxFMDServerCell);
         switch ((Integer) settings.get(Settings.SET_FMDSERVER_LOCATION_TYPE)) {

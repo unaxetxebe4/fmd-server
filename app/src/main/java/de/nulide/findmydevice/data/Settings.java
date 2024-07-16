@@ -24,8 +24,8 @@ import de.nulide.findmydevice.data.io.IO;
 import de.nulide.findmydevice.data.io.JSONFactory;
 import de.nulide.findmydevice.data.io.OldKeyIO;
 import de.nulide.findmydevice.data.io.json.JSONMap;
-import de.nulide.findmydevice.utils.RingerUtils;
 import de.nulide.findmydevice.utils.CypherUtils;
+import de.nulide.findmydevice.utils.RingerUtils;
 
 
 public class Settings extends HashMap<Integer, Object> {
@@ -60,7 +60,7 @@ public class Settings extends HashMap<Integer, Object> {
 
     public static final int SET_FIRST_TIME_WHITELIST = 301;
     public static final int SET_FIRST_TIME_CONTACT_ADDED = 302;
-    public static final int SET_FIRST_TIME_FMD_SERVER = 303;
+    //public static final int SET_FIRST_TIME_FMD_SERVER = 303;
 
     public static final int SET_APP_CRASHED_LOG_ENTRY = 401;
     public static final int SET_FMDSMS_COUNTER = 402;
@@ -94,7 +94,7 @@ public class Settings extends HashMap<Integer, Object> {
                 case SET_ACCESS_VIA_PIN:
                 case SET_FIRST_TIME_WHITELIST:
                 case SET_FIRST_TIME_CONTACT_ADDED:
-                case SET_FIRST_TIME_FMD_SERVER:
+                    //case SET_FIRST_TIME_FMD_SERVER:
                 case SET_FMDSERVER_PASSWORD_SET:
                 case SET_FMD_LOW_BAT_SEND:
                     //case SET_FMD_CRYPT_NEW_SALT:

@@ -49,25 +49,25 @@
     <string name="Delete">Odstranit</string>
     <string name="MH_Locked">uzamceno</string>
     <string name="MH_Syntax">Syntaxe:</string>
-    <string name="R_Stop_ring">ZASTAVIT VYZVÁNĚNÍ</string>
+    <string name="ringer_stop_ringing">ZASTAVIT VYZVÁNĚNÍ</string>
     <string name="Crashed_Send_log">Odeslat protokol</string>
-    <string name="MH_No_GPS">Omlouvame se, poloha je vypnuta.</string>
-    <string name="MH_GPS_WILL_FOLLOW">Souradnice GPS budou brzy odeslany.</string>
+    <string name="cmd_locate_response_location_off">Omlouvame se, poloha je vypnuta.</string>
+    <string name="cmd_locate_response_gps_will_follow">Souradnice GPS budou brzy odeslany.</string>
     <string name="MH_Stats">Sitove statistiky:
 \nIP adresy:
 \n</string>
     <string name="MH_False_Pin">Nespravny PIN!</string>
-    <string name="MH_Title_Help">Prikazy FindMyDevice:</string>
+    <string name="cmd_help_message_start">Prikazy FindMyDevice:</string>
     <string name="MH_Help_Stats">" stats - odesle informace o zarizeni"</string>
-    <string name="MH_LAST_KNOWN_LOCATION">Posledni znama poloha</string>
-    <string name="MH_LAST_KNOWN_LOCATION_NOT_AVAILABLE">Posledni poloha neni dostupna.</string>
+    <string name="cmd_locate_last_known_location_text">Posledni znama poloha</string>
+    <string name="cmd_locate_last_known_location_not_available">Posledni poloha neni dostupna.</string>
     <string name="MH_Help_Expert_GPS">" GPS (on/off) - zapne nebo vypne GPS."</string>
     <string name="MH_Help_expert">" expert - stranka napovedy pro expertni prikazy."</string>
     <string name="MH_Help_Expert_Sound">" Sound (on/off) - zapne nebo vypne zvuk."</string>
     <string name="MH_Help_Expert_Camera">" Camera (font/back) - poridi obrazek a posle jej na server FMD."</string>
     <string name="MH_CAM_CAPTURE">"Zarizeni brzy odesle obrazek na server FMD. Brzy si jej budete moci zobrazit zde: "</string>
     <string name="MH_FMDSERVER_NOT_REGISTERED">Toto zarizeni neni zaregistrovano na serveru.</string>
-    <string name="JSON_RL_Error">Chyba při získávání polohy z OpenCelliD. Vyzkoušejte prosím následující odkaz. Požadované parametry jsou „lon“ a „lat“.</string>
+    <string name="cmd_locate_response_opencellid_failed">Chyba při získávání polohy z OpenCelliD. Vyzkoušejte prosím následující odkaz. Požadované parametry jsou „lon“ a „lat“.</string>
     <string name="Toast_Empty_FMDCommand">Prázdný příkaz není povolen
 \n Vracím se na default.[fmd]</string>
     <string name="FMDConfig_Alert_Pin">PIN</string>

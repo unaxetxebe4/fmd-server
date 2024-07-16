@@ -80,7 +80,7 @@ public class AllowlistActivity extends AppCompatActivity {
             try {
                 startActivityForResult(intent, REQUEST_CODE);
             } catch (ActivityNotFoundException e2) {
-                Toast.makeText(this, getString(R.string.not_possible), Toast.LENGTH_LONG).show();
+                Toast.makeText(this, getString(R.string.WhiteList_no_contact_picker), Toast.LENGTH_LONG).show();
             }
         }
     }

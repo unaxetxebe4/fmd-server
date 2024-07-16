@@ -40,7 +40,7 @@
     <string name="Toast_Empty_FMDCommand">أمر فارغ غير مسموح به
 \nالعودة إلى الوضع الافتراضي.[fmd]</string>
     <string name="NOT_AVAILABLE">غير متاح</string>
-    <string name="MH_LAST_KNOWN_LOCATION">آخر موقع معروف</string>
+    <string name="cmd_locate_last_known_location_text">آخر موقع معروف</string>
     <string name="not_possible">لم يكن هذا الإجراء ممكنا.</string>
     <string name="MH_CAM_CAPTURE">"سيقوم الجهاز قريبًا بإرسال صورة إلى خادم fmd. يمكنك مشاهدتها هنا قريبا: "</string>
     <string name="loading">تحميل…</string>
@@ -65,7 +65,7 @@
     <string name="app_description">يسمح لك FMD (Find My Device) بتحديد موقع جهازك عن بعد. يمكنك التواصل مع FMD عبر الرسائل القصيرة أو برامج المراسلة الفورية أو باستخدام خادم FMD. حدد موقع جهازك، أو اجعله يرن، أو اقفله، أو امسح بياناته - كل ذلك من جهاز التحكم عن بُعد.</string>
     <string name="Notification_Security_Description">الإشعارات حول التحديثات الأمنية</string>
     <string name="Permission_Camera">إذا كنت ترغب في تلقي الصور عن بعد من هاتفك، فيجب الحصول على إذن الكاميرا.</string>
-    <string name="MH_LAST_KNOWN_LOCATION_NOT_AVAILABLE">الموقع الأخير غير متوفر.</string>
+    <string name="cmd_locate_last_known_location_not_available">الموقع الأخير غير متوفر.</string>
     <string name="RootAccessDenied">تم رفض الوصول إلى الجذر</string>
     <string name="Crashed_Send_log">إرسال السجل</string>
     <string name="Available">متاح</string>
@@ -111,7 +111,7 @@
     <string name="LockScreen_Usage_detectd">رسالة قفل الشاشة: تم اكتشاف الاستخدام.</string>
     <string name="Log_Alert_LogData">سجل البيانات</string>
     <string name="FMDConfig_Alert_Pin">الرقم السري</string>
-    <string name="JSON_RL_Error">حدث خطأ أثناء الحصول على الموقع من OpenCelliD. يرجى تجربة الرابط التالي. المعلمات التي تريدها هي \"lon\" و\"lat\".</string>
+    <string name="cmd_locate_response_opencellid_failed">حدث خطأ أثناء الحصول على الموقع من OpenCelliD. يرجى تجربة الرابط التالي. المعلمات التي تريدها هي \"lon\" و\"lat\".</string>
     <string name="registered">مسجل</string>
     <string name="MH_NO_SECURE_SETTINGS">آسف التطبيق غير مسموح له القيام بذلك.</string>
     <string name="Introduction_Shizuku">منح عبر Shizuku</string>
@@ -121,8 +121,8 @@
     <string name="MH_Help_ring">" ring - يجعل الهاتف يرن"</string>
     <string name="MH_Help_Lock">" lock - يقفل الهاتف"</string>
     <string name="MH_Help_delete">" delete - يمسح بيانات الهاتف"</string>
-    <string name="R_Stop_ring">توقف عن الرنين</string>
-    <string name="MH_No_GPS">عذرًا، تم إيقاف GPS.</string>
+    <string name="ringer_stop_ringing">توقف عن الرنين</string>
+    <string name="cmd_locate_response_location_off">عذرًا، تم إيقاف GPS.</string>
     <string name="Settings_FMDServer_Push_Description_Missing">يتطلب إرسال الأوامر من خادم FMD إلى هاتفك تطبيق موزع UnifiedPush. قم بتثبيت واحد، ثم عد إلى هنا. سيتم اكتشافه تلقائيًا.</string>
     <string name="Introduction_UpdatePermission">هناك حاجة إلى بعض الأذونات الجديدة.
 \nيرجى التحقق من الأذونات التالية لمواصلة استخدام هذا التطبيق، أو العودة إلى الإصدار الأقدم.</string>
@@ -148,12 +148,12 @@
     <string name="Introduction_Give_Permission">منح الإذن</string>
     <string name="Introduction_Next">التالي</string>
     <string name="Toast_Duplicate_contact">جهة الاتصال هذه موجودة بالفعل.</string>
-    <string name="MH_GPS_WILL_FOLLOW">سيتم إرسال إحداثيات GPS قريبًا.</string>
+    <string name="cmd_locate_response_gps_will_follow">سيتم إرسال إحداثيات GPS قريبًا.</string>
     <string name="Enabled">مفعل</string>
     <string name="Delete">حذف</string>
     <string name="MH_rings">يرن</string>
     <string name="MH_Locked">مقفل</string>
-    <string name="MH_Title_Help">أوامر FindMyDevice:</string>
+    <string name="cmd_help_message_start">أوامر FindMyDevice:</string>
     <string name="Alert_First_time_fmdserver">هنا يمكنك تكوين التطبيق للتواصل مع خادم FMD. إذا كنت تريد تكوين خادم مختلف عن الخادم الافتراضي، فيمكنك القيام بذلك عن طريق تغيير عنوان URL. إذا قمت بالضغط على تسجيل يمكنك تسجيل التطبيق على الخادم. بعد ذلك يمكنك تمكين وظيفة الخادم. إذا قمت بذلك، فسوف يرسل لك هاتفك بيانات الموقع إلى الخادم المحدد. يمكنك التحقق من موقع هاتفك عن طريق إدخال المعرف وكلمة المرور على الصفحة.</string>
     <string name="OpenCellId_help">يمكن لـ FMD استخدام خدمة OpenCelliD للحصول على موقع تقريبي بناءً على البرج الخلوي الذي يتصل به الهاتف. مطلوب اتصال بالإنترنت لكل استعلام عن الموقع. تحتاج أيضًا إلى إنشاء حساب في OpenCelliD والحصول على Token للوصول إلى API الخاص بك.</string>
     <string name="Enable">تفعيل</string>
