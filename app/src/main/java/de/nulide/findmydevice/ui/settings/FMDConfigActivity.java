@@ -121,7 +121,7 @@ public class FMDConfigActivity extends AppCompatActivity implements CompoundButt
         EditText editTextPinRepeat = pinLayout.findViewById(R.id.editTextPinRepeat);
 
         new AlertDialog.Builder(context)
-                .setTitle(getString(R.string.FMDConfig_Alert_Pin))
+                .setTitle(getString(R.string.Settings_Enter_Pin))
                 .setView(pinLayout)
                 .setPositiveButton(getString(R.string.Ok), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {

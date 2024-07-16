@@ -253,19 +253,7 @@
     <string name="Delete">Delete</string>
     <string name="Toast_Duplicate_contact">This contact already exists.</string>
     <string name="MH_GPS_WILL_FOLLOW">GPS coordinates will be sent soon.</string>
-    <string name="MH_rings">rings</string>
-    <string name="MH_Locked">locked</string>
-    <string name="MH_Stats">Network-Stats:\nIP\'s: \n</string>
-    <string name="MH_Networks">\nAvailable Wifi-Networks:\n</string>
-    <string name="MH_Delete">Goodbye...</string>
-    <string name="MH_False_Pin">False Pin!</string>
-    <string name="MH_Syntax">Syntax:</string>
     <string name="MH_Title_Help">FindMyDevice Commands:</string>
-    <string name="MH_Help_where">" locate - sends the current location of the phone"</string>
-    <string name="MH_Help_ring">" ring - lets the phone ring"</string>
-    <string name="MH_Help_Lock">" lock - locks the phone"</string>
-    <string name="MH_Help_Stats">" stats - sends device information"</string>
-    <string name="MH_Help_delete">" delete - resets the phone"</string>
     <string name="MH_Pin_Accepted">Pin accepted!</string>
     <string name="R_Stop_ring">STOP RINGING</string>
     <string name="Crashed_Send_log">Send Log</string>
@@ -274,18 +262,10 @@
     <string name="LockScreen_Usage_detectd">LockScreenMessage: Usage detected.</string>
     <string name="LockScreen_Backbutton_pressed">LockScreenMessage: Back-Button pressed.</string>
     <string name="Toast_Empty_FMDCommand">Empty Command not allowed\n Returning to default.[fmd]</string>
-    <string name="FMDConfig_Alert_Pin">PIN</string>
     <string name="Log_Alert_LogData">LogData</string>
     <string name="MH_LAST_KNOWN_LOCATION">Last known location</string>
     <string name="MH_LAST_KNOWN_LOCATION_NOT_AVAILABLE">Last location is not available.</string>
     <string name="Alert_First_time_fmdserver">Here you can configure the application to communicate with FMDserver. If you want to configure a different server than default, you can do so by changing the URL. If you press "register" you can register the application to the server. Afterwards you can enable the server functionality. If you do so, your phone will send you location data to the specified server. You can check your phone\'s location by entering the ID and the password on the page.</string>
-    <string name="MH_Help_Expert_GPS">" GPS (on/off) - turns the GPS on or off."</string>
-    <string name="MH_NO_SECURE_SETTINGS">Sorry the application is not allowed to do so.</string>
-    <string name="MH_Help_expert">" expert - help page for expert commands."</string>
-    <string name="MH_Help_Expert_Sound">" Sound (on/off) - turns the sound on or off."</string>
     <string name="not_possible">This action was not possible.</string>
-    <string name="MH_Help_Expert_Camera">" Camera (front/back) - takes a picture and sends it to FMDserver."</string>
-    <string name="MH_CAM_CAPTURE">"The device will soon send a picture to fmdserver. You can view it here soon: "</string>
-    <string name="MH_FMDSERVER_NOT_REGISTERED">This device isn\'t registered on a server.</string>
 
 </resources>
