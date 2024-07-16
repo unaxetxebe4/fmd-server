@@ -23,20 +23,6 @@
     <string name="request_failed_exception">Exception</string>
 
     <!-- MainActivity -->
-    <string name="Granted">Granted: </string>
-    <string name="Info_CORE" translatable="false">CORE</string>
-    <string name="Info_GPS" translatable="false">GPS</string>
-    <string name="Info_DND" translatable="false">DND</string>
-    <string name="Info_DEVICE_ADMIN" translatable="false">DeviceAdmin</string>
-    <string name="Info_Overlay" translatable="false">Overlay</string>
-    <string name="Info_SecureSettings" translatable="false">SecureSettings</string>
-    <string name="Info_Notification_Access">Notification Access</string>
-    <string name="Info_Camera" translatable="false">Camera</string>
-    <string name="Info_FMD_Command">FMD-Command:</string>
-    <string name="Info_Server_Enabled">Service:</string>
-    <string name="Info_Server_Registered">Registered:</string>
-    <string name="Info_Server_Push">Push:</string>
-
     <string name="bottom_nav_commands">Commands</string>
     <string name="bottom_nav_transports">Transport Channels</string>
     <string name="bottom_nav_settings">Settings</string>
