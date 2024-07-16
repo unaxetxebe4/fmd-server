@@ -22,7 +22,6 @@ import de.nulide.findmydevice.services.FMDServerLocationUploadService;
 import de.nulide.findmydevice.ui.home.CommandListFragment;
 import de.nulide.findmydevice.ui.home.TransportListFragment;
 import de.nulide.findmydevice.ui.onboarding.UpdateboardingModernCryptoActivity;
-import de.nulide.findmydevice.ui.settings.SettingsActivity;
 import de.nulide.findmydevice.ui.settings.SettingsFragment;
 import de.nulide.findmydevice.utils.Logger;
 import de.nulide.findmydevice.utils.Notifications;
@@ -137,10 +136,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.menuItemSettings) {
-            Intent intent = new Intent(this, SettingsActivity.class);
-            startActivity(intent);
-        } else if (item.getItemId() == R.id.menuItemSetupWarnings) {
+        if (item.getItemId() == R.id.menuItemSetupWarnings) {
             Intent intent = new Intent(this, SetupWarningsActivity.class);
             startActivity(intent);
         }

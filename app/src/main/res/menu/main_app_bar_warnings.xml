@@ -9,10 +9,4 @@
         android:icon="@drawable/ic_warning"
         app:showAsAction="always"/>
 
-    <item
-        android:id="@+id/menuItemSettings"
-        android:title="@string/Settings_Settings"
-        android:icon="@drawable/ic_settings"
-        app:showAsAction="ifRoom"/>
-
 </menu>
