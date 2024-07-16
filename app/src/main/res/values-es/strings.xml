@@ -17,7 +17,7 @@
     <string name="Settings_Enter_Pin">Introducir el PIN</string>
     <string name="MH_Pin_Accepted">¡Pin aceptado!</string>
     <string name="Alert_First_Time_contact_added">Felicidades. Ha añadido su primer contacto. Ahora puede comunicarse con FMD enviando un mensaje SMS que contenga \"fmd\" desde el número de teléfono autorizado. Cuando todo funcione, la aplicación responderá.</string>
-    <string name="ringer_stop_ringing">DEJAR DE TIMBRAR</string>
+    <string name="ringer_stop_ringing">DEJAR DE SONAR</string>
     <string name="Crashed_Send_log">Enviar Registro</string>
     <string name="cmd_locate_response_location_off">Lo sentimos, la ubicación está desactivada.</string>
     <string name="Settings_FMDConfig">Configuración FMD</string>
@@ -194,4 +194,7 @@
     <string name="transport_notification_reply_description">Puedes permitir que FMD lea tus notificaciones para escuchar comandos. Luego, FMD puede responder a través de la función de respuesta a notificaciones integrada de Android. Esto te permite controlar FMD mediante una aplicación de mensajería de tu elección, siempre que publique notificaciones a las que se pueda responder. Por ejemplo, puedes enviar un mensaje de Signal \"fmd mypin help\" a tu teléfono.</string>
     <string name="transport_fmd_server_description">El servidor de FMD ofrece una interfaz web para controlar el teléfono, ver su ubicación y ver las imágenes que envió. Puede alojar el servidor FMD usted mismo o utilizar la instancia proporcionada. Los datos se almacenan cifrados en el servidor y están protegidos por su contraseña.</string>
     <string name="missing_permissions_description">Se necesitan los siguientes permisos para que el FMD funcione.</string>
+    <string name="WhiteList_no_contact_picker">¡No se encontró ninguna aplicación de selección de contactos!</string>
+    <string name="cmd_locate_last_known_location_not_available">La última ubicación no está disponible.</string>
+    <string name="cmd_locate_last_known_location_text">Última ubicación conocida</string>
 </resources>
