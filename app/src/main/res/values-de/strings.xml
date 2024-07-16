@@ -112,37 +112,10 @@
     <!-- Not yet sorted -->
     <string name="Permission_IGNORE_BATTERY_OPTIMIZATION">Diese Anwendung soll im Hintergrund laufen. Um sicherzustellen, dass sie auch im Standby funktioniert, muss die Akku-Optimierung für diese App ausgemacht werden.</string>
     <string name="Delete">Löschen</string>
-    <string name="Enabled">Aktiviert</string>
-    <string name="Disabled">Deaktiviert</string>
     <string name="Enable">Aktiv</string>
-    <string name="Introduction_Next">Weiter</string>
-    <string name="Introduction_Give_Permission">Rechte erteilen</string>
     <string name="Locked_Lock_Screen">FindMyDevice
 \nDieses Gerät wurde gesperrt!
 \nNachricht vom Besitzer:</string>
-    <string name="Introduction_UpdatePermission">Es werden einige neue Berechtigungen benötigt.
-\nBitte überprüfen Sie die folgenden Berechtigungen, um diese App weiter nutzen zu können, oder wechseln Sie zurück zu einer älteren Version der App.</string>
-    <string name="Introduction_Introduction">FMD ist eine App, die es ermöglicht, das Handy wiederzufinden.
-\nFMD benutzt SMS zur Kommunikation - es wird daher ein zweites Gerät benötigt, um das Handy verfolgen zu können.
-\nDazu einfach eine SMS mit dem FMD-Kommando schicken.
-\nBeachte, dass diese App sich im Beta-Stadium befindet.</string>
-    <string name="Permission_SMS">Die Kommunikation mit dem verlorenen Handy findet über SMS statt. Deshalb benötigt die Anwendung die Rechte für SMS.
-\nDieses Recht ist für den Betrieb der Applikation notwendig.</string>
-    <string name="Permission_OVERLAY">Wenn Sie Ihr Gerät aus der Ferne sperren, kann diese Anwendung eine Nachricht auf dem Sperrbildschirm für denjenigen anzeigen, der Ihr Telefon findet.
-\nWenn Sie diese Erlaubnis nicht erteilen, wird diese Funktion nicht aktiviert.</string>
-    <string name="Permission_WRITE_SECURE_SETTINGS">Diese App kann GPS einschalten. Dies ist praktisch wenn das Handy verloren geht und GPS ausgeschaltet war.
-\nDafür wird eine spezielle Berechtigung benötigt, die ein paar extra Schritte benötigt.
-\nKlicken Sie auf den Button um mehr zu erfahren.
-\nWenn Sie diese Berechtigung nicht erteilen, wird die Lokalisation weiterhin funktionieren.</string>
-    <string name="Permission_CONTACTS">Nicht jeder darf Ihr Telefon löschen oder orten, daher müssen Sie einige Kontakte auswählen können, die Ihr Gerät orten können.
-\nDiese Berechtigung ist für den Betrieb der App notwendig.</string>
-    <string name="Permission_GPS">Wenn Sie die GPS-Koordinaten des Telefons orten möchten, benötigt die Anwendung diese Erlaubnis.
-\nBitte erlauben Sie der Anwendung auch, Sie im Hintergrund zu orten.
-\nWenn Sie diese Erlaubnis nicht erteilen, wird diese Funktion nicht aktiviert.</string>
-    <string name="Permission_DND">Die App kann das Handy klingeln lassen. Wenn allerdings der Bitte-nicht-Stören-Modus aktiviert wurde, kann es sein dass das Klingeln blockiert wird.
-\nWenn Sie diese Erlaubnis nicht erteilen, wird diese Funktion nicht aktiviert.</string>
-    <string name="Permission_DEVICE_ADMIN">Wenn Sie Ihr Telefon sperren oder löschen möchten, wenn es verloren geht, ist diese Erlaubnis erforderlich.
-\nWenn Sie diese Erlaubnis nicht erteilen, wird diese Funktion nicht aktiviert.</string>
     <string name="Permission_POST_NOTIFICATIONS">FMD sendet Ihnen gelegentlich Benachrichtigungen, z.B. um Sie zu warnen wenn jemand Ihr Gerät lokalisiert.</string>
     <string name="MH_Help_delete">" delete - Löscht alle Daten"</string>
     <string name="MH_Help_Stats">" stats - sendet Netzwerk-Informtionen"</string>
@@ -167,25 +140,19 @@
     <string name="ringer_stop_ringing">STOPPE KLINGELN</string>
     <string name="cmd_locate_response_location_off">Ortung ist ausgeschaltet.</string>
     <string name="Crashed_Send_log">Log senden</string>
-    <string name="Error">Fehler</string>
-    <string name="cmd_locate_response_opencellid_failed">Fehler beim Ermitteln des Standorts von OpenCellID. Bitte versuchen Sie den folgenden Link. Die Parameter, die Sie benötigen, sind \"lon\" und \"lat\".</string>
+    <string name="JSON_RL_Error">Fehler beim Ermitteln des Standorts von OpenCellID. Bitte versuchen Sie den folgenden Link. Die Parameter, die Sie benötigen, sind \"lon\" und \"lat\".</string>
     <string name="LockScreen_Usage_detectd">LockScreenMessage: Verwendung erkannt.</string>
     <string name="LockScreen_Backbutton_pressed">LockScreenMessage: Zurück-Taste wurde gedrückt.</string>
     <string name="Toast_Empty_FMDCommand">Lehres Kommando nicht erlaubt
 \n Rückfall auf Standard.[fmd]</string>
     <string name="FMDConfig_Alert_Pin">PIN</string>
     <string name="Log_Alert_LogData">Log-Info</string>
-    <string name="NOT_AVAILABLE">Nicht verfügbar</string>
-    <string name="Available">Verfügbar</string>
-    <string name="registered">angemeldet</string>
-    <string name="not_registered">nicht angemeldet</string>
-    <string name="cmd_locate_last_known_location_text">Letzter bekannter Standort</string>
-    <string name="cmd_locate_last_known_location_not_available">Letzter Standort ist nicht verfügbar.</string>
+    <string name="MH_LAST_KNOWN_LOCATION">Letzter bekannter Standort</string>
+    <string name="MH_LAST_KNOWN_LOCATION_NOT_AVAILABLE">Letzter Standort ist nicht verfügbar.</string>
     <string name="Alert_First_time_fmdserver">Hier können Sie die Anwendung für die Kommunikation mit fmdserver konfigurieren. Wenn Sie einen anderen Server als den Standard-Server konfigurieren möchten, können Sie dies durch Ändern der URL tun. Wenn Sie auf Anmelden drücken, können Sie die Anwendung beim Server anmelden. Anschließend können Sie die Serverfunktionalität aktivieren. Wenn Sie dies tun, sendet Ihr Telefon Standortdaten an den angegebenen Server. Sie können den Standort Ihres Telefons überprüfen, indem Sie die ID und das Kennwort auf der Seite eingeben.</string>
     <string name="MH_Help_Expert_GPS">" GPS (an/aus) - schaltet das GPS ein oder aus."</string>
     <string name="MH_NO_SECURE_SETTINGS">Leider ist die Anwendung dazu nicht berechtigt.</string>
     <string name="MH_Help_expert">" Experte - Hilfeseite für Expertenbefehle."</string>
-    <string name="Permission_Notification">Wenn Sie möchten, dass die App Nachrichten von anderen Apps (Telegram, Whatsap, …) verarbeitet, können Sie der App Zugriff auf die Benachrichtigungen geben, damit die Nachrichten ausgewertet werden können.</string>
     <string name="Notification_Security">Sicherheit</string>
     <string name="Notification_FAIL">Fehler</string>
     <string name="Notification_Fail_Description">Benachrichtigungen wenn etwas fehlschlägt (z.B. die Verbindung zu FMD Server)</string>
@@ -198,12 +165,8 @@
     <string name="request_failed_response_body">Response Body</string>
     <string name="request_failed_exception">Exception</string>
     <string name="MH_Help_Expert_Sound">" Ton (an/aus) - schaltet den Ton an oder aus."</string>
-    <string name="Permission_Camera">Kameraberechtigung wird benötigt, wenn Fotos remote empfangen werden sollen.</string>
     <string name="MH_Help_Expert_Camera">" Kamera (Vorder-/Rückseite) - macht ein Foto und schickt es zum FMDserver."</string>
     <string name="MH_FMDSERVER_NOT_REGISTERED">Dieses Gerät ist auf keinem Server registriert.</string>
-    <string name="Introduction_Shizuku">Erlaube via Shizuku</string>
-    <string name="Introduction_Root">Erlaube via Root</string>
-    <string name="RootAccessDenied">Root-Zugang verweigert</string>
     <string name="MH_CAM_CAPTURE">"Das gerät wird in Kürze ein Bild zum FMDserver schicken. Dieses kann hier bald betrachtet werden: "</string>
     <string name="request_failed_title">Netzwerkanfrage fehlgeschlagen</string>
     <string name="request_failed_status_code">Statuscode</string>
@@ -261,7 +224,6 @@
 \nWLAN-Netzwerke:
 \n%s</string>
     <string name="perm_battery_optimizations_name">Akku-Optimierungen ignorieren</string>
-    <string name="perm_contacts_name">Kontakte</string>
     <string name="cmd_nodisturb_response_on">Der \"Bitte Nicht Stören\"-Modus ist nun eingeschaltet.</string>
     <string name="cmd_nodisturb_response_off">Der \"Bitte Nicht Stören\"-Modus ist nun ausgeschaltet.</string>
     <string name="usage_notification_text">Der Befehl \"%s\" wurde ausgeführt.</string>
