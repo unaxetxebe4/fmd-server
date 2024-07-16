@@ -63,7 +63,7 @@
     <string name="Settings_FMDServer_Delete_Button">Delete Data</string>
     <string name="Settings_FMDServer_Alert_DeleteData">Delete Data</string>
     <string name="Settings_FMDServer_Alert_DeleteData_Desc">This will delete all data from the Server! Are you sure?</string>
-    <string name="Settings_FMDServer_Push_Description_Missing">Sending commands from FMD Server to your phone requires a UnifiedPush distributor app. Install one, and then return here. It will automatically be detected.</string>
+    <string name="Settings_FMDServer_Push_Description_Missing">Sending commands from FMD Server to your device requires a UnifiedPush distributor app. Install one, and then return here. It will automatically be detected.</string>
     <string name="Settings_FMDServer_Push_Description_Available">Successfully registered for push notifications.</string>
     <string name="Settings_FMDServer_Push_Open_UP">Open UnifiedPush Website</string>
     <string name="Settings_FMDServer_Update_Interval_Title">Update Interval</string>
@@ -104,7 +104,7 @@
     <!-- Settings: OpenCelliD -->
     <string name="OpenCellId_OpenCellId" translatable="false">OpenCelliD</string>
     <string name="OpenCellId_API_Key_Description" translatable="false">API Access Token:</string>
-    <string name="OpenCellId_help">FMD can use the OpenCelliD service to get an approximate location based on the cell tower that the phone is connected to. An internet connection is required for every location query. You also need to create an account at OpenCelliD and get your own API Access Token.</string>
+    <string name="OpenCellId_help">FMD can use the OpenCelliD service to get an approximate location based on the cell tower that the device is connected to. An internet connection is required for every location query. You also need to create an account at OpenCelliD and get your own API Access Token.</string>
     <string name="OpenCellId_privacy">Privacy: keep in mind that OpenCelliD learns your current cell tower and thus your location with every API query.</string>
     <string name="OpenCellId_open_website">Open OpenCelliD website</string>
     <string name="OpenCellId_test_opencellid">Test OpenCelliD Connection</string>
@@ -157,12 +157,12 @@
     <string name="cmd_locate_description_long">Locate the device using one or more location providers. The operating system provider is usually GPS, sometimes with a combination of other sources. A second provider is OpenCelliD, which uses a database of cell tower locations.</string>
     <string name="cmd_locate_response_location_off">Cannot locate: location is turned off.</string>
     <string name="cmd_locate_response_gps_will_follow">GPS coordinates will be sent soon.</string>
-    <string name="cmd_locate_response_opencellid_failed">Error gaining location from OpenCelliD. Please try the following the link. The parameters you want are \"lon\" and \"lat\".</string>
+    <string name="cmd_locate_response_opencellid_failed">Error gaining location from OpenCelliD. Please try the following the link. The important parameters are \"lat\" and \"lon\".</string>
     <string name="cmd_locate_last_known_location_text">Last known location</string>
-    <string name="cmd_locate_last_known_location_not_available">Last location is not available.</string>
+    <string name="cmd_locate_last_known_location_not_available">No last known location. Request the latest location to force a location update.</string>
 
     <string name="cmd_lock_description_short">Lock the device</string>
-    <string name="cmd_lock_description_long">Lock the device and optionally show a message on the lockscreen. After this, biometric unlock is disabled and your device password is required to unlock the device.</string>
+    <string name="cmd_lock_description_long">Lock the device and optionally show a message on the lockscreen. After this, biometric unlock is unavailable and your device password is required to unlock the device.</string>
     <string name="cmd_lock_response">The device should now be locked.</string>
 
     <string name="cmd_ring_description_short">Make the device ring</string>
@@ -191,7 +191,7 @@
     <string name="perm_write_secure_settings_name">Write Secure Settings</string>
 
     <!-- Permissions: Descriptions -->
-    <string name="Permission_IGNORE_BATTERY_OPTIMIZATION">This application is supposed to work in the background. To ensure it works even when your phone is in standby, you need to turn off battery optimization for this app.</string>
+    <string name="Permission_IGNORE_BATTERY_OPTIMIZATION">This application is supposed to work in the background. To ensure it works even when your device is in standby, you need to turn off battery optimization for this app.</string>
     <string name="Permission_POST_NOTIFICATIONS">FMD will occasionally send you notifications, for example to warn you that someone is locating your device.</string>
 
     <!-- Permissions: Other strings -->
@@ -209,7 +209,7 @@
     <!-- Transports -->
 
     <string name="transport_sms_title">SMS</string>
-    <string name="transport_sms_description">Send commands to your phone over SMS. E.g., text \"fmd help\" to your phone. FMD will reply with an SMS.</string>
+    <string name="transport_sms_description">Send commands to your device over SMS. E.g., text \"fmd help\" to your device. FMD will reply with an SMS.</string>
     <string name="transport_sms_description_auth">Only phone numbers that are in the allowlist can send commands. To send commands from a phone number that is not in the allowlist, you have to include the PIN: \"fmd mypin help\". For convenience, so that you don\'t have to re-type the PIN every time, this new phone number is added to a temporary allowlist for the next 10 minutes.</string>
     <string name="transport_sms_description_note">SMS may incur costs for both you and the person texting you. SMS requires your SIM card to be unlocked (e.g., after a reboot).</string>
 
@@ -218,9 +218,9 @@
     <string name="transport_notification_reply_description_auth">Controlling FMD via Notification Reply requires the FMD PIN to be set. Every message must contain the correct PIN.</string>
 
     <string name="transport_fmd_server_title">FMD Server</string>
-    <string name="transport_fmd_server_description">FMD Server provides a web interface to control your phone, view its location, and view pictures it sent. You can self-host FMD Server or use the provided instance. Data is stored encrypted on the server, protected by your password.</string>
-    <string name="transport_fmd_server_description_auth">Anyone who knows your username and password can log in to FMD Server and control your phone.</string>
-    <string name="transport_fmd_server_description_note">FMD Server requires your phone to have an internet connection. This can be a mobile network (thus the SIM needs to be unlocked) or WiFi.</string>
+    <string name="transport_fmd_server_description">FMD Server provides a web interface to control your device, view its location, and view pictures it sent. You can self-host FMD Server or use the provided instance. Data is stored encrypted on the server, protected by your password.</string>
+    <string name="transport_fmd_server_description_auth">Anyone who knows your username and password can log in to FMD Server and control your device.</string>
+    <string name="transport_fmd_server_description_note">FMD Server requires an internet connection. This can be a mobile network (thus the SIM needs to be unlocked) or WiFi.</string>
 
     <!-- Notification Channels -->
     <string name="Notification_Usage">Usage</string>
@@ -244,7 +244,7 @@
     <string name="missing_permissions_description">The following permissions are needed for FMD to run.</string>
 
     <!-- Lock screen message-->
-    <string name="Locked_Lock_Screen">FindMyDevice\nThis phone is locked!\nMessage from the owner:</string>
+    <string name="Locked_Lock_Screen">FindMyDevice\nThis device is locked!\nMessage from the owner:</string>
     <string name="LockScreen_Usage_detectd">LockScreenMessage: Usage detected.</string>
     <string name="LockScreen_Backbutton_pressed">LockScreenMessage: Back-Button pressed.</string>
 
