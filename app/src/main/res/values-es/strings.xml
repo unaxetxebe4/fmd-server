@@ -208,4 +208,24 @@
     <string name="cmd_ring_response">El dispositivo ahora debería estar sonando.</string>
     <string name="grant_write_secure_settings_description">Este permiso solo se puede conceder con la herramienta de línea de comandos \"pm grant\" de Android. Puedes ejecutar este comando manualmente a través de Android Debug Bridge (ADB) usando una computadora. También puedes ejecutarlo directamente en tu dispositivo usando root o Shizuku.</string>
     <string name="usage_notification_text">El comando \"%s\" fue ejecutado.</string>
+    <string name="bottom_nav_settings">Ajustes</string>
+    <string name="transport_sms_description_note">Los SMS pueden generar costes tanto para usted como para la persona que le envía el mensaje. Los SMS requieren que su tarjeta SIM esté desbloqueada (por ejemplo, después de reiniciar el sistema).</string>
+    <string name="transport_notification_reply_description_auth">Para controlar FMD mediante una respuesta de notificación, es necesario configurar el PIN de FMD. Cada mensaje debe contener el PIN correcto.</string>
+    <string name="transport_fmd_server_title">Servidor FMD</string>
+    <string name="transport_fmd_server_description_auth">Cualquiera que conozca su nombre de usuario y contraseña puede iniciar sesión en FMD Server y controlar su teléfono.</string>
+    <string name="transport_fmd_server_description_note">Para utilizar el servidor FMD, el teléfono debe tener conexión a Internet. Puede ser una red móvil (por lo que la tarjeta SIM debe estar desbloqueada) o WiFi.</string>
+    <string name="setup_warnings_title">Advertencias de configuración</string>
+    <string name="missing_permissions_title">Permisos no concedidos</string>
+    <string name="transport_notification_reply_title">Respuesta a la notificación</string>
+    <string name="transport_sms_title">SMS</string>
+    <string name="bottom_nav_commands">Comandos</string>
+    <string name="Settings_Import_Success">Importación exitosa</string>
+    <string name="cmd_lock_description_long">Bloquee el dispositivo y, opcionalmente, muestre un mensaje en la pantalla de bloqueo. Después de esto, el desbloqueo biométrico se deshabilita y se solicita la contraseña de su dispositivo para desbloquearlo.</string>
+    <string name="bottom_nav_transports">Canales de navegación</string>
+    <string name="Settings_Import_Failed">Importación fallida</string>
+    <string name="transport_sms_description">Envía comandos a tu teléfono por SMS. Por ejemplo, envía un mensaje de texto con la palabra \"ayuda fmd\" a tu teléfono. FMD responderá con un SMS.</string>
+    <string name="transport_sms_description_auth">Solo los números de teléfono que están en la lista de permitidos pueden enviar comandos. Para enviar comandos desde un número de teléfono que no está en la lista de permitidos, debe incluir el PIN: \"fmd mypin help\". Para mayor comodidad, de modo que no tenga que volver a escribir el PIN cada vez, este nuevo número de teléfono se agrega a una lista de permitidos temporal durante los próximos 10 minutos.</string>
+    <string name="transport_notification_reply_description">Puedes permitir que FMD lea tus notificaciones para escuchar comandos. Luego, FMD puede responder a través de la función de respuesta a notificaciones integrada de Android. Esto te permite controlar FMD mediante una aplicación de mensajería de tu elección, siempre que publique notificaciones a las que se pueda responder. Por ejemplo, puedes enviar un mensaje de Signal \"fmd mypin help\" a tu teléfono.</string>
+    <string name="transport_fmd_server_description">El servidor de FMD ofrece una interfaz web para controlar el teléfono, ver su ubicación y ver las imágenes que envió. Puede alojar el servidor FMD usted mismo o utilizar la instancia proporcionada. Los datos se almacenan cifrados en el servidor y están protegidos por su contraseña.</string>
+    <string name="missing_permissions_description">Se necesitan los siguientes permisos para que el FMD funcione.</string>
 </resources>
