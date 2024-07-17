@@ -39,7 +39,6 @@
     <string name="cmd_help_message_start">FindMyDevice के कमांड:</string>
     <string name="MH_Pin_Accepted">पिन स्वीकृत!</string>
     <string name="ringer_stop_ringing">घंटी बजाना बंद करें</string>
-    <string name="Crashed_Send_log">लॉग भेजें</string>
     <string name="cmd_locate_response_location_off">क्षमा करें, स्थान बंद है।</string>
     <string name="LockScreen_Usage_detectd">LockScreenMessage: उपयोग का पता चला।</string>
     <string name="Log_Alert_LogData">लॉगडेटा</string>

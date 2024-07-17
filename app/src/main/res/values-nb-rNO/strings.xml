@@ -75,7 +75,6 @@
     <string name="Toast_Duplicate_contact">Denne kontakten finnes allerede.</string>
     <string name="Notification_Usage">Bruk</string>
     <string name="Delete">Slett</string>
-    <string name="Crashed_Send_log">Send logg</string>
     <string name="Notification_Fail_Description">Merknad når noe går galt, som f.eks. tilkoblingen til FMD-tjeneren.</string>
     <string name="Settings_FMDCommand_Description">Kommando brukt til kommunikasjon med FindMyDevice-programmet.</string>
     <string name="Settings_FMDServer_LOW_BAT_Upload_Title">Last opp ved lav batterikapasitet</string>
