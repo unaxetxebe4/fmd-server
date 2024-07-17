@@ -111,7 +111,6 @@
     <string name="Delete">Excluir</string>
     <string name="cmd_locate_response_gps_will_follow">Coordenadas GPS serão enviadas em breve.</string>
     <string name="Toast_Duplicate_contact">Este contato já existe.</string>
-    <string name="Crashed_Send_log">Enviar Registro</string>
     <string name="MH_Pin_Accepted">PIN aceito!</string>
     <string name="cmd_locate_response_location_off">Desculpe, a localização está desativada.</string>
     <string name="ringer_stop_ringing">PARAR DE TOCAR</string>

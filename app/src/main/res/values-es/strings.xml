@@ -18,7 +18,6 @@
     <string name="MH_Pin_Accepted">¡Pin aceptado!</string>
     <string name="Alert_First_Time_contact_added">Felicidades. Ha añadido su primer contacto. Ahora puede comunicarse con FMD enviando un mensaje SMS que contenga \"fmd\" desde el número de teléfono autorizado. Cuando todo funcione, la aplicación responderá.</string>
     <string name="ringer_stop_ringing">DEJAR DE SONAR</string>
-    <string name="Crashed_Send_log">Enviar Registro</string>
     <string name="cmd_locate_response_location_off">Lo sentimos, la ubicación está desactivada.</string>
     <string name="Settings_FMDConfig">Configuración FMD</string>
     <string name="Settings_WhiteList">Lista Blanca</string>

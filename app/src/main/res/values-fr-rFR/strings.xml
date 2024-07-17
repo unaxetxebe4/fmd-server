@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="Crashed_Send_log">Envoyer les logs</string>
     <string name="ringer_stop_ringing">ARRETER DE SONNER</string>
     <string name="Alert_First_Time_contact_added">Félicitations. Vous avez ajouté votre premier contact. Vous pouvez maintenant communiquer avec FMD en envoyant un sms qui contient \"fmd\" à partir du numéro de téléphone autorisé. Quand tout marchera, l\'application répondra.</string>
     <string name="MH_Pin_Accepted">Code PIN accepté !</string>

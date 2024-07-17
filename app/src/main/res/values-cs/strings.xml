@@ -24,7 +24,6 @@
 \nZpráva od majitele:</string>
     <string name="Delete">Odstranit</string>
     <string name="ringer_stop_ringing">ZASTAVIT VYZVÁNĚNÍ</string>
-    <string name="Crashed_Send_log">Odeslat protokol</string>
     <string name="cmd_locate_response_location_off">Omlouvame se, poloha je vypnuta.</string>
     <string name="cmd_locate_response_gps_will_follow">Souradnice GPS budou brzy odeslany.</string>
     <string name="cmd_help_message_start">Prikazy FindMyDevice:</string>
