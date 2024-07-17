@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="Locked_Lock_Screen">FindMyDevice
-\n¡Este teléfono está bloqueado!
+\n¡Este dispositivo está bloqueado!
 \nMensaje del propietari@:</string>
     <string name="Enable">Activar</string>
     <string name="Settings_Pin_Description">Se utiliza como confirmación antes de borrar el dispositivo y para el uso anónimo del servicio.</string>
@@ -31,7 +31,7 @@
     <string name="Pin_Usage">Uso del PIN</string>
     <string name="Notification_Usage_Description">Notificaciones cuando FMD está recibiendo comandos</string>
     <string name="Notification_Pin_Usage_Description">Las notificaciones cuando se accede a FMD se realizan a través del PIN</string>
-    <string name="cmd_locate_response_opencellid_failed">Error al obtener la ubicación desde OpenCelliD. Por favor, intenta ir al siguiente enlace. Los parámetros que quiere son \"lon\" y \"lat\".</string>
+    <string name="cmd_locate_response_opencellid_failed">Error al obtener la ubicación de OpenCelliD. Por favor, pruebe con el siguiente enlace. Los parámetros importantes son \"lat\" y \"lon\".</string>
     <string name="LockScreen_Usage_detectd">LockScreenMessage: Uso detectado.</string>
     <string name="LockScreen_Backbutton_pressed">Mensaje de la Pantalla de Bloqueo: Botón de Retroceso pulsado.</string>
     <string name="Toast_Empty_FMDCommand">Comando Vacío no permitido
@@ -82,7 +82,7 @@
     <string name="registration_token_hint">Las instancias privadas pueden requerir un token secreto. Déjelo vacío si la instancia es pública.</string>
     <string name="Whitelist_help">Los contactos de esta lista pueden enviar comandos FMD por SMS. Los comandos de todos los demás serán ignorados.</string>
     <string name="Whitelist_empty">No se permiten contactos. ¡Haz clic en el botón para añadir algunos!</string>
-    <string name="OpenCellId_help">FMD puede utilizar el servicio OpenCelliD para obtener una ubicación aproximada basada en la torre de telefonía móvil a la que está conectado el teléfono. Se requiere una conexión a Internet para cada consulta de ubicación. También es necesario crear una cuenta en OpenCelliD y obtener su propio token de acceso a la API.</string>
+    <string name="OpenCellId_help">FMD puede utilizar el servicio OpenCelliD para obtener una ubicación aproximada basada en la torre de telefonía móvil a la que está conectado al dispositivo. Se requiere una conexión a Internet para cada consulta de ubicación. También es necesario crear una cuenta en OpenCelliD y obtener su propio token de acceso a la API.</string>
     <string name="OpenCellId_open_website">Abrir la página web de OpenCelliD</string>
     <string name="OpenCellId_privacy">Privacidad: recuerde que OpenCelliD aprende su torre de telefonía actual y por lo tanto su ubicación con cada solicitud de API.</string>
     <string name="about">Acerca de</string>
@@ -95,7 +95,7 @@
     <string name="Settings_FMD_Server_General">General</string>
     <string name="Settings_FMDServer_Change_Password_Button">Cambiar la contraseña</string>
     <string name="Settings_FMDServer_Logout_Button">Cerrar sesión</string>
-    <string name="Settings_FMDServer_Push_Description_Missing">El envío de comandos desde el servidor FMD a su teléfono requiere una aplicación de distribuidor UnifiedPush. Instale una y vuelva aquí. Se detectará automáticamente.</string>
+    <string name="Settings_FMDServer_Push_Description_Missing">El envío de comandos desde el servidor FMD a su dispositivo requiere una aplicación de distribuidor UnifiedPush. Instale una y vuelva aquí. Se detectará automáticamente.</string>
     <string name="OpenCellId_test_opencellid">Probar la conexión a OpenCelliD</string>
     <string name="password_new_repeat">Repita la nueva contraseña</string>
     <string name="OpenCellId_test_no_connection">Sin conexión móvil</string>
@@ -111,7 +111,7 @@
     <string name="Notification_Security">Seguridad</string>
     <string name="Notification_FAIL">Fallos</string>
     <string name="Notification_Fail_Description">Notificaciones cuando algo falla, como la conexión al servidor FMD</string>
-    <string name="Permission_IGNORE_BATTERY_OPTIMIZATION">Se supone que esta aplicación funciona en segundo plano. Para asegurarse de que funciona incluso cuando el teléfono está en modo de espera, es necesario desactivar la optimización de la batería para esta aplicación.</string>
+    <string name="Permission_IGNORE_BATTERY_OPTIMIZATION">Se supone que esta aplicación funciona en segundo plano. Para asegurarse de que funciona incluso cuando el dispositivo está en modo de espera, es necesario desactivar la optimización de la batería para esta aplicación.</string>
     <string name="Permission_POST_NOTIFICATIONS">FMD le enviará ocasionalmente notificaciones, por ejemplo para avisarle de que alguien está localizando su dispositivo.</string>
     <string name="request_failed_title">Error en la solicitud de red</string>
     <string name="request_failed_status_code">Código de estado</string>
@@ -178,23 +178,23 @@
     <string name="transport_sms_description_note">Los SMS pueden generar costes tanto para usted como para la persona que le envía el mensaje. Los SMS requieren que su tarjeta SIM esté desbloqueada (por ejemplo, después de reiniciar el sistema).</string>
     <string name="transport_notification_reply_description_auth">Para controlar FMD mediante una respuesta de notificación, es necesario configurar el PIN de FMD. Cada mensaje debe contener el PIN correcto.</string>
     <string name="transport_fmd_server_title">Servidor FMD</string>
-    <string name="transport_fmd_server_description_auth">Cualquiera que conozca su nombre de usuario y contraseña puede iniciar sesión en FMD Server y controlar su teléfono.</string>
-    <string name="transport_fmd_server_description_note">Para utilizar el servidor FMD, el teléfono debe tener conexión a Internet. Puede ser una red móvil (por lo que la tarjeta SIM debe estar desbloqueada) o WiFi.</string>
+    <string name="transport_fmd_server_description_auth">Cualquiera que conozca tu nombre de usuario y contraseña puede iniciar sesión en el servidor FMD y controlar tu dispositivo.</string>
+    <string name="transport_fmd_server_description_note">El servidor FMD requiere una conexión a Internet. Puede ser una red móvil (por lo que la SIM debe estar desbloqueada) o WiFi.</string>
     <string name="setup_warnings_title">Advertencias de configuración</string>
     <string name="missing_permissions_title">Permisos no concedidos</string>
     <string name="transport_notification_reply_title">Respuesta a la notificación</string>
     <string name="transport_sms_title">SMS</string>
     <string name="bottom_nav_commands">Comandos</string>
     <string name="Settings_Import_Success">Importación exitosa</string>
-    <string name="cmd_lock_description_long">Bloquee el dispositivo y, opcionalmente, muestre un mensaje en la pantalla de bloqueo. Después de esto, el desbloqueo biométrico se deshabilita y se solicita la contraseña de su dispositivo para desbloquearlo.</string>
+    <string name="cmd_lock_description_long">Bloquea el dispositivo y, opcionalmente, muestra un mensaje en la pantalla de bloqueo. Después de esto, el desbloqueo biométrico no está disponible y se requiere la contraseña del dispositivo para desbloquearlo.</string>
     <string name="bottom_nav_transports">Canales de navegación</string>
     <string name="Settings_Import_Failed">Importación fallida</string>
-    <string name="transport_sms_description">Envía comandos a tu teléfono por SMS. Por ejemplo, envía un mensaje de texto con la palabra \"ayuda fmd\" a tu teléfono. FMD responderá con un SMS.</string>
+    <string name="transport_sms_description">Envía comandos a tu dispositivo a través de SMS. Por ejemplo, envía «fmd help» a tu dispositivo. FMD responderá con un SMS.</string>
     <string name="transport_sms_description_auth">Solo los números de teléfono que están en la lista de permitidos pueden enviar comandos. Para enviar comandos desde un número de teléfono que no está en la lista de permitidos, debe incluir el PIN: \"fmd mypin help\". Para mayor comodidad, de modo que no tenga que volver a escribir el PIN cada vez, este nuevo número de teléfono se agrega a una lista de permitidos temporal durante los próximos 10 minutos.</string>
     <string name="transport_notification_reply_description">Puedes permitir que FMD lea tus notificaciones para escuchar comandos. Luego, FMD puede responder a través de la función de respuesta a notificaciones integrada de Android. Esto te permite controlar FMD mediante una aplicación de mensajería de tu elección, siempre que publique notificaciones a las que se pueda responder. Por ejemplo, puedes enviar un mensaje de Signal \"fmd mypin help\" a tu teléfono.</string>
-    <string name="transport_fmd_server_description">El servidor de FMD ofrece una interfaz web para controlar el teléfono, ver su ubicación y ver las imágenes que envió. Puede alojar el servidor FMD usted mismo o utilizar la instancia proporcionada. Los datos se almacenan cifrados en el servidor y están protegidos por su contraseña.</string>
+    <string name="transport_fmd_server_description">FMD Server proporciona una interfaz web para controlar el dispositivo, ver su ubicación y las imágenes que ha enviado. Puede alojar usted mismo el servidor FMD o utilizar la instancia proporcionada. Los datos se almacenan encriptados en el servidor, protegidos por su contraseña.</string>
     <string name="missing_permissions_description">Se necesitan los siguientes permisos para que el FMD funcione.</string>
     <string name="WhiteList_no_contact_picker">¡No se encontró ninguna aplicación de selección de contactos!</string>
-    <string name="cmd_locate_last_known_location_not_available">La última ubicación no está disponible.</string>
+    <string name="cmd_locate_last_known_location_not_available">No hay última ubicación conocida. Solicita la última ubicación para forzar una actualización de la ubicación.</string>
     <string name="cmd_locate_last_known_location_text">Última ubicación conocida</string>
 </resources>
