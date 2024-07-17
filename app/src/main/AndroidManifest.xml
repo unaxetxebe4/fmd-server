@@ -120,7 +120,6 @@
         <receiver
             android:name=".receiver.BootReceiver"
             android:directBootAware="true"
-            android:enabled="true"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
@@ -129,7 +128,6 @@
         <receiver
             android:name=".receiver.SMSReceiver"
             android:directBootAware="true"
-            android:enabled="true"
             android:exported="true"
             android:permission="android.permission.BROADCAST_SMS">
             <intent-filter android:priority="100000000">
@@ -146,26 +144,23 @@
 
         <service
             android:name=".services.FMDServerLocationUploadService"
-            android:exported="true"
+            android:exported="false"
             android:permission="android.permission.BIND_JOB_SERVICE" />
         <service
             android:name=".services.FMDServerCommandDownloadService"
-            android:exported="true"
+            android:exported="false"
             android:permission="android.permission.BIND_JOB_SERVICE" />
         <service
             android:name=".services.TempContactExpiredService"
-            android:enabled="true"
-            android:exported="true"
+            android:exported="false"
             android:permission="android.permission.BIND_JOB_SERVICE" />
         <service
             android:name=".services.FMDSMSService"
-            android:enabled="true"
-            android:exported="true"
+            android:exported="false"
             android:permission="android.permission.BIND_JOB_SERVICE" />
         <service
             android:name=".services.ThirdPartyAccessService"
-            android:enabled="true"
-            android:exported="true"
+            android:exported="false"
             android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
             <intent-filter>
                 <action android:name="android.service.notification.NotificationListenerService" />
@@ -174,7 +169,6 @@
 
         <receiver
             android:name=".receiver.PushReceiver"
-            android:enabled="true"
             android:exported="true">
             <intent-filter>
                 <action android:name="org.unifiedpush.android.connector.MESSAGE" />
