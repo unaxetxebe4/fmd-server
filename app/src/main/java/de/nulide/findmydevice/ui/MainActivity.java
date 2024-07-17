@@ -31,8 +31,6 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String KEY_ACTIVE_FRAGMENT_TAG = "activeFragmentTag";
 
-    private Settings settings;
-
     private TaggedFragment commandsFragment, transportFragment, settingsFragment;
     private TaggedFragment activeFragment;
 
@@ -49,13 +47,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        PushReceiver.registerWithUnifiedPush(this);
-
         IO.context = this;
         Logger.init(Thread.currentThread(), this);
         Notifications.init(this, false);
 
-        settings = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(this)).getSettings();
+        Settings settings = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(this)).getSettings();
 
         if (((Integer) settings.get(Settings.SET_APP_CRASHED_LOG_ENTRY)) != -1) {
             Intent intent = new Intent(this, CrashedActivity.class);
@@ -69,9 +65,6 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
             return;
-        }
-        if (settings.checkAccountExists()) {
-            FMDServerLocationUploadService.scheduleJob(this, 0);
         }
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_nav);
@@ -101,6 +94,15 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, activeFragment, activeFragment.getStaticTag())
                 .commit();
+
+        Settings settings = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(this)).getSettings();
+        if (settings.checkAccountExists()) {
+            PushReceiver.registerWithUnifiedPush(this);
+            FMDServerLocationUploadService.scheduleJob(this, 0);
+        } else {
+            // just in case it was still running
+            FMDServerLocationUploadService.cancelJob(this);
+        }
     }
 
     private final NavigationBarView.OnItemSelectedListener navListener = (item) -> {

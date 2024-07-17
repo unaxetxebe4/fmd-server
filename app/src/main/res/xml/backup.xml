@@ -12,5 +12,4 @@
 		domain="file"
 		path="."
 		requireFlags="clientSideEncryption" />
-	<!-- we do not include file domain, because there is only the offline map tiles which should be excluded due to size  -->
 </full-backup-content>
