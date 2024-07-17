@@ -42,8 +42,7 @@ abstract class Command(val context: Context) {
         return requiredPermissions.filter { p -> !p.isGranted(context) }
     }
 
-    @CallSuper
-    open fun <T> execute(
+    fun <T> execute(
         args: List<String>,
         transport: Transport<T>,
         job: FmdJobService?,
@@ -53,14 +52,21 @@ abstract class Command(val context: Context) {
             val msg = context.getString(
                 R.string.cmd_missing_permissions,
                 args.joinToString(" "),
-                missing.joinToString(", ")
+                missing.joinToString(", ") { it.toString(context) }
             )
             Log.w(TAG, msg)
             transport.send(context, msg)
             job?.jobFinished()
             return
         }
-        // continue executing command
-        // (this should be done in the concrete classes that override this function)
+        // Continue executing command.
+        // The concrete classes should implement executeInternal.
+        executeInternal(args, transport, job)
     }
+
+    internal abstract fun <T> executeInternal(
+        args: List<String>,
+        transport: Transport<T>,
+        job: FmdJobService?,
+    )
 }

@@ -30,13 +30,11 @@ class LockCommand(context: Context) : Command(context) {
 
     override val optionalPermissions = listOf(OverlayPermission())
 
-    override fun <T> execute(
+    override fun <T> executeInternal(
         args: List<String>,
         transport: Transport<T>,
         job: FmdJobService?,
     ) {
-        super.execute(args, transport, job)
-
         val devicePolicyManager =
             context.getSystemService(Context.DEVICE_POLICY_SERVICE) as DevicePolicyManager
         devicePolicyManager.lockNow()

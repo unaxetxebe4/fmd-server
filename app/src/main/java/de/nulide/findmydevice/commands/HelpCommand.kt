@@ -27,13 +27,11 @@ class HelpCommand(
 
     override val requiredPermissions = emptyList<Permission>()
 
-    override fun <T> execute(
+    override fun <T> executeInternal(
         args: List<String>,
         transport: Transport<T>,
         job: FmdJobService?,
     ) {
-        super.execute(args, transport, job)
-
         val reply = StringBuilder()
         reply.appendLine(context.getString(R.string.cmd_help_message_start))
         reply.appendLine()

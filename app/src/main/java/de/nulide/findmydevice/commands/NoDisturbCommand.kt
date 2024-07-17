@@ -25,13 +25,11 @@ class NoDisturbCommand(context: Context) : Command(context) {
 
     override val requiredPermissions = listOf(DoNotDisturbAccessPermission())
 
-    override fun <T> execute(
+    override fun <T> executeInternal(
         args: List<String>,
         transport: Transport<T>,
         job: FmdJobService?,
     ) {
-        super.execute(args, transport, job)
-
         val nm = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
         if (args.contains("on")) {

@@ -31,13 +31,11 @@ class DeleteCommand(context: Context) : Command(context) {
 
     override val requiredPermissions = listOf(DeviceAdminPermission())
 
-    override fun <T> execute(
+    override fun <T> executeInternal(
         args: List<String>,
         transport: Transport<T>,
         job: FmdJobService?,
     ) {
-        super.execute(args, transport, job)
-
         if (!(settings.get(Settings.SET_WIPE_ENABLED) as Boolean)) {
             val msg = context.getString(R.string.cmd_delete_response_disabled)
             Log.i(TAG, msg)

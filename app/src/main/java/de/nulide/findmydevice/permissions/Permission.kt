@@ -17,6 +17,7 @@ abstract class Permission {
 
     abstract fun request(activity: Activity)
 
+    // This does NOT override toString() because it takes a Context!
     fun toString(context: Context): String {
         return context.getString(name)
     }
