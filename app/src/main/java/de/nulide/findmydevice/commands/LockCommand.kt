@@ -26,7 +26,9 @@ class LockCommand(context: Context) : Command(context) {
 
     override val longDescription = R.string.cmd_lock_description_long
 
-    override val requiredPermissions = listOf(DeviceAdminPermission(), OverlayPermission())
+    override val requiredPermissions = listOf(DeviceAdminPermission())
+
+    override val optionalPermissions = listOf(OverlayPermission())
 
     override fun <T> execute(
         args: List<String>,
@@ -39,20 +41,20 @@ class LockCommand(context: Context) : Command(context) {
             context.getSystemService(Context.DEVICE_POLICY_SERVICE) as DevicePolicyManager
         devicePolicyManager.lockNow()
 
-        val customText = args.getOrNull(3)
+        // Only show the full-screen activity if there is a message. This allows you to silently
+        // lock your device (by not providing a message) without alerting the potential thief.
+        val customText = args.subList(2, args.size)
+        if (customText.isNotEmpty() && OverlayPermission().isGranted(context)) {
+            val customMessage = customText.joinToString(" ")
 
-        val lockScreenMessage = Intent(context, LockScreenMessage::class.java)
-
-        lockScreenMessage.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        // TODO: bring back passing this data??
-        //lockScreenMessage.putExtra(LockScreenMessage.SENDER, transport.getDestinationString())
-        //lockScreenMessage.putExtra(LockScreenMessage.SENDER_TYPE, ch.getSender().SENDER_TYPE)
-
-        if (customText != null) {
-            val customMessage = args.subList(3, args.size).joinToString(" ")
+            val lockScreenMessage = Intent(context, LockScreenMessage::class.java)
+            lockScreenMessage.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            // TODO: bring back passing this data??
+            //lockScreenMessage.putExtra(LockScreenMessage.SENDER, transport.getDestinationString())
+            //lockScreenMessage.putExtra(LockScreenMessage.SENDER_TYPE, ch.getSender().SENDER_TYPE)
             lockScreenMessage.putExtra(LockScreenMessage.CUSTOM_TEXT, customMessage)
+            context.startActivity(lockScreenMessage)
         }
-        context.startActivity(lockScreenMessage)
 
         transport.send(context, context.getString(R.string.cmd_lock_response))
         job?.jobFinished()
