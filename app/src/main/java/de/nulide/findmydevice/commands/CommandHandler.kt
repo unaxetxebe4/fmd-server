@@ -1,6 +1,7 @@
 package de.nulide.findmydevice.commands
 
 import android.content.Context
+import android.util.Log
 import de.nulide.findmydevice.R
 import de.nulide.findmydevice.data.Settings
 import de.nulide.findmydevice.data.io.IO
@@ -50,13 +51,14 @@ class CommandHandler<T>(
      */
     fun execute(context: Context, rawCommand: String) {
         Logger.logSession(TAG, "Handling command: $rawCommand")
+        Log.d(TAG, "Handling command: $rawCommand")
 
         val args = rawCommand.split(" ").toMutableList()
         val settings: Settings =
             JSONFactory.convertJSONSettings(IO.read(JSONMap::class.java, IO.settingsFileName))
-        val fmdTriggerWord = settings.get(Settings.SET_FMD_COMMAND)
+        val fmdTriggerWord = settings.get(Settings.SET_FMD_COMMAND) as String
 
-        if (args.isEmpty() || args[0] != fmdTriggerWord) {
+        if (args.isEmpty() || args[0].lowercase() != fmdTriggerWord.lowercase()) {
             return
         }
 
@@ -69,7 +71,7 @@ class CommandHandler<T>(
 
         // run the command
         for (cmd in availableCommands(context)) {
-            if (args[1] == cmd.keyword) {
+            if (args[1].lowercase() == cmd.keyword.lowercase()) {
                 cmd.execute(args, transport, job)
                 break
             }

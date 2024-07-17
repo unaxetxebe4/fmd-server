@@ -10,11 +10,8 @@ import android.os.Bundle
 import android.util.Log
 import androidx.core.content.ContextCompat
 import de.nulide.findmydevice.R
-import de.nulide.findmydevice.data.Settings
-import de.nulide.findmydevice.data.io.IO
-import de.nulide.findmydevice.data.io.JSONFactory
-import de.nulide.findmydevice.data.io.json.JSONMap
 import de.nulide.findmydevice.permissions.LocationPermission
+import de.nulide.findmydevice.permissions.WriteSecureSettingsPermission
 import de.nulide.findmydevice.transports.Transport
 import de.nulide.findmydevice.utils.SecureSettings
 import kotlinx.coroutines.CompletableDeferred
@@ -45,6 +42,7 @@ class GpsLocationProvider<T>(
         context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
 
     private var deferred: CompletableDeferred<Unit>? = null
+    private var isGpsTurnedOnByUs = false
 
     @SuppressLint("MissingPermission") // linter is not good enough to recognize the check
     override fun getAndSendLocation(): Deferred<Unit> {
@@ -56,8 +54,23 @@ class GpsLocationProvider<T>(
             def.complete(Unit)
             return def
         }
-        transport.send(context, context.getString(R.string.cmd_locate_response_gps_will_follow))
 
+        if (!isGpsOn(context)) {
+            if (WriteSecureSettingsPermission().isGranted(context)) {
+                SecureSettings.turnGPS(context, true)
+                isGpsTurnedOnByUs = true
+            } else {
+                Log.w(
+                    TAG,
+                    "Cannot run fmd locate: GPS is off and missing permission WRITE_SECURE_SETTINGS"
+                )
+                transport.send(context, context.getString(R.string.cmd_locate_response_location_off))
+                def.complete(Unit)
+                return def
+            }
+        }
+
+        transport.send(context, context.getString(R.string.cmd_locate_response_gps_will_follow))
         Log.d(TAG, "Requesting location update from GPS")
         for (provider in locationManager.allProviders) {
             // we may be in a background thread due to being in a coroutine,
@@ -70,24 +83,18 @@ class GpsLocationProvider<T>(
     }
 
     override fun onLocationChanged(location: Location) {
-
         val provider = location.provider ?: "GPS"
         val lat = location.latitude.toString()
         val lon = location.longitude.toString()
         val timeMillis = Calendar.getInstance(TimeZone.getTimeZone("UTC")).timeInMillis
+        Log.d(TAG, "Location found by $provider")
 
         storeLastKnownLocation(lat, lon, timeMillis)
         transport.sendNewLocation(context, provider, lat, lon, timeMillis)
 
-        val settings: Settings =
-            JSONFactory.convertJSONSettings(IO.read(JSONMap::class.java, IO.settingsFileName))
-
-        if (settings[Settings.SET_GPS_STATE] as Int == 2) {
+        if (isGpsTurnedOnByUs) {
             SecureSettings.turnGPS(context, false)
-            settings.set(Settings.SET_GPS_STATE, 0)
         }
-
-        Log.d(TAG, "Location found by $provider")
         locationManager.removeUpdates(this)
         deferred?.complete(Unit)
     }
