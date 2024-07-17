@@ -9,6 +9,7 @@
     <string name="copied">Copied</string>
     <string name="paste" translatable="false">@android:string/paste</string>
     <string name="accept">accept</string>
+    <string name="add">Add</string>
     <string name="cancel" translatable="false">@android:string/cancel</string>
     <string name="Edit">Edit</string>
     <string name="Enable">Enable</string>
@@ -100,6 +101,9 @@
     <string name="Alert_First_Time_contact_added">Congratulations. You have added your first contact. You can now communicate with FMD by sending a SMS message that contains \"fmd\" from the allowed phone number. When everything works, the application will respond.</string>
     <string name="Toast_Duplicate_contact">This contact already exists.</string>
     <string name="WhiteList_no_contact_picker">No contact picker application found!</string>
+    <string name="allowlist_add_phone_number">Add Phone Number</string>
+    <string name="allowlist_phone_number_name">Name</string>
+    <string name="allowlist_phone_number">Phone Number</string>
 
     <!-- Settings: OpenCelliD -->
     <string name="OpenCellId_OpenCellId" translatable="false">OpenCelliD</string>

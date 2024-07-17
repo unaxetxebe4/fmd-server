@@ -30,9 +30,6 @@ import de.nulide.findmydevice.data.FmdKeyPair;
 import de.nulide.findmydevice.data.Settings;
 import de.nulide.findmydevice.data.SettingsRepoSpec;
 import de.nulide.findmydevice.data.SettingsRepository;
-import de.nulide.findmydevice.data.io.IO;
-import de.nulide.findmydevice.data.io.JSONFactory;
-import de.nulide.findmydevice.data.io.json.JSONMap;
 import de.nulide.findmydevice.net.FMDServerApiRepoSpec;
 import de.nulide.findmydevice.net.FMDServerApiRepository;
 import de.nulide.findmydevice.receiver.PushReceiver;
@@ -40,6 +37,7 @@ import de.nulide.findmydevice.services.FMDServerLocationUploadService;
 import de.nulide.findmydevice.utils.CypherUtils;
 import de.nulide.findmydevice.utils.Utils;
 import kotlin.Unit;
+
 
 public class AddAccountActivity extends AppCompatActivity implements TextWatcher {
 

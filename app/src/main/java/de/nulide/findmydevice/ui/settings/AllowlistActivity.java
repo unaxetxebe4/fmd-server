@@ -2,6 +2,7 @@ package de.nulide.findmydevice.ui.settings;
 
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -10,6 +11,7 @@ import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +33,7 @@ import de.nulide.findmydevice.data.io.JSONFactory;
 import de.nulide.findmydevice.data.io.json.JSONWhiteList;
 import de.nulide.findmydevice.ui.allowlist.AllowlistAdapter;
 import kotlin.Unit;
+
 
 public class AllowlistActivity extends AppCompatActivity {
 
@@ -57,6 +60,7 @@ public class AllowlistActivity extends AppCompatActivity {
 
         textWhitelistEmpty = findViewById(R.id.whitelistEmpty);
         findViewById(R.id.buttonAddContact).setOnClickListener(this::onAddContactClicked);
+        findViewById(R.id.buttonAddPhoneNumber).setOnClickListener(this::onAddPhoneNumberClicked);
 
         updateScreen();
     }
@@ -69,6 +73,25 @@ public class AllowlistActivity extends AppCompatActivity {
         }
 
         allowlistAdapter.submitList(allowlist);
+    }
+
+    private void onAddPhoneNumberClicked(View v) {
+        Context context = v.getContext();
+        View layout = getLayoutInflater().inflate(R.layout.dialog_phone_number, null);
+        EditText nameInput = layout.findViewById(R.id.editTextName);
+        EditText phoneNumberInput = layout.findViewById(R.id.editTextPhoneNumber);
+
+        new AlertDialog.Builder(context)
+                .setTitle(context.getString(R.string.allowlist_add_phone_number))
+                .setView(layout)
+                .setPositiveButton(getString(R.string.add), (dialog, whichButton) -> {
+                    String name = nameInput.getText().toString();
+                    String number = phoneNumberInput.getText().toString();
+                    Contact dummyContact = new Contact(name, number);
+                    addContactToAllowList(dummyContact);
+                })
+                .setNegativeButton(getString(R.string.cancel), null)
+                .show();
     }
 
     private void onAddContactClicked(View v) {
