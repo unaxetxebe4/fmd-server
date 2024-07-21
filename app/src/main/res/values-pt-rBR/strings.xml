@@ -196,4 +196,14 @@
     <string name="cmd_locate_response_opencellid_failed">Um erro ocorreu ao obter localização do OpenCelliD. Por favor tente o seguinte link. Os parâmetros importantes são \"lat\" e \"lon\".</string>
     <string name="cmd_locate_last_known_location_not_available">A ultima localização não é conhecida. Solicite a localização mais recente para forçar uma atualização da localização.</string>
     <string name="cmd_locate_last_known_location_text">Última localização</string>
+    <string name="add">Adicionar</string>
+    <string name="allowlist_phone_number_name">Nome</string>
+    <string name="crashed_text">O FMD crashou! Aqui estão os registros:</string>
+    <string name="crashed_send_log">Enviar registros</string>
+    <string name="crashed_copy_log">Copiar registros</string>
+    <string name="crashed_continue_without">Continuar sem relatar</string>
+    <string name="perm_unused_app_name">Restrições de App Não Usado</string>
+    <string name="allowlist_add_phone_number">Adicionar Número de Telefone</string>
+    <string name="allowlist_phone_number">Número de Telefone</string>
+    <string name="perm_unused_app_description">O Android pausa apps que não são abertos por alguns meses e remove suas permissões. O FMD, entretanto, deve rodar em segundo plano. Após configurá-lo, raramente precisará abri-lo. Por causa disso, é importante adicionar uma exceção ao FMD de ser pausado, caso contrário, pode parar de funcionar em alguns meses.</string>
 </resources>
