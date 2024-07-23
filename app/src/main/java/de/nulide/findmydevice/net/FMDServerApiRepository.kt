@@ -50,7 +50,7 @@ class FMDServerApiRepository private constructor(spec: FMDServerApiRepoSpec) {
 
     private var baseUrl = ""
     private val queue: RequestQueue = PatchedVolley.newRequestQueue(spec.context)
-    private val settings = SettingsRepository.getInstance(SettingsRepoSpec(spec.context)).settings
+    private val settingsRepo = SettingsRepository.getInstance(SettingsRepoSpec(spec.context))
 
     init {
         loadBaseUrl()
@@ -61,14 +61,15 @@ class FMDServerApiRepository private constructor(spec: FMDServerApiRepoSpec) {
      * This should be called every time where the settings could have changed.
      */
     private fun loadBaseUrl() {
-        val tempBaseUrl = settings[Settings.SET_FMDSERVER_URL] as String
+        val tempBaseUrl = settingsRepo.settings[Settings.SET_FMDSERVER_URL] as String
+        // ensure the base URL doesn't end in /
         if (tempBaseUrl.endsWith("/")) {
-            settings.set(
+            settingsRepo.settings.set(
                 Settings.SET_FMDSERVER_URL,
-                tempBaseUrl.substring(0, tempBaseUrl.length)
+                tempBaseUrl.trim('/')
             )
         }
-        baseUrl = settings[Settings.SET_FMDSERVER_URL] as String
+        baseUrl = settingsRepo.settings[Settings.SET_FMDSERVER_URL] as String
     }
 
     fun getServerVersion(
@@ -109,7 +110,7 @@ class FMDServerApiRepository private constructor(spec: FMDServerApiRepoSpec) {
             Method.PUT, baseUrl + URL_DEVICE, jsonObject,
             { response: JSONObject ->
                 try {
-                    settings.set(Settings.SET_FMDSERVER_ID, response["DeviceId"])
+                    settingsRepo.settings.set(Settings.SET_FMDSERVER_ID, response["DeviceId"])
                 } catch (e: JSONException) {
                     e.printStackTrace()
                 }
@@ -157,8 +158,8 @@ class FMDServerApiRepository private constructor(spec: FMDServerApiRepoSpec) {
         onError: Response.ErrorListener,
     ) {
         getAccessToken(
-            settings.get(Settings.SET_FMDSERVER_ID) as String,
-            settings.get(Settings.SET_FMD_CRYPT_HPW) as String,
+            settingsRepo.settings.get(Settings.SET_FMDSERVER_ID) as String,
+            settingsRepo.settings.get(Settings.SET_FMD_CRYPT_HPW) as String,
             onResponse,
             onError,
         )
@@ -273,7 +274,7 @@ class FMDServerApiRepository private constructor(spec: FMDServerApiRepoSpec) {
             getAccessToken(userId, hashedPW, onError = onError, onResponse = { accessToken ->
                 getPrivateKey(accessToken, onError = onError, onResponse = { privateKey ->
                     getPublicKey(accessToken, onError = onError, onResponse = { publicKey ->
-                        settings.apply {
+                        settingsRepo.settings.apply {
                             set(Settings.SET_FMD_CRYPT_HPW, hashedPW)
                             set(Settings.SET_FMDSERVER_ID, userId)
                             set(Settings.SET_FMD_CRYPT_PUBKEY, publicKey)
@@ -310,7 +311,7 @@ class FMDServerApiRepository private constructor(spec: FMDServerApiRepoSpec) {
                     if (error.cause is JSONException || error.networkResponse.statusCode == 499) {
                         // request was actually successful, just deserialising failed
                         // only clear if request is successful
-                        settings.set(Settings.SET_FMDSERVER_ID, "")
+                        settingsRepo.settings.set(Settings.SET_FMDSERVER_ID, "")
                         onResponse.onResponse(Unit)
                     } else {
                         onError.onErrorResponse(error)
@@ -372,8 +373,8 @@ class FMDServerApiRepository private constructor(spec: FMDServerApiRepoSpec) {
                 Method.POST, baseUrl + URL_PASSWORD, jsonObject,
                 { response ->
                     if (response.has("Data")) {
-                        settings.set(Settings.SET_FMD_CRYPT_PRIVKEY, newPrivKey)
-                        settings.set(Settings.SET_FMD_CRYPT_HPW, newHashedPW)
+                        settingsRepo.settings.set(Settings.SET_FMD_CRYPT_PRIVKEY, newPrivKey)
+                        settingsRepo.settings.set(Settings.SET_FMD_CRYPT_HPW, newHashedPW)
                         onResponse.onResponse(Unit)
                     } else {
                         onError.onErrorResponse(VolleyError("change password response has no Data field"))
@@ -425,7 +426,7 @@ class FMDServerApiRepository private constructor(spec: FMDServerApiRepoSpec) {
         picture: String,
     ) {
         // TODO: Handle no Keys are returned
-        val keys = settings.getKeys() ?: return
+        val keys = settingsRepo.settings.getKeys() ?: return
         val msgBytes = CypherUtils.encryptWithKey(keys.publicKey, picture)
         val msg = CypherUtils.encodeBase64(msgBytes)
 
@@ -458,7 +459,7 @@ class FMDServerApiRepository private constructor(spec: FMDServerApiRepoSpec) {
         provider: String, lat: String, lon: String, batLevel: String, timeInMillis: Long
     ) {
         // Prepare payload
-        val publicKey = settings.getKeys().publicKey
+        val publicKey = settingsRepo.settings.getKeys().publicKey
 
         val locationDataObject = JSONObject()
         try {

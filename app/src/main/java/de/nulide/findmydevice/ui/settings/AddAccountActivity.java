@@ -47,7 +47,7 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
     private Button btnLogin;
     private Button btnRegister;
 
-    private Settings settings;
+    private SettingsRepository settingsRepo;
     private FMDServerApiRepository fmdServerRepo;
 
     private AlertDialog loadingDialog;
@@ -59,8 +59,8 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_account);
 
-        settings = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(this)).getSettings();
-        String lastKnownServerUrl = (String) settings.get(Settings.SET_FMDSERVER_URL);
+        settingsRepo = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(this));
+        String lastKnownServerUrl = (String) settingsRepo.getSettings().get(Settings.SET_FMDSERVER_URL);
 
         fmdServerRepo = FMDServerApiRepository.Companion.getInstance(new FMDServerApiRepoSpec(this));
 
@@ -114,10 +114,10 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
                             // Start the thread here. Key generation and password hashing is expensive-ish,
                             // so we don't want to do it on the UI thread (it would block then loading indicator).
                             FmdKeyPair keys = FmdKeyPair.generateNewFmdKeyPair(password);
-                            settings.setKeys(keys);
+                            settingsRepo.getSettings().setKeys(keys);
                             String hashedPW = CypherUtils.hashPasswordForLogin(password);
-                            settings.set(Settings.SET_FMD_CRYPT_HPW, hashedPW);
-                            settings.set(Settings.SET_FMDSERVER_PASSWORD_SET, true);
+                            settingsRepo.getSettings().set(Settings.SET_FMD_CRYPT_HPW, hashedPW);
+                            settingsRepo.getSettings().set(Settings.SET_FMDSERVER_PASSWORD_SET, true);
 
                             fmdServerRepo.registerAccount(keys.getEncryptedPrivateKey(), keys.getBase64PublicKey(), hashedPW, registrationToken,
                                     this::onRegisterOrLoginSuccess, this::onRegisterOrLoginError
@@ -193,7 +193,7 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
             if (url.endsWith("/")) {
                 url = url.substring(0, url.length() - 1);
             }
-            settings.set(Settings.SET_FMDSERVER_URL, url);
+            settingsRepo.getSettings().set(Settings.SET_FMDSERVER_URL, url);
             if (url.isEmpty()) {
                 btnRegister.setEnabled(false);
                 btnLogin.setEnabled(false);
@@ -210,7 +210,7 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
             Context context = getApplicationContext();
             loadingDialog.cancel();
 
-            if (((String) settings.get(Settings.SET_FMDSERVER_ID)).isEmpty()) {
+            if (((String) settingsRepo.getSettings().get(Settings.SET_FMDSERVER_ID)).isEmpty()) {
                 Toast.makeText(context, "Failed: no user id", Toast.LENGTH_LONG).show();
                 return;
             }
