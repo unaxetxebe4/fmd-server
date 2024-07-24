@@ -64,7 +64,7 @@
     <string name="Settings_FMD_Server_ID_Desc">FMD सर्वर के साथ अपना डिवाइस खोजने के लिए आपको उपयोक्ता ID की आवश्यकता है। इसे लिख कर सुरक्षित रख लें।</string>
     <string name="Settings_FMDServer_Delete_Button">डेटा मिटाएं</string>
     <string name="Settings_FMDServer_Alert_DeleteData">डेटा मिटाएं</string>
-    <string name="Settings_FMDServer_Push_Description_Missing">FMD सर्वर से आपके फोन पर कमांड भेजने के लिए UnifiedPush वितरक ऐप की आवश्यकता होती है। एक स्थापित करें, और फिर यहां वापस आएं। इसका स्वतः ही पता चल जाएगा।</string>
+    <string name="Settings_FMDServer_Push_Description_Missing">FMD सर्वर से आपके डिवाइस पर कमांड भेजने के लिए UnifiedPush वितरक ऐप की आवश्यकता होती है। एक स्थापित करें, और फिर यहां वापस आएं। इसका स्वतः ही पता चल जाएगा।</string>
     <string name="Settings_FMDServer_Push_Description_Available">पुश सूचनाओं के लिए सफलतापूर्वक पंजीकृत किया गया।</string>
     <string name="server_version_error_low_version">कम से कम सर्वर संस्करण {MIN} आवश्यक है, लेकिन चयनित सर्वर का संस्करण {CURRENT} है। स्वयं के जोखिम पर आगे बढ़ें।</string>
     <string name="password_old">पुराना पासवर्ड</string>
@@ -97,7 +97,7 @@
     <string name="Notification_Pin_Usage_Description">पिन के माध्यम से FMD तक पहुंचने पर अधिसूचनाएं</string>
     <string name="Notification_Security_Description">सुरक्षा अपडेट के बारे में सूचनाएं</string>
     <string name="Notification_Fail_Description">कुछ विफल होने पर अधिसूचना, जैसे FMD सर्वर से कनेक्शन</string>
-    <string name="Permission_IGNORE_BATTERY_OPTIMIZATION">ऐसा माना जाता है कि यह एप्लिकेशन पृष्ठभूमि में काम करेगा। यह सुनिश्चित करने के लिए कि यह तब भी काम करता है जब आपका फोन स्टैंडबाय में हो, आपको इस ऐप के लिए बैटरी अनुकूलन बंद करना होगा।</string>
+    <string name="Permission_IGNORE_BATTERY_OPTIMIZATION">ऐसा माना जाता है कि यह एप्लिकेशन पृष्ठभूमि में काम करेगा। यह सुनिश्चित करने के लिए कि यह तब भी काम करता है जब आपका डिवाइस स्टैंडबाय में हो, आपको इस ऐप के लिए बैटरी अनुकूलन बंद करना होगा।</string>
     <string name="Toast_Duplicate_contact">यह संपर्क पहले से मौजूद है।</string>
     <string name="Enable">सक्षम करें</string>
     <string name="Delete">मिटाएं</string>
@@ -109,9 +109,9 @@
     <string name="Settings_FMDServer_Alert_DeleteData_Desc">इससे सर्वर से सारा डेटा मिट जाएगा! क्या आप निश्चित हैं?</string>
     <string name="Settings_FMDServer_Location_Type_Description">वह स्रोत जिससे पृष्ठभूमि में नियमित अंतराल पर स्थान डेटा अपलोड किया जाता है।
 \nयदि कोई भी चयनित नहीं है, तो कोई भी स्थान नियमित रूप से अपलोड नहीं किया जाता है। (आप किसी अपलोड को बाध्य करने के लिए अभी भी वेब इंटरफ़ेस का उपयोग कर सकते हैं। इसके लिए पुश की आवश्यकता होती है।)</string>
-    <string name="OpenCellId_help">फोन जिस सेल टावर से जुड़ा है, उसके आधार पर अनुमानित स्थान प्राप्त करने के लिए FMD OpenCeliD सेवा का उपयोग कर सकता है। प्रत्येक स्थान क्वेरी के लिए इंटरनेट कनेक्शन आवश्यक है। आपको OpenCeliD पर एक खाता बनाना होगा और अपना स्वयं का API एक्सेस टोकन प्राप्त करना होगा।</string>
+    <string name="OpenCellId_help">डिवाइस जिस सेल टावर से जुड़ा है, उसके आधार पर अनुमानित स्थान प्राप्त करने के लिए FMD OpenCeliD सेवा का उपयोग कर सकता है। प्रत्येक स्थान क्वेरी के लिए इंटरनेट कनेक्शन आवश्यक है। आपको OpenCeliD पर एक खाता बनाना होगा और अपना स्वयं का API एक्सेस टोकन प्राप्त करना होगा।</string>
     <string name="cmd_locate_last_known_location_text">अंतिम ज्ञात स्थान</string>
-    <string name="cmd_locate_last_known_location_not_available">अंतिम स्थान उपलब्ध नहीं है।</string>
+    <string name="cmd_locate_last_known_location_not_available">कोई अंतिम ज्ञात स्थान नहीं है। स्थान अपडेट करने के लिए नवीनतम स्थान का अनुरोध करें।</string>
     <string name="request_failed_title">नेटवर्क अनुरोध विफल</string>
     <string name="request_failed_status_code">स्थिति कोड</string>
     <string name="request_failed_response_body">प्रतिक्रिया निकाय</string>
@@ -173,4 +173,37 @@
     <string name="grant_write_secure_settings_title">सुरक्षित सेटिंग लिखने की अनुमति दें</string>
     <string name="required_permissions_title">आवश्यक अनुमतियां</string>
     <string name="optional_permissions_title">वैकल्पिक अनुमतियां</string>
+    <string name="Settings_Import_Success">आयात सफल</string>
+    <string name="Settings_Import_Failed">आयात विफल</string>
+    <string name="perm_unused_app_description">एंड्रॉयड कुछ महीनों तक न खोले गए ऐप्स को रोक देता है और उनकी अनुमतियां हटा देता है। हालांकि, FMD को पृष्ठभूमि में काम करना चाहिए। इसे सेट करने के बाद आपको इसे शायद ही कभी खोलने की आवश्यकता होगी। इसलिए आपको FMD को रोके जाने से मुक्त करने की आवश्यकता है, अन्यथा यह कुछ महीनों में काम नहीं करेगा।</string>
+    <string name="transport_notification_reply_description">आप FMD को आदेश सुनने के लिए अपनी सूचनाएं पढ़ने की अनुमति दे सकते हैं। इसके बाद FMD एंड्रॉयड की अंतर्निहित अधिसूचना उत्तर सुविधा के माध्यम से उत्तर दे सकता है। यह आपको अपनी पसंद के मैसेजिंग एप्लिकेशन का उपयोग करके FMD को नियंत्रित करने की अनुमति देता है, जब तक कि यह ऐसी सूचनाएं पोस्ट करता है जिनका उत्तर दिया जा सकता है। उदाहरण के लिए, आप अपने फ़ोन पर सिग्नल संदेश \"fmd mypin help\" भेज सकते हैं।</string>
+    <string name="transport_notification_reply_description_auth">अधिसूचना उत्तर के माध्यम से FMD को नियंत्रित करने के लिए FMD पिन सेट करना आवश्यक है। प्रत्येक संदेश में सही पिन होना चाहिए।</string>
+    <string name="transport_fmd_server_title">FMD सर्वर</string>
+    <string name="setup_warnings_title">सेटअप चेतावनियां</string>
+    <string name="missing_permissions_title">अनुपलब्ध अनुमतियां</string>
+    <string name="missing_permissions_description">FMD को चलाने के लिए निम्नलिखित अनुमतियों की आवश्यकता है।</string>
+    <string name="crashed_text">FMD क्रैश हो गया है! यहां लॉग है:</string>
+    <string name="crashed_send_log">लॉग भेजें</string>
+    <string name="crashed_copy_log">लॉग कॉपी करें</string>
+    <string name="crashed_continue_without">रिपोर्ट किए बिना जारी रखें</string>
+    <string name="bottom_nav_commands">कमांड</string>
+    <string name="WhiteList_no_contact_picker">कोई संपर्क चयनकर्ता एप्लिकेशन नहीं मिला!</string>
+    <string name="cmd_locate_response_gps_will_follow">GPS निर्देशांक जल्द ही भेजे जाएंगे।</string>
+    <string name="transport_sms_title">SMS</string>
+    <string name="transport_sms_description">अपने डिवाइस को SMS के ज़रिए कमांड भेजें। उदाहरण के लिए, अपने डिवाइस पर \"fmd help\" टेक्स्ट करें। FMD SMS के ज़रिए जवाब देगा।</string>
+    <string name="transport_sms_description_auth">केवल अनुमति सूची में मौजूद फ़ोन नंबर ही आदेश भेज सकते हैं। किसी ऐसे फ़ोन नंबर से आदेश भेजने के लिए जो अनुमति सूची में नहीं है, आपको पिन शामिल करना होगा: \"fmd mypin help\"। सुविधा के लिए, ताकि आपको हर बार पिन दोबारा टाइप न करना पड़े, यह नया फ़ोन नंबर अगले 10 मिनट के लिए अस्थायी अनुमति सूची में जोड़ दिया जाता है।</string>
+    <string name="transport_notification_reply_title">अधिसूचना उत्तर</string>
+    <string name="cmd_locate_response_opencellid_failed">OpenCelliD से स्थान प्राप्त करने में त्रुटि। कृपया लिंक का अनुसरण करके देखें। महत्वपूर्ण पैरामीटर \"lat\" और \"lon\" हैं।</string>
+    <string name="cmd_lock_description_long">डिवाइस को लॉक करें और वैकल्पिक रूप से लॉकस्क्रीन पर एक संदेश दिखाएं। इसके बाद, बायोमेट्रिक अनलॉक उपलब्ध नहीं होता है और डिवाइस को अनलॉक करने के लिए आपके डिवाइस पासवर्ड की आवश्यकता होती है।</string>
+    <string name="transport_fmd_server_description">FMD सर्वर आपके डिवाइस को नियंत्रित करने, उसका स्थान देखने और उसके द्वारा भेजी गई तस्वीरों को देखने के लिए एक वेब इंटरफ़ेस प्रदान करता है। आप FMD सर्वर को स्वयं होस्ट कर सकते हैं या दिए गए इंस्टेंस का उपयोग कर सकते हैं। डेटा को आपके पासवर्ड द्वारा सुरक्षित, सर्वर पर एन्क्रिप्टेड रूप में संग्रहीत किया जाता है।</string>
+    <string name="transport_fmd_server_description_auth">आपका उपयोगकर्ता नाम और पासवर्ड जानने वाला कोई भी व्यक्ति FMD सर्वर में लॉग इन कर सकता है और आपके डिवाइस को नियंत्रित कर सकता है।</string>
+    <string name="transport_fmd_server_description_note">FMD सर्वर को इंटरनेट कनेक्शन की आवश्यकता होती है। यह मोबाइल नेटवर्क हो सकता है (इसलिए सिम को अनलॉक करना होगा) या वाई-फाई।</string>
+    <string name="add">जोड़ें</string>
+    <string name="bottom_nav_transports">परिवहन चैनल</string>
+    <string name="bottom_nav_settings">सेटिंग</string>
+    <string name="allowlist_add_phone_number">फोन नंबर जोड़ें</string>
+    <string name="allowlist_phone_number_name">नाम</string>
+    <string name="allowlist_phone_number">फोन नंबर</string>
+    <string name="transport_sms_description_note">SMS भेजने के लिए आपको और आपको संदेश भेजने वाले व्यक्ति दोनों को ही पैसे देने पड़ सकते हैं। SMS भेजने के लिए आपके सिम कार्ड का अनलॉक होना ज़रूरी है (उदाहरण के लिए, रीबूट के बाद)।</string>
+    <string name="perm_unused_app_name">अप्रयुक्त ऐप प्रतिबंध</string>
 </resources>

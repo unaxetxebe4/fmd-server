@@ -168,7 +168,7 @@
     <string name="missing_permissions_title">Fehlendi Berechtigunge</string>
     <string name="Toast_Empty_FMDCommand">En leere Befehl isch nöd erlaubt.
 \n Zrugg zum Default.[fmd]</string>
-    <string name="bottom_nav_commands">D Befehl</string>
+    <string name="bottom_nav_commands">Befehl</string>
     <string name="bottom_nav_transports">Transportkanäl</string>
     <string name="bottom_nav_settings">Iistellige</string>
     <string name="WhiteList_no_contact_picker">Kei Kontakt-Uuswahl-Aawendig gfunde!</string>
@@ -188,10 +188,20 @@
     <string name="cmd_locate_response_opencellid_failed">Fehler bim Finde vom Standort mit OpenCelliD. Bitte probier de folgendi Link. Die wichtige Parameter sind \"lat\" und \"lon\".</string>
     <string name="cmd_locate_last_known_location_not_available">Kein letzte bekannte Standort. Frög de aktuelli Standort aa zum es Standort-Update becho.</string>
     <string name="cmd_lock_description_long">Sperrs Gerät und zeig optional en Nachricht ufem Sperrbildschirm aa. Nachher isch d Biometrie nüme verfügbar und es brucht s Gerätepasswort zum entsperre.</string>
-    <string name="transport_sms_description">Schick Befehl per SMS an dis Gerät. Schick z.B. es SMS mit \"fmd help\" an dis Gerät. FMD wird per SMS antworte.</string>
+    <string name="transport_sms_description">Schick Befehl per SMS a dis Gerät. Schick z.B. es SMS mit \"fmd help\" a dis Gerät. FMD wird per SMS antworte.</string>
     <string name="transport_fmd_server_description">FMD Server isch en Webschnittstell. Mit ihre chasch diis Gerät stüre, siin Standort aafröge und d Bilder wos gschickt het aaluege. Du chasch FMD Server selber hoste oder die bereitgstellti Instanz nutze. D Date werdet verschlüsselt ufem Server gspeichert und sind dur diis Passwort gschützt.</string>
     <string name="transport_fmd_server_description_note">FMD Server brucht en Internetverbindig. Das chan Mobilfunk sii (denn muss d SIM-Karte entsperrt sii) oder WLAN.</string>
     <string name="Settings_Import_Success">Import erfolgriich</string>
     <string name="Settings_Import_Failed">Import fehlgschlage</string>
     <string name="transport_notification_reply_description">Du chasch FMD erlaube dini Benachrichtigunge zlese zum Befehl abzwarte. FMD chan denn über die in Android integrierti Benachrichtigungsfunktion antworte. So chasch du FMD über en Messaging-App vo dinere Wahl stüere, solang d App Benachrichtigungen sendet, womer druf chan antworte. Du chasch z.B. en Signal-Nachricht „fmd mypin help“ a diis Gerät schicke.</string>
+    <string name="add">Dezue tue</string>
+    <string name="allowlist_add_phone_number">Telefonnummere dezue tue</string>
+    <string name="allowlist_phone_number_name">Name</string>
+    <string name="perm_unused_app_name">Iischränkige für nöd benützti Apps</string>
+    <string name="perm_unused_app_description">Android pausiert Apps, wo paar Mönet lang nöd göffnet werdet, und entfernt ihri Berechtigunge. Allerdings sett FMD im Hintergrund schaffe. Nach de initiale Iirichtig öffnet mer FMD nur selten. Drum muesch FMD von dere Pausierig usnäh, suscht chans passiere dass FMD in es paar Mönet nüme funktioniert.</string>
+    <string name="crashed_text">FMD isch abstürzt! Da isch de Log:</string>
+    <string name="allowlist_phone_number">Telefonnummere</string>
+    <string name="crashed_send_log">Log schicke</string>
+    <string name="crashed_copy_log">Log kopiere</string>
+    <string name="crashed_continue_without">Ohni Melde wiitermache</string>
 </resources>

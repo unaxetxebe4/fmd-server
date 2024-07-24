@@ -214,4 +214,14 @@
     <string name="setup_warnings_title">Setup-Warnungen</string>
     <string name="transport_sms_description">Schicke Befehle per SMS an dein Gerät. Schicke z.B. eine SMS mit \"fmd help\" an dein Gerät. FMD wird per SMS antworten.</string>
     <string name="transport_sms_description_auth">Nur Telefonnummern, die in der Liste erlaubter Nummern sind, können Befehle senden. Um Befehle von einer Telefonnummer zu senden, die nicht in dieser Liste ist, muss die Nachricht die PIN enthalten: „fmd mypin help“. Damit du die PIN nicht jedes Mal neu eingeben musst, wird diese neue Telefonnummer für die nächsten 10 Minuten in eine temporäre Erlaubnisliste aufgenommen.</string>
+    <string name="add">Hinzufügen</string>
+    <string name="crashed_text">FMD ist abgestürzt! Hier ist der Log:</string>
+    <string name="crashed_continue_without">Ohne Meldung fortfahren</string>
+    <string name="allowlist_phone_number">Telefonnummer</string>
+    <string name="allowlist_add_phone_number">Telefonnummer hinzufügen</string>
+    <string name="allowlist_phone_number_name">Name</string>
+    <string name="perm_unused_app_name">Einschränkungen für nicht benutzte Apps</string>
+    <string name="perm_unused_app_description">Android pausiert Apps, die einige Monate lang nicht geöffnet werden, und entfernt ihre Berechtigungen. Allerdings soll FMD im Hintergrund arbeiten. Nach der initialen Einrichtung öffnet man FMD nur selten. Daher musst du FMD von dieser Pausierung ausnehmen, sonst kann es passieren dass FMD in ein paar Monaten nicht mehr funktioniert.</string>
+    <string name="crashed_send_log">Log senden</string>
+    <string name="crashed_copy_log">Log kopieren</string>
 </resources>
