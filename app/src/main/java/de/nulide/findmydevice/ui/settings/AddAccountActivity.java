@@ -60,6 +60,13 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
         setContentView(R.layout.activity_add_account);
 
         settingsRepo = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(this));
+        String fmdserverid = (String)settingsRepo.getSettings().get(Settings.SET_FMDSERVER_ID);
+        if (!fmdserverid.isEmpty()) {
+            Intent fmdserverintent = new Intent(this, FMDServerActivity.class);
+            finish();
+            startActivity(fmdserverintent);
+        }
+
         String lastKnownServerUrl = (String) settingsRepo.getSettings().get(Settings.SET_FMDSERVER_URL);
 
         fmdServerRepo = FMDServerApiRepository.Companion.getInstance(new FMDServerApiRepoSpec(this));
