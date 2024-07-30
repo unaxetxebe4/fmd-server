@@ -27,14 +27,14 @@ public class FMDServerCommandDownloadService extends FmdJobService {
     private final String TAG = FMDServerCommandDownloadService.class.getSimpleName();
 
     private static final int JOB_ID = 109;
-    private Settings settings;
+    private SettingsRepository settingsRepo;
 
     @Override
     public boolean onStartJob(JobParameters params) {
         super.onStartJob(params);
 
         Logger.init(Thread.currentThread(), this);
-        settings = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(this)).getSettings();
+        settingsRepo = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(this));
 
         Log.d(TAG, "Downloading remote command");
         FMDServerApiRepository fmdServerRepo = FMDServerApiRepository.Companion.getInstance(new FMDServerApiRepoSpec(this));
@@ -69,7 +69,7 @@ public class FMDServerCommandDownloadService extends FmdJobService {
             Notifications.notify(this, "Serveraccess", "Somebody tried three times in a row to log in the server. Access is locked for 10 minutes", Notifications.CHANNEL_SERVER);
             return;
         }
-        String fullCommand = settings.get(Settings.SET_FMD_COMMAND) + " " + remoteCommand;
+        String fullCommand = settingsRepo.getSettings().get(Settings.SET_FMD_COMMAND) + " " + remoteCommand;
 
         Transport<Unit> transport = new FmdServerTransport(this);
         CommandHandler<Unit> commandHandler = new CommandHandler<>(transport, this);
