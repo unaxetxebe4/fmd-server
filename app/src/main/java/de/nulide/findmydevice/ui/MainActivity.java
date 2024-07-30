@@ -103,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
             // just in case it was still running
             FMDServerLocationUploadService.cancelJob(this);
         }
+        invalidateOptionsMenu();
     }
 
     private final NavigationBarView.OnItemSelectedListener navListener = (item) -> {
