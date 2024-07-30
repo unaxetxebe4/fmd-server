@@ -9,6 +9,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+
 import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.data.LogData;
 import de.nulide.findmydevice.data.io.IO;
@@ -46,10 +48,10 @@ public class LogActivity extends AppCompatActivity implements AdapterView.OnItem
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        new AlertDialog.Builder(this)
+        new MaterialAlertDialogBuilder(this)
                 .setTitle(getString(R.string.Log_Alert_LogData))
                 .setMessage(logData.get(position).getText())
-                .setIcon(android.R.drawable.ic_dialog_info)
+                .setIcon(R.drawable.ic_info)
                 .show();
     }
 }

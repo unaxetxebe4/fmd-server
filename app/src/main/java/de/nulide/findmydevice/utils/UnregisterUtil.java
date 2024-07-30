@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import androidx.appcompat.app.AlertDialog;
 
 import com.android.volley.VolleyError;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.data.Settings;
@@ -23,7 +24,7 @@ public class UnregisterUtil {
             message = message.replace("{ERROR}", "error or getMessage() was null!");
         }
 
-        new AlertDialog.Builder(context)
+        new MaterialAlertDialogBuilder(context)
                 .setTitle(context.getString(R.string.server_unregister_failed_title))
                 .setMessage(message)
                 .setPositiveButton(context.getString(R.string.server_unregister_continue_anyway),

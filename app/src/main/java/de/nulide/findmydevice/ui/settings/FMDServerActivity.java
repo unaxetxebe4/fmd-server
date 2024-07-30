@@ -20,6 +20,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+
 import java.security.PrivateKey;
 
 import de.nulide.findmydevice.R;
@@ -189,8 +191,8 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
     }
 
     private void onDeleteClicked(View view) {
-        AlertDialog.Builder privacyPolicy = new AlertDialog.Builder(context);
-        privacyPolicy.setTitle(getString(R.string.Settings_FMDServer_Alert_DeleteData))
+        new MaterialAlertDialogBuilder(context)
+                .setTitle(getString(R.string.Settings_FMDServer_Alert_DeleteData))
                 .setMessage(R.string.Settings_FMDServer_Alert_DeleteData_Desc)
                 .setPositiveButton(getString(R.string.Ok), (dialog, whichButton) -> runDelete())
                 .setNegativeButton(getString(R.string.cancel), null)
@@ -208,7 +210,7 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
 
     private void onChangePasswordClicked(View view) {
         LayoutInflater inflater = getLayoutInflater();
-        final AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        final AlertDialog.Builder alert = new MaterialAlertDialogBuilder(this);
         alert.setTitle("Change Password");
         View registerLayout = inflater.inflate(R.layout.dialog_password_change, null);
         alert.setView(registerLayout);
@@ -235,7 +237,7 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
 
     private void showLoadingIndicator(Context context) {
         View loadingLayout = getLayoutInflater().inflate(R.layout.dialog_loading, null);
-        loadingDialog = new AlertDialog.Builder(context).setView(loadingLayout).setCancelable(false).create();
+        loadingDialog = new MaterialAlertDialogBuilder(context).setView(loadingLayout).setCancelable(false).create();
         loadingDialog.show();
     }
 

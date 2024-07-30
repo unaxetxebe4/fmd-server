@@ -16,12 +16,10 @@
             android:orientation="vertical">
 
             <TextView
+                style="@style/FMD.Text.SectionTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/OpenCellId_OpenCellId"
-                android:textColor="@color/colorAccent"
-                android:textSize="17sp"
-                android:textStyle="bold" />
+                android:text="@string/OpenCellId_OpenCellId" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -66,7 +64,7 @@
 
             <Button
                 android:id="@+id/buttonOpenOpenCellIdWebsite"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                style="?attr/materialButtonOutlinedStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_small"
@@ -74,7 +72,7 @@
 
             <Button
                 android:id="@+id/buttonTestOpenCellId"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                style="?attr/materialButtonOutlinedStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_small"
