@@ -1,6 +1,8 @@
 package de.nulide.findmydevice.ui.home
 
+import android.content.Intent
 import android.view.View
+import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.activity.ComponentActivity
@@ -41,5 +43,18 @@ class TransportListViewHolder(
         val permReqTitle = itemView.findViewById<TextView>(R.id.permissions_required_title)
         val permReqList = itemView.findViewById<LinearLayout>(R.id.permissions_required_list)
         setupPermissionsList(activity, permReqTitle, permReqList, item.requiredPermissions)
+
+        val configActivityInfo = item.configActivityInfo
+        if (configActivityInfo != null) {
+            val configurationButton =
+                itemView.findViewById<Button>(R.id.button_configure_transport)
+            configurationButton.visibility = View.VISIBLE
+            configurationButton.text = activity.getString(configActivityInfo.nameRessourceId)
+            configurationButton.setOnClickListener {
+                val configurationIntent = Intent(context, configActivityInfo.actvityClass.java);
+                activity.startActivity(configurationIntent)
+            }
+        }
+
     }
 }
