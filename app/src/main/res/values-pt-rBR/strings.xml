@@ -31,7 +31,7 @@
     <string name="Settings_FMDServer_AddAccount">Servidor FMD: Login/Registrar</string>
     <string name="Settings_FMDServer_open_website">Abrir Site do Servidor FMD</string>
     <string name="Settings_FMDServer_Server_Url">URL do Servidor</string>
-    <string name="Settings_FMDServer_use_default_server">Usar o servidor público do Nulide</string>
+    <string name="Settings_FMDServer_use_default_server">Usar o Servidor Público do Nulide</string>
     <string name="Settings_FMDServer_Login">Iniciar sessão</string>
     <string name="Settings_FMDServer_Register">Registrar</string>
     <string name="Settings_FMDServer_Alert_PrivacyPolicy_Title">Política de Privacidade</string>
@@ -77,8 +77,8 @@
     <string name="Settings_WhiteList">Contatos Permitidos</string>
     <string name="Settings_Permissions">Permissões</string>
     <string name="Settings_FMD_Server_ID_Desc">Você precisará do ID do usuário para encontrar seu dispositivo com um Servidor FMD. Mantenha-o seguro.</string>
-    <string name="Settings_FMDServer_Logout_Button">Encerrar sessão</string>
-    <string name="accept">aceitar</string>
+    <string name="Settings_FMDServer_Logout_Button">Encerrar Sessão</string>
+    <string name="accept">Aceitar</string>
     <string name="Edit">Editar</string>
     <string name="GPS">GPS</string>
     <string name="request_failed_status_code">Código de status</string>
@@ -206,4 +206,6 @@
     <string name="allowlist_add_phone_number">Adicionar Número de Telefone</string>
     <string name="allowlist_phone_number">Número de Telefone</string>
     <string name="perm_unused_app_description">O Android pausa apps que não são abertos por alguns meses e remove suas permissões. O FMD, entretanto, deve rodar em segundo plano. Após configurá-lo, raramente precisará abri-lo. Por causa disso, é importante adicionar uma exceção ao FMD de ser pausado, caso contrário, pode parar de funcionar em alguns meses.</string>
+    <string name="OpenCellId_tower_collector_download">Baixar o Tower Collector</string>
+    <string name="OpenCellId_tower_collector_info">Você pode contribuir ao OpenCelliD coletando e enviando informações de torres. Você precisa de um app dedicado para isto. Um tal app é o Tower Collector.</string>
 </resources>
