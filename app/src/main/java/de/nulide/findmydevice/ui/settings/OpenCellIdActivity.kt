@@ -40,6 +40,7 @@ class OpenCellIdActivity : AppCompatActivity(), TextWatcher {
 
         viewBinding.buttonPaste.setOnClickListener(::onPasteClicked)
         viewBinding.buttonOpenOpenCellIdWebsite.setOnClickListener(::onOpenWebsiteClicked)
+        viewBinding.buttonDownloadTowerCollector.setOnClickListener(::onDownloadTowerCollectorClicked)
         viewBinding.buttonTestOpenCellId.setOnClickListener(::onTestConnectionClicked)
 
         setupTestConnection(apiToken.isEmpty())
@@ -72,6 +73,10 @@ class OpenCellIdActivity : AppCompatActivity(), TextWatcher {
 
     private fun onOpenWebsiteClicked(view: View) {
         openUrl(view.context, "https://opencellid.org/")
+    }
+
+    private fun onDownloadTowerCollectorClicked(view: View) {
+        openUrl(view.context, "https://f-droid.org/packages/info.zamojski.soft.towercollector/")
     }
 
     private fun onTestConnectionClicked(view: View) {
