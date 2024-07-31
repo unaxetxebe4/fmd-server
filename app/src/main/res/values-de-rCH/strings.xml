@@ -54,7 +54,7 @@
     <string name="Whitelist_help">D Kontäkt in dere Lischte döffed Befehl via SMS schicke. Befehl vo allne andere werdet ignoriert.</string>
     <string name="WhiteList_Add_Contact">Kontakt dezue tue</string>
     <string name="OpenCellId_privacy">Privatsphäri: denk dra dass OpenCelliD bi jedere Aafrag dini aktuelli Mobilfunkzelle und demit au din Standort überchunnt.</string>
-    <string name="OpenCellId_open_website">OpenCelliD-Websiite öffne</string>
+    <string name="OpenCellId_open_website">OpenCelliD-Websiite Öffne</string>
     <string name="OpenCellId_test_opencellid">OpenCelliD-Verbindig teschte</string>
     <string name="OpenCellId_test_no_connection">Kei Mobilfunkverbindig</string>
     <string name="settings_exported">Iistellige exportiert</string>
@@ -204,4 +204,6 @@
     <string name="crashed_send_log">Log schicke</string>
     <string name="crashed_copy_log">Log kopiere</string>
     <string name="crashed_continue_without">Ohni Melde wiitermache</string>
+    <string name="OpenCellId_tower_collector_download">Tower Collector Abelade</string>
+    <string name="OpenCellId_tower_collector_info">Du chasch OpenCelliD helfe indem du Mobilfunkmast-Datene sammlisch und ufeladsch. Für das bruchts en separati App. Eini isch zum Bispil Tower Collector.</string>
 </resources>
