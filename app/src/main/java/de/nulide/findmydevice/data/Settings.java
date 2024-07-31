@@ -71,7 +71,7 @@ public class Settings extends HashMap<Integer, Object> {
     public static final int SET_LAST_KNOWN_LOCATION_TIME = 504;
 
 
-    public static final String DEFAULT_FMD_SERVER_URL = "https://fmd.nulide.de:1008";
+    public static final String DEFAULT_FMD_SERVER_URL = "https://fmd.nulide.de";
 
     public Settings() {
     }
