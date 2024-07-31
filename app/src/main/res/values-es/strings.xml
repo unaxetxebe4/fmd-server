@@ -41,7 +41,7 @@
     <string name="WhiteList_Select_Number">Seleccione uno de los números de teléfono.</string>
     <string name="Settings_FMDServer_Update_Interval_Description">El tiempo en minutos en el que FMD debe enviar nuevos datos de ubicación al servidor.</string>
     <string name="Settings_FMDServer_Alert_PrivacyPolicy_Title">Política de Privacidad</string>
-    <string name="accept">aceptar</string>
+    <string name="accept">Aceptar</string>
     <string name="Settings_FMDServer_Location_Type_Description">La(s) fuente(s) desde la(s) que se carga(n) los datos de localización a intervalos regulares en segundo plano.
 \nSi no se selecciona ninguna, no se cargarán localizaciones regularmente. (Puede seguir utilizando la interfaz web para forzar una carga. Esto requiere push.)</string>
     <string name="GPS">GPS</string>
@@ -206,4 +206,6 @@
     <string name="crashed_copy_log">Copiar el registro</string>
     <string name="crashed_continue_without">Continuar sin informar</string>
     <string name="perm_unused_app_description">Android pone en pausa las aplicaciones que no se abren durante unos meses y elimina sus permisos. FMD, sin embargo, se supone que funciona en segundo plano. Después de configurarlo, rara vez necesitarás abrirlo. Por lo tanto, es necesario eximir a FMD de la pausa, de lo contrario puede que no funcione en unos meses.</string>
+    <string name="OpenCellId_tower_collector_download">Descargar Tower Collector</string>
+    <string name="OpenCellId_tower_collector_info">Puedes contribuir a OpenCelliD recopilando y cargando información sobre antenas de telefonía móvil. Para ello, necesitas una aplicación dedicada. Una de estas aplicaciones es Tower Collector.</string>
 </resources>

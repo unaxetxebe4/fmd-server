@@ -4,7 +4,7 @@
     <string name="loading">Laden…</string>
     <string name="help">Hilfe</string>
     <string name="copied">Kopiert</string>
-    <string name="accept">akzeptieren</string>
+    <string name="accept">Akzeptieren</string>
     <string name="Edit">Bearbeiten</string>
     <string name="GPS">GPS</string>
     <string name="Cell">Mobilfunkzelle</string>
@@ -75,7 +75,7 @@
     <!-- Settings: OpenCelliD -->
     <string name="OpenCellId_help">FMD kann den Dienst OpenCelliD benutzen um den ungefähren Standort zu bestimmen basierend auf der Mobilfunkzelle mit der das Gerät verbunden ist. Eine Internetverbindung ist benötigt für jede Standortanfrage. Außerdem müssen Sie ein OpenCelliD-Konto anlegen um ein eigenes API Access Token zu bekommen.</string>
     <string name="OpenCellId_privacy">Privatsphäre: bedenke dass OpenCelliD mit jeder API-Anfrage Ihre aktuelle Mobilfunkzelle und somit auch Ihren Standort erfährt.</string>
-    <string name="OpenCellId_open_website">OpenCelliD Webseite öffnen</string>
+    <string name="OpenCellId_open_website">OpenCelliD Webseite Öffnen</string>
     <string name="OpenCellId_test_opencellid">OpenCelliD-Verbindung Testen</string>
     <string name="OpenCellId_test_no_connection">Keine Mobilfunkverbindung</string>
     <!-- Settings: Import/Export -->
@@ -224,4 +224,6 @@
     <string name="perm_unused_app_description">Android pausiert Apps, die einige Monate lang nicht geöffnet werden, und entfernt ihre Berechtigungen. Allerdings soll FMD im Hintergrund arbeiten. Nach der initialen Einrichtung öffnet man FMD nur selten. Daher musst du FMD von dieser Pausierung ausnehmen, sonst kann es passieren dass FMD in ein paar Monaten nicht mehr funktioniert.</string>
     <string name="crashed_send_log">Log senden</string>
     <string name="crashed_copy_log">Log kopieren</string>
+    <string name="OpenCellId_tower_collector_download">Tower Collector Herunterladen</string>
+    <string name="OpenCellId_tower_collector_info">Du kannst zu OpenCelliD beitragen, indem du Mobilfunkmast-Daten sammelst und hochlädst. Dazu benötigst du eine extra App. Eine solche App ist Tower Collector.</string>
 </resources>
