@@ -1,0 +1,13 @@
+0.6.0:
+- Rediseño de la pantalla de inicio para brindar más información al usuario (#135)
+- Material 3
+- Se realizó una importante reescritura interna. ¡Por favor, informa de cualquier error!
+- Cambiar el idioma de la aplicación (a través de la configuración del sistema, requiere Android 13+)
+- Agregar número de teléfono manualmente a Contactos permitidos (#171)
+- Solicitar permisos para no ser eliminado si la aplicación no está en uso (#168)
+- Mencione Tower Collector como una forma de contribuir a OpenCelliD (#207, #222)
+- No mostrar una superposición grande en la pantalla de bloqueo si el mensaje de bloqueo está vacío (desde #196)
+- Se solucionó el fallo con la "cámara fmd" que afectaba a algunos dispositivos (#215, #219)
+- Se solucionó el fallo en "Probar conexión OpenCelliD" cuando faltaba el permiso de ubicación (#213)
+- Correcciones relacionadas con el encendido y apagado automático del GPS (#64, #114, #175, #181)
+- Se solucionó el fallo en CrashedActivity
