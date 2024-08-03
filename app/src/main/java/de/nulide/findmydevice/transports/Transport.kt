@@ -7,7 +7,6 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import de.nulide.findmydevice.locationproviders.LocationProvider
 import de.nulide.findmydevice.permissions.Permission
-import de.nulide.findmydevice.ui.helper.ConfigurationActivityInformation
 import de.nulide.findmydevice.utils.Utils
 
 
@@ -43,7 +42,7 @@ abstract class Transport<DestinationType>(
 
     abstract val requiredPermissions: List<Permission>
 
-    open val configActivityInfo: ConfigurationActivityInformation? = null
+    open val configActivityInfo: TransportConfigInfo? = null
 
     fun missingRequiredPermissions(context: Context): List<Permission> {
         return requiredPermissions.filter { p -> !p.isGranted(context) }
