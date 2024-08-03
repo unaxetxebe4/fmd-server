@@ -35,7 +35,7 @@
     <string name="Log_Alert_LogData">LogData</string>
     <string name="Toast_Duplicate_contact">Tento kontakt již existuje.</string>
     <string name="copied">Zkopírováno</string>
-    <string name="accept">přijmout</string>
+    <string name="accept">Přijmout</string>
     <string name="Edit">Upravit</string>
     <string name="GPS">GPS</string>
     <string name="request_failed_status_code">Stavový kód</string>
@@ -206,4 +206,6 @@
     <string name="crashed_copy_log">Kopírovat protokol</string>
     <string name="crashed_text">Aplikace FMD havarovala! Zde je protokol:</string>
     <string name="crashed_continue_without">Pokračovat bez hlášení</string>
+    <string name="OpenCellId_tower_collector_download">Stáhnout Tower Collector</string>
+    <string name="OpenCellId_tower_collector_info">Do OpenCelliD můžete přispět sbíráním a nahráváním informací o mobilních věžích. Pro takovou akci potřebujete vlastní aplikaci. Takovou aplikací je například Tower Collector.</string>
 </resources>
