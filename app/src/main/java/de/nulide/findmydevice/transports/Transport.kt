@@ -1,17 +1,14 @@
 package de.nulide.findmydevice.transports
 
 import android.content.Context
-import android.content.Intent
 import android.util.Log
 import androidx.annotation.CallSuper
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
-import androidx.appcompat.app.AppCompatActivity
 import de.nulide.findmydevice.locationproviders.LocationProvider
 import de.nulide.findmydevice.permissions.Permission
 import de.nulide.findmydevice.ui.helper.ConfigurationActivityInformation
 import de.nulide.findmydevice.utils.Utils
-import kotlin.reflect.KClass
 
 
 // Order matters for the home screen

@@ -49,9 +49,9 @@ class TransportListViewHolder(
             val configurationButton =
                 itemView.findViewById<Button>(R.id.button_configure_transport)
             configurationButton.visibility = View.VISIBLE
-            configurationButton.text = activity.getString(configActivityInfo.nameRessourceId)
+            configurationButton.text = activity.getString(configActivityInfo.nameResourceId)
             configurationButton.setOnClickListener {
-                val configurationIntent = Intent(context, configActivityInfo.actvityClass.java);
+                val configurationIntent = Intent(context, configActivityInfo.activityClass.java);
                 activity.startActivity(configurationIntent)
             }
         }
