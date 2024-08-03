@@ -9,10 +9,7 @@ import de.nulide.findmydevice.R
 import de.nulide.findmydevice.net.FMDServerApiRepoSpec
 import de.nulide.findmydevice.net.FMDServerApiRepository
 import de.nulide.findmydevice.permissions.Permission
-import de.nulide.findmydevice.ui.helper.ConfigurationActivityInformation
 import de.nulide.findmydevice.ui.settings.AddAccountActivity
-import de.nulide.findmydevice.ui.settings.AllowlistActivity
-import de.nulide.findmydevice.ui.settings.FMDServerActivity
 import de.nulide.findmydevice.utils.Utils
 
 
@@ -40,7 +37,7 @@ class FmdServerTransport(context: Context) : Transport<Unit>(Unit) {
 
     override val requiredPermissions = emptyList<Permission>()
 
-    override val configActivityInfo = ConfigurationActivityInformation(R.string.Settings_Settings, AddAccountActivity::class)
+    override val configActivityInfo = TransportConfigInfo(R.string.Settings_Settings, AddAccountActivity::class)
 
     @SuppressLint("MissingSuperCall")
     override fun send(context: Context, msg: String) {
