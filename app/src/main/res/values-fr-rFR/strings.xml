@@ -28,7 +28,7 @@
     <string name="Settings_Select_Ringtone">Sélectionnez une sonnerie</string>
     <string name="WhiteList_Select_Number">Sélectionnez l\'un des numéros de téléphones.</string>
     <string name="Settings_FMDServer_Update_Interval_Description">FMD envoi la localisation de l\'appareil toutes les X minutes.</string>
-    <string name="accept">accepter</string>
+    <string name="accept">Accepter</string>
     <string name="Settings_FMDServer_Location_Type_Description">La ou les sources à partir desquelles les données de localisation sont envoyées à intervalles réguliers en arrière-plan.
 \nSi aucune n\'est sélectionnée, aucune localisation n\'est envoyée régulièrement. (Vous pouvez toujours utiliser l\'interface web pour forcer un envoi. Cela nécessite les notifications push.)</string>
     <string name="Settings_Settings">Paramètres</string>
@@ -206,4 +206,6 @@
     <string name="crashed_send_log">Envoyer le journal</string>
     <string name="crashed_copy_log">Copier le journal</string>
     <string name="crashed_continue_without">Continuer sans signaler</string>
+    <string name="OpenCellId_tower_collector_download">Télécharger \"Tower Collector\"</string>
+    <string name="OpenCellId_tower_collector_info">Vous pouvez contribuer à OpenCelliD en collectant et en envoyant des informations sur les tours cellulaire. Vous avez besoin d\'une application dédiée pour ça. Un exemple est \"Tower Collector\".</string>
 </resources>
