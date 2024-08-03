@@ -77,7 +77,7 @@
     <string name="password">पासवर्ड</string>
     <string name="registration_token">रजिस्ट्रेशन टोकन</string>
     <string name="loading">लोड हो रहा है…</string>
-    <string name="accept">स्वीकार करें</string>
+    <string name="accept">स्वीकारें</string>
     <string name="Settings_FMDConfig">FMD-विन्यास</string>
     <string name="Settings_OpenCellId">OpenCelliD</string>
     <string name="Whitelist_help">इस सूची के संपर्कों को SMS के माध्यम से FMD कमांड भेजने की अनुमति है। बाकी सभी के आदेशों को नजरअंदाज कर दिया जाएगा।</string>
@@ -206,4 +206,6 @@
     <string name="allowlist_phone_number">फोन नंबर</string>
     <string name="transport_sms_description_note">SMS भेजने के लिए आपको और आपको संदेश भेजने वाले व्यक्ति दोनों को ही पैसे देने पड़ सकते हैं। SMS भेजने के लिए आपके सिम कार्ड का अनलॉक होना ज़रूरी है (उदाहरण के लिए, रीबूट के बाद)।</string>
     <string name="perm_unused_app_name">अप्रयुक्त ऐप प्रतिबंध</string>
+    <string name="OpenCellId_tower_collector_download">Tower Collector डाउनलोड करें</string>
+    <string name="OpenCellId_tower_collector_info">आप सेल टावर की जानकारी एकत्र करके और अपलोड करके OpenCelliD में योगदान दे सकते हैं। इसके लिए आपको एक समर्पित ऐप की आवश्यकता होगी। ऐसा ही एक ऐप है Tower Collector।</string>
 </resources>
