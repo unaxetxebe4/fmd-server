@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="Settings_FMDServer_Push_Description_Missing">Для надсилання команд з сервера FMD на ваш пристрій потрібен додаток UnifiedPush. Встановіть його, а потім поверніться сюди. Він буде автоматично виявлений.</string>
+    <string name="Toast_Empty_FMDCommand">Порожня команда не дозволена
+\n Повернення до налаштувань за замовчуванням.[fmd]</string>
+    <string name="Settings_Lockscreenmessage_Description">Повідомлення на екрані блокування:
+\nКоли пристрій заблокований на екрані блокування з\'явиться це повідомлення.</string>
+    <string name="Settings_FMD_Server_General">Загальне</string>
+    <string name="Settings_FMD_Server_Server_URL">Посилання сервера:</string>
+    <string name="Settings_FMD_Server_User_ID">Ідентифікатор користувача:</string>
+    <string name="Settings_FMD_Server_ID_Desc">Вам потрібен ідентифікатор користувача, щоб знайти ваш пристрій за допомогою сервера FMD. Запишіть його і зберігайте в безпеці.</string>
+    <string name="Settings_FMDServer_Change_Password_Button">Змінити пароль</string>
+    <string name="Settings_FMDServer_Logout_Button">Вийти</string>
+    <string name="Settings_FMDServer_Alert_DeleteData_Desc">Це призведе до видалення всіх даних з сервера! Ви впевнені?</string>
+    <string name="Settings_FMDServer_Push_Description_Available">Успішно зареєстровано на штовхаючі сповіщення.</string>
+    <string name="Settings_FMDServer_Push_Open_UP">Відкрити вебсторінку UnifiedPush</string>
+    <string name="accept">Прийняти</string>
+    <string name="request_failed_status_code">Код статусу</string>
+    <string name="bottom_nav_commands">Команди</string>
+    <string name="Settings_Settings">Налаштування</string>
+    <string name="Settings_WhiteList">Дозволені контакти</string>
+    <string name="Settings_Import_Success">Успішно імпортовано</string>
+    <string name="Settings_Export">Експортувати налаштування</string>
+    <string name="Settings_Logs">Журнал</string>
+    <string name="Settings_Enter_Pin">Введіть PIN</string>
+    <string name="pin_repeat">Повторіть PIN</string>
+    <string name="Settings_Select_Ringtone">Виберіть мелодію</string>
+    <string name="Settings_FMDServer_Delete_Button">Видалити дані</string>
+    <string name="Settings_FMDServer_Alert_DeleteData">Видалити дані</string>
+    <string name="Settings_FMDServer_Update_Interval_Title">Часовий проміжок оновлення</string>
+    <string name="Settings_FMDServer_Location_Type_Title">Джерело місцеперебування</string>
+    <string name="Settings_FMDServer_LOW_BAT_Upload_Title">Завантаження при низькому заряді акумулятора</string>
+    <string name="password_old">Старий пароль</string>
+    <string name="password_new">Новий пароль</string>
+    <string name="server_version_error">Помилка отримання версії сервера</string>
+    <string name="Settings_FMDServer_AddAccount">Сервер FMD: Вхід/Реєстрація</string>
+    <string name="Settings_FMDServer_open_website">Відкрити вебсторінку сервера FMD</string>
+    <string name="loading">Завантаження…</string>
+    <string name="help">Допомога</string>
+    <string name="bottom_nav_transports">Канали транспортування</string>
+    <string name="copied">Скопійовано</string>
+    <string name="add">Додати</string>
+    <string name="Edit">Редагувати</string>
+    <string name="Enable">Увімкнути</string>
+    <string name="Delete">Видалити</string>
+    <string name="GPS">GPS</string>
+    <string name="request_failed_title">Не вдалося виконати мережевий запит</string>
+    <string name="request_failed_response_body">Тіло відповіді</string>
+    <string name="request_failed_exception">Виняток</string>
+    <string name="bottom_nav_settings">Налаштування</string>
+    <string name="Settings_Permissions">Дозволи</string>
+    <string name="Settings_Import">Імпортувати налаштування</string>
+    <string name="Settings_Import_Failed">Не вдалось імпортувати</string>
+    <string name="Settings_About">Про</string>
+    <string name="Settings_Pin_Description">Використовується для підтвердження перед витиранням пристрою та для анонімного використання сервісу.</string>
+    <string name="Settings_FMDCommand_Description">Команда для зв\'язку з FMD.</string>
+    <string name="Settings_FMD_via_Pin_Description">Дозволяє спілкуватися з FMD за допомогою PIN-коду. Це дозволяє надсилати команди з номера телефону, якого немає у списку Дозволених контактів.</string>
+    <string name="Settings_Ringer_Tone_Description">Виберіть мелодію, яка буде відтворюватися при надсиланні дзвінка пошуку пристрою.</string>
+    <string name="Settings_FMDServer_use_default_server">Використовуйте публічний сервер Nulide</string>
+    <string name="Settings_FMDServer_Location_Type_Description">Джерело(-а), з якого(-их) дані про місцезнаходження завантажуються у фоновому режимі через певні проміжки часу.
+\nЯкщо не вибрано жодного, дані про місцезнаходження не будуть регулярно завантажуватися. (Ви все ще можете використовувати вебінтерфейс, щоб примусово завантажувати дані. Для цього потрібно натиснути кнопку.)</string>
+    <string name="Settings_FMDServer_LOW_BAT_Upload_Description">Завантажуйте дані про місцезнаходження пристрою, коли рівень заряду акумулятора низький. Для цього потрібен доступ до сповіщень.</string>
+    <string name="password_new_repeat">Повторно новий пароль</string>
+    <string name="server_version">Версія сервера</string>
+    <string name="server_version_error_low_version">Мінімальна потрібна версія сервера {MIN}, але вибраний сервер використовує версію {CURRENT}. Продовжуйте на свій страх і ризик.</string>
+    <string name="Settings_FMDServer_Update_Interval_Description">FMD завантажує місцезнаходження пристрою кожні X хвилин.</string>
+    <string name="Settings_FMDServer_Info">За допомогою сервера FMD ви можете надсилати команди через Інтернет з сервера до додатка. Ви також можете переглянути місцезнаходження пристрою на карті або переглянути фотографії, зроблені пристроєм. Інструкції з самостійного розміщення дивіться на вебсайті.</string>
+    <string name="Settings_FMDServer_Server_Url">Посилання сервера</string>
+    <string name="Settings_FMDServer_Register">Зареєструватися</string>
+    <string name="password">Пароль</string>
+    <string name="Settings_FMDServer_Login">Увійти</string>
+    <string name="Settings_FMDServer_Alert_PrivacyPolicy_Title">Політика конфіденційності</string>
+    <string name="registration_token">Реєстраційний токен</string>
+</resources>
