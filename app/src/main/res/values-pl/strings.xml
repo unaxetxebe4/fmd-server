@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="Settings_FMDConfig">Konfiguracja FMD</string>
+    <string name="copied">Skopiowano</string>
+    <string name="accept">Akceptuję</string>
+    <string name="add">Dodaj</string>
+    <string name="Edit">Edytuj</string>
+    <string name="Enable">Włącz</string>
+    <string name="Delete">Usuń</string>
+    <string name="GPS">GPS</string>
+    <string name="bottom_nav_transports">Kanały transportu</string>
+    <string name="bottom_nav_settings">Ustawienia</string>
+    <string name="Settings_WhiteList">Dozwolone kontakty</string>
+    <string name="Settings_OpenCellId">OpenCelliD</string>
+    <string name="Settings_Permissions">Uprawnienia</string>
+    <string name="Settings_Import_Success">Importowanie zakończone</string>
+    <string name="Settings_Import_Failed">Importowanie nie powiodło się</string>
+    <string name="Settings_About">O aplikacji</string>
+    <string name="Settings_Pin_Description">Używany jako potwierdzenie przed usuwaniem danych z urządzenia i przy wysyłaniu poleceń z nieznanego numeru telefonu.</string>
+    <string name="Settings_Enter_Pin">Wpisz PIN</string>
+    <string name="pin">PIN</string>
+    <string name="pin_repeat">Powtórz PIN</string>
+    <string name="help">Pomoc</string>
+    <string name="request_failed_exception">Błąd</string>
+    <string name="loading">Ładowanie…</string>
+    <string name="request_failed_status_code">Kod statusu</string>
+    <string name="Settings_Settings">Ustawienia</string>
+    <string name="bottom_nav_commands">Komendy</string>
+    <string name="Settings_Import">Importuj ustawienia</string>
+    <string name="Settings_Export">Ustawienia eksportu</string>
+    <string name="Settings_Logs">Logi</string>
+    <string name="Settings_FMD_via_Pin_Description">Zezwala na komunikację z FMD za pomocą PINu. Dzięki temu możliwe jest wysyłanie poleceń z numeru telefonu, który nie jest na liście dozwolonych kontaktów.</string>
+</resources>
