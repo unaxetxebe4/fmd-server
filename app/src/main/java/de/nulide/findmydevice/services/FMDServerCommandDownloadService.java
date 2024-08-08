@@ -11,6 +11,7 @@ import de.nulide.findmydevice.commands.CommandHandler;
 import de.nulide.findmydevice.data.Settings;
 import de.nulide.findmydevice.data.SettingsRepoSpec;
 import de.nulide.findmydevice.data.SettingsRepository;
+import de.nulide.findmydevice.data.io.IO;
 import de.nulide.findmydevice.net.FMDServerApiRepoSpec;
 import de.nulide.findmydevice.net.FMDServerApiRepository;
 import de.nulide.findmydevice.transports.FmdServerTransport;
@@ -33,6 +34,7 @@ public class FMDServerCommandDownloadService extends FmdJobService {
     public boolean onStartJob(JobParameters params) {
         super.onStartJob(params);
 
+        IO.context = this;
         Logger.init(Thread.currentThread(), this);
         settingsRepo = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(this));
 
