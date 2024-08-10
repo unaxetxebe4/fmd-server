@@ -25,18 +25,18 @@
             android:text="" />
 
         <Button
-            android:id="@+id/buttonSendLog"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_normal"
-            android:text="@string/crashed_send_log" />
-
-        <Button
             android:id="@+id/buttonCopyLog"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_small"
             android:text="@string/crashed_copy_log" />
+
+        <Button
+            android:id="@+id/buttonSendLog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:text="@string/crashed_open_issuetracker" />
 
         <Button
             android:id="@+id/buttonContinue"
