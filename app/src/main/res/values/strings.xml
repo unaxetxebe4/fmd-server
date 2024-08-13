@@ -264,10 +264,10 @@
     <string name="crashed_text">FMD has crashed! Here is the log:</string>
     <string name="crashed_send_log">Send log</string>
     <string name="crashed_copy_log">Copy log</string>
+    <string name="crashed_open_issuetracker">Open Issue Tracker</string>
     <string name="crashed_continue_without">Continue without reporting</string>
 
     <!-- Varia -->
     <string name="MH_Pin_Accepted">Pin accepted!</string>
-    <string name="crashed_open_issuetracker">Open Issue Tracker</string>
 
 </resources>
