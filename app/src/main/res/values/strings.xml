@@ -138,7 +138,7 @@
 
     <!-- Commands -->
 
-    <string name="cmd_missing_permissions">Cannot run command %s: Missing permission(s) %s.</string>
+    <string name="cmd_missing_permissions">Cannot run command %1$s: Missing permission(s) %2$s.</string>
 
     <string name="cmd_camera_description_short">Take a picture</string>
     <string name="cmd_camera_description_long">Takes a picture of with the front/back camera and uploads it to FMD Server. Currently only uploading to FMD Server is supported. You can send this command via other transport channels, too, and the picture will be uploaded to FMD Server (if an account exists).</string>
@@ -180,7 +180,7 @@
 
     <string name="cmd_stats_description_short">Get network statistics</string>
     <string name="cmd_stats_description_long">Get network statistics from the device. For example, its IP address and a list of surrounding Wifi networks.</string>
-    <string name="cmd_stats_response">Network statistics:\n\nDevice IPs:\n%s\n\nWifi networks:\n%s</string>
+    <string name="cmd_stats_response">Network statistics:\n\nDevice IPs:\n%1$s\n\nWifi networks:\n%2$s</string>
 
     <!-- Permissions -->
 
