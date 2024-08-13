@@ -39,6 +39,8 @@ class FmdServerTransport(context: Context) : Transport<Unit>(Unit) {
 
     override val configActivityInfo = TransportConfigInfo(R.string.Settings_Settings, AddAccountActivity::class)
 
+    override fun getDestinationString() = "FMD Server"
+
     @SuppressLint("MissingSuperCall")
     override fun send(context: Context, msg: String) {
         //super.send(context, msg, destination)

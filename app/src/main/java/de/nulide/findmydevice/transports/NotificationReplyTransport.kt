@@ -36,6 +36,8 @@ class NotificationReplyTransport(
 
     override val requiredPermissions = listOf(NotificationAccessPermission())
 
+    override fun getDestinationString() = destination?.packageName ?: "Notification Response"
+
     override fun send(context: Context, msg: String) {
         super.send(context, msg)
         if (destination == null) {

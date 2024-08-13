@@ -245,6 +245,7 @@
     <!-- Usage notifications -->
     <string name="usage_notification_title">Command executed</string>
     <string name="usage_notification_text">The command \"%s\" was executed.</string>
+    <string name="usage_notification_text_source">The command \"%1$s\" was executed by \"%2$s\".</string>
 
     <!-- Setup Warnings -->
     <string name="setup_warnings_title">Setup Warnings</string>

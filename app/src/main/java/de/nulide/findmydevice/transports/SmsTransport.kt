@@ -32,7 +32,7 @@ class SmsTransport(
 
     override val configActivityInfo = TransportConfigInfo(R.string.Settings_WhiteList, AllowlistActivity::class)
 
-    override fun getDestinationString(): String = destination
+    override fun getDestinationString() = destination
 
     override fun send(context: Context, msg: String) {
         super.send(context, msg)

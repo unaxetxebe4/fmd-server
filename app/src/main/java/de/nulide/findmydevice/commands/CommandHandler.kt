@@ -79,10 +79,11 @@ class CommandHandler<T>(
     }
 
     private fun showUsageNotification(context: Context, rawCommand: String) {
+        val source = transport.getDestinationString()
         Notifications.notify(
             context,
             context.getString(R.string.usage_notification_title),
-            context.getString(R.string.usage_notification_text, rawCommand),
+            context.getString(R.string.usage_notification_text_source, rawCommand, source),
             Notifications.CHANNEL_USAGE
         )
     }
