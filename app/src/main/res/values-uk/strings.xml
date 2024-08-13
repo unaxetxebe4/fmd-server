@@ -71,4 +71,26 @@
     <string name="Settings_FMDServer_Login">Увійти</string>
     <string name="Settings_FMDServer_Alert_PrivacyPolicy_Title">Політика конфіденційності</string>
     <string name="registration_token">Реєстраційний токен</string>
+    <string name="registration_token_hint">Для приватних екземплярів може знадобитися секретний токен. Залиште це поле порожнім, якщо екземпляр публічний.</string>
+    <string name="Whitelist_help">Контакти з цього списку мають право надсилати команди FMD через SMS. Команди від усіх інших будуть ігноруватись.</string>
+    <string name="Whitelist_empty">Немає дозволених контактів. Натисніть кнопку, щоб додати!</string>
+    <string name="WhiteList_no_contact_picker">Не знайдено додаток для вибору контакту!</string>
+    <string name="allowlist_phone_number_name">Імʼя</string>
+    <string name="OpenCellId_help">FMD може використовувати сервіс OpenCelliD, щоб отримати приблизне місцезнаходження на основі вежі стільникового зв\'язку, до якої підключено пристрій. Для кожного запиту на визначення місцезнаходження потрібне підключення до Інтернету. Вам також потрібно створити обліковий запис на OpenCelliD і отримати власний токен доступу до API.</string>
+    <string name="OpenCellId_privacy">Конфіденційність: майте на увазі, що OpenCelliD дізнається вашу поточну вежу стільникового зв\'язку і, таким чином, ваше місцезнаходження з кожним запитом до API.</string>
+    <string name="OpenCellId_test_no_connection">Немає мобільного зв\'язку</string>
+    <string name="OpenCellId_tower_collector_info">Ви можете зробити свій внесок в OpenCelliD, збираючи та завантажуючи інформацію про вежі стільникового зв\'язку. Для цього вам потрібен спеціальний додаток. Одним з таких додатків є Tower Collector.</string>
+    <string name="OpenCellId_open_website">Відкрити вебсайт OpenCelliD</string>
+    <string name="OpenCellId_test_opencellid">Перевірити зʼєднання з OpenCelliD</string>
+    <string name="settings_exported">Налаштування експортовано</string>
+    <string name="about">Про</string>
+    <string name="about_source_code">Джерельний код</string>
+    <string name="WhiteList_Add_Contact">Додати контакт</string>
+    <string name="WhiteList_Select_Number">Виберіть один з телефонних номерів.</string>
+    <string name="Toast_Duplicate_contact">Цей контакт вже існує.</string>
+    <string name="allowlist_add_phone_number">Додати номер телефону</string>
+    <string name="OpenCellId_tower_collector_download">Завантажити Tower Collector</string>
+    <string name="about_wiki">Вікі</string>
+    <string name="Alert_First_Time_contact_added">Вітаю. Ви додали свій перший контакт. Тепер ви можете зв\'язатися з FMD, надіславши SMS-повідомлення з текстом \"fmd\" з дозволеного номера телефону. Коли все буде в порядку, додаток відповість.</string>
+    <string name="allowlist_phone_number">Номер телефону</string>
 </resources>
