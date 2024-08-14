@@ -49,7 +49,8 @@ public class Notifications {
                 return;
             }
 
-            notificationManager.notify(channelID, builder.build());
+            int notificationId = (int) System.currentTimeMillis(); // any unique ID
+            notificationManager.notify(notificationId, builder.build());
         }
     }
 
