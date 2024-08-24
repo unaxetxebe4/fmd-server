@@ -1,6 +1,6 @@
 package de.nulide.findmydevice.ui.home
 
-import android.content.Intent
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
 import android.widget.LinearLayout
@@ -44,17 +44,29 @@ class TransportListViewHolder(
         val permReqList = itemView.findViewById<LinearLayout>(R.id.permissions_required_list)
         setupPermissionsList(activity, permReqTitle, permReqList, item.requiredPermissions)
 
-        val configActivityInfo = item.configActivityInfo
-        if (configActivityInfo != null) {
-            val configurationButton =
-                itemView.findViewById<Button>(R.id.button_configure_transport)
-            configurationButton.visibility = View.VISIBLE
-            configurationButton.text = activity.getString(configActivityInfo.nameResourceId)
-            configurationButton.setOnClickListener {
-                val configurationIntent = Intent(context, configActivityInfo.activityClass.java);
-                activity.startActivity(configurationIntent)
+        setupActions(item)
+    }
+
+    private fun setupActions(item: Transport<*>) {
+        val context = itemView.context
+
+        val actions = item.actions
+        val actionsLayout = itemView.findViewById<LinearLayout>(R.id.actions_list)
+
+        if (actions.isEmpty()) {
+            actionsLayout.visibility = View.GONE
+        } else {
+            actionsLayout.visibility = View.VISIBLE
+            actionsLayout.removeAllViews()
+
+            val inflater = LayoutInflater.from(context)
+            for (a in actions) {
+                val view = inflater.inflate(R.layout.item_transport_action, actionsLayout, true)
+                view.findViewById<Button>(R.id.action_button).apply {
+                    text = context.getString(a.titleResourceId)
+                    setOnClickListener { _ -> a.run(activity) }
+                }
             }
         }
-
     }
 }

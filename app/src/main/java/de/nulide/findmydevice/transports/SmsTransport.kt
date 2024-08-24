@@ -1,6 +1,7 @@
 package de.nulide.findmydevice.transports
 
 import android.content.Context
+import android.content.Intent
 import android.telephony.SmsManager
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
@@ -30,7 +31,9 @@ class SmsTransport(
 
     override val requiredPermissions = listOf(SmsPermission())
 
-    override val configActivityInfo = TransportConfigInfo(R.string.Settings_WhiteList, AllowlistActivity::class)
+    override val actions = listOf(TransportAction(R.string.Settings_WhiteList) { activity ->
+        activity.startActivity(Intent(context, AllowlistActivity::class.java))
+    })
 
     override fun getDestinationString(): String = destination
 

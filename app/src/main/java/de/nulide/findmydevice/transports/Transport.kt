@@ -42,7 +42,7 @@ abstract class Transport<DestinationType>(
 
     abstract val requiredPermissions: List<Permission>
 
-    open val configActivityInfo: TransportConfigInfo? = null
+    open val actions: List<TransportAction> = emptyList()
 
     fun missingRequiredPermissions(context: Context): List<Permission> {
         return requiredPermissions.filter { p -> !p.isGranted(context) }
