@@ -12,6 +12,7 @@ import de.nulide.findmydevice.transports.Transport
 import de.nulide.findmydevice.utils.CypherUtils
 import de.nulide.findmydevice.utils.Logger
 import de.nulide.findmydevice.utils.Notifications
+import kotlinx.coroutines.CoroutineScope
 
 
 // Order matters for the home screen
@@ -43,6 +44,7 @@ fun availableCommands(context: Context): List<Command> {
  */
 class CommandHandler<T>(
     private val transport: Transport<T>,
+    private val coroutineScope: CoroutineScope,
     private val job: FmdJobService?,
 ) {
 
@@ -72,7 +74,7 @@ class CommandHandler<T>(
         // run the command
         for (cmd in availableCommands(context)) {
             if (args[1].lowercase() == cmd.keyword.lowercase()) {
-                cmd.execute(args, transport, job)
+                cmd.execute(args, transport, coroutineScope, job)
                 break
             }
         }

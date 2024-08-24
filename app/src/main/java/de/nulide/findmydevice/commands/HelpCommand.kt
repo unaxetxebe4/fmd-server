@@ -7,6 +7,7 @@ import de.nulide.findmydevice.R
 import de.nulide.findmydevice.permissions.Permission
 import de.nulide.findmydevice.services.FmdJobService
 import de.nulide.findmydevice.transports.Transport
+import kotlinx.coroutines.CoroutineScope
 
 
 class HelpCommand(
@@ -30,6 +31,7 @@ class HelpCommand(
     override fun <T> executeInternal(
         args: List<String>,
         transport: Transport<T>,
+        coroutineScope: CoroutineScope,
         job: FmdJobService?,
     ) {
         val reply = StringBuilder()

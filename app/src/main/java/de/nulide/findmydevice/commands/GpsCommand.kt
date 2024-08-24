@@ -10,6 +10,7 @@ import de.nulide.findmydevice.permissions.WriteSecureSettingsPermission
 import de.nulide.findmydevice.services.FmdJobService
 import de.nulide.findmydevice.transports.Transport
 import de.nulide.findmydevice.utils.SecureSettings
+import kotlinx.coroutines.CoroutineScope
 
 
 class GpsCommand(context: Context) : Command(context) {
@@ -30,6 +31,7 @@ class GpsCommand(context: Context) : Command(context) {
     override fun <T> executeInternal(
         args: List<String>,
         transport: Transport<T>,
+        coroutineScope: CoroutineScope,
         job: FmdJobService?,
     ) {
         if (args.contains("on")) {

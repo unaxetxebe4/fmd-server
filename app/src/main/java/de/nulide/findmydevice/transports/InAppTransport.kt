@@ -7,6 +7,7 @@ import android.widget.EditText
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import de.nulide.findmydevice.R
 import de.nulide.findmydevice.commands.CommandHandler
@@ -66,7 +67,7 @@ fun onTestCommandClicked(activity: AppCompatActivity) {
             context.getString(R.string.transport_inapp_send_command_button_send)
         ) { _, _ ->
             val transport = InAppTransport(context)
-            val commandHandler = CommandHandler(transport, null)
+            val commandHandler = CommandHandler(transport, activity.lifecycleScope, null)
             val command = editTextCommand.text.toString()
             commandHandler.execute(context, command)
         }

@@ -19,8 +19,7 @@ abstract class FmdJobService : JobService() {
         private val TAG = this::class.simpleName
     }
 
-    private val coroutineJob = Job()
-    val coroutineScope = CoroutineScope(Dispatchers.IO + coroutineJob)
+    val coroutineScope = CoroutineScope(Dispatchers.IO + Job())
 
     private var params: JobParameters? = null
 

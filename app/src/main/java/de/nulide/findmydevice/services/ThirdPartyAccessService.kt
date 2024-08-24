@@ -20,6 +20,10 @@ import de.nulide.findmydevice.transports.NotificationReplyTransport
 import de.nulide.findmydevice.transports.Transport
 import de.nulide.findmydevice.utils.Logger
 import de.nulide.findmydevice.utils.Notifications
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.cancel
 import java.util.Calendar
 import java.util.Date
 
@@ -28,6 +32,8 @@ class ThirdPartyAccessService : NotificationListenerService() {
     private lateinit var settings: Settings
     private lateinit var allowlist: Allowlist
     private lateinit var config: ConfigSMSRec
+
+    private val coroutineScope = CoroutineScope(Dispatchers.IO + Job())
 
     fun init(context: Context) {
         IO.context = context
@@ -48,6 +54,11 @@ class ThirdPartyAccessService : NotificationListenerService() {
             config.set(ConfigSMSRec.CONF_LAST_USAGE, cal.timeInMillis)
         }
         Notifications.init(context, false)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        coroutineScope.cancel()
     }
 
     override fun onNotificationPosted(sbn: StatusBarNotification) {
@@ -82,7 +93,7 @@ class ThirdPartyAccessService : NotificationListenerService() {
             message = newMessage
 
             val transport = NotificationReplyTransport(sbn)
-            val commandHandler = CommandHandler(transport, null)
+            val commandHandler = CommandHandler(transport, coroutineScope, null)
             commandHandler.execute(this, message)
 
             cancelNotification(sbn.key)
@@ -99,7 +110,7 @@ class ThirdPartyAccessService : NotificationListenerService() {
             Logger.log("BatteryWarning", "Low Battery detected: sending message.")
 
             val transport: Transport<Unit> = FmdServerTransport(this)
-            val commandHandler = CommandHandler(transport, null)
+            val commandHandler = CommandHandler(transport, coroutineScope, null)
 
             val locateCommand = settings[Settings.SET_FMD_COMMAND].toString() + " locate"
             commandHandler.execute(this, locateCommand)

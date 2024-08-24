@@ -74,7 +74,7 @@ public class FMDServerCommandDownloadService extends FmdJobService {
         String fullCommand = settingsRepo.getSettings().get(Settings.SET_FMD_COMMAND) + " " + remoteCommand;
 
         Transport<Unit> transport = new FmdServerTransport(this);
-        CommandHandler<Unit> commandHandler = new CommandHandler<>(transport, this);
+        CommandHandler<Unit> commandHandler = new CommandHandler<>(transport, this.getCoroutineScope(), this);
         commandHandler.execute(this, fullCommand);
     }
 }

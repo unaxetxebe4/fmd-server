@@ -9,6 +9,7 @@ import de.nulide.findmydevice.permissions.OverlayPermission
 import de.nulide.findmydevice.services.FmdJobService
 import de.nulide.findmydevice.transports.Transport
 import de.nulide.findmydevice.utils.RingerUtils
+import kotlinx.coroutines.CoroutineScope
 
 
 class RingCommand(context: Context) : Command(context) {
@@ -32,6 +33,7 @@ class RingCommand(context: Context) : Command(context) {
     override fun <T> executeInternal(
         args: List<String>,
         transport: Transport<T>,
+        coroutineScope: CoroutineScope,
         job: FmdJobService?,
     ) {
         val firstArg = args.getOrElse(0) { "" }
