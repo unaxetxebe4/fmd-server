@@ -12,9 +12,10 @@ import de.nulide.findmydevice.utils.Utils
 
 // Order matters for the home screen
 fun availableTransports(context: Context): List<Transport<*>> = listOf(
-    SmsTransport("42"),
+    SmsTransport(context, "42"),
     NotificationReplyTransport(null),
     FmdServerTransport(context),
+    InAppTransport(context),
 )
 
 
@@ -35,10 +36,10 @@ abstract class Transport<DestinationType>(
     abstract val description: Int
 
     @get:StringRes
-    abstract val descriptionAuth: Int
+    open val descriptionAuth: Int? = null
 
     @get:StringRes
-    abstract val descriptionNote: Int?
+    open val descriptionNote: Int? = null
 
     abstract val requiredPermissions: List<Permission>
 

@@ -32,8 +32,6 @@ class NotificationReplyTransport(
     @get:StringRes
     override val descriptionAuth = R.string.transport_notification_reply_description_auth
 
-    override val descriptionNote = null
-
     override val requiredPermissions = listOf(NotificationAccessPermission())
 
     override fun send(context: Context, msg: String) {

@@ -11,7 +11,8 @@ import de.nulide.findmydevice.ui.settings.AllowlistActivity
 
 
 class SmsTransport(
-    private val destination: String
+    private val context: Context,
+    private val destination: String,
 ) : Transport<String>(destination) {
 
     @get:DrawableRes

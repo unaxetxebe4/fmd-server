@@ -29,8 +29,13 @@ class TransportListViewHolder(
 
         itemView.findViewById<TextView>(R.id.description).text = context.getString(item.description)
 
-        itemView.findViewById<TextView>(R.id.description_auth).text =
-            context.getString(item.descriptionAuth)
+        val authRes = item.descriptionAuth
+        if (authRes == null) {
+            itemView.findViewById<View>(R.id.description_auth).visibility = View.GONE
+        } else {
+            itemView.findViewById<TextView>(R.id.description_auth).text = context.getString(authRes)
+            itemView.findViewById<View>(R.id.description_auth).visibility = View.VISIBLE
+        }
 
         val noteRes = item.descriptionNote
         if (noteRes == null) {
