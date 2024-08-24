@@ -3,7 +3,7 @@ package de.nulide.findmydevice.ui.home
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.activity.ComponentActivity
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import de.nulide.findmydevice.R
@@ -12,7 +12,7 @@ import de.nulide.findmydevice.ui.setupPermissionsList
 
 
 class CommandListViewHolder(
-    private val activity: ComponentActivity,
+    private val activity: AppCompatActivity,
     itemView: View,
 ) : RecyclerView.ViewHolder(itemView) {
 

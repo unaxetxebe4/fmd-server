@@ -5,7 +5,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.activity.ComponentActivity
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import de.nulide.findmydevice.R
@@ -14,7 +14,7 @@ import de.nulide.findmydevice.ui.setupPermissionsList
 
 
 class TransportListViewHolder(
-    private val activity: ComponentActivity,
+    private val activity: AppCompatActivity,
     itemView: View,
 ) : RecyclerView.ViewHolder(itemView) {
 

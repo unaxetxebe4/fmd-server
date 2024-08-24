@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.ComponentActivity
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import de.nulide.findmydevice.R
 import de.nulide.findmydevice.commands.availableCommands
@@ -26,7 +26,7 @@ class CommandListFragment : TaggedFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val commandListAdapter = CommandListAdapter(activity as ComponentActivity)
+        val commandListAdapter = CommandListAdapter(activity as AppCompatActivity)
         val recyclerView = view.findViewById<RecyclerView>(R.id.recycler_commands)
         recyclerView.adapter = commandListAdapter
 
