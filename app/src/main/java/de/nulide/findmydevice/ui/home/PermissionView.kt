@@ -22,15 +22,17 @@ class PermissionView @JvmOverloads constructor(
 
     private lateinit var p: Permission
     private lateinit var activity: Activity
+    private var hideDescription = false
 
     override fun onResume(owner: LifecycleOwner) {
         super.onResume(owner)
         updateView()
     }
 
-    fun setPermission(p: Permission, activity: Activity) {
+    fun setPermission(p: Permission, activity: Activity, hideDescription: Boolean = false) {
         this.p = p
         this.activity = activity
+        this.hideDescription = hideDescription
         updateView()
     }
 
@@ -40,7 +42,7 @@ class PermissionView @JvmOverloads constructor(
         binding.permName.text = context.getString(p.name)
 
         val description = p.description
-        if (description != null) {
+        if (description != null && !hideDescription) {
             binding.permDescription.visibility = View.VISIBLE
             binding.permDescription.text = context.getString(description)
         } else {

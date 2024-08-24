@@ -42,7 +42,7 @@ class TransportListViewHolder(
 
         val permReqTitle = itemView.findViewById<TextView>(R.id.permissions_required_title)
         val permReqList = itemView.findViewById<LinearLayout>(R.id.permissions_required_list)
-        setupPermissionsList(activity, permReqTitle, permReqList, item.requiredPermissions)
+        setupPermissionsList(activity, permReqTitle, permReqList, item.requiredPermissions, true)
 
         setupActions(item)
     }

@@ -12,7 +12,8 @@ fun setupPermissionsList(
     activity: ComponentActivity,
     title: TextView,
     list: LinearLayout,
-    perms: List<Permission>
+    perms: List<Permission>,
+    hideDescription: Boolean = false,
 ) {
     if (perms.isEmpty()) {
         title.visibility = View.GONE
@@ -25,7 +26,7 @@ fun setupPermissionsList(
     list.removeAllViews()
     for (p in perms) {
         val pView = PermissionView(title.context)
-        pView.setPermission(p, activity)
+        pView.setPermission(p, activity, hideDescription)
         list.addView(pView)
         activity.lifecycle.addObserver(pView)
     }
