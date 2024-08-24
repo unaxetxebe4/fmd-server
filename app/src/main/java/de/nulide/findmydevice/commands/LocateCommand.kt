@@ -14,8 +14,8 @@ import de.nulide.findmydevice.services.FmdJobService
 import de.nulide.findmydevice.transports.Transport
 import de.nulide.findmydevice.utils.Utils
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 
 
 class LocateCommand(context: Context) : Command(context) {
@@ -79,11 +79,7 @@ class LocateCommand(context: Context) : Command(context) {
             // finish the job once all providers have finished
             job?.jobFinished()
         }
-        if (job != null) {
-            job.coroutineScope.launch { lambda() }
-        } else {
-            runBlocking { lambda() }
-        }
+        coroutineScope.launch(Dispatchers.IO) { lambda() }
     }
 
     private fun <T> handleLocationLastKnown(transport: Transport<T>) {
