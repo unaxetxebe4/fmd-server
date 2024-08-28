@@ -11,6 +11,7 @@ import de.nulide.findmydevice.permissions.CameraPermission
 import de.nulide.findmydevice.services.FmdJobService
 import de.nulide.findmydevice.transports.Transport
 import de.nulide.findmydevice.ui.DummyCameraxActivity
+import kotlinx.coroutines.CoroutineScope
 
 
 class CameraCommand(context: Context) : Command(context) {
@@ -34,6 +35,7 @@ class CameraCommand(context: Context) : Command(context) {
     override fun <T> executeInternal(
         args: List<String>,
         transport: Transport<T>,
+        coroutineScope: CoroutineScope,
         job: FmdJobService?,
     ) {
         if ((settings[Settings.SET_FMDSERVER_ID] as String).isEmpty()) {

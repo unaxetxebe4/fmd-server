@@ -12,6 +12,7 @@ import de.nulide.findmydevice.permissions.OverlayPermission
 import de.nulide.findmydevice.services.FmdJobService
 import de.nulide.findmydevice.transports.Transport
 import de.nulide.findmydevice.ui.LockScreenMessage
+import kotlinx.coroutines.CoroutineScope
 
 
 class LockCommand(context: Context) : Command(context) {
@@ -34,6 +35,7 @@ class LockCommand(context: Context) : Command(context) {
     override fun <T> executeInternal(
         args: List<String>,
         transport: Transport<T>,
+        coroutineScope: CoroutineScope,
         job: FmdJobService?,
     ) {
         val devicePolicyManager =

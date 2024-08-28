@@ -69,7 +69,7 @@ public class FMDServerLocationUploadService extends FmdJobService {
         Notifications.init(this, true);
 
         Transport<Unit> transport = new FmdServerTransport(this);
-        CommandHandler<Unit> commandHandler = new CommandHandler<>(transport, this);
+        CommandHandler<Unit> commandHandler = new CommandHandler<>(transport, this.getCoroutineScope(), this);
 
         if (!settings.checkAccountExists()) {
             Logger.logSession(TAG, "No account, stopping and cancelling job.");

@@ -11,6 +11,7 @@ import de.nulide.findmydevice.permissions.DeviceAdminPermission
 import de.nulide.findmydevice.services.FmdJobService
 import de.nulide.findmydevice.transports.Transport
 import de.nulide.findmydevice.utils.CypherUtils
+import kotlinx.coroutines.CoroutineScope
 
 
 class DeleteCommand(context: Context) : Command(context) {
@@ -34,6 +35,7 @@ class DeleteCommand(context: Context) : Command(context) {
     override fun <T> executeInternal(
         args: List<String>,
         transport: Transport<T>,
+        coroutineScope: CoroutineScope,
         job: FmdJobService?,
     ) {
         if (!(settings.get(Settings.SET_WIPE_ENABLED) as Boolean)) {

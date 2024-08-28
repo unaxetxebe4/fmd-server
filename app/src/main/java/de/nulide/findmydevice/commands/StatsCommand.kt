@@ -8,6 +8,7 @@ import de.nulide.findmydevice.permissions.LocationPermission
 import de.nulide.findmydevice.services.FmdJobService
 import de.nulide.findmydevice.transports.Transport
 import de.nulide.findmydevice.utils.NetworkUtils
+import kotlinx.coroutines.CoroutineScope
 
 
 class StatsCommand(context: Context) : Command(context) {
@@ -28,6 +29,7 @@ class StatsCommand(context: Context) : Command(context) {
     override fun <T> executeInternal(
         args: List<String>,
         transport: Transport<T>,
+        coroutineScope: CoroutineScope,
         job: FmdJobService?,
     ) {
         val ips = NetworkUtils.getAllIP()

@@ -87,7 +87,7 @@ public class FMDSMSService extends FmdJobService {
         }
 
         Transport<String> transport = new SmsTransport(this, phoneNumber);
-        CommandHandler<String> commandHandler = new CommandHandler<>(transport, this);
+        CommandHandler<String> commandHandler = new CommandHandler<>(transport, this.getCoroutineScope(), this);
 
         // Case 1: phone number in Allowed Contacts
         for (Contact c : allowlist) {

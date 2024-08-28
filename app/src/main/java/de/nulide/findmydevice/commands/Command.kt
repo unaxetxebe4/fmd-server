@@ -13,6 +13,7 @@ import de.nulide.findmydevice.data.io.json.JSONMap
 import de.nulide.findmydevice.permissions.Permission
 import de.nulide.findmydevice.services.FmdJobService
 import de.nulide.findmydevice.transports.Transport
+import kotlinx.coroutines.CoroutineScope
 
 
 abstract class Command(val context: Context) {
@@ -45,6 +46,7 @@ abstract class Command(val context: Context) {
     fun <T> execute(
         args: List<String>,
         transport: Transport<T>,
+        coroutineScope: CoroutineScope,
         job: FmdJobService?,
     ) {
         val missing = missingRequiredPermissions()
@@ -61,12 +63,13 @@ abstract class Command(val context: Context) {
         }
         // Continue executing command.
         // The concrete classes should implement executeInternal.
-        executeInternal(args, transport, job)
+        executeInternal(args, transport, coroutineScope, job)
     }
 
     internal abstract fun <T> executeInternal(
         args: List<String>,
         transport: Transport<T>,
+        coroutineScope: CoroutineScope,
         job: FmdJobService?,
     )
 }

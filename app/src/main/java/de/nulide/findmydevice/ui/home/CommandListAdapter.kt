@@ -2,7 +2,7 @@ package de.nulide.findmydevice.ui.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.activity.ComponentActivity
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import de.nulide.findmydevice.R
@@ -10,7 +10,7 @@ import de.nulide.findmydevice.commands.Command
 
 
 class CommandListAdapter(
-    private val activity: ComponentActivity,
+    private val activity: AppCompatActivity,
 ) : ListAdapter<Command, CommandListViewHolder>(CommandListDiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CommandListViewHolder {

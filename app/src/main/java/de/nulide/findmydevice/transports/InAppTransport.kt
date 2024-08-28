@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.widget.EditText
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import de.nulide.findmydevice.R
 import de.nulide.findmydevice.commands.CommandHandler
@@ -48,7 +50,8 @@ class InAppTransport(
 }
 
 @SuppressLint("SetTextI18n")
-fun onTestCommandClicked(context: Context) {
+fun onTestCommandClicked(activity: AppCompatActivity) {
+    val context = activity
     val dialogLayout = LayoutInflater.from(context).inflate(R.layout.dialog_in_app_command, null)
     val editTextCommand = dialogLayout.findViewById<EditText>(R.id.editTextCommand)
 
@@ -64,7 +67,7 @@ fun onTestCommandClicked(context: Context) {
             context.getString(R.string.transport_inapp_send_command_button_send)
         ) { _, _ ->
             val transport = InAppTransport(context)
-            val commandHandler = CommandHandler(transport, null)
+            val commandHandler = CommandHandler(transport, activity.lifecycleScope, null)
             val command = editTextCommand.text.toString()
             commandHandler.execute(context, command)
         }
