@@ -6,6 +6,7 @@ import android.content.Intent
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import de.nulide.findmydevice.R
+import de.nulide.findmydevice.data.Settings
 import de.nulide.findmydevice.permissions.DeviceAdminPermission
 import de.nulide.findmydevice.permissions.OverlayPermission
 import de.nulide.findmydevice.services.FmdJobService
@@ -39,12 +40,15 @@ class LockCommand(context: Context) : Command(context) {
             context.getSystemService(Context.DEVICE_POLICY_SERVICE) as DevicePolicyManager
         devicePolicyManager.lockNow()
 
+        var customMessage = args.subList(2, args.size).joinToString(" ")
+
+        if (customMessage.isEmpty()) {
+            customMessage = settings[Settings.SET_LOCKSCREEN_MESSAGE] as String
+        }
+
         // Only show the full-screen activity if there is a message. This allows you to silently
         // lock your device (by not providing a message) without alerting the potential thief.
-        val customText = args.subList(2, args.size)
-        if (customText.isNotEmpty() && OverlayPermission().isGranted(context)) {
-            val customMessage = customText.joinToString(" ")
-
+        if (customMessage.isNotEmpty() && OverlayPermission().isGranted(context)) {
             val lockScreenMessage = Intent(context, LockScreenMessage::class.java)
             lockScreenMessage.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             // TODO: bring back passing this data??
