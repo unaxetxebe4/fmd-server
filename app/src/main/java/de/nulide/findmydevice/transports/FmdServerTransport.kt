@@ -42,6 +42,8 @@ class FmdServerTransport(context: Context) : Transport<Unit>(Unit) {
         activity.startActivity(Intent(context, AddAccountActivity::class.java))
     })
 
+    override fun getDestinationString() = "FMD Server"
+
     @SuppressLint("MissingSuperCall")
     override fun send(context: Context, msg: String) {
         //super.send(context, msg, destination)

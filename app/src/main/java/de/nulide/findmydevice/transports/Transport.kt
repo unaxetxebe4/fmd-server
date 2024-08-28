@@ -49,7 +49,7 @@ abstract class Transport<DestinationType>(
         return requiredPermissions.filter { p -> !p.isGranted(context) }
     }
 
-    open fun getDestinationString(): String? = null
+    abstract fun getDestinationString(): String
 
     @CallSuper
     open fun send(context: Context, msg: String) {
