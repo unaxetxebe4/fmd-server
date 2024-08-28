@@ -226,4 +226,5 @@
     <string name="crashed_copy_log">Log kopieren</string>
     <string name="OpenCellId_tower_collector_download">Tower Collector Herunterladen</string>
     <string name="OpenCellId_tower_collector_info">Du kannst zu OpenCelliD beitragen, indem du Mobilfunkmast-Daten sammelst und hochlädst. Dazu benötigst du eine extra App. Eine solche App ist Tower Collector.</string>
+    <string name="crashed_open_issuetracker">Issue Tracker Öffnen</string>
 </resources>

@@ -208,4 +208,5 @@
     <string name="perm_unused_app_name">अप्रयुक्त ऐप प्रतिबंध</string>
     <string name="OpenCellId_tower_collector_download">Tower Collector डाउनलोड करें</string>
     <string name="OpenCellId_tower_collector_info">आप सेल टावर की जानकारी एकत्र करके और अपलोड करके OpenCelliD में योगदान दे सकते हैं। इसके लिए आपको एक समर्पित ऐप की आवश्यकता होगी। ऐसा ही एक ऐप है Tower Collector।</string>
+    <string name="crashed_open_issuetracker">समस्या ट्रैकर खोलें</string>
 </resources>
