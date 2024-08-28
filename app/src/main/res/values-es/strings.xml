@@ -208,4 +208,5 @@
     <string name="perm_unused_app_description">Android pone en pausa las aplicaciones que no se abren durante unos meses y elimina sus permisos. FMD, sin embargo, se supone que funciona en segundo plano. Después de configurarlo, rara vez necesitarás abrirlo. Por lo tanto, es necesario eximir a FMD de la pausa, de lo contrario puede que no funcione en unos meses.</string>
     <string name="OpenCellId_tower_collector_download">Descargar Tower Collector</string>
     <string name="OpenCellId_tower_collector_info">Puedes contribuir a OpenCelliD recopilando y cargando información sobre antenas de telefonía móvil. Para ello, necesitas una aplicación dedicada. Una de estas aplicaciones es Tower Collector.</string>
+    <string name="crashed_open_issuetracker">Abrir rastreador de fallos</string>
 </resources>
