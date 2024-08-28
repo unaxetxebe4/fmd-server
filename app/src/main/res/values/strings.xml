@@ -138,7 +138,7 @@
 
     <!-- Commands -->
 
-    <string name="cmd_missing_permissions">Cannot run command %s: Missing permission(s) %s.</string>
+    <string name="cmd_missing_permissions">Cannot run command %1$s: Missing permission(s) %2$s.</string>
 
     <string name="cmd_camera_description_short">Take a picture</string>
     <string name="cmd_camera_description_long">Takes a picture of with the front/back camera and uploads it to FMD Server. Currently only uploading to FMD Server is supported. You can send this command via other transport channels, too, and the picture will be uploaded to FMD Server (if an account exists).</string>
@@ -180,7 +180,7 @@
 
     <string name="cmd_stats_description_short">Get network statistics</string>
     <string name="cmd_stats_description_long">Get network statistics from the device. For example, its IP address and a list of surrounding Wifi networks.</string>
-    <string name="cmd_stats_response">Network statistics:\n\nDevice IPs:\n%s\n\nWifi networks:\n%s</string>
+    <string name="cmd_stats_response">Network statistics:\n\nDevice IPs:\n%1$s\n\nWifi networks:\n%2$s</string>
 
     <!-- Permissions -->
 
@@ -245,6 +245,7 @@
     <!-- Usage notifications -->
     <string name="usage_notification_title">Command executed</string>
     <string name="usage_notification_text">The command \"%s\" was executed.</string>
+    <string name="usage_notification_text_source">The command \"%1$s\" was executed by \"%2$s\".</string>
 
     <!-- Setup Warnings -->
     <string name="setup_warnings_title">Setup Warnings</string>
@@ -263,10 +264,10 @@
     <string name="crashed_text">FMD has crashed! Here is the log:</string>
     <string name="crashed_send_log">Send log</string>
     <string name="crashed_copy_log">Copy log</string>
+    <string name="crashed_open_issuetracker">Open Issue Tracker</string>
     <string name="crashed_continue_without">Continue without reporting</string>
 
     <!-- Varia -->
     <string name="MH_Pin_Accepted">Pin accepted!</string>
-    <string name="crashed_open_issuetracker">Open Issue Tracker</string>
 
 </resources>
