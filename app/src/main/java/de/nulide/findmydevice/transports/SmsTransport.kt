@@ -1,6 +1,7 @@
 package de.nulide.findmydevice.transports
 
 import android.content.Context
+import android.os.Build
 import android.telephony.SmsManager
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
@@ -37,7 +38,12 @@ class SmsTransport(
     override fun send(context: Context, msg: String) {
         super.send(context, msg)
 
-        val smsManager = context.getSystemService(SmsManager::class.java)
+        val smsManager = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            context.getSystemService(SmsManager::class.java)
+        } else {
+            SmsManager.getDefault()
+        }
+
         if (msg.length <= 160) {
             smsManager.sendTextMessage(destination, null, msg, null, null)
         } else {
