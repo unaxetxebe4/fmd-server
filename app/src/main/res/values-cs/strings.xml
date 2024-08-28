@@ -208,4 +208,5 @@
     <string name="crashed_continue_without">Pokračovat bez hlášení</string>
     <string name="OpenCellId_tower_collector_download">Stáhnout Tower Collector</string>
     <string name="OpenCellId_tower_collector_info">Do OpenCelliD můžete přispět sbíráním a nahráváním informací o mobilních věžích. Pro takovou akci potřebujete vlastní aplikaci. Takovou aplikací je například Tower Collector.</string>
+    <string name="crashed_open_issuetracker">Otevřít seznam problémů</string>
 </resources>
