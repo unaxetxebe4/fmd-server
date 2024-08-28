@@ -24,6 +24,7 @@ public class Notifications {
     public static final int CHANNEL_SERVER = 45;
     public static final int CHANNEL_SECURITY = 46;
     public static final int CHANNEL_FAILED = 47;
+    public static final int CHANNEL_IN_APP = 48;
 
     private static boolean silent;
 
@@ -67,6 +68,8 @@ public class Notifications {
             channel5.setDescription(context.getString(R.string.Notification_Security_Description));
             NotificationChannel channel6 = new NotificationChannel(Integer.valueOf(CHANNEL_FAILED).toString(), context.getString(R.string.Notification_FAIL), NotificationManager.IMPORTANCE_HIGH);
             channel6.setDescription(context.getString(R.string.Notification_Fail_Description));
+            NotificationChannel channel7 = new NotificationChannel(Integer.valueOf(CHANNEL_IN_APP).toString(), context.getString(R.string.Notification_InApp), NotificationManager.IMPORTANCE_DEFAULT);
+            channel7.setDescription(context.getString(R.string.Notification_InApp_Description));
 
             NotificationManager notificationManager = context.getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel1);
@@ -74,6 +77,7 @@ public class Notifications {
             notificationManager.createNotificationChannel(channel4);
             notificationManager.createNotificationChannel(channel5);
             notificationManager.createNotificationChannel(channel6);
+            notificationManager.createNotificationChannel(channel7);
         }
     }
 

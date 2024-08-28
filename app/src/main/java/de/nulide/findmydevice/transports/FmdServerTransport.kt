@@ -2,6 +2,7 @@ package de.nulide.findmydevice.transports
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
@@ -37,7 +38,9 @@ class FmdServerTransport(context: Context) : Transport<Unit>(Unit) {
 
     override val requiredPermissions = emptyList<Permission>()
 
-    override val configActivityInfo = TransportConfigInfo(R.string.Settings_Settings, AddAccountActivity::class)
+    override val actions = listOf(TransportAction(R.string.Settings_Settings) { activity ->
+        activity.startActivity(Intent(context, AddAccountActivity::class.java))
+    })
 
     override fun getDestinationString() = "FMD Server"
 

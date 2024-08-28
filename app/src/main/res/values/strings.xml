@@ -230,6 +230,12 @@
     <string name="transport_fmd_server_description_auth">Anyone who knows your username and password can log in to FMD Server and control your device.</string>
     <string name="transport_fmd_server_description_note">FMD Server requires an internet connection. This can be a mobile network (thus the SIM needs to be unlocked) or WiFi.</string>
 
+    <string name="transport_inapp_title">In-App</string>
+    <string name="transport_inapp_description">Send commands locally from within FMD to your device. This is useful for testing. FMD will reply with a notification.</string>
+    <string name="transport_inapp_send_command_title">Send In-App Command</string>
+    <string name="transport_inapp_send_command_command_placeholder">Command</string>
+    <string name="transport_inapp_send_command_button_send">Send</string>
+
     <!-- Notification Channels -->
     <string name="Notification_Usage">Usage</string>
     <string name="Notification_Usage_Description">Notifications when FMD is receiving commands</string>
@@ -241,6 +247,8 @@
     <string name="Notification_Security_Description">Notifications about security updates</string>
     <string name="Notification_FAIL">Failures</string>
     <string name="Notification_Fail_Description">Notifications when something fails, like the connection to FMD Server</string>
+    <string name="Notification_InApp">In-App Transport Channel</string>
+    <string name="Notification_InApp_Description">Notifications from the in-app transport channel</string>
 
     <!-- Usage notifications -->
     <string name="usage_notification_title">Command executed</string>

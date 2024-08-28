@@ -26,7 +26,7 @@ public class TempContactExpiredService extends JobService {
         Logger.init(Thread.currentThread(), this);
 
         if (phoneNumber != null && !phoneNumber.isEmpty()) {
-            Transport<String> transport = new SmsTransport(phoneNumber);
+            Transport<String> transport = new SmsTransport(this, phoneNumber);
             transport.send(this, "FindMyDevice: Pin expired!");
             Logger.logSession("Session expired", phoneNumber);
         }
