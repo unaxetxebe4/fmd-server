@@ -206,4 +206,5 @@
     <string name="crashed_continue_without">Ohni Melde wiitermache</string>
     <string name="OpenCellId_tower_collector_download">Tower Collector Abelade</string>
     <string name="OpenCellId_tower_collector_info">Du chasch OpenCelliD helfe indem du Mobilfunkmast-Datene sammlisch und ufeladsch. Für das bruchts en separati App. Eini isch zum Bispil Tower Collector.</string>
+    <string name="crashed_open_issuetracker">Issue Tracker Uftue</string>
 </resources>
