@@ -117,7 +117,7 @@
     <string name="Log_Alert_LogData">Dados de Registro</string>
     <string name="Toast_Empty_FMDCommand">Comando vazio não permitido
 \n Retornando ao padrão. [fmd]</string>
-    <string name="cmd_missing_permissions">Não foi possível executar o comando %s: Faltando a(s) permissão(ões) %s.</string>
+    <string name="cmd_missing_permissions">Não foi possível executar o comando %1$s: Faltando a(s) permissão(ões) %2$s.</string>
     <string name="cmd_camera_description_long">Tira uma foto da câmera frontal/traseira e faz upload dela pro Servidor FMD. Atualmente só é possível fazer upload para o Servidor FMD. Vocẽ pode enviar este comando atráves de outros canais de transporte, também, e a foto será enviada ao Servidor FMD (se uma conta existe).</string>
     <string name="cmd_delete_description_short">Redefinir o dispositivo de fábrica</string>
     <string name="cmd_gps_description_short">Ativar/desativar o GPS</string>
@@ -157,10 +157,10 @@
     <string name="cmd_stats_response">Estatísticas de rede:
 \n
 \nEndereços IP do dispositivo:
-\n%s
+\n%1$s
 \n
 \nRedes Wi-Fi:
-\n%s</string>
+\n%2$s</string>
     <string name="perm_battery_optimizations_name">Ignorar Otimizações de Bateria</string>
     <string name="perm_camera_name">Câmera</string>
     <string name="perm_device_admin_name">Administrador do Dispositivo</string>
@@ -209,4 +209,12 @@
     <string name="OpenCellId_tower_collector_download">Baixar o Tower Collector</string>
     <string name="OpenCellId_tower_collector_info">Você pode contribuir ao OpenCelliD coletando e enviando informações de torres. Você precisa de um app dedicado para isto. Um tal app é o Tower Collector.</string>
     <string name="crashed_open_issuetracker">Abrir o Rastreador de Problemas</string>
+    <string name="transport_inapp_send_command_title">Enviar comando dentro do app</string>
+    <string name="transport_inapp_send_command_command_placeholder">Comando</string>
+    <string name="Notification_InApp">Canal de transporte dentro do app</string>
+    <string name="Notification_InApp_Description">Notificações do canal de transporte dentro do app</string>
+    <string name="usage_notification_text_source">O comando \"%1$s\" foi executado por \"%2$s\".</string>
+    <string name="transport_inapp_title">Dentro do App</string>
+    <string name="transport_inapp_description">Envie comandos localmente pelo FMD para o seu dispositivo. Isso é útil para testes. O FMD responderá com uma notificação.</string>
+    <string name="transport_inapp_send_command_button_send">Enviar</string>
 </resources>

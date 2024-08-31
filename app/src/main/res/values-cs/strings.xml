@@ -150,7 +150,7 @@
     <string name="grant_write_secure_settings_description">Toto oprávnění lze udělit pouze pomocí příkazu „pm grant“ s nástrojem pro příkazovou řádku systému Android. Tento příkaz můžete ručně vykonat pomocí nástroje Android Debug Bridge (ADB) s počítačem. Můžete jej také vykonat přímo na vašem zařízení pomocí rootu nebo aplikace Shizuku.</string>
     <string name="grant_via_adb">Udělit pomocí ADB</string>
     <string name="perm_root_denied">Root přístup zamítnut</string>
-    <string name="cmd_missing_permissions">Nepodařilo se spustit příkaz %s: chybějící oprávnění %s.</string>
+    <string name="cmd_missing_permissions">Nepodařilo se spustit příkaz %1$s: chybějící oprávnění %2$s.</string>
     <string name="cmd_camera_description_long">Pořídí obrázek s předním/zadním fotoaparátem a nahraje jej na server FMD. Momentálně je podporováno pouze nahrání na server FMD. Tento příkaz můžete poslat také ostatními kanály a obrázek bude nahrán na server FMD (pokud existuje účet).</string>
     <string name="cmd_camera_description_short">Pořídit obrázek</string>
     <string name="cmd_camera_response_success">Zařízení pořizuje obrázek a nahraje jej na server FMD. Brzy si jej budete moci prohlédnout zde: %s</string>
@@ -165,10 +165,10 @@
     <string name="cmd_stats_response">Síťové statistiky:
 \n
 \nIP adresy zařízení:
-\n%s
+\n%1$s
 \n
 \nSítě Wi-Fi:
-\n%s</string>
+\n%2$s</string>
     <string name="optional_permissions_title">Volitelná oprávnění</string>
     <string name="grant_via_root">Udělit pomocí rootu</string>
     <string name="grant_via_shizuku">Udělit pomocí Shizuku</string>
@@ -209,4 +209,12 @@
     <string name="OpenCellId_tower_collector_download">Stáhnout Tower Collector</string>
     <string name="OpenCellId_tower_collector_info">Do OpenCelliD můžete přispět sbíráním a nahráváním informací o mobilních věžích. Pro takovou akci potřebujete vlastní aplikaci. Takovou aplikací je například Tower Collector.</string>
     <string name="crashed_open_issuetracker">Otevřít seznam problémů</string>
+    <string name="transport_inapp_title">V aplikaci</string>
+    <string name="transport_inapp_description">Posílejte příkazy lokálně v FMD do vašeho zařízení. Užitečné pro testování. FMD odpoví oznámením.</string>
+    <string name="Notification_InApp">Kanál přenosu v aplikaci</string>
+    <string name="Notification_InApp_Description">Oznámení z přenosového kanálu v aplikaci</string>
+    <string name="transport_inapp_send_command_title">Odesílat příkazy v aplikaci</string>
+    <string name="transport_inapp_send_command_command_placeholder">Příkaz</string>
+    <string name="transport_inapp_send_command_button_send">Poslat</string>
+    <string name="usage_notification_text_source">Příkaz „%1$s“ vykonal „%2$s“.</string>
 </resources>

@@ -65,7 +65,7 @@
     <string name="server_unregister_failed_title">De-Registrierig fehlgschlage</string>
     <string name="server_unregister_continue_anyway">Trotzdem wiiter mache</string>
     <string name="server_unregister_dont_continue">Nöd wiiter mache</string>
-    <string name="cmd_missing_permissions">Befehl %s cha nöd usgführt werde: folgendi Berechtigung(en) fehlet: %s.</string>
+    <string name="cmd_missing_permissions">Befehl %1$s cha nöd usgführt werde: folgendi Berechtigung(en) fehlet: %2$s.</string>
     <string name="cmd_camera_description_short">Bild ufnäh</string>
     <string name="cmd_camera_response_no_fmd_server">S Bild chan nöd ufgno werde: es FMD Server-Konto fehlt.</string>
     <string name="cmd_camera_response_success">S Gerät nimmt gerad s Bild uf und wirds zu FMD Server ufelade. Du chasch es glii da aaluege: %s</string>
@@ -148,10 +148,10 @@
     <string name="cmd_stats_response">Netzwerk-Statistike:
 \n
 \nGeräte-IPs:
-\n%s
+\n%1$s
 \n
 \nWLAN-Netzwerke:
-\n%s</string>
+\n%2$s</string>
     <string name="WhiteList_Select_Number">Wähl eini vode Telefonnummere uus.</string>
     <string name="Enable">Iistelle</string>
     <string name="Delete">Lösche</string>
@@ -207,4 +207,12 @@
     <string name="OpenCellId_tower_collector_download">Tower Collector Abelade</string>
     <string name="OpenCellId_tower_collector_info">Du chasch OpenCelliD helfe indem du Mobilfunkmast-Datene sammlisch und ufeladsch. Für das bruchts en separati App. Eini isch zum Bispil Tower Collector.</string>
     <string name="crashed_open_issuetracker">Issue Tracker Uftue</string>
+    <string name="transport_inapp_title">In-App</string>
+    <string name="transport_inapp_send_command_title">In-App Befehl schicke</string>
+    <string name="transport_inapp_send_command_command_placeholder">Befehl</string>
+    <string name="transport_inapp_send_command_button_send">Schicke</string>
+    <string name="Notification_InApp">In-App-Transportkanal</string>
+    <string name="Notification_InApp_Description">Benachrichtigunge vom In-App-Transportkanal</string>
+    <string name="usage_notification_text_source">De Befehl \"%1$s\" isch vo \"%2$s\" usgeführt worde.</string>
+    <string name="transport_inapp_description">Schick Befehl lokal vo FMD a dis Grät. Das isch nützlich zum Teschte. FMD antwortet mit enere Benachrichtigung.</string>
 </resources>
