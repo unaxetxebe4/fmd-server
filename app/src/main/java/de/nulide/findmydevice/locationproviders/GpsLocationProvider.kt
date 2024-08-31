@@ -88,6 +88,8 @@ class GpsLocationProvider<T>(
             val consumer = { location: Any? ->
                 if (location != null) {
                     onLocationChanged(location as Location)
+                } else {
+                    onLocationFailed()
                 }
             }
             locationManager.getCurrentLocation(
@@ -120,6 +122,15 @@ class GpsLocationProvider<T>(
         storeLastKnownLocation(lat, lon, timeMillis)
         transport.sendNewLocation(context, provider, lat, lon, timeMillis)
 
+        cleanup()
+    }
+
+    private fun onLocationFailed() {
+        transport.send(context, context.getString(R.string.cmd_locate_response_gps_fail))
+        cleanup()
+    }
+
+    private fun cleanup() {
         if (isGpsTurnedOnByUs) {
             SecureSettings.turnGPS(context, false)
         }
