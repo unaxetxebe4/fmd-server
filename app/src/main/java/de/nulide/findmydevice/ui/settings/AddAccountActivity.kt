@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
@@ -16,6 +15,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.android.volley.VolleyError
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import de.nulide.findmydevice.R
@@ -29,6 +29,9 @@ import de.nulide.findmydevice.services.FMDServerLocationUploadService
 import de.nulide.findmydevice.utils.CypherUtils
 import de.nulide.findmydevice.utils.Utils.Companion.copyToClipboard
 import de.nulide.findmydevice.utils.Utils.Companion.openUrl
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import org.apache.maven.artifact.versioning.ComparableVersion
 import java.util.Calendar
 import java.util.TimeZone
@@ -109,9 +112,9 @@ class AddAccountActivity : AppCompatActivity(), TextWatcher {
                 val registrationToken = registrationTokenInput.text.toString()
 
                 if (password.isNotEmpty() && password == passwordCheck) {
-                    Thread {
-                        // Start the thread here. Key generation and password hashing is expensive-ish,
-                        // so we don't want to do it on the UI thread (it would block then loading indicator).
+                    // Key generation and password hashing is expensive-ish, so we don't want
+                    // to do it on the UI thread (e.g., it would block the loading indicator).
+                    lifecycleScope.launch(Dispatchers.IO) {
                         val keys = FmdKeyPair.generateNewFmdKeyPair(password)
                         settingsRepo.setKeys(keys)
                         val hashedPW = CypherUtils.hashPasswordForLogin(password)
@@ -123,10 +126,10 @@ class AddAccountActivity : AppCompatActivity(), TextWatcher {
                             keys.base64PublicKey,
                             hashedPW,
                             registrationToken,
-                            this::onRegisterOrLoginSuccess,
-                            this::onRegisterOrLoginError,
+                            this@AddAccountActivity::onRegisterOrLoginSuccess,
+                            this@AddAccountActivity::onRegisterOrLoginError,
                         )
-                    }.start()
+                    }
                 } else {
                     Toast.makeText(context, "Passwords do not match.", Toast.LENGTH_LONG).show()
                     loadingDialog?.cancel()
@@ -152,14 +155,14 @@ class AddAccountActivity : AppCompatActivity(), TextWatcher {
                 val password = passwordInput.text.toString()
 
                 if (id.isNotEmpty() && password.isNotEmpty()) {
-                    Thread {
+                    lifecycleScope.launch(Dispatchers.IO) {
                         fmdServerRepo.login(
                             id,
                             password,
-                            this::onRegisterOrLoginSuccess,
-                            this::onRegisterOrLoginError,
+                            this@AddAccountActivity::onRegisterOrLoginSuccess,
+                            this@AddAccountActivity::onRegisterOrLoginError,
                         )
-                    }.start()
+                    }
                 } else {
                     Toast.makeText(
                         context,
@@ -270,14 +273,16 @@ class AddAccountActivity : AppCompatActivity(), TextWatcher {
     private fun getAndShowServerVersionWithDelay(context: Context, serverBaseUrl: String) {
         val DELAY_MILLIS: Long = 1500
         this.lastTextChangedMillis = Calendar.getInstance(TimeZone.getTimeZone("UTC")).timeInMillis
+
         // Only send the request to the URL if there has been no change within the last DELAY ms.
         // This prevents spamming the server with every keystroke.
-        Handler().postDelayed({
+        lifecycleScope.launch {
+            delay(DELAY_MILLIS)
             val now = Calendar.getInstance(TimeZone.getTimeZone("UTC")).timeInMillis
-            if (now - this.lastTextChangedMillis > DELAY_MILLIS) {
+            if (now - lastTextChangedMillis > DELAY_MILLIS) {
                 getAndShowServerVersion(context, serverBaseUrl)
             }
-        }, DELAY_MILLIS)
+        }
     }
 
     @SuppressLint("SetTextI18n")
@@ -287,7 +292,7 @@ class AddAccountActivity : AppCompatActivity(), TextWatcher {
             return
         }
 
-        Thread {
+        lifecycleScope.launch(Dispatchers.IO) {
             fmdServerRepo.getServerVersion(serverBaseUrl,
                 { response: String ->
                     runOnUiThread {
@@ -321,6 +326,6 @@ class AddAccountActivity : AppCompatActivity(), TextWatcher {
                     }
                 }
             )
-        }.start()
+        }
     }
 }
