@@ -102,7 +102,7 @@ class AddAccountActivity : AppCompatActivity(), TextWatcher {
             registerLayout.findViewById<EditText>(R.id.editTextRegistrationToken)
 
         val registerDialog = MaterialAlertDialogBuilder(context)
-            .setTitle("Register")
+            .setTitle(context.getString(R.string.Settings_FMDServer_Register))
             .setView(registerLayout)
             .setPositiveButton(getString(R.string.Ok)) { _, _ ->
                 showLoadingIndicator(context)
@@ -131,7 +131,7 @@ class AddAccountActivity : AppCompatActivity(), TextWatcher {
                         )
                     }
                 } else {
-                    Toast.makeText(context, "Passwords do not match.", Toast.LENGTH_LONG).show()
+                    Toast.makeText(context, R.string.pw_change_mismatch, Toast.LENGTH_LONG).show()
                     loadingDialog?.cancel()
                 }
             }
@@ -146,7 +146,7 @@ class AddAccountActivity : AppCompatActivity(), TextWatcher {
         val passwordInput = loginLayout.findViewById<EditText>(R.id.editTextFMDPassword)
 
         val loginDialog = MaterialAlertDialogBuilder(context)
-            .setTitle("Login")
+            .setTitle(context.getString(R.string.Settings_FMDServer_Login))
             .setView(loginLayout)
             .setPositiveButton(getString(R.string.Ok)) { _, _ ->
                 showLoadingIndicator(context)
@@ -165,9 +165,7 @@ class AddAccountActivity : AppCompatActivity(), TextWatcher {
                     }
                 } else {
                     Toast.makeText(
-                        context,
-                        "FMD ID and password must not be empty.",
-                        Toast.LENGTH_LONG
+                        context, R.string.Settings_FMDServer_Error_id_or_pw_empty, Toast.LENGTH_LONG
                     ).show()
                     loadingDialog?.cancel()
                 }
