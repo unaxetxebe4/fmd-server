@@ -166,7 +166,7 @@
     <string name="perm_shizuku_failed">Zulassen via Shizuku fehlgeschlagen</string>
     <string name="usage_notification_title">Befehl ausgeführt</string>
     <string name="cmd_stats_description_short">Netzwerkstatistiken abrufen</string>
-    <string name="cmd_missing_permissions">Befehl %s kann nicht ausgeführt werden: folgende Berechtigung(en) fehlen: %s.</string>
+    <string name="cmd_missing_permissions">Befehl %1$s kann nicht ausgeführt werden: folgende Berechtigung(en) fehlen: %2$s.</string>
     <string name="cmd_camera_description_long">Nimmt ein Bild mit der Front-/Rückkamera auf und lädt es zu FMD Server hoch. Derzeit wird nur Hochladen zu FMD Server unterstützt. Du kannst diesen Befehl auch über andere Transportkanäle senden, und das Bild wird dann zu FMD Server hochgeladen (sofern ein Konto existiert).</string>
     <string name="cmd_camera_response_no_fmd_server">Bild kann nicht aufgenommen werden: ein FMD Server-Konto fehlt.</string>
     <string name="cmd_camera_response_success">Das Gerät nimmt gerade das Bild auf und wird es zu FMD Server hochladen. Du kannst es gleich hier anschauen: %s</string>
@@ -182,10 +182,10 @@
     <string name="cmd_stats_response">Netzwerk-Statistiken:
 \n
 \nGeräte-IPs:
-\n%s
+\n%1$s
 \n
 \nWLAN-Netzwerke:
-\n%s</string>
+\n%2$s</string>
     <string name="perm_battery_optimizations_name">Akku-Optimierungen ignorieren</string>
     <string name="cmd_nodisturb_response_on">Der \"Bitte Nicht Stören\"-Modus ist nun eingeschaltet.</string>
     <string name="cmd_nodisturb_response_off">Der \"Bitte Nicht Stören\"-Modus ist nun ausgeschaltet.</string>
@@ -227,4 +227,12 @@
     <string name="OpenCellId_tower_collector_download">Tower Collector Herunterladen</string>
     <string name="OpenCellId_tower_collector_info">Du kannst zu OpenCelliD beitragen, indem du Mobilfunkmast-Daten sammelst und hochlädst. Dazu benötigst du eine extra App. Eine solche App ist Tower Collector.</string>
     <string name="crashed_open_issuetracker">Issue Tracker Öffnen</string>
+    <string name="transport_inapp_title">In-App</string>
+    <string name="transport_inapp_send_command_title">In-App Befehl senden</string>
+    <string name="transport_inapp_send_command_command_placeholder">Befehl</string>
+    <string name="transport_inapp_send_command_button_send">Senden</string>
+    <string name="Notification_InApp">In-App-Transportkanal</string>
+    <string name="Notification_InApp_Description">Benachrichtigungen vom In-App-Transportkanal</string>
+    <string name="transport_inapp_description">Sende Befehle lokal von FMD an dein Gerät. Das ist nützlich zum Testen. FMD antwortet mit einer Benachrichtigung.</string>
+    <string name="usage_notification_text_source">Der Befehl \"%1$s\" wurde von \"%2$s\" ausgeführt.</string>
 </resources>
