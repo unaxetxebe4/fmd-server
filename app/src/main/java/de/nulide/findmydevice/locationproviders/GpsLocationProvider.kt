@@ -5,6 +5,7 @@ import android.content.Context
 import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
+import android.location.LocationRequest
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -64,7 +65,10 @@ class GpsLocationProvider<T>(
                     TAG,
                     "Cannot run fmd locate: GPS is off and missing permission WRITE_SECURE_SETTINGS"
                 )
-                transport.send(context, context.getString(R.string.cmd_locate_response_location_off))
+                transport.send(
+                    context,
+                    context.getString(R.string.cmd_locate_response_location_off)
+                )
                 def.complete(Unit)
                 return def
             }
@@ -72,6 +76,30 @@ class GpsLocationProvider<T>(
 
         transport.send(context, context.getString(R.string.cmd_locate_response_gps_will_follow))
         Log.d(TAG, "Requesting location update from GPS")
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            Log.d(TAG, "Using getCurrentLocation() on Android 12+")
+            val FIVE_MINS_MILLIS = 300_000L
+            val locationRequest = LocationRequest.Builder(2000L)
+                .setQuality(LocationRequest.QUALITY_HIGH_ACCURACY)
+                .setDurationMillis(FIVE_MINS_MILLIS) // timeout before it fails
+                .build()
+            // make the typing work across Java/Kotlin
+            val consumer = { location: Any? ->
+                if (location != null) {
+                    onLocationChanged(location as Location)
+                }
+            }
+            locationManager.getCurrentLocation(
+                "gps",
+                locationRequest,
+                null,
+                context.mainExecutor,
+                consumer
+            )
+            return def
+        }
+
         for (provider in locationManager.allProviders) {
             // we may be in a background thread due to being in a coroutine,
             // but this needs to be called on the main thread
