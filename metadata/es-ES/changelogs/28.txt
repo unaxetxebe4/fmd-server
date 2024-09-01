@@ -1,0 +1,6 @@
+0.7.0:
+- Canal de transporte In-App para pruebas (#135)
+- Solicita un heap más grande. Esto puede arreglar el OOM se bloquea cuando hash contraseñas / PIN en algunos dispositivos. (#177, #190)
+- Corregir fallo con SMS en Android ≤ 11 (#229)
+- Mostrar la fuente en la notificación de uso (número de teléfono, nombre de la aplicación o servidor FMD) (#230)
+- Arreglar mensaje de pantalla de bloqueo predeterminado de ajustes que no se utiliza (#231)
