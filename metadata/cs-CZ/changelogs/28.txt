@@ -1,6 +1,0 @@
-0.7.0:
-- Transportní kanál v aplikaci pro testování (#135)
-- Žádost o větší heap. Může opravit pády OOM při hašování hesel/PINů na některých zařízeních. (#177, #190)
-- Oprava pádu s SMS v systému Android <= 11 (#229)
-- Zobrazení zdroje v oznámení o použití (tel. číslo, název aplikace nebo server FMD) (#230)
-- Oprava chyby, kdy nebyla použita výchozí zpráva na zamykací obrazovce z nastavení (#231)
