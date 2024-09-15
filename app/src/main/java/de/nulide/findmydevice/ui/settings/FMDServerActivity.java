@@ -13,7 +13,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,8 +42,6 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
 
     private TextView textViewServerUrl;
     private TextView textViewUserId;
-    private ImageView buttonCopyServerUrl;
-    private ImageView buttonCopyUserId;
     private Button changePasswordButton;
     private Button logoutButton;
     private Button deleteButton;
@@ -77,10 +74,9 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
         textViewServerUrl.setText((String) settings.get(Settings.SET_FMDSERVER_URL));
         textViewUserId.setText((String) settings.get(Settings.SET_FMDSERVER_ID));
 
-        buttonCopyServerUrl = findViewById(R.id.buttonCopyServerUrl);
-        buttonCopyUserId = findViewById(R.id.buttonCopyUserId);
-        buttonCopyServerUrl.setOnClickListener(this::onCopyServerUrlClicked);
-        buttonCopyUserId.setOnClickListener(this::onCopyUserIdClicked);
+        findViewById(R.id.buttonOpenWebClient).setOnClickListener(this::onOpenWebClientClicked);
+        findViewById(R.id.buttonCopyServerUrl).setOnClickListener(this::onCopyServerUrlClicked);
+        findViewById(R.id.buttonCopyUserId).setOnClickListener(this::onCopyUserIdClicked);
 
         changePasswordButton = findViewById(R.id.buttonChangePassword);
         changePasswordButton.setOnClickListener(this::onChangePasswordClicked);
@@ -176,6 +172,11 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
                 settings.set(Settings.SET_FMDSERVER_UPDATE_TIME, Integer.parseInt(editTextFMDServerUpdateTime.getText().toString()));
             }
         }
+    }
+
+    private void onOpenWebClientClicked(View view) {
+        String url = (String) settings.get(Settings.SET_FMDSERVER_URL);
+        Utils.openUrl(this, url);
     }
 
     private void onCopyServerUrlClicked(View view) {
