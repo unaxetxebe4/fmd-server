@@ -55,12 +55,17 @@ class CommandHandler<T>(
         Logger.logSession(TAG, "Handling command: $rawCommand")
         Log.d(TAG, "Handling command: $rawCommand")
 
-        val args = rawCommand.split(" ").toMutableList()
+        val args = rawCommand.split(" ").filter { it.isNotBlank() }.toMutableList()
         val settings: Settings =
             JSONFactory.convertJSONSettings(IO.read(JSONMap::class.java, IO.settingsFileName))
         val fmdTriggerWord = settings.get(Settings.SET_FMD_COMMAND) as String
 
-        if (args.isEmpty() || args[0].lowercase() != fmdTriggerWord.lowercase()) {
+        if (args.isEmpty()) {
+            Log.w(TAG, "Cannot handle: args is empty.")
+            return
+        }
+        if (args[0].lowercase() != fmdTriggerWord.lowercase()) {
+            Log.w(TAG, "Not handling: '${args[0]}' does not match trigger word '${fmdTriggerWord}'")
             return
         }
 
@@ -74,10 +79,12 @@ class CommandHandler<T>(
         // run the command
         for (cmd in availableCommands(context)) {
             if (args[1].lowercase() == cmd.keyword.lowercase()) {
+                Log.d(TAG, "Executing command: ${cmd.keyword}")
                 cmd.execute(args, transport, coroutineScope, job)
-                break
+                return
             }
         }
+        Log.w(TAG, "No command found that matches '${args[1]}'")
     }
 
     private fun showUsageNotification(context: Context, rawCommand: String) {
@@ -97,7 +104,7 @@ class CommandHandler<T>(
         @JvmStatic
         fun checkAndRemovePin(settings: Settings, msg: String): String? {
             val expectedHash = settings.get(Settings.SET_PIN) as String
-            val parts = msg.split(" ")
+            val parts = msg.split(" ").filter { it.isNotBlank() }
             if (parts.size >= 2) {
                 val pin = parts[1]
                 if (CypherUtils.checkPasswordForFmdPin(expectedHash, pin)) {
