@@ -80,6 +80,25 @@
             android:layout_marginBottom="@dimen/margin_normal"
             android:text="@string/Settings_FMD_Server_ID_Desc" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_normal"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="@string/Settings_FMD_Server_Connection_Status" />
+
+            <TextView
+                android:id="@+id/textViewConnectionStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="@string/Settings_FMD_Server_Connection_Status_Success" />
+        </LinearLayout>
+
         <Button
             android:id="@+id/buttonChangePassword"
             android:layout_width="match_parent"
