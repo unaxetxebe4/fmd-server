@@ -1,16 +1,12 @@
 package de.nulide.findmydevice.data.io;
 
 import de.nulide.findmydevice.data.ConfigSMSRec;
-import de.nulide.findmydevice.data.Contact;
 import de.nulide.findmydevice.data.Settings;
 import de.nulide.findmydevice.data.LogData;
 import de.nulide.findmydevice.data.LogEntry;
-import de.nulide.findmydevice.data.Allowlist;
-import de.nulide.findmydevice.data.io.json.JSONContact;
 import de.nulide.findmydevice.data.io.json.JSONLog;
 import de.nulide.findmydevice.data.io.json.JSONLogEntry;
 import de.nulide.findmydevice.data.io.json.JSONMap;
-import de.nulide.findmydevice.data.io.json.JSONWhiteList;
 
 public class JSONFactory {
 
@@ -26,35 +22,6 @@ public class JSONFactory {
         JSONMap jsonSettings = new JSONMap();
         jsonSettings.putAll(settings);
         return jsonSettings;
-    }
-
-    public static Contact convertJSONContact(JSONContact jsonContact) {
-        return new Contact(jsonContact.getName(), jsonContact.getNumber());
-    }
-
-    public static JSONContact convertContact(Contact contact) {
-        JSONContact jsonContact = new JSONContact();
-        jsonContact.setName(contact.getName());
-        jsonContact.setNumber(contact.getNumber());
-        return jsonContact;
-    }
-
-    public static Allowlist convertJSONWhiteList(JSONWhiteList jsonWhiteList) {
-        Allowlist allowlist = new Allowlist();
-        if(jsonWhiteList != null) {
-            for (JSONContact jsonContact : jsonWhiteList) {
-                allowlist.superAdd(convertJSONContact(jsonContact));
-            }
-        }
-        return allowlist;
-    }
-
-    public static JSONWhiteList convertWhiteList(Allowlist whiteList) {
-        JSONWhiteList jsonWhiteList = new JSONWhiteList();
-        for (Contact c : whiteList) {
-            jsonWhiteList.add(convertContact(c));
-        }
-        return jsonWhiteList;
     }
 
     public static ConfigSMSRec convertJSONConfig(JSONMap jsonSettings) {

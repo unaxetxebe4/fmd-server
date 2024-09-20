@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import de.nulide.findmydevice.R
-import de.nulide.findmydevice.data.Allowlist
+import de.nulide.findmydevice.data.Contact
 
 class AllowlistAdapter(
     private val onDeleteClicked: (String) -> Unit,
@@ -21,7 +21,7 @@ class AllowlistAdapter(
         holder.bind(getItem(position))
     }
 
-    fun submitList(allowlist: Allowlist) {
+    fun submitContactList(allowlist: List<Contact>) {
         val list = allowlist.map { contact -> AllowlistItem(contact.name, contact.number) }
         submitList(list)
     }
