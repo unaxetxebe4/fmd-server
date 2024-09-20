@@ -3,8 +3,8 @@ package de.nulide.findmydevice.receiver;
 import android.content.Context;
 import android.content.Intent;
 
-import de.nulide.findmydevice.data.ConfigSMSRec;
 import de.nulide.findmydevice.services.FMDServerLocationUploadService;
+import de.nulide.findmydevice.services.TempContactExpiredService;
 import de.nulide.findmydevice.ui.onboarding.UpdateboardingModernCryptoActivity;
 import de.nulide.findmydevice.utils.Logger;
 
@@ -18,8 +18,8 @@ public class BootReceiver extends SuperReceiver {
         init(context);
         if (intent.getAction().equals(BOOT_COMPLETED)) {
             Logger.logSession("AfterBootTest", "passed");
-            config.set(ConfigSMSRec.CONF_TEMP_WHITELISTED_CONTACT, null);
-            config.set(ConfigSMSRec.CONF_TEMP_WHITELISTED_CONTACT_ACTIVE_SINCE, null);
+
+            TempContactExpiredService.scheduleJob(context, 0);
 
             UpdateboardingModernCryptoActivity.notifyAboutCryptoRefreshIfRequired(context);
 

@@ -1,26 +1,22 @@
 package de.nulide.findmydevice.services;
 
+import static de.nulide.findmydevice.data.TemporaryAllowlistRepositoryKt.TEMP_USAGE_VALIDITY_MILLIS;
+
 import android.app.job.JobInfo;
 import android.app.job.JobParameters;
 import android.app.job.JobScheduler;
 import android.content.ComponentName;
 import android.content.Context;
 import android.os.PersistableBundle;
-import android.telephony.PhoneNumberUtils;
-
-import java.util.Calendar;
 
 import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.commands.CommandHandler;
 import de.nulide.findmydevice.data.AllowlistRepository;
-import de.nulide.findmydevice.data.ConfigSMSRec;
-import de.nulide.findmydevice.data.Contact;
 import de.nulide.findmydevice.data.Settings;
 import de.nulide.findmydevice.data.SettingsRepoSpec;
 import de.nulide.findmydevice.data.SettingsRepository;
+import de.nulide.findmydevice.data.TemporaryAllowlistRepository;
 import de.nulide.findmydevice.data.io.IO;
-import de.nulide.findmydevice.data.io.JSONFactory;
-import de.nulide.findmydevice.data.io.json.JSONMap;
 import de.nulide.findmydevice.transports.SmsTransport;
 import de.nulide.findmydevice.transports.Transport;
 import de.nulide.findmydevice.utils.Logger;
@@ -35,15 +31,11 @@ public class FMDSMSService extends FmdJobService {
 
     private static final String DESTINATION = "dest";
     private static final String MESSAGE = "msg";
-    private static final String TIME = "time";
 
-    private Settings settings;
-
-    public static void scheduleJob(Context context, String destination, String message, Long time) {
+    public static void scheduleJob(Context context, String destination, String message) {
         PersistableBundle bundle = new PersistableBundle();
         bundle.putString(DESTINATION, destination);
         bundle.putString(MESSAGE, message);
-        bundle.putLong(TIME, time);
 
         ComponentName serviceComponent = new ComponentName(context, FMDSMSService.class);
         JobInfo.Builder builder = new JobInfo.Builder(JOB_ID, serviceComponent)
@@ -61,19 +53,12 @@ public class FMDSMSService extends FmdJobService {
         IO.context = this;
         Logger.init(Thread.currentThread(), this);
 
-        settings = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(this)).getSettings();
+        Settings settings = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(this)).getSettings();
         AllowlistRepository allowlistRepo = AllowlistRepository.Companion.getInstance(this);
-        ConfigSMSRec config = JSONFactory.convertJSONConfig(IO.read(JSONMap.class, IO.SMSReceiverTempData));
-
-        if (config.get(ConfigSMSRec.CONF_LAST_USAGE) == null) {
-            Calendar cal = Calendar.getInstance();
-            cal.add(Calendar.MINUTE, -5);
-            config.set(ConfigSMSRec.CONF_LAST_USAGE, cal.getTimeInMillis());
-        }
+        TemporaryAllowlistRepository tempAllowlistRepo = TemporaryAllowlistRepository.Companion.getInstance(this);
 
         String phoneNumber = params.getExtras().getString(DESTINATION);
         String msg = params.getExtras().getString(MESSAGE);
-        Long time = params.getExtras().getLong(TIME);
 
         if (phoneNumber == null || phoneNumber.isEmpty()) {
             Logger.logSession(TAG, "Cannot handle SMS: phoneNumber is empty!");
@@ -92,18 +77,16 @@ public class FMDSMSService extends FmdJobService {
         CommandHandler<String> commandHandler = new CommandHandler<>(transport, this.getCoroutineScope(), this);
 
         // Case 1: phone number in Allowed Contacts
-        for (Contact c : allowlistRepo.getList()) {
-            if (PhoneNumberUtils.compare(c.getNumber(), phoneNumber)) {
-                Logger.logSession(TAG, phoneNumber + " used FMD via allowlist");
-                commandHandler.execute(this, msg);
-                return true;
-            }
+        if (allowlistRepo.containsNumber(phoneNumber)) {
+            Logger.logSession(TAG, phoneNumber + " used FMD via allowlist");
+            commandHandler.execute(this, msg);
+            return true;
         }
 
         // Case 2: phone number in temporary allowlist (i.e., it send the correct PIN earlier)
         if ((Boolean) settings.get(Settings.SET_ACCESS_VIA_PIN) && !((String) settings.get(Settings.SET_PIN)).isEmpty()) {
-            String tempContact = (String) config.get(ConfigSMSRec.CONF_TEMP_WHITELISTED_CONTACT);
-            if (tempContact != null && PhoneNumberUtils.compare(tempContact, phoneNumber)) {
+
+            if (tempAllowlistRepo.containsValidNumber(phoneNumber)) {
                 Logger.logSession(TAG, phoneNumber + " used FMD via temporary allowlist");
                 commandHandler.execute(this, msg);
                 return true;
@@ -115,9 +98,8 @@ public class FMDSMSService extends FmdJobService {
                 transport.send(this, getString(R.string.MH_Pin_Accepted));
                 Notifications.notify(this, "Pin", "The pin was used by the following number: " + phoneNumber + "\nPlease change the Pin!", Notifications.CHANNEL_PIN);
 
-                config.set(ConfigSMSRec.CONF_TEMP_WHITELISTED_CONTACT, phoneNumber);
-                config.set(ConfigSMSRec.CONF_TEMP_WHITELISTED_CONTACT_ACTIVE_SINCE, time);
-                TempContactExpiredService.scheduleJob(this);
+                tempAllowlistRepo.add(phoneNumber);
+                TempContactExpiredService.scheduleJob(this, TEMP_USAGE_VALIDITY_MILLIS + 1000);
 
                 // TODO: Execute command directly if the message contains one
                 return false;
