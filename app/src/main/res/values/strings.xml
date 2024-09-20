@@ -92,6 +92,7 @@
     <string name="password">Password</string>
     <string name="registration_token">Registration Token</string>
     <string name="registration_token_hint">Private instances may require a secret token. Leave this empty if the instance is public.</string>
+    <string name="server_registration_token_error">Network request failed with HTTP 401. This can happen if the server requires a registration token and the token you provided was wrong.</string>
 
     <!-- Settings: Allowed Contacts -->
     <string name="Whitelist_help">The contacts in this list are allowed to send FMD commands via SMS. Commands from everyone else will be ignored.</string>
