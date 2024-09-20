@@ -7,7 +7,6 @@ import de.nulide.findmydevice.data.Settings;
 import de.nulide.findmydevice.data.SettingsRepoSpec;
 import de.nulide.findmydevice.data.SettingsRepository;
 import de.nulide.findmydevice.data.io.IO;
-import de.nulide.findmydevice.utils.Logger;
 
 
 abstract class SuperReceiver extends BroadcastReceiver {
@@ -16,7 +15,6 @@ abstract class SuperReceiver extends BroadcastReceiver {
 
     protected void init(Context context) {
         IO.context = context;
-        Logger.init(Thread.currentThread(), context);
         settings = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(context)).getSettings();
     }
 }

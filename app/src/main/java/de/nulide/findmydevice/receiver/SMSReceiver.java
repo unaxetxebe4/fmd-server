@@ -9,7 +9,6 @@ import android.telephony.SmsMessage;
 import java.util.Objects;
 
 import de.nulide.findmydevice.services.FMDSMSService;
-import de.nulide.findmydevice.utils.Logger;
 
 public class SMSReceiver extends SuperReceiver {
 
@@ -33,6 +32,5 @@ public class SMSReceiver extends SuperReceiver {
                 }
             }
         }
-        Logger.writeLog();
     }
 }

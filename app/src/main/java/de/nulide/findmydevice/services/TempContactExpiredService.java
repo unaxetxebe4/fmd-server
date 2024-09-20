@@ -15,7 +15,6 @@ import de.nulide.findmydevice.data.TemporaryAllowlistRepository;
 import de.nulide.findmydevice.data.io.IO;
 import de.nulide.findmydevice.transports.SmsTransport;
 import de.nulide.findmydevice.transports.Transport;
-import de.nulide.findmydevice.utils.Logger;
 
 public class TempContactExpiredService extends JobService {
 
@@ -24,7 +23,6 @@ public class TempContactExpiredService extends JobService {
     @Override
     public boolean onStartJob(JobParameters params) {
         IO.context = this;
-        Logger.init(Thread.currentThread(), this);
 
         TemporaryAllowlistRepository repo = TemporaryAllowlistRepository.Companion.getInstance(this);
         List<String> expired = repo.removeExpired();

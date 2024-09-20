@@ -62,7 +62,7 @@ public class Settings extends HashMap<Integer, Object> {
     public static final int SET_FIRST_TIME_CONTACT_ADDED = 302;
     //public static final int SET_FIRST_TIME_FMD_SERVER = 303;
 
-    public static final int SET_APP_CRASHED_LOG_ENTRY = 401;
+    public static final int SET_APP_CRASHED_LOG_ENTRY = 401; // 0=no crash, 1=crash to show
     public static final int SET_FMDSMS_COUNTER = 402;
 
     //public static final int SET_GPS_STATE = 501;         // 0=GPS is off 1=GPS is on 2=GPS is turned on by FMD
@@ -125,7 +125,7 @@ public class Settings extends HashMap<Integer, Object> {
                 //case SET_GPS_STATE:
                 //    return 1;
                 case SET_APP_CRASHED_LOG_ENTRY:
-                    return -1;
+                    return 0;
                 case SET_LAST_KNOWN_LOCATION_TIME:
                 case SET_LAST_LOW_BAT_UPLOAD:
                     return -1L;

@@ -6,10 +6,12 @@ import android.content.Intent;
 import de.nulide.findmydevice.services.FMDServerLocationUploadService;
 import de.nulide.findmydevice.services.TempContactExpiredService;
 import de.nulide.findmydevice.ui.onboarding.UpdateboardingModernCryptoActivity;
-import de.nulide.findmydevice.utils.Logger;
+import de.nulide.findmydevice.utils.FmdLogKt;
 
 
 public class BootReceiver extends SuperReceiver {
+
+    private static final String TAG = BootReceiver.class.getSimpleName();
 
     public static final String BOOT_COMPLETED = "android.intent.action.BOOT_COMPLETED";
 
@@ -17,7 +19,7 @@ public class BootReceiver extends SuperReceiver {
     public void onReceive(Context context, Intent intent) {
         init(context);
         if (intent.getAction().equals(BOOT_COMPLETED)) {
-            Logger.logSession("AfterBootTest", "passed");
+            FmdLogKt.log(context).i(TAG, "Running BOOT_COMPLETED handler");
 
             TempContactExpiredService.scheduleJob(context, 0);
 

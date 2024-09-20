@@ -19,7 +19,7 @@ import de.nulide.findmydevice.data.TemporaryAllowlistRepository;
 import de.nulide.findmydevice.data.io.IO;
 import de.nulide.findmydevice.transports.SmsTransport;
 import de.nulide.findmydevice.transports.Transport;
-import de.nulide.findmydevice.utils.Logger;
+import de.nulide.findmydevice.utils.FmdLogKt;
 import de.nulide.findmydevice.utils.Notifications;
 
 
@@ -51,7 +51,6 @@ public class FMDSMSService extends FmdJobService {
         super.onStartJob(params);
 
         IO.context = this;
-        Logger.init(Thread.currentThread(), this);
 
         Settings settings = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(this)).getSettings();
         AllowlistRepository allowlistRepo = AllowlistRepository.Companion.getInstance(this);
@@ -61,11 +60,11 @@ public class FMDSMSService extends FmdJobService {
         String msg = params.getExtras().getString(MESSAGE);
 
         if (phoneNumber == null || phoneNumber.isEmpty()) {
-            Logger.logSession(TAG, "Cannot handle SMS: phoneNumber is empty!");
+            FmdLogKt.log(this).i(TAG, "Cannot handle SMS: phoneNumber is empty!");
             return false;
         }
         if (msg == null || msg.isEmpty()) {
-            Logger.logSession(TAG, "Cannot handle SMS: msg is empty!");
+            FmdLogKt.log(this).i(TAG, "Cannot handle SMS: msg is empty!");
             return false;
         }
         String fmdTriggerWord = (String) settings.get(Settings.SET_FMD_COMMAND);
@@ -78,7 +77,7 @@ public class FMDSMSService extends FmdJobService {
 
         // Case 1: phone number in Allowed Contacts
         if (allowlistRepo.containsNumber(phoneNumber)) {
-            Logger.logSession(TAG, phoneNumber + " used FMD via allowlist");
+            FmdLogKt.log(this).i(TAG, phoneNumber + " used FMD via allowlist");
             commandHandler.execute(this, msg);
             return true;
         }
@@ -87,14 +86,14 @@ public class FMDSMSService extends FmdJobService {
         if ((Boolean) settings.get(Settings.SET_ACCESS_VIA_PIN) && !((String) settings.get(Settings.SET_PIN)).isEmpty()) {
 
             if (tempAllowlistRepo.containsValidNumber(phoneNumber)) {
-                Logger.logSession(TAG, phoneNumber + " used FMD via temporary allowlist");
+                FmdLogKt.log(this).i(TAG, phoneNumber + " used FMD via temporary allowlist");
                 commandHandler.execute(this, msg);
                 return true;
             }
 
             // Case 3: the message contains the correct PIN
             if (CommandHandler.checkAndRemovePin(settings, msg) != null) {
-                Logger.logSession(TAG, phoneNumber + " used FMD via PIN");
+                FmdLogKt.log(this).i(TAG, phoneNumber + " used FMD via PIN");
                 transport.send(this, getString(R.string.MH_Pin_Accepted));
                 Notifications.notify(this, "Pin", "The pin was used by the following number: " + phoneNumber + "\nPlease change the Pin!", Notifications.CHANNEL_PIN);
 

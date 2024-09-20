@@ -24,7 +24,6 @@ import de.nulide.findmydevice.ui.home.CommandListFragment;
 import de.nulide.findmydevice.ui.home.TransportListFragment;
 import de.nulide.findmydevice.ui.onboarding.UpdateboardingModernCryptoActivity;
 import de.nulide.findmydevice.ui.settings.SettingsFragment;
-import de.nulide.findmydevice.utils.Logger;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -48,11 +47,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         IO.context = this;
-        Logger.init(Thread.currentThread(), this);
 
         Settings settings = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(this)).getSettings();
 
-        if (((Integer) settings.get(Settings.SET_APP_CRASHED_LOG_ENTRY)) != -1) {
+        if (((Integer) settings.get(Settings.SET_APP_CRASHED_LOG_ENTRY)) == 1) {
             Intent intent = new Intent(this, CrashedActivity.class);
             startActivity(intent);
             finish();

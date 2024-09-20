@@ -12,7 +12,6 @@ import de.nulide.findmydevice.data.SettingsRepository
 import de.nulide.findmydevice.data.io.IO
 import de.nulide.findmydevice.receiver.BatteryLowReceiver
 import de.nulide.findmydevice.transports.NotificationReplyTransport
-import de.nulide.findmydevice.utils.Logger
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -32,7 +31,6 @@ class ThirdPartyAccessService : NotificationListenerService() {
 
     fun init(context: Context) {
         IO.context = context
-        Logger.init(Thread.currentThread(), context)
         settings = SettingsRepository.getInstance(SettingsRepoSpec(this)).settings
     }
 

@@ -17,7 +17,7 @@ import de.nulide.findmydevice.net.FMDServerApiRepoSpec;
 import de.nulide.findmydevice.net.FMDServerApiRepository;
 import de.nulide.findmydevice.transports.FmdServerTransport;
 import de.nulide.findmydevice.transports.Transport;
-import de.nulide.findmydevice.utils.Logger;
+import de.nulide.findmydevice.utils.FmdLogKt;
 import de.nulide.findmydevice.utils.Notifications;
 import kotlin.Unit;
 
@@ -36,7 +36,6 @@ public class FMDServerCommandDownloadService extends FmdJobService {
         super.onStartJob(params);
 
         IO.context = this;
-        Logger.init(Thread.currentThread(), this);
         settingsRepo = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(this));
 
         Log.d(TAG, "Downloading remote command");
@@ -70,7 +69,7 @@ public class FMDServerCommandDownloadService extends FmdJobService {
         if (remoteCommand.startsWith("423")) {
             String account = (String) settingsRepo.getSettings().get(Settings.SET_FMDSERVER_ID);
             String msg = getString(R.string.server_login_attempts_text, account);
-            Log.w(TAG, msg);
+            FmdLogKt.log(this).w(TAG, msg);
             Notifications.notify(
                     this,
                     getString(R.string.server_login_attempts_title),
