@@ -31,7 +31,6 @@ import de.nulide.findmydevice.data.Settings;
 import de.nulide.findmydevice.data.SettingsRepoSpec;
 import de.nulide.findmydevice.data.SettingsRepository;
 import de.nulide.findmydevice.data.io.IO;
-import de.nulide.findmydevice.ui.LogActivity;
 import de.nulide.findmydevice.ui.TaggedFragment;
 import de.nulide.findmydevice.ui.helper.SettingsEntry;
 import de.nulide.findmydevice.ui.helper.SettingsViewAdapter;
@@ -99,7 +98,7 @@ public class SettingsFragment extends TaggedFragment {
                 startActivityForResult(intent, IMPORT_REQ_CODE);
                 break;
             case 6:
-                settingIntent = new Intent(context, LogActivity.class);
+                settingIntent = new Intent(context, LogViewActivity.class);
                 break;
             case 7:
                 String activityTitle = getString(R.string.Settings_About);

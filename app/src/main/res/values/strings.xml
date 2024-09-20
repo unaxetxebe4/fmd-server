@@ -128,7 +128,8 @@
     <string name="settings_exported">Settings exported</string>
 
     <!-- Settings: Logs -->
-    <string name="Log_Alert_LogData">LogData</string>
+    <string name="log_view_title">Logs</string>
+    <string name="log_view_export">Export Logs</string>
 
     <!-- Settings: About -->
     <string name="about">About</string>
