@@ -12,6 +12,7 @@ import com.google.gson.stream.MalformedJsonException
 import de.nulide.findmydevice.R
 import de.nulide.findmydevice.utils.CypherUtils
 import de.nulide.findmydevice.utils.SingletonHolder
+import de.nulide.findmydevice.utils.writeToUri
 import java.io.File
 import java.io.FileNotFoundException
 import java.io.FileReader
@@ -19,8 +20,6 @@ import java.io.FileWriter
 import java.io.IOException
 import java.io.InputStream
 import java.io.InputStreamReader
-import java.io.OutputStream
-import java.io.OutputStreamWriter
 import java.security.KeyFactory
 import java.security.NoSuchAlgorithmException
 import java.security.PublicKey
@@ -119,25 +118,7 @@ class SettingsRepository private constructor(private val context: Context) {
     }
 
     fun writeToUri(context: Context, uri: Uri) {
-        val outputStream: OutputStream
-        try {
-            outputStream = context.contentResolver.openOutputStream(uri) ?: return
-        } catch (e: FileNotFoundException) {
-            e.printStackTrace()
-            Toast.makeText(
-                context,
-                context.getString(R.string.Settings_Export_Failed),
-                Toast.LENGTH_SHORT
-            ).show()
-            return
-        }
-
-        val writer = JsonWriter(OutputStreamWriter(outputStream))
-        gson.toJson(settings, Settings::class.java, writer)
-        writer.close()
-        outputStream.close()
-
-        Toast.makeText(context, R.string.settings_exported, Toast.LENGTH_LONG).show()
+        writeToUri(context, uri, settings)
     }
 
     fun importFromUri(context: Context, uri: Uri) {

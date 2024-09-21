@@ -1,17 +1,19 @@
 package de.nulide.findmydevice.data
 
 import android.content.Context
+import android.net.Uri
 import com.google.gson.Gson
 import com.google.gson.stream.JsonReader
 import de.nulide.findmydevice.data.UncaughtExceptionHandler.Companion.CRASH_MSG_HEADER
 import de.nulide.findmydevice.utils.SingletonHolder
+import de.nulide.findmydevice.utils.writeToUri
 import java.io.File
 import java.io.FileReader
 import java.util.LinkedList
 import kotlin.math.max
 
 
-private const val LOG_FILENAME = "logs.json"
+const val LOG_FILENAME = "logs.json"
 
 data class LogEntry(
     val level: String,
@@ -69,5 +71,9 @@ class LogRepository private constructor(private val context: Context) {
             }
         }
         return null
+    }
+
+    fun writeToUri(context: Context, uri: Uri) {
+        writeToUri(context, uri, list)
     }
 }

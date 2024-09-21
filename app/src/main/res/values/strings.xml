@@ -16,6 +16,10 @@
     <string name="Delete">Delete</string>
     <string name="GPS">GPS</string>
     <string name="Cell">Cell</string>
+    <string name="export_success">Export succeeded</string>
+    <string name="export_failed">Export failed</string>
+    <string name="Settings_Import_Success">Import successful</string>
+    <string name="Settings_Import_Failed">Import failed</string>
 
     <!-- Generic errors -->
     <string name="request_failed_title">Network Request Failed</string>
@@ -36,10 +40,7 @@
     <string name="Settings_OpenCellId">OpenCelliD</string>
     <string name="Settings_Permissions">Permissions</string>
     <string name="Settings_Import">Import Settings</string>
-    <string name="Settings_Import_Success">Import successful</string>
-    <string name="Settings_Import_Failed">Import failed</string>
     <string name="Settings_Export">Export Settings</string>
-    <string name="Settings_Export_Failed">Export failed</string>
     <string name="Settings_Logs">Logs</string>
     <string name="Settings_About">About</string>
 
@@ -124,9 +125,6 @@
     <string name="OpenCellId_open_website">Open OpenCelliD Website</string>
     <string name="OpenCellId_test_opencellid">Test OpenCelliD Connection</string>
     <string name="OpenCellId_test_no_connection">No cell connection</string>
-
-    <!-- Settings: Import/Export -->
-    <string name="settings_exported">Settings exported</string>
 
     <!-- Settings: Logs -->
     <string name="log_view_title">Logs</string>
