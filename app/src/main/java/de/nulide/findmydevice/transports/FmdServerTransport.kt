@@ -16,7 +16,7 @@ import de.nulide.findmydevice.utils.Utils
 
 class FmdServerTransport(context: Context) : Transport<Unit>(Unit) {
     companion object {
-        private val TAG = this::class.simpleName
+        private val TAG = FmdServerTransport::class.simpleName
     }
 
     private val repo = FMDServerApiRepository.getInstance(FMDServerApiRepoSpec(context))

@@ -16,7 +16,7 @@ import kotlinx.coroutines.CoroutineScope
 
 class CameraCommand(context: Context) : Command(context) {
     companion object {
-        private val TAG = this::class.simpleName
+        private val TAG = CameraCommand::class.simpleName
     }
 
     override val keyword = "camera"

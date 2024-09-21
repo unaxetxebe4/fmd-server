@@ -16,7 +16,7 @@ import kotlinx.coroutines.cancel
  */
 abstract class FmdJobService : JobService() {
     companion object {
-        private val TAG = this::class.simpleName
+        private val TAG = FmdJobService::class.simpleName
     }
 
     val coroutineScope = CoroutineScope(Dispatchers.IO + Job())

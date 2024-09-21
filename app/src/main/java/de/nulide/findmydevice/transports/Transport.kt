@@ -23,7 +23,7 @@ abstract class Transport<DestinationType>(
     private val destination: DestinationType
 ) {
     companion object {
-        private val TAG = this::class.simpleName
+        private val TAG = Transport::class.simpleName
     }
 
     @get:DrawableRes

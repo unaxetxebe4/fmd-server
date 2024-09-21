@@ -17,7 +17,7 @@ class NotificationReplyTransport(
 ) : Transport<StatusBarNotification?>(destination) {
 
     companion object {
-        private val TAG = this::class.simpleName
+        private val TAG = NotificationReplyTransport::class.simpleName
     }
 
     @get:DrawableRes
