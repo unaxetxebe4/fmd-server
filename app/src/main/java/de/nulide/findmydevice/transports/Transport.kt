@@ -1,13 +1,13 @@
 package de.nulide.findmydevice.transports
 
 import android.content.Context
-import android.util.Log
 import androidx.annotation.CallSuper
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import de.nulide.findmydevice.locationproviders.LocationProvider
 import de.nulide.findmydevice.permissions.Permission
 import de.nulide.findmydevice.utils.Utils
+import de.nulide.findmydevice.utils.log
 
 
 // Order matters for the home screen
@@ -55,7 +55,8 @@ abstract class Transport<DestinationType>(
     open fun send(context: Context, msg: String) {
         val missing = missingRequiredPermissions(context)
         if (missing.isNotEmpty()) {
-            Log.w(TAG, "Cannot send message: missing permissions ${missing.joinToString(", ")}")
+            context.log()
+                .w(TAG, "Cannot send message: missing permissions ${missing.joinToString(", ")}")
             return
         }
         // continue sending message

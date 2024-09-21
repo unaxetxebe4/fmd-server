@@ -6,7 +6,6 @@ import android.app.job.JobScheduler;
 import android.app.job.JobService;
 import android.content.ComponentName;
 import android.content.Context;
-import android.util.Log;
 
 import java.util.List;
 
@@ -14,6 +13,7 @@ import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.data.TemporaryAllowlistRepository;
 import de.nulide.findmydevice.transports.SmsTransport;
 import de.nulide.findmydevice.transports.Transport;
+import de.nulide.findmydevice.utils.FmdLogKt;
 
 public class TempContactExpiredService extends JobService {
 
@@ -28,7 +28,7 @@ public class TempContactExpiredService extends JobService {
             String msg = getString(R.string.temporary_allowlist_expired);
             Transport<String> transport = new SmsTransport(this, phoneNumber);
             transport.send(this, msg);
-            Log.i(TAG, "Phone number expired: " + phoneNumber);
+            FmdLogKt.log(this).i(TAG, "Phone number expired: " + phoneNumber);
         }
 
         return false;

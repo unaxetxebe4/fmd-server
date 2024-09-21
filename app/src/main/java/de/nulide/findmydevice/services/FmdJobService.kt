@@ -2,8 +2,8 @@ package de.nulide.findmydevice.services
 
 import android.app.job.JobParameters
 import android.app.job.JobService
-import android.util.Log
 import androidx.annotation.CallSuper
+import de.nulide.findmydevice.utils.log
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -31,7 +31,7 @@ abstract class FmdJobService : JobService() {
 
     @CallSuper
     open fun jobFinished() {
-        Log.d(TAG, "Finishing job ${params?.jobId}")
+        this.log().d(TAG, "Finishing job ${params?.jobId}")
         coroutineScope.cancel()
         params?.let { this.jobFinished(it, false) }
     }

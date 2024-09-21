@@ -2,7 +2,6 @@ package de.nulide.findmydevice.utils;
 
 import android.content.Context;
 import android.provider.Settings;
-import android.util.Log;
 
 public class SecureSettings {
 
@@ -16,7 +15,7 @@ public class SecureSettings {
             value = android.provider.Settings.Secure.LOCATION_MODE_OFF;
         }
         Settings.Secure.putString(context.getContentResolver(), android.provider.Settings.Secure.LOCATION_MODE, Integer.valueOf(value).toString());
-        Log.d(TAG, "Turned GPS on/off using SecureSettings: " + enable);
+        FmdLogKt.log(context).d(TAG, "Turned GPS on/off using SecureSettings: " + enable);
     }
 
 }

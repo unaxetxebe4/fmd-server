@@ -2,7 +2,6 @@ package de.nulide.findmydevice.commands
 
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import de.nulide.findmydevice.R
@@ -11,6 +10,7 @@ import de.nulide.findmydevice.permissions.CameraPermission
 import de.nulide.findmydevice.services.FmdJobService
 import de.nulide.findmydevice.transports.Transport
 import de.nulide.findmydevice.ui.DummyCameraxActivity
+import de.nulide.findmydevice.utils.log
 import kotlinx.coroutines.CoroutineScope
 
 
@@ -39,7 +39,7 @@ class CameraCommand(context: Context) : Command(context) {
         job: FmdJobService?,
     ) {
         if (!settings.serverAccountExists()) {
-            Log.w(TAG, "Cannot take picture: no FMD Server account")
+            context.log().w(TAG, "Cannot take picture: no FMD Server account")
             transport.send(context, context.getString(R.string.cmd_camera_response_no_fmd_server))
             job?.jobFinished()
             return
@@ -59,7 +59,7 @@ class CameraCommand(context: Context) : Command(context) {
                 DummyCameraxActivity.CAMERA_BACK
             )
         }
-        Log.d(TAG, "Starting camera activity")
+        context.log().d(TAG, "Starting camera activity")
         context.startActivity(dummyCameraActivity)
 
         val serverUrl = settings.get(Settings.SET_FMDSERVER_URL) as String

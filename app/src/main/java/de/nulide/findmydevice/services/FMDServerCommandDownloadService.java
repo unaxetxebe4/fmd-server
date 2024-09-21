@@ -5,7 +5,6 @@ import android.app.job.JobParameters;
 import android.app.job.JobScheduler;
 import android.content.ComponentName;
 import android.content.Context;
-import android.util.Log;
 
 import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.commands.CommandHandler;
@@ -35,7 +34,7 @@ public class FMDServerCommandDownloadService extends FmdJobService {
 
         settingsRepo = SettingsRepository.Companion.getInstance(this);
 
-        Log.d(TAG, "Downloading remote command");
+        FmdLogKt.log(this).d(TAG, "Downloading remote command");
         FMDServerApiRepository fmdServerRepo = FMDServerApiRepository.Companion.getInstance(new FMDServerApiRepoSpec(this));
         fmdServerRepo.getCommand(this::onResponse, Throwable::printStackTrace);
 
@@ -59,7 +58,7 @@ public class FMDServerCommandDownloadService extends FmdJobService {
     }
 
     private void onResponse(String remoteCommand) {
-        Log.i(TAG, "Received remote command '" + remoteCommand + "'");
+        FmdLogKt.log(this).i(TAG, "Received remote command '" + remoteCommand + "'");
         if (remoteCommand.isEmpty()) {
             return;
         }

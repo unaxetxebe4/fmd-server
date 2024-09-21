@@ -1,7 +1,6 @@
 package de.nulide.findmydevice.net
 
 import android.content.Context
-import android.util.Log
 import com.android.volley.Request.Method
 import com.android.volley.RequestQueue
 import com.android.volley.Response
@@ -13,6 +12,7 @@ import de.nulide.findmydevice.data.SettingsRepository
 import de.nulide.findmydevice.utils.CypherUtils
 import de.nulide.findmydevice.utils.PatchedVolley
 import de.nulide.findmydevice.utils.SingletonHolder
+import de.nulide.findmydevice.utils.log
 import org.json.JSONException
 import org.json.JSONObject
 import java.util.Date
@@ -47,6 +47,7 @@ class FMDServerApiRepository private constructor(spec: FMDServerApiRepoSpec) {
         private const val URL_VERSION = "/version"
     }
 
+    private val context = spec.context
     private var baseUrl = ""
     private val queue: RequestQueue = PatchedVolley.newRequestQueue(spec.context)
     private val settingsRepo = SettingsRepository.getInstance(context)
@@ -325,7 +326,7 @@ class FMDServerApiRepository private constructor(spec: FMDServerApiRepoSpec) {
         endpoint: String,
         onError: Response.ErrorListener,
     ) {
-        Log.i(TAG, "Registering push endpoint $endpoint")
+        context.log().i(TAG, "Registering push endpoint $endpoint")
         getAccessToken(onError = onError, onResponse = { accessToken ->
             val jsonObject = JSONObject()
             try {
@@ -426,7 +427,7 @@ class FMDServerApiRepository private constructor(spec: FMDServerApiRepoSpec) {
     ) {
         val publicKey = settingsRepo.getKeys()?.publicKey
         if (publicKey == null) {
-            Log.e(TAG, "Public key was null")
+            context.log().e(TAG, "Public key was null")
             return
         }
         val msgBytes = CypherUtils.encryptWithKey(publicKey, picture)
@@ -463,7 +464,7 @@ class FMDServerApiRepository private constructor(spec: FMDServerApiRepoSpec) {
         // Prepare payload
         val publicKey = settingsRepo.getKeys()?.publicKey
         if (publicKey == null) {
-            Log.e(TAG, "Public key was null")
+            context.log().e(TAG, "Public key was null")
             return
         }
 

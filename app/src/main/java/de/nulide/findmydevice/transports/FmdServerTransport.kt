@@ -3,7 +3,6 @@ package de.nulide.findmydevice.transports
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import de.nulide.findmydevice.R
@@ -15,9 +14,6 @@ import de.nulide.findmydevice.utils.Utils
 
 
 class FmdServerTransport(context: Context) : Transport<Unit>(Unit) {
-    companion object {
-        private val TAG = FmdServerTransport::class.simpleName
-    }
 
     private val repo = FMDServerApiRepository.getInstance(FMDServerApiRepoSpec(context))
 
@@ -47,11 +43,7 @@ class FmdServerTransport(context: Context) : Transport<Unit>(Unit) {
     @SuppressLint("MissingSuperCall")
     override fun send(context: Context, msg: String) {
         //super.send(context, msg, destination)
-
-        Log.w(
-            TAG,
-            "Not sending message. Reason: generic send() is not implemented for FmdServerTransport"
-        )
+        // not implemented for FMD Server
     }
 
     override fun sendNewLocation(

@@ -3,7 +3,6 @@ package de.nulide.findmydevice.ui.settings
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import de.nulide.findmydevice.R
@@ -18,6 +17,7 @@ import de.nulide.findmydevice.utils.Utils.Companion.getGeoURI
 import de.nulide.findmydevice.utils.Utils.Companion.getOpenStreetMapLink
 import de.nulide.findmydevice.utils.Utils.Companion.openUrl
 import de.nulide.findmydevice.utils.Utils.Companion.pasteFromClipboard
+import de.nulide.findmydevice.utils.log
 
 
 class OpenCellIdActivity : AppCompatActivity(), TextWatcher {
@@ -89,7 +89,7 @@ class OpenCellIdActivity : AppCompatActivity(), TextWatcher {
 
         val paras = CellParameters.queryCellParametersFromTelephonyManager(context)
         if (paras == null) {
-            Log.i(TAG, "No cell location found")
+            context.log().i(TAG, "No cell location found")
             viewBinding.textViewTestOpenCellIdResponse.text =
                 context.getString(R.string.OpenCellId_test_no_connection)
             return

@@ -3,12 +3,12 @@ package de.nulide.findmydevice.transports
 import android.app.PendingIntent.CanceledException
 import android.content.Context
 import android.service.notification.StatusBarNotification
-import android.util.Log
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import com.robj.notificationhelperlibrary.utils.NotificationUtils
 import de.nulide.findmydevice.R
 import de.nulide.findmydevice.permissions.NotificationAccessPermission
+import de.nulide.findmydevice.utils.log
 
 
 class NotificationReplyTransport(
@@ -39,7 +39,7 @@ class NotificationReplyTransport(
     override fun send(context: Context, msg: String) {
         super.send(context, msg)
         if (destination == null) {
-            Log.w(TAG, "Cannot reply, destination is null!")
+            context.log().w(TAG, "Cannot reply, destination is null!")
             return
         }
 
@@ -47,13 +47,13 @@ class NotificationReplyTransport(
             destination.notification, context.packageName
         )
         if (action == null) {
-            Log.i(TAG, "Cannot send message: quick reply action was null")
+            context.log().i(TAG, "Cannot send message: quick reply action was null")
             return
         }
         try {
             action.sendReply(context, msg)
         } catch (e: CanceledException) {
-            Log.e(TAG, "Failed to send message via notification reply")
+            context.log().e(TAG, "Failed to send message via notification reply")
             e.printStackTrace()
         }
     }

@@ -3,10 +3,10 @@ package de.nulide.findmydevice.receiver
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import de.nulide.findmydevice.data.Settings
 import de.nulide.findmydevice.data.SettingsRepository
 import de.nulide.findmydevice.services.FMDServerLocationUploadService
+import de.nulide.findmydevice.utils.log
 
 
 class BatteryLowReceiver : BroadcastReceiver() {
@@ -29,14 +29,14 @@ class BatteryLowReceiver : BroadcastReceiver() {
             // If the system fires the intent or notification too often, don't upload all the time.
             // https://stackoverflow.com/questions/47969335/intent-action-battery-low-broadcast-firing-every-ten-seconds-why
             if (lastUpload + MIN_INTERVAL_MILLIS < now) {
-                Log.i(TAG, "Low battery: uploading location.")
+                context.log().i(TAG, "Low battery: uploading location.")
                 settings.set(Settings.SET_LAST_LOW_BAT_UPLOAD, now)
 
                 // Locating and uploading takes some time.
                 // Start a service for this, to allow the BroadcastReceiver to exit.
                 FMDServerLocationUploadService.scheduleJob(context, 0, false)
             } else {
-                Log.i(TAG, "Last low battery upload too recent, skipping.")
+                context.log().i(TAG, "Last low battery upload too recent, skipping.")
             }
         }
     }
@@ -46,7 +46,7 @@ class BatteryLowReceiver : BroadcastReceiver() {
         // Practically, ACTION_BATTERY_LOW doesn't always seem to fire??
         // Therefore, keep the notification-based low-battery approach around for now.
         if (intent.action.equals(Intent.ACTION_BATTERY_LOW)) {
-            Log.i(TAG, "Received ACTION_BATTERY_LOW")
+            context.log().i(TAG, "Received ACTION_BATTERY_LOW")
             handleLowBatteryUpload(context)
         }
     }

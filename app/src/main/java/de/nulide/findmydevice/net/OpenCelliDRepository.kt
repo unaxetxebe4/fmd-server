@@ -1,24 +1,25 @@
 package de.nulide.findmydevice.net
 
 import android.content.Context
-import android.util.Log
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.JsonObjectRequest
 import de.nulide.findmydevice.utils.CellParameters
 import de.nulide.findmydevice.utils.PatchedVolley
 import de.nulide.findmydevice.utils.SingletonHolder
+import de.nulide.findmydevice.utils.log
 
 
 // See the API docs: https://wiki.opencellid.org/wiki/API
-class OpenCelliDRepository private constructor(private val openCelliDSpec: OpenCelliDSpec) {
+class OpenCelliDRepository private constructor(private val spec: OpenCelliDSpec) {
 
     companion object :
         SingletonHolder<OpenCelliDRepository, OpenCelliDSpec>(::OpenCelliDRepository) {
         val TAG = OpenCelliDRepository::class.simpleName
     }
 
-    private val requestQueue: RequestQueue = PatchedVolley.newRequestQueue(openCelliDSpec.context)
+    private val context = spec.context
+    private val requestQueue: RequestQueue = PatchedVolley.newRequestQueue(spec.context)
 
     fun getCellLocation(
         paras: CellParameters,
@@ -42,12 +43,13 @@ class OpenCelliDRepository private constructor(private val openCelliDSpec: OpenC
                     val message = if (response.has("error")) {
                         response.getString("error")
                     } else "Missing lat or lon in response"
-                    Log.w(TAG, message)
+
+                    context.log().w(TAG, message)
                     onError(OpenCelliDError(message, url))
                 }
             },
             { error ->
-                Log.w(TAG, "Request failed: ${error.message}")
+                context.log().w(TAG, "Request failed: ${error.message}")
                 onError(
                     OpenCelliDError(error.message ?: "", url)
                 )
