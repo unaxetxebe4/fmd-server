@@ -89,10 +89,14 @@ class SettingsRepository private constructor(private val context: Context) {
     private var settings: Settings
 
     init {
-        settings = load()
+        settings = loadNoSet()
     }
 
-    private fun load(): Settings {
+    fun load() {
+        settings = loadNoSet()
+    }
+
+    private fun loadNoSet(): Settings {
         val file = File(context.filesDir, SETTINGS_FILENAME)
         if (!file.exists()) {
             file.createNewFile()

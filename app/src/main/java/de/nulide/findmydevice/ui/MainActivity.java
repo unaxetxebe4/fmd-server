@@ -48,6 +48,13 @@ public class MainActivity extends AppCompatActivity {
 
         settings = SettingsRepository.Companion.getInstance(this);
 
+        // Around the CrashedActivity it can happen that the two activities run in different processes.
+        // In different processes, the SettingsRepository instance is different.
+        // This can result in an endless "Continue to MainActivity" loop, because one repo sets the
+        // flag to 0, but the other repo does not load the updated file.
+        // To make sure we load the status correctly, reload from disk.
+        settings.load();
+
         if (((Integer) settings.get(Settings.SET_APP_CRASHED_LOG_ENTRY)) == 1) {
             Intent intent = new Intent(this, CrashedActivity.class);
             startActivity(intent);
