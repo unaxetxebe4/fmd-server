@@ -15,7 +15,7 @@ private const val LOG_FILENAME = "logs.json"
 
 data class LogEntry(
     val level: String,
-    val time: Long,
+    val timeMillis: Long,
     val tag: String,
     val msg: String,
 )

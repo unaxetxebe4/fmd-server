@@ -2,12 +2,10 @@ package de.nulide.findmydevice.ui.settings
 
 import android.os.Bundle
 import android.view.Menu
-import android.widget.ArrayAdapter
-import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.RecyclerView
 import de.nulide.findmydevice.R
 import de.nulide.findmydevice.data.LogRepository
-import java.util.Date
 
 
 class LogViewActivity : AppCompatActivity() {
@@ -20,15 +18,13 @@ class LogViewActivity : AppCompatActivity() {
 
         repo = LogRepository.getInstance(this)
 
-        val items = repo.list.map {
-            val date = Date(it.time)
+        // TODO: Observe list as LiveData or Flow
+        val adapter = LogViewAdapter()
+        val recyclerView = findViewById<RecyclerView>(R.id.recycler_logs)
+        recyclerView.adapter = adapter
 
-            it.level + " " + date.toString() + " - " + it.tag + "\n" + it.msg
-        }.reversed()
-        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, items)
-
-        val listView = findViewById<ListView>(R.id.listLog)
-        listView.adapter = adapter
+        adapter.submitList(repo.list)
+        recyclerView.scrollToPosition(adapter.itemCount - 1)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
