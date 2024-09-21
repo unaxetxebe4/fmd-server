@@ -8,7 +8,6 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import de.nulide.findmydevice.R
 import de.nulide.findmydevice.data.Settings
-import de.nulide.findmydevice.data.SettingsRepoSpec
 import de.nulide.findmydevice.data.SettingsRepository
 import de.nulide.findmydevice.databinding.ActivityOpenCellIdBinding
 import de.nulide.findmydevice.net.OpenCelliDRepository
@@ -25,14 +24,14 @@ class OpenCellIdActivity : AppCompatActivity(), TextWatcher {
 
     private lateinit var viewBinding: ActivityOpenCellIdBinding
 
-    private lateinit var settings: Settings
+    private lateinit var settings: SettingsRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityOpenCellIdBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
-        settings = SettingsRepository.getInstance(SettingsRepoSpec(this)).settings
+        settings = SettingsRepository.getInstance(this)
         val apiToken = settings.get(Settings.SET_OPENCELLID_API_KEY) as String
 
         viewBinding.editTextOpenCellIDAPIKey.setText(apiToken)

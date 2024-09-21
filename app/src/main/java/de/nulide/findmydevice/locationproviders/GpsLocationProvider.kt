@@ -13,7 +13,6 @@ import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import de.nulide.findmydevice.R
 import de.nulide.findmydevice.data.Settings
-import de.nulide.findmydevice.data.SettingsRepoSpec
 import de.nulide.findmydevice.data.SettingsRepository
 import de.nulide.findmydevice.permissions.LocationPermission
 import de.nulide.findmydevice.permissions.WriteSecureSettingsPermission
@@ -128,7 +127,7 @@ class GpsLocationProvider<T>(
     fun getLastKnownLocation(asFallBackForCurrentLocation: Boolean = false) {
         val lastLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
 
-        val settings = SettingsRepository.getInstance(SettingsRepoSpec(context)).settings
+        val settings = SettingsRepository.getInstance(context)
         val cachedLat = settings.get(Settings.SET_LAST_KNOWN_LOCATION_LAT) as String
         val cachedLon = settings.get(Settings.SET_LAST_KNOWN_LOCATION_LON) as String
         val cachedTimeMillis = settings.get(Settings.SET_LAST_KNOWN_LOCATION_TIME) as Long
@@ -174,7 +173,7 @@ class GpsLocationProvider<T>(
         val lon = location.longitude.toString()
         Log.d(TAG, "Location found by $provider")
 
-        storeLastKnownLocation(lat, lon, location.time)
+        storeLastKnownLocation(context, lat, lon, location.time)
         transport.sendNewLocation(context, provider, lat, lon, location.time)
 
         cleanup()

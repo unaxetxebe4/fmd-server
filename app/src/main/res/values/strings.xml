@@ -39,6 +39,7 @@
     <string name="Settings_Import_Success">Import successful</string>
     <string name="Settings_Import_Failed">Import failed</string>
     <string name="Settings_Export">Export Settings</string>
+    <string name="Settings_Export_Failed">Export failed</string>
     <string name="Settings_Logs">Logs</string>
     <string name="Settings_About">About</string>
 

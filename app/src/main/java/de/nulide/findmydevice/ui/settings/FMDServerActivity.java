@@ -27,7 +27,6 @@ import java.security.PrivateKey;
 
 import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.data.Settings;
-import de.nulide.findmydevice.data.SettingsRepoSpec;
 import de.nulide.findmydevice.data.SettingsRepository;
 import de.nulide.findmydevice.net.FMDServerApiRepoSpec;
 import de.nulide.findmydevice.net.FMDServerApiRepository;
@@ -41,7 +40,7 @@ import de.nulide.findmydevice.utils.Utils;
 
 public class FMDServerActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener, TextWatcher {
 
-    private Settings settings;
+    private SettingsRepository settings;
     private FMDServerApiRepository fmdServerRepo;
 
     private TextView textViewServerUrl;
@@ -72,7 +71,7 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_f_m_d_server);
 
-        settings = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(this)).getSettings();
+        settings = SettingsRepository.Companion.getInstance(this);
         fmdServerRepo = FMDServerApiRepository.Companion.getInstance(new FMDServerApiRepoSpec(this));
         this.context = this;
 

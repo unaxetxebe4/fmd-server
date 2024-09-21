@@ -3,9 +3,7 @@ package de.nulide.findmydevice.commands
 import android.content.Context
 import de.nulide.findmydevice.R
 import de.nulide.findmydevice.data.Settings
-import de.nulide.findmydevice.data.io.IO
-import de.nulide.findmydevice.data.io.JSONFactory
-import de.nulide.findmydevice.data.io.json.JSONMap
+import de.nulide.findmydevice.data.SettingsRepository
 import de.nulide.findmydevice.services.FmdJobService
 import de.nulide.findmydevice.transports.Transport
 import de.nulide.findmydevice.utils.CypherUtils
@@ -56,8 +54,7 @@ class CommandHandler<T>
         context.log().d(TAG, "Handling command: $rawCommand")
 
         val args = rawCommand.split(" ").filter { it.isNotBlank() }.toMutableList()
-        val settings: Settings =
-            JSONFactory.convertJSONSettings(IO.read(JSONMap::class.java, IO.settingsFileName))
+        val settings = SettingsRepository.getInstance(context)
         val fmdTriggerWord = settings.get(Settings.SET_FMD_COMMAND) as String
 
         if (args.isEmpty()) {
@@ -104,8 +101,8 @@ class CommandHandler<T>
 
         // fmd <pin> locate
         @JvmStatic
-        fun checkAndRemovePin(settings: Settings, msg: String): String? {
-            val expectedHash = settings.get(Settings.SET_PIN) as String
+        fun checkAndRemovePin(repo: SettingsRepository, msg: String): String? {
+            val expectedHash = repo.get(Settings.SET_PIN) as String
             val parts = msg.split(" ").filter { it.isNotBlank() }
             if (parts.size >= 2) {
                 val pin = parts[1]

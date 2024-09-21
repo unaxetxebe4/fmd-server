@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.Intent
 import android.util.Log
 import de.nulide.findmydevice.data.Settings
-import de.nulide.findmydevice.data.SettingsRepoSpec
 import de.nulide.findmydevice.data.SettingsRepository
 import de.nulide.findmydevice.services.FMDServerLocationUploadService
 
@@ -18,9 +17,9 @@ class BatteryLowReceiver : BroadcastReceiver() {
         private const val MIN_INTERVAL_MILLIS = 15 * 60 * 1000 // 15 mins
 
         fun handleLowBatteryUpload(context: Context) {
-            val settings = SettingsRepository.getInstance(SettingsRepoSpec(context)).settings
+            val settings = SettingsRepository.getInstance(context)
 
-            if (!(settings[Settings.SET_FMD_LOW_BAT_SEND] as Boolean)) {
+            if (!(settings.get(Settings.SET_FMD_LOW_BAT_SEND) as Boolean)) {
                 return
             }
 

@@ -13,10 +13,8 @@ import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.commands.CommandHandler;
 import de.nulide.findmydevice.data.AllowlistRepository;
 import de.nulide.findmydevice.data.Settings;
-import de.nulide.findmydevice.data.SettingsRepoSpec;
 import de.nulide.findmydevice.data.SettingsRepository;
 import de.nulide.findmydevice.data.TemporaryAllowlistRepository;
-import de.nulide.findmydevice.data.io.IO;
 import de.nulide.findmydevice.transports.SmsTransport;
 import de.nulide.findmydevice.transports.Transport;
 import de.nulide.findmydevice.utils.FmdLogKt;
@@ -50,9 +48,7 @@ public class FMDSMSService extends FmdJobService {
     public boolean onStartJob(JobParameters params) {
         super.onStartJob(params);
 
-        IO.context = this;
-
-        Settings settings = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(this)).getSettings();
+        SettingsRepository settings = SettingsRepository.Companion.getInstance(this);
         AllowlistRepository allowlistRepo = AllowlistRepository.Companion.getInstance(this);
         TemporaryAllowlistRepository tempAllowlistRepo = TemporaryAllowlistRepository.Companion.getInstance(this);
 

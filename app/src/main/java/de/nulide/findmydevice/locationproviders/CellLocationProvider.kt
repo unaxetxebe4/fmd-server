@@ -4,7 +4,6 @@ import android.content.Context
 import android.util.Log
 import de.nulide.findmydevice.R
 import de.nulide.findmydevice.data.Settings
-import de.nulide.findmydevice.data.SettingsRepoSpec
 import de.nulide.findmydevice.data.SettingsRepository
 import de.nulide.findmydevice.net.OpenCelliDRepository
 import de.nulide.findmydevice.net.OpenCelliDSpec
@@ -28,7 +27,7 @@ class CellLocationProvider<T>(
     override fun getAndSendLocation(): Deferred<Unit> {
         val deferred = CompletableDeferred<Unit>()
 
-        val settings = SettingsRepository.getInstance(SettingsRepoSpec(context)).settings
+        val settings = SettingsRepository.getInstance(context)
         val apiAccessToken = settings.get(Settings.SET_OPENCELLID_API_KEY) as String
         if (apiAccessToken.isEmpty()) {
             val msg = "Cannot send cell location: Missing API Token"
@@ -54,7 +53,7 @@ class CellLocationProvider<T>(
             onSuccess = {
                 Log.d(TAG, "Location found by OpenCelliD")
                 val timeMillis = Calendar.getInstance(TimeZone.getTimeZone("UTC")).timeInMillis
-                storeLastKnownLocation(it.lat, it.lon, timeMillis)
+                storeLastKnownLocation(context, it.lat, it.lon, timeMillis)
                 transport.sendNewLocation(context, "OpenCelliD", it.lat, it.lon, timeMillis)
                 deferred.complete(Unit)
             },

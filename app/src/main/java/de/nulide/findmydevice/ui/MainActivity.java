@@ -13,9 +13,7 @@ import com.google.android.material.navigation.NavigationBarView;
 
 import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.data.Settings;
-import de.nulide.findmydevice.data.SettingsRepoSpec;
 import de.nulide.findmydevice.data.SettingsRepository;
-import de.nulide.findmydevice.data.io.IO;
 import de.nulide.findmydevice.permissions.PermissionsUtilKt;
 import de.nulide.findmydevice.receiver.PushReceiver;
 import de.nulide.findmydevice.services.FMDServerLocationUploadService;
@@ -29,6 +27,8 @@ import de.nulide.findmydevice.ui.settings.SettingsFragment;
 public class MainActivity extends AppCompatActivity {
 
     private static final String KEY_ACTIVE_FRAGMENT_TAG = "activeFragmentTag";
+
+    SettingsRepository settings;
 
     private TaggedFragment commandsFragment, transportFragment, settingsFragment;
     private TaggedFragment activeFragment;
@@ -46,9 +46,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        IO.context = this;
-
-        Settings settings = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(this)).getSettings();
+        settings = SettingsRepository.Companion.getInstance(this);
 
         if (((Integer) settings.get(Settings.SET_APP_CRASHED_LOG_ENTRY)) == 1) {
             Intent intent = new Intent(this, CrashedActivity.class);
@@ -56,7 +54,8 @@ public class MainActivity extends AppCompatActivity {
             finish();
             return;
         }
-        settings.updateSettings();
+
+        settings.migrateSettings();
         if (!(Boolean) settings.get(Settings.SET_UPDATEBOARDING_MODERN_CRYPTO_COMPLETED)) {
             Intent intent = new Intent(this, UpdateboardingModernCryptoActivity.class);
             startActivity(intent);
@@ -92,8 +91,7 @@ public class MainActivity extends AppCompatActivity {
                 .replace(R.id.fragment_container, activeFragment, activeFragment.getStaticTag())
                 .commit();
 
-        Settings settings = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(this)).getSettings();
-        if (settings.checkAccountExists()) {
+        if (settings.serverAccountExists()) {
             PushReceiver.registerWithUnifiedPush(this);
             FMDServerLocationUploadService.scheduleJob(this, 0);
         } else {

@@ -10,9 +10,7 @@ import android.util.Log;
 import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.commands.CommandHandler;
 import de.nulide.findmydevice.data.Settings;
-import de.nulide.findmydevice.data.SettingsRepoSpec;
 import de.nulide.findmydevice.data.SettingsRepository;
-import de.nulide.findmydevice.data.io.IO;
 import de.nulide.findmydevice.net.FMDServerApiRepoSpec;
 import de.nulide.findmydevice.net.FMDServerApiRepository;
 import de.nulide.findmydevice.transports.FmdServerTransport;
@@ -35,8 +33,7 @@ public class FMDServerCommandDownloadService extends FmdJobService {
     public boolean onStartJob(JobParameters params) {
         super.onStartJob(params);
 
-        IO.context = this;
-        settingsRepo = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(this));
+        settingsRepo = SettingsRepository.Companion.getInstance(this);
 
         Log.d(TAG, "Downloading remote command");
         FMDServerApiRepository fmdServerRepo = FMDServerApiRepository.Companion.getInstance(new FMDServerApiRepoSpec(this));
@@ -67,7 +64,7 @@ public class FMDServerCommandDownloadService extends FmdJobService {
             return;
         }
         if (remoteCommand.startsWith("423")) {
-            String account = (String) settingsRepo.getSettings().get(Settings.SET_FMDSERVER_ID);
+            String account = (String) settingsRepo.get(Settings.SET_FMDSERVER_ID);
             String msg = getString(R.string.server_login_attempts_text, account);
             FmdLogKt.log(this).w(TAG, msg);
             Notifications.notify(
@@ -78,7 +75,7 @@ public class FMDServerCommandDownloadService extends FmdJobService {
             );
             return;
         }
-        String fullCommand = settingsRepo.getSettings().get(Settings.SET_FMD_COMMAND) + " " + remoteCommand;
+        String fullCommand = settingsRepo.get(Settings.SET_FMD_COMMAND) + " " + remoteCommand;
 
         Transport<Unit> transport = new FmdServerTransport(this);
         CommandHandler<Unit> commandHandler = new CommandHandler<>(transport, this.getCoroutineScope(), this);

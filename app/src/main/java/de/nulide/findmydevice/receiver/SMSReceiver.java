@@ -1,5 +1,6 @@
 package de.nulide.findmydevice.receiver;
 
+import android.content.BroadcastReceiver;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -10,14 +11,13 @@ import java.util.Objects;
 
 import de.nulide.findmydevice.services.FMDSMSService;
 
-public class SMSReceiver extends SuperReceiver {
+public class SMSReceiver extends BroadcastReceiver {
 
     public static final String SMS_RECEIVED = "android.provider.Telephony.SMS_RECEIVED";
 
     @SuppressLint("NewApi")
     @Override
     public void onReceive(Context context, Intent intent) {
-        init(context);
         if (Objects.equals(intent.getAction(), SMS_RECEIVED)) {
             Bundle bundle = intent.getExtras();
             SmsMessage[] msgs;

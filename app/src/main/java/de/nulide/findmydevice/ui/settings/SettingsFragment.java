@@ -1,5 +1,7 @@
 package de.nulide.findmydevice.ui.settings;
 
+import static de.nulide.findmydevice.data.SettingsRepositoryKt.SETTINGS_FILENAME;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -10,27 +12,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mikepenz.aboutlibraries.LibsBuilder;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.List;
 
 import de.nulide.findmydevice.R;
-import de.nulide.findmydevice.data.Settings;
-import de.nulide.findmydevice.data.SettingsRepoSpec;
 import de.nulide.findmydevice.data.SettingsRepository;
-import de.nulide.findmydevice.data.io.IO;
 import de.nulide.findmydevice.ui.TaggedFragment;
 import de.nulide.findmydevice.ui.helper.SettingsEntry;
 import de.nulide.findmydevice.ui.helper.SettingsViewAdapter;
@@ -41,10 +32,18 @@ public class SettingsFragment extends TaggedFragment {
     private final int EXPORT_REQ_CODE = 30;
     private final int IMPORT_REQ_CODE = 40;
 
+    private SettingsRepository settings;
+
     @NonNull
     @Override
     public String getStaticTag() {
         return "SettingsFragment";
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        settings = SettingsRepository.Companion.getInstance(requireContext());
     }
 
     @Nullable
@@ -66,7 +65,6 @@ public class SettingsFragment extends TaggedFragment {
 
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Context context = view.getContext();
-        Settings settings = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(context)).getSettings();
 
         Intent settingIntent = null;
         switch (position) {
@@ -74,7 +72,7 @@ public class SettingsFragment extends TaggedFragment {
                 settingIntent = new Intent(context, FMDConfigActivity.class);
                 break;
             case 1:
-                if (settings.isEmpty(Settings.SET_FMDSERVER_ID)) {
+                if (!settings.serverAccountExists()) {
                     settingIntent = new Intent(context, AddAccountActivity.class);
                 } else {
                     settingIntent = new Intent(context, FMDServerActivity.class);
@@ -88,7 +86,7 @@ public class SettingsFragment extends TaggedFragment {
                 break;
             case 4:
                 Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
-                intent.putExtra(Intent.EXTRA_TITLE, IO.settingsFileName);
+                intent.putExtra(Intent.EXTRA_TITLE, SETTINGS_FILENAME);
                 intent.setType("*/*");
                 startActivityForResult(intent, EXPORT_REQ_CODE);
                 break;
@@ -114,44 +112,22 @@ public class SettingsFragment extends TaggedFragment {
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         Context context = getActivity();
+        if (context == null) {
+            return;
+        }
         if (requestCode == IMPORT_REQ_CODE && resultCode == Activity.RESULT_OK) {
             if (data != null) {
                 Uri uri = data.getData();
-                try {
-                    InputStream inputStream = getActivity().getContentResolver().openInputStream(uri);
-
-                    BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
-                    StringBuilder json = new StringBuilder();
-                    try {
-                        String line;
-
-                        while ((line = br.readLine()) != null) {
-                            json.append(line);
-                            json.append('\n');
-                        }
-                        br.close();
-                        String text = json.toString();
-                        ObjectMapper mapper = new ObjectMapper();
-                        mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
-                        if (!text.isEmpty()) {
-                            Settings settings = mapper.readValue(text, Settings.class);
-                            settings.saveToFile();
-                        }
-                        SettingsRepository.Companion.getInstance(new SettingsRepoSpec(context)).forceReload();
-                        Toast.makeText(context, getString(R.string.Settings_Import_Success), Toast.LENGTH_SHORT).show();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                        Toast.makeText(context, getString(R.string.Settings_Import_Failed), Toast.LENGTH_SHORT).show();
-                    }
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                    Toast.makeText(context, getString(R.string.Settings_Import_Failed), Toast.LENGTH_SHORT).show();
+                if (uri != null) {
+                    settings.importFromUri(context, uri);
                 }
             }
         } else if (requestCode == EXPORT_REQ_CODE && resultCode == Activity.RESULT_OK) {
             if (data != null) {
                 Uri uri = data.getData();
-                Settings.writeToUri(context, uri);
+                if (uri != null) {
+                    settings.writeToUri(context, uri);
+                }
             }
         }
     }

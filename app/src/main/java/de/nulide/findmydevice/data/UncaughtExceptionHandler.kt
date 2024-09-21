@@ -26,8 +26,8 @@ class UncaughtExceptionHandler(
         context.log().e(TAG, createNiceCrashLog(e))
 
         // Set the flag so that when the user launches the app again, the crash details are shown
-        val repo = SettingsRepository.getInstance(SettingsRepoSpec(context))
-        repo.settings.set(Settings.SET_APP_CRASHED_LOG_ENTRY, 1)
+        val repo = SettingsRepository.getInstance(context)
+        repo.set(Settings.SET_APP_CRASHED_LOG_ENTRY, 1)
 
         // Don't show the CrashedActivity now (it often fails)
     }

@@ -1,13 +1,9 @@
 package de.nulide.findmydevice.locationproviders
 
-import android.app.job.JobParameters
-import android.app.job.JobService
+import android.content.Context
 import de.nulide.findmydevice.data.Settings
-import de.nulide.findmydevice.data.io.IO
-import de.nulide.findmydevice.data.io.JSONFactory
-import de.nulide.findmydevice.data.io.json.JSONMap
+import de.nulide.findmydevice.data.SettingsRepository
 import de.nulide.findmydevice.utils.Utils.Companion.getOpenStreetMapLink
-import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Deferred
 import java.util.Date
 
@@ -26,10 +22,8 @@ abstract class LocationProvider {
     abstract fun getAndSendLocation(): Deferred<Unit>
 
     companion object {
-        fun storeLastKnownLocation(lat: String, lon: String, timeMillis: Long) {
-            val settings = JSONFactory.convertJSONSettings(
-                IO.read<JSONMap>(JSONMap::class.java, IO.settingsFileName)
-            )
+        fun storeLastKnownLocation(context: Context, lat: String, lon: String, timeMillis: Long) {
+            val settings = SettingsRepository.getInstance(context)
             settings.set<String>(Settings.SET_LAST_KNOWN_LOCATION_LAT, lat)
             settings.set<String>(Settings.SET_LAST_KNOWN_LOCATION_LON, lon)
             settings.set<Long>(Settings.SET_LAST_KNOWN_LOCATION_TIME, timeMillis)

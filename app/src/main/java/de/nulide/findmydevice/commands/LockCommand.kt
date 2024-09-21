@@ -45,7 +45,7 @@ class LockCommand(context: Context) : Command(context) {
         var customMessage = args.subList(2, args.size).joinToString(" ")
 
         if (customMessage.isEmpty()) {
-            customMessage = settings[Settings.SET_LOCKSCREEN_MESSAGE] as String
+            customMessage = settings.get(Settings.SET_LOCKSCREEN_MESSAGE) as String
         }
 
         // Only show the full-screen activity if there is a message. This allows you to silently

@@ -12,9 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.data.LogRepository;
 import de.nulide.findmydevice.data.Settings;
-import de.nulide.findmydevice.data.SettingsRepoSpec;
 import de.nulide.findmydevice.data.SettingsRepository;
-import de.nulide.findmydevice.data.io.IO;
 import de.nulide.findmydevice.utils.Utils;
 
 public class CrashedActivity extends AppCompatActivity {
@@ -26,8 +24,7 @@ public class CrashedActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crashed);
 
-        IO.context = this;
-        Settings settings = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(this)).getSettings();
+        SettingsRepository settings = SettingsRepository.Companion.getInstance(this);
         settings.set(Settings.SET_APP_CRASHED_LOG_ENTRY, 0);
 
         LogRepository repo = LogRepository.Companion.getInstance(this);

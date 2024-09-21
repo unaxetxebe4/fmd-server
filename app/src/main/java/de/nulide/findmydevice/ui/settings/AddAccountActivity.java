@@ -29,7 +29,6 @@ import java.util.TimeZone;
 import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.data.FmdKeyPair;
 import de.nulide.findmydevice.data.Settings;
-import de.nulide.findmydevice.data.SettingsRepoSpec;
 import de.nulide.findmydevice.data.SettingsRepository;
 import de.nulide.findmydevice.net.FMDServerApiRepoSpec;
 import de.nulide.findmydevice.net.FMDServerApiRepository;
@@ -59,16 +58,15 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_account);
 
-        settingsRepo = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(this));
+        settingsRepo = SettingsRepository.Companion.getInstance(this);
 
-        String fmdServerId = (String) settingsRepo.getSettings().get(Settings.SET_FMDSERVER_ID);
-        if (!fmdServerId.isEmpty()) {
+        if (settingsRepo.serverAccountExists()) {
             Intent fmdServerIntent = new Intent(this, FMDServerActivity.class);
             finish();
             startActivity(fmdServerIntent);
         }
 
-        String lastKnownServerUrl = (String) settingsRepo.getSettings().get(Settings.SET_FMDSERVER_URL);
+        String lastKnownServerUrl = (String) settingsRepo.get(Settings.SET_FMDSERVER_URL);
 
         fmdServerRepo = FMDServerApiRepository.Companion.getInstance(new FMDServerApiRepoSpec(this));
 
@@ -122,10 +120,10 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
                             // Start the thread here. Key generation and password hashing is expensive-ish,
                             // so we don't want to do it on the UI thread (it would block then loading indicator).
                             FmdKeyPair keys = FmdKeyPair.generateNewFmdKeyPair(password);
-                            settingsRepo.getSettings().setKeys(keys);
+                            settingsRepo.setKeys(keys);
                             String hashedPW = CypherUtils.hashPasswordForLogin(password);
-                            settingsRepo.getSettings().set(Settings.SET_FMD_CRYPT_HPW, hashedPW);
-                            settingsRepo.getSettings().set(Settings.SET_FMDSERVER_PASSWORD_SET, true);
+                            settingsRepo.set(Settings.SET_FMD_CRYPT_HPW, hashedPW);
+                            settingsRepo.set(Settings.SET_FMDSERVER_PASSWORD_SET, true);
 
                             fmdServerRepo.registerAccount(keys.getEncryptedPrivateKey(), keys.getBase64PublicKey(), hashedPW, registrationToken,
                                     this::onRegisterOrLoginSuccess, this::onRegisterOrLoginError
@@ -201,7 +199,7 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
             if (url.endsWith("/")) {
                 url = url.substring(0, url.length() - 1);
             }
-            settingsRepo.getSettings().set(Settings.SET_FMDSERVER_URL, url);
+            settingsRepo.set(Settings.SET_FMDSERVER_URL, url);
             if (url.isEmpty()) {
                 btnRegister.setEnabled(false);
                 btnLogin.setEnabled(false);
@@ -218,7 +216,7 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
             Context context = getApplicationContext();
             loadingDialog.cancel();
 
-            if (((String) settingsRepo.getSettings().get(Settings.SET_FMDSERVER_ID)).isEmpty()) {
+            if (!settingsRepo.serverAccountExists()) {
                 Toast.makeText(context, "Failed: no user id", Toast.LENGTH_LONG).show();
                 return;
             }

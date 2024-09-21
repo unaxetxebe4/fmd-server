@@ -1,36 +1,14 @@
 package de.nulide.findmydevice.data;
 
 
-import android.content.Context;
-import android.net.Uri;
-import android.os.ParcelFileDescriptor;
-import android.widget.Toast;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.security.KeyFactory;
-import java.security.NoSuchAlgorithmException;
-import java.security.PublicKey;
-import java.security.spec.EncodedKeySpec;
-import java.security.spec.InvalidKeySpecException;
-import java.security.spec.X509EncodedKeySpec;
 import java.util.HashMap;
 
-import de.nulide.findmydevice.R;
-import de.nulide.findmydevice.data.io.IO;
-import de.nulide.findmydevice.data.io.JSONFactory;
-import de.nulide.findmydevice.data.io.OldKeyIO;
-import de.nulide.findmydevice.data.io.json.JSONMap;
-import de.nulide.findmydevice.utils.CypherUtils;
 import de.nulide.findmydevice.utils.RingerUtils;
 
 
 public class Settings extends HashMap<Integer, Object> {
 
-    public static final int settingsVersion = 2;
+    public static final int SETTINGS_VERSION = 2;
 
     public static final int SET_WIPE_ENABLED = 0;
     public static final int SET_ACCESS_VIA_PIN = 1;
@@ -75,15 +53,6 @@ public class Settings extends HashMap<Integer, Object> {
     public static final String DEFAULT_FMD_SERVER_URL = "https://fmd.nulide.de";
 
     public Settings() {
-    }
-
-    public <T> void set(int key, T value) {
-        super.put(key, value);
-        IO.write(JSONFactory.convertSettings(this), IO.settingsFileName);
-    }
-
-    public void saveToFile() {
-        IO.write(JSONFactory.convertSettings(this), IO.settingsFileName);
     }
 
     public Object get(int key) {
@@ -134,64 +103,4 @@ public class Settings extends HashMap<Integer, Object> {
         return "";
     }
 
-    public boolean isEmpty(int key) {
-        return ((String) get(key)).equals("");
-    }
-
-    public FmdKeyPair getKeys() {
-        if (get(SET_FMD_CRYPT_PUBKEY).equals("")) {
-            return null;
-        } else {
-
-            EncodedKeySpec pubKeySpec = new X509EncodedKeySpec(CypherUtils.decodeBase64((String) get(SET_FMD_CRYPT_PUBKEY)));
-            PublicKey publicKey = null;
-            try {
-                KeyFactory keyFactory = KeyFactory.getInstance("RSA");
-                publicKey = keyFactory.generatePublic(pubKeySpec);
-            } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
-                e.printStackTrace();
-            }
-
-            return new FmdKeyPair(publicKey, (String) get(SET_FMD_CRYPT_PRIVKEY));
-        }
-    }
-
-    public void setKeys(FmdKeyPair keys) {
-        set(SET_FMD_CRYPT_PRIVKEY, keys.getEncryptedPrivateKey());
-        set(SET_FMD_CRYPT_PUBKEY, CypherUtils.encodeBase64(keys.getPublicKey().getEncoded()));
-    }
-
-    public void updateSettings() {
-        if (((Integer) get(SET_SET_VERSION)) < settingsVersion) {
-            if (!((String) get(SET_FMDSERVER_ID)).isEmpty()) {
-                FmdKeyPair keys = OldKeyIO.readKeys();
-                String HashedPW = OldKeyIO.readHashedPW();
-                setKeys(keys);
-                set(SET_FMD_CRYPT_HPW, HashedPW);
-                set(SET_SET_VERSION, settingsVersion);
-            } else {
-                set(SET_SET_VERSION, settingsVersion);
-            }
-        }
-    }
-
-    public boolean checkAccountExists() {
-        return !((String) get(Settings.SET_FMDSERVER_ID)).isEmpty();
-    }
-
-    public static void writeToUri(Context context, Uri uri) {
-        try {
-            ParcelFileDescriptor sco = context.getContentResolver().openFileDescriptor(uri, "w");
-            PrintWriter out = new PrintWriter(new FileOutputStream(sco.getFileDescriptor()));
-            Settings settings = JSONFactory.convertJSONSettings(IO.read(JSONMap.class, IO.settingsFileName));
-            ObjectMapper mapper = new ObjectMapper();
-            String json = mapper.writeValueAsString(settings);
-            out.write(json);
-            out.close();
-            sco.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Toast.makeText(context, R.string.settings_exported, Toast.LENGTH_LONG).show();
-    }
 }
