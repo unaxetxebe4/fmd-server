@@ -82,6 +82,11 @@ public class MainActivity extends AppCompatActivity {
                 activeFragment = settingsFragment;
             }
         }
+
+        // In onCreate instead of onResume to avoid excessive re-registrations
+        if (settings.serverAccountExists()) {
+            PushReceiver.registerWithUnifiedPush(this);
+        }
     }
 
     @Override
@@ -92,7 +97,6 @@ public class MainActivity extends AppCompatActivity {
                 .commit();
 
         if (settings.serverAccountExists()) {
-            PushReceiver.registerWithUnifiedPush(this);
             FMDServerLocationUploadService.scheduleJob(this, 0);
         } else {
             // just in case it was still running
