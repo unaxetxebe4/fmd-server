@@ -78,6 +78,8 @@
     <string name="password_old">Old Password</string>
     <string name="password_new">New Password</string>
     <string name="password_new_repeat">Repeat New Password</string>
+    <string name="server_login_attempts_title">Failed login attempts to FMD Server</string>
+    <string name="server_login_attempts_text">Someone tried to log in to your FMD Server account \"%s\". Due to multiple failed passwords, the account is now locked for 10 minutes.</string>
 
     <!-- FMD Server Registration/Login -->
     <string name="server_version">Server version</string>

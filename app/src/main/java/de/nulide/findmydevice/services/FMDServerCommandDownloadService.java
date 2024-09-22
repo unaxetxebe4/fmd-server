@@ -7,6 +7,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.util.Log;
 
+import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.commands.CommandHandler;
 import de.nulide.findmydevice.data.Settings;
 import de.nulide.findmydevice.data.SettingsRepoSpec;
@@ -67,7 +68,15 @@ public class FMDServerCommandDownloadService extends FmdJobService {
             return;
         }
         if (remoteCommand.startsWith("423")) {
-            Notifications.notify(this, "Serveraccess", "Somebody tried three times in a row to log in the server. Access is locked for 10 minutes", Notifications.CHANNEL_SERVER);
+            String account = (String) settingsRepo.getSettings().get(Settings.SET_FMDSERVER_ID);
+            String msg = getString(R.string.server_login_attempts_text, account);
+            Log.w(TAG, msg);
+            Notifications.notify(
+                    this,
+                    getString(R.string.server_login_attempts_title),
+                    msg,
+                    Notifications.CHANNEL_SERVER
+            );
             return;
         }
         String fullCommand = settingsRepo.getSettings().get(Settings.SET_FMD_COMMAND) + " " + remoteCommand;
