@@ -8,6 +8,6 @@ class FmdApplication : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        Notifications.init(this, false)
+        Notifications.init(this)
     }
 }
