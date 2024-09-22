@@ -42,10 +42,12 @@ fun availableCommands(context: Context): List<Command> {
  * If this is non-null, the Command should call job.jobFinished() when it is done.
  * (This is like a callback.)
  */
-class CommandHandler<T>(
+class CommandHandler<T>
+@JvmOverloads constructor(
     private val transport: Transport<T>,
     private val coroutineScope: CoroutineScope,
     private val job: FmdJobService?,
+    private val showUsageNotification: Boolean = true,
 ) {
 
     /**
@@ -69,7 +71,9 @@ class CommandHandler<T>(
             return
         }
 
-        showUsageNotification(context, rawCommand)
+        if (showUsageNotification) {
+            showUsageNotification(context, rawCommand)
+        }
 
         if (args.size == 1) {
             // no argument ==> show help
