@@ -51,7 +51,10 @@ class CommandHandler<T>
      * Executes commands of the form "triggerWord command options", e.g. "fmd locate cell"
      */
     fun execute(context: Context, rawCommand: String) {
-        context.log().d(TAG, "Handling command: $rawCommand")
+        context.log().d(
+            TAG,
+            "Handling command '$rawCommand' from source '${transport.getDestinationString()}'"
+        )
 
         val args = rawCommand.split(" ").filter { it.isNotBlank() }.toMutableList()
         val settings = SettingsRepository.getInstance(context)
