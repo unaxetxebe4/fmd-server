@@ -38,6 +38,7 @@
         android:required="false" />
 
     <application
+        android:name=".FmdApplication"
         android:allowBackup="true"
         android:largeHeap="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
