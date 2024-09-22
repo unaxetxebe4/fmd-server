@@ -19,7 +19,6 @@ import de.nulide.findmydevice.transports.FmdServerTransport
 import de.nulide.findmydevice.transports.NotificationReplyTransport
 import de.nulide.findmydevice.transports.Transport
 import de.nulide.findmydevice.utils.Logger
-import de.nulide.findmydevice.utils.Notifications
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -53,7 +52,6 @@ class ThirdPartyAccessService : NotificationListenerService() {
             cal.add(Calendar.MINUTE, -5)
             config.set(ConfigSMSRec.CONF_LAST_USAGE, cal.timeInMillis)
         }
-        Notifications.init(context, false)
     }
 
     override fun onDestroy() {

@@ -24,7 +24,6 @@ import de.nulide.findmydevice.ui.home.TransportListFragment;
 import de.nulide.findmydevice.ui.onboarding.UpdateboardingModernCryptoActivity;
 import de.nulide.findmydevice.ui.settings.SettingsFragment;
 import de.nulide.findmydevice.utils.Logger;
-import de.nulide.findmydevice.utils.Notifications;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -49,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
 
         IO.context = this;
         Logger.init(Thread.currentThread(), this);
-        Notifications.init(this, false);
 
         Settings settings = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(this)).getSettings();
 

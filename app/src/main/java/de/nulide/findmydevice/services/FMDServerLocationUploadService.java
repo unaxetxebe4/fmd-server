@@ -15,7 +15,6 @@ import de.nulide.findmydevice.data.io.IO;
 import de.nulide.findmydevice.transports.FmdServerTransport;
 import de.nulide.findmydevice.transports.Transport;
 import de.nulide.findmydevice.utils.Logger;
-import de.nulide.findmydevice.utils.Notifications;
 import kotlin.Unit;
 
 
@@ -66,7 +65,6 @@ public class FMDServerLocationUploadService extends FmdJobService {
         Settings settings = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(this)).getSettings();
         IO.context = this;
         Logger.init(Thread.currentThread(), this);
-        Notifications.init(this, true);
 
         Transport<Unit> transport = new FmdServerTransport(this);
         CommandHandler<Unit> commandHandler = new CommandHandler<>(transport, this.getCoroutineScope(), this);

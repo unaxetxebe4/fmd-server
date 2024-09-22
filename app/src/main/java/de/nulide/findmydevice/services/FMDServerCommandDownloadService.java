@@ -67,7 +67,6 @@ public class FMDServerCommandDownloadService extends FmdJobService {
             return;
         }
         if (remoteCommand.startsWith("423")) {
-            Notifications.init(this, false);
             Notifications.notify(this, "Serveraccess", "Somebody tried three times in a row to log in the server. Access is locked for 10 minutes", Notifications.CHANNEL_SERVER);
             return;
         }
