@@ -128,7 +128,7 @@
     <string name="cmd_gps_response_off">GPS je izključen.</string>
     <string name="cmd_help_description_short">Prikaži pomoč</string>
     <string name="cmd_locate_description_short">Poišči napravo</string>
-    <string name="usage_notification_text">Ukaz \"%s\" je bil izveden.</string>
+    <string name="usage_notification_text">Izveden je bil ukaz \"%s\".</string>
     <string name="bottom_nav_commands">Ukazi</string>
     <string name="bottom_nav_transports">Transportni kanali</string>
     <string name="bottom_nav_settings">Nastavitve</string>
@@ -147,7 +147,7 @@
     <string name="transport_inapp_send_command_button_send">Pošlji</string>
     <string name="Notification_InApp">Transportni kanal preko aplikacije</string>
     <string name="Notification_InApp_Description">Obvestila iz transportnega kanala v aplikaciji</string>
-    <string name="usage_notification_text_source">Ukaz \"%1$s\" je izvedel \"%2$s\".</string>
+    <string name="usage_notification_text_source">\"%2$s\" je izvedel ukaz \"%1$s\".</string>
     <string name="setup_warnings_title">Nastavitve opozoril</string>
     <string name="missing_permissions_title">Manjkajoča dovoljenja</string>
     <string name="missing_permissions_description">Za delovanje aplikacije FMD so potrebna naslednja dovoljenja.</string>
