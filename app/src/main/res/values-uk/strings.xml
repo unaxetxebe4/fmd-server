@@ -108,10 +108,10 @@
     <string name="cmd_stats_response">Статистика мережі:
 \n
 \nIP-адреси пристрою:
-\n%s
+\n%1$s
 \n
 \nWi-Fi мережі:
-\n%s</string>
+\n%2$s</string>
     <string name="perm_camera_name">Камера</string>
     <string name="perm_location_name">Розташування</string>
     <string name="app_description">FMD (Find My Device) дозволяє віддалено визначити місцезнаходження вашого пристрою. Ви можете спілкуватися з FMD через SMS, месенджери або за допомогою FMD Server. Знайдіть свій пристрій, увімкніть дзвінок, заблокуйте його або витріть всі дані - і все це дистанційно.</string>
@@ -121,7 +121,7 @@
     <string name="server_unregister_failed_body">Скасування реєстрації завершилося невдало з наступною помилкою: {ERROR}
 \n
 \nВи можете продовжити в будь-якому випадку, але ваш обліковий запис не було видалено з сервера. Якщо ви продовжите, ваш обліковий запис буде видалено локально на цьому пристрої.</string>
-    <string name="cmd_missing_permissions">Неможливо виконати команду %s: Не вистачає дозволу(ів) %s.</string>
+    <string name="cmd_missing_permissions">Неможливо виконати команду %1$s: Не вистачає дозволу(ів) %2$s.</string>
     <string name="cmd_delete_response_success">Тепер пристрій слід видалити. До побачення!</string>
     <string name="cmd_gps_response_on">GPS увімкнено.</string>
     <string name="cmd_gps_response_off">GPS вимкнено.</string>
@@ -202,4 +202,12 @@
     <string name="crashed_text">Ящур зазнав поразки! Ось журнал:</string>
     <string name="crashed_send_log">Надіслати журнал</string>
     <string name="crashed_continue_without">Продобжити без звіту</string>
+    <string name="usage_notification_text_source">Команда «%1$s» була виконана «%2$s».</string>
+    <string name="transport_inapp_title">У додатку</string>
+    <string name="transport_inapp_description">Надсилайте команди локально з FMD на ваш пристрій. Це корисно для тестування. FMD відповість сповіщенням.</string>
+    <string name="transport_inapp_send_command_title">Надсилання команд у додатку</string>
+    <string name="transport_inapp_send_command_command_placeholder">Команда</string>
+    <string name="transport_inapp_send_command_button_send">Надіслати</string>
+    <string name="Notification_InApp">Канал транспортування в додатку</string>
+    <string name="Notification_InApp_Description">Сповіщення з каналу транспортування в додатку</string>
 </resources>
