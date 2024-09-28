@@ -66,4 +66,21 @@
     <string name="Notification_Usage">Użycie</string>
     <string name="Notification_Security">Bezpieczeństwo</string>
     <string name="Notification_FAIL">Błędy</string>
+    <string name="OpenCellId_tower_collector_info">Możesz pomóc w rozwoju OpenCelliD zbierając i udostępniając dane o nadajnikach sieci komórkowej. Jest do tego potrzebna dedykowana aplikacja, taka jak np. Tower Collector.</string>
+    <string name="OpenCellId_tower_collector_download">Pobierz Tower Collector</string>
+    <string name="OpenCellId_open_website">Strona OpenCelliD</string>
+    <string name="OpenCellId_test_opencellid">Przetestuj połączenie OpenCelliD</string>
+    <string name="OpenCellId_test_no_connection">Brak połączenia</string>
+    <string name="settings_exported">Ustawienia zostały wyeksportowane</string>
+    <string name="Log_Alert_LogData">LogData</string>
+    <string name="app_description">FMD (Find My Device) pozwala na zdalne kontrolowanie Twojego urządzenia. Możesz komunikować się z FMD poprzez SMS, komunikatory, lub poprzez serwer FMD. Zlokalizuj, zadzwoń, zablokuj lub nawet wyczyść - zrobisz to wszystko zdalnie.</string>
+    <string name="notify_crypto_update_text">Musisz zaktualizować niektóre ustawienia, aby dalej korzystać z FMD. Kliknij, aby to zrobić.</string>
+    <string name="server_unregister_failed_title">Wyrejestrowywanie nie powiodło się</string>
+    <string name="cmd_gps_description_short">Włącz/wyłącz GPS</string>
+    <string name="cmd_help_description_short">Pokaż pomoc</string>
+    <string name="cmd_gps_response_on">GPS włączony.</string>
+    <string name="cmd_delete_response_pwd_wrong">Nie można usunąć: błędne hasło.</string>
+    <string name="cmd_delete_response_success">Urządzenie powinno być już usunięte. Do zobaczenia!</string>
+    <string name="cmd_gps_response_off">GPS wyłączony.</string>
+    <string name="cmd_locate_description_short">Zlokalizuj urządzenie</string>
 </resources>

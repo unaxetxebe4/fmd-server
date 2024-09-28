@@ -131,11 +131,11 @@
     <string name="cmd_stats_response">Statistiques réseau :
 \n
 \nAdresses IP de l\'appareil :
-\n%s
+\n%1$s
 \n
 \nRéseaux Wifi :
-\n%s</string>
-    <string name="cmd_missing_permissions">Impossible d\'exécuter la commande %s : autorisation(s) manquante(s) %s.</string>
+\n%2$s</string>
+    <string name="cmd_missing_permissions">Impossible d\'exécuter la commande %1$s : autorisation(s) manquante(s) %2$s.</string>
     <string name="cmd_camera_description_long">Prend une photo avec la caméra avant/arrière et l\'envoie vers le serveur FMD. Actuellement, seule le transfert vers le serveur FMD est pris en charge. Vous pouvez également envoyer cette commande via d\'autres canaux de communication, et la photo sera téléversée vers le serveur FMD (si un compte existe).</string>
     <string name="cmd_delete_description_long">Cela efface toutes les données. Par la suite, vous ne pourrez plus communiquer avec l\'appareil. Pour prévenir une utilisation accidentelle et malveillante, cette commande requiert un mot de passe et doit être explicitement activée dans les paramètres.</string>
     <string name="cmd_locate_description_short">Localise l\'appareil</string>
@@ -208,4 +208,9 @@
     <string name="crashed_continue_without">Continuer sans signaler</string>
     <string name="OpenCellId_tower_collector_download">Télécharger \"Tower Collector\"</string>
     <string name="OpenCellId_tower_collector_info">Vous pouvez contribuer à OpenCelliD en collectant et en envoyant des informations sur les tours cellulaire. Vous avez besoin d\'une application dédiée pour ça. Un exemple est \"Tower Collector\".</string>
+    <string name="transport_inapp_send_command_button_send">Envoyer</string>
+    <string name="transport_inapp_description">Envoyez des commandes localement à partir de FMD à votre appareil. Cela est utile pour faire des tests. FMD répondra avec une notification.</string>
+    <string name="transport_inapp_send_command_title">Envoyer une commande intégrée à l\'application</string>
+    <string name="transport_inapp_title">Intégré à l\'application</string>
+    <string name="transport_inapp_send_command_command_placeholder">Commande</string>
 </resources>
