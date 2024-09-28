@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
@@ -42,6 +43,9 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
 
     private TextView textViewServerUrl;
     private TextView textViewUserId;
+    private ImageView buttonCopyServerUrl;
+    private ImageView buttonCopyUserId;
+    private TextView textViewConnectionStatus;
     private Button changePasswordButton;
     private Button logoutButton;
     private Button deleteButton;
@@ -71,6 +75,7 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
 
         textViewServerUrl = findViewById(R.id.textViewServerUrl);
         textViewUserId = findViewById(R.id.textViewUserId);
+        textViewConnectionStatus = findViewById(R.id.textViewConnectionStatus);
         textViewServerUrl.setText((String) settings.get(Settings.SET_FMDSERVER_URL));
         textViewUserId.setText((String) settings.get(Settings.SET_FMDSERVER_ID));
 
@@ -134,6 +139,8 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
         } else {
             textViewPushHelp.setText(R.string.Settings_FMDServer_Push_Description_Missing);
         }
+
+        checkConnection();
     }
 
     @Override
@@ -296,4 +303,22 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
         );
     }
 
+    private void checkConnection() {
+        // Check if we can connect to the server and can log in (i.e., get an access token)
+        fmdServerRepo.getAccessToken(
+                response -> {
+                    textViewConnectionStatus.setText(R.string.Settings_FMD_Server_Connection_Status_Success);
+                    textViewConnectionStatus.setTextColor(ContextCompat.getColor(this, R.color.md_theme_primary));
+                    textViewConnectionStatus.setOnClickListener(v -> {
+                    });
+                },
+                error -> {
+                    textViewConnectionStatus.setText(error.toString());
+                    textViewConnectionStatus.setTextColor(ContextCompat.getColor(this, R.color.md_theme_error));
+                    textViewConnectionStatus.setOnClickListener(v -> {
+                        Utils.copyToClipboard(this, "", error.toString());
+                    });
+                }
+        );
+    }
 }
