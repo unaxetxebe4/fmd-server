@@ -243,6 +243,12 @@ public class AddAccountActivity extends AppCompatActivity implements TextWatcher
                         + getString(R.string.request_failed_response_body) + ": " + new String(error.networkResponse.data) + "\n";
             }
             message += getString(R.string.request_failed_exception) + ": " + error.getMessage();
+
+            // Override and show nice error message in this special case
+            if (error.networkResponse != null && error.networkResponse.statusCode == 401) {
+                message = getString(R.string.server_registration_token_error);
+            }
+
             String finalMessage = message; // needed to be able to use it in Lambda
 
             AlertDialog.Builder builder = new MaterialAlertDialogBuilder(this);
