@@ -60,8 +60,11 @@ class CellLocationProvider<T>(
             },
             onError = {
                 Log.i(TAG, "Failed to get location from OpenCelliD")
-                val msg =
-                    context.getString(R.string.cmd_locate_response_opencellid_failed) + it.url + "\n\n" + paras.prettyPrint()
+                val msg = context.getString(
+                    R.string.cmd_locate_response_opencellid_failed,
+                    it.url,
+                    paras.prettyPrint()
+                )
                 transport.send(context, msg)
                 deferred.complete(Unit)
             },
