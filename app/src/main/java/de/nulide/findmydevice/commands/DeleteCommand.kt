@@ -16,7 +16,7 @@ import kotlinx.coroutines.CoroutineScope
 
 class DeleteCommand(context: Context) : Command(context) {
     companion object {
-        private val TAG = this::class.simpleName
+        private val TAG = DeleteCommand::class.simpleName
     }
 
     override val keyword = "delete"

@@ -19,9 +19,6 @@ import kotlinx.coroutines.launch
 
 
 class LocateCommand(context: Context) : Command(context) {
-    companion object {
-        private val TAG = this::class.simpleName
-    }
 
     override val keyword = "locate"
     override val usage = "locate [last | all | cell | gps]"

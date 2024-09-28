@@ -26,7 +26,7 @@ class GpsLocationProvider<T>(
 ) : LocationProvider(), LocationListener {
 
     companion object {
-        private val TAG = this::class.simpleName
+        private val TAG = GpsLocationProvider::class.simpleName
 
         @JvmStatic
         fun isGpsOn(context: Context): Boolean {

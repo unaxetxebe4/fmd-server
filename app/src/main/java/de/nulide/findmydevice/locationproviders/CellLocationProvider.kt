@@ -22,7 +22,7 @@ class CellLocationProvider<T>(
 ) : LocationProvider() {
 
     companion object {
-        private val TAG = this::class.simpleName
+        private val TAG = CellLocationProvider::class.simpleName
     }
 
     override fun getAndSendLocation(): Deferred<Unit> {

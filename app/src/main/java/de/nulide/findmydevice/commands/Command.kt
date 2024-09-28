@@ -18,7 +18,7 @@ import kotlinx.coroutines.CoroutineScope
 
 abstract class Command(val context: Context) {
     companion object {
-        private val TAG = this::class.simpleName
+        private val TAG = Command::class.simpleName
     }
 
     open val settings: Settings =
