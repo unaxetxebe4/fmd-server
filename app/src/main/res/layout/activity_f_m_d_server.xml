@@ -38,6 +38,14 @@
                 tools:text="https://fmd.example.com" />
 
             <ImageView
+                android:id="@+id/buttonOpenWebClient"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:padding="8dp"
+                android:src="@drawable/ic_open_in_new" />
+
+            <ImageView
                 android:id="@+id/buttonCopyServerUrl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
