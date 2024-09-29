@@ -29,7 +29,11 @@
     <string name="cmd_help_message_start">Příkazy FindMyDevice:</string>
     <string name="cmd_locate_last_known_location_text">Poslední známá poloha</string>
     <string name="cmd_locate_last_known_location_not_available">Není známa poslední poloha. Vyžádejte nejnovější polohu pro vynucení aktualizace polohy.</string>
-    <string name="cmd_locate_response_opencellid_failed">Chyba při získávání polohy z OpenCelliD. Vyzkoušejte prosím následující odkaz. Důležité parametry jsou „lat“ a „lon“.</string>
+    <string name="cmd_locate_response_opencellid_failed">Chyba při získávání polohy z OpenCelliD. To se může stát, když se mobilní věž nenachází v databázi.
+\n
+\nVyzkoušejte prosím následující odkaz: %1$s
+\n
+\n%2$s</string>
     <string name="Toast_Empty_FMDCommand">Prázdný příkaz není povolen
 \n Vracím se na default.[fmd]</string>
     <string name="Log_Alert_LogData">LogData</string>
@@ -217,4 +221,7 @@
     <string name="transport_inapp_send_command_command_placeholder">Příkaz</string>
     <string name="transport_inapp_send_command_button_send">Poslat</string>
     <string name="usage_notification_text_source">Příkaz „%1$s“ vykonal „%2$s“.</string>
+    <string name="Settings_FMD_Server_Connection_Status">Stav spojení:</string>
+    <string name="server_registration_token_error">Síťový požadavek se nezdařil (HTTP 401). To se může stát, pokud server vyžaduje registrační token a zadaný token byl chybný.</string>
+    <string name="Settings_FMD_Server_Connection_Status_Success">Úspěch</string>
 </resources>
