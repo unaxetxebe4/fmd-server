@@ -84,6 +84,10 @@ public class FMDSMSService extends FmdJobService {
             Logger.logSession(TAG, "Cannot handle SMS: msg is empty!");
             return false;
         }
+        String fmdTriggerWord = (String) settings.get(Settings.SET_FMD_COMMAND);
+        if (!msg.contains(fmdTriggerWord)) {
+            return false;
+        }
 
         Transport<String> transport = new SmsTransport(this, phoneNumber);
         CommandHandler<String> commandHandler = new CommandHandler<>(transport, this.getCoroutineScope(), this);
