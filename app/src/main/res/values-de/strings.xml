@@ -191,7 +191,11 @@
     <string name="cmd_nodisturb_response_off">Der \"Bitte Nicht Stören\"-Modus ist nun ausgeschaltet.</string>
     <string name="usage_notification_text">Der Befehl \"%s\" wurde ausgeführt.</string>
     <string name="Settings_Import_Failed">Import fehlgeschlagen</string>
-    <string name="cmd_locate_response_opencellid_failed">Fehler beim Finden des Standorts mit OpenCelliD. Bitte versuche stattdessen den folgenden Link. Die wichtigen Parameter sind \"lat\" und \"lon\".</string>
+    <string name="cmd_locate_response_opencellid_failed">Fehler beim Abrufen des Standorts aus OpenCelliD. Dies kann passieren, wenn der Mobilfunkmast nicht in der Datenbank enthalten ist.
+\n
+\nBitte versuchen Sie den folgenden Link: %1$s
+\n
+\n%2$s</string>
     <string name="cmd_locate_last_known_location_not_available">Kein letzter bekannter Standort. Frage den aktuellen Standort an, um ein Standort-Update zu erzwingen.</string>
     <string name="transport_sms_description_note">SMS kann Kosten verursachen, sowohl für dich als auch für die Personen, die dir SMS schicken. Für SMS muss deine SIM-Karte entsperrt sein (z. B. nach einem Neustart).</string>
     <string name="transport_notification_reply_title">Antworten auf Benachrichtigungen</string>
@@ -235,4 +239,7 @@
     <string name="Notification_InApp_Description">Benachrichtigungen vom In-App-Transportkanal</string>
     <string name="transport_inapp_description">Sende Befehle lokal von FMD an dein Gerät. Das ist nützlich zum Testen. FMD antwortet mit einer Benachrichtigung.</string>
     <string name="usage_notification_text_source">Der Befehl \"%1$s\" wurde von \"%2$s\" ausgeführt.</string>
+    <string name="Settings_FMD_Server_Connection_Status">Verbindungsstatus:</string>
+    <string name="Settings_FMD_Server_Connection_Status_Success">Erfolg</string>
+    <string name="server_registration_token_error">Die Netzwerkanfrage ist mit HTTP 401 fehlgeschlagen. Dies kann passieren, wenn der Server ein Registrierungs-Token benötigt und das von Ihnen angegebene Token falsch war.</string>
 </resources>
