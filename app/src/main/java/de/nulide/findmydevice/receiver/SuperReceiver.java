@@ -15,7 +15,6 @@ import de.nulide.findmydevice.data.io.JSONFactory;
 import de.nulide.findmydevice.data.io.json.JSONMap;
 import de.nulide.findmydevice.data.io.json.JSONWhiteList;
 import de.nulide.findmydevice.utils.Logger;
-import de.nulide.findmydevice.utils.Notifications;
 
 
 abstract class SuperReceiver extends BroadcastReceiver {
@@ -35,6 +34,5 @@ abstract class SuperReceiver extends BroadcastReceiver {
             cal.add(Calendar.MINUTE, -5);
             config.set(ConfigSMSRec.CONF_LAST_USAGE, cal.getTimeInMillis());
         }
-        Notifications.init(context, false);
     }
 }

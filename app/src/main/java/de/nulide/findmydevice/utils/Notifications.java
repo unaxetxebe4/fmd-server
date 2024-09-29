@@ -26,37 +26,34 @@ public class Notifications {
     public static final int CHANNEL_FAILED = 47;
     public static final int CHANNEL_IN_APP = 48;
 
-    private static boolean silent;
-
     public static void notify(Context context, String title, String text, int channelID) {
-        if (!silent) {
-            NotificationCompat.Builder builder = new NotificationCompat.Builder(context, Integer.valueOf(channelID).toString())
-                    .setSmallIcon(R.drawable.ic_notification)
-                    .setContentTitle(title)
-                    .setContentText(text)
-                    .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                    .setStyle(new NotificationCompat.BigTextStyle().bigText(text));
-            if (channelID == CHANNEL_SECURITY) {
-                Intent intent = new Intent(context, MainActivity.class);
-                PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE);
-                builder.setAutoCancel(true);
-                builder.setContentIntent(pendingIntent);
-            }
-            NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, Integer.valueOf(channelID).toString())
+                .setSmallIcon(R.drawable.ic_notification)
+                .setContentTitle(title)
+                .setContentText(text)
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setStyle(new NotificationCompat.BigTextStyle().bigText(text));
 
-            if (ActivityCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
-                Logger.log("Notifications", "Cannot send notification: missing permission POST_NOTIFICATIONS");
-                Logger.log("Notifications", title + ": " + text);
-                return;
-            }
-
-            int notificationId = (int) System.currentTimeMillis(); // any unique ID
-            notificationManager.notify(notificationId, builder.build());
+        if (channelID == CHANNEL_SECURITY) {
+            Intent intent = new Intent(context, MainActivity.class);
+            PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE);
+            builder.setAutoCancel(true);
+            builder.setContentIntent(pendingIntent);
         }
+
+        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+            Logger.log("Notifications", "Cannot send notification: missing permission POST_NOTIFICATIONS");
+            Logger.log("Notifications", title + ": " + text);
+            return;
+        }
+
+        int notificationId = (int) System.currentTimeMillis(); // any unique ID
+
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
+        notificationManager.notify(notificationId, builder.build());
     }
 
-    public static void init(Context context, boolean silentWish) {
-        silent = silentWish;
+    public static void init(Context context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel channel1 = new NotificationChannel(Integer.valueOf(CHANNEL_USAGE).toString(), context.getString(R.string.Notification_Usage), NotificationManager.IMPORTANCE_DEFAULT);
             channel1.setDescription(context.getString(R.string.Notification_Usage_Description));

@@ -71,7 +71,6 @@ public class FMDSMSService extends FmdJobService {
             cal.add(Calendar.MINUTE, -5);
             config.set(ConfigSMSRec.CONF_LAST_USAGE, cal.getTimeInMillis());
         }
-        Notifications.init(this, false);
 
         String phoneNumber = params.getExtras().getString(DESTINATION);
         String msg = params.getExtras().getString(MESSAGE);

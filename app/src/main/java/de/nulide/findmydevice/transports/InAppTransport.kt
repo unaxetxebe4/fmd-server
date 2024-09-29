@@ -67,7 +67,7 @@ fun onTestCommandClicked(activity: AppCompatActivity) {
             context.getString(R.string.transport_inapp_send_command_button_send)
         ) { _, _ ->
             val transport = InAppTransport(context)
-            val commandHandler = CommandHandler(transport, activity.lifecycleScope, null)
+            val commandHandler = CommandHandler(transport, activity.lifecycleScope, null, false)
             val command = editTextCommand.text.toString()
             commandHandler.execute(context, command)
         }
