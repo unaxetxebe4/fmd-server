@@ -185,7 +185,7 @@
     <string name="MH_Pin_Accepted">PIN akzeptiert!</string>
     <string name="LockScreen_Backbutton_pressed">LockScreenMessage: Zrugg-Taste isch druckt worde.</string>
     <string name="ringer_stop_ringing">HÖR UF LÜÜTE</string>
-    <string name="cmd_locate_response_opencellid_failed">Fehler bim Finde vom Standort mit OpenCelliD. Bitte probier de folgendi Link. Die wichtige Parameter sind \"lat\" und \"lon\".</string>
+    <string name="cmd_locate_response_opencellid_failed">Fehler bim Finde vom Standort mit OpenCelliD. Bitte probier de folgendi Link. %1$s\n\n%2$s\nDie wichtige Parameter sind \"lat\" und \"lon\".</string>
     <string name="cmd_locate_last_known_location_not_available">Kein letzte bekannte Standort. Frög de aktuelli Standort aa zum es Standort-Update becho.</string>
     <string name="cmd_lock_description_long">Sperrs Gerät und zeig optional en Nachricht ufem Sperrbildschirm aa. Nachher isch d Biometrie nüme verfügbar und es brucht s Gerätepasswort zum entsperre.</string>
     <string name="transport_sms_description">Schick Befehl per SMS a dis Gerät. Schick z.B. es SMS mit \"fmd help\" a dis Gerät. FMD wird per SMS antworte.</string>
