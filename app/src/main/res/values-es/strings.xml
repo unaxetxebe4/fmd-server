@@ -30,7 +30,11 @@
     <string name="Pin_Usage">Uso del PIN</string>
     <string name="Notification_Usage_Description">Notificaciones cuando FMD está recibiendo comandos</string>
     <string name="Notification_Pin_Usage_Description">Las notificaciones cuando se accede a FMD se realizan a través del PIN</string>
-    <string name="cmd_locate_response_opencellid_failed">Error al obtener la ubicación de OpenCelliD. Por favor, pruebe con el siguiente enlace. Los parámetros importantes son \"lat\" y \"lon\".</string>
+    <string name="cmd_locate_response_opencellid_failed">Error al obtener la localización desde OpenCelliD. Esto puede ocurrir si la torre celular no está en la base de datos.
+\n
+\nPor favor, intente lo siguiente: %1$s
+\n
+\n%2$s</string>
     <string name="LockScreen_Usage_detectd">LockScreenMessage: Uso detectado.</string>
     <string name="LockScreen_Backbutton_pressed">Mensaje de la Pantalla de Bloqueo: Botón de Retroceso pulsado.</string>
     <string name="Toast_Empty_FMDCommand">Comando Vacío no permitido
@@ -217,4 +221,7 @@
     <string name="usage_notification_text_source">El comando \"%1$s\" fue ejecutado por \"%2$s\".</string>
     <string name="Notification_InApp_Description">Notificaciones del canal de transmisión en la aplicación</string>
     <string name="Notification_InApp">Canal de transmisión en la aplicación</string>
+    <string name="Settings_FMD_Server_Connection_Status">Estado de la conexión:</string>
+    <string name="Settings_FMD_Server_Connection_Status_Success">Éxito</string>
+    <string name="server_registration_token_error">La solicitud de red ha fallado con HTTP 401. Esto puede ocurrir si el servidor requiere un token de registro y el token que proporcionaste era incorrecto.</string>
 </resources>
