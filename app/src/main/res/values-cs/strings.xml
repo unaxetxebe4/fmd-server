@@ -224,4 +224,6 @@
     <string name="Settings_FMD_Server_Connection_Status">Stav spojení:</string>
     <string name="server_registration_token_error">Síťový požadavek se nezdařil (HTTP 401). To se může stát, pokud server vyžaduje registrační token a zadaný token byl chybný.</string>
     <string name="Settings_FMD_Server_Connection_Status_Success">Úspěch</string>
+    <string name="server_login_attempts_title">Nezdařené pokusy o přihlášení k serveru FMD</string>
+    <string name="server_login_attempts_text">Někdo se pokusil přihlásit do vašeho účtu „%s“ na serveru FMD. Z důvodu několika nezdařených pokusů o zadání hesla je účet nyní na 10 minut uzamčen.</string>
 </resources>
