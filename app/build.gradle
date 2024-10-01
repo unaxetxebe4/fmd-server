@@ -16,6 +16,9 @@ android {
     lint {
         baseline = file("lint-baseline.xml")
         lintOptions {
+            // There may be extra translations (strings in other languages that don't exist
+            // in strings.xml anymore) temporarily, until Weblate automatically deletes them.
+            disable 'ExtraTranslation'
             disable 'MissingTranslation'
         }
     }
