@@ -210,4 +210,10 @@
     <string name="transport_inapp_send_command_button_send">Надіслати</string>
     <string name="Notification_InApp">Канал транспортування в додатку</string>
     <string name="Notification_InApp_Description">Сповіщення з каналу транспортування в додатку</string>
+    <string name="Log_Alert_LogData">Дані журналу</string>
+    <string name="Settings_FMD_Server_Connection_Status">Стан зʼєднання:</string>
+    <string name="Settings_FMD_Server_Connection_Status_Success">Успішно</string>
+    <string name="server_registration_token_error">Не вдалося виконати мережевий запит з помилкою HTTP 401. Це може статися, якщо сервер вимагає токен реєстрації, а ви надали неправильний токен.</string>
+    <string name="server_login_attempts_title">Невдалі спроби входу на сервер FMD</string>
+    <string name="server_login_attempts_text">Хтось намагався увійти до вашого облікового запису FMD Server «%s». Через кілька невдалих спроб входу обліковий запис заблоковано на 10 хвилин.</string>
 </resources>
