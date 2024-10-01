@@ -72,7 +72,6 @@
     <string name="cmd_help_message_start">FindMyDevice наредби:</string>
     <string name="cmd_locate_description_short">Пронајди го уредот</string>
     <string name="cmd_locate_description_long">Пронајди го уредот преку еден или повеќе давачи на позиција. Системскиот давач на позиција обично е ГПС, понекогаш во комбинација со други извори. Секундарниот давач е OpenCelliD, кој користи база на позиции на телефонски кули.</string>
-    <string name="cmd_locate_response_opencellid_failed">Грешка при стекнување позиција од OpenCelliD. Те молам пробај да ја следиш врската. Битните параметри се „lat“ и „lon“.</string>
     <string name="cmd_locate_last_known_location_text">Последна позната позиција</string>
     <string name="perm_camera_name">Камера</string>
     <string name="perm_device_admin_name">Администратор на уред</string>

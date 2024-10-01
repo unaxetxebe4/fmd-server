@@ -30,7 +30,6 @@
     <string name="Pin_Usage">Использование PIN-кода</string>
     <string name="Notification_Usage_Description">Уведомления при получении FMD команд</string>
     <string name="Notification_Pin_Usage_Description">Уведомления при доступе к FMD с использованием PIN-кода</string>
-    <string name="cmd_locate_response_opencellid_failed">Ошибка получения местоположения от OpenCelliD. Пожалуйста, попробуйте данную ссылку. Важные параметры - это \"lon\" (долгота) и \"lat\" (широта).</string>
     <string name="LockScreen_Usage_detectd">Сообщение на экране блокировки: Обнаружено использование устройства.</string>
     <string name="LockScreen_Backbutton_pressed">Сообщение на экране блокировки: Нажата кнопка \"Назад\".</string>
     <string name="Toast_Empty_FMDCommand">Пустая команда недопустима

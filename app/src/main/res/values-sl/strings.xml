@@ -198,7 +198,6 @@
     <string name="cmd_camera_description_long">Posname sliko s sprednjo/zadnjo kamero in jo naloži na FMD strežnik. Trenutno je podprto samo nalaganje slik na FMD strežnik. Ta ukaz lahko pošljete tudi prek drugih transportnih kanalov in slika bo naložena na FMD strežnik (če imate na njem aktiven račun).</string>
     <string name="cmd_gps_response_on">GPS je vključen.</string>
     <string name="cmd_locate_description_long">Poišče napravo z enim ali več viri lokacije. Na nivoju operacijskega sistema je vir običajno GPS, včasih s kombinacijo drugih virov. Drugi vir je OpenCellID, ki uporablja bazo podatkov o lokacijah baznih postaj.</string>
-    <string name="cmd_locate_response_opencellid_failed">Napaka pri pridobivanju lokacije iz OpenCellID. Poskusite s sledečo povezavo. Pomembna parametra sta \"lat\" in \"lon\".</string>
     <string name="cmd_lock_response">Naprava je sedaj zaklenjena.</string>
     <string name="perm_overlay_name">Prikaz nad drugimi aplikacijami</string>
     <string name="perm_write_secure_settings_name">Write Secure nastavitev</string>
