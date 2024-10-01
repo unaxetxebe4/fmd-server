@@ -21,7 +21,6 @@
 \nMessage du propriétaire :</string>
     <string name="Notification_Usage_Description">Notifications lorsque FMD reçoit des commandes</string>
     <string name="Notification_Pin_Usage_Description">Notifications lorsque FMD est utilisé avec le code PIN</string>
-    <string name="cmd_locate_response_opencellid_failed">Erreur lors de l\'obtention de la localisation depuis OpenCelliD. Veuillez suivre le lien ci-dessous. Les paramètres importants sont \"lat\" et \"lon\".</string>
     <string name="LockScreen_Usage_detectd">LockScreenMessage : Usage detecté.</string>
     <string name="LockScreen_Backbutton_pressed">LockScreenMessage : Bouton retour pressé.</string>
     <string name="Settings_Ringer_Tone_Description">Sélectionnez une sonnerie qui sera jouée lors de l\'envoi de la commande fmd ring.</string>

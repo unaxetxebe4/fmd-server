@@ -58,7 +58,6 @@
     <string name="Pin_Usage">Utilizzo Pin</string>
     <string name="Notification_Usage_Description">Notifica sull\'utilizzo del servizio.</string>
     <string name="Notification_Pin_Usage_Description">Notifica sull\'utilizzo del pin.</string>
-    <string name="cmd_locate_response_opencellid_failed">Errore durante l\'acquisizione della posizione da OpenCelliD. Si prega di provare il seguente link. I parametri necessari sono \"lon\" e \"lat\".</string>
     <string name="LockScreen_Usage_detectd">MessaggioBloccoSchermo: Rilevato utilizzo.</string>
     <string name="LockScreen_Backbutton_pressed">MessaggioBloccoSchermo: Premuto pulsante Indietro.</string>
     <string name="Toast_Empty_FMDCommand">Comando vuoto non consentito
@@ -127,6 +126,6 @@
     <string name="allowlist_add_phone_number">aggiungi numero di telefono</string>
     <string name="allowlist_phone_number_name">nome</string>
     <string name="allowlist_phone_number">numero di telefono</string>
-    <string name="cmd_missing_permissions">Impossibile eseguire il comando %s: Permessi mancanti %s.</string>
+    <string name="cmd_missing_permissions">Impossibile eseguire il comando %1$s: Permessi mancanti %2$s.</string>
     <string name="cmd_camera_response_no_fmd_server">Impossibile fare foto: non esistono account dell\'FMD server.</string>
 </resources>

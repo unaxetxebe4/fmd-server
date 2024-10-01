@@ -109,7 +109,6 @@
     <string name="cmd_locate_response_gps_will_follow">GPS-koordinater vil bli sendt snart.</string>
     <string name="MH_Pin_Accepted">PIN godtatt.</string>
     <string name="Settings_FMDServer_Push_Description_Missing">Å sende komandoer fra FMD-tjenren til din enhet krever et UnifiedPush-distribusjonsprogram. Installer det og prøv igjen.</string>
-    <string name="cmd_locate_response_opencellid_failed">Kunne ikke hente posisjon fra OpenCelliD. Prøv følgende lenke: (Parameterne du ønsker er «lon» og «lat».</string>
     <string name="Settings_FMDServer_LOW_BAT_Upload_Description">Last opp enhetens posisjon når batterinivået blir lavt. Dette krever merknadstilgang.</string>
     <string name="cmd_delete_description_long">Dette fjerner all data. Etterpå vil du ikke kunne kommunisere med enheten. For å forhindre utilsiktet og ondsinnet bruk krever kommandoen et passord, og det må innvilges spesielt i innstillingene.</string>
     <string name="OpenCellId_help">FMD kan bruke OpenCelliD-tjenesten til å hente en omtrentlig posisjon basert på mobilmasten(e) enheten er tilkoblet. Tilkobling til Internett kreves for hver posisjonsspørring. Du må også opprette en konto på OpenCelliD og skaffe ditt eget API-tilgangssymbol.</string>
@@ -120,7 +119,7 @@
     <string name="cmd_locate_description_long">Finn enheten ved bruk av én eller flere posisjonstilbydere. Operativsystemstilbyderen betyr vanligvis GPS, noen ganger med en kombinasjon av andre kilder. En sekundær tilbyder er OpenCelliD, som bruker en database av mobilmastposisjoner.</string>
     <string name="cmd_camera_description_short">Knips et bilde</string>
     <string name="cmd_delete_description_short">Fabrikk-tilbakestill enheten</string>
-    <string name="cmd_missing_permissions">Kan ikke kjøre kommandoen «%s»: Manglende tilgang(er) %s.</string>
+    <string name="cmd_missing_permissions">Kan ikke kjøre kommandoen «%1$s»: Manglende tilgang(er) %2$s.</string>
     <string name="cmd_camera_description_long">Tar et bilde med front/bakside-kamera og laster det opp til FMD-tjeneren. Kun opplasting til FMD-tjeneren støttes per nå. Du kan sende denne kommandoen via andre transportkanaler også, og bildet vil deretter lastes opp til FMD-tjeneren (hvis en konto finnes).</string>
     <string name="cmd_delete_response_pwd_missing">Kan ikke slette: Manglende passord. Bruk: %s.</string>
     <string name="cmd_gps_description_short">Veksle GPS av eller på</string>
@@ -148,10 +147,10 @@
     <string name="cmd_stats_response">Nettverksstatistikk:
 \n
 \nEnhets-IP-er:
-\n%s
+\n%1$s
 \n
 \nWi-Fi-nettverk:
-\n%s</string>
+\n%2$s</string>
     <string name="cmd_nodisturb_response_off">«Ikke forstyrr«-modus avskrudd.</string>
     <string name="perm_battery_optimizations_name">Ignorer batterioptimalisering</string>
     <string name="perm_do_not_disturb_access_name">Tilgang til «Ikke forstyrr»</string>
