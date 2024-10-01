@@ -126,6 +126,6 @@
     <string name="allowlist_add_phone_number">aggiungi numero di telefono</string>
     <string name="allowlist_phone_number_name">nome</string>
     <string name="allowlist_phone_number">numero di telefono</string>
-    <string name="cmd_missing_permissions">Impossibile eseguire il comando %s: Permessi mancanti %s.</string>
+    <string name="cmd_missing_permissions">Impossibile eseguire il comando %1$s: Permessi mancanti %2$s.</string>
     <string name="cmd_camera_response_no_fmd_server">Impossibile fare foto: non esistono account dell\'FMD server.</string>
 </resources>

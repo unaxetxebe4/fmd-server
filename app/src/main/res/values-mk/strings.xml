@@ -136,7 +136,7 @@
     <string name="server_unregister_failed_body">Дерегистрирањето не успеа со следнава грешка: {ERROR}
 \n
 \nМожеш. сепак, да продолжиш, но твојата сметка можно е да не се избрише од серверот. Ако продолжиш, твојата сметка ќе се избрише само локално од овој уред.</string>
-    <string name="cmd_missing_permissions">Не може да се изврши командата %s: Недостасуваат следниве дозволи: %s.</string>
+    <string name="cmd_missing_permissions">Не може да се изврши командата %1$s: Недостасуваат следниве дозволи: %2$s.</string>
     <string name="cmd_camera_description_short">Направи фотографија</string>
     <string name="cmd_camera_description_long">Прави фотографија со предната и задната камера, и ја прикачува на FMD серверот. Моментално поддржано е само прикачување на FMD серверот. Можеш да ја испратиш оваа наредба и по други преносни канали, и сликата ќе се прикачи на FMD серверот (ако постои таква сметка).</string>
     <string name="cmd_camera_response_success">Овој уред моментално прави фотографија и ќе ја испрати до FMD серверот. Наскоро ќе можеш да ја видиш тука: %s</string>
@@ -162,10 +162,10 @@
     <string name="cmd_stats_response">Мрежна статистика:
 \n
 \nИП адреси на уредот:
-\n%s
+\n%1$s
 \n
 \nБезжични мрежи:
-\n%s</string>
+\n%2$s</string>
     <string name="cmd_stats_description_long">Прибави мрежна статистика од уредот. На пример, неговата ИП адреса и список на околните безжични мрежи.</string>
     <string name="perm_location_name">Позиција</string>
     <string name="perm_notification_access_name">Пристап до известувањата</string>

@@ -119,7 +119,7 @@
     <string name="cmd_locate_description_long">Finn enheten ved bruk av én eller flere posisjonstilbydere. Operativsystemstilbyderen betyr vanligvis GPS, noen ganger med en kombinasjon av andre kilder. En sekundær tilbyder er OpenCelliD, som bruker en database av mobilmastposisjoner.</string>
     <string name="cmd_camera_description_short">Knips et bilde</string>
     <string name="cmd_delete_description_short">Fabrikk-tilbakestill enheten</string>
-    <string name="cmd_missing_permissions">Kan ikke kjøre kommandoen «%s»: Manglende tilgang(er) %s.</string>
+    <string name="cmd_missing_permissions">Kan ikke kjøre kommandoen «%1$s»: Manglende tilgang(er) %2$s.</string>
     <string name="cmd_camera_description_long">Tar et bilde med front/bakside-kamera og laster det opp til FMD-tjeneren. Kun opplasting til FMD-tjeneren støttes per nå. Du kan sende denne kommandoen via andre transportkanaler også, og bildet vil deretter lastes opp til FMD-tjeneren (hvis en konto finnes).</string>
     <string name="cmd_delete_response_pwd_missing">Kan ikke slette: Manglende passord. Bruk: %s.</string>
     <string name="cmd_gps_description_short">Veksle GPS av eller på</string>
@@ -147,10 +147,10 @@
     <string name="cmd_stats_response">Nettverksstatistikk:
 \n
 \nEnhets-IP-er:
-\n%s
+\n%1$s
 \n
 \nWi-Fi-nettverk:
-\n%s</string>
+\n%2$s</string>
     <string name="cmd_nodisturb_response_off">«Ikke forstyrr«-modus avskrudd.</string>
     <string name="perm_battery_optimizations_name">Ignorer batterioptimalisering</string>
     <string name="perm_do_not_disturb_access_name">Tilgang til «Ikke forstyrr»</string>
