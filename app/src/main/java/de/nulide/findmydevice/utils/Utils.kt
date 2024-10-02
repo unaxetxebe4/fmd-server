@@ -26,11 +26,10 @@ class Utils {
         }
 
         @JvmStatic
-        fun pasteFromClipboard(context: Context): CharSequence {
+        fun pasteFromClipboard(context: Context): CharSequence? {
             val clipboardManager =
                 context.getSystemService(AppCompatActivity.CLIPBOARD_SERVICE) as ClipboardManager
-            val item = clipboardManager.primaryClip!!.getItemAt(0)
-            return item.text
+            return clipboardManager.primaryClip?.getItemAt(0)?.text
         }
 
         @JvmStatic
