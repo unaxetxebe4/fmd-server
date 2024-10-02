@@ -96,10 +96,11 @@ public class Settings extends HashMap<Integer, Object> {
                 case SET_FIRST_TIME_CONTACT_ADDED:
                     //case SET_FIRST_TIME_FMD_SERVER:
                 case SET_FMDSERVER_PASSWORD_SET:
-                case SET_FMD_LOW_BAT_SEND:
                     //case SET_FMD_CRYPT_NEW_SALT:
                 case SET_UPDATEBOARDING_MODERN_CRYPTO_COMPLETED:
                     return false;
+                case SET_FMD_LOW_BAT_SEND:
+                    return true;
                 case SET_FMD_COMMAND:
                     return "fmd";
                 case SET_FMDSERVER_UPDATE_TIME:
