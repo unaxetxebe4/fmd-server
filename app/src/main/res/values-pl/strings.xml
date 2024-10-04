@@ -83,4 +83,16 @@
     <string name="cmd_delete_response_success">Urządzenie powinno być już usunięte. Do zobaczenia!</string>
     <string name="cmd_gps_response_off">GPS wyłączony.</string>
     <string name="cmd_locate_description_short">Zlokalizuj urządzenie</string>
+    <string name="request_failed_response_body">Treść odpowiedzi</string>
+    <string name="Settings_FMDServer_Update_Interval_Title">Czas między aktualizacjami</string>
+    <string name="Settings_FMDServer_Location_Type_Title">Źródło lokalizacji</string>
+    <string name="perm_notification_access_name">Dostęp do aktualizacji</string>
+    <string name="Notification_Server">Serwer FMD</string>
+    <string name="Settings_FMD_Server_Connection_Status_Success">Sukces</string>
+    <string name="transport_inapp_title">W aplikacji</string>
+    <string name="transport_inapp_send_command_button_send">Wyślij</string>
+    <string name="transport_inapp_send_command_command_placeholder">Komenda</string>
+    <string name="required_permissions_title">Wymaga pozwolenia</string>
+    <string name="optional_permissions_title">Opcjonalne zgody</string>
+    <string name="transport_fmd_server_title">Serwer FMD</string>
 </resources>
