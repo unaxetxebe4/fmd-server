@@ -26,6 +26,12 @@ import java.util.Calendar
 
 class ThirdPartyAccessService : NotificationListenerService() {
 
+    companion object {
+        // LineageOS 21 / Android 14: android, BatterySaverStateMachine
+        private val BATTERY_PACKAGE_NAMES = listOf("com.android.systemui", "android")
+        private val BATTERY_TAGS = listOf("low_battery", "BatterySaverStateMachine")
+    }
+
     private lateinit var settings: Settings
     private lateinit var allowlist: Allowlist
     private lateinit var config: ConfigSMSRec
@@ -67,9 +73,9 @@ class ThirdPartyAccessService : NotificationListenerService() {
         }
 
         if (settings[Settings.SET_FMD_LOW_BAT_SEND] as Boolean) {
-            if (packageName == "com.android.systemui") {
+            if (packageName in BATTERY_PACKAGE_NAMES) {
                 val tag = sbn.tag
-                if (tag != null && tag == "low_battery") {
+                if (tag != null && tag in BATTERY_TAGS) {
                     BatteryLowReceiver.handleLowBatteryUpload(this)
                     return
                 }
