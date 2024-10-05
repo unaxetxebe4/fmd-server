@@ -242,4 +242,6 @@
     <string name="Settings_FMD_Server_Connection_Status">Verbindungsstatus:</string>
     <string name="Settings_FMD_Server_Connection_Status_Success">Erfolg</string>
     <string name="server_registration_token_error">Die Netzwerkanfrage ist mit HTTP 401 fehlgeschlagen. Dies kann passieren, wenn der Server ein Registrierungs-Token benötigt und das von Ihnen angegebene Token falsch war.</string>
+    <string name="server_login_attempts_title">Fehlgeschlagene Anmeldeversuche in FMD Server</string>
+    <string name="server_login_attempts_text">Jemand hat versucht sich in dein FMD Server-Account \"%s\" einzuloggen. Wegen mehrerer falscher Passwortversuche ist das Account nun für 10 Minuten gesperrt.</string>
 </resources>
