@@ -185,7 +185,7 @@
     <string name="MH_Pin_Accepted">PIN akzeptiert!</string>
     <string name="LockScreen_Backbutton_pressed">LockScreenMessage: Zrugg-Taste isch druckt worde.</string>
     <string name="ringer_stop_ringing">HÖR UF LÜÜTE</string>
-    <string name="cmd_locate_response_opencellid_failed">Fehler bim Finde vom Standort mit OpenCelliD. Bitte probier de folgendi Link. %1$s\n\n%2$s\nDie wichtige Parameter sind \"lat\" und \"lon\".</string>
+    <string name="cmd_locate_response_opencellid_failed">Fähler bim Finde vom Standort mit OpenCelliD. Das chan passiere wenn de Mobilfunkmaste nöd ide Datebank isch.\n\nBitte probier de folgendi Link: %1$s\n\n%2$s</string>
     <string name="cmd_locate_last_known_location_not_available">Kein letzte bekannte Standort. Frög de aktuelli Standort aa zum es Standort-Update becho.</string>
     <string name="cmd_lock_description_long">Sperrs Gerät und zeig optional en Nachricht ufem Sperrbildschirm aa. Nachher isch d Biometrie nüme verfügbar und es brucht s Gerätepasswort zum entsperre.</string>
     <string name="transport_sms_description">Schick Befehl per SMS a dis Gerät. Schick z.B. es SMS mit \"fmd help\" a dis Gerät. FMD wird per SMS antworte.</string>
@@ -215,4 +215,9 @@
     <string name="Notification_InApp_Description">Benachrichtigunge vom In-App-Transportkanal</string>
     <string name="usage_notification_text_source">De Befehl \"%1$s\" isch vo \"%2$s\" usgeführt worde.</string>
     <string name="transport_inapp_description">Schick Befehl lokal vo FMD a dis Grät. Das isch nützlich zum Teschte. FMD antwortet mit enere Benachrichtigung.</string>
+    <string name="Settings_FMD_Server_Connection_Status">Verbindigsstatus:</string>
+    <string name="Settings_FMD_Server_Connection_Status_Success">Erfolg</string>
+    <string name="server_login_attempts_title">Fehlglaschgeni Loginafraage bim FMD Server</string>
+    <string name="server_login_attempts_text">Öpper het probiert sich i din FMD Server-Account \"%s\" iizlogge. Wege mehrerer falscher Passwörter isch din Account jetzt für 10 Minute gsperrt.</string>
+    <string name="server_registration_token_error">Netzwerkafraage fehlgschlage mit HTTP 401. Das chan passiere wenn de Server es Registration Token brucht und s Token wo du agää hesch falsch gsi isch.</string>
 </resources>
