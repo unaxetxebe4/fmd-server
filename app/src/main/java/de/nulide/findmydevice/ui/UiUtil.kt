@@ -28,6 +28,5 @@ fun setupPermissionsList(
         val pView = PermissionView(title.context)
         pView.setPermission(p, activity, hideDescription)
         list.addView(pView)
-        activity.lifecycle.addObserver(pView)
     }
 }
