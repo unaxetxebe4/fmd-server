@@ -5,6 +5,8 @@ import android.app.job.JobParameters;
 import android.app.job.JobScheduler;
 import android.content.ComponentName;
 import android.content.Context;
+import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.util.Log;
 
 import de.nulide.findmydevice.commands.CommandHandler;
@@ -27,7 +29,15 @@ public class FMDServerLocationUploadService extends FmdJobService {
 
     private static final int JOB_ID = 108;
 
+    private static final String EXTRA_RECURRING = "EXTRA_RECURRING";
+
+    private boolean recurring = false;
+
     public static void scheduleJob(Context context, long delayMinutes) {
+        scheduleJob(context, delayMinutes, true);
+    }
+
+    public static void scheduleJob(Context context, long delayMinutes, boolean recurring) {
         Settings settings = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(context)).getSettings();
         if (((Integer) settings.get(Settings.SET_FMDSERVER_LOCATION_TYPE)) == 3) {
             // user requested NOT to upload any location at regular intervals
@@ -48,6 +58,10 @@ public class FMDServerLocationUploadService extends FmdJobService {
 
         builder.setPersisted(true);
 
+        PersistableBundle extras = new PersistableBundle();
+        extras.putBoolean(EXTRA_RECURRING, recurring);
+        builder.setExtras(extras);
+
         JobScheduler jobScheduler = context.getSystemService(JobScheduler.class);
         jobScheduler.schedule(builder.build());
     }
@@ -60,6 +74,9 @@ public class FMDServerLocationUploadService extends FmdJobService {
     @Override
     public boolean onStartJob(JobParameters params) {
         super.onStartJob(params);
+
+        PersistableBundle extras = params.getExtras();
+        recurring = extras.getBoolean(EXTRA_RECURRING);
 
         Log.d(TAG, "Starting background upload job");
         Settings settings = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(this)).getSettings();
@@ -107,7 +124,9 @@ public class FMDServerLocationUploadService extends FmdJobService {
     @Override
     public void jobFinished() {
         super.jobFinished();
-        scheduleNextOccurrence();
+        if (recurring) {
+            scheduleNextOccurrence();
+        }
     }
 
     private void scheduleNextOccurrence() {
