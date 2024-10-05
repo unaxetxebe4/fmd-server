@@ -11,8 +11,6 @@ public class ConfigSMSRec extends HashMap<Integer, Object> {
     public static final int CONF_TEMP_WHITELISTED_CONTACT = 1;
     public static final int CONF_TEMP_WHITELISTED_CONTACT_ACTIVE_SINCE = 2;
 
-    public static final int CONF_TEMP_BAT_CHECK = 10;
-
     public <T> void set(int key, T value) {
         super.put(key, value);
         IO.write(JSONFactory.convertTempConfigSMSRec(this), IO.SMSReceiverTempData);

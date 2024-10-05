@@ -69,6 +69,7 @@ public class Settings extends HashMap<Integer, Object> {
     public static final int SET_LAST_KNOWN_LOCATION_LAT = 502;
     public static final int SET_LAST_KNOWN_LOCATION_LON = 503;
     public static final int SET_LAST_KNOWN_LOCATION_TIME = 504;
+    public static final int SET_LAST_LOW_BAT_UPLOAD = 505;
 
 
     public static final String DEFAULT_FMD_SERVER_URL = "https://fmd.nulide.de";
@@ -124,8 +125,10 @@ public class Settings extends HashMap<Integer, Object> {
                 //case SET_GPS_STATE:
                 //    return 1;
                 case SET_APP_CRASHED_LOG_ENTRY:
-                case SET_LAST_KNOWN_LOCATION_TIME:
                     return -1;
+                case SET_LAST_KNOWN_LOCATION_TIME:
+                case SET_LAST_LOW_BAT_UPLOAD:
+                    return -1L;
             }
         }
         return "";
