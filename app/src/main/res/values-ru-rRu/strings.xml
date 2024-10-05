@@ -216,4 +216,14 @@
     <string name="transport_inapp_send_command_button_send">Отправить</string>
     <string name="Notification_InApp">Транспортный канал \"Из приложения\"</string>
     <string name="Notification_InApp_Description">Уведомления от транспортного канала \"Из приложения\"</string>
+    <string name="Settings_FMD_Server_Connection_Status">Статус соединения:</string>
+    <string name="Settings_FMD_Server_Connection_Status_Success">Успешно</string>
+    <string name="server_login_attempts_title">Неудачные попытки входа на FMD Сервер</string>
+    <string name="server_login_attempts_text">Кто-то пытался войти в ваш аккаунт FMD Сервера \"%s\". В связи с множественными неудачными попытками входа, аккаунт был заблокирован на 10 минут.</string>
+    <string name="cmd_locate_response_opencellid_failed">Ошибка получения местоположения с OpenCelliD. Это может произойти, если сотовая вышка не находится в базе данных.
+\n
+\nПожалуйста, попробуйте использовать следующую ссылку: %1$s
+\n
+\n%2$s</string>
+    <string name="server_registration_token_error">Не удалось совершить сетевой запрос из-за ошибки HTTP 401. Это может произойти в случае, если сервер требует токен регистрации, а предоставленный вами токен был неверным.</string>
 </resources>
