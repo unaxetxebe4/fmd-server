@@ -5,11 +5,16 @@ import android.content.Context
 import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
+import android.location.LocationRequest
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import de.nulide.findmydevice.R
+import de.nulide.findmydevice.data.Settings
+import de.nulide.findmydevice.data.SettingsRepoSpec
+import de.nulide.findmydevice.data.SettingsRepository
 import de.nulide.findmydevice.permissions.LocationPermission
 import de.nulide.findmydevice.permissions.WriteSecureSettingsPermission
 import de.nulide.findmydevice.transports.Transport
@@ -64,7 +69,10 @@ class GpsLocationProvider<T>(
                     TAG,
                     "Cannot run fmd locate: GPS is off and missing permission WRITE_SECURE_SETTINGS"
                 )
-                transport.send(context, context.getString(R.string.cmd_locate_response_location_off))
+                transport.send(
+                    context,
+                    context.getString(R.string.cmd_locate_response_location_off)
+                )
                 def.complete(Unit)
                 return def
             }
@@ -72,6 +80,12 @@ class GpsLocationProvider<T>(
 
         transport.send(context, context.getString(R.string.cmd_locate_response_gps_will_follow))
         Log.d(TAG, "Requesting location update from GPS")
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            getAndSendLocationAndroid12()
+            return def
+        }
+
         for (provider in locationManager.allProviders) {
             // we may be in a background thread due to being in a coroutine,
             // but this needs to be called on the main thread
@@ -82,16 +96,91 @@ class GpsLocationProvider<T>(
         return def
     }
 
+    @SuppressLint("MissingPermission")
+    @RequiresApi(Build.VERSION_CODES.S)
+    private fun getAndSendLocationAndroid12() {
+        Log.d(TAG, "Using getCurrentLocation() on Android 12+")
+        val FIVE_MINS_MILLIS = 300_000L
+        val locationRequest = LocationRequest.Builder(2000L)
+            .setQuality(LocationRequest.QUALITY_HIGH_ACCURACY)
+            .setDurationMillis(FIVE_MINS_MILLIS) // timeout before it fails
+            .build()
+        val consumer = { location: Location? ->
+            if (location != null) {
+                onLocationChanged(location)
+            } else {
+                // Fall back to getting the last known location.
+                // The last location known by the LocationManager may still be newer
+                // than the last location known by FMD.
+                getLastKnownLocation(true)
+            }
+        }
+        locationManager.getCurrentLocation(
+            LocationManager.FUSED_PROVIDER,
+            locationRequest,
+            null,
+            context.mainExecutor,
+            consumer
+        )
+    }
+
+    @SuppressLint("MissingPermission")
+    fun getLastKnownLocation(asFallBackForCurrentLocation: Boolean = false) {
+        val lastLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+
+        val settings = SettingsRepository.getInstance(SettingsRepoSpec(context)).settings
+        val cachedLat = settings.get(Settings.SET_LAST_KNOWN_LOCATION_LAT) as String
+        val cachedLon = settings.get(Settings.SET_LAST_KNOWN_LOCATION_LON) as String
+        val cachedTimeMillis = settings.get(Settings.SET_LAST_KNOWN_LOCATION_TIME) as Long
+        val isCacheValid = cachedLat.isNotEmpty() && cachedLon.isNotEmpty()
+
+        if (lastLocation == null) {
+            if (asFallBackForCurrentLocation) {
+                // If current location was requested originally, don't fall back to cached location.
+                transport.send(context, context.getString(R.string.cmd_locate_response_gps_fail))
+            } else if (isCacheValid) {
+                // If last location was requested, fall back to cached location.
+                val provider = context.getString(R.string.cmd_locate_last_known_location_text)
+                transport.sendNewLocation(context, provider, cachedLat, cachedLon, cachedTimeMillis)
+            } else {
+                // No location and nothing to fall back to.
+                transport.send(
+                    context,
+                    context.getString(R.string.cmd_locate_last_known_location_not_available)
+                )
+            }
+        } else {
+            // If the last location from the LocationManager is newer than our cached location,
+            // update our cached location.
+            if (lastLocation.time > cachedTimeMillis) {
+                onLocationChanged(lastLocation)
+            } else {
+                val provider = context.getString(R.string.cmd_locate_last_known_location_text)
+                transport.sendNewLocation(
+                    context,
+                    provider,
+                    cachedLat,
+                    cachedLon,
+                    cachedTimeMillis
+                )
+            }
+        }
+        cleanup()
+    }
+
     override fun onLocationChanged(location: Location) {
         val provider = location.provider ?: "GPS"
         val lat = location.latitude.toString()
         val lon = location.longitude.toString()
-        val timeMillis = Calendar.getInstance(TimeZone.getTimeZone("UTC")).timeInMillis
         Log.d(TAG, "Location found by $provider")
 
-        storeLastKnownLocation(lat, lon, timeMillis)
-        transport.sendNewLocation(context, provider, lat, lon, timeMillis)
+        storeLastKnownLocation(lat, lon, location.time)
+        transport.sendNewLocation(context, provider, lat, lon, location.time)
 
+        cleanup()
+    }
+
+    private fun cleanup() {
         if (isGpsTurnedOnByUs) {
             SecureSettings.turnGPS(context, false)
         }
