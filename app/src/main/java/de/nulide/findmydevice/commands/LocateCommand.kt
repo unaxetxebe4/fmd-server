@@ -4,15 +4,12 @@ import android.content.Context
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import de.nulide.findmydevice.R
-import de.nulide.findmydevice.data.Settings
 import de.nulide.findmydevice.locationproviders.CellLocationProvider
 import de.nulide.findmydevice.locationproviders.GpsLocationProvider
-import de.nulide.findmydevice.locationproviders.LocationProvider
 import de.nulide.findmydevice.permissions.LocationPermission
 import de.nulide.findmydevice.permissions.WriteSecureSettingsPermission
 import de.nulide.findmydevice.services.FmdJobService
 import de.nulide.findmydevice.transports.Transport
-import de.nulide.findmydevice.utils.Utils
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -47,7 +44,7 @@ class LocateCommand(context: Context) : Command(context) {
 
         // fmd locate last
         if (args.contains("last")) {
-            handleLocationLastKnown(transport)
+            GpsLocationProvider(context, transport).getLastKnownLocation()
             // Even if last location is not available, return here.
             // Because requesting "last" explicitly asks not to refresh the location.
             job?.jobFinished()
@@ -77,25 +74,5 @@ class LocateCommand(context: Context) : Command(context) {
             job?.jobFinished()
         }
         coroutineScope.launch(Dispatchers.IO) { lambda() }
-    }
-
-    private fun <T> handleLocationLastKnown(transport: Transport<T>) {
-        val lat = settings.get(Settings.SET_LAST_KNOWN_LOCATION_LAT) as String
-        val lon = settings.get(Settings.SET_LAST_KNOWN_LOCATION_LON) as String
-        val timeMillis = settings.get(Settings.SET_LAST_KNOWN_LOCATION_TIME) as Long
-
-        val msg = if (lat.isNotEmpty() && lon.isNotEmpty()) {
-            val batteryLevel = Utils.getBatteryLevel(context)
-            LocationProvider.buildLocationString(
-                context.getString(R.string.cmd_locate_last_known_location_text),
-                lat,
-                lon,
-                batteryLevel,
-                timeMillis,
-            )
-        } else {
-            context.getString(R.string.cmd_locate_last_known_location_not_available)
-        }
-        transport.send(context, msg)
     }
 }
