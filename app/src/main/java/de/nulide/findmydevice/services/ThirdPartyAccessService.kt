@@ -13,18 +13,22 @@ import de.nulide.findmydevice.data.SettingsRepository
 import de.nulide.findmydevice.data.io.IO
 import de.nulide.findmydevice.data.io.JSONFactory
 import de.nulide.findmydevice.data.io.json.JSONMap
-import de.nulide.findmydevice.transports.FmdServerTransport
+import de.nulide.findmydevice.receiver.BatteryLowReceiver
 import de.nulide.findmydevice.transports.NotificationReplyTransport
-import de.nulide.findmydevice.transports.Transport
 import de.nulide.findmydevice.utils.Logger
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancel
 import java.util.Calendar
-import java.util.Date
 
 class ThirdPartyAccessService : NotificationListenerService() {
+
+    companion object {
+        // LineageOS 21 / Android 14: android, BatterySaverStateMachine
+        private val BATTERY_PACKAGE_NAMES = listOf("com.android.systemui", "android")
+        private val BATTERY_TAGS = listOf("low_battery", "BatterySaverStateMachine")
+    }
 
     private lateinit var settings: Settings
     private lateinit var config: ConfigSMSRec
@@ -60,10 +64,10 @@ class ThirdPartyAccessService : NotificationListenerService() {
         }
 
         if (settings[Settings.SET_FMD_LOW_BAT_SEND] as Boolean) {
-            if (packageName == "com.android.systemui") {
+            if (packageName in BATTERY_PACKAGE_NAMES) {
                 val tag = sbn.tag
-                if (tag != null && tag == "low_battery") {
-                    handleLowBatteryNotification()
+                if (tag != null && tag in BATTERY_TAGS) {
+                    BatteryLowReceiver.handleLowBatteryUpload(this)
                     return
                 }
             }
@@ -86,23 +90,6 @@ class ThirdPartyAccessService : NotificationListenerService() {
             commandHandler.execute(this, message)
 
             cancelNotification(sbn.key)
-        }
-    }
-
-    // TODO: maybe rename this service to better reflect that it handles this as well?
-    private fun handleLowBatteryNotification() {
-        val lastTime = config[ConfigSMSRec.CONF_TEMP_BAT_CHECK] as? Long?
-        val nowTime = Date().time
-        config.set(ConfigSMSRec.CONF_TEMP_BAT_CHECK, nowTime)
-
-        if (lastTime == null || lastTime + 60000 < nowTime) {
-            Logger.log("BatteryWarning", "Low Battery detected: sending message.")
-
-            val transport: Transport<Unit> = FmdServerTransport(this)
-            val commandHandler = CommandHandler(transport, coroutineScope, null)
-
-            val locateCommand = settings[Settings.SET_FMD_COMMAND].toString() + " locate"
-            commandHandler.execute(this, locateCommand)
         }
     }
 }

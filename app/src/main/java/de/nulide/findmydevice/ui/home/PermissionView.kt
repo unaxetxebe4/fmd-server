@@ -6,6 +6,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import de.nulide.findmydevice.databinding.ItemPermissionBinding
@@ -29,10 +30,11 @@ class PermissionView @JvmOverloads constructor(
         updateView()
     }
 
-    fun setPermission(p: Permission, activity: Activity, hideDescription: Boolean = false) {
+    fun setPermission(p: Permission, activity: AppCompatActivity, hideDescription: Boolean = false) {
         this.p = p
         this.activity = activity
         this.hideDescription = hideDescription
+        activity.lifecycle.addObserver(this)
         updateView()
     }
 

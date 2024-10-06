@@ -31,8 +31,10 @@ import de.nulide.findmydevice.data.SettingsRepoSpec;
 import de.nulide.findmydevice.data.SettingsRepository;
 import de.nulide.findmydevice.net.FMDServerApiRepoSpec;
 import de.nulide.findmydevice.net.FMDServerApiRepository;
+import de.nulide.findmydevice.permissions.NotificationAccessPermission;
 import de.nulide.findmydevice.receiver.PushReceiver;
 import de.nulide.findmydevice.services.FMDServerLocationUploadService;
+import de.nulide.findmydevice.ui.home.PermissionView;
 import de.nulide.findmydevice.utils.CypherUtils;
 import de.nulide.findmydevice.utils.UnregisterUtil;
 import de.nulide.findmydevice.utils.Utils;
@@ -128,6 +130,9 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
         checkBoxLowBat = findViewById(R.id.checkBoxFMDServerLowBatUpload);
         checkBoxLowBat.setChecked((Boolean) settings.get(Settings.SET_FMD_LOW_BAT_SEND));
         checkBoxLowBat.setOnCheckedChangeListener(this);
+
+        PermissionView notificationAccessPerm = findViewById(R.id.perm_notification_access);
+        notificationAccessPerm.setPermission(new NotificationAccessPermission(), this, true);
     }
 
     @Override
