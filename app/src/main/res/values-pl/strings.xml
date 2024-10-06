@@ -95,4 +95,5 @@
     <string name="required_permissions_title">Wymaga pozwolenia</string>
     <string name="optional_permissions_title">Opcjonalne zgody</string>
     <string name="transport_fmd_server_title">Serwer FMD</string>
+    <string name="cmd_lock_description_short">Zablokuj urządzenie</string>
 </resources>
