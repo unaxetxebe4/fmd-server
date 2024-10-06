@@ -12,7 +12,7 @@ import java.util.Calendar;
 
 import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.commands.CommandHandler;
-import de.nulide.findmydevice.data.Allowlist;
+import de.nulide.findmydevice.data.AllowlistRepository;
 import de.nulide.findmydevice.data.ConfigSMSRec;
 import de.nulide.findmydevice.data.Contact;
 import de.nulide.findmydevice.data.Settings;
@@ -21,7 +21,6 @@ import de.nulide.findmydevice.data.SettingsRepository;
 import de.nulide.findmydevice.data.io.IO;
 import de.nulide.findmydevice.data.io.JSONFactory;
 import de.nulide.findmydevice.data.io.json.JSONMap;
-import de.nulide.findmydevice.data.io.json.JSONWhiteList;
 import de.nulide.findmydevice.transports.SmsTransport;
 import de.nulide.findmydevice.transports.Transport;
 import de.nulide.findmydevice.utils.Logger;
@@ -63,7 +62,7 @@ public class FMDSMSService extends FmdJobService {
         Logger.init(Thread.currentThread(), this);
 
         settings = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(this)).getSettings();
-        Allowlist allowlist = JSONFactory.convertJSONWhiteList(IO.read(JSONWhiteList.class, IO.whiteListFileName));
+        AllowlistRepository allowlistRepo = AllowlistRepository.Companion.getInstance(this);
         ConfigSMSRec config = JSONFactory.convertJSONConfig(IO.read(JSONMap.class, IO.SMSReceiverTempData));
 
         if (config.get(ConfigSMSRec.CONF_LAST_USAGE) == null) {
@@ -93,7 +92,7 @@ public class FMDSMSService extends FmdJobService {
         CommandHandler<String> commandHandler = new CommandHandler<>(transport, this.getCoroutineScope(), this);
 
         // Case 1: phone number in Allowed Contacts
-        for (Contact c : allowlist) {
+        for (Contact c : allowlistRepo.getList()) {
             if (PhoneNumberUtils.compare(c.getNumber(), phoneNumber)) {
                 Logger.logSession(TAG, phoneNumber + " used FMD via allowlist");
                 commandHandler.execute(this, msg);

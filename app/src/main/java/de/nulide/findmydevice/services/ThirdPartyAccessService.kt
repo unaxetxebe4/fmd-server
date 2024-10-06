@@ -6,7 +6,6 @@ import android.service.notification.NotificationListenerService
 import android.service.notification.StatusBarNotification
 import de.nulide.findmydevice.commands.CommandHandler
 import de.nulide.findmydevice.commands.CommandHandler.Companion.checkAndRemovePin
-import de.nulide.findmydevice.data.Allowlist
 import de.nulide.findmydevice.data.ConfigSMSRec
 import de.nulide.findmydevice.data.Settings
 import de.nulide.findmydevice.data.SettingsRepoSpec
@@ -14,7 +13,6 @@ import de.nulide.findmydevice.data.SettingsRepository
 import de.nulide.findmydevice.data.io.IO
 import de.nulide.findmydevice.data.io.JSONFactory
 import de.nulide.findmydevice.data.io.json.JSONMap
-import de.nulide.findmydevice.data.io.json.JSONWhiteList
 import de.nulide.findmydevice.transports.FmdServerTransport
 import de.nulide.findmydevice.transports.NotificationReplyTransport
 import de.nulide.findmydevice.transports.Transport
@@ -29,7 +27,6 @@ import java.util.Date
 class ThirdPartyAccessService : NotificationListenerService() {
 
     private lateinit var settings: Settings
-    private lateinit var allowlist: Allowlist
     private lateinit var config: ConfigSMSRec
 
     private val coroutineScope = CoroutineScope(Dispatchers.IO + Job())
@@ -38,12 +35,6 @@ class ThirdPartyAccessService : NotificationListenerService() {
         IO.context = context
         Logger.init(Thread.currentThread(), context)
 
-        allowlist = JSONFactory.convertJSONWhiteList(
-            IO.read(
-                JSONWhiteList::class.java,
-                IO.whiteListFileName
-            )
-        )
         settings = SettingsRepository.getInstance(SettingsRepoSpec(this)).settings
         config = JSONFactory.convertJSONConfig(IO.read(JSONMap::class.java, IO.SMSReceiverTempData))
 

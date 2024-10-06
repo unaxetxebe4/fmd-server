@@ -25,21 +25,18 @@ import java.util.LinkedList;
 import java.util.List;
 
 import de.nulide.findmydevice.R;
-import de.nulide.findmydevice.data.Allowlist;
+import de.nulide.findmydevice.data.AllowlistRepository;
 import de.nulide.findmydevice.data.Contact;
 import de.nulide.findmydevice.data.Settings;
 import de.nulide.findmydevice.data.SettingsRepoSpec;
 import de.nulide.findmydevice.data.SettingsRepository;
-import de.nulide.findmydevice.data.io.IO;
-import de.nulide.findmydevice.data.io.JSONFactory;
-import de.nulide.findmydevice.data.io.json.JSONWhiteList;
 import de.nulide.findmydevice.ui.allowlist.AllowlistAdapter;
 import kotlin.Unit;
 
 
 public class AllowlistActivity extends AppCompatActivity {
 
-    private Allowlist allowlist;
+    private AllowlistRepository allowlistRepository;
     private Settings settings;
 
     private AllowlistAdapter allowlistAdapter;
@@ -53,7 +50,7 @@ public class AllowlistActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_allowlist);
 
-        allowlist = JSONFactory.convertJSONWhiteList(IO.read(JSONWhiteList.class, IO.whiteListFileName));
+        allowlistRepository = AllowlistRepository.Companion.getInstance(this);
         settings = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(this)).getSettings();
 
         allowlistAdapter = new AllowlistAdapter(this::onDeleteContact);
@@ -68,13 +65,13 @@ public class AllowlistActivity extends AppCompatActivity {
     }
 
     private void updateScreen() {
-        if (allowlist.isEmpty()) {
+        if (allowlistRepository.getList().isEmpty()) {
             textWhitelistEmpty.setVisibility(View.VISIBLE);
         } else {
             textWhitelistEmpty.setVisibility(View.GONE);
         }
 
-        allowlistAdapter.submitList(allowlist);
+        allowlistAdapter.submitContactList(allowlistRepository.getList());
     }
 
     private void onAddPhoneNumberClicked(View v) {
@@ -167,8 +164,8 @@ public class AllowlistActivity extends AppCompatActivity {
 
     private void addContactToAllowList(Contact contact) {
         if (contact != null) {
-            if (!allowlist.checkForDuplicates(contact)) {
-                allowlist.add(contact);
+            if (!allowlistRepository.contains(contact)) {
+                allowlistRepository.add(contact);
                 updateScreen();
 
                 if (!(Boolean) settings.get(Settings.SET_FIRST_TIME_CONTACT_ADDED)) {
@@ -190,7 +187,7 @@ public class AllowlistActivity extends AppCompatActivity {
     }
 
     private Unit onDeleteContact(String phoneNumber) {
-        allowlist.remove(phoneNumber);
+        allowlistRepository.remove(phoneNumber);
         updateScreen();
         // make Kotlin-interop happy
         return null;
