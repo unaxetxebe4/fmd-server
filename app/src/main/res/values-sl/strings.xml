@@ -226,4 +226,5 @@
 \nPoskusite s to povezavo: %1$s
 \n
 \n%2$s</string>
+    <string name="cmd_locate_response_gps_fail">Pridobivanje nove lokacije GPS ni uspelo. Morda je pretekla časovna omejitev.</string>
 </resources>
