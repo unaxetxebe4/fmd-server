@@ -226,4 +226,5 @@
     <string name="server_registration_token_error">La solicitud de red ha fallado con HTTP 401. Esto puede ocurrir si el servidor requiere un token de registro y el token que proporcionaste era incorrecto.</string>
     <string name="server_login_attempts_title">Intentos de inicio de sesión fallidos en el servidor FMD</string>
     <string name="server_login_attempts_text">Alguien intentó iniciar sesión en su cuenta de servidor FMD \" %s \". Debido a múltiples contraseñas incorrectas, la cuenta ahora está bloqueada durante 10 minutos.</string>
+    <string name="cmd_locate_response_gps_fail">Error al obtener una nueva ubicación GPS. Tal vez debido a un tiempo de espera.</string>
 </resources>
