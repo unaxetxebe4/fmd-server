@@ -16,6 +16,7 @@ const val TEMP_USAGE_VALIDITY_MILLIS = 10 * 60 * 1000 // 10 min
 
 data class TempAllowedNumber(
     val number: String,
+    val subscriptionId: Int,
     val createdTimeMillis: Long,
 ) {
     fun isExpired(): Boolean {
@@ -66,7 +67,7 @@ class TemporaryAllowlistRepository private constructor(private val context: Cont
         return false
     }
 
-    fun add(number: String) {
+    fun add(number: String, subscriptionId: Int) {
         val now = System.currentTimeMillis()
 
         for (ele in list) {
@@ -80,19 +81,19 @@ class TemporaryAllowlistRepository private constructor(private val context: Cont
         }
 
         // If it was not in the list
-        list.add(TempAllowedNumber(number, now))
+        list.add(TempAllowedNumber(number, subscriptionId, now))
         saveList()
     }
 
     /**
      * Removes all entries that have expired from the temporary allowlist.
      */
-    fun removeExpired(): List<String> {
-        val expired = mutableListOf<String>()
+    fun removeExpired(): List<Pair<String, Int>> {
+        val expired = mutableListOf<Pair<String,Int>>()
         for (ele in list) {
             if (ele.isExpired()) {
                 list.remove(ele)
-                expired.add(ele.number)
+                expired.add(ele.number to ele.subscriptionId)
             }
         }
         saveList()

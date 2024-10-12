@@ -101,7 +101,7 @@ public class FMDSMSService extends FmdJobService {
                 transport.send(this, getString(R.string.MH_Pin_Accepted));
                 Notifications.notify(this, "Pin", "The pin was used by the following number: " + phoneNumber + "\nPlease change the Pin!", Notifications.CHANNEL_PIN);
 
-                tempAllowlistRepo.add(phoneNumber);
+                tempAllowlistRepo.add(phoneNumber, subscriptionId);
                 TempContactExpiredService.scheduleJob(this, TEMP_USAGE_VALIDITY_MILLIS + 1000);
 
                 // TODO: Execute command directly if the message contains one
