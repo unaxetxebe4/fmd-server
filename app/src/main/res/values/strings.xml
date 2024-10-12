@@ -110,6 +110,9 @@
     <string name="allowlist_phone_number_name">Name</string>
     <string name="allowlist_phone_number">Phone Number</string>
 
+    <!-- Settings: Temporary Allowed Contacts -->
+    <string name="temporary_allowlist_expired">Your temporary FindMyDevice usage expired. To continue using FindMyDevice, send the PIN again in your next message.</string>
+
     <!-- Settings: OpenCelliD -->
     <string name="OpenCellId_OpenCellId" translatable="false">OpenCelliD</string>
     <string name="OpenCellId_API_Key_Description" translatable="false">API Access Token</string>

@@ -1,6 +1,5 @@
 package de.nulide.findmydevice.data.io;
 
-import de.nulide.findmydevice.data.ConfigSMSRec;
 import de.nulide.findmydevice.data.Settings;
 import de.nulide.findmydevice.data.LogData;
 import de.nulide.findmydevice.data.LogEntry;
@@ -21,20 +20,6 @@ public class JSONFactory {
     public static JSONMap convertSettings(Settings settings) {
         JSONMap jsonSettings = new JSONMap();
         jsonSettings.putAll(settings);
-        return jsonSettings;
-    }
-
-    public static ConfigSMSRec convertJSONConfig(JSONMap jsonSettings) {
-        ConfigSMSRec temp = new ConfigSMSRec();
-        if(jsonSettings != null) {
-            temp.putAll(jsonSettings);
-        }
-        return temp;
-    }
-
-    public static JSONMap convertTempConfigSMSRec(ConfigSMSRec configSMSRec) {
-        JSONMap jsonSettings = new JSONMap();
-        jsonSettings.putAll(configSMSRec);
         return jsonSettings;
     }
 

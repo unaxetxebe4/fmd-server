@@ -19,6 +19,7 @@ import de.nulide.findmydevice.data.io.IO;
 import de.nulide.findmydevice.permissions.PermissionsUtilKt;
 import de.nulide.findmydevice.receiver.PushReceiver;
 import de.nulide.findmydevice.services.FMDServerLocationUploadService;
+import de.nulide.findmydevice.services.TempContactExpiredService;
 import de.nulide.findmydevice.ui.home.CommandListFragment;
 import de.nulide.findmydevice.ui.home.TransportListFragment;
 import de.nulide.findmydevice.ui.onboarding.UpdateboardingModernCryptoActivity;
@@ -101,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
             // just in case it was still running
             FMDServerLocationUploadService.cancelJob(this);
         }
+        TempContactExpiredService.scheduleJob(this, 0);
         invalidateOptionsMenu();
     }
 
