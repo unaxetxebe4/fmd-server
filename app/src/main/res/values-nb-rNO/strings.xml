@@ -45,7 +45,6 @@
     <string name="Settings_FMDServer_Alert_PrivacyPolicy_Title">Personvernspraksis</string>
     <string name="password">Passord</string>
     <string name="registration_token">Registreringssymbol</string>
-    <string name="settings_exported">Innstillinger eksportert</string>
     <string name="about">Om</string>
     <string name="about_source_code">Kildekode</string>
     <string name="about_wiki">Wiki</string>
@@ -65,7 +64,6 @@
     <string name="Pin_Usage">PIN-bruk</string>
     <string name="Notification_Pin_Usage_Description">Merknad om PIN-bruk.</string>
     <string name="cmd_help_message_start">FindMyDevice-kommandoer:</string>
-    <string name="Log_Alert_LogData">Loggdata</string>
     <string name="Settings_Logs">Loggføring</string>
     <string name="server_unregister_failed_title">Avregistrering mislyktes</string>
     <string name="server_unregister_dont_continue">Ikke fortsett</string>

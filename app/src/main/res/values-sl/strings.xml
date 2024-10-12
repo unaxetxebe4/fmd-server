@@ -66,7 +66,6 @@
     <string name="Whitelist_help">Stiki na tem seznamu lahko pošiljajo FMD ukaze preko SMS sporočil. Ukazi vseh drugih stikov bodo prezrti.</string>
     <string name="Cell">Bazna postaja</string>
     <string name="request_failed_title">Omrežna zahteva ni uspela</string>
-    <string name="settings_exported">Nastavitve izvožene</string>
     <string name="about">O aplikaciji</string>
     <string name="about_source_code">Izvorna koda</string>
     <string name="OpenCellId_test_opencellid">Preveri OpenCellID povezavo</string>
@@ -97,7 +96,6 @@
     <string name="LockScreen_Backbutton_pressed">LockScreenMessage: pritisnjen gumb za nazaj.</string>
     <string name="Toast_Empty_FMDCommand">Prazen ukaz ni dovoljen
 \n Vrnitev na privzeto. [fmd]</string>
-    <string name="Log_Alert_LogData">Dnevniški zapisi</string>
     <string name="request_failed_status_code">Statusna koda</string>
     <string name="request_failed_response_body">Telo odgovora</string>
     <string name="request_failed_exception">Izjema</string>

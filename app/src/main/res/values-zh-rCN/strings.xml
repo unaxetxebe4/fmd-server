@@ -71,7 +71,6 @@
     <string name="Alert_First_Time_contact_added">恭喜。你刚刚添加了你的第一个联系人。你现在可以利用FMD发送包括“fmd”的内容通过允许的手机号码发送SMS信息。当一切工作正常时，应用程序会有所响应。</string>
     <string name="OpenCellId_help">FMD可以利用OpenCelliD服务来得到基于设备所链接的信号塔的近似位置。每次位置查询都需要因特网链接。您也需要在OpenCelliD创建一个账号并且获取您的API访问密钥。</string>
     <string name="OpenCellId_test_no_connection">没有移动网络连接</string>
-    <string name="settings_exported">设置已导出</string>
     <string name="about">关于</string>
     <string name="about_source_code">源代码</string>
     <string name="about_wiki">维基</string>

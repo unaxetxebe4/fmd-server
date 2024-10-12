@@ -36,7 +36,6 @@
 \n%2$s</string>
     <string name="Toast_Empty_FMDCommand">Prázdný příkaz není povolen
 \n Vracím se na default.[fmd]</string>
-    <string name="Log_Alert_LogData">LogData</string>
     <string name="Toast_Duplicate_contact">Tento kontakt již existuje.</string>
     <string name="copied">Zkopírováno</string>
     <string name="accept">Přijmout</string>
@@ -68,7 +67,6 @@
     <string name="OpenCellId_privacy">Soukromí: vezměte prosím v potaz, že se OpenCelliD dozví vaše aktuální mobilní věže a tím pádem vaší polohu při každém dotazu na API.</string>
     <string name="OpenCellId_test_opencellid">Vyzkoušet připojení k OpenCelliD</string>
     <string name="OpenCellId_test_no_connection">Žádné mobilní připojení</string>
-    <string name="settings_exported">Nastavení exportována</string>
     <string name="server_unregister_continue_anyway">Přesto pokračovat</string>
     <string name="Pin_Usage">Využití PINu</string>
     <string name="Notification_Server">Server FMD</string>

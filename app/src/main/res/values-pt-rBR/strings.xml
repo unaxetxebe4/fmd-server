@@ -42,7 +42,6 @@
     <string name="OpenCellId_help">O FMD usa o serviço OpenCelliD para obter uma localização aproximada baseada na torre de rede móvel que seu dispositivo está conectado. Uma conexão à internet é necessária para cada busca por localização. Você também precisará criar uma conta no OpenCelliD e obter seu próprio token de acesso à API.</string>
     <string name="OpenCellId_open_website">Abrir site do OpenCelliD</string>
     <string name="OpenCellId_test_no_connection">Sem conexão à redes móveis</string>
-    <string name="settings_exported">Configurações exportadas</string>
     <string name="about">Sobre</string>
     <string name="server_unregister_failed_body">Remover o registro falhou com o seguinte erro: {ERROR}
 \n
@@ -114,7 +113,6 @@
     <string name="MH_Pin_Accepted">PIN aceito!</string>
     <string name="cmd_locate_response_location_off">Desculpe, a localização está desativada.</string>
     <string name="ringer_stop_ringing">PARAR DE TOCAR</string>
-    <string name="Log_Alert_LogData">Dados de Registro</string>
     <string name="Toast_Empty_FMDCommand">Comando vazio não permitido
 \n Retornando ao padrão. [fmd]</string>
     <string name="cmd_missing_permissions">Não foi possível executar o comando %1$s: Faltando a(s) permissão(ões) %2$s.</string>

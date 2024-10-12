@@ -57,7 +57,6 @@
     <string name="OpenCellId_open_website">OpenCelliD-Websiite Öffne</string>
     <string name="OpenCellId_test_opencellid">OpenCelliD-Verbindig teschte</string>
     <string name="OpenCellId_test_no_connection">Kei Mobilfunkverbindig</string>
-    <string name="settings_exported">Iistellige exportiert</string>
     <string name="about">Über</string>
     <string name="about_source_code">Quellcode</string>
     <string name="about_wiki">Wiki</string>
@@ -172,7 +171,6 @@
     <string name="bottom_nav_transports">Transportkanäl</string>
     <string name="bottom_nav_settings">Iistellige</string>
     <string name="WhiteList_no_contact_picker">Kei Kontakt-Uuswahl-Aawendig gfunde!</string>
-    <string name="Log_Alert_LogData">Log Date</string>
     <string name="cmd_help_message_start">FindMyDevice Befehl:</string>
     <string name="cmd_locate_response_location_off">Ortung fehlgschlage: de Standort isch abgstellt.</string>
     <string name="cmd_locate_response_gps_will_follow">D GPS Koordinate werdet gad gschickt.</string>
