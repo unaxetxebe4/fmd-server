@@ -31,10 +31,12 @@ public class FMDSMSService extends FmdJobService {
 
     private static final String DESTINATION = "dest";
     private static final String MESSAGE = "msg";
+    private static final String SUBSCRIPTION_ID = "subscription-id";
 
-    public static void scheduleJob(Context context, String destination, String message) {
+    public static void scheduleJob(Context context, String destination, int subscriptionId, String message) {
         PersistableBundle bundle = new PersistableBundle();
         bundle.putString(DESTINATION, destination);
+        bundle.putInt(SUBSCRIPTION_ID, subscriptionId);
         bundle.putString(MESSAGE, message);
 
         ComponentName serviceComponent = new ComponentName(context, FMDSMSService.class);
@@ -58,6 +60,7 @@ public class FMDSMSService extends FmdJobService {
         TemporaryAllowlistRepository tempAllowlistRepo = TemporaryAllowlistRepository.Companion.getInstance(this);
 
         String phoneNumber = params.getExtras().getString(DESTINATION);
+        int subscriptionId = params.getExtras().getInt(SUBSCRIPTION_ID);
         String msg = params.getExtras().getString(MESSAGE);
 
         if (phoneNumber == null || phoneNumber.isEmpty()) {
@@ -73,7 +76,7 @@ public class FMDSMSService extends FmdJobService {
             return false;
         }
 
-        Transport<String> transport = new SmsTransport(this, phoneNumber);
+        Transport<String> transport = new SmsTransport(this, phoneNumber, subscriptionId);
         CommandHandler<String> commandHandler = new CommandHandler<>(transport, this.getCoroutineScope(), this);
 
         // Case 1: phone number in Allowed Contacts

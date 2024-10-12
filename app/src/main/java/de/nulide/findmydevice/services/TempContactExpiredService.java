@@ -31,7 +31,7 @@ public class TempContactExpiredService extends JobService {
 
         for (String phoneNumber : expired) {
             String msg = getString(R.string.temporary_allowlist_expired);
-            Transport<String> transport = new SmsTransport(this, phoneNumber);
+            Transport<String> transport = new SmsTransport(this, phoneNumber, -1);
             transport.send(this, msg);
             Log.i(TAG, "Phone number expired: " + phoneNumber);
         }
