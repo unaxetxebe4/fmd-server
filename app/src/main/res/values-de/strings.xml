@@ -244,4 +244,5 @@
     <string name="server_registration_token_error">Die Netzwerkanfrage ist mit HTTP 401 fehlgeschlagen. Dies kann passieren, wenn der Server ein Registrierungs-Token benötigt und das von Ihnen angegebene Token falsch war.</string>
     <string name="server_login_attempts_title">Fehlgeschlagene Anmeldeversuche in FMD Server</string>
     <string name="server_login_attempts_text">Jemand hat versucht sich in dein FMD Server-Account \"%s\" einzuloggen. Wegen mehrerer falscher Passwortversuche ist das Account nun für 10 Minuten gesperrt.</string>
+    <string name="cmd_locate_response_gps_fail">Das Finden einer neuen GPS-Position ist fehlgeschlagen. Vielleicht wegen einer Zeitüberschreitung.</string>
 </resources>
