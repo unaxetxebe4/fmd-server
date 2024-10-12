@@ -2,6 +2,7 @@ package de.nulide.findmydevice.commands
 
 import android.app.admin.DevicePolicyManager
 import android.content.Context
+import android.os.Build
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import de.nulide.findmydevice.R
@@ -56,13 +57,14 @@ class DeleteCommand(context: Context) : Command(context) {
             return
         }
         // the args were previously split by space => restore the spaces
-        val pwd = args.subList(3, args.size).joinToString(" ")
+        val pwd = args.subList(2, args.size).joinToString(" ")
 
         if (CypherUtils.checkPasswordForFmdPin(settings.get(Settings.SET_PIN) as String, pwd)) {
             val devicePolicyManager =
                 context.getSystemService(Context.DEVICE_POLICY_SERVICE) as DevicePolicyManager
 
             devicePolicyManager.wipeData(0)
+
             transport.send(context, context.getString(R.string.cmd_delete_response_success))
         } else {
             transport.send(context, context.getString(R.string.cmd_delete_response_pwd_wrong))
