@@ -3,6 +3,7 @@ package de.nulide.findmydevice.data;
 
 import java.util.HashMap;
 
+import de.nulide.findmydevice.BuildConfig;
 import de.nulide.findmydevice.utils.RingerUtils;
 
 
@@ -72,7 +73,7 @@ public class Settings extends HashMap<Integer, Object> {
                 case SET_FMD_LOW_BAT_SEND:
                     return true;
                 case SET_FMD_COMMAND:
-                    return "fmd";
+                    return BuildConfig.DEFAULT_FMD_COMMAND;
                 case SET_FMDSERVER_UPDATE_TIME:
                     return 60;
                 //case SET_INTRODUCTION_VERSION:
