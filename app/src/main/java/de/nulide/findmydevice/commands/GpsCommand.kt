@@ -1,11 +1,9 @@
 package de.nulide.findmydevice.commands
 
 import android.content.Context
-import android.util.Log
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import de.nulide.findmydevice.R
-import de.nulide.findmydevice.locationproviders.GpsLocationProvider
 import de.nulide.findmydevice.permissions.WriteSecureSettingsPermission
 import de.nulide.findmydevice.services.FmdJobService
 import de.nulide.findmydevice.transports.Transport

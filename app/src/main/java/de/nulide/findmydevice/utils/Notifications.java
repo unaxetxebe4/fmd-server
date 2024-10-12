@@ -18,6 +18,8 @@ import de.nulide.findmydevice.ui.MainActivity;
 
 public class Notifications {
 
+    private static final String TAG = Notifications.class.getSimpleName();
+
     public static final int CHANNEL_USAGE = 42;
     // public static final int CHANNEL_LIFE = 43;
     public static final int CHANNEL_PIN = 44;
@@ -42,8 +44,8 @@ public class Notifications {
         }
 
         if (ActivityCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
-            Logger.log("Notifications", "Cannot send notification: missing permission POST_NOTIFICATIONS");
-            Logger.log("Notifications", title + ": " + text);
+            FmdLogKt.log(context).e(TAG, "Cannot send notification: missing permission POST_NOTIFICATIONS");
+            FmdLogKt.log(context).e(TAG, title + ": " + text);
             return;
         }
 

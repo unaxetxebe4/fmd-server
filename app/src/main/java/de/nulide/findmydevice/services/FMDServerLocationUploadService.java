@@ -5,18 +5,14 @@ import android.app.job.JobParameters;
 import android.app.job.JobScheduler;
 import android.content.ComponentName;
 import android.content.Context;
-import android.os.Bundle;
 import android.os.PersistableBundle;
-import android.util.Log;
 
 import de.nulide.findmydevice.commands.CommandHandler;
 import de.nulide.findmydevice.data.Settings;
-import de.nulide.findmydevice.data.SettingsRepoSpec;
 import de.nulide.findmydevice.data.SettingsRepository;
-import de.nulide.findmydevice.data.io.IO;
 import de.nulide.findmydevice.transports.FmdServerTransport;
 import de.nulide.findmydevice.transports.Transport;
-import de.nulide.findmydevice.utils.Logger;
+import de.nulide.findmydevice.utils.FmdLogKt;
 import kotlin.Unit;
 
 
@@ -32,16 +28,17 @@ public class FMDServerLocationUploadService extends FmdJobService {
     private static final String EXTRA_RECURRING = "EXTRA_RECURRING";
 
     private boolean recurring = false;
+    private SettingsRepository settings;
 
     public static void scheduleJob(Context context, long delayMinutes) {
         scheduleJob(context, delayMinutes, true);
     }
 
     public static void scheduleJob(Context context, long delayMinutes, boolean recurring) {
-        Settings settings = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(context)).getSettings();
+        SettingsRepository settings = SettingsRepository.Companion.getInstance(context);
         if (((Integer) settings.get(Settings.SET_FMDSERVER_LOCATION_TYPE)) == 3) {
             // user requested NOT to upload any location at regular intervals
-            Log.d(TAG, "Not scheduling job. Reason: user requested no upload");
+            FmdLogKt.log(context).d(TAG, "Not scheduling job. Reason: user requested no upload");
             return;
         }
 
@@ -74,20 +71,18 @@ public class FMDServerLocationUploadService extends FmdJobService {
     @Override
     public boolean onStartJob(JobParameters params) {
         super.onStartJob(params);
+        FmdLogKt.log(this).d(TAG, "Starting background upload job");
 
         PersistableBundle extras = params.getExtras();
         recurring = extras.getBoolean(EXTRA_RECURRING);
 
-        Log.d(TAG, "Starting background upload job");
-        Settings settings = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(this)).getSettings();
-        IO.context = this;
-        Logger.init(Thread.currentThread(), this);
+        settings = SettingsRepository.Companion.getInstance(this);
 
         Transport<Unit> transport = new FmdServerTransport(this);
         CommandHandler<Unit> commandHandler = new CommandHandler<>(transport, this.getCoroutineScope(), this, false);
 
-        if (!settings.checkAccountExists()) {
-            Logger.logSession(TAG, "No account, stopping and cancelling job.");
+        if (!settings.serverAccountExists()) {
+            FmdLogKt.log(this).i(TAG, "No account, stopping and cancelling job.");
             cancelJob(this);
             return false;
         }
@@ -109,8 +104,6 @@ public class FMDServerLocationUploadService extends FmdJobService {
         }
         commandHandler.execute(this, locateCommand);
 
-        Logger.logSession(TAG, "command issued, waiting for location");
-        Logger.writeLog();
         return true;
     }
 
@@ -130,13 +123,11 @@ public class FMDServerLocationUploadService extends FmdJobService {
     }
 
     private void scheduleNextOccurrence() {
-        Logger.log(TAG, "job stopped, rescheduling");
-        Log.d(TAG, "job stopped, rescheduling");
-        Settings settings = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(this)).getSettings();
+        FmdLogKt.log(this).d(TAG, "job stopped, rescheduling");
 
         long intervalMinutes = ((Integer) settings.get(Settings.SET_FMDSERVER_UPDATE_TIME)).longValue();
         if (intervalMinutes <= 0) {
-            Log.i(TAG, "Raising interval from " + intervalMinutes + " mins to 1 min");
+            FmdLogKt.log(this).i(TAG, "Raising interval from " + intervalMinutes + " mins to 1 min");
             intervalMinutes = 1;
         }
 

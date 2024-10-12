@@ -1,18 +1,14 @@
 package de.nulide.findmydevice.commands
 
 import android.content.Context
-import android.util.Log
-import androidx.annotation.CallSuper
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import de.nulide.findmydevice.R
-import de.nulide.findmydevice.data.Settings
-import de.nulide.findmydevice.data.io.IO
-import de.nulide.findmydevice.data.io.JSONFactory
-import de.nulide.findmydevice.data.io.json.JSONMap
+import de.nulide.findmydevice.data.SettingsRepository
 import de.nulide.findmydevice.permissions.Permission
 import de.nulide.findmydevice.services.FmdJobService
 import de.nulide.findmydevice.transports.Transport
+import de.nulide.findmydevice.utils.log
 import kotlinx.coroutines.CoroutineScope
 
 
@@ -21,8 +17,7 @@ abstract class Command(val context: Context) {
         private val TAG = Command::class.simpleName
     }
 
-    open val settings: Settings =
-        JSONFactory.convertJSONSettings(IO.read(JSONMap::class.java, IO.settingsFileName))
+    val settings = SettingsRepository.getInstance(context)
 
     abstract val keyword: String
     abstract val usage: String
@@ -56,7 +51,7 @@ abstract class Command(val context: Context) {
                 args.joinToString(" "),
                 missing.joinToString(", ") { it.toString(context) }
             )
-            Log.w(TAG, msg)
+            context.log().w(TAG, msg)
             transport.send(context, msg)
             job?.jobFinished()
             return

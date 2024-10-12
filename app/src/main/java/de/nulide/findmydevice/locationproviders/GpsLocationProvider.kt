@@ -8,21 +8,18 @@ import android.location.LocationManager
 import android.location.LocationRequest
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import de.nulide.findmydevice.R
 import de.nulide.findmydevice.data.Settings
-import de.nulide.findmydevice.data.SettingsRepoSpec
 import de.nulide.findmydevice.data.SettingsRepository
 import de.nulide.findmydevice.permissions.LocationPermission
 import de.nulide.findmydevice.permissions.WriteSecureSettingsPermission
 import de.nulide.findmydevice.transports.Transport
 import de.nulide.findmydevice.utils.SecureSettings
+import de.nulide.findmydevice.utils.log
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Deferred
-import java.util.Calendar
-import java.util.TimeZone
 
 
 class GpsLocationProvider<T>(
@@ -55,7 +52,7 @@ class GpsLocationProvider<T>(
         deferred = def
 
         if (!LocationPermission().isGranted(context)) {
-            Log.i(TAG, "Missing location permission, cannot get location")
+            context.log().i(TAG, "Missing location permission, cannot get location")
             def.complete(Unit)
             return def
         }
@@ -65,7 +62,7 @@ class GpsLocationProvider<T>(
                 SecureSettings.turnGPS(context, true)
                 isGpsTurnedOnByUs = true
             } else {
-                Log.w(
+                context.log().w(
                     TAG,
                     "Cannot run fmd locate: GPS is off and missing permission WRITE_SECURE_SETTINGS"
                 )
@@ -79,7 +76,7 @@ class GpsLocationProvider<T>(
         }
 
         transport.send(context, context.getString(R.string.cmd_locate_response_gps_will_follow))
-        Log.d(TAG, "Requesting location update from GPS")
+        context.log().d(TAG, "Requesting location update from GPS")
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             getAndSendLocationAndroid12()
@@ -99,7 +96,7 @@ class GpsLocationProvider<T>(
     @SuppressLint("MissingPermission")
     @RequiresApi(Build.VERSION_CODES.S)
     private fun getAndSendLocationAndroid12() {
-        Log.d(TAG, "Using getCurrentLocation() on Android 12+")
+        context.log().d(TAG, "Using getCurrentLocation() on Android 12+")
         val FIVE_MINS_MILLIS = 300_000L
         val locationRequest = LocationRequest.Builder(2000L)
             .setQuality(LocationRequest.QUALITY_HIGH_ACCURACY)
@@ -128,7 +125,7 @@ class GpsLocationProvider<T>(
     fun getLastKnownLocation(asFallBackForCurrentLocation: Boolean = false) {
         val lastLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
 
-        val settings = SettingsRepository.getInstance(SettingsRepoSpec(context)).settings
+        val settings = SettingsRepository.getInstance(context)
         val cachedLat = settings.get(Settings.SET_LAST_KNOWN_LOCATION_LAT) as String
         val cachedLon = settings.get(Settings.SET_LAST_KNOWN_LOCATION_LON) as String
         val cachedTimeMillis = settings.get(Settings.SET_LAST_KNOWN_LOCATION_TIME) as Long
@@ -172,9 +169,9 @@ class GpsLocationProvider<T>(
         val provider = location.provider ?: "GPS"
         val lat = location.latitude.toString()
         val lon = location.longitude.toString()
-        Log.d(TAG, "Location found by $provider")
+        context.log().d(TAG, "Location found by $provider")
 
-        storeLastKnownLocation(lat, lon, location.time)
+        storeLastKnownLocation(context, lat, lon, location.time)
         transport.sendNewLocation(context, provider, lat, lon, location.time)
 
         cleanup()

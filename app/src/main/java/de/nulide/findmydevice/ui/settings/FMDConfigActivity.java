@@ -22,13 +22,12 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.data.Settings;
-import de.nulide.findmydevice.data.SettingsRepoSpec;
 import de.nulide.findmydevice.data.SettingsRepository;
 import de.nulide.findmydevice.utils.CypherUtils;
 
 public class FMDConfigActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener, TextWatcher {
 
-    private Settings settings;
+    private SettingsRepository settings;
 
     private CheckBox checkBoxDeviceWipe;
     private CheckBox checkBoxAccessViaPin;
@@ -49,7 +48,7 @@ public class FMDConfigActivity extends AppCompatActivity implements CompoundButt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_f_m_d_config);
 
-        settings = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(this)).getSettings();
+        settings = SettingsRepository.Companion.getInstance(this);
 
         checkBoxDeviceWipe = findViewById(R.id.checkBoxWipeData);
         checkBoxDeviceWipe.setChecked((Boolean) settings.get(Settings.SET_WIPE_ENABLED));

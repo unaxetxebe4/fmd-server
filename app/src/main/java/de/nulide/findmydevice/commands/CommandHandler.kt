@@ -1,17 +1,14 @@
 package de.nulide.findmydevice.commands
 
 import android.content.Context
-import android.util.Log
 import de.nulide.findmydevice.R
 import de.nulide.findmydevice.data.Settings
-import de.nulide.findmydevice.data.io.IO
-import de.nulide.findmydevice.data.io.JSONFactory
-import de.nulide.findmydevice.data.io.json.JSONMap
+import de.nulide.findmydevice.data.SettingsRepository
 import de.nulide.findmydevice.services.FmdJobService
 import de.nulide.findmydevice.transports.Transport
 import de.nulide.findmydevice.utils.CypherUtils
-import de.nulide.findmydevice.utils.Logger
 import de.nulide.findmydevice.utils.Notifications
+import de.nulide.findmydevice.utils.log
 import kotlinx.coroutines.CoroutineScope
 
 
@@ -54,20 +51,21 @@ class CommandHandler<T>
      * Executes commands of the form "triggerWord command options", e.g. "fmd locate cell"
      */
     fun execute(context: Context, rawCommand: String) {
-        Logger.logSession(TAG, "Handling command: $rawCommand")
-        Log.d(TAG, "Handling command: $rawCommand")
+        context.log().d(
+            TAG,
+            "Handling command '$rawCommand' from source '${transport.getDestinationString()}'"
+        )
 
         val args = rawCommand.split(" ").filter { it.isNotBlank() }.toMutableList()
-        val settings: Settings =
-            JSONFactory.convertJSONSettings(IO.read(JSONMap::class.java, IO.settingsFileName))
+        val settings = SettingsRepository.getInstance(context)
         val fmdTriggerWord = settings.get(Settings.SET_FMD_COMMAND) as String
 
         if (args.isEmpty()) {
-            Log.w(TAG, "Cannot handle: args is empty.")
+            context.log().w(TAG, "Cannot handle: args is empty.")
             return
         }
         if (args[0].lowercase() != fmdTriggerWord.lowercase()) {
-            Log.w(TAG, "Not handling: '${args[0]}' does not match trigger word '${fmdTriggerWord}'")
+            context.log().w(TAG, "Not handling: '${args[0]}' does not match trigger word '${fmdTriggerWord}'")
             return
         }
 
@@ -83,12 +81,12 @@ class CommandHandler<T>
         // run the command
         for (cmd in availableCommands(context)) {
             if (args[1].lowercase() == cmd.keyword.lowercase()) {
-                Log.d(TAG, "Executing command: ${cmd.keyword}")
+                context.log().d(TAG, "Executing command: ${cmd.keyword}")
                 cmd.execute(args, transport, coroutineScope, job)
                 return
             }
         }
-        Log.w(TAG, "No command found that matches '${args[1]}'")
+        context.log().w(TAG, "No command found that matches '${args[1]}'")
     }
 
     private fun showUsageNotification(context: Context, rawCommand: String) {
@@ -106,8 +104,8 @@ class CommandHandler<T>
 
         // fmd <pin> locate
         @JvmStatic
-        fun checkAndRemovePin(settings: Settings, msg: String): String? {
-            val expectedHash = settings.get(Settings.SET_PIN) as String
+        fun checkAndRemovePin(repo: SettingsRepository, msg: String): String? {
+            val expectedHash = repo.get(Settings.SET_PIN) as String
             val parts = msg.split(" ").filter { it.isNotBlank() }
             if (parts.size >= 2) {
                 val pin = parts[1]

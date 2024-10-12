@@ -6,16 +6,14 @@ import android.app.job.JobScheduler;
 import android.app.job.JobService;
 import android.content.ComponentName;
 import android.content.Context;
-import android.util.Log;
 
 import java.util.List;
 
 import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.data.TemporaryAllowlistRepository;
-import de.nulide.findmydevice.data.io.IO;
 import de.nulide.findmydevice.transports.SmsTransport;
 import de.nulide.findmydevice.transports.Transport;
-import de.nulide.findmydevice.utils.Logger;
+import de.nulide.findmydevice.utils.FmdLogKt;
 import kotlin.Pair;
 
 public class TempContactExpiredService extends JobService {
@@ -24,9 +22,6 @@ public class TempContactExpiredService extends JobService {
 
     @Override
     public boolean onStartJob(JobParameters params) {
-        IO.context = this;
-        Logger.init(Thread.currentThread(), this);
-
         TemporaryAllowlistRepository repo = TemporaryAllowlistRepository.Companion.getInstance(this);
         List<Pair<String, Integer>> expired = repo.removeExpired();
 
@@ -34,7 +29,7 @@ public class TempContactExpiredService extends JobService {
             String msg = getString(R.string.temporary_allowlist_expired);
             Transport<String> transport = new SmsTransport(this, (String) temporaryPhoneNumber.getFirst(), (Integer) temporaryPhoneNumber.getSecond());
             transport.send(this, msg);
-            Log.i(TAG, "Phone number expired: " + temporaryPhoneNumber.getFirst());
+            FmdLogKt.log(this).i(TAG, "Phone number expired: " + temporaryPhoneNumber.getFirst());
         }
 
         return false;

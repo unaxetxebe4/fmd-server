@@ -1,7 +1,6 @@
 package de.nulide.findmydevice.net
 
 import android.content.Context
-import android.util.Log
 import com.android.volley.Request.Method
 import com.android.volley.RequestQueue
 import com.android.volley.Response
@@ -9,11 +8,11 @@ import com.android.volley.VolleyError
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import de.nulide.findmydevice.data.Settings
-import de.nulide.findmydevice.data.SettingsRepoSpec
 import de.nulide.findmydevice.data.SettingsRepository
 import de.nulide.findmydevice.utils.CypherUtils
 import de.nulide.findmydevice.utils.PatchedVolley
 import de.nulide.findmydevice.utils.SingletonHolder
+import de.nulide.findmydevice.utils.log
 import org.json.JSONException
 import org.json.JSONObject
 import java.util.Date
@@ -48,9 +47,10 @@ class FMDServerApiRepository private constructor(spec: FMDServerApiRepoSpec) {
         private const val URL_VERSION = "/version"
     }
 
+    private val context = spec.context
     private var baseUrl = ""
     private val queue: RequestQueue = PatchedVolley.newRequestQueue(spec.context)
-    private val settingsRepo = SettingsRepository.getInstance(SettingsRepoSpec(spec.context))
+    private val settingsRepo = SettingsRepository.getInstance(context)
 
     init {
         loadBaseUrl()
@@ -61,15 +61,15 @@ class FMDServerApiRepository private constructor(spec: FMDServerApiRepoSpec) {
      * This should be called every time where the settings could have changed.
      */
     private fun loadBaseUrl() {
-        val tempBaseUrl = settingsRepo.settings[Settings.SET_FMDSERVER_URL] as String
+        val tempBaseUrl = settingsRepo.get(Settings.SET_FMDSERVER_URL) as String
         // ensure the base URL doesn't end in /
         if (tempBaseUrl.endsWith("/")) {
-            settingsRepo.settings.set(
+            settingsRepo.set(
                 Settings.SET_FMDSERVER_URL,
                 tempBaseUrl.trim('/')
             )
         }
-        baseUrl = settingsRepo.settings[Settings.SET_FMDSERVER_URL] as String
+        baseUrl = settingsRepo.get(Settings.SET_FMDSERVER_URL) as String
     }
 
     fun getServerVersion(
@@ -110,7 +110,7 @@ class FMDServerApiRepository private constructor(spec: FMDServerApiRepoSpec) {
             Method.PUT, baseUrl + URL_DEVICE, jsonObject,
             { response: JSONObject ->
                 try {
-                    settingsRepo.settings.set(Settings.SET_FMDSERVER_ID, response["DeviceId"])
+                    settingsRepo.set(Settings.SET_FMDSERVER_ID, response["DeviceId"])
                 } catch (e: JSONException) {
                     e.printStackTrace()
                 }
@@ -158,8 +158,8 @@ class FMDServerApiRepository private constructor(spec: FMDServerApiRepoSpec) {
         onError: Response.ErrorListener,
     ) {
         getAccessToken(
-            settingsRepo.settings.get(Settings.SET_FMDSERVER_ID) as String,
-            settingsRepo.settings.get(Settings.SET_FMD_CRYPT_HPW) as String,
+            settingsRepo.get(Settings.SET_FMDSERVER_ID) as String,
+            settingsRepo.get(Settings.SET_FMD_CRYPT_HPW) as String,
             onResponse,
             onError,
         )
@@ -274,7 +274,7 @@ class FMDServerApiRepository private constructor(spec: FMDServerApiRepoSpec) {
             getAccessToken(userId, hashedPW, onError = onError, onResponse = { accessToken ->
                 getPrivateKey(accessToken, onError = onError, onResponse = { privateKey ->
                     getPublicKey(accessToken, onError = onError, onResponse = { publicKey ->
-                        settingsRepo.settings.apply {
+                        settingsRepo.apply {
                             set(Settings.SET_FMD_CRYPT_HPW, hashedPW)
                             set(Settings.SET_FMDSERVER_ID, userId)
                             set(Settings.SET_FMD_CRYPT_PUBKEY, publicKey)
@@ -311,7 +311,7 @@ class FMDServerApiRepository private constructor(spec: FMDServerApiRepoSpec) {
                     if (error.cause is JSONException || error.networkResponse.statusCode == 499) {
                         // request was actually successful, just deserialising failed
                         // only clear if request is successful
-                        settingsRepo.settings.set(Settings.SET_FMDSERVER_ID, "")
+                        settingsRepo.set(Settings.SET_FMDSERVER_ID, "")
                         onResponse.onResponse(Unit)
                     } else {
                         onError.onErrorResponse(error)
@@ -326,7 +326,7 @@ class FMDServerApiRepository private constructor(spec: FMDServerApiRepoSpec) {
         endpoint: String,
         onError: Response.ErrorListener,
     ) {
-        Log.i(TAG, "Registering push endpoint $endpoint")
+        context.log().i(TAG, "Registering push endpoint $endpoint")
         getAccessToken(onError = onError, onResponse = { accessToken ->
             val jsonObject = JSONObject()
             try {
@@ -373,8 +373,8 @@ class FMDServerApiRepository private constructor(spec: FMDServerApiRepoSpec) {
                 Method.POST, baseUrl + URL_PASSWORD, jsonObject,
                 { response ->
                     if (response.has("Data")) {
-                        settingsRepo.settings.set(Settings.SET_FMD_CRYPT_PRIVKEY, newPrivKey)
-                        settingsRepo.settings.set(Settings.SET_FMD_CRYPT_HPW, newHashedPW)
+                        settingsRepo.set(Settings.SET_FMD_CRYPT_PRIVKEY, newPrivKey)
+                        settingsRepo.set(Settings.SET_FMD_CRYPT_HPW, newHashedPW)
                         onResponse.onResponse(Unit)
                     } else {
                         onError.onErrorResponse(VolleyError("change password response has no Data field"))
@@ -425,9 +425,12 @@ class FMDServerApiRepository private constructor(spec: FMDServerApiRepoSpec) {
     fun sendPicture(
         picture: String,
     ) {
-        // TODO: Handle no Keys are returned
-        val keys = settingsRepo.settings.getKeys() ?: return
-        val msgBytes = CypherUtils.encryptWithKey(keys.publicKey, picture)
+        val publicKey = settingsRepo.getKeys()?.publicKey
+        if (publicKey == null) {
+            context.log().e(TAG, "Public key was null")
+            return
+        }
+        val msgBytes = CypherUtils.encryptWithKey(publicKey, picture)
         val msg = CypherUtils.encodeBase64(msgBytes)
 
         val onError = { error: VolleyError -> error.printStackTrace() }
@@ -459,7 +462,11 @@ class FMDServerApiRepository private constructor(spec: FMDServerApiRepoSpec) {
         provider: String, lat: String, lon: String, batLevel: String, timeInMillis: Long
     ) {
         // Prepare payload
-        val publicKey = settingsRepo.settings.getKeys().publicKey
+        val publicKey = settingsRepo.getKeys()?.publicKey
+        if (publicKey == null) {
+            context.log().e(TAG, "Public key was null")
+            return
+        }
 
         val locationDataObject = JSONObject()
         try {

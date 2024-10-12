@@ -2,7 +2,6 @@ package de.nulide.findmydevice.commands
 
 import android.app.admin.DevicePolicyManager
 import android.content.Context
-import android.util.Log
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import de.nulide.findmydevice.R
@@ -11,6 +10,7 @@ import de.nulide.findmydevice.permissions.DeviceAdminPermission
 import de.nulide.findmydevice.services.FmdJobService
 import de.nulide.findmydevice.transports.Transport
 import de.nulide.findmydevice.utils.CypherUtils
+import de.nulide.findmydevice.utils.log
 import kotlinx.coroutines.CoroutineScope
 
 
@@ -40,7 +40,7 @@ class DeleteCommand(context: Context) : Command(context) {
     ) {
         if (!(settings.get(Settings.SET_WIPE_ENABLED) as Boolean)) {
             val msg = context.getString(R.string.cmd_delete_response_disabled)
-            Log.i(TAG, msg)
+            context.log().i(TAG, msg)
             transport.send(context, msg)
             job?.jobFinished()
             return
@@ -50,7 +50,7 @@ class DeleteCommand(context: Context) : Command(context) {
             val triggerWord = settings.get(Settings.SET_FMD_COMMAND) as String
             val usage = "$triggerWord delete [pwd]"
             val msg = context.getString(R.string.cmd_delete_response_pwd_missing, usage)
-            Log.i(TAG, msg)
+            context.log().i(TAG, msg)
             transport.send(context, msg)
             job?.jobFinished()
             return

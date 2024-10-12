@@ -84,8 +84,8 @@
             android:name=".ui.CrashedActivity"
             android:process=":bug_report" />
         <activity
-            android:name=".ui.LogActivity"
-            android:label="LOG" />
+            android:name=".ui.settings.LogViewActivity"
+            android:label="@string/log_view_title" />
         <activity
             android:name=".ui.RingerActivity"
             android:screenOrientation="sensorPortrait"

@@ -1,7 +1,6 @@
 package de.nulide.findmydevice.receiver;
 
 import android.content.Context;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 
@@ -16,11 +15,12 @@ import java.util.ArrayList;
 import de.nulide.findmydevice.net.FMDServerApiRepoSpec;
 import de.nulide.findmydevice.net.FMDServerApiRepository;
 import de.nulide.findmydevice.services.FMDServerCommandDownloadService;
+import de.nulide.findmydevice.utils.FmdLogKt;
 
 
 public class PushReceiver extends MessagingReceiver {
 
-    private String TAG = PushReceiver.class.getSimpleName();
+    private final String TAG = PushReceiver.class.getSimpleName();
 
     public PushReceiver() {
         super();
@@ -28,7 +28,7 @@ public class PushReceiver extends MessagingReceiver {
 
     @Override
     public void onMessage(@NonNull Context context, @NonNull byte[] message, @NonNull String instance) {
-        Log.i(TAG, "Received push message");
+        FmdLogKt.log(context).i(TAG, "Received push message");
         FMDServerCommandDownloadService.scheduleJobNow(context);
     }
 

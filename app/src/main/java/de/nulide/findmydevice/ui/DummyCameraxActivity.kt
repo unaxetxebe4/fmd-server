@@ -5,7 +5,6 @@ import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.os.PersistableBundle
-import android.util.Log
 import android.util.Size
 import android.view.Surface
 import android.view.WindowManager
@@ -25,6 +24,7 @@ import de.nulide.findmydevice.net.FMDServerApiRepoSpec
 import de.nulide.findmydevice.net.FMDServerApiRepository
 import de.nulide.findmydevice.utils.CypherUtils
 import de.nulide.findmydevice.utils.imageToByteArray
+import de.nulide.findmydevice.utils.log
 import kotlinx.coroutines.launch
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
@@ -39,7 +39,7 @@ class DummyCameraxActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)
         if (!hasCameraPermission()) {
-            Log.w(TAG, "Camera permission is missing. Not taking picture.")
+            this.log().w(TAG, "Camera permission is missing. Not taking picture.")
             finish()
         }
         viewBinding = ActivityDummyCameraxBinding.inflate(layoutInflater)
@@ -106,7 +106,7 @@ class DummyCameraxActivity : AppCompatActivity() {
             cameraProvider.bindToLifecycle(this, cameraSelector, imageCapture)
         } catch (e: IllegalArgumentException) {
             e.printStackTrace()
-            Log.e(
+            this.log().e(
                 TAG,
                 "Cannot take picture: bindToLifecycle failed, see the stacktrace. message=${e.message} cause=${e.cause}"
             )
@@ -121,7 +121,7 @@ class DummyCameraxActivity : AppCompatActivity() {
                     super.onCaptureSuccess(image)
                     val img = image.image
                     if (img == null) {
-                        Log.w(TAG, "Captured image was null!")
+                        applicationContext.log().w(TAG, "Captured image was null!")
                         finish()
                         return
                     }
@@ -131,7 +131,8 @@ class DummyCameraxActivity : AppCompatActivity() {
 
                 override fun onError(exception: ImageCaptureException) {
                     super.onError(exception)
-                    Log.w(TAG, "Failed to take picture: ${exception.imageCaptureError}")
+                    applicationContext.log()
+                        .w(TAG, "Failed to take picture: ${exception.imageCaptureError}")
                 }
             })
     }

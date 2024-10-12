@@ -5,19 +5,16 @@ import android.app.job.JobParameters;
 import android.app.job.JobScheduler;
 import android.content.ComponentName;
 import android.content.Context;
-import android.util.Log;
 
 import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.commands.CommandHandler;
 import de.nulide.findmydevice.data.Settings;
-import de.nulide.findmydevice.data.SettingsRepoSpec;
 import de.nulide.findmydevice.data.SettingsRepository;
-import de.nulide.findmydevice.data.io.IO;
 import de.nulide.findmydevice.net.FMDServerApiRepoSpec;
 import de.nulide.findmydevice.net.FMDServerApiRepository;
 import de.nulide.findmydevice.transports.FmdServerTransport;
 import de.nulide.findmydevice.transports.Transport;
-import de.nulide.findmydevice.utils.Logger;
+import de.nulide.findmydevice.utils.FmdLogKt;
 import de.nulide.findmydevice.utils.Notifications;
 import kotlin.Unit;
 
@@ -35,11 +32,9 @@ public class FMDServerCommandDownloadService extends FmdJobService {
     public boolean onStartJob(JobParameters params) {
         super.onStartJob(params);
 
-        IO.context = this;
-        Logger.init(Thread.currentThread(), this);
-        settingsRepo = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(this));
+        settingsRepo = SettingsRepository.Companion.getInstance(this);
 
-        Log.d(TAG, "Downloading remote command");
+        FmdLogKt.log(this).d(TAG, "Downloading remote command");
         FMDServerApiRepository fmdServerRepo = FMDServerApiRepository.Companion.getInstance(new FMDServerApiRepoSpec(this));
         fmdServerRepo.getCommand(this::onResponse, Throwable::printStackTrace);
 
@@ -63,14 +58,14 @@ public class FMDServerCommandDownloadService extends FmdJobService {
     }
 
     private void onResponse(String remoteCommand) {
-        Log.i(TAG, "Received remote command '" + remoteCommand + "'");
+        FmdLogKt.log(this).i(TAG, "Received remote command '" + remoteCommand + "'");
         if (remoteCommand.isEmpty()) {
             return;
         }
         if (remoteCommand.startsWith("423")) {
-            String account = (String) settingsRepo.getSettings().get(Settings.SET_FMDSERVER_ID);
+            String account = (String) settingsRepo.get(Settings.SET_FMDSERVER_ID);
             String msg = getString(R.string.server_login_attempts_text, account);
-            Log.w(TAG, msg);
+            FmdLogKt.log(this).w(TAG, msg);
             Notifications.notify(
                     this,
                     getString(R.string.server_login_attempts_title),
@@ -79,7 +74,7 @@ public class FMDServerCommandDownloadService extends FmdJobService {
             );
             return;
         }
-        String fullCommand = settingsRepo.getSettings().get(Settings.SET_FMD_COMMAND) + " " + remoteCommand;
+        String fullCommand = settingsRepo.get(Settings.SET_FMD_COMMAND) + " " + remoteCommand;
 
         Transport<Unit> transport = new FmdServerTransport(this);
         CommandHandler<Unit> commandHandler = new CommandHandler<>(transport, this.getCoroutineScope(), this);

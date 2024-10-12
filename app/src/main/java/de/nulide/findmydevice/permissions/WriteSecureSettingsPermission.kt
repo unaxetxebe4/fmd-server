@@ -11,16 +11,20 @@ import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import de.nulide.findmydevice.R
-import de.nulide.findmydevice.utils.Logger
 import de.nulide.findmydevice.utils.RootAccess.Companion.execCommand
 import de.nulide.findmydevice.utils.RootAccess.Companion.isRooted
 import de.nulide.findmydevice.utils.ShizukuUtil.Companion.isShizukuPermissionGranted
 import de.nulide.findmydevice.utils.ShizukuUtil.Companion.isShizukuRunning
 import de.nulide.findmydevice.utils.ShizukuUtil.Companion.requestShizukuPermission
+import de.nulide.findmydevice.utils.log
 import rikka.shizuku.Shizuku
 
 
 class WriteSecureSettingsPermission : Permission() {
+
+    companion object {
+        private val TAG = WriteSecureSettingsPermission::class.simpleName
+    }
 
     @get:StringRes
     override val name = R.string.perm_write_secure_settings_name
@@ -69,7 +73,7 @@ class WriteSecureSettingsPermission : Permission() {
                 Toast.LENGTH_LONG
             ).show()
             e.printStackTrace()
-            Logger.log("ShizukuError", e.toString())
+            context.log().e(TAG, e.toString())
         }
     }
 

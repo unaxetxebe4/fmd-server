@@ -1,5 +1,7 @@
 package de.nulide.findmydevice.utils
 
+import android.util.Log
+
 /*
  * Copyright (c) 2021 Ubique Innovation AG <https://www.ubique.ch>
  *
@@ -31,6 +33,7 @@ open class SingletonHolder<out T : Any, in A>(creator: (A) -> T) {
                 i2
             } else {
                 val created = creator!!(arg)
+                //Log.d("TEST", "Creating SingletonHolder for class ${created::class.java}")
                 instance = created
                 creator = null
                 created

@@ -1,5 +1,7 @@
 package de.nulide.findmydevice.ui.onboarding;
 
+import static de.nulide.findmydevice.data.SettingsRepositoryKt.SETTINGS_FILENAME;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -12,11 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.data.Settings;
-import de.nulide.findmydevice.data.SettingsRepoSpec;
 import de.nulide.findmydevice.data.SettingsRepository;
-import de.nulide.findmydevice.data.io.IO;
-import de.nulide.findmydevice.data.io.JSONFactory;
-import de.nulide.findmydevice.data.io.json.JSONMap;
 import de.nulide.findmydevice.net.FMDServerApiRepoSpec;
 import de.nulide.findmydevice.net.FMDServerApiRepository;
 import de.nulide.findmydevice.ui.MainActivity;
@@ -27,7 +25,7 @@ public class UpdateboardingModernCryptoActivity extends AppCompatActivity {
 
     private final int EXPORT_REQ_CODE = 30;
 
-    private Settings settings;
+    private SettingsRepository settings;
 
     boolean isRegisteredWithServer;
     boolean isPinSet;
@@ -37,8 +35,8 @@ public class UpdateboardingModernCryptoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_updateboarding_modern_crypto);
 
-        settings = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(this)).getSettings();
-        isRegisteredWithServer = settings.checkAccountExists();
+        settings = SettingsRepository.Companion.getInstance(this);
+        isRegisteredWithServer = settings.serverAccountExists();
         isPinSet = !settings.get(Settings.SET_PIN).equals("");
 
         if (!isRegisteredWithServer && !isPinSet) {
@@ -63,14 +61,16 @@ public class UpdateboardingModernCryptoActivity extends AppCompatActivity {
         if (requestCode == EXPORT_REQ_CODE && resultCode == Activity.RESULT_OK) {
             if (data != null) {
                 Uri uri = data.getData();
-                Settings.writeToUri(this, uri);
+                if (uri != null) {
+                    settings.writeToUri(this, uri);
+                }
             }
         }
     }
 
     private void onExportSettingsClicked(View view) {
         Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
-        intent.putExtra(Intent.EXTRA_TITLE, IO.settingsFileName);
+        intent.putExtra(Intent.EXTRA_TITLE, SETTINGS_FILENAME);
         intent.setType("*/*");
         startActivityForResult(intent, EXPORT_REQ_CODE);
     }
@@ -105,11 +105,11 @@ public class UpdateboardingModernCryptoActivity extends AppCompatActivity {
     }
 
     public static void notifyAboutCryptoRefreshIfRequired(Context context) {
-        Settings settings = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(context)).getSettings();
+        SettingsRepository settings = SettingsRepository.Companion.getInstance(context);
         boolean alreadyCompleted = (Boolean) settings.get(Settings.SET_UPDATEBOARDING_MODERN_CRYPTO_COMPLETED);
         if (alreadyCompleted) return;
 
-        boolean isRegisteredWithServer = settings.checkAccountExists();
+        boolean isRegisteredWithServer = settings.serverAccountExists();
         boolean isPinSet = !settings.get(Settings.SET_PIN).equals("");
 
         if (isRegisteredWithServer || isPinSet) {

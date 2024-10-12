@@ -13,9 +13,7 @@ import com.google.android.material.navigation.NavigationBarView;
 
 import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.data.Settings;
-import de.nulide.findmydevice.data.SettingsRepoSpec;
 import de.nulide.findmydevice.data.SettingsRepository;
-import de.nulide.findmydevice.data.io.IO;
 import de.nulide.findmydevice.permissions.PermissionsUtilKt;
 import de.nulide.findmydevice.receiver.PushReceiver;
 import de.nulide.findmydevice.services.FMDServerLocationUploadService;
@@ -24,12 +22,13 @@ import de.nulide.findmydevice.ui.home.CommandListFragment;
 import de.nulide.findmydevice.ui.home.TransportListFragment;
 import de.nulide.findmydevice.ui.onboarding.UpdateboardingModernCryptoActivity;
 import de.nulide.findmydevice.ui.settings.SettingsFragment;
-import de.nulide.findmydevice.utils.Logger;
 
 
 public class MainActivity extends AppCompatActivity {
 
     private static final String KEY_ACTIVE_FRAGMENT_TAG = "activeFragmentTag";
+
+    SettingsRepository settings;
 
     private TaggedFragment commandsFragment, transportFragment, settingsFragment;
     private TaggedFragment activeFragment;
@@ -47,18 +46,23 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        IO.context = this;
-        Logger.init(Thread.currentThread(), this);
+        settings = SettingsRepository.Companion.getInstance(this);
 
-        Settings settings = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(this)).getSettings();
+        // Around the CrashedActivity it can happen that the two activities run in different processes.
+        // In different processes, the SettingsRepository instance is different.
+        // This can result in an endless "Continue to MainActivity" loop, because one repo sets the
+        // flag to 0, but the other repo does not load the updated file.
+        // To make sure we load the status correctly, reload from disk.
+        settings.load();
 
-        if (((Integer) settings.get(Settings.SET_APP_CRASHED_LOG_ENTRY)) != -1) {
+        if (((Integer) settings.get(Settings.SET_APP_CRASHED_LOG_ENTRY)) == 1) {
             Intent intent = new Intent(this, CrashedActivity.class);
             startActivity(intent);
             finish();
             return;
         }
-        settings.updateSettings();
+
+        settings.migrateSettings();
         if (!(Boolean) settings.get(Settings.SET_UPDATEBOARDING_MODERN_CRYPTO_COMPLETED)) {
             Intent intent = new Intent(this, UpdateboardingModernCryptoActivity.class);
             startActivity(intent);
@@ -85,6 +89,11 @@ public class MainActivity extends AppCompatActivity {
                 activeFragment = settingsFragment;
             }
         }
+
+        // In onCreate instead of onResume to avoid excessive re-registrations
+        if (settings.serverAccountExists()) {
+            PushReceiver.registerWithUnifiedPush(this);
+        }
     }
 
     @Override
@@ -94,9 +103,7 @@ public class MainActivity extends AppCompatActivity {
                 .replace(R.id.fragment_container, activeFragment, activeFragment.getStaticTag())
                 .commit();
 
-        Settings settings = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(this)).getSettings();
-        if (settings.checkAccountExists()) {
-            PushReceiver.registerWithUnifiedPush(this);
+        if (settings.serverAccountExists()) {
             FMDServerLocationUploadService.scheduleJob(this, 0);
         } else {
             // just in case it was still running

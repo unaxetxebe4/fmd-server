@@ -28,7 +28,6 @@ import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.data.AllowlistRepository;
 import de.nulide.findmydevice.data.Contact;
 import de.nulide.findmydevice.data.Settings;
-import de.nulide.findmydevice.data.SettingsRepoSpec;
 import de.nulide.findmydevice.data.SettingsRepository;
 import de.nulide.findmydevice.ui.allowlist.AllowlistAdapter;
 import kotlin.Unit;
@@ -37,7 +36,7 @@ import kotlin.Unit;
 public class AllowlistActivity extends AppCompatActivity {
 
     private AllowlistRepository allowlistRepository;
-    private Settings settings;
+    private SettingsRepository settings;
 
     private AllowlistAdapter allowlistAdapter;
 
@@ -51,7 +50,7 @@ public class AllowlistActivity extends AppCompatActivity {
         setContentView(R.layout.activity_allowlist);
 
         allowlistRepository = AllowlistRepository.Companion.getInstance(this);
-        settings = SettingsRepository.Companion.getInstance(new SettingsRepoSpec(this)).getSettings();
+        settings = SettingsRepository.Companion.getInstance(this);
 
         allowlistAdapter = new AllowlistAdapter(this::onDeleteContact);
         RecyclerView recyclerView = findViewById(R.id.recycler_allowlist);

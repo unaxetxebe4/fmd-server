@@ -1,14 +1,13 @@
 package de.nulide.findmydevice.ui;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.WindowManager;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import de.nulide.findmydevice.R;
-import de.nulide.findmydevice.transports.SmsTransport;
+import de.nulide.findmydevice.utils.FmdLogKt;
 
 
 public class LockScreenMessage extends AppCompatActivity {
@@ -18,7 +17,7 @@ public class LockScreenMessage extends AppCompatActivity {
     public static final String SENDER = "sender";
     public static final String SENDER_TYPE = "type";
     public static final String CUSTOM_TEXT = "ctext";
-   // private SmsTransport transport = null;
+    // private SmsTransport transport = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +37,7 @@ public class LockScreenMessage extends AppCompatActivity {
         if (bundle != null && bundle.containsKey(CUSTOM_TEXT)) {
             tvLockScreenMessage.setText(bundle.getString(CUSTOM_TEXT));
         } else {
-            Log.w(TAG, "No message to show, finishing LockScreenMessage.");
+            FmdLogKt.log(this).w(TAG, "No message to show, finishing LockScreenMessage.");
             finish();
         }
     }
