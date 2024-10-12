@@ -41,7 +41,6 @@
     <string name="ringer_stop_ringing">घंटी बजाना बंद करें</string>
     <string name="cmd_locate_response_location_off">क्षमा करें, स्थान बंद है।</string>
     <string name="LockScreen_Usage_detectd">LockScreenMessage: उपयोग का पता चला।</string>
-    <string name="Log_Alert_LogData">लॉगडेटा</string>
     <string name="Settings_Export">निर्यात सेटिंग्स</string>
     <string name="Settings_Permissions">अनुमतियां</string>
     <string name="Settings_Enter_Pin">पिन दर्ज करें</string>
@@ -87,7 +86,6 @@
     <string name="OpenCellId_privacy">गोपनीयता: ध्यान रखें कि OpenCeliD आपके वर्तमान सेल टॉवर और इस प्रकार प्रत्येक API क्वेरी के साथ आपके लोकेशन को जानता है।</string>
     <string name="OpenCellId_open_website">OpenCeliD वेबसाइट खोलें</string>
     <string name="OpenCellId_test_opencellid">OpenCeliD कनेक्शन का परीक्षण करें</string>
-    <string name="settings_exported">सेटिंग्स निर्यात की गई</string>
     <string name="about_wiki">विकि</string>
     <string name="app_description">FMD (Find My Device) आपको दूर से अपने डिवाइस का पता लगाने की अनुमति देता है। आप FMD के साथ SMS, इंस्टेंट मैसेंजर या FMD सर्वर का उपयोग करके संचार कर सकते हैं। अपने डिवाइस का पता लगाएं, उसे बजाएं, उसे लॉक करें, या उसे मिटायें - यह सब रिमोट से।</string>
     <string name="server_unregister_failed_body">निम्न त्रुटि के साथ पंजीकरण रद्द करना विफल रहा: {ERROR}

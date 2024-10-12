@@ -39,7 +39,6 @@
     <string name="LockScreen_Backbutton_pressed">Mensaje de la Pantalla de Bloqueo: Botón de Retroceso pulsado.</string>
     <string name="Toast_Empty_FMDCommand">Comando Vacío no permitido
 \n Volviendo a valor predeterminado.[fmd]</string>
-    <string name="Log_Alert_LogData">Datos del Registro</string>
     <string name="Settings_Ringer_Tone_Description">Seleccione un tono de llamada que se reproducirá cuando se envíe fmd ring.</string>
     <string name="Settings_Select_Ringtone">Seleccionar Timbre</string>
     <string name="WhiteList_Select_Number">Seleccione uno de los números de teléfono.</string>
@@ -104,7 +103,6 @@
     <string name="OpenCellId_test_no_connection">Sin conexión móvil</string>
     <string name="server_version_error_low_version">Se requiere al menos la versión {MIN} del servidor, pero el servidor seleccionado tiene la versión {CURRENT}. Continúe bajo su propia responsabilidad.</string>
     <string name="Settings_FMDServer_Info">Con el servidor FMD puedes enviar comandos a través de Internet, desde el servidor a la aplicación. También puede ver la ubicación del dispositivo en un mapa o ver las fotos tomadas por el dispositivo. Para obtener instrucciones de autoalojamiento, consulta el sitio web.</string>
-    <string name="settings_exported">Ajustes exportados</string>
     <string name="notify_crypto_update_title">Acción necesaria</string>
     <string name="notify_crypto_update_text">Es necesario actualizar algunos ajustes para seguir utilizando FMD. Haga clic para abrir.</string>
     <string name="server_unregister_failed_body">La cancelación del registro falló con el siguiente error: {ERROR}
@@ -227,4 +225,5 @@
     <string name="server_login_attempts_title">Intentos de inicio de sesión fallidos en el servidor FMD</string>
     <string name="server_login_attempts_text">Alguien intentó iniciar sesión en su cuenta de servidor FMD \" %s \". Debido a múltiples contraseñas incorrectas, la cuenta ahora está bloqueada durante 10 minutos.</string>
     <string name="cmd_locate_response_gps_fail">Error al obtener una nueva ubicación GPS. Tal vez debido a un tiempo de espera.</string>
+    <string name="temporary_allowlist_expired">El uso temporal de FindMyDevice ha expirado. Para seguir utilizando FindMyDevice, vuelve a enviar el PIN en tu próximo mensaje.</string>
 </resources>

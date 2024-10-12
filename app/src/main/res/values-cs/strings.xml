@@ -36,7 +36,6 @@
 \n%2$s</string>
     <string name="Toast_Empty_FMDCommand">Prázdný příkaz není povolen
 \n Vracím se na default.[fmd]</string>
-    <string name="Log_Alert_LogData">LogData</string>
     <string name="Toast_Duplicate_contact">Tento kontakt již existuje.</string>
     <string name="copied">Zkopírováno</string>
     <string name="accept">Přijmout</string>
@@ -68,7 +67,6 @@
     <string name="OpenCellId_privacy">Soukromí: vezměte prosím v potaz, že se OpenCelliD dozví vaše aktuální mobilní věže a tím pádem vaší polohu při každém dotazu na API.</string>
     <string name="OpenCellId_test_opencellid">Vyzkoušet připojení k OpenCelliD</string>
     <string name="OpenCellId_test_no_connection">Žádné mobilní připojení</string>
-    <string name="settings_exported">Nastavení exportována</string>
     <string name="server_unregister_continue_anyway">Přesto pokračovat</string>
     <string name="Pin_Usage">Využití PINu</string>
     <string name="Notification_Server">Server FMD</string>
@@ -227,4 +225,5 @@
     <string name="server_login_attempts_title">Nezdařené pokusy o přihlášení k serveru FMD</string>
     <string name="server_login_attempts_text">Někdo se pokusil přihlásit do vašeho účtu „%s“ na serveru FMD. Z důvodu několika nezdařených pokusů o zadání hesla je účet nyní na 10 minut uzamčen.</string>
     <string name="cmd_locate_response_gps_fail">Nepodařilo se získat aktuální polohu z GPS. Možná vypršel čas.</string>
+    <string name="temporary_allowlist_expired">Vaše dočasné použití aplikace FindMyDevice vypršelo. Pro pokračování v používání FindMyDevice zadejte znovu svůj PIN ve vaší další zprávě.</string>
 </resources>

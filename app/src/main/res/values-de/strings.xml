@@ -78,8 +78,6 @@
     <string name="OpenCellId_open_website">OpenCelliD Webseite Öffnen</string>
     <string name="OpenCellId_test_opencellid">OpenCelliD-Verbindung Testen</string>
     <string name="OpenCellId_test_no_connection">Keine Mobilfunkverbindung</string>
-    <!-- Settings: Import/Export -->
-    <string name="settings_exported">Einstellungen exportiert</string>
     <!-- Settings: Logs -->
 
     <!-- Settings: About -->
@@ -121,7 +119,6 @@
     <string name="LockScreen_Backbutton_pressed">LockScreenMessage: Zurück-Taste wurde gedrückt.</string>
     <string name="Toast_Empty_FMDCommand">Lehres Kommando nicht erlaubt
 \n Rückfall auf Standard.[fmd]</string>
-    <string name="Log_Alert_LogData">Log-Info</string>
     <string name="Notification_Security">Sicherheit</string>
     <string name="Notification_FAIL">Fehler</string>
     <string name="Notification_Fail_Description">Benachrichtigungen wenn etwas fehlschlägt (z.B. die Verbindung zu FMD Server)</string>

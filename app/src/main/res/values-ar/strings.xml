@@ -52,7 +52,6 @@
     <string name="password">كلمة المرور</string>
     <string name="Whitelist_help">يُسمح لجهات الاتصال الموجودة في هذه القائمة بإرسال أوامر FMD عبر الرسائل القصيرة. سيتم تجاهل الأوامر من أي شخص آخر.</string>
     <string name="WhiteList_Add_Contact">إضافة جهة اتصال</string>
-    <string name="settings_exported">تم تصدير الإعدادات</string>
     <string name="about">نبذة عن</string>
     <string name="app_description">يسمح لك FMD (Find My Device) بتحديد موقع جهازك عن بعد. يمكنك التواصل مع FMD عبر الرسائل القصيرة أو برامج المراسلة الفورية أو باستخدام خادم FMD. حدد موقع جهازك، أو اجعله يرن، أو اقفله، أو امسح بياناته - كل ذلك من جهاز التحكم عن بُعد.</string>
     <string name="Notification_Security_Description">الإشعارات حول التحديثات الأمنية</string>
@@ -83,7 +82,6 @@
     <string name="MH_Pin_Accepted">تم قبول الرقم السري!</string>
     <string name="LockScreen_Backbutton_pressed">رسالة شاشة القفل: تم الضغط على زر الرجوع.</string>
     <string name="LockScreen_Usage_detectd">رسالة قفل الشاشة: تم اكتشاف الاستخدام.</string>
-    <string name="Log_Alert_LogData">سجل البيانات</string>
     <string name="ringer_stop_ringing">توقف عن الرنين</string>
     <string name="cmd_locate_response_location_off">عذرًا، تم إيقاف GPS.</string>
     <string name="Settings_FMDServer_Push_Description_Missing">يتطلب إرسال الأوامر من خادم FMD إلى هاتفك تطبيق موزع UnifiedPush. قم بتثبيت واحد، ثم عد إلى هنا. سيتم اكتشافه تلقائيًا.</string>
