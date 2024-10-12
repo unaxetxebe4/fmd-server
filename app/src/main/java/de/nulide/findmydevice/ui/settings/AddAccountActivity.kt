@@ -20,6 +20,7 @@ import com.android.volley.VolleyError
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import de.nulide.findmydevice.R
 import de.nulide.findmydevice.data.FmdKeyPair
+import de.nulide.findmydevice.data.RegistrationTokenRepository
 import de.nulide.findmydevice.data.Settings
 import de.nulide.findmydevice.data.SettingsRepository
 import de.nulide.findmydevice.net.FMDServerApiRepoSpec
@@ -44,6 +45,7 @@ class AddAccountActivity : AppCompatActivity(), TextWatcher {
 
     private lateinit var settingsRepo: SettingsRepository
     private lateinit var fmdServerRepo: FMDServerApiRepository
+    private lateinit var registrationTokensRepo: RegistrationTokenRepository
 
     private var loadingDialog: AlertDialog? = null
 
@@ -55,6 +57,7 @@ class AddAccountActivity : AppCompatActivity(), TextWatcher {
 
         settingsRepo = SettingsRepository.getInstance(this)
         fmdServerRepo = FMDServerApiRepository.getInstance(FMDServerApiRepoSpec(this))
+        registrationTokensRepo = RegistrationTokenRepository.getInstance(this)
 
         if (settingsRepo.serverAccountExists()) {
             val fmdServerIntent = Intent(this, FMDServerActivity::class.java)
@@ -91,6 +94,17 @@ class AddAccountActivity : AppCompatActivity(), TextWatcher {
         getAndShowServerVersion(this, lastKnownServerUrl)
     }
 
+    private fun prefillRegistrationToken(editText: EditText) {
+        val serverUrl = settingsRepo.get(Settings.SET_FMDSERVER_URL) as String
+        val cachedToken = registrationTokensRepo.get(serverUrl)
+        editText.setText(cachedToken)
+    }
+
+    private fun cacheRegistrationToken(token: String) {
+        val serverUrl = settingsRepo.get(Settings.SET_FMDSERVER_URL) as String
+        registrationTokensRepo.set(serverUrl, token)
+    }
+
     private fun onRegisterClicked(view: View) {
         val context = view.context
         val registerLayout = layoutInflater.inflate(R.layout.dialog_register, null)
@@ -101,6 +115,8 @@ class AddAccountActivity : AppCompatActivity(), TextWatcher {
         val registrationTokenInput =
             registerLayout.findViewById<EditText>(R.id.editTextRegistrationToken)
 
+        prefillRegistrationToken(registrationTokenInput)
+
         val registerDialog = MaterialAlertDialogBuilder(context)
             .setTitle(context.getString(R.string.Settings_FMDServer_Register))
             .setView(registerLayout)
@@ -110,6 +126,8 @@ class AddAccountActivity : AppCompatActivity(), TextWatcher {
                 val password = passwordInput.text.toString()
                 val passwordCheck = passwordInputCheck.text.toString()
                 val registrationToken = registrationTokenInput.text.toString()
+
+                cacheRegistrationToken(registrationToken)
 
                 if (password.isNotEmpty() && password == passwordCheck) {
                     // Key generation and password hashing is expensive-ish, so we don't want
