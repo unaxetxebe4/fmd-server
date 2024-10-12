@@ -227,4 +227,5 @@
     <string name="server_login_attempts_title">Nezdařené pokusy o přihlášení k serveru FMD</string>
     <string name="server_login_attempts_text">Někdo se pokusil přihlásit do vašeho účtu „%s“ na serveru FMD. Z důvodu několika nezdařených pokusů o zadání hesla je účet nyní na 10 minut uzamčen.</string>
     <string name="cmd_locate_response_gps_fail">Nepodařilo se získat aktuální polohu z GPS. Možná vypršel čas.</string>
+    <string name="temporary_allowlist_expired">Vaše dočasné použití aplikace FindMyDevice vypršelo. Pro pokračování v používání FindMyDevice zadejte znovu svůj PIN ve vaší další zprávě.</string>
 </resources>
