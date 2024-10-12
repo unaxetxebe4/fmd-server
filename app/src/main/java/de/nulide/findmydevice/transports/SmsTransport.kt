@@ -14,6 +14,7 @@ import de.nulide.findmydevice.ui.settings.AllowlistActivity
 class SmsTransport(
     private val context: Context,
     private val destination: String,
+    private val subscriptionId: Int
 ) : Transport<String>(destination) {
 
     @get:DrawableRes
@@ -43,9 +44,18 @@ class SmsTransport(
         super.send(context, msg)
 
         val smsManager = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            context.getSystemService(SmsManager::class.java)
+            val defaultSmsManager = context.getSystemService(SmsManager::class.java)
+            if (subscriptionId == -1){
+                defaultSmsManager
+            }else{
+                defaultSmsManager.createForSubscriptionId(subscriptionId)
+            }
         } else {
-            SmsManager.getDefault()
+            if (subscriptionId == -1) {
+                SmsManager.getDefault()
+            } else {
+                SmsManager.getSmsManagerForSubscriptionId(subscriptionId)
+            }
         }
 
         if (msg.length <= 160) {

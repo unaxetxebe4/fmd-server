@@ -12,7 +12,7 @@ import de.nulide.findmydevice.utils.log
 
 // Order matters for the home screen
 fun availableTransports(context: Context): List<Transport<*>> = listOf(
-    SmsTransport(context, "42"),
+    SmsTransport(context, "42", -1),
     NotificationReplyTransport(null),
     FmdServerTransport(context),
     InAppTransport(context),

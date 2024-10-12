@@ -14,6 +14,7 @@ import de.nulide.findmydevice.data.TemporaryAllowlistRepository;
 import de.nulide.findmydevice.transports.SmsTransport;
 import de.nulide.findmydevice.transports.Transport;
 import de.nulide.findmydevice.utils.FmdLogKt;
+import kotlin.Pair;
 
 public class TempContactExpiredService extends JobService {
 
@@ -22,13 +23,13 @@ public class TempContactExpiredService extends JobService {
     @Override
     public boolean onStartJob(JobParameters params) {
         TemporaryAllowlistRepository repo = TemporaryAllowlistRepository.Companion.getInstance(this);
-        List<String> expired = repo.removeExpired();
+        List<Pair<String, Integer>> expired = repo.removeExpired();
 
-        for (String phoneNumber : expired) {
+        for (Pair temporaryPhoneNumber : expired) {
             String msg = getString(R.string.temporary_allowlist_expired);
-            Transport<String> transport = new SmsTransport(this, phoneNumber);
+            Transport<String> transport = new SmsTransport(this, (String) temporaryPhoneNumber.getFirst(), (Integer) temporaryPhoneNumber.getSecond());
             transport.send(this, msg);
-            FmdLogKt.log(this).i(TAG, "Phone number expired: " + phoneNumber);
+            FmdLogKt.log(this).i(TAG, "Phone number expired: " + temporaryPhoneNumber.getFirst());
         }
 
         return false;

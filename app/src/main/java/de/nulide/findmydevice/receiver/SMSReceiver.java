@@ -24,11 +24,12 @@ public class SMSReceiver extends BroadcastReceiver {
             String format = bundle.getString("format");
             Object[] pdus = (Object[]) bundle.get("pdus");
             if (pdus != null) {
+                int subscriptionId = intent.getIntExtra("subscription", -1);
                 msgs = new SmsMessage[pdus.length];
                 for (int i = 0; i < msgs.length; i++) {
                     msgs[i] = SmsMessage.createFromPdu((byte[]) pdus[i], format);
                     String sender = msgs[i].getOriginatingAddress();
-                    FMDSMSService.scheduleJob(context, sender, msgs[i].getMessageBody());
+                    FMDSMSService.scheduleJob(context, sender, subscriptionId, msgs[i].getMessageBody());
                 }
             }
         }
