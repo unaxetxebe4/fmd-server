@@ -54,6 +54,7 @@
     <string name="Toast_Empty_FMDCommand">Empty Command not allowed\n Returning to default.[fmd]</string>
     <string name="Settings_Ringer_Tone_Description">Select a ringtone that will be played when "fmd ring" is sent.</string>
     <string name="Settings_Select_Ringtone">Select Ringtone</string>
+    <string name="Settings_no_ringtone_picker">No ringtone picker found!</string>
     <string name="Settings_Lockscreenmessage_Description">Lock Screen Message:\nWhen locking the device, this message will appear on the lock screen.</string>
 
     <!-- Settings: FMD Server -->
