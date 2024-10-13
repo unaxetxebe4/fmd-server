@@ -205,7 +205,7 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
 
     private void onDeleteClicked(View view) {
         new MaterialAlertDialogBuilder(context)
-                .setTitle(getString(R.string.Settings_FMDServer_Alert_DeleteData))
+                .setTitle(getString(R.string.Settings_FMDServer_Delete_Account))
                 .setMessage(R.string.Settings_FMDServer_Alert_DeleteData_Desc)
                 .setPositiveButton(getString(R.string.Ok), (dialog, whichButton) -> runDelete())
                 .setNegativeButton(getString(R.string.cancel), null)
@@ -224,7 +224,7 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
     private void onChangePasswordClicked(View view) {
         LayoutInflater inflater = getLayoutInflater();
         final AlertDialog.Builder alert = new MaterialAlertDialogBuilder(this);
-        alert.setTitle("Change Password");
+        alert.setTitle(context.getString(R.string.Settings_FMDServer_Change_Password_Button));
         View registerLayout = inflater.inflate(R.layout.dialog_password_change, null);
         alert.setView(registerLayout);
         EditText oldPasswordInput = registerLayout.findViewById(R.id.editTextFMDOldPassword);
@@ -238,10 +238,12 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
                 String password = passwordInput.getText().toString();
                 String passwordCheck = passwordInputCheck.getText().toString();
 
-                if (!password.isEmpty() && password.equals(passwordCheck) && !oldPassword.isEmpty()) {
-                    runChangePassword(oldPassword, password);
+                if (password.isEmpty() || oldPassword.isEmpty()) {
+                    Toast.makeText(context, R.string.pw_change_empty, Toast.LENGTH_LONG).show();
+                } else if (!password.equals(passwordCheck)) {
+                    Toast.makeText(context, R.string.pw_change_mismatch, Toast.LENGTH_LONG).show();
                 } else {
-                    Toast.makeText(context, "Failed", Toast.LENGTH_LONG).show();
+                    runChangePassword(oldPassword, password);
                 }
             }
         });
@@ -266,7 +268,7 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
             try {
                 PrivateKey privKey = CypherUtils.decryptPrivateKeyWithPassword((String) settings.get(Settings.SET_FMD_CRYPT_PRIVKEY), oldPassword);
                 if (privKey == null) {
-                    Toast.makeText(context, "Wrong Password.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, R.string.pw_change_wrong_password, Toast.LENGTH_LONG).show();
                     loadingDialog.cancel();
                     return;
                 }
@@ -277,16 +279,16 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
                     fmdServerRepo.changePassword(hashedPW, newPrivKey,
                             (response -> {
                                 loadingDialog.cancel();
-                                Toast.makeText(context, "Success", Toast.LENGTH_LONG).show();
+                                Toast.makeText(context, R.string.pw_change_success, Toast.LENGTH_LONG).show();
                             }),
                             (error) -> {
-                                Toast.makeText(context, "Request failed", Toast.LENGTH_LONG).show();
+                                Toast.makeText(context, R.string.pw_change_network_failed, Toast.LENGTH_LONG).show();
                                 loadingDialog.cancel();
                             });
                 });
             } catch (Exception bdp) {
                 runOnUiThread(() -> {
-                    Toast.makeText(context, "Wrong Password.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, R.string.pw_change_wrong_password, Toast.LENGTH_LONG).show();
                     loadingDialog.cancel();
                 });
             }
@@ -299,7 +301,7 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
         fmdServerRepo.unregister(
                 response -> {
                     loadingDialog.cancel();
-                    Toast.makeText(context, "Unregister successful", Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, R.string.Settings_FMDServer_Unregister_Success, Toast.LENGTH_LONG).show();
                     finish();
                 }, error -> {
                     loadingDialog.cancel();

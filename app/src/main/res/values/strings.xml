@@ -65,9 +65,9 @@
     <string name="Settings_FMD_Server_Connection_Status_Success">Success</string>
     <string name="Settings_FMDServer_Change_Password_Button">Change Password</string>
     <string name="Settings_FMDServer_Logout_Button">Log Out</string>
-    <string name="Settings_FMDServer_Delete_Button">Delete Data</string>
-    <string name="Settings_FMDServer_Alert_DeleteData">Delete Data</string>
+    <string name="Settings_FMDServer_Delete_Account">Delete Account</string>
     <string name="Settings_FMDServer_Alert_DeleteData_Desc">This will delete all data from the Server! Are you sure?</string>
+    <string name="Settings_FMDServer_Unregister_Success">Unregistering and data deletion successful!</string>
     <string name="Settings_FMDServer_Push_Description_Missing">Sending commands from FMD Server to your device requires a UnifiedPush distributor app. Install one, and then return here. It will automatically be detected.</string>
     <string name="Settings_FMDServer_Push_Description_Available">Successfully registered for push notifications.</string>
     <string name="Settings_FMDServer_Push_Open_UP">Open UnifiedPush Website</string>
@@ -80,6 +80,11 @@
     <string name="password_old">Old Password</string>
     <string name="password_new">New Password</string>
     <string name="password_new_repeat">Repeat New Password</string>
+    <string name="pw_change_success">Password changed</string>
+    <string name="pw_change_empty">Password must not be empty.</string>
+    <string name="pw_change_mismatch">The repeated passwords do not match.</string>
+    <string name="pw_change_wrong_password">Wrong password</string>
+    <string name="pw_change_network_failed">Password change failed due to a network error.</string>
     <string name="server_login_attempts_title">Failed login attempts to FMD Server</string>
     <string name="server_login_attempts_text">Someone tried to log in to your FMD Server account \"%s\". Due to multiple failed passwords, the account is now locked for 10 minutes.</string>
 
@@ -96,6 +101,7 @@
     <string name="Settings_FMDServer_Register">Register</string>
     <string name="Settings_FMDServer_Alert_PrivacyPolicy_Title">Privacy Policy</string>
     <string name="password">Password</string>
+    <string name="Settings_FMDServer_Error_id_or_pw_empty">The FMD ID and password must not be empty.</string>
     <string name="registration_token">Registration Token</string>
     <string name="registration_token_hint">Private instances may require a secret token. Leave this empty if the instance is public.</string>
     <string name="server_registration_token_error">Network request failed with HTTP 401. This can happen if the server requires a registration token and the token you provided was wrong.</string>
