@@ -1,6 +1,7 @@
 package de.nulide.findmydevice.ui.settings;
 
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -157,7 +158,11 @@ public class FMDConfigActivity extends AppCompatActivity implements CompoundButt
         intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE, RingtoneManager.TYPE_ALARM);
         intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TITLE, getString(R.string.Settings_Select_Ringtone));
         intent.putExtra(RingtoneManager.EXTRA_RINGTONE_EXISTING_URI, Uri.parse((String) settings.get(Settings.SET_RINGER_TONE)));
-        this.startActivityForResult(intent, REQUEST_CODE_RINGTONE);
+        try {
+            this.startActivityForResult(intent, REQUEST_CODE_RINGTONE);
+        } catch (ActivityNotFoundException e) {
+            Toast.makeText(this, getString(R.string.Settings_no_ringtone_picker), Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override
