@@ -33,6 +33,7 @@ import de.nulide.findmydevice.net.FMDServerApiRepository;
 import de.nulide.findmydevice.permissions.NotificationAccessPermission;
 import de.nulide.findmydevice.receiver.PushReceiver;
 import de.nulide.findmydevice.services.FMDServerLocationUploadService;
+import de.nulide.findmydevice.services.FmdBatteryLowService;
 import de.nulide.findmydevice.ui.home.PermissionView;
 import de.nulide.findmydevice.utils.CypherUtils;
 import de.nulide.findmydevice.utils.UnregisterUtil;
@@ -162,6 +163,11 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
             }
         } else if (buttonView == checkBoxLowBat) {
             settings.set(Settings.SET_FMD_LOW_BAT_SEND, isChecked);
+            if(isChecked){
+                FmdBatteryLowService.scheduleJobNow(this);
+            }else{
+                FmdBatteryLowService.stopJobNow(this);
+            }
         }
     }
 
