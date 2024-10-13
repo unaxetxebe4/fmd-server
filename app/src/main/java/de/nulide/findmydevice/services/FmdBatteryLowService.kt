@@ -16,20 +16,33 @@ class FmdBatteryLowService : FmdJobService() {
 
         @JvmStatic
         fun scheduleJobNow(context: Context) {
-            val serviceComponent = ComponentName(context, FmdBatteryLowService::class.java)
-            val builder = JobInfo.Builder(JOB_ID, serviceComponent)
-            builder.setMinimumLatency(0)
-            builder.setOverrideDeadline(1000)
-            builder.setPersisted(true)
-            builder.setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY)
-            val jobScheduler = context.getSystemService(JobScheduler::class.java)
-            jobScheduler.schedule(builder.build())
+            if(!isRunning(context)) {
+                val serviceComponent = ComponentName(context, FmdBatteryLowService::class.java)
+                val builder = JobInfo.Builder(JOB_ID, serviceComponent)
+                builder.setMinimumLatency(0)
+                builder.setOverrideDeadline(1000)
+                builder.setPersisted(true)
+                builder.setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY)
+                val jobScheduler = context.getSystemService(JobScheduler::class.java)
+                jobScheduler.schedule(builder.build())
+            }
         }
 
         @JvmStatic
         fun stopJobNow(context: Context){
             val jobScheduler = context.getSystemService(JobScheduler::class.java)
             jobScheduler.cancel(JOB_ID)
+        }
+
+        @JvmStatic
+        fun isRunning(context: Context): Boolean{
+            val jobScheduler = context.getSystemService(JobScheduler::class.java)
+            for (jobInfo in jobScheduler.allPendingJobs){
+                if (jobInfo.id == JOB_ID){
+                    return true
+                }
+            }
+            return false
         }
     }
 

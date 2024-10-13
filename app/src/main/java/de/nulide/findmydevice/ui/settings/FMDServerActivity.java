@@ -130,6 +130,9 @@ public class FMDServerActivity extends AppCompatActivity implements CompoundButt
         checkBoxLowBat = findViewById(R.id.checkBoxFMDServerLowBatUpload);
         checkBoxLowBat.setChecked((Boolean) settings.get(Settings.SET_FMD_LOW_BAT_SEND));
         checkBoxLowBat.setOnCheckedChangeListener(this);
+        if((Boolean) settings.get(Settings.SET_FMD_LOW_BAT_SEND)){
+            FmdBatteryLowService.scheduleJobNow(this);
+        }
 
         PermissionView notificationAccessPerm = findViewById(R.id.perm_notification_access);
         notificationAccessPerm.setPermission(new NotificationAccessPermission(), this, true);
