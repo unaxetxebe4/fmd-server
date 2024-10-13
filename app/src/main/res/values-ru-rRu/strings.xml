@@ -162,7 +162,7 @@
     <string name="cmd_gps_response_on">GPS включён.</string>
     <string name="cmd_gps_response_off">GPS выключен.</string>
     <string name="cmd_help_description_short">Показать справку</string>
-    <string name="cmd_gps_description_short">Включение или выключение GPS</string>
+    <string name="cmd_gps_description_short">Включение и выключение GPS</string>
     <string name="cmd_stats_description_short">Получить статистику сети</string>
     <string name="cmd_stats_description_long">Получает статистику сети с устройства. Например, его IP адрес и список окружающих его Wi-Fi сетей.</string>
     <string name="cmd_stats_response">Статистика сети:
@@ -222,5 +222,24 @@
 \n
 \n%2$s</string>
     <string name="server_registration_token_error">Не удалось совершить сетевой запрос из-за ошибки HTTP 401. Это может произойти в случае, если сервер требует токен регистрации, а предоставленный вами токен был неверным.</string>
-    <string name="cmd_locate_response_gps_fail">Получение нового местоположения по GPS не удалось. Возможно из-за тайм-аута.</string>
+    <string name="cmd_locate_response_gps_fail">Получение нового местоположения по GPS не удалось. Возможно из-за превышения времени ожидания.</string>
+    <string name="pw_change_network_failed">Смена пароля не удалась из-за ошибки сети.</string>
+    <string name="Settings_FMDServer_Error_id_or_pw_empty">FMD ID и пароль не должны быть пустыми.</string>
+    <string name="log_view_title">Логи</string>
+    <string name="Settings_no_ringtone_picker">Не найдено приложение для выбора рингтона!</string>
+    <string name="pw_change_empty">Пароль не должен быть пустым.</string>
+    <string name="log_view_export">Экспортировать логи</string>
+    <string name="perm_bluetooth_connect_name">Подключить Bluetooth</string>
+    <string name="export_success">Экспортирование успешно</string>
+    <string name="export_failed">Экспортирование не удалось</string>
+    <string name="temporary_allowlist_expired">Ваш временный доступ к использованию Find My Device истёк. Чтобы продолжить использовать Find My Device, отправьте PIN-код снова в вашем следующем сообщении.</string>
+    <string name="pw_change_success">Пароль изменён</string>
+    <string name="pw_change_mismatch">Пароли не совпадают.</string>
+    <string name="pw_change_wrong_password">Неверный пароль</string>
+    <string name="cmd_bluetooth_response_off">Bluetooth выключен.</string>
+    <string name="Settings_FMDServer_Delete_Account">Удалить аккаунт</string>
+    <string name="cmd_bluetooth_response_no_bluetooth">Похоже, что данное устройство не имеет Bluetooth.</string>
+    <string name="cmd_bluetooth_description_short">Включение и выключение Bluetooth</string>
+    <string name="cmd_bluetooth_response_on">Bluetooth включён.</string>
+    <string name="Settings_FMDServer_Unregister_Success">Отмена регистрации и удаление данных успешно завершены!</string>
 </resources>
