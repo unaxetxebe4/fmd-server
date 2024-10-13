@@ -23,7 +23,9 @@ class BatteryLowReceiver : BroadcastReceiver() {
                 return
             }
 
-            val lastUpload = settings.get(Settings.SET_LAST_LOW_BAT_UPLOAD) as Long
+            // Gson quirk: Gson may interpret long values as doubles.
+            // This workaround ensures that the value is interpreted as a long.
+            val lastUpload = (settings.get(Settings.SET_LAST_LOW_BAT_UPLOAD) as Number).toLong()
             val now = System.currentTimeMillis()
 
             // If the system fires the intent or notification too often, don't upload all the time.
