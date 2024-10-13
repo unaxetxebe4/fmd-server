@@ -12,8 +12,6 @@
     <string name="Settings_Select_Ringtone">حدد نغمة الرنين</string>
     <string name="Settings_FMD_Server_General">عام</string>
     <string name="Settings_FMDServer_Logout_Button">تسجيل خروج</string>
-    <string name="Settings_FMDServer_Delete_Button">حذف البيانات</string>
-    <string name="Settings_FMDServer_Alert_DeleteData">حذف البيانات</string>
     <string name="Settings_FMDServer_Update_Interval_Description">يقوم FMD بتحميل موقع الجهاز كل X دقيقة.</string>
     <string name="Settings_FMDServer_Location_Type_Title">مصدر الموقع</string>
     <string name="Settings_FMDServer_LOW_BAT_Upload_Title">تحميل على بطارية منخفضة</string>

@@ -37,8 +37,6 @@
     <string name="Settings_FMD_Server_User_ID">ID użytkownika:</string>
     <string name="Settings_FMDServer_Change_Password_Button">Zmień hasło</string>
     <string name="Settings_FMDServer_Logout_Button">Wyloguj się</string>
-    <string name="Settings_FMDServer_Delete_Button">Usuń dane</string>
-    <string name="Settings_FMDServer_Alert_DeleteData">Usuń dane</string>
     <string name="password_old">Stare hasło</string>
     <string name="password_new">Nowe hasło</string>
     <string name="server_version">Wersja serwera</string>

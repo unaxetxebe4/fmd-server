@@ -106,8 +106,6 @@
     <string name="Settings_FMD_Server_User_ID">Uživatelské ID:</string>
     <string name="Settings_FMDServer_Change_Password_Button">Změnit heslo</string>
     <string name="Settings_FMDServer_Logout_Button">Odhlásit se</string>
-    <string name="Settings_FMDServer_Delete_Button">Smazat data</string>
-    <string name="Settings_FMDServer_Alert_DeleteData">Smazat data</string>
     <string name="password_new_repeat">Zopakujte nové heslo</string>
     <string name="server_version_error">Chyba při získávání verze serveru</string>
     <string name="Settings_FMDServer_Alert_DeleteData_Desc">Tato akce odstraní všechna data ze serveru! Jste si jisti?</string>

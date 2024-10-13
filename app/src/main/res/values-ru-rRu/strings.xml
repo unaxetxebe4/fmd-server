@@ -40,7 +40,6 @@
     <string name="Settings_FMD_Server_User_ID">ID пользователя:</string>
     <string name="Settings_FMD_Server_ID_Desc">Вам необходим ID пользователя для нахождения вашего устройства с помощью FMD Сервера. Запишите его и храните в безопасности.</string>
     <string name="Settings_FMDServer_Change_Password_Button">Сменить пароль</string>
-    <string name="Settings_FMDServer_Delete_Button">Удалить данные</string>
     <string name="Settings_FMDServer_Logout_Button">Выйти</string>
     <string name="Settings_FMDServer_Alert_DeleteData_Desc">Это удалит все данные с сервера. Вы уверены?</string>
     <string name="Settings_FMDServer_Push_Open_UP">Открыть сайт UnifiedPush</string>
@@ -56,7 +55,6 @@
     <string name="Settings_Export">Экспортировать настройки</string>
     <string name="Settings_FMD_Server_Server_URL">URL сервера:</string>
     <string name="Settings_FMD_Server_General">Основные</string>
-    <string name="Settings_FMDServer_Alert_DeleteData">Удалить данные</string>
     <string name="server_version">Версия сервера</string>
     <string name="server_version_error">Ошибка получения версии сервера</string>
     <string name="Settings_FMDServer_AddAccount">FMD Сервер: Войти/Зарегистрироваться</string>

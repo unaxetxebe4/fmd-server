@@ -50,8 +50,6 @@
     <string name="GPS">GPS</string>
     <string name="Cell">Celular</string>
     <string name="Notification_Server">Servidor FMD</string>
-    <string name="Settings_FMDServer_Delete_Button">Eliminar Datos</string>
-    <string name="Settings_FMDServer_Alert_DeleteData">Eliminar Datos</string>
     <string name="Settings_FMDServer_Alert_DeleteData_Desc">¡Esto eliminará todos los datos del servidor! ¿Está seguro/a?</string>
     <string name="Settings_Import">Importar Ajustes</string>
     <string name="Settings_Export">Exportar Ajustes</string>

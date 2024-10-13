@@ -25,8 +25,6 @@
     <string name="Settings_FMD_Server_ID_Desc">您需要使用用户ID来通过FMD服务器查找你的设备。写下它并且确保它的安全。</string>
     <string name="Settings_FMDServer_Change_Password_Button">更改密码</string>
     <string name="Settings_FMDServer_Logout_Button">登出</string>
-    <string name="Settings_FMDServer_Delete_Button">删除数据</string>
-    <string name="Settings_FMDServer_Alert_DeleteData">删除数据</string>
     <string name="Settings_FMDServer_Alert_DeleteData_Desc">这将会从服务器上删除所有数据！您确定要这么做吗？</string>
     <string name="Settings_FMDServer_Push_Description_Available">成功注册了通知推送权限。</string>
     <string name="Settings_FMDServer_Push_Open_UP">打开 UnifiedPush 网站</string>
