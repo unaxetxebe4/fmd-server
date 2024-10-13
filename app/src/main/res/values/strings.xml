@@ -37,7 +37,7 @@
     <string name="Settings_FMDConfig">FMD-Config</string>
     <string name="Settings_FMDServer" translatable="false">FMD Server</string>
     <string name="Settings_WhiteList">Allowed Contacts</string>
-    <string name="Settings_OpenCellId">OpenCelliD</string>
+    <string name="Settings_OpenCellId" translatable="false">OpenCelliD</string>
     <string name="Settings_Permissions">Permissions</string>
     <string name="Settings_Import">Import Settings</string>
     <string name="Settings_Export">Export Settings</string>
@@ -51,7 +51,7 @@
     <string name="pin">PIN</string>
     <string name="pin_repeat">Repeat PIN</string>
     <string name="Settings_FMDCommand_Description">The command used to communicate with the FMD.</string>
-    <string name="Toast_Empty_FMDCommand">Empty Command not allowed\n Returning to default.[fmd]</string>
+    <string name="Toast_Empty_FMDCommand">Empty command not allowed, using default.</string>
     <string name="Settings_Ringer_Tone_Description">Select a ringtone that will be played when "fmd ring" is sent.</string>
     <string name="Settings_Select_Ringtone">Select Ringtone</string>
     <string name="Settings_no_ringtone_picker">No ringtone picker found!</string>
@@ -195,7 +195,7 @@
     <string name="cmd_ring_description_short">Make the device ring</string>
     <string name="cmd_ring_response">The device should now be ringing.</string>
 
-    <string name="cmd_nodisturb_description_short">Toggle Do Not Disturb on or off</string>
+    <string name="cmd_nodisturb_description_short">Toggle Do Not Disturb on and off</string>
     <string name="cmd_nodisturb_response_on">Do Not Disturb mode turned on.</string>
     <string name="cmd_nodisturb_response_off">Do Not Disturb mode turned off.</string>
 
