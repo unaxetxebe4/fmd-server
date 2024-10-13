@@ -228,4 +228,17 @@
     <string name="export_failed">Exportación fallida</string>
     <string name="log_view_export">Exportar registros</string>
     <string name="log_view_title">Registros</string>
+    <string name="Settings_FMDServer_Delete_Account">Eliminar cuenta</string>
+    <string name="pw_change_empty">La contraseña no debe estar vacía.</string>
+    <string name="pw_change_wrong_password">Contraseña incorrecta</string>
+    <string name="pw_change_success">Contraseña cambiada</string>
+    <string name="Settings_FMDServer_Error_id_or_pw_empty">El identificador y la contraseña FMD no deben estar vacíos.</string>
+    <string name="cmd_bluetooth_description_short">Activar o desactivar Bluetooth</string>
+    <string name="cmd_bluetooth_response_no_bluetooth">El dispositivo no parece tener Bluetooth.</string>
+    <string name="cmd_bluetooth_response_on">Bluetooth activado.</string>
+    <string name="Settings_no_ringtone_picker">¡No se ha encontrado ningún selector de tonos!</string>
+    <string name="Settings_FMDServer_Unregister_Success">¡Registro y datos eliminados correctamente!</string>
+    <string name="pw_change_mismatch">Las contraseñas no coinciden.</string>
+    <string name="pw_change_network_failed">No se pudo cambiar la contraseña, por un fallo en la conexión.</string>
+    <string name="cmd_bluetooth_response_off">Bluetooth desactivado.</string>
 </resources>
