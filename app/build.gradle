@@ -26,7 +26,13 @@ android {
     defaultConfig {
         applicationId "de.nulide.findmydevice"
         minSdkVersion 24
-        targetSdkVersion 34
+        // TODO: raise targetSdk again.
+        // We supported targetSdk 34 until BluetoothCommand was added, which requires max 32 to work:
+        // https://developer.android.com/reference/android/bluetooth/BluetoothAdapter#enable()
+        // We should implement becoming a Device Owner, and then raise the targetSdk again.
+        // https://gitlab.com/Nulide/findmydevice/-/issues/220
+        // noinspection ExpiredTargetSdkVersion
+        targetSdkVersion 32
         versionCode 29
         versionName "0.7.1"
         multiDexEnabled true
