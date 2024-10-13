@@ -15,6 +15,7 @@ import kotlinx.coroutines.CoroutineScope
 // Order matters for the home screen
 fun availableCommands(context: Context): List<Command> {
     val commands = mutableListOf(
+        BluetoothCommand(context),
         CameraCommand(context),
         DeleteCommand(context),
         GpsCommand(context),
@@ -65,7 +66,10 @@ class CommandHandler<T>
             return
         }
         if (args[0].lowercase() != fmdTriggerWord.lowercase()) {
-            context.log().w(TAG, "Not handling: '${args[0]}' does not match trigger word '${fmdTriggerWord}'")
+            context.log().w(
+                TAG,
+                "Not handling: '${args[0]}' does not match trigger word '${fmdTriggerWord}'"
+            )
             return
         }
 

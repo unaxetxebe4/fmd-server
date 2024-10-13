@@ -155,6 +155,11 @@
 
     <string name="cmd_missing_permissions">Cannot run command %1$s: Missing permission(s) %2$s.</string>
 
+    <string name="cmd_bluetooth_description_short">Toggle Bluetooth on and off</string>
+    <string name="cmd_bluetooth_response_no_bluetooth">The device does not seem to have Bluetooth.</string>
+    <string name="cmd_bluetooth_response_on">Bluetooth turned on.</string>
+    <string name="cmd_bluetooth_response_off">Bluetooth turned off.</string>
+
     <string name="cmd_camera_description_short">Take a picture</string>
     <string name="cmd_camera_description_long">Takes a picture of with the front/back camera and uploads it to FMD Server. Currently only uploading to FMD Server is supported. You can send this command via other transport channels, too, and the picture will be uploaded to FMD Server (if an account exists).</string>
     <string name="cmd_camera_response_no_fmd_server">Cannot take picture: no FMD Server account exists.</string>
@@ -167,7 +172,7 @@
     <string name="cmd_delete_response_pwd_wrong">Cannot delete: wrong password.</string>
     <string name="cmd_delete_response_success">The device should now be deleted. Goodbye!</string>
 
-    <string name="cmd_gps_description_short">Toggle GPS on or off</string>
+    <string name="cmd_gps_description_short">Toggle GPS on and off</string>
     <string name="cmd_gps_response_on">GPS turned on.</string>
     <string name="cmd_gps_response_off">GPS turned off.</string>
 
@@ -202,6 +207,7 @@
 
     <!-- Permissions: Names -->
     <string name="perm_battery_optimizations_name">Ignore Battery Optimizations</string>
+    <string name="perm_bluetooth_connect_name">Connect Bluetooth</string>
     <string name="perm_camera_name">Camera</string>
     <string name="perm_device_admin_name">Device Admin</string>
     <string name="perm_do_not_disturb_access_name">Do Not Disturb Access</string>
