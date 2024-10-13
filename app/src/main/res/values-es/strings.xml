@@ -241,4 +241,5 @@
     <string name="pw_change_mismatch">Las contraseñas no coinciden.</string>
     <string name="pw_change_network_failed">No se pudo cambiar la contraseña, por un fallo en la conexión.</string>
     <string name="cmd_bluetooth_response_off">Bluetooth desactivado.</string>
+    <string name="perm_bluetooth_connect_name">Conectar Bluetooth</string>
 </resources>
