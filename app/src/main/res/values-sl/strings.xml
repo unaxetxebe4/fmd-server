@@ -24,8 +24,6 @@
     <string name="Settings_FMD_Server_User_ID">ID naprave:</string>
     <string name="Settings_FMD_Server_ID_Desc">Za iskanje naprave s FMD strežnikom, potrebujete ID naprave. Zapišite si ga, in ga shranite na varno mesto.</string>
     <string name="Settings_FMDServer_Logout_Button">Odjava</string>
-    <string name="Settings_FMDServer_Delete_Button">Izbriši podatke</string>
-    <string name="Settings_FMDServer_Alert_DeleteData">Izbriši podatke</string>
     <string name="Settings_FMDServer_Alert_DeleteData_Desc">To bo izbrisalo vse vaše podatke iz FMD strežnika! Ste prepričani?</string>
     <string name="Settings_FMDServer_Push_Description_Available">Registracija za sprejemanje potisnih obvestil je bila uspešna.</string>
     <string name="Settings_FMDServer_Push_Open_UP">Odpri spletno stran UnifiedPush</string>

@@ -85,7 +85,6 @@
     <string name="Settings_Import">Importar Configurações</string>
     <string name="Settings_FMD_Server_Server_URL">URL do Servidor:</string>
     <string name="Settings_FMDServer_Change_Password_Button">Alterar Senha</string>
-    <string name="Settings_FMDServer_Alert_DeleteData">Excluir Dados</string>
     <string name="Settings_FMDServer_Location_Type_Title">Fonte da Localização</string>
     <string name="Settings_FMDServer_LOW_BAT_Upload_Description">Fazer upload da localização deste dispositivo quando o nível de bateria ficar baixo. Precisa de acesso às notificações.</string>
     <string name="Settings_FMDServer_Location_Type_Description">As fontes que são usadas para fazer upload da localização nos intervalos configurados em segundo plano.
@@ -97,7 +96,6 @@
     <string name="WhiteList_Add_Contact">Adicionar Contato</string>
     <string name="WhiteList_Select_Number">Selecione um dos números de telefone.</string>
     <string name="Settings_FMD_Server_User_ID">ID do usuário:</string>
-    <string name="Settings_FMDServer_Delete_Button">Excluir Dados</string>
     <string name="Settings_FMDServer_Alert_DeleteData_Desc">Isto excluirá todos os dados do servidor! Você tem certeza?</string>
     <string name="OpenCellId_privacy">Privacidade: tenha em mente que o OpenCelliD aprende sobre a sua torre de redes móveis atual e então sua localização com cada busca na API.</string>
     <string name="about_source_code">Código-fonte</string>

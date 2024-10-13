@@ -111,8 +111,6 @@
     <string name="Settings_FMD_Server_General">Општо</string>
     <string name="Settings_FMD_Server_ID_Desc">Потребно ти е корисничко име за да го пронајдеш твојот уред со FMD серверот. Запиши го и чувај го на сигурно.</string>
     <string name="Settings_FMDServer_Logout_Button">Одјави се</string>
-    <string name="Settings_FMDServer_Delete_Button">Избриши податоци</string>
-    <string name="Settings_FMDServer_Alert_DeleteData">Избриши податоци</string>
     <string name="Settings_FMDServer_Push_Description_Missing">Праќање наредби од FMD серверот до твојот уред изискува апликација за распоредување на UnifiedPush. Инсталирај таква, и потоа врати се тука. Таа автоматски ќе се открие.</string>
     <string name="Settings_FMDServer_Push_Open_UP">Интернет страница за Open UnifiedPush</string>
     <string name="Settings_FMDServer_Location_Type_Description">Изворот/ите од кои позиционите податоци се испраќаат при редовни интервали, во позадина.

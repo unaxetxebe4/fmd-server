@@ -25,8 +25,6 @@
     <string name="Settings_Enter_Pin">Введіть PIN</string>
     <string name="pin_repeat">Повторіть PIN</string>
     <string name="Settings_Select_Ringtone">Виберіть мелодію</string>
-    <string name="Settings_FMDServer_Delete_Button">Видалити дані</string>
-    <string name="Settings_FMDServer_Alert_DeleteData">Видалити дані</string>
     <string name="Settings_FMDServer_Update_Interval_Title">Часовий проміжок оновлення</string>
     <string name="Settings_FMDServer_Location_Type_Title">Джерело місцеперебування</string>
     <string name="Settings_FMDServer_LOW_BAT_Upload_Title">Завантаження при низькому заряді акумулятора</string>

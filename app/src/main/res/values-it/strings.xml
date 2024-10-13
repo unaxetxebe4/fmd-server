@@ -70,8 +70,6 @@
     <string name="GPS">GPS</string>
     <string name="Cell">Cella</string>
     <string name="Notification_Server">Server FMD</string>
-    <string name="Settings_FMDServer_Delete_Button">Cancella Dati</string>
-    <string name="Settings_FMDServer_Alert_DeleteData">Cancella Dati</string>
     <string name="Settings_FMDServer_Alert_DeleteData_Desc">Questo cancellerà tutti i dati dal server Sei sicuro?</string>
     <string name="Settings_Import">Importa Impostazioni</string>
     <string name="Settings_Export">Esporta Impostazioni</string>
