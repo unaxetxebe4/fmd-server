@@ -120,7 +120,7 @@
     <string name="allowlist_phone_number">Phone Number</string>
 
     <!-- Settings: Temporary Allowed Contacts -->
-    <string name="temporary_allowlist_expired">Your temporary FindMyDevice usage expired. To continue using FindMyDevice, send the PIN again in your next message.</string>
+    <string name="temporary_allowlist_expired">Your temporary FindMyDevice access expired. To continue using FindMyDevice, send the PIN again.</string>
 
     <!-- Settings: OpenCelliD -->
     <string name="OpenCellId_OpenCellId" translatable="false">OpenCelliD</string>
