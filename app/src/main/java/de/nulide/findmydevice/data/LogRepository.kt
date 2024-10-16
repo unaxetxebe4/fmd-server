@@ -2,6 +2,7 @@ package de.nulide.findmydevice.data
 
 import android.content.Context
 import android.net.Uri
+import android.os.Build
 import com.google.gson.Gson
 import com.google.gson.stream.JsonReader
 import de.nulide.findmydevice.data.UncaughtExceptionHandler.Companion.CRASH_MSG_HEADER
@@ -9,6 +10,8 @@ import de.nulide.findmydevice.utils.SingletonHolder
 import de.nulide.findmydevice.utils.writeToUri
 import java.io.File
 import java.io.FileReader
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import java.util.LinkedList
 import kotlin.math.max
 
@@ -27,7 +30,16 @@ class LogModel : LinkedList<LogEntry>()
 
 class LogRepository private constructor(private val context: Context) {
 
-    companion object : SingletonHolder<LogRepository, Context>(::LogRepository) {}
+    companion object : SingletonHolder<LogRepository, Context>(::LogRepository) {
+        fun filenameForExport(): String {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                val date = LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE)
+                return "fmd-logs-$date.json"
+            } else {
+                return "fmd-logs.json"
+            }
+        }
+    }
 
     private val gson = Gson()
 

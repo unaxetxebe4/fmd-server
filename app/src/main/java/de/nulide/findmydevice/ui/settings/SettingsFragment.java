@@ -1,7 +1,5 @@
 package de.nulide.findmydevice.ui.settings;
 
-import static de.nulide.findmydevice.data.SettingsRepositoryKt.SETTINGS_FILENAME;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -86,7 +84,7 @@ public class SettingsFragment extends TaggedFragment {
                 break;
             case 4:
                 Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
-                intent.putExtra(Intent.EXTRA_TITLE, SETTINGS_FILENAME);
+                intent.putExtra(Intent.EXTRA_TITLE, SettingsRepository.Companion.filenameForExport());
                 intent.setType("*/*");
                 startActivityForResult(intent, EXPORT_REQ_CODE);
                 break;
