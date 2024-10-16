@@ -111,11 +111,11 @@
     <string name="MH_Pin_Accepted">PIN aceito!</string>
     <string name="cmd_locate_response_location_off">Desculpe, a localização está desativada.</string>
     <string name="ringer_stop_ringing">PARAR DE TOCAR</string>
-    <string name="Toast_Empty_FMDCommand">Comando vazio não permitido\n Retornando ao padrão. [fmd]</string>
+    <string name="Toast_Empty_FMDCommand">Comando Vazio não permitido, usando padrão.</string>
     <string name="cmd_missing_permissions">Não foi possível executar o comando %1$s: Faltando a(s) permissão(ões) %2$s.</string>
     <string name="cmd_camera_description_long">Tira uma foto da câmera frontal/traseira e faz upload dela pro Servidor FMD. Atualmente só é possível fazer upload para o Servidor FMD. Vocẽ pode enviar este comando atráves de outros canais de transporte, também, e a foto será enviada ao Servidor FMD (se uma conta existe).</string>
     <string name="cmd_delete_description_short">Redefinir o dispositivo de fábrica</string>
-    <string name="cmd_gps_description_short">Ativar/desativar o GPS</string>
+    <string name="cmd_gps_description_short">Ativar/desativar GPS</string>
     <string name="cmd_lock_response">O dispositivo deve estar bloqueado agora.</string>
     <string name="cmd_ring_description_short">Fazer o dispositivo tocar</string>
     <string name="cmd_nodisturb_response_on">Modo \"Não Perturbe\" ativado.</string>
@@ -142,7 +142,7 @@
     <string name="optional_permissions_title">Permissões Opcionais</string>
     <string name="cmd_locate_description_short">Localizar o dispositivo</string>
     <string name="cmd_lock_description_short">Bloquear o dispositivo</string>
-    <string name="cmd_nodisturb_description_short">Ativar/desativar o \"Não Perturbe\"</string>
+    <string name="cmd_nodisturb_description_short">Ativar/desativar \"Não Perturbe\"</string>
     <string name="perm_root_denied">Acesso root negado</string>
     <string name="usage_notification_title">Comando executado</string>
     <string name="cmd_ring_response">O dispositivo deve estar tocando agora.</string>
@@ -222,4 +222,23 @@
     <string name="server_login_attempts_title">Tentativas falhas de login ao Servidor FMD</string>
     <string name="server_login_attempts_text">Alguém tentou iniciar uma sessão à sua conta do Servidor FMD \"%s\". Devido à várias tentativas falhas, a conta está bloqueada por 10 minutos.</string>
     <string name="cmd_locate_response_gps_fail">Obter uma nova localização GPS falhou. Talvez por causa de um atraso.</string>
+    <string name="pw_change_empty">A senha não pode ser vazia.</string>
+    <string name="pw_change_mismatch">As senhas repetidas não correspondem.</string>
+    <string name="Settings_FMDServer_Unregister_Success">Remoção do registro e excluimento de dados feitos com sucesso!</string>
+    <string name="pw_change_success">A senha foi alterada</string>
+    <string name="pw_change_wrong_password">Senha errada</string>
+    <string name="Settings_no_ringtone_picker">Nenhum selecionador de toque encontrado!</string>
+    <string name="Settings_FMDServer_Delete_Account">Excluir Conta</string>
+    <string name="pw_change_network_failed">Alteração de senha falhou por causa de um erro de rede.</string>
+    <string name="Settings_FMDServer_Error_id_or_pw_empty">O ID FMD e senha não podem serem vazios.</string>
+    <string name="temporary_allowlist_expired">Seu acesso temporário do FindMyDevice acabou. Para continuar usando o FindMyDevice, envie o PIN novamente.</string>
+    <string name="cmd_bluetooth_description_short">Ativar/desativar Bluetooth</string>
+    <string name="cmd_bluetooth_response_no_bluetooth">O dispositivo parece não ter Bluetooth.</string>
+    <string name="cmd_bluetooth_response_on">Bluetooth ativado.</string>
+    <string name="perm_bluetooth_connect_name">Conectar Bluetooth</string>
+    <string name="export_success">Exportado com sucesso</string>
+    <string name="export_failed">Exportação falhou</string>
+    <string name="log_view_title">Registros</string>
+    <string name="log_view_export">Exportar Registros</string>
+    <string name="cmd_bluetooth_response_off">Bluetooth desativado.</string>
 </resources>
