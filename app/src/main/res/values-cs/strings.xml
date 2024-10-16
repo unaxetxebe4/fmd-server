@@ -34,7 +34,7 @@
 \nVyzkoušejte prosím následující odkaz: %1$s
 \n
 \n%2$s</string>
-    <string name="Toast_Empty_FMDCommand">Prázdný příkaz není povolen\n Vracím se na default.[fmd]</string>
+    <string name="Toast_Empty_FMDCommand">Prázdný příkaz není povolen, používám výchozí.</string>
     <string name="Toast_Duplicate_contact">Tento kontakt již existuje.</string>
     <string name="copied">Zkopírováno</string>
     <string name="accept">Přijmout</string>
@@ -222,7 +222,7 @@
     <string name="server_login_attempts_title">Nezdařené pokusy o přihlášení k serveru FMD</string>
     <string name="server_login_attempts_text">Někdo se pokusil přihlásit do vašeho účtu „%s“ na serveru FMD. Z důvodu několika nezdařených pokusů o zadání hesla je účet nyní na 10 minut uzamčen.</string>
     <string name="cmd_locate_response_gps_fail">Nepodařilo se získat aktuální polohu z GPS. Možná vypršel čas.</string>
-    <string name="temporary_allowlist_expired">Vaše dočasné použití aplikace FindMyDevice vypršelo. Pro pokračování v používání FindMyDevice zadejte znovu svůj PIN ve vaší další zprávě.</string>
+    <string name="temporary_allowlist_expired">Váš dočasný přístup k FindMyDevice vypršel. Pro pokračování v používání FindMyDevice zadejte znovu svůj PIN.</string>
     <string name="Settings_no_ringtone_picker">Výběrové menu pro vyzvánění nenalezeno!</string>
     <string name="Settings_FMDServer_Delete_Account">Smazat účet</string>
     <string name="Settings_FMDServer_Unregister_Success">Smazání účtu a všech dat proběhlo úspěšně!</string>
