@@ -33,8 +33,7 @@
     <string name="server_unregister_dont_continue">لا تستمر</string>
     <string name="Notification_Usage_Description">إشعار حول استخدام الخدمة.</string>
     <string name="Notification_FAIL">فشل</string>
-    <string name="Toast_Empty_FMDCommand">أمر فارغ غير مسموح به
-\nالعودة إلى الوضع الافتراضي.[fmd]</string>
+    <string name="Toast_Empty_FMDCommand">أمر فارغ غير مسموح به\nالعودة إلى الوضع الافتراضي.[fmd]</string>
     <string name="loading">تحميل…</string>
     <string name="copied">تم النسخ</string>
     <string name="Edit">تعديل</string>

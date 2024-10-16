@@ -32,8 +32,7 @@
     <string name="Notification_Pin_Usage_Description">Ilmoitus PIN-koodin käytöstä.</string>
     <string name="LockScreen_Usage_detectd">FMD: Käyttö havaittu.</string>
     <string name="LockScreen_Backbutton_pressed">FMD: Takaisin-painiketta painettu.</string>
-    <string name="Toast_Empty_FMDCommand">Tyhjää komentoa ei hyväksytä
-\n Palautetaan oletus.[fmd]</string>
+    <string name="Toast_Empty_FMDCommand">Tyhjää komentoa ei hyväksytä\n Palautetaan oletus.[fmd]</string>
     <string name="Settings_Ringer_Tone_Description">Valitse soittoääni, joka soitetaan fmd ring-komennosta.</string>
     <string name="Settings_Select_Ringtone">Valitse soittoääni</string>
     <string name="WhiteList_Select_Number">Valitse yksi puhelinnumeroista.</string>

@@ -92,8 +92,7 @@
     <string name="ringer_stop_ringing">IZKLJUČI ZVONENJE</string>
     <string name="LockScreen_Usage_detectd">LockScreenMessage: zaznana uporaba.</string>
     <string name="LockScreen_Backbutton_pressed">LockScreenMessage: pritisnjen gumb za nazaj.</string>
-    <string name="Toast_Empty_FMDCommand">Prazen ukaz ni dovoljen
-\n Vrnitev na privzeto. [fmd]</string>
+    <string name="Toast_Empty_FMDCommand">Prazen ukaz ni dovoljen\n Vrnitev na privzeto. [fmd]</string>
     <string name="request_failed_status_code">Statusna koda</string>
     <string name="request_failed_response_body">Telo odgovora</string>
     <string name="request_failed_exception">Izjema</string>

@@ -103,8 +103,7 @@
     <string name="Settings_Permissions">Дозволи</string>
     <string name="Settings_About">За апликацијата</string>
     <string name="Settings_FMD_via_Pin_Description">Ти дозволува да комуницираш со FMD користејќи ЛИБ (личен идентификациски број). Ова ти овозможува да праќаш наредби од телефонски број кој не се наоѓа во списокот на Дозволени контакти.</string>
-    <string name="Toast_Empty_FMDCommand">Празна наредба не е дозволена
-\n Враќање на пред-поставката.[fmd]</string>
+    <string name="Toast_Empty_FMDCommand">Празна наредба не е дозволена\n Враќање на пред-поставката.[fmd]</string>
     <string name="Settings_FMDCommand_Description">Наредба која се користи да се комуницира со FMD.</string>
     <string name="Settings_FMD_Server_Server_URL">Адреса на серверот:</string>
     <string name="Settings_Select_Ringtone">Одбери ѕвонка</string>

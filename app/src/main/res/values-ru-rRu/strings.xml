@@ -32,8 +32,7 @@
     <string name="Notification_Pin_Usage_Description">Уведомления при доступе к FMD с использованием PIN-кода</string>
     <string name="LockScreen_Usage_detectd">Сообщение на экране блокировки: Обнаружено использование устройства.</string>
     <string name="LockScreen_Backbutton_pressed">Сообщение на экране блокировки: Нажата кнопка \"Назад\".</string>
-    <string name="Toast_Empty_FMDCommand">Пустая команда недопустима
-\n Возврат к значению по умолчанию [fmd].</string>
+    <string name="Toast_Empty_FMDCommand">Пустая команда недопустима\n Возврат к значению по умолчанию [fmd].</string>
     <string name="Settings_Ringer_Tone_Description">Выберите рингтон, который будет воспроизводиться, когда команда \"fmd ring\" будет отправлена.</string>
     <string name="Settings_Select_Ringtone">Выберите рингтон</string>
     <string name="WhiteList_Select_Number">Выберите один из мобильных номеров.</string>

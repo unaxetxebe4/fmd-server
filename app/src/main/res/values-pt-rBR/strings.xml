@@ -111,8 +111,7 @@
     <string name="MH_Pin_Accepted">PIN aceito!</string>
     <string name="cmd_locate_response_location_off">Desculpe, a localização está desativada.</string>
     <string name="ringer_stop_ringing">PARAR DE TOCAR</string>
-    <string name="Toast_Empty_FMDCommand">Comando vazio não permitido
-\n Retornando ao padrão. [fmd]</string>
+    <string name="Toast_Empty_FMDCommand">Comando vazio não permitido\n Retornando ao padrão. [fmd]</string>
     <string name="cmd_missing_permissions">Não foi possível executar o comando %1$s: Faltando a(s) permissão(ões) %2$s.</string>
     <string name="cmd_camera_description_long">Tira uma foto da câmera frontal/traseira e faz upload dela pro Servidor FMD. Atualmente só é possível fazer upload para o Servidor FMD. Vocẽ pode enviar este comando atráves de outros canais de transporte, também, e a foto será enviada ao Servidor FMD (se uma conta existe).</string>
     <string name="cmd_delete_description_short">Redefinir o dispositivo de fábrica</string>

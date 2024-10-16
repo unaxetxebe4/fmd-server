@@ -37,8 +37,7 @@
 \n%2$s</string>
     <string name="LockScreen_Usage_detectd">LockScreenMessage: Uso detectado.</string>
     <string name="LockScreen_Backbutton_pressed">Mensaje de la Pantalla de Bloqueo: Botón de Retroceso pulsado.</string>
-    <string name="Toast_Empty_FMDCommand">Comando Vacío no permitido
-\n Volviendo a valor predeterminado.[fmd]</string>
+    <string name="Toast_Empty_FMDCommand">Comando Vacío no permitido\n Volviendo a valor predeterminado.[fmd]</string>
     <string name="Settings_Ringer_Tone_Description">Seleccione un tono de llamada que se reproducirá cuando se envíe fmd ring.</string>
     <string name="Settings_Select_Ringtone">Seleccionar Timbre</string>
     <string name="WhiteList_Select_Number">Seleccione uno de los números de teléfono.</string>

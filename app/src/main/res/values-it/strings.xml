@@ -57,8 +57,7 @@
     <string name="Notification_Pin_Usage_Description">Notifiche quando si accede a FMD via PIN</string>
     <string name="LockScreen_Usage_detectd">MessaggioBloccoSchermo: Rilevato utilizzo.</string>
     <string name="LockScreen_Backbutton_pressed">MessaggioBloccoSchermo: Premuto pulsante Indietro.</string>
-    <string name="Toast_Empty_FMDCommand">Comando vuoto non consentito
-\n Ripristinato valore predefinito. [fmd]</string>
+    <string name="Toast_Empty_FMDCommand">Comando vuoto non consentito\n Ripristinato valore predefinito. [fmd]</string>
     <string name="Settings_Ringer_Tone_Description">Seleziona una suoneria che verrà riprodotta quando viene inviato \"fmd ring\".</string>
     <string name="Settings_Select_Ringtone">Seleziona suoneria</string>
     <string name="WhiteList_Select_Number">Seleziona uno dei numeri di telefono.</string>

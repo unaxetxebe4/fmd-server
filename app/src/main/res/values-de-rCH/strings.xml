@@ -163,8 +163,7 @@
     <string name="missing_permissions_description">FMD brucht die folgende Berechtigunge.</string>
     <string name="setup_warnings_title">Setup-Warnige</string>
     <string name="missing_permissions_title">Fehlendi Berechtigunge</string>
-    <string name="Toast_Empty_FMDCommand">En leere Befehl isch nöd erlaubt.
-\n Zrugg zum Default.[fmd]</string>
+    <string name="Toast_Empty_FMDCommand">En leere Befehl isch nöd erlaubt.\n Zrugg zum Default.[fmd]</string>
     <string name="bottom_nav_commands">Befehl</string>
     <string name="bottom_nav_transports">Transportkanäl</string>
     <string name="bottom_nav_settings">Iistellige</string>
