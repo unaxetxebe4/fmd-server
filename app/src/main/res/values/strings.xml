@@ -38,7 +38,7 @@
     <string name="Settings_FMDServer" translatable="false">FMD Server</string>
     <string name="Settings_WhiteList">Allowed Contacts</string>
     <string name="Settings_OpenCellId" translatable="false">OpenCelliD</string>
-    <string name="Settings_Permissions">Permissions</string>
+    <string name="Settings_Appearance">Appearance</string>
     <string name="Settings_Import">Import Settings</string>
     <string name="Settings_Export">Export Settings</string>
     <string name="Settings_Logs">Logs</string>
@@ -132,6 +132,11 @@
     <string name="OpenCellId_open_website">Open OpenCelliD Website</string>
     <string name="OpenCellId_test_opencellid">Test OpenCelliD Connection</string>
     <string name="OpenCellId_test_no_connection">No cell connection</string>
+
+    <!-- Settings: Appearance -->
+    <string name="appearance_language">Language</string>
+    <string name="appearance_language_choose">Choose language</string>
+    <string name="appearance_language_system_default">System default</string>
 
     <!-- Settings: Logs -->
     <string name="log_view_title">Logs</string>
