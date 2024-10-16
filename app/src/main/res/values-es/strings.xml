@@ -37,7 +37,7 @@
 \n%2$s</string>
     <string name="LockScreen_Usage_detectd">LockScreenMessage: Uso detectado.</string>
     <string name="LockScreen_Backbutton_pressed">Mensaje de la Pantalla de Bloqueo: Botón de Retroceso pulsado.</string>
-    <string name="Toast_Empty_FMDCommand">Comando Vacío no permitido\n Volviendo a valor predeterminado.[fmd]</string>
+    <string name="Toast_Empty_FMDCommand">No se permite el comando vacío; se utiliza el valor predeterminado.</string>
     <string name="Settings_Ringer_Tone_Description">Seleccione un tono de llamada que se reproducirá cuando se envíe fmd ring.</string>
     <string name="Settings_Select_Ringtone">Seleccionar Timbre</string>
     <string name="WhiteList_Select_Number">Seleccione uno de los números de teléfono.</string>
@@ -130,7 +130,7 @@
     <string name="cmd_locate_description_short">Localizar el dispositivo</string>
     <string name="cmd_lock_description_short">Bloquear el dispositivo</string>
     <string name="cmd_lock_response">El dispositivo ahora debería estar bloqueado.</string>
-    <string name="cmd_nodisturb_description_short">Activar o desactivar No molestar</string>
+    <string name="cmd_nodisturb_description_short">Activar o desactivar no molestar</string>
     <string name="cmd_nodisturb_response_on">Modo No molestar activado.</string>
     <string name="cmd_nodisturb_response_off">Modo No molestar desactivado.</string>
     <string name="cmd_stats_description_short">Obtener estadísticas de red</string>
@@ -222,7 +222,7 @@
     <string name="server_login_attempts_title">Intentos de inicio de sesión fallidos en el servidor FMD</string>
     <string name="server_login_attempts_text">Alguien intentó iniciar sesión en su cuenta de servidor FMD \" %s \". Debido a múltiples contraseñas incorrectas, la cuenta ahora está bloqueada durante 10 minutos.</string>
     <string name="cmd_locate_response_gps_fail">Error al obtener una nueva ubicación GPS. Tal vez debido a un tiempo de espera.</string>
-    <string name="temporary_allowlist_expired">El uso temporal de FindMyDevice ha expirado. Para seguir utilizando FindMyDevice, vuelve a enviar el PIN en tu próximo mensaje.</string>
+    <string name="temporary_allowlist_expired">El uso temporal de FindMyDevice ha expirado. Para seguir utilizando FindMyDevice, vuelve a enviar el PIN.</string>
     <string name="export_success">Exportación realizada</string>
     <string name="export_failed">Exportación fallida</string>
     <string name="log_view_export">Exportar registros</string>
