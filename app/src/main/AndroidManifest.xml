@@ -76,6 +76,9 @@
             android:name=".ui.SetupWarningsActivity"
             android:label="@string/setup_warnings_title" />
         <activity
+            android:name=".ui.settings.AppearanceActivity"
+            android:label="@string/Settings_Appearance" />
+        <activity
             android:name=".ui.settings.FMDServerActivity"
             android:label="@string/Settings_FMDServer" />
         <activity
@@ -176,7 +179,7 @@
         <service
             android:name=".services.FmdBatteryLowService"
             android:exported="false"
-            android:permission="android.permission.BIND_JOB_SERVICE"/>
+            android:permission="android.permission.BIND_JOB_SERVICE" />
         <service
             android:name=".services.FMDSMSService"
             android:exported="false"
@@ -188,6 +191,16 @@
             <intent-filter>
                 <action android:name="android.service.notification.NotificationListenerService" />
             </intent-filter>
+        </service>
+
+        <!-- https://developer.android.com/guide/topics/resources/app-languages#android12-impl -->
+        <service
+            android:name="androidx.appcompat.app.AppLocalesMetadataHolderService"
+            android:enabled="false"
+            android:exported="false">
+            <meta-data
+                android:name="autoStoreLocales"
+                android:value="true" />
         </service>
 
         <receiver

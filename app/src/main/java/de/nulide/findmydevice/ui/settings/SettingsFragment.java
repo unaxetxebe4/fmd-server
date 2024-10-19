@@ -83,20 +83,23 @@ public class SettingsFragment extends TaggedFragment {
                 settingIntent = new Intent(context, OpenCellIdActivity.class);
                 break;
             case 4:
+                settingIntent = new Intent(context, AppearanceActivity.class);
+                break;
+            case 5:
                 Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
                 intent.putExtra(Intent.EXTRA_TITLE, SettingsRepository.Companion.filenameForExport());
                 intent.setType("*/*");
                 startActivityForResult(intent, EXPORT_REQ_CODE);
                 break;
-            case 5:
+            case 6:
                 intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
                 intent.setType("*/*");
                 startActivityForResult(intent, IMPORT_REQ_CODE);
                 break;
-            case 6:
+            case 7:
                 settingIntent = new Intent(context, LogViewActivity.class);
                 break;
-            case 7:
+            case 8:
                 String activityTitle = getString(R.string.Settings_About);
                 settingIntent = new LibsBuilder().withActivityTitle(activityTitle).withListener(AboutLibsListener.listener).intent(context);
                 break;

@@ -28,6 +28,7 @@ public class SettingsEntry {
         entries.add(new SettingsEntry(context, R.string.Settings_FMDServer, R.drawable.ic_cloud));
         entries.add(new SettingsEntry(context, R.string.Settings_WhiteList, R.drawable.ic_people));
         entries.add(new SettingsEntry(context, R.string.Settings_OpenCellId, R.drawable.ic_cell_tower));
+        entries.add(new SettingsEntry(context, R.string.Settings_Appearance, R.drawable.ic_palette));
         entries.add(new SettingsEntry(context, R.string.Settings_Export, R.drawable.ic_import_export));
         entries.add(new SettingsEntry(context, R.string.Settings_Import, R.drawable.ic_import_export));
         entries.add(new SettingsEntry(context, R.string.Settings_Logs, R.drawable.ic_logs));
