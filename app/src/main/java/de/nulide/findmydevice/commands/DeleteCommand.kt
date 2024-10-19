@@ -59,16 +59,18 @@ class DeleteCommand(context: Context) : Command(context) {
         // the args were previously split by space => restore the spaces
         val pwd = args.subList(2, args.size).joinToString(" ")
 
-        if (CypherUtils.checkPasswordForFmdPin(settings.get(Settings.SET_PIN) as String, pwd)) {
-            val devicePolicyManager =
-                context.getSystemService(Context.DEVICE_POLICY_SERVICE) as DevicePolicyManager
-
-            devicePolicyManager.wipeData(0)
-
-            transport.send(context, context.getString(R.string.cmd_delete_response_success))
-        } else {
+        if (!CypherUtils.checkPasswordForFmdPin(settings.get(Settings.SET_PIN) as String, pwd)) {
             transport.send(context, context.getString(R.string.cmd_delete_response_pwd_wrong))
+            job?.jobFinished()
+            return
         }
+
+        val devicePolicyManager =
+            context.getSystemService(Context.DEVICE_POLICY_SERVICE) as DevicePolicyManager
+
+        devicePolicyManager.wipeData(0)
+
+        transport.send(context, context.getString(R.string.cmd_delete_response_success))
         job?.jobFinished()
     }
 }
