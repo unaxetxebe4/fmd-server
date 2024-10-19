@@ -80,6 +80,9 @@ class DeleteCommand(context: Context) : Command(context) {
             val devicePolicyManager =
                 context.getSystemService(Context.DEVICE_POLICY_SERVICE) as DevicePolicyManager
 
+            // TODO: Use wipeDevice(), otherwise it won't work with targetSDK >= 34
+            // See https://gitlab.com/Nulide/findmydevice/-/issues/199#note_1975457249
+            // and https://gitlab.com/Nulide/findmydevice/-/issues/220
             devicePolicyManager.wipeData(0)
 
             job?.jobFinished()
