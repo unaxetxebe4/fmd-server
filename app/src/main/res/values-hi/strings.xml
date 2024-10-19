@@ -98,8 +98,7 @@
     <string name="Enable">सक्षम करें</string>
     <string name="Delete">मिटाएं</string>
     <string name="LockScreen_Backbutton_pressed">LockScreenMessage: बैक-बटन दबाया गया।</string>
-    <string name="Toast_Empty_FMDCommand">खाली कमांड की अनुमति नहीं है
-\n डिफ़ॉल्ट पर लौट रहा है।[fmd]</string>
+    <string name="Toast_Empty_FMDCommand">खाली कमांड की अनुमति नहीं है\n डिफ़ॉल्ट पर लौट रहा है।[fmd]</string>
     <string name="Cell">सेल</string>
     <string name="Settings_FMD_via_Pin_Description">आपको PIN के माध्यम से FMD के साथ संचार करने की अनुमति देता है। यह आपको ऐसे फोन नंबर से आदेश भेजने की अनुमति देता है जो अनुमत संपर्क सूची में नहीं है।</string>
     <string name="Settings_FMDServer_Alert_DeleteData_Desc">इससे सर्वर से सारा डेटा मिट जाएगा! क्या आप निश्चित हैं?</string>

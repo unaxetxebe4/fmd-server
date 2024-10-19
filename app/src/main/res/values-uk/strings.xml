@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="Settings_FMDServer_Push_Description_Missing">Для надсилання команд з сервера FMD на ваш пристрій потрібен додаток UnifiedPush. Встановіть його, а потім поверніться сюди. Він буде автоматично виявлений.</string>
-    <string name="Toast_Empty_FMDCommand">Порожня команда не дозволена
-\n Повернення до налаштувань за замовчуванням.[fmd]</string>
+    <string name="Toast_Empty_FMDCommand">Порожня команда не дозволена\n Повернення до налаштувань за замовчуванням.[fmd]</string>
     <string name="Settings_Lockscreenmessage_Description">Повідомлення на екрані блокування:
 \nКоли пристрій заблокований на екрані блокування з\'явиться це повідомлення.</string>
     <string name="Settings_FMD_Server_General">Загальне</string>

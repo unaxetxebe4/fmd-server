@@ -102,7 +102,7 @@
     <!-- Not yet sorted -->
     <string name="Permission_IGNORE_BATTERY_OPTIMIZATION">Diese Anwendung soll im Hintergrund laufen. Um sicherzustellen, dass sie auch im Standby funktioniert, muss die Akku-Optimierung für diese App ausgemacht werden.</string>
     <string name="Delete">Löschen</string>
-    <string name="Enable">Aktiv</string>
+    <string name="Enable">Aktivieren</string>
     <string name="Locked_Lock_Screen">FindMyDevice
 \nDieses Gerät wurde gesperrt!
 \nNachricht vom Besitzer:</string>
@@ -115,8 +115,7 @@
     <string name="cmd_locate_response_location_off">Ortung fehlgeschlagen: der Standort ist ausgeschaltet.</string>
     <string name="LockScreen_Usage_detectd">LockScreenMessage: Verwendung erkannt.</string>
     <string name="LockScreen_Backbutton_pressed">LockScreenMessage: Zurück-Taste wurde gedrückt.</string>
-    <string name="Toast_Empty_FMDCommand">Lehres Kommando nicht erlaubt
-\n Rückfall auf Standard.[fmd]</string>
+    <string name="Toast_Empty_FMDCommand">Leerer Befehl nicht erlaubt, Default wird verwendet.</string>
     <string name="Notification_Security">Sicherheit</string>
     <string name="Notification_FAIL">Fehler</string>
     <string name="Notification_Fail_Description">Benachrichtigungen wenn etwas fehlschlägt (z.B. die Verbindung zu FMD Server)</string>
@@ -167,12 +166,12 @@
     <string name="cmd_camera_response_success">Das Gerät nimmt gerade das Bild auf und wird es zu FMD Server hochladen. Du kannst es gleich hier anschauen: %s</string>
     <string name="cmd_delete_response_pwd_wrong">Löschen nicht möglich: falsches Passwort.</string>
     <string name="cmd_locate_description_short">Gerät orten</string>
-    <string name="cmd_gps_description_short">GPS ein- oder ausschalten</string>
+    <string name="cmd_gps_description_short">GPS ein- und ausschalten</string>
     <string name="cmd_ring_response">Das Gerät sollte nun klingeln.</string>
     <string name="cmd_lock_response">Das Gerät sollte nun gesperrt sein.</string>
     <string name="cmd_locate_description_long">Orte das Gerät mithilfe eines oder mehrerer Standortanbieter. Der Betriebssystemanbieter ist meistens GPS, manchmal auch eine Kombination aus anderen Quellen. Ein zweiter Anbieter ist OpenCelliD, was eine Datenbank mit Mobilfunkmaststandorten verwendet.</string>
     <string name="cmd_lock_description_short">Gerät sperren</string>
-    <string name="cmd_nodisturb_description_short">\"Bitte Nicht Stören\"-Modus ein- oder ausschalten</string>
+    <string name="cmd_nodisturb_description_short">\"Bitte Nicht Stören\"-Modus ein- und ausschalten</string>
     <string name="cmd_stats_description_long">Rufe die Netzwerkstatistiken des Geräts ab. Zum Beispiel seine IP-Adresse und eine Liste der umliegenden WLAN-Netzwerke.</string>
     <string name="cmd_stats_response">Netzwerk-Statistiken:
 \n
@@ -240,4 +239,23 @@
     <string name="server_login_attempts_title">Fehlgeschlagene Anmeldeversuche in FMD Server</string>
     <string name="server_login_attempts_text">Jemand hat versucht sich in dein FMD Server-Account \"%s\" einzuloggen. Wegen mehrerer falscher Passwortversuche ist das Account nun für 10 Minuten gesperrt.</string>
     <string name="cmd_locate_response_gps_fail">Das Finden einer neuen GPS-Position ist fehlgeschlagen. Vielleicht wegen einer Zeitüberschreitung.</string>
+    <string name="Settings_no_ringtone_picker">Keine Klingelton-Auswahl-App gefunden!</string>
+    <string name="Settings_FMDServer_Delete_Account">Account Löschen</string>
+    <string name="pw_change_success">Passwort geändert</string>
+    <string name="pw_change_empty">Das Passwort darf nicht leer sein.</string>
+    <string name="pw_change_wrong_password">Falsches Passwort</string>
+    <string name="Settings_FMDServer_Error_id_or_pw_empty">Die FMD ID und das Passwort dürfen nicht leer sein.</string>
+    <string name="cmd_bluetooth_response_on">Bluetooth eingeschaltet.</string>
+    <string name="cmd_bluetooth_response_off">Bluetooth ausgeschaltet.</string>
+    <string name="perm_bluetooth_connect_name">Bluetooth Verbinden</string>
+    <string name="export_success">Export erfolgreich</string>
+    <string name="export_failed">Export fehlgeschlagen</string>
+    <string name="log_view_title">Logs</string>
+    <string name="log_view_export">Logs Exportieren</string>
+    <string name="temporary_allowlist_expired">Dein temporärer FindMyDevice-Zugang ist abgelaufen. Sende den PIN erneut um FindMyDevice weiter zu nutzen.</string>
+    <string name="Settings_FMDServer_Unregister_Success">Erfolgreich de-registriert und Daten gelöscht!</string>
+    <string name="pw_change_network_failed">Passwortänderung aufgrund eines Netzwerkfehlers fehlgeschlagen.</string>
+    <string name="pw_change_mismatch">Die Passwörter stimmen nicht überein.</string>
+    <string name="cmd_bluetooth_description_short">Bluetooth ein- und ausschalten</string>
+    <string name="cmd_bluetooth_response_no_bluetooth">Dieses Gerät scheint kein Bluetooth zu haben.</string>
 </resources>

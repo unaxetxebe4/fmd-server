@@ -104,8 +104,7 @@
     <string name="Settings_FMDServer_Info">Avec le serveur FMD, vous pouvez envoyer des commandes via Internet, du serveur vers l\'application. Vous pouvez également visualiser la localisation de l\'appareil sur une carte ou consulter les photos prises par l\'appareil. Pour les instructions sur la manière de configurer votre propre serveur, veuillez consulter le site.</string>
     <string name="OpenCellId_privacy">Confidentialité : gardez à l\'esprit qu\'OpenCelliD enregistre votre antenne-relais actuelle et donc votre emplacement à chaque requête API.</string>
     <string name="Permission_IGNORE_BATTERY_OPTIMIZATION">Cette application est censée fonctionner en arrière-plan. Pour garantir son fonctionnement même lorsque votre appareil est en veille, vous devez désactiver l\'optimisation de la batterie pour cette application.</string>
-    <string name="Toast_Empty_FMDCommand">Commande vide non autorisée.
-\n Retour à la valeur par défaut.[fmd]</string>
+    <string name="Toast_Empty_FMDCommand">Commande vide non autorisée.\n Retour à la valeur par défaut.[fmd]</string>
     <string name="Settings_FMDServer_Server_Url">URL du serveur</string>
     <string name="cmd_camera_description_short">Prend une photo</string>
     <string name="cmd_camera_response_no_fmd_server">Impossible de prendre une photo : aucun compte FMD n\'existe.</string>

@@ -72,7 +72,7 @@
     <string name="cmd_delete_response_pwd_missing">Lösche nöd möglich: Passwort fehlt. Syntax: %s.</string>
     <string name="cmd_delete_response_pwd_wrong">Lösche nöd möglich: falsches Passwort.</string>
     <string name="cmd_delete_response_success">S Gerät sett jetzt glöscht werde. Uf Wiederluege!</string>
-    <string name="cmd_gps_description_short">GPS ii- oder usschalte</string>
+    <string name="cmd_gps_description_short">GPS ii- und usschalte</string>
     <string name="perm_battery_optimizations_name">Akku-Optimierige ignoriere</string>
     <string name="perm_camera_name">Kamera</string>
     <string name="perm_device_admin_name">Grätverwaltig</string>
@@ -93,7 +93,7 @@
     <string name="cmd_lock_response">S Gerät sett jetzt gsperrt sii.</string>
     <string name="cmd_ring_description_short">Gerät lah lüüte</string>
     <string name="cmd_ring_response">S Gerät sett jetzt lüüte.</string>
-    <string name="cmd_nodisturb_description_short">\"Bitte Nöd Störe\"-Modus ii- oder abstelle</string>
+    <string name="cmd_nodisturb_description_short">\"Bitte Nöd Störe\"-Modus ii- und usschalte</string>
     <string name="cmd_nodisturb_response_on">De \"Bitte Nöd Störe\"-Modus isch jetzt iigstellt.</string>
     <string name="cmd_nodisturb_response_off">De \"Bitte Nöd Störe\"-Modus isch jetzt abgstellt.</string>
     <string name="cmd_stats_description_short">Netzwerkstatistike ufrüefe</string>
@@ -163,8 +163,7 @@
     <string name="missing_permissions_description">FMD brucht die folgende Berechtigunge.</string>
     <string name="setup_warnings_title">Setup-Warnige</string>
     <string name="missing_permissions_title">Fehlendi Berechtigunge</string>
-    <string name="Toast_Empty_FMDCommand">En leere Befehl isch nöd erlaubt.
-\n Zrugg zum Default.[fmd]</string>
+    <string name="Toast_Empty_FMDCommand">En leere Befehl isch nöd erlaubt, zrugg zum Default.</string>
     <string name="bottom_nav_commands">Befehl</string>
     <string name="bottom_nav_transports">Transportkanäl</string>
     <string name="bottom_nav_settings">Iistellige</string>
@@ -216,4 +215,24 @@
     <string name="server_login_attempts_title">Fehlglaschgeni Loginafraage bim FMD Server</string>
     <string name="server_login_attempts_text">Öpper het probiert sich i din FMD Server-Account \"%s\" iizlogge. Wege mehrerer falscher Passwörter isch din Account jetzt für 10 Minute gsperrt.</string>
     <string name="server_registration_token_error">Netzwerkafraage fehlgschlage mit HTTP 401. Das chan passiere wenn de Server es Registration Token brucht und s Token wo du agää hesch falsch gsi isch.</string>
+    <string name="pw_change_wrong_password">Falsches Passwort</string>
+    <string name="pw_change_empty">Passwort döff nöd leer si.</string>
+    <string name="cmd_bluetooth_description_short">Bluetooth ii- und usschalte</string>
+    <string name="cmd_bluetooth_response_no_bluetooth">S Gerät het schiinbar kei Bluetooth.</string>
+    <string name="Settings_no_ringtone_picker">Kei Klingelton-Uswahl-Aawendig gfunde!</string>
+    <string name="Settings_FMDServer_Delete_Account">Konto lösche</string>
+    <string name="Settings_FMDServer_Unregister_Success">De-registrierig und Datelöschig erfolgriich!</string>
+    <string name="pw_change_mismatch">D Passwörter stimmed nöd überii.</string>
+    <string name="temporary_allowlist_expired">Diin temporäre FindMyDevice-Zuegang isch abgloffe. Send de PIN numal zum FindMyDevice wiiter nutze.</string>
+    <string name="log_view_title">Logs</string>
+    <string name="log_view_export">Logs exportiere</string>
+    <string name="pw_change_success">Passwort isch gänderet</string>
+    <string name="pw_change_network_failed">Passwortänderig isch fehlgschlage ufgrund vomene Netzwerkfehler.</string>
+    <string name="Settings_FMDServer_Error_id_or_pw_empty">D FMD ID und s Passwort döffed nöd leer si.</string>
+    <string name="cmd_bluetooth_response_on">Bluetooth isch iigstellt.</string>
+    <string name="cmd_bluetooth_response_off">Bluetooth isch abgstellt.</string>
+    <string name="perm_bluetooth_connect_name">Bluetooth Verbinde</string>
+    <string name="export_success">Export erfolgrich</string>
+    <string name="export_failed">Export fehlgschlage</string>
+    <string name="cmd_locate_response_gps_fail">S Finde vonere neue GPS-Position isch fehlgschlage. Villicht wegenere Ziitüberschritig.</string>
 </resources>
