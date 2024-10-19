@@ -83,7 +83,15 @@ class DeleteCommand(context: Context) : Command(context) {
             // TODO: Use wipeDevice(), otherwise it won't work with targetSDK >= 34
             // See https://gitlab.com/Nulide/findmydevice/-/issues/199#note_1975457249
             // and https://gitlab.com/Nulide/findmydevice/-/issues/220
-            devicePolicyManager.wipeData(0)
+            try {
+                devicePolicyManager.wipeData(0)
+            } catch (e: Exception) {
+                context.log().e(TAG, e.stackTraceToString())
+
+                val msg = context.getString(R.string.cmd_delete_response_failed)
+                context.log().i(TAG, msg)
+                transport.send(context, msg)
+            }
 
             job?.jobFinished()
         }
