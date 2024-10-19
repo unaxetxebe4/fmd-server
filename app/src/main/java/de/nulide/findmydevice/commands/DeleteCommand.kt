@@ -13,6 +13,9 @@ import de.nulide.findmydevice.transports.Transport
 import de.nulide.findmydevice.utils.CypherUtils
 import de.nulide.findmydevice.utils.log
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 
 class DeleteCommand(context: Context) : Command(context) {
@@ -65,12 +68,18 @@ class DeleteCommand(context: Context) : Command(context) {
             return
         }
 
-        val devicePolicyManager =
-            context.getSystemService(Context.DEVICE_POLICY_SERVICE) as DevicePolicyManager
+        coroutineScope.launch(Dispatchers.IO) {
+            transport.send(context, context.getString(R.string.cmd_delete_response_success))
 
-        devicePolicyManager.wipeData(0)
+            // Give the message some time to be sent before the device is wiped
+            delay(3000)
 
-        transport.send(context, context.getString(R.string.cmd_delete_response_success))
-        job?.jobFinished()
+            val devicePolicyManager =
+                context.getSystemService(Context.DEVICE_POLICY_SERVICE) as DevicePolicyManager
+
+            devicePolicyManager.wipeData(0)
+
+            job?.jobFinished()
+        }
     }
 }
