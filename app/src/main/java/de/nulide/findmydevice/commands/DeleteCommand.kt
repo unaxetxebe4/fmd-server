@@ -63,12 +63,15 @@ class DeleteCommand(context: Context) : Command(context) {
         val pwd = args.subList(2, args.size).joinToString(" ")
 
         if (!CypherUtils.checkPasswordForFmdPin(settings.get(Settings.SET_PIN) as String, pwd)) {
-            transport.send(context, context.getString(R.string.cmd_delete_response_pwd_wrong))
+            val msg = context.getString(R.string.cmd_delete_response_pwd_wrong)
+            context.log().i(TAG, msg)
+            transport.send(context, msg)
             job?.jobFinished()
             return
         }
 
         coroutineScope.launch(Dispatchers.IO) {
+            context.log().i(TAG, "Deleting device...")
             transport.send(context, context.getString(R.string.cmd_delete_response_success))
 
             // Give the message some time to be sent before the device is wiped
