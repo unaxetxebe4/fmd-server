@@ -13,6 +13,9 @@ import de.nulide.findmydevice.transports.Transport
 import de.nulide.findmydevice.utils.CypherUtils
 import de.nulide.findmydevice.utils.log
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 
 class DeleteCommand(context: Context) : Command(context) {
@@ -59,16 +62,38 @@ class DeleteCommand(context: Context) : Command(context) {
         // the args were previously split by space => restore the spaces
         val pwd = args.subList(2, args.size).joinToString(" ")
 
-        if (CypherUtils.checkPasswordForFmdPin(settings.get(Settings.SET_PIN) as String, pwd)) {
+        if (!CypherUtils.checkPasswordForFmdPin(settings.get(Settings.SET_PIN) as String, pwd)) {
+            val msg = context.getString(R.string.cmd_delete_response_pwd_wrong)
+            context.log().i(TAG, msg)
+            transport.send(context, msg)
+            job?.jobFinished()
+            return
+        }
+
+        coroutineScope.launch(Dispatchers.IO) {
+            context.log().i(TAG, "Deleting device...")
+            transport.send(context, context.getString(R.string.cmd_delete_response_success))
+
+            // Give the message some time to be sent before the device is wiped
+            delay(3000)
+
             val devicePolicyManager =
                 context.getSystemService(Context.DEVICE_POLICY_SERVICE) as DevicePolicyManager
 
-            devicePolicyManager.wipeData(0)
+            // TODO: Use wipeDevice(), otherwise it won't work with targetSDK >= 34
+            // See https://gitlab.com/Nulide/findmydevice/-/issues/199#note_1975457249
+            // and https://gitlab.com/Nulide/findmydevice/-/issues/220
+            try {
+                devicePolicyManager.wipeData(0)
+            } catch (e: Exception) {
+                context.log().e(TAG, e.stackTraceToString())
 
-            transport.send(context, context.getString(R.string.cmd_delete_response_success))
-        } else {
-            transport.send(context, context.getString(R.string.cmd_delete_response_pwd_wrong))
+                val msg = context.getString(R.string.cmd_delete_response_failed)
+                context.log().i(TAG, msg)
+                transport.send(context, msg)
+            }
+
+            job?.jobFinished()
         }
-        job?.jobFinished()
     }
 }
