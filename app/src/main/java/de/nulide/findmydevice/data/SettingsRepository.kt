@@ -2,6 +2,7 @@ package de.nulide.findmydevice.data
 
 import android.content.Context
 import android.net.Uri
+import android.os.Build
 import android.widget.Toast
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonParseException
@@ -26,6 +27,8 @@ import java.security.PublicKey
 import java.security.spec.EncodedKeySpec
 import java.security.spec.InvalidKeySpecException
 import java.security.spec.X509EncodedKeySpec
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 
 const val SETTINGS_FILENAME = "settings.json"
@@ -79,6 +82,15 @@ class SettingsRepository private constructor(private val context: Context) {
         SingletonHolder<SettingsRepository, Context>(::SettingsRepository) {
 
         val TAG = SettingsRepository::class.simpleName
+
+        fun filenameForExport(): String {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                val date = LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE)
+                return "fmd-settings-$date.json"
+            } else {
+                return "fmd-settings.json"
+            }
+        }
     }
 
     private val gson = GsonBuilder()

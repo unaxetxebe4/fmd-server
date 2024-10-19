@@ -7,7 +7,6 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import de.nulide.findmydevice.R
-import de.nulide.findmydevice.data.LOG_FILENAME
 import de.nulide.findmydevice.data.LogRepository
 
 
@@ -41,7 +40,7 @@ class LogViewActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.menuLogView) {
             val intent = Intent(Intent.ACTION_CREATE_DOCUMENT)
-            intent.putExtra(Intent.EXTRA_TITLE, LOG_FILENAME)
+            intent.putExtra(Intent.EXTRA_TITLE, LogRepository.filenameForExport())
             intent.setType("*/*")
             startActivityForResult(intent, EXPORT_REQ_CODE)
         }
