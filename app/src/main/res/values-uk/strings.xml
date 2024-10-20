@@ -45,7 +45,6 @@
     <string name="request_failed_response_body">Тіло відповіді</string>
     <string name="request_failed_exception">Виняток</string>
     <string name="bottom_nav_settings">Налаштування</string>
-    <string name="Settings_Permissions">Дозволи</string>
     <string name="Settings_Import">Імпортувати налаштування</string>
     <string name="Settings_Import_Failed">Не вдалось імпортувати</string>
     <string name="Settings_About">Про</string>

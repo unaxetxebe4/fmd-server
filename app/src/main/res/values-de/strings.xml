@@ -13,7 +13,6 @@
     <string name="Settings_FMDConfig">FMD-Einstellungen</string>
     <string name="Settings_WhiteList">Erlaubte Kontakte</string>
     <string name="Settings_OpenCellId">OpenCelliD</string>
-    <string name="Settings_Permissions">Berechtigungen</string>
     <string name="Settings_Import">Einstellungen importieren</string>
     <string name="Settings_Export">Einstellungen exportieren</string>
     <string name="Settings_Logs">Logs</string>
@@ -258,4 +257,9 @@
     <string name="pw_change_mismatch">Die Passwörter stimmen nicht überein.</string>
     <string name="cmd_bluetooth_description_short">Bluetooth ein- und ausschalten</string>
     <string name="cmd_bluetooth_response_no_bluetooth">Dieses Gerät scheint kein Bluetooth zu haben.</string>
+    <string name="appearance_language_system_default">Systemsprache</string>
+    <string name="Settings_Appearance">Erscheinungsbild</string>
+    <string name="appearance_language">Sprache</string>
+    <string name="appearance_language_choose">Sprache auswählen</string>
+    <string name="cmd_delete_response_failed">Das Löschen des Geräts ist fehlgeschlagen aufgrund eines Ausnahmefehlers.</string>
 </resources>

@@ -40,7 +40,6 @@
     <string name="Settings_FMDServer_Update_Interval_Title">الفاصل الزمني للتحديث</string>
     <string name="Settings_FMDServer_Info">باستخدام خادم FMD يمكنك إرسال الأوامر عبر الإنترنت، من الخادم إلى التطبيق. يمكنك أيضًا عرض موقع الجهاز على الخريطة أو عرض الصور الملتقطة بواسطة الجهاز. للحصول على تعليمات الاستضافة الذاتية، راجع الموقع.</string>
     <string name="Settings_FMDServer_LOW_BAT_Upload_Description">قم بتحميل موقع هذا الجهاز عندما ينخفض مستوى البطارية. وهذا يتطلب الوصول إلى الإشعارات.</string>
-    <string name="Settings_Permissions">الأذونات</string>
     <string name="Settings_Pin_Description">يستخدم للتأكيد قبل مسح الجهاز أو للاستخدام المؤقت للخدمة.</string>
     <string name="Settings_Lockscreenmessage_Description">رسالة قفل الشاشة:
 \nعند قفل الجهاز، ستظهر هذه الرسالة على شاشة القفل.</string>

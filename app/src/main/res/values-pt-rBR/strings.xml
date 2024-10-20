@@ -74,7 +74,6 @@
     <string name="request_failed_title">Solicitação de Rede Falhou</string>
     <string name="Settings_FMDConfig">Configuração-FMD</string>
     <string name="Settings_WhiteList">Contatos Permitidos</string>
-    <string name="Settings_Permissions">Permissões</string>
     <string name="Settings_FMD_Server_ID_Desc">Você precisará do ID do usuário para encontrar seu dispositivo com um Servidor FMD. Mantenha-o seguro.</string>
     <string name="Settings_FMDServer_Logout_Button">Encerrar Sessão</string>
     <string name="accept">Aceitar</string>
@@ -241,4 +240,9 @@
     <string name="log_view_title">Registros</string>
     <string name="log_view_export">Exportar Registros</string>
     <string name="cmd_bluetooth_response_off">Bluetooth desativado.</string>
+    <string name="Settings_Appearance">Aparência</string>
+    <string name="appearance_language">Idioma</string>
+    <string name="appearance_language_choose">Escolher linguagem</string>
+    <string name="appearance_language_system_default">Padrão do sistema</string>
+    <string name="cmd_delete_response_failed">Falhou em excluir dispositivo devido à uma exceção.</string>
 </resources>

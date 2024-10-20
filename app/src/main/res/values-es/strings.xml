@@ -22,7 +22,6 @@
     <string name="Settings_FMDConfig">Configuración FMD</string>
     <string name="Settings_WhiteList">Lista Blanca</string>
     <string name="Settings_OpenCellId">OpenCelliD</string>
-    <string name="Settings_Permissions">Permisos</string>
     <string name="Settings_Logs">Registros</string>
     <string name="Settings_About">Acerca de</string>
     <string name="Settings_Settings">Ajustes</string>
@@ -241,4 +240,9 @@
     <string name="pw_change_network_failed">No se pudo cambiar la contraseña, por un fallo en la conexión.</string>
     <string name="cmd_bluetooth_response_off">Bluetooth desactivado.</string>
     <string name="perm_bluetooth_connect_name">Conectar Bluetooth</string>
+    <string name="Settings_Appearance">Aspecto</string>
+    <string name="appearance_language">Idioma</string>
+    <string name="appearance_language_choose">Elegir idioma</string>
+    <string name="appearance_language_system_default">Del sistema</string>
+    <string name="cmd_delete_response_failed">No se pudo eliminar el dispositivo debido a una excepción.</string>
 </resources>
