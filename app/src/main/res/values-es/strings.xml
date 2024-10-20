@@ -240,4 +240,9 @@
     <string name="pw_change_network_failed">No se pudo cambiar la contraseña, por un fallo en la conexión.</string>
     <string name="cmd_bluetooth_response_off">Bluetooth desactivado.</string>
     <string name="perm_bluetooth_connect_name">Conectar Bluetooth</string>
+    <string name="Settings_Appearance">Aspecto</string>
+    <string name="appearance_language">Idioma</string>
+    <string name="appearance_language_choose">Elegir idioma</string>
+    <string name="appearance_language_system_default">Del sistema</string>
+    <string name="cmd_delete_response_failed">No se pudo eliminar el dispositivo debido a una excepción.</string>
 </resources>
