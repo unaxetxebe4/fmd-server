@@ -59,7 +59,7 @@ before_script:
 .default_rules:
   rules:
     # Don't run CI for Weblate MRs (to save pipeline minutes)
-    - if: '$CI_MERGE_REQUEST_SOURCE_BRANCH_NAME =~ /^weblate/'
+    - if: '$CI_MERGE_REQUEST_SOURCE_BRANCH_NAME =~ /^weblate.*/'
       when: never
     - when: on_success
 
