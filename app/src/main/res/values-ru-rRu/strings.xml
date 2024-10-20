@@ -22,7 +22,6 @@
     <string name="Settings_FMDConfig">Конфигурация FMD</string>
     <string name="Settings_WhiteList">Разрешённые контакты</string>
     <string name="Settings_OpenCellId">OpenCelliD</string>
-    <string name="Settings_Permissions">Разрешения</string>
     <string name="Settings_Logs">Логи</string>
     <string name="Settings_About">О приложении</string>
     <string name="Settings_Settings">Настройки</string>

@@ -74,7 +74,6 @@
     <string name="request_failed_title">Solicitação de Rede Falhou</string>
     <string name="Settings_FMDConfig">Configuração-FMD</string>
     <string name="Settings_WhiteList">Contatos Permitidos</string>
-    <string name="Settings_Permissions">Permissões</string>
     <string name="Settings_FMD_Server_ID_Desc">Você precisará do ID do usuário para encontrar seu dispositivo com um Servidor FMD. Mantenha-o seguro.</string>
     <string name="Settings_FMDServer_Logout_Button">Encerrar Sessão</string>
     <string name="accept">Aceitar</string>

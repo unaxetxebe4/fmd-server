@@ -42,7 +42,6 @@
     <string name="cmd_locate_response_location_off">क्षमा करें, स्थान बंद है।</string>
     <string name="LockScreen_Usage_detectd">LockScreenMessage: उपयोग का पता चला।</string>
     <string name="Settings_Export">निर्यात सेटिंग्स</string>
-    <string name="Settings_Permissions">अनुमतियां</string>
     <string name="Settings_Enter_Pin">पिन दर्ज करें</string>
     <string name="help">सहायता</string>
     <string name="GPS">GPS</string>
