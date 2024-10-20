@@ -234,4 +234,7 @@
     <string name="export_success">Export erfolgrich</string>
     <string name="export_failed">Export fehlgschlage</string>
     <string name="cmd_locate_response_gps_fail">S Finde vonere neue GPS-Position isch fehlgschlage. Villicht wegenere Ziitüberschritig.</string>
+    <string name="Settings_Appearance">Erschiinigsbild</string>
+    <string name="appearance_language">Sprach</string>
+    <string name="appearance_language_system_default">Systemsprach</string>
 </resources>
