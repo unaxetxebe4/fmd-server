@@ -55,13 +55,15 @@ before_script:
   # Not necessary, but just for surity
   - chmod +x ./gradlew
 
-# https://docs.gitlab.com/ee/ci/jobs/job_rules.html#reuse-rules-in-different-jobs
-.default_rules:
+# https://docs.gitlab.com/ee/ci/yaml/workflow.html
+workflow:
   rules:
-    # Don't run CI for Weblate MRs (to save pipeline minutes)
-    - if: '$CI_MERGE_REQUEST_SOURCE_BRANCH_NAME =~ /^weblate.*/'
+    - if: $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME =~ /^weblate.*/
       when: never
-    - when: on_success
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS
+      when: never
+    - if: $CI_COMMIT_BRANCH
 
 # Basic android and gradle stuff
 # Check linting
@@ -75,8 +77,6 @@ lintDebug:
       - app/lint/reports/lint-results-devDebug.html
     expose_as: "lint-report"
     when: always
-  rules:
-    - !reference [.default_rules, rules]
 
 # Make Project
 assembleDebug:
@@ -87,8 +87,6 @@ assembleDebug:
   artifacts:
     paths:
       - app/build/outputs/
-  rules:
-    - !reference [.default_rules, rules]
 
 # Run all tests, if any fails, interrupt the pipeline(fail it)
 debugTests:
@@ -97,5 +95,3 @@ debugTests:
   stage: test
   script:
     - ./gradlew -Pci --console=plain :app:test
-  rules:
-    - !reference [.default_rules, rules]
