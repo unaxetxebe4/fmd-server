@@ -34,6 +34,7 @@ They are then synced down from Weblate to Gitlab, Weblate will automatically ope
 TLDR:
 
 ```
+git remote add weblate https://hosted.weblate.org/git/findmydevice/fmd-android
 git checkout -b fix-weblate
 git remote update weblate
 git merge --strategy-option theirs weblate/master
