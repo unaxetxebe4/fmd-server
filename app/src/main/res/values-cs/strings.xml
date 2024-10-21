@@ -240,4 +240,9 @@
     <string name="cmd_bluetooth_description_short">Zapnout/Vypnout Bluetooth</string>
     <string name="cmd_bluetooth_response_off">Bluetooth vypnut.</string>
     <string name="perm_bluetooth_connect_name">Spojit Bluetooth</string>
+    <string name="Settings_Appearance">Vzhled</string>
+    <string name="appearance_language">Jazyk</string>
+    <string name="appearance_language_choose">Vybrat jazyk</string>
+    <string name="appearance_language_system_default">Podle systému</string>
+    <string name="cmd_delete_response_failed">Nepodařilo se odstranit zařízení z důvodu chyby.</string>
 </resources>
