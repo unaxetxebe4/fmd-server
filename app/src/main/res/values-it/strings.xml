@@ -217,7 +217,7 @@
     <string name="pw_change_mismatch">Le password ripetute non corrispondono.</string>
     <string name="pw_change_wrong_password">Password errata</string>
     <string name="pw_change_network_failed">Cambio password non riuscito a causa di un errore di rete.</string>
-    <string name="temporary_allowlist_expired">L\'utilizzo temporaneo di FindMyDevice è scaduto. Per continuare a utilizzare FindMyDevice, inviare nuovamente il PIN nel prossimo messaggio.</string>
+    <string name="temporary_allowlist_expired">L\'accesso temporaneo di FindMyDevice è scaduto. Per continuare a utilizzare FindMyDevice, inviare nuovamente il PIN.</string>
     <string name="log_view_title">Registri</string>
     <string name="log_view_export">Esporta registri</string>
     <string name="cmd_bluetooth_description_short">Attiva e disattiva il Bluetooth</string>
@@ -228,4 +228,9 @@
     <string name="export_success">Esportazione riuscita</string>
     <string name="export_failed">Esportazione fallita</string>
     <string name="Settings_FMDServer_Error_id_or_pw_empty">L\'ID e la password FMD non devono essere vuoti.</string>
+    <string name="Settings_Appearance">Aspetto</string>
+    <string name="appearance_language">Lingua</string>
+    <string name="appearance_language_choose">Scegli lingua</string>
+    <string name="appearance_language_system_default">Predefinita di sistema</string>
+    <string name="cmd_delete_response_failed">Cancellazione del dispositivo fallita a causa di una eccezione.</string>
 </resources>
