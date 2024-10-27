@@ -262,4 +262,10 @@
     <string name="appearance_language">Sprache</string>
     <string name="appearance_language_choose">Sprache auswählen</string>
     <string name="cmd_delete_response_failed">Das Löschen des Geräts ist fehlgeschlagen aufgrund eines Ausnahmefehlers.</string>
+    <string name="appearance_theme_follow_system">Systemstandard</string>
+    <string name="appearance_theme_dark">Dunkel</string>
+    <string name="appearance_theme">Designstil</string>
+    <string name="appearance_theme_choose">Designstil auswählen</string>
+    <string name="appearance_theme_light">Hell</string>
+    <string name="appearance_dynamic_colors">Dynamische Farben</string>
 </resources>
