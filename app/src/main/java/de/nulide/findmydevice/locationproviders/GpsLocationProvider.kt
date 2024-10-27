@@ -128,7 +128,7 @@ class GpsLocationProvider<T>(
         val settings = SettingsRepository.getInstance(context)
         val cachedLat = settings.get(Settings.SET_LAST_KNOWN_LOCATION_LAT) as String
         val cachedLon = settings.get(Settings.SET_LAST_KNOWN_LOCATION_LON) as String
-        val cachedTimeMillis = settings.get(Settings.SET_LAST_KNOWN_LOCATION_TIME) as Long
+        val cachedTimeMillis = (settings.get(Settings.SET_LAST_KNOWN_LOCATION_TIME) as Number).toLong()
         val isCacheValid = cachedLat.isNotEmpty() && cachedLon.isNotEmpty()
 
         if (lastLocation == null) {
