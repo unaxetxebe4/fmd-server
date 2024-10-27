@@ -91,7 +91,7 @@
     <string name="ringer_stop_ringing">IZKLJUČI ZVONENJE</string>
     <string name="LockScreen_Usage_detectd">LockScreenMessage: zaznana uporaba.</string>
     <string name="LockScreen_Backbutton_pressed">LockScreenMessage: pritisnjen gumb za nazaj.</string>
-    <string name="Toast_Empty_FMDCommand">Prazen ukaz ni dovoljen\n Vrnitev na privzeto. [fmd]</string>
+    <string name="Toast_Empty_FMDCommand">Prazen ukaz ni dovoljen, uporablja se privzeto.</string>
     <string name="request_failed_status_code">Statusna koda</string>
     <string name="request_failed_response_body">Telo odgovora</string>
     <string name="request_failed_exception">Izjema</string>
@@ -221,4 +221,28 @@
 \n
 \n%2$s</string>
     <string name="cmd_locate_response_gps_fail">Pridobivanje nove lokacije GPS ni uspelo. Morda je pretekla časovna omejitev.</string>
+    <string name="Settings_FMDServer_Error_id_or_pw_empty">FMD ID in geslo ne smeta biti prazna.</string>
+    <string name="log_view_title">Dnevniški zapisi</string>
+    <string name="cmd_bluetooth_description_short">Vključi ali izključi Bluetooth</string>
+    <string name="export_success">Izvoz uspešno zaključen</string>
+    <string name="export_failed">Izvoz ni uspel</string>
+    <string name="temporary_allowlist_expired">Vaš začasni dostop do FindMyDevice je potekel. Če želite še naprej uporabljati FindMyDevice, znova pošljite PIN.</string>
+    <string name="log_view_export">Izvozi dnevniške zapise</string>
+    <string name="appearance_language">Jezik</string>
+    <string name="appearance_language_choose">Izberi jezik</string>
+    <string name="appearance_language_system_default">Sistemsko privzeti</string>
+    <string name="cmd_bluetooth_response_no_bluetooth">Kot kaže ta naprava nima Bluetootha.</string>
+    <string name="cmd_bluetooth_response_on">Bluetooth vključen.</string>
+    <string name="cmd_bluetooth_response_off">Bluetooth izključen.</string>
+    <string name="cmd_delete_response_failed">Naprave ni bilo mogoče izbrisati zaradi izjeme.</string>
+    <string name="Settings_FMDServer_Delete_Account">Izbriši račun</string>
+    <string name="Settings_Appearance">Videz</string>
+    <string name="Settings_no_ringtone_picker">Ne najdem izbirnika zvonjenja!</string>
+    <string name="pw_change_success">Geslo uspešno spremenjeno</string>
+    <string name="pw_change_mismatch">Ponovljeno geslo se ne ujema.</string>
+    <string name="pw_change_network_failed">Sprememba gesla ni uspela zaradi omrežne napake.</string>
+    <string name="Settings_FMDServer_Unregister_Success">Odjava in brisanje podatkov uspešna!</string>
+    <string name="pw_change_empty">Geslo ne sme biti prazno.</string>
+    <string name="pw_change_wrong_password">Napačno geslo</string>
+    <string name="perm_bluetooth_connect_name">Poveži Bluetooth</string>
 </resources>
