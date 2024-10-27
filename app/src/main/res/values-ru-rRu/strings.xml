@@ -230,7 +230,7 @@
     <string name="perm_bluetooth_connect_name">Подключить Bluetooth</string>
     <string name="export_success">Экспортирование успешно</string>
     <string name="export_failed">Экспортирование не удалось</string>
-    <string name="temporary_allowlist_expired">Ваш временный доступ к использованию Find My Device истёк. Чтобы продолжить использовать Find My Device, отправьте PIN-код снова в вашем следующем сообщении.</string>
+    <string name="temporary_allowlist_expired">Ваш временный доступ к Find My Device истёк. Чтобы продолжить использовать Find My Device, отправьте PIN-код снова.</string>
     <string name="pw_change_success">Пароль изменён</string>
     <string name="pw_change_mismatch">Пароли не совпадают.</string>
     <string name="pw_change_wrong_password">Неверный пароль</string>
@@ -240,4 +240,9 @@
     <string name="cmd_bluetooth_description_short">Включение и выключение Bluetooth</string>
     <string name="cmd_bluetooth_response_on">Bluetooth включён.</string>
     <string name="Settings_FMDServer_Unregister_Success">Отмена регистрации и удаление данных успешно завершены!</string>
+    <string name="Settings_Appearance">Внешний вид</string>
+    <string name="appearance_language_choose">Выберите язык</string>
+    <string name="appearance_language_system_default">По умолчанию (как в системе)</string>
+    <string name="cmd_delete_response_failed">Не удалось удалить устройство из-за ошибки.</string>
+    <string name="appearance_language">Язык</string>
 </resources>
