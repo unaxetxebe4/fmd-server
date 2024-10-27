@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.os.LocaleListCompat
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import de.nulide.findmydevice.R
+import de.nulide.findmydevice.data.Settings
+import de.nulide.findmydevice.data.SettingsRepository
 import de.nulide.findmydevice.databinding.ActivityAppearanceBinding
 import de.nulide.findmydevice.ui.FmdActivity
 import de.nulide.findmydevice.utils.APP_LANGUAGES
@@ -16,9 +18,12 @@ import java.util.Locale
 class AppearanceActivity : FmdActivity() {
 
     private lateinit var viewBinding: ActivityAppearanceBinding
+    private lateinit var settings: SettingsRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        settings = SettingsRepository.getInstance(this)
 
         viewBinding = ActivityAppearanceBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
@@ -32,6 +37,8 @@ class AppearanceActivity : FmdActivity() {
         } else {
             setupLanguageAndroid12AndBefore()
         }
+
+        setupTheme()
     }
 
     fun setupLanguageAndroid12AndBefore() {
@@ -81,6 +88,47 @@ class AppearanceActivity : FmdActivity() {
                         LocaleListCompat.forLanguageTags(tag)
                     }
                     AppCompatDelegate.setApplicationLocales(newLocale)
+                }
+                .show()
+        }
+    }
+
+    fun setupTheme() {
+        val current = settings.get(Settings.SET_THEME) as String
+        val resId = if (current == Settings.VAL_THEME_LIGHT) {
+            R.string.appearance_theme_light
+        } else if (current == Settings.VAL_THEME_DARK) {
+            R.string.appearance_theme_dark
+        } else {
+            R.string.appearance_theme_follow_system
+        }
+        viewBinding.textViewTheme.text = getString(resId)
+
+        setupThemePicker(current)
+    }
+
+    fun setupThemePicker(current: String) {
+        val options = arrayOf(
+            Settings.VAL_THEME_FOLLOW_SYSTEM,
+            Settings.VAL_THEME_LIGHT,
+            Settings.VAL_THEME_DARK
+        )
+        val optionsStrings = arrayOf(
+            getString(R.string.appearance_theme_follow_system),
+            getString(R.string.appearance_theme_light),
+            getString(R.string.appearance_theme_dark),
+        )
+        val checkedIdx = options.indexOfFirst { it == current }
+
+        viewBinding.buttonEditTheme.setOnClickListener { v ->
+            MaterialAlertDialogBuilder(this)
+                .setTitle(R.string.appearance_theme_choose)
+                .setSingleChoiceItems(optionsStrings, checkedIdx) { _, idx ->
+                    if (idx != checkedIdx) {
+                        val new = options[idx]
+                        settings.set(Settings.SET_THEME, new)
+                        recreate()
+                    }
                 }
                 .show()
         }

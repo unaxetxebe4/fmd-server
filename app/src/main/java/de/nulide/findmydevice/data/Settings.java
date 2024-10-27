@@ -50,6 +50,10 @@ public class Settings extends HashMap<Integer, Object> {
     public static final int SET_LAST_KNOWN_LOCATION_TIME = 504;
     public static final int SET_LAST_LOW_BAT_UPLOAD = 505;
 
+    public static final int SET_THEME = 601;
+    public static final String VAL_THEME_FOLLOW_SYSTEM = "follow_system";
+    public static final String VAL_THEME_LIGHT = "light";
+    public static final String VAL_THEME_DARK = "dark";
 
     public static final String DEFAULT_FMD_SERVER_URL = "https://fmd.nulide.de";
 
@@ -99,6 +103,8 @@ public class Settings extends HashMap<Integer, Object> {
                 case SET_LAST_KNOWN_LOCATION_TIME:
                 case SET_LAST_LOW_BAT_UPLOAD:
                     return -1L;
+                case SET_THEME:
+                    return VAL_THEME_FOLLOW_SYSTEM;
             }
         }
         return "";

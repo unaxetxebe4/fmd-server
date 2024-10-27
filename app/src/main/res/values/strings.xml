@@ -137,6 +137,11 @@
     <string name="appearance_language">Language</string>
     <string name="appearance_language_choose">Choose language</string>
     <string name="appearance_language_system_default">System default</string>
+    <string name="appearance_theme">Theme</string>
+    <string name="appearance_theme_choose">Choose theme</string>
+    <string name="appearance_theme_follow_system">Follow System</string>
+    <string name="appearance_theme_light">Light</string>
+    <string name="appearance_theme_dark">Dark</string>
 
     <!-- Settings: Logs -->
     <string name="log_view_title">Logs</string>
