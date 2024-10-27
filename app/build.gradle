@@ -116,6 +116,7 @@ dependencies {
 
     implementation 'com.github.iamrobj:NotificationHelperLibrary:2.0.5'
     implementation 'com.github.UnifiedPush:android-connector:2.1.1'
+    implementation 'com.jakewharton:process-phoenix:3.0.0'
     implementation "com.mikepenz:aboutlibraries:11.2.3"
     implementation "org.apache.maven:maven-artifact:3.9.9" // for semantic versions
     implementation 'org.bouncycastle:bcprov-jdk18on:1.78.1'

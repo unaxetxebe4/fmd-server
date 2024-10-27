@@ -3,10 +3,12 @@ package de.nulide.findmydevice.ui.settings
 import android.app.LocaleConfig
 import android.os.Build
 import android.os.Bundle
+import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.os.LocaleListCompat
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.jakewharton.processphoenix.ProcessPhoenix
 import de.nulide.findmydevice.R
 import de.nulide.findmydevice.data.Settings
 import de.nulide.findmydevice.data.SettingsRepository
@@ -39,6 +41,7 @@ class AppearanceActivity : FmdActivity() {
         }
 
         setupTheme()
+        setupDynamicColors()
     }
 
     fun setupLanguageAndroid12AndBefore() {
@@ -131,6 +134,25 @@ class AppearanceActivity : FmdActivity() {
                     }
                 }
                 .show()
+        }
+    }
+
+    fun setupDynamicColors() {
+        // Dynamic Colors were introduced in Android 12 (SDK 31)
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
+            viewBinding.switchDynamicColors.visibility = View.GONE
+        }
+
+        val isChecked = settings.get(Settings.SET_DYNAMIC_COLORS) as Boolean
+
+        viewBinding.switchDynamicColors.isChecked = isChecked
+        viewBinding.switchDynamicColors.setOnCheckedChangeListener { _, newChecked ->
+            if (newChecked != isChecked) {
+                settings.set(Settings.SET_DYNAMIC_COLORS, newChecked)
+                // Recreate the application in order for parent activities to pick up the change.
+                // XXX: This could also be solved by manually recreating the MainActivity, but this is easier for now.
+                ProcessPhoenix.triggerRebirth(this)
+            }
         }
     }
 }

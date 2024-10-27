@@ -54,6 +54,7 @@ public class Settings extends HashMap<Integer, Object> {
     public static final String VAL_THEME_FOLLOW_SYSTEM = "follow_system";
     public static final String VAL_THEME_LIGHT = "light";
     public static final String VAL_THEME_DARK = "dark";
+    public static final int SET_DYNAMIC_COLORS = 602;
 
     public static final String DEFAULT_FMD_SERVER_URL = "https://fmd.nulide.de";
 
@@ -105,6 +106,8 @@ public class Settings extends HashMap<Integer, Object> {
                     return -1L;
                 case SET_THEME:
                     return VAL_THEME_FOLLOW_SYSTEM;
+                case SET_DYNAMIC_COLORS:
+                    return false;
             }
         }
         return "";

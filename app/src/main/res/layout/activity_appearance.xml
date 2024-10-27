@@ -76,6 +76,13 @@
                 app:icon="@drawable/ic_edit" />
         </LinearLayout>
 
+        <com.google.android.material.materialswitch.MaterialSwitch
+            android:id="@+id/switchDynamicColors"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_normal"
+            android:text="@string/appearance_dynamic_colors" />
+
     </LinearLayout>
 </ScrollView>
 

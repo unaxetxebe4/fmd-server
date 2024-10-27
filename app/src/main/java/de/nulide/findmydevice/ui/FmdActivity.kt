@@ -1,8 +1,10 @@
 package de.nulide.findmydevice.ui
 
+import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import com.google.android.material.color.DynamicColors
 import de.nulide.findmydevice.data.Settings
 import de.nulide.findmydevice.data.SettingsRepository
 
@@ -17,6 +19,7 @@ abstract class FmdActivity : AppCompatActivity() {
         settings = SettingsRepository.getInstance(this)
 
         applyTheme()
+        applyDynamicColors()
     }
 
     fun applyTheme() {
@@ -30,5 +33,15 @@ abstract class FmdActivity : AppCompatActivity() {
             AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
         }
         AppCompatDelegate.setDefaultNightMode(nightMode)
+    }
+
+    fun applyDynamicColors() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
+            return
+        }
+        val isEnabled = settings.get(Settings.SET_DYNAMIC_COLORS) as Boolean
+        if (isEnabled) {
+            DynamicColors.applyToActivityIfAvailable(this)
+        }
     }
 }

@@ -142,6 +142,7 @@
     <string name="appearance_theme_follow_system">Follow System</string>
     <string name="appearance_theme_light">Light</string>
     <string name="appearance_theme_dark">Dark</string>
+    <string name="appearance_dynamic_colors">Dynamic Colors</string>
 
     <!-- Settings: Logs -->
     <string name="log_view_title">Logs</string>
