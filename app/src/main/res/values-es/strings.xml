@@ -245,4 +245,10 @@
     <string name="appearance_language_choose">Elegir idioma</string>
     <string name="appearance_language_system_default">Del sistema</string>
     <string name="cmd_delete_response_failed">No se pudo eliminar el dispositivo debido a una excepción.</string>
+    <string name="appearance_theme_choose">Elegir un tema</string>
+    <string name="appearance_dynamic_colors">Colores dinámicos</string>
+    <string name="appearance_theme">Tema</string>
+    <string name="appearance_theme_follow_system">Sistema</string>
+    <string name="appearance_theme_light">Claro</string>
+    <string name="appearance_theme_dark">Oscuro</string>
 </resources>

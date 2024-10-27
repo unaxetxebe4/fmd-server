@@ -241,4 +241,10 @@
     <string name="cmd_delete_response_failed">S Lösche vom Gerät isch fehlglschage ufgrund vomne Usnahmefehler.</string>
     <string name="notify_crypto_update_title">Aktion nötig</string>
     <string name="notify_crypto_update_text">Du musch paar Iistellige update zum FMD wiiter bruche. Klick zum d App öffne.</string>
+    <string name="appearance_theme_follow_system">Systemstandard</string>
+    <string name="appearance_theme_light">Hell</string>
+    <string name="appearance_theme">Designstil</string>
+    <string name="appearance_theme_choose">Designstil uswähle</string>
+    <string name="appearance_dynamic_colors">Dynamische Farbe</string>
+    <string name="appearance_theme_dark">Dunkel</string>
 </resources>
