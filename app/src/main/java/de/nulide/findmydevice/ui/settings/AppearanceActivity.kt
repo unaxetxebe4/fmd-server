@@ -28,13 +28,13 @@ class AppearanceActivity : AppCompatActivity() {
         super.onResume()
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            setupAndroid13AndAfter()
+            setupLanguageAndroid13AndAfter()
         } else {
-            setupAndroid12AndBefore()
+            setupLanguageAndroid12AndBefore()
         }
     }
 
-    fun setupAndroid12AndBefore() {
+    fun setupLanguageAndroid12AndBefore() {
         // XXX: This returns all locales, even if there is no translations for them
         // val availableLocales = Locale.getAvailableLocales()
         // Thus use a manually maintained list.
@@ -43,7 +43,7 @@ class AppearanceActivity : AppCompatActivity() {
     }
 
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
-    fun setupAndroid13AndAfter() {
+    fun setupLanguageAndroid13AndAfter() {
         val supportedLocales = LocaleConfig(this).supportedLocales!!
         val locales = mutableListOf<Locale>()
         for (i in 0..supportedLocales.size() - 1) {
