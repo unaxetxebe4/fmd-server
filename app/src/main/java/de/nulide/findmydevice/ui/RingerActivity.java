@@ -6,8 +6,6 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import java.util.Timer;
 
 import de.nulide.findmydevice.R;
@@ -16,7 +14,7 @@ import de.nulide.findmydevice.data.SettingsRepository;
 import de.nulide.findmydevice.tasks.RingerTimerTask;
 import de.nulide.findmydevice.utils.RingerUtils;
 
-public class RingerActivity extends AppCompatActivity implements View.OnClickListener {
+public class RingerActivity extends FmdActivity implements View.OnClickListener {
 
     public static String RING_DURATION = "rduration";
 

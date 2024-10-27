@@ -4,16 +4,16 @@ import android.app.LocaleConfig
 import android.os.Build
 import android.os.Bundle
 import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.os.LocaleListCompat
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import de.nulide.findmydevice.R
 import de.nulide.findmydevice.databinding.ActivityAppearanceBinding
+import de.nulide.findmydevice.ui.FmdActivity
 import de.nulide.findmydevice.utils.APP_LANGUAGES
 import java.util.Locale
 
-class AppearanceActivity : AppCompatActivity() {
+class AppearanceActivity : FmdActivity() {
 
     private lateinit var viewBinding: ActivityAppearanceBinding
 

@@ -1,12 +1,11 @@
 package de.nulide.findmydevice.ui
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import de.nulide.findmydevice.databinding.ActivitySetupWarningsBinding
 import de.nulide.findmydevice.permissions.globalAppPermissions
 
 
-class SetupWarningsActivity : AppCompatActivity() {
+class SetupWarningsActivity : FmdActivity() {
 
     private lateinit var viewBinding: ActivitySetupWarningsBinding
 

@@ -16,7 +16,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -29,11 +28,12 @@ import de.nulide.findmydevice.data.AllowlistRepository;
 import de.nulide.findmydevice.data.Contact;
 import de.nulide.findmydevice.data.Settings;
 import de.nulide.findmydevice.data.SettingsRepository;
+import de.nulide.findmydevice.ui.FmdActivity;
 import de.nulide.findmydevice.ui.allowlist.AllowlistAdapter;
 import kotlin.Unit;
 
 
-public class AllowlistActivity extends AppCompatActivity {
+public class AllowlistActivity extends FmdActivity {
 
     private AllowlistRepository allowlistRepository;
     private SettingsRepository settings;

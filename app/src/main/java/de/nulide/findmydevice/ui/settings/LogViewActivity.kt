@@ -4,15 +4,15 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import de.nulide.findmydevice.R
 import de.nulide.findmydevice.data.LogRepository
+import de.nulide.findmydevice.ui.FmdActivity
 
 
 private const val EXPORT_REQ_CODE = 30
 
-class LogViewActivity : AppCompatActivity() {
+class LogViewActivity : FmdActivity() {
 
 
     private lateinit var repo: LogRepository

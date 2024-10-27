@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import de.nulide.findmydevice.R
 import de.nulide.findmydevice.data.Settings
 import de.nulide.findmydevice.data.SettingsRepository
@@ -12,6 +11,7 @@ import de.nulide.findmydevice.databinding.ActivityOpenCellIdBinding
 import de.nulide.findmydevice.net.OpenCelliDRepository
 import de.nulide.findmydevice.net.OpenCelliDSpec
 import de.nulide.findmydevice.permissions.LocationPermission
+import de.nulide.findmydevice.ui.FmdActivity
 import de.nulide.findmydevice.utils.CellParameters
 import de.nulide.findmydevice.utils.Utils.Companion.getGeoURI
 import de.nulide.findmydevice.utils.Utils.Companion.getOpenStreetMapLink
@@ -20,7 +20,7 @@ import de.nulide.findmydevice.utils.Utils.Companion.pasteFromClipboard
 import de.nulide.findmydevice.utils.log
 
 
-class OpenCellIdActivity : AppCompatActivity(), TextWatcher {
+class OpenCellIdActivity : FmdActivity(), TextWatcher {
 
     private lateinit var viewBinding: ActivityOpenCellIdBinding
 

@@ -14,7 +14,6 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.android.volley.VolleyError
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -27,6 +26,7 @@ import de.nulide.findmydevice.net.FMDServerApiRepoSpec
 import de.nulide.findmydevice.net.FMDServerApiRepository
 import de.nulide.findmydevice.receiver.PushReceiver
 import de.nulide.findmydevice.services.FMDServerLocationUploadService
+import de.nulide.findmydevice.ui.FmdActivity
 import de.nulide.findmydevice.utils.CypherUtils
 import de.nulide.findmydevice.utils.Utils.Companion.copyToClipboard
 import de.nulide.findmydevice.utils.Utils.Companion.openUrl
@@ -37,7 +37,7 @@ import org.apache.maven.artifact.versioning.ComparableVersion
 import java.util.Calendar
 import java.util.TimeZone
 
-class AddAccountActivity : AppCompatActivity(), TextWatcher {
+class AddAccountActivity : FmdActivity(), TextWatcher {
     private lateinit var editTextServerUrl: EditText
     private lateinit var textViewServerVersion: TextView
     private lateinit var btnLogin: Button
