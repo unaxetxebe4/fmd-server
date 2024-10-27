@@ -4,13 +4,11 @@ import android.os.Bundle;
 import android.view.WindowManager;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.utils.FmdLogKt;
 
 
-public class LockScreenMessage extends AppCompatActivity {
+public class LockScreenMessage extends FmdActivity {
 
     private final String TAG = LockScreenMessage.class.getSimpleName();
 

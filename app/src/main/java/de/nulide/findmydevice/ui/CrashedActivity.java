@@ -7,15 +7,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.data.LogRepository;
 import de.nulide.findmydevice.data.Settings;
 import de.nulide.findmydevice.data.SettingsRepository;
 import de.nulide.findmydevice.utils.Utils;
 
-public class CrashedActivity extends AppCompatActivity {
+public class CrashedActivity extends FmdActivity {
 
     private String crashLog;
 

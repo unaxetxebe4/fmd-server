@@ -6,7 +6,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -24,7 +23,7 @@ import de.nulide.findmydevice.ui.onboarding.UpdateboardingModernCryptoActivity;
 import de.nulide.findmydevice.ui.settings.SettingsFragment;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends FmdActivity {
 
     private static final String KEY_ACTIVE_FRAGMENT_TAG = "activeFragmentTag";
 

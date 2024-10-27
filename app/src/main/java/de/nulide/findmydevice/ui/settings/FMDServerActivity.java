@@ -18,7 +18,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -34,12 +33,13 @@ import de.nulide.findmydevice.permissions.NotificationAccessPermission;
 import de.nulide.findmydevice.receiver.PushReceiver;
 import de.nulide.findmydevice.services.FMDServerLocationUploadService;
 import de.nulide.findmydevice.services.FmdBatteryLowService;
+import de.nulide.findmydevice.ui.FmdActivity;
 import de.nulide.findmydevice.ui.home.PermissionView;
 import de.nulide.findmydevice.utils.CypherUtils;
 import de.nulide.findmydevice.utils.UnregisterUtil;
 import de.nulide.findmydevice.utils.Utils;
 
-public class FMDServerActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener, TextWatcher {
+public class FMDServerActivity extends FmdActivity implements CompoundButton.OnCheckedChangeListener, TextWatcher {
 
     private SettingsRepository settings;
     private FMDServerApiRepository fmdServerRepo;
