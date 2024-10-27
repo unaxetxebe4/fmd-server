@@ -44,10 +44,12 @@ class LocateCommand(context: Context) : Command(context) {
 
         // fmd locate last
         if (args.contains("last")) {
-            GpsLocationProvider(context, transport).getLastKnownLocation()
+            coroutineScope.launch(Dispatchers.IO) {
+                GpsLocationProvider(context, transport).getLastKnownLocation()
+                job?.jobFinished()
+            }
             // Even if last location is not available, return here.
             // Because requesting "last" explicitly asks not to refresh the location.
-            job?.jobFinished()
             return
         }
 
