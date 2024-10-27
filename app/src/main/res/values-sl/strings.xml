@@ -245,4 +245,10 @@
     <string name="pw_change_empty">Geslo ne sme biti prazno.</string>
     <string name="pw_change_wrong_password">Napačno geslo</string>
     <string name="perm_bluetooth_connect_name">Poveži Bluetooth</string>
+    <string name="appearance_theme_light">Svetla</string>
+    <string name="appearance_theme_dark">Temna</string>
+    <string name="appearance_theme_follow_system">Uporabi sistemsko</string>
+    <string name="appearance_dynamic_colors">Dinamične barve</string>
+    <string name="appearance_theme">Tema</string>
+    <string name="appearance_theme_choose">Izberi temo</string>
 </resources>
