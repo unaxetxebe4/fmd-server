@@ -13,6 +13,7 @@ import de.nulide.findmydevice.data.SettingsRepository;
 import de.nulide.findmydevice.transports.FmdServerTransport;
 import de.nulide.findmydevice.transports.Transport;
 import de.nulide.findmydevice.utils.FmdLogKt;
+import de.nulide.findmydevice.utils.NetworkUtils;
 import kotlin.Unit;
 
 
@@ -84,6 +85,12 @@ public class FMDServerLocationUploadService extends FmdJobService {
         if (!settings.serverAccountExists()) {
             FmdLogKt.log(this).i(TAG, "No account, stopping and cancelling job.");
             cancelJob(this);
+            return false;
+        }
+
+        if (!NetworkUtils.isNetworkAvailable(this)) {
+            FmdLogKt.log(this).i(TAG, "No network connection, stopping job. Why did Android even schedule it?");
+            jobFinished();
             return false;
         }
 

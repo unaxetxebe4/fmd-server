@@ -2,6 +2,9 @@ package de.nulide.findmydevice.utils;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.Network;
+import android.net.NetworkCapabilities;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiManager;
 
@@ -43,5 +46,25 @@ public class NetworkUtils {
             e.printStackTrace();
         }
         return ip;
+    }
+
+    public static boolean isNetworkAvailable(Context context) {
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connectivityManager == null) {
+            return false;
+        }
+
+        Network activeNetwork = connectivityManager.getActiveNetwork();
+        if (activeNetwork == null) {
+            return false;
+        }
+
+        NetworkCapabilities caps = connectivityManager.getNetworkCapabilities(activeNetwork);
+        if (caps == null) {
+            return false;
+        }
+
+        return caps.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
+                && caps.hasCapability(NetworkCapabilities.NET_CAPABILITY_VALIDATED);
     }
 }
