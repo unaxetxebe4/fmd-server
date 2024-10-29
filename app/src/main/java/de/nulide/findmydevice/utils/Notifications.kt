@@ -28,13 +28,22 @@ object Notifications {
     const val CHANNEL_IN_APP: Int = 48
 
     @JvmStatic
-    fun notify(context: Context, title: String?, text: String?, channelID: Int) {
+    @JvmOverloads
+    fun notify(
+        context: Context,
+        title: String?,
+        text: String?,
+        channelID: Int,
+        customizeBuilder: ((NotificationCompat.Builder) -> Unit) = { _ -> }
+    ) {
         val builder = NotificationCompat.Builder(context, channelID.toString())
             .setSmallIcon(R.drawable.ic_notification)
             .setContentTitle(title)
             .setContentText(text)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .setStyle(NotificationCompat.BigTextStyle().bigText(text))
+
+        customizeBuilder(builder)
 
         if (channelID == CHANNEL_SECURITY) {
             val intent = Intent(context, MainActivity::class.java)
