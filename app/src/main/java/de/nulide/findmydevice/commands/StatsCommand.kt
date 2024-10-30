@@ -33,12 +33,12 @@ class StatsCommand(context: Context) : Command(context) {
         job: FmdJobService?,
     ) {
         val ips = NetworkUtils.getAllIP()
-        val ipsString = ips.map { i -> i.key }.joinToString { "\n" }
+        val ipsString = ips.map { i -> i.value }.joinToString("\n")
 
         val wifis = NetworkUtils.getWifiNetworks(context)
         val wifisString = wifis
             .map { sr -> "SSID: ${sr.SSID}\nBSSID: ${sr.BSSID}" }
-            .joinToString { "\n\n" }
+            .joinToString("\n\n")
 
         val reply = context.getString(R.string.cmd_stats_response, ipsString, wifisString)
 
