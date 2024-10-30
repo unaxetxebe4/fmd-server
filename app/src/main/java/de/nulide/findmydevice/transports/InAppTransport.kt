@@ -1,7 +1,9 @@
 package de.nulide.findmydevice.transports
 
 import android.annotation.SuppressLint
+import android.app.PendingIntent
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.widget.EditText
 import androidx.annotation.DrawableRes
@@ -14,6 +16,8 @@ import de.nulide.findmydevice.commands.CommandHandler
 import de.nulide.findmydevice.data.Settings
 import de.nulide.findmydevice.data.SettingsRepository
 import de.nulide.findmydevice.permissions.PostNotificationsPermission
+import de.nulide.findmydevice.receiver.CopyInAppTextReceiver
+import de.nulide.findmydevice.receiver.EXTRA_TEXT_TO_COPY
 import de.nulide.findmydevice.utils.Notifications
 
 
@@ -43,7 +47,24 @@ class InAppTransport(
         super.send(context, msg)
 
         val title = context.getString(R.string.transport_inapp_title)
-        Notifications.notify(context, title, msg, Notifications.CHANNEL_IN_APP)
+
+        Notifications.notify(context, title, msg, Notifications.CHANNEL_IN_APP) { builder ->
+            val copyIntent = Intent(context, CopyInAppTextReceiver::class.java)
+            copyIntent.putExtra(EXTRA_TEXT_TO_COPY, msg)
+
+            val copyPendingIntent = PendingIntent.getBroadcast(
+                context,
+                57568,
+                copyIntent,
+                PendingIntent.FLAG_IMMUTABLE
+            )
+
+            builder.addAction(
+                R.drawable.ic_content_copy,
+                context.getString(R.string.copy),
+                copyPendingIntent
+            )
+        }
     }
 }
 
