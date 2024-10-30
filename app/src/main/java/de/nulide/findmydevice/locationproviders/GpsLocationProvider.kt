@@ -96,7 +96,6 @@ class GpsLocationProvider<T>(
     @SuppressLint("MissingPermission")
     @RequiresApi(Build.VERSION_CODES.S)
     private fun getAndSendLocationAndroid12() {
-        context.log().d(TAG, "Using getCurrentLocation() on Android 12+")
         val FIVE_MINS_MILLIS = 300_000L
         val locationRequest = LocationRequest.Builder(2000L)
             .setQuality(LocationRequest.QUALITY_HIGH_ACCURACY)
