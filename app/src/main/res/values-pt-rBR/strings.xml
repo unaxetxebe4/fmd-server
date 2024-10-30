@@ -245,4 +245,10 @@
     <string name="appearance_language_choose">Escolher linguagem</string>
     <string name="appearance_language_system_default">Padrão do sistema</string>
     <string name="cmd_delete_response_failed">Falhou em excluir dispositivo devido à uma exceção.</string>
+    <string name="appearance_theme_dark">Escuro</string>
+    <string name="appearance_theme">Tema</string>
+    <string name="appearance_theme_follow_system">Seguir o Sistema</string>
+    <string name="appearance_dynamic_colors">Cores Dinâmicas</string>
+    <string name="appearance_theme_choose">Escolher tema</string>
+    <string name="appearance_theme_light">Claro</string>
 </resources>
