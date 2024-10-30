@@ -245,4 +245,10 @@
     <string name="appearance_language_choose">Vybrat jazyk</string>
     <string name="appearance_language_system_default">Podle systému</string>
     <string name="cmd_delete_response_failed">Nepodařilo se odstranit zařízení z důvodu chyby.</string>
+    <string name="appearance_theme_light">Světlý</string>
+    <string name="appearance_dynamic_colors">Dynamické barvy</string>
+    <string name="appearance_theme">Motiv</string>
+    <string name="appearance_theme_choose">Vybrat motiv</string>
+    <string name="appearance_theme_follow_system">Podle systému</string>
+    <string name="appearance_theme_dark">Tmavý</string>
 </resources>
