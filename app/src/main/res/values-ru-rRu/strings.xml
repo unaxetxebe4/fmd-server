@@ -245,4 +245,10 @@
     <string name="appearance_language_system_default">По умолчанию (как в системе)</string>
     <string name="cmd_delete_response_failed">Не удалось удалить устройство из-за ошибки.</string>
     <string name="appearance_language">Язык</string>
+    <string name="appearance_theme_light">Светлая</string>
+    <string name="appearance_dynamic_colors">Динамические цвета</string>
+    <string name="appearance_theme">Тема</string>
+    <string name="appearance_theme_choose">Выбрать тему</string>
+    <string name="appearance_theme_follow_system">Как в системе (по умолчанию)</string>
+    <string name="appearance_theme_dark">Тёмная</string>
 </resources>
