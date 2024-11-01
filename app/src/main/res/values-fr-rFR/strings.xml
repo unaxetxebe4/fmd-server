@@ -154,6 +154,7 @@
     <string name="cmd_lock_description_long">Verrouille l\'appareil et affiche éventuellement un message sur l\'écran de verrouillage. Après cela, le déverrouillage biométrique ne sera plus disponible et le mot de passe de votre appareil sera requis pour le déverrouiller.</string>
     <string name="add">Ajouter</string>
     <string name="bottom_nav_commands">Commandes</string>
+    <string name="export_failed">Échec de l\'exportation</string>
     <string name="Settings_Import_Success">Importation réussie</string>
     <string name="allowlist_phone_number">Numéro de Téléphone</string>
     <string name="cmd_locate_response_location_off">Impossible de localiser : la localisation est désactivée.</string>
@@ -206,4 +207,5 @@
     <string name="transport_inapp_send_command_title">Envoyer une commande intégrée à l\'application</string>
     <string name="transport_inapp_title">Intégré à l\'application</string>
     <string name="transport_inapp_send_command_command_placeholder">Commande</string>
+    <string name="export_success">Exportation réussie</string>
 </resources>
