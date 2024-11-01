@@ -58,6 +58,9 @@ before_script:
 # https://docs.gitlab.com/ee/ci/yaml/workflow.html
 workflow:
   rules:
+    - changes:
+        - 'app/src/main/res/values**/strings.xml'
+      when: never
     - if: $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME =~ /^weblate.*/
       when: never
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
