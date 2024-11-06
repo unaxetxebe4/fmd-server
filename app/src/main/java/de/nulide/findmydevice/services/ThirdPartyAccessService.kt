@@ -53,7 +53,7 @@ class ThirdPartyAccessService : NotificationListenerService() {
         val messageChars = sbn.notification.extras.getCharSequence("android.text") ?: return
         var message = messageChars.toString().lowercase()
 
-        val fmdTriggerWord = settings.get(Settings.SET_FMD_COMMAND) as String
+        val fmdTriggerWord = (settings.get(Settings.SET_FMD_COMMAND) as String).lowercase()
         if (message.contains(fmdTriggerWord)) {
             val newMessage = checkAndRemovePin(settings, message)
             if (newMessage == null) {

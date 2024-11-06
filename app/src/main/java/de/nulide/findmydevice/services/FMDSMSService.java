@@ -9,6 +9,8 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.os.PersistableBundle;
 
+import java.util.Locale;
+
 import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.commands.CommandHandler;
 import de.nulide.findmydevice.data.AllowlistRepository;
@@ -66,8 +68,8 @@ public class FMDSMSService extends FmdJobService {
             FmdLogKt.log(this).i(TAG, "Cannot handle SMS: msg is empty!");
             return false;
         }
-        String fmdTriggerWord = (String) settings.get(Settings.SET_FMD_COMMAND);
-        if (!msg.contains(fmdTriggerWord)) {
+        String fmdTriggerWord = ((String) settings.get(Settings.SET_FMD_COMMAND)).toLowerCase(Locale.ROOT);
+        if (!msg.toLowerCase(Locale.ROOT).contains(fmdTriggerWord)) {
             return false;
         }
 
