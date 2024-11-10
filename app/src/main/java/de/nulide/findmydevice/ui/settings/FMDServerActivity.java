@@ -130,7 +130,7 @@ public class FMDServerActivity extends FmdActivity implements CompoundButton.OnC
         checkBoxLowBat = findViewById(R.id.checkBoxFMDServerLowBatUpload);
         checkBoxLowBat.setChecked((Boolean) settings.get(Settings.SET_FMD_LOW_BAT_SEND));
         checkBoxLowBat.setOnCheckedChangeListener(this);
-        if((Boolean) settings.get(Settings.SET_FMD_LOW_BAT_SEND)){
+        if ((Boolean) settings.get(Settings.SET_FMD_LOW_BAT_SEND)) {
             FmdBatteryLowService.scheduleJobNow(this);
         }
 
@@ -166,9 +166,9 @@ public class FMDServerActivity extends FmdActivity implements CompoundButton.OnC
             }
         } else if (buttonView == checkBoxLowBat) {
             settings.set(Settings.SET_FMD_LOW_BAT_SEND, isChecked);
-            if(isChecked){
+            if (isChecked) {
                 FmdBatteryLowService.scheduleJobNow(this);
-            }else{
+            } else {
                 FmdBatteryLowService.stopJobNow(this);
             }
         }
@@ -222,12 +222,16 @@ public class FMDServerActivity extends FmdActivity implements CompoundButton.OnC
     }
 
     private void onLogoutClicked(View view) {
-        settings.set(Settings.SET_FMDSERVER_ID, "");
-        settings.set(Settings.SET_FMD_CRYPT_HPW, "");
-        settings.set(Settings.SET_FMD_CRYPT_PRIVKEY, "");
-        settings.set(Settings.SET_FMD_CRYPT_PUBKEY, "");
-        FMDServerLocationUploadService.cancelJob(this);
-        finish();
+        new MaterialAlertDialogBuilder(context)
+                .setTitle(getString(R.string.Settings_FMDServer_Logout_Button))
+                .setMessage(R.string.Settings_FMDServer_Logout_Text)
+                .setPositiveButton(getString(R.string.Ok), (dialog, whichButton) -> {
+                    settings.removeServerAccount();
+                    FMDServerLocationUploadService.cancelJob(this);
+                    finish();
+                })
+                .setNegativeButton(getString(R.string.cancel), null)
+                .show();
     }
 
     private void onChangePasswordClicked(View view) {
