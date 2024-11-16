@@ -311,7 +311,7 @@ class FMDServerApiRepository private constructor(spec: FMDServerApiRepoSpec) {
                     if (error.cause is JSONException || error.networkResponse.statusCode == 499) {
                         // request was actually successful, just deserialising failed
                         // only clear if request is successful
-                        settingsRepo.set(Settings.SET_FMDSERVER_ID, "")
+                        settingsRepo.removeServerAccount()
                         onResponse.onResponse(Unit)
                     } else {
                         onError.onErrorResponse(error)
