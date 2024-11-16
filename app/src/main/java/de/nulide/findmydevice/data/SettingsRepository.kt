@@ -205,4 +205,10 @@ class SettingsRepository private constructor(private val context: Context) {
         }
     }
 
+    fun removeServerAccount() {
+        set(Settings.SET_FMDSERVER_ID, "");
+        set(Settings.SET_FMD_CRYPT_HPW, "");
+        set(Settings.SET_FMD_CRYPT_PRIVKEY, "");
+        set(Settings.SET_FMD_CRYPT_PUBKEY, "");
+    }
 }
