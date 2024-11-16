@@ -59,12 +59,15 @@ class AllowlistRepository private constructor(private val context: Context) {
         }
     }
 
+    @Synchronized
     fun remove(phoneNumber: String) {
+        val toRemove = mutableListOf<Contact>()
         for (ele in list) {
             if (PhoneNumberUtils.compare(ele.number, phoneNumber)) {
-                list.remove(ele)
-                saveList()
+                toRemove.add(ele)
             }
         }
+        list.removeAll(toRemove)
+        saveList()
     }
 }

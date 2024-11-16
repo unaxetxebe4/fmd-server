@@ -88,19 +88,16 @@ class TemporaryAllowlistRepository private constructor(private val context: Cont
     /**
      * Removes all entries that have expired from the temporary allowlist.
      */
+    @Synchronized
     fun removeExpired(): List<Pair<String, Int>> {
-        val expired = mutableListOf<Pair<String,Int>>()
         val toRemove = mutableListOf<TempAllowedNumber>()
         for (ele in list) {
             if (ele.isExpired()) {
                 toRemove.add(ele)
-                expired.add(ele.number to ele.subscriptionId)
             }
         }
-        for (ele in toRemove){
-            list.remove(ele)
-        }
+        list.removeAll(toRemove)
         saveList()
-        return expired
+        return toRemove.map { it.number to it.subscriptionId }
     }
 }
