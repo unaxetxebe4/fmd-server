@@ -251,4 +251,5 @@
     <string name="appearance_dynamic_colors">Cores Dinâmicas</string>
     <string name="appearance_theme_choose">Escolher tema</string>
     <string name="appearance_theme_light">Claro</string>
+    <string name="Settings_FMDServer_Logout_Text">Você deseja realmente remover sua sessão da sua conta do Servidor FMD?</string>
 </resources>

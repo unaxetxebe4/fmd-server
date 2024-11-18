@@ -251,4 +251,5 @@
     <string name="appearance_theme_follow_system">Sistema</string>
     <string name="appearance_theme_light">Claro</string>
     <string name="appearance_theme_dark">Oscuro</string>
+    <string name="Settings_FMDServer_Logout_Text">¿Está seguro de que desea cerrar sesión en su cuenta de FMD Server?</string>
 </resources>
