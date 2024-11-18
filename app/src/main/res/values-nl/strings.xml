@@ -234,4 +234,5 @@
     <string name="Settings_Lockscreenmessage_Description">Boodschap op het vergrendelingsscherm:\nBij vergrendeling van het apparaat, wordt deze boodschap getoond op het vergrendelingsscherm.</string>
     <string name="Settings_FMDServer_LOW_BAT_Upload_Description">Upload de locatie van dit apparaat wanneer het batterijniveau laag wordt. Toegang tot meldingen vereist.</string>
     <string name="OpenCellId_privacy">Privacy: houd er rekening mee dat OpenCelliD bij elke API-query je huidige zendmast en daarmee je locatie leest.</string>
+    <string name="Settings_FMDServer_Logout_Text">Wil je echt uitloggen van je FMD Server-account?</string>
 </resources>
