@@ -247,4 +247,5 @@
     <string name="appearance_theme_choose">Designstil uswähle</string>
     <string name="appearance_dynamic_colors">Dynamische Farbe</string>
     <string name="appearance_theme_dark">Dunkel</string>
+    <string name="Settings_FMDServer_Logout_Text">Wotscht du dich würklich us dinem FMD Server-Account uslogge?</string>
 </resources>
