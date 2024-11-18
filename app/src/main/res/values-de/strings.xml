@@ -268,4 +268,5 @@
     <string name="appearance_theme_choose">Designstil auswählen</string>
     <string name="appearance_theme_light">Hell</string>
     <string name="appearance_dynamic_colors">Dynamische Farben</string>
+    <string name="Settings_FMDServer_Logout_Text">Möchten Sie sich wirklich aus Ihrem FMD Server-Account ausloggen?</string>
 </resources>
