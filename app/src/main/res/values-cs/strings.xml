@@ -251,4 +251,5 @@
     <string name="appearance_theme_choose">Vybrat motiv</string>
     <string name="appearance_theme_follow_system">Podle systému</string>
     <string name="appearance_theme_dark">Tmavý</string>
+    <string name="Settings_FMDServer_Logout_Text">Opravdu se chcete odhlásit z vašeho účtu na serveru FMD?</string>
 </resources>
