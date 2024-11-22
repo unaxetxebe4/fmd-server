@@ -251,4 +251,5 @@
     <string name="appearance_theme_choose">Выбрать тему</string>
     <string name="appearance_theme_follow_system">Как в системе (по умолчанию)</string>
     <string name="appearance_theme_dark">Тёмная</string>
+    <string name="Settings_FMDServer_Logout_Text">Вы действительно хотите выйти из вашего аккаунта FMD Сервера?</string>
 </resources>
