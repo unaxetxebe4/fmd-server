@@ -14,6 +14,8 @@ import de.nulide.findmydevice.data.Settings
 import de.nulide.findmydevice.data.SettingsRepository
 import de.nulide.findmydevice.databinding.ActivityAppearanceBinding
 import de.nulide.findmydevice.ui.FmdActivity
+import de.nulide.findmydevice.ui.UiUtil.Companion.setupEdgeToEdgeAppBar
+import de.nulide.findmydevice.ui.UiUtil.Companion.setupEdgeToEdgeScrollView
 import de.nulide.findmydevice.utils.APP_LANGUAGES
 import java.util.Locale
 
@@ -29,6 +31,9 @@ class AppearanceActivity : FmdActivity() {
 
         viewBinding = ActivityAppearanceBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
+
+        setupEdgeToEdgeAppBar(findViewById(R.id.appBar))
+        setupEdgeToEdgeScrollView(findViewById(R.id.scrollView))
     }
 
     override fun onResume() {

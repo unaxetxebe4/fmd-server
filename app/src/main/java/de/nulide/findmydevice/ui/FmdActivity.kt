@@ -2,6 +2,7 @@ package de.nulide.findmydevice.ui
 
 import android.os.Build
 import android.os.Bundle
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import com.google.android.material.appbar.MaterialToolbar
@@ -22,6 +23,11 @@ abstract class FmdActivity : AppCompatActivity() {
 
         applyTheme()
         applyDynamicColors()
+
+        // Needs to be called before setContentView.
+        // Thus children need to call super.onCreate before setContentView.
+        // Needs to be after dynamic colors.
+        enableEdgeToEdge()
     }
 
     override fun onResume() {

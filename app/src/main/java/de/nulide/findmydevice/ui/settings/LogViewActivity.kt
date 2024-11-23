@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import de.nulide.findmydevice.R
 import de.nulide.findmydevice.data.LogRepository
 import de.nulide.findmydevice.ui.FmdActivity
+import de.nulide.findmydevice.ui.UiUtil.Companion.setupEdgeToEdgeAppBar
+import de.nulide.findmydevice.ui.UiUtil.Companion.setupEdgeToEdgeScrollView
 
 
 private const val EXPORT_REQ_CODE = 30
@@ -20,6 +22,9 @@ class LogViewActivity : FmdActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_log)
+
+        setupEdgeToEdgeAppBar(findViewById(R.id.appBar))
+        setupEdgeToEdgeScrollView(findViewById(R.id.recycler_logs))
 
         repo = LogRepository.getInstance(this)
 

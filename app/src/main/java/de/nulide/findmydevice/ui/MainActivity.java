@@ -1,6 +1,9 @@
 package de.nulide.findmydevice.ui;
 
+import static de.nulide.findmydevice.ui.UiUtil.setupEdgeToEdgeAppBar;
+
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -49,6 +52,14 @@ public class MainActivity extends FmdActivity {
 
         MaterialToolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setOnMenuItemClickListener(this::onOptionsItemSelected);
+
+        // Make 3-button navigation bar transparent
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            getWindow().setNavigationBarContrastEnforced(false);
+        }
+
+        setupEdgeToEdgeAppBar(findViewById(R.id.appBar));
+        setupEdgeToEdgeAppBar(findViewById(R.id.fragment_container)); // shift the container down, too
 
         settings = SettingsRepository.Companion.getInstance(this);
 

@@ -12,6 +12,8 @@ import de.nulide.findmydevice.net.OpenCelliDRepository
 import de.nulide.findmydevice.net.OpenCelliDSpec
 import de.nulide.findmydevice.permissions.LocationPermission
 import de.nulide.findmydevice.ui.FmdActivity
+import de.nulide.findmydevice.ui.UiUtil.Companion.setupEdgeToEdgeAppBar
+import de.nulide.findmydevice.ui.UiUtil.Companion.setupEdgeToEdgeScrollView
 import de.nulide.findmydevice.utils.CellParameters
 import de.nulide.findmydevice.utils.Utils.Companion.getGeoURI
 import de.nulide.findmydevice.utils.Utils.Companion.getOpenStreetMapLink
@@ -30,6 +32,9 @@ class OpenCellIdActivity : FmdActivity(), TextWatcher {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityOpenCellIdBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
+
+        setupEdgeToEdgeAppBar(findViewById(R.id.appBar))
+        setupEdgeToEdgeScrollView(findViewById(R.id.scrollView))
 
         settings = SettingsRepository.getInstance(this)
         val apiToken = settings.get(Settings.SET_OPENCELLID_API_KEY) as String
