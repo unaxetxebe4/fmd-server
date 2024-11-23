@@ -7,6 +7,7 @@ import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -43,7 +44,11 @@ public class MainActivity extends FmdActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
+
+        MaterialToolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setOnMenuItemClickListener(this::onOptionsItemSelected);
 
         settings = SettingsRepository.Companion.getInstance(this);
 
@@ -135,10 +140,11 @@ public class MainActivity extends FmdActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        MaterialToolbar toolbar = findViewById(R.id.toolbar);
         if (PermissionsUtilKt.isMissingGlobalAppPermission(this)) {
-            getMenuInflater().inflate(R.menu.main_app_bar_warnings, menu);
+            toolbar.inflateMenu(R.menu.main_app_bar_warnings);
         } else {
-            getMenuInflater().inflate(R.menu.main_app_bar, menu);
+            toolbar.inflateMenu(R.menu.main_app_bar);
         }
         return true;
     }

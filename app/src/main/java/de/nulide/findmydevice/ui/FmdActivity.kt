@@ -4,7 +4,9 @@ import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.color.DynamicColors
+import de.nulide.findmydevice.R
 import de.nulide.findmydevice.data.Settings
 import de.nulide.findmydevice.data.SettingsRepository
 
@@ -20,6 +22,15 @@ abstract class FmdActivity : AppCompatActivity() {
 
         applyTheme()
         applyDynamicColors()
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        val toolbar = findViewById<MaterialToolbar>(R.id.toolbar)
+        if (toolbar != null) {
+            setSupportActionBar(toolbar)
+        }
     }
 
     fun applyTheme() {
