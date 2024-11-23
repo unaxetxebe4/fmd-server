@@ -19,15 +19,15 @@
             app:title="@string/Settings_Logs" />
     </com.google.android.material.appbar.AppBarLayout>
 
-<androidx.recyclerview.widget.RecyclerView
-    android:id="@+id/recycler_logs"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:clipToPadding="false"
-    android:paddingVertical="@dimen/margin_small"
-    android:scrollbars="vertical"
-    app:layoutManager="LinearLayoutManager"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:listitem="@layout/item_log_entry" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_logs"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingVertical="@dimen/margin_small"
+        android:scrollbars="vertical"
+        app:layoutManager="LinearLayoutManager"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:listitem="@layout/item_log_entry" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
