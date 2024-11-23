@@ -1,5 +1,8 @@
 package de.nulide.findmydevice.ui.settings;
 
+import static de.nulide.findmydevice.ui.UiUtil.setupEdgeToEdgeAppBar;
+import static de.nulide.findmydevice.ui.UiUtil.setupEdgeToEdgeScrollView;
+
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -71,6 +74,9 @@ public class FMDServerActivity extends FmdActivity implements CompoundButton.OnC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_f_m_d_server);
+
+        setupEdgeToEdgeAppBar(findViewById(R.id.appBar));
+        setupEdgeToEdgeScrollView(findViewById(R.id.scrollView));
 
         settings = SettingsRepository.Companion.getInstance(this);
         fmdServerRepo = FMDServerApiRepository.Companion.getInstance(new FMDServerApiRepoSpec(this));

@@ -1,5 +1,8 @@
 package de.nulide.findmydevice.ui;
 
+import static de.nulide.findmydevice.ui.UiUtil.setupEdgeToEdgeAppBar;
+import static de.nulide.findmydevice.ui.UiUtil.setupEdgeToEdgeScrollView;
+
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -21,6 +24,9 @@ public class CrashedActivity extends FmdActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crashed);
+
+        setupEdgeToEdgeAppBar(findViewById(R.id.appBar));
+        setupEdgeToEdgeScrollView(findViewById(R.id.scrollView));
 
         SettingsRepository settings = SettingsRepository.Companion.getInstance(this);
         settings.set(Settings.SET_APP_CRASHED_LOG_ENTRY, 0);

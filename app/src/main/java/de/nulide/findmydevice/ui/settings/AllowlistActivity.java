@@ -1,5 +1,7 @@
 package de.nulide.findmydevice.ui.settings;
 
+import static de.nulide.findmydevice.ui.UiUtil.setupEdgeToEdge;
+
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -48,6 +50,8 @@ public class AllowlistActivity extends FmdActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_allowlist);
+
+        setupEdgeToEdge(findViewById(android.R.id.content));
 
         allowlistRepository = AllowlistRepository.Companion.getInstance(this);
         settings = SettingsRepository.Companion.getInstance(this);

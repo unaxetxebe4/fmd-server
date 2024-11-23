@@ -1,12 +1,16 @@
 package de.nulide.findmydevice.ui;
 
+import static de.nulide.findmydevice.ui.UiUtil.setupEdgeToEdgeAppBar;
+
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -43,7 +47,19 @@ public class MainActivity extends FmdActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
+
+        MaterialToolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setOnMenuItemClickListener(this::onOptionsItemSelected);
+
+        // Make 3-button navigation bar transparent
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            getWindow().setNavigationBarContrastEnforced(false);
+        }
+
+        setupEdgeToEdgeAppBar(findViewById(R.id.appBar));
+        setupEdgeToEdgeAppBar(findViewById(R.id.fragment_container)); // shift the container down, too
 
         settings = SettingsRepository.Companion.getInstance(this);
 
@@ -135,10 +151,11 @@ public class MainActivity extends FmdActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        MaterialToolbar toolbar = findViewById(R.id.toolbar);
         if (PermissionsUtilKt.isMissingGlobalAppPermission(this)) {
-            getMenuInflater().inflate(R.menu.main_app_bar_warnings, menu);
+            toolbar.inflateMenu(R.menu.main_app_bar_warnings);
         } else {
-            getMenuInflater().inflate(R.menu.main_app_bar, menu);
+            toolbar.inflateMenu(R.menu.main_app_bar);
         }
         return true;
     }

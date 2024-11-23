@@ -27,6 +27,8 @@ import de.nulide.findmydevice.net.FMDServerApiRepository
 import de.nulide.findmydevice.receiver.PushReceiver
 import de.nulide.findmydevice.services.FMDServerLocationUploadService
 import de.nulide.findmydevice.ui.FmdActivity
+import de.nulide.findmydevice.ui.UiUtil.Companion.setupEdgeToEdgeAppBar
+import de.nulide.findmydevice.ui.UiUtil.Companion.setupEdgeToEdgeScrollView
 import de.nulide.findmydevice.utils.CypherUtils
 import de.nulide.findmydevice.utils.Utils.Companion.copyToClipboard
 import de.nulide.findmydevice.utils.Utils.Companion.openUrl
@@ -54,6 +56,9 @@ class AddAccountActivity : FmdActivity(), TextWatcher {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_account)
+
+        setupEdgeToEdgeAppBar(findViewById(R.id.appBar))
+        setupEdgeToEdgeScrollView(findViewById(R.id.scrollView))
 
         settingsRepo = SettingsRepository.getInstance(this)
         fmdServerRepo = FMDServerApiRepository.getInstance(FMDServerApiRepoSpec(this))

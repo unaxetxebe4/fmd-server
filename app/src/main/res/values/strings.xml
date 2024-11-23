@@ -304,6 +304,7 @@
     <string name="ringer_stop_ringing">STOP RINGING</string>
 
     <!-- Crash Activity -->
+    <string name="crashed_title">Crash Report</string>
     <string name="crashed_text">FMD has crashed! Here is the log:</string>
     <string name="crashed_send_log">Send log</string>
     <string name="crashed_copy_log">Copy log</string>

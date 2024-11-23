@@ -1,5 +1,8 @@
 package de.nulide.findmydevice.ui.settings;
 
+import static de.nulide.findmydevice.ui.UiUtil.setupEdgeToEdgeAppBar;
+import static de.nulide.findmydevice.ui.UiUtil.setupEdgeToEdgeScrollView;
+
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -48,6 +51,9 @@ public class FMDConfigActivity extends FmdActivity implements CompoundButton.OnC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_f_m_d_config);
 
+        setupEdgeToEdgeAppBar(findViewById(R.id.appBar));
+        setupEdgeToEdgeScrollView(findViewById(R.id.scrollView));
+
         settings = SettingsRepository.Companion.getInstance(this);
 
         checkBoxDeviceWipe = findViewById(R.id.checkBoxWipeData);
@@ -83,7 +89,6 @@ public class FMDConfigActivity extends FmdActivity implements CompoundButton.OnC
         editTextFmdCommand = findViewById(R.id.editTextFmdCommand);
         editTextFmdCommand.setText((String) settings.get(Settings.SET_FMD_COMMAND));
         editTextFmdCommand.addTextChangedListener(this);
-
     }
 
     @Override
