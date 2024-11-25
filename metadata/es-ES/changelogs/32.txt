@@ -1,6 +1,0 @@
-0.9.1:
-- Agregar botón "copiar" a las notificaciones de transporte en la aplicación (!227)
-- Agregar diálogo de confirmación al cerrar sesión en el servidor (!232)
-- Se solucionó el problema de que las "estadísticas fmd" no funcionaban (#257)
-- Corregir regresión: hacer que la palabra clave "fmd" no distinga entre mayúsculas y minúsculas nuevamente (#270)
-- Intento de solucionar el fallo de Comodification en LogRepository (#262)
