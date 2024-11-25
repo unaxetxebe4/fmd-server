@@ -239,4 +239,5 @@
     <string name="appearance_theme_choose">Scegli tema</string>
     <string name="appearance_theme_follow_system">Come da Sistema</string>
     <string name="appearance_theme_light">Chiaro</string>
+    <string name="Settings_FMDServer_Logout_Text">Vuoi davvero disconnetterti dal tuo account sul Server FMD?</string>
 </resources>
