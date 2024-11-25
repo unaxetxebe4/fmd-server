@@ -1,5 +1,7 @@
 package de.nulide.findmydevice.ui;
 
+import static de.nulide.findmydevice.net.ServerRequiredVersionCheckKt.isMinRequiredVersion;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -8,11 +10,13 @@ import android.view.MenuItem;
 import androidx.annotation.NonNull;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.navigation.NavigationBarView;
 
 import de.nulide.findmydevice.R;
 import de.nulide.findmydevice.data.Settings;
 import de.nulide.findmydevice.data.SettingsRepository;
+import de.nulide.findmydevice.net.MinRequiredVersionResult;
 import de.nulide.findmydevice.permissions.PermissionsUtilKt;
 import de.nulide.findmydevice.receiver.PushReceiver;
 import de.nulide.findmydevice.services.FMDServerLocationUploadService;
@@ -21,6 +25,7 @@ import de.nulide.findmydevice.ui.home.CommandListFragment;
 import de.nulide.findmydevice.ui.home.TransportListFragment;
 import de.nulide.findmydevice.ui.onboarding.UpdateboardingModernCryptoActivity;
 import de.nulide.findmydevice.ui.settings.SettingsFragment;
+import kotlin.Unit;
 
 
 public class MainActivity extends FmdActivity {
@@ -89,9 +94,10 @@ public class MainActivity extends FmdActivity {
             }
         }
 
-        // In onCreate instead of onResume to avoid excessive re-registrations
         if (settings.serverAccountExists()) {
+            // In onCreate instead of onResume to avoid excessive re-registrations
             PushReceiver.registerWithUnifiedPush(this);
+            checkServerVersion();
         }
     }
 
@@ -150,5 +156,22 @@ public class MainActivity extends FmdActivity {
             startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void checkServerVersion() {
+        isMinRequiredVersion(this, result -> {
+            if (result instanceof MinRequiredVersionResult.ServerOutdated outdated) {
+                String text = getString(R.string.server_version_upgrade_required_text)
+                        .replace("{CURRENT}", outdated.getActualVersion())
+                        .replace("{MIN}", outdated.getMinRequiredVersion());
+
+                new MaterialAlertDialogBuilder(this)
+                        .setTitle(getString(R.string.server_version_upgrade_required_title))
+                        .setMessage(text)
+                        .setPositiveButton(getString(R.string.Ok), null)
+                        .show();
+            }
+            return Unit.INSTANCE;
+        });
     }
 }

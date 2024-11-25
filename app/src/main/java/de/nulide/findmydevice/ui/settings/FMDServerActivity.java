@@ -1,5 +1,6 @@
 package de.nulide.findmydevice.ui.settings;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -9,11 +10,9 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,17 +43,7 @@ public class FMDServerActivity extends FmdActivity implements CompoundButton.OnC
     private SettingsRepository settings;
     private FMDServerApiRepository fmdServerRepo;
 
-    private TextView textViewServerUrl;
-    private TextView textViewUserId;
-    private ImageView buttonCopyServerUrl;
-    private ImageView buttonCopyUserId;
-    private TextView textViewConnectionStatus;
-    private Button changePasswordButton;
-    private Button logoutButton;
-    private Button deleteButton;
-
     private TextView textViewPushHelp;
-    private Button openUnifiedPushButton;
 
     private EditText editTextFMDServerUpdateTime;
 
@@ -76,9 +65,8 @@ public class FMDServerActivity extends FmdActivity implements CompoundButton.OnC
         fmdServerRepo = FMDServerApiRepository.Companion.getInstance(new FMDServerApiRepoSpec(this));
         this.context = this;
 
-        textViewServerUrl = findViewById(R.id.textViewServerUrl);
-        textViewUserId = findViewById(R.id.textViewUserId);
-        textViewConnectionStatus = findViewById(R.id.textViewConnectionStatus);
+        TextView textViewServerUrl = findViewById(R.id.textViewServerUrl);
+        TextView textViewUserId = findViewById(R.id.textViewUserId);
         textViewServerUrl.setText((String) settings.get(Settings.SET_FMDSERVER_URL));
         textViewUserId.setText((String) settings.get(Settings.SET_FMDSERVER_ID));
 
@@ -86,19 +74,13 @@ public class FMDServerActivity extends FmdActivity implements CompoundButton.OnC
         findViewById(R.id.buttonCopyServerUrl).setOnClickListener(this::onCopyServerUrlClicked);
         findViewById(R.id.buttonCopyUserId).setOnClickListener(this::onCopyUserIdClicked);
 
-        changePasswordButton = findViewById(R.id.buttonChangePassword);
-        changePasswordButton.setOnClickListener(this::onChangePasswordClicked);
-
-        logoutButton = findViewById(R.id.buttonLogout);
-        logoutButton.setOnClickListener(this::onLogoutClicked);
-
-        deleteButton = findViewById(R.id.buttonDeleteData);
-        deleteButton.setOnClickListener(this::onDeleteClicked);
+        findViewById(R.id.buttonChangePassword).setOnClickListener(this::onChangePasswordClicked);
+        findViewById(R.id.buttonLogout).setOnClickListener(this::onLogoutClicked);
+        findViewById(R.id.buttonDeleteData).setOnClickListener(this::onDeleteClicked);
 
         textViewPushHelp = findViewById(R.id.textPushHelp);
 
-        openUnifiedPushButton = findViewById(R.id.buttonOpenUnifiedPush);
-        openUnifiedPushButton.setOnClickListener(this::onOpenUnifiedPushClicked);
+        findViewById(R.id.buttonOpenUnifiedPush).setOnClickListener(this::onOpenUnifiedPushClicked);
 
         editTextFMDServerUpdateTime = findViewById(R.id.editTextFMDServerUpdateTime);
         editTextFMDServerUpdateTime.setText(((Integer) settings.get(Settings.SET_FMDSERVER_UPDATE_TIME)).toString());
@@ -136,6 +118,8 @@ public class FMDServerActivity extends FmdActivity implements CompoundButton.OnC
 
         PermissionView notificationAccessPerm = findViewById(R.id.perm_notification_access);
         notificationAccessPerm.setPermission(new NotificationAccessPermission(), this, true);
+
+        getServerVersion();
     }
 
     @Override
@@ -324,6 +308,8 @@ public class FMDServerActivity extends FmdActivity implements CompoundButton.OnC
     }
 
     private void checkConnection() {
+        TextView textViewConnectionStatus = findViewById(R.id.textViewConnectionStatus);
+
         // Check if we can connect to the server and can log in (i.e., get an access token)
         fmdServerRepo.getAccessToken(
                 response -> {
@@ -340,5 +326,19 @@ public class FMDServerActivity extends FmdActivity implements CompoundButton.OnC
                     });
                 }
         );
+    }
+
+    @SuppressLint("SetTextI18n")
+    private void getServerVersion() {
+        TextView serverVersion = findViewById(R.id.serverVersion);
+
+        String baseUrl = (String) settings.get(Settings.SET_FMDSERVER_URL);
+        fmdServerRepo.getServerVersion(baseUrl, response -> {
+            serverVersion.setText(getString(R.string.server_version) + ": " + response);
+            serverVersion.setVisibility(View.VISIBLE);
+        }, error -> {
+            // Silently ignore
+            serverVersion.setVisibility(View.GONE);
+        });
     }
 }

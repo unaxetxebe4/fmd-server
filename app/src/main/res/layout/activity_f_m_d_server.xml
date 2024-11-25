@@ -91,7 +91,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/margin_normal"
+            android:layout_marginBottom="@dimen/margin_small"
             android:orientation="horizontal">
 
             <TextView
@@ -106,6 +106,13 @@
                 android:layout_height="wrap_content"
                 tools:text="@string/Settings_FMD_Server_Connection_Status_Success" />
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/serverVersion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_normal"
+            android:text="@string/server_version" />
 
         <Button
             android:id="@+id/buttonChangePassword"

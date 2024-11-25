@@ -24,6 +24,8 @@ import de.nulide.findmydevice.data.Settings
 import de.nulide.findmydevice.data.SettingsRepository
 import de.nulide.findmydevice.net.FMDServerApiRepoSpec
 import de.nulide.findmydevice.net.FMDServerApiRepository
+import de.nulide.findmydevice.net.MinRequiredVersionResult
+import de.nulide.findmydevice.net.isMinRequiredVersion
 import de.nulide.findmydevice.receiver.PushReceiver
 import de.nulide.findmydevice.services.FMDServerLocationUploadService
 import de.nulide.findmydevice.ui.FmdActivity
@@ -33,7 +35,6 @@ import de.nulide.findmydevice.utils.Utils.Companion.openUrl
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import org.apache.maven.artifact.versioning.ComparableVersion
 import java.util.Calendar
 import java.util.TimeZone
 
@@ -309,39 +310,31 @@ class AddAccountActivity : FmdActivity(), TextWatcher {
         }
 
         lifecycleScope.launch(Dispatchers.IO) {
-            fmdServerRepo.getServerVersion(serverBaseUrl,
-                { response: String ->
-                    runOnUiThread {
-                        var currentString = response
-                        if (currentString.startsWith("v")) {
-                            currentString = currentString.substring(1)
+            isMinRequiredVersion(context, serverBaseUrl) { result ->
+                runOnUiThread {
+                    when (result) {
+                        is MinRequiredVersionResult.Success -> {
+                            textViewServerVersion.text =
+                                "${context.getString(R.string.server_version)}: ${result.actualVersion}"
                         }
-                        val minRequired =
-                            ComparableVersion(FMDServerApiRepository.MIN_REQUIRED_SERVER_VERSION)
-                        val current = ComparableVersion(currentString)
 
-                        if (current < minRequired) {
+                        is MinRequiredVersionResult.ServerOutdated -> {
                             var warningText =
                                 context.getString(R.string.server_version_error_low_version)
                             warningText = warningText.replace(
-                                "{MIN}",
-                                FMDServerApiRepository.MIN_REQUIRED_SERVER_VERSION
+                                "{MIN}", result.minRequiredVersion
                             )
-                            warningText = warningText.replace("{CURRENT}", currentString)
+                            warningText = warningText.replace("{CURRENT}", result.actualVersion)
                             textViewServerVersion.text = warningText
-                        } else {
+                        }
+
+                        is MinRequiredVersionResult.Error -> {
                             textViewServerVersion.text =
-                                "${context.getString(R.string.server_version)}: $currentString"
+                                "${context.getString(R.string.server_version_error)}: ${result.message}"
                         }
                     }
-                },
-                { error: VolleyError ->
-                    runOnUiThread {
-                        textViewServerVersion.text =
-                            "${context.getString(R.string.server_version_error)}: ${error.message}"
-                    }
                 }
-            )
+            }
         }
     }
 }
