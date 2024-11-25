@@ -1,6 +1,0 @@
-0.9.1:
-- Přidáno tlačítko „kopírovat“ k transportním oznámením v aplikaci (!227)
-- Přidán potvrzovací dialog k odhlášení ze serveru (!232)
-- Opravena nefunkčnost příkazu „fmd stats“ (#257)
-- Opravena regrese: klíčové slovo „fmd“ již opět nerozlišuje malá a velká písmena (#270)
-- Pokus o opravu pádu Comodification v LogRepository (#262)
