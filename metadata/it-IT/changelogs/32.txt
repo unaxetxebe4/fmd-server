@@ -1,6 +1,0 @@
-0.9.1:
-- Aggiunta del pulsante "copia" alle notifiche dei canali di invio in-app (!227)
-- Aggiunta di una finestra di conferma al logout del server (!232)
-- Correzione del mancato funzionamento di "fmd stats" (#257)
-- Correzione della regressione: rendere la parola chiave "fmd" di nuovo insensibile alle maiuscole e minuscole (#270)
-- Tentativo di correggere il crash di Comodification nel LogRepository (#262)
