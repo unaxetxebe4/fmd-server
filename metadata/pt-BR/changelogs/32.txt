@@ -1,6 +1,0 @@
-0.9.1:
-- Adicionado um botão de "copiar" às notificações de transporte dentro do app (!227)
-- Adicionado um diálogo de confirmação ao desconectar sua conta (!232)
-- Corrigido "fmd stats" não funcionando (#257)
-- Corrigida uma regressão: fazer a palavra-chave "fmd" não sensível à maiúscula/minúscula (#270)
-- Tentativa de resolver o crash de Comodification no LogRepository (#262)
